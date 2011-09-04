@@ -1,1 +1,4 @@
+src/help/hid.h
 support/tools/makehid/._makehid.py
+build*
+dist

@@ -1,5 +1,5 @@
 
-Meazure(TM) 2.1 Readme
+Meazure(TM) 2.0.1 Readme
 
 Copyright 2001, 2004, 2011 C Thing Software
 

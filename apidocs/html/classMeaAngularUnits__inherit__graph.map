@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$classMeaDegreeUnits.html" title="Provides angular measurements in degrees." alt="" coords="5,155,123,181"/>
+<area shape="rect" id="node7" href="$classMeaRadianUnits.html" title="Provides angular measurements in radians." alt="" coords="148,155,265,181"/>
+<area shape="rect" id="node2" href="$classMeaUnits.html" title="Measurement units are packaged into a class, one for each set of units (e.g." alt="" coords="96,5,173,32"/>
+</map>

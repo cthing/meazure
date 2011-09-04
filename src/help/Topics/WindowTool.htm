@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Window Tool</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Window Tool");</script>
+    <div class="Para">
+        <img src="../Graphics/Window.gif" hspace="5" vspace="3" align="left" width="236" height="188" border="0" title="Window Tool" alt="Window tool">
+        The window measurement tool allows you to measure the size of any window on the screen including its child
+        windows. In addition, the window contents can be <a href="ScreenCapture.htm">captured</a> to the clipboard. The window being measured is
+        identified by a red rectangular border. Both the data window attached to the window border and Meazure&rsquo;s
+        <a href="ToolInfoSection.htm">tool information section</a> will display the window measurement information.
+        Note that the position of the Window tool cannot be changed using the position text fields.
+    </div>
+    <div class="PicturePara">
+        <img src="../Graphics/WindowDisplay.gif" width="229" height="234" border="0" title="Window Tool Display" alt="Window tool display">
+    </div>
+    <div class="Para">
+        The tool information section displays the following measurements for the Window tool:
+        <ul class="BulletList">
+            <li><span class="MeasurementItem">X1, Y1</span> - The position of the upper left corner of the window</li>
+            <li><span class="MeasurementItem">X2, Y2</span> - The position of the lower right corner of the window</li>
+            <li><span class="MeasurementItem">W, H</span> - The width and height of the window. <span class="Formula">W = |X2 - X1| + 1</span>, <span class="Formula">H = |Y2 - Y1| + 1</span></li>
+            <li><span class="MeasurementItem">D</span> - The length of the window diagonal. <span class="Formula">D = sqrt(W&sup2; + H&sup2;)</span></li>
+            <li><img src="../Graphics/AngleMeasure.gif" hspace="5" vspace="3" align="right" width="91" height="88" border="0" title="Angle Measurement" alt="Angle measurement">
+                <span class="MeasurementItem">A</span> - The angle of the diagonal relative to the x-axis.
+                Using the default coordinate system, positive angles are measured clockwise from the positive x-axis</li>
+            <li><span class="MeasurementItem">Ar</span> - The area of the window. <span class="Formula">Ar = (W * H)</span></li>
+        </ul>
+    </div>
+    <div class="Para">
+        Note that the calculation of W, H, D and Ar is always performed in pixel units and the result is
+        converted to the currently selected display units.
+    </div>
+    <div class="Para">
+        To capture the window contents to the clipboard, select the <span class="MenuItem">Copy Region</span>
+        item from the <span class="MenuItem">Edit</span> menu or press Ctrl+R.
+    </div>
+    <div class="Para">
+        <img src="../Graphics/WindowIcon.gif" hspace="5" vspace="3" align="left" width="20" height="20" border="0" title="Window Tool Icon" alt="Window tool icon">
+        To select the Window tool choose the <span class="MenuItem">Window</span> item on the
+        <span class="MenuItem">Tools</span> menu or click on the Window tool icon on the <a href="Toolbar.htm">toolbar</a>.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="ToolsOverview.htm">Measurement Tools Overview</a>,
+        <a href="MeasurementToolTask.htm">Selecting a Measurement Tool</a>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

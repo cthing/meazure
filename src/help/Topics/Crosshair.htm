@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Crosshair</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Crosshair");</script>
+    <div class="Para">
+        <img src="../Graphics/CrossHair.gif" hspace="5" vspace="3" align="left" width="23" height="23" border="0" title="Normal Crosshair" alt="Normal crosshair">
+        The <a href="PointTool.htm">Point</a>, <a href="LineTool.htm">Line</a>, <a href="RectTool.htm">Rectangle</a>,
+        <a href="CircleTool.htm">Circle</a>. and <a href="AngleTool.htm">Angle</a> tools use a crosshair to position
+        the tool and perform measurements. The crosshair consists of four triangular sections pointing to an open center.
+        All measurements are based at the center of the crosshair.
+    </div>
+
+    <div class="SubSection">Crosshair Visual States</div>
+    <div class="Para">
+        The crosshair can be in one of three visual states: Normal, Located and Find.
+    </div>
+    <div class="Para">
+        <img src="../Graphics/CrossHair.gif" hspace="5" vspace="3" align="left" width="23" height="23" border="0" title="Normal Crosshair" alt="Normal crosshair">
+        <span class="LeadItem">Normal:</span> If the mouse is not positioned over the crosshair, it is in the normal state.
+        The crosshair will appear red under the default color scheme.
+    </div>
+    <div class="Para">
+        <img src="../Graphics/CrossHairSel.gif" hspace="5" vspace="3" align="left" width="23" height="23" border="0" title="Located Crosshair" alt="Located crosshair">
+        <span class="LeadItem">Located:</span> If the mouse is positioned over the crosshair, it is in the located state.
+        The crosshair will appear yellow under the default color scheme. In addition to a color change, the crosshair
+        will display a data window indicating the current position of the crosshair. A tooltip may also appear indicating
+        which measurement point the crosshair represents.
+    </div>
+    <div class="Para">
+        <img src="../Graphics/CrossHairFlash.gif" hspace="5" vspace="3" align="left" width="23" height="23" border="0" title="Find Crosshair" alt="Find crosshair">
+        <span class="LeadItem">Find:</span> Sometimes it can be hard to find a tool on the screen. When a new tool is selected,
+        it will flash its crosshairs between the normal and selected states for a few seconds to help you locate it.
+        If you lose a tool after you have selected it, you can cause it to flash again by selecting
+        <span class="MenuItem">Find Crosshair</span> on the <span class="MenuItem">Tools</span> menu or
+        by using the shortcut Ctrl+F.
+    </div>
+
+    <div class="SubSection">Reading the Crosshair Position</div>
+    <div class="Para">
+        The current position of a crosshair can be read in two places.
+        <img src="../Graphics/AppPositionInfo.gif" hspace="5" vspace="3" align="left" width="171" height="170" border="0" title="Crosshair Position" alt="Crosshair position">
+        The first is in the <a href="ToolInfoSection.htm">tool information section</a> of the Meazure program window.
+        The second place is the data window associated with the crosshair.
+        <img src="../Graphics/DataWin.gif" hspace="5" vspace="3" align="right" width="111" height="56" border="0" title="Data Window" alt="Data window">
+        The data window is displayed when the mouse is placed over the crosshair. The <a href="LineTool.htm">Line</a>
+        and <a href="RectTool.htm">Rectangle</a> tools
+        have two crosshairs called Point 1 and Point 2 respectively. The <a href="CircleTool.htm">Circle</a> tool has
+        two crosshairs called the Vertex at the center of the circle, and Point 1 on the circumference of the circle.
+        The <a href="AngleTool.htm">Angle</a> tool has three crosshairs called Point 1, Point 2, and Vertex respectively.
+        You can determine whether a crosshair is Point 1, 2 or the vertex either by looking at the data window or the
+        tooltip associated with the crosshair.
+    </div>
+
+    <div class="SubSection">Moving the Crosshair</div>
+    <div class="Para">
+        Measurements are taken by moving a crosshair to the desired position on the screen. There are three ways to
+        move a crosshair: mouse dragging, keyboard positioning, and fine positioning.
+    </div>
+    <div class="Para">
+        <span class="LeadItem">Mouse dragging:</span> The fastest way to position a crosshair is by dragging it using the mouse.
+        Position the mouse over the crosshair so that it is in the located state. Press the left mouse button and
+        drag the crosshair to the desired position. The position of the crosshair will be continuously displayed and
+        the <a href="Magnifier.htm">magnifier window</a> will display the area around the crosshair as it is being
+        dragged.
+    </div>
+    <div class="Para">
+        <span class="LeadItem">Keyboard positioning:</span>
+        <img src="../Graphics/KeyboardPosition.gif" hspace="5" vspace="3" align="right" width="170" height="105" border="0" title="Keyboard Positioning" alt="Keyboard positioning">
+        The crosshair can be positioned by entering a position in the text
+        fields of <a href="ToolInfoSection.htm">tool information section</a> of the program. After typing in the
+        position, press Enter to move the crosshair to the new position.
+    </div>
+    <div class="Para">
+        <span class="LeadItem">Fine positioning:</span> To move the crosshair in single pixel increments use the up/down buttons
+        located next to each position text field.
+    </div>
+    
+    <div class="SubSection">Hiding the Crosshair</div>
+    <div class="Para">
+        The display of the crosshair can be toggled either by selecting the
+        <span class="MenuItem">Hide Crosshairs</span> item on the
+        <span class="MenuItem">Tools</span> menu or by pressing Ctrl+B.
+    </div>
+    
+    <div class="SubSection">Changing the Crosshair Characteristics</div>
+    <div class="Para">
+        The colors, opacity and other characteristics of the crosshair and data window can be changed
+        using the <a href="ToolPrefs.htm">Tools panel</a> on the Preferences dialog.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="ToolsOverview.htm">Measurement Tools</a>,
+        <a href="ToolInfoSection.htm">Tool Information Section</a>,
+        <a href="ToolPrefs.htm">Tool Preferences</a>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

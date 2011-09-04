@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Position Logging</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Position Logging");</script>
+    
+    <div class="SubSection">Overview</div>
+    <div class="Para">
+        Position logging is a feature of the Meazure program that allows the recording of successive
+        tool positions. For example, the <a href="CursorTool.htm">Cursor tool</a> or
+        <a href="PointTool.htm">Point tool</a> can be used to digitize positions along a path. The recorded
+        positions can be played back, saved to a file and subsequently reloaded.
+    </div>
+    
+    <div class="SubSection"><a name="PosRecord">Recording Positions</a></div>
+    <div class="Para">
+        The position of the current measurement tool is saved either by selecting the
+        <span class="MenuItem">Record Position</span> item from the <span class="MenuItem">Edit</span>
+        menu, by pressing Ctrl+P, or by using the Add button on the <a href="#PosManage">position
+        management dialog</a>. A number of supporting items are recorded along with the current tool and
+        its position. These items include a time stamp, the current screen size and resolution, the location
+        of the coordinate system origin, and the current units. Recorded positions can be
+        <a href="#PosManage">managed</a> or <a href="#PosSave">saved</a> to a file.
+    </div>
+    
+    <div class="SubSection"><a name="PosSave">Saving and Loading Positions</a></div>
+    <div class="Para">
+        <img src="../Graphics/PositionSave.gif" hspace="5" vspace="3" width="300" height="239" border="0" align="left" title="Position Save Dialog" alt="Position save dialog">
+        Once one or more positions have been recorded they can be saved to a position log file.
+        To save the recorded positions select either the <span class="MenuItem">Save Positions</span>
+        or <span class="MenuItem">Save Positions As</span> item from the <span class="MenuItem">File</span> menu.
+        In addition, the positions can be saved using the appropriate buttons on the
+        <a href="#PosManage">position management dialog</a>. The file save dialog is the standard Windows
+        save dialog with the addition of a text field for entering an optional description of the position
+        log. The description, if provided, is saved in the log file.
+    </div>
+    <div class="Para">
+        Positions are saved to an XML file with a <span class="Pathname">.mpl</span> file extension. The format
+        of the file is described by the Position Log file DTD located at
+        <a href="http://www.cthing.com/dtd/PositionLog1.dtd">http://www.cthing.com/dtd/PositionLog1.dtd</a>.
+        A copy of the DTD is installed with the Meazure program in the dtd folder
+        (typically <span class="Pathname">C:\Program Files\C Thing Software\Meazure\dtd</span>).
+    </div>
+    <div class="Para">
+        A position log file is loaded by selecting the <span class="MenuItem">Load Positions</span> item
+        from the <span class="MenuItem">File</span> menu or by using the Load button on the
+        <a href="#PosManage">position management dialog</a>. Once a position log file has been loaded, the
+        <a href="#PosManage">position management dialog</a> is displayed to allow playback of the positions.
+    </div>
+    <div class="Para">
+        A position log file differs from a <a href="Profiles.htm">profile file</a> in the following way.
+        A profile file is designed to save a complete snapshot of the Meazure program. That is, all tool
+        positions, appearance settings, calibrations, and all other preferences are saved in a profile file.
+        In contrast, a position log file records the position of the current measurement tool at a point in
+        time and includes only those supporting items necessary to replay the positions.
+        <br clear="left">
+    </div>
+    
+    <div class="SubSection">Deleting Positions</div>
+    <div class="Para">
+        Recorded positions can be deleted selectively using the <a href="#PosManage">position management</a>
+        dialog, or can be completely deleted using either the management dialog or the
+        <span class="MenuItem">Delete Positions</span> item on the <span class="MenuItem">Edit</span>
+        menu.
+    </div>
+    
+    <div class="SubSection"><a name="PosManage">Managing Positions</a></div>
+    <div class="Para">
+        <img src="../Graphics/PositionManager.gif" hspace="5" vspace="3" width="250" height="176" border="0" align="left" title="Position Manager" alt="Position manager">
+        The position management dialog provides a one stop shop for recording, editing, saving, loading
+        and playing back measurement tool positions. The position management dialog is modeless and can
+        be accessed from the <span class="MenuItem">Manage Positions</span> item on the
+        <span class="MenuItem">Edit</span> menu. In addition, the dialog is displayed whenever a position
+        log file is loaded.
+    </div>
+    <div class="Para">
+        At the top of the position management dialog is the position playback slider. Once positions have
+        been recorded or loaded, the slider can be used to step through each position. The information
+        about each position is displayed immediately below the playback slider. This information includes
+        the time stamp and description associated with the position.
+    </div>
+    <div class="Para">
+        At the bottom of the dialog is a set of buttons that provide complete control over managing
+        measurement tool positions.
+        <ul class="BulletList">
+            <li><span class="LeadItem">Add</span> - <a href="#PosSave">Records</a> the current measurement
+            tool position.</li>
+            <li><span class="LeadItem">Replace</span> - Replaces the position selected by the playback
+            slider with the current measurement tool position.</li>
+            <li><span class="LeadItem">Delete</span> - Deletes the position selected by the playback slider.</li>
+            <li><span class="LeadItem">Delete All</span> - Deletes all recorded positions.</li>
+            <li><span class="LeadItem">Load</span> - <a href="#PosSave">Loads</a> a position log file thereby
+            replacing the currently recorded positions, if any.</li>
+            <li><span class="LeadItem">Save</span> - <a href="#PosSave">Saves</a> the currently recorded
+            positions to a position log file.</li>
+            <li><span class="LeadItem">Save As</span> - <a href="#PosSave">Saves</a> the currently recorded
+            positions to a position log file.</li>
+            <li><span class="LeadItem">Close</span> - Dismisses the dialog.</li>
+        </ul>
+        <br clear="left">
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="ToolsOverview.htm">Measurement Tools Overview</a>,
+        <a href="Profiles.htm">Profiles</a>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

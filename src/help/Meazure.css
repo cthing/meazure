@@ -1,0 +1,109 @@
+
+/* Header */
+.HeaderTitle {
+    text-align: center;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    color: black;
+    margin-left: 5pt;
+    margin-right: 5pt;
+}
+.TM {
+    vertical-align: super;
+    font-size: 6pt;
+}
+.HeaderCell {
+    background-color: red;
+}
+
+/* Footer */
+.Footer {
+    margin-left: 0.125in;
+    margin-right: 0.125in;
+}
+.FooterBottom {
+    margin-top: 0.125in;
+}
+.Copyright {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 8pt;
+}
+.Contact {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 8pt;
+}
+
+/* Body */
+BODY {
+    margin: 0in;
+}
+.Page {
+    margin: 0.125in;
+}
+.Title {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 14pt;
+    font-weight: bold;
+}
+.SubSection {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 12pt;
+}
+.Para {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: normal;
+    margin-top: 10pt;
+}
+.PicturePara {
+    text-align: center;
+    margin-top: 10pt;
+}
+.BulletList {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: normal;
+    margin-top: 6pt;
+}
+.LeadItem {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.MeasurementItem {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.MenuItem {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+}
+.MenuDesc {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: normal;
+}
+.ShortCut {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: normal;
+    margin-top: 2pt;
+}
+.SeeAlso {
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: normal;
+    margin-top: 4pt;
+}
+.Formula {
+    white-space: nowrap;
+}
+.Pathname {
+    font-style: italic;
+    white-space: nowrap;
+}

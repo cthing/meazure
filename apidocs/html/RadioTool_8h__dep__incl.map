@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="5,80,96,107"/>
+<area shape="rect" id="node7" href="$CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="121,80,215,107"/>
+<area shape="rect" id="node10" href="$PointTool_8h.html" title="Point measurement tool header file." alt="" coords="239,80,325,107"/>
+<area shape="rect" id="node13" href="$LineTool_8h.html" title="Line measurement tool header file." alt="" coords="350,80,431,107"/>
+<area shape="rect" id="node16" href="$RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="455,80,539,107"/>
+<area shape="rect" id="node19" href="$CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="564,80,655,107"/>
+<area shape="rect" id="node22" href="$WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="679,80,781,107"/>
+<area shape="rect" id="node5" href="$ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="351,155,429,181"/>
+</map>

@@ -1,0 +1,30 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$ScreenMgr_8h.html" title="Header file for the display screen manager." alt="" coords="819,80,915,107"/>
+<area shape="rect" id="node13" href="$PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="529,155,652,181"/>
+<area shape="rect" id="node39" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="731,80,793,107"/>
+<area shape="rect" id="node5" href="$CalibrationPrefs_8h.html" title="Calibration preferences property page header file." alt="" coords="1566,229,1689,256"/>
+<area shape="rect" id="node7" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="1374,453,1476,480"/>
+<area shape="rect" id="node9" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="1291,528,1381,555"/>
+<area shape="rect" id="node11" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="1294,603,1377,629"/>
+<area shape="rect" id="node15" href="$RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="335,304,425,331"/>
+<area shape="rect" id="node17" href="$AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="575,379,665,405"/>
+<area shape="rect" id="node21" href="$CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="5,379,99,405"/>
+<area shape="rect" id="node24" href="$PointTool_8h.html" title="Point measurement tool header file." alt="" coords="123,379,209,405"/>
+<area shape="rect" id="node27" href="$LineTool_8h.html" title="Line measurement tool header file." alt="" coords="234,379,315,405"/>
+<area shape="rect" id="node30" href="$RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="339,379,423,405"/>
+<area shape="rect" id="node33" href="$CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="689,379,780,405"/>
+<area shape="rect" id="node36" href="$WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="447,379,549,405"/>
+<area shape="rect" id="node19" href="$ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="638,453,716,480"/>
+<area shape="rect" id="node41" href="$DataWin_8h.html" title="Header file for a popup data display window." alt="" coords="449,304,532,331"/>
+<area shape="rect" id="node53" href="$Layout_8h.html" title="Header file for window layout utilities." alt="" coords="727,229,799,256"/>
+<area shape="rect" id="node59" href="$PrecisionPrefs_8h.html" title="Display precision property page header file." alt="" coords="1424,229,1541,256"/>
+<area shape="rect" id="node62" href="$CustomUnitsPrefs_8h.html" title="Custom measurement units property page header file." alt="" coords="1152,155,1291,181"/>
+<area shape="rect" id="node65" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="870,155,972,181"/>
+<area shape="rect" id="node43" href="$ToolsPrefs_8h.html" title="Tool property page header file." alt="" coords="1203,379,1297,405"/>
+<area shape="rect" id="node56" href="$Circle_8h.html" title="Circle graphic header file." alt="" coords="556,304,623,331"/>
+<area shape="rect" id="node67" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="893,229,949,256"/>
+<area shape="rect" id="node70" href="$ScreenTool_8h.html" title="Screen information tool header file." alt="" coords="647,304,745,331"/>
+<area shape="rect" id="node73" href="$RulerTool_8h.html" title="Ruler measurement tool header file." alt="" coords="770,304,856,331"/>
+<area shape="rect" id="node76" href="$GridTool_8h.html" title="Grid overlay tool header file." alt="" coords="881,304,961,331"/>
+<area shape="rect" id="node79" href="$OriginTool_8h.html" title="Origin marker tool header file." alt="" coords="987,304,1077,331"/>
+</map>

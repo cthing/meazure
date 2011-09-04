@@ -1,0 +1,295 @@
+<!--
+  Meazure Position Log File DTD Version 1
+	
+  Copyright 2004, 2011  C Thing Software
+
+  The position log file records the location of the current tool along
+  with the information about the tool's environment (e.g. screen
+  resolution, units).
+-->
+
+<!-- ===================== Position log file version ==================== -->
+<!ENTITY % positionLog.version "1">
+
+<!-- ===================== Data Types ============================= -->
+<!ENTITY % Number	"CDATA">		<!-- Integer or real -->
+<!ENTITY % Boolean	"(true|false)">
+<!ENTITY % String	"CDATA">
+<!ENTITY % GUID		"ID">			<!-- 128-bit unique ID (MS implementation) -->
+<!ENTITY % GUIDRef	"IDREF">		<!-- Reference to a GUID -->
+<!ENTITY % Date		"CDATA">		<!-- UTC timestamp in ISO 8601 format,
+										 yyyy-mm-ddThh:mm:ssZ -->
+
+<!-- ===================== Document element ========================= -->
+<!ELEMENT positionLog (info?, ((desktops+, positions+) | (positions+, desktops+))+)>
+<!ATTLIST positionLog
+    version (%positionLog.version;) #REQUIRED
+>
+
+<!-- ===================== Info section ========================= -->
+<!--
+	This section contains information describing the log file and
+	the machine on which it was generated.
+-->
+<!ELEMENT info (title|created|generator|machine|desc)*>
+
+<!--
+	Title of file
+-->
+<!ELEMENT title (#PCDATA)*>
+
+<!--
+	Time and date of file creation.
+-->
+<!ELEMENT created EMPTY>
+<!ATTLIST created
+    date %Date; #REQUIRED
+>
+<!--
+	Application that generated the file.
+-->
+<!ELEMENT generator EMPTY>
+<!ATTLIST generator
+    name	%String; #REQUIRED
+	version	%String; #REQUIRED
+	build	%Number; #REQUIRED
+>
+<!--
+	Name of machine on which the file was created.
+-->
+<!ELEMENT machine EMPTY>
+<!ATTLIST machine
+    name %String; #REQUIRED
+>
+<!--
+	Description of file
+-->
+<!ELEMENT desc (#PCDATA)*>
+
+<!-- ===================== Desktops section ========================= -->
+<!--
+	This section describes the desktop environment in which a tool
+	position is recorded. The information includes the number of
+	display screens, their resolution, the measurement units and the
+	orientation of the coordinate axes.
+
+	Each desktop element represents a unique configuration. Each
+	position element references a desktop element.
+-->
+<!ELEMENT desktops (desktop+)>
+
+<!ELEMENT desktop (units,(customUnits|origin|size)*,screens,displayPrecisions?)>
+<!ATTLIST desktop
+	id %GUID; #REQUIRED
+>
+
+<!--
+	Length units
+		px = pixels
+		pt = points
+		tp = twips
+		in = inches
+		cm = centimeters
+		mm = millimeters
+		pc = picas
+		custom = user defined units
+
+	Angle units
+		deg = degrees (default)
+		rad = radians
+ -->
+<!ENTITY % lengthUnits "(px|pt|tp|in|cm|mm|pc|custom)">
+<!ENTITY % angleUnits "(deg|rad)">
+
+<!ELEMENT units EMPTY>
+<!ATTLIST units
+	length %lengthUnits; #REQUIRED
+	angle  %angleUnits;  "deg"
+>
+
+<!--
+	If custom units are used, the customUnits element specifies the
+	name, abbreviation and scaling information for the units. In
+	addition, a displayPrecisions section specifies the decimal places
+	for each custom measurement (e.g. x, w, area, etc.).
+
+	name - Full name used on the Units menu (16 characters max.)
+	abbrev - Abbreviation used on the measurement display (2 characters max.)
+	scaleBasis - Indicates whether the scale factor is based on pixels,
+			inches or centimeters
+	scaleFactor - The conversion factor for the units
+-->
+<!ENTITY % basis "(px|in|cm)">
+
+<!ELEMENT customUnits EMPTY>
+<!ATTLIST customUnits
+	name        %String; #REQUIRED
+	abbrev      %String; #REQUIRED
+	scaleBasis  %basis;  #REQUIRED
+	scaleFactor %Number; #REQUIRED
+>
+
+<!--
+	Origin offset from top left of desktop if invert is false or
+	from bottom left of desktop if invert is true, in the current units.
+-->
+<!ELEMENT origin EMPTY>
+<!ATTLIST origin
+	xoffset %Number;  #REQUIRED
+	yoffset %Number;  #REQUIRED
+	invertY %Boolean; "false"
+>
+
+<!--
+	Desktop dimensions in the current units. If there are multiple
+	monitors, this is the size of the virtual rectangle bounding
+	all monitors.
+-->
+<!ELEMENT size EMPTY>
+<!ATTLIST size
+	x %Number; #REQUIRED
+	y %Number; #REQUIRED
+>
+
+<!--
+	A desktop consists of one or more physical screens.
+-->
+<!ELEMENT screens (screen+)>
+
+<!--
+	Each screen represents a physical monitor. There can
+	be multiple screens for a given desktop. One screen is
+	always designated by the OS as the primary monitor.
+-->
+<!ELEMENT screen ((rect,resolution)|(resolution,rect))>
+<!ATTLIST screen
+	desc    %String;  #REQUIRED
+	primary %Boolean; "false"
+>
+
+<!--
+	The screen rectangle in the current units. If there are
+	multiple monitors, the coordinates may be negative.
+	In the multiple monitor case, the screen rectangle
+	can be used to determine the position of one monitor
+	in relation to the other monitor(s).
+-->
+<!ELEMENT rect EMPTY>
+<!ATTLIST rect
+	top    %Number; #REQUIRED
+	bottom %Number; #REQUIRED
+	left   %Number; #REQUIRED
+	right  %Number; #REQUIRED
+>
+
+<!--
+	Monitor resolution as current units per pixel. If units are
+	pixels, resolution is pixels per inch. The manual attribute
+	indicated whether the reported resolution is based on user
+	calibration (manual="true") or whether the resolution is the
+	value reported by the operating system (manual="false").
+-->
+<!ELEMENT resolution EMPTY>
+<!ATTLIST resolution
+	x      %Number;  #REQUIRED
+	y      %Number;  #REQUIRED
+	manual %Boolean; "false"
+>
+
+<!--
+	The display precisions section describes the number of decimal
+	places to display for each measurement field. Currently, display
+	precisions are specified only if custom units are used.
+-->
+<!ENTITY % measurements "(x|y|w|h|d|area|rx|ry)">
+
+<!ELEMENT displayPrecisions (displayPrecision+)>
+
+<!ELEMENT displayPrecision (measurement+)>
+<!ATTLIST displayPrecision
+	units (custom) #REQUIRED
+>
+
+<!ELEMENT measurement EMPTY>
+<!ATTLIST measurement
+	name          %measurements; #REQUIRED
+	decimalPlaces %Number;       #REQUIRED
+>
+
+<!-- ===================== Positions section ========================= -->
+<!--
+	This section contains the actual positions of the recorded tool.
+	Each position references a desktop element to provide the context
+	in which the position was recorded.
+-->
+<!ELEMENT positions (position*)>
+
+<!ENTITY % tools "(CursorTool|LineTool|PointTool|RectTool|CircleTool|AngleTool|WindowTool)">
+
+<!--
+	A position contains the points that comprise the tool location.
+	The position element always references a dekstop element that
+	provides the context in which the position was recorded
+	(e.g. resolutions). The position element also identifies the
+	measurement tool whose location is being recorded.
+-->
+<!ELEMENT position (desc?,points,desc?,properties*,desc?)>
+<!ATTLIST position
+	desktopRef	%GUIDRef;	#REQUIRED
+	tool		%tools;		#REQUIRED
+	date		%Date;		#REQUIRED
+>
+
+<!--
+	The points element contains the measured locations for
+	the tool. The number of contained point elements depends
+	on the type of tool used. For example, there are three
+	point elements recorded for the Angle tool.
+-->
+<!ELEMENT points (point)+>
+
+<!ENTITY % pointNames "(1|2|v)">
+
+<!--
+	The point element provides the coordinates of the named
+	location. The coordinates are expressed in the units
+	specified by the referenced desktop and using the origin
+	and y-axis orientation specified in the desktop. The number
+	of point elements depends on the type of tool used. For
+	example, there are three point elements recorded for the
+	Angle tool, named point "1", "2", and "v".
+-->
+<!ELEMENT point EMPTY>
+<!ATTLIST point
+	name  %pointNames; #REQUIRED
+	x     %Number;     #REQUIRED
+	y     %Number;     #REQUIRED
+>
+
+<!--
+	The properties section provides the measurements made
+	by the tool based on the locations reported in the points
+	section.
+-->
+<!ELEMENT properties (width|height|distance|area|angle)*>
+
+<!--
+	The width, height, distance, and area properties are
+	reported in the units specified by the referenced desktop.
+	Angles are reported in the angular units specified by
+	the referenced desktop.
+-->
+<!ELEMENT width EMPTY>
+<!ATTLIST width value %Number; #REQUIRED>
+
+<!ELEMENT height EMPTY>
+<!ATTLIST height value %Number; #REQUIRED>
+
+<!ELEMENT distance EMPTY>
+<!ATTLIST distance value %Number; #REQUIRED>
+
+<!ELEMENT area EMPTY>
+<!ATTLIST area value %Number; #REQUIRED>
+
+<!ELEMENT angle EMPTY>
+<!ATTLIST angle value %Number; #REQUIRED>

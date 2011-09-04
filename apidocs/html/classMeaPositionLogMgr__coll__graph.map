@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node4" href="$classMeaSingleton__T.html" title="MeaSingleton_T\&lt; MeaPositionLogMgr \&gt;" alt="" coords="838,108,1093,135"/>
+<area shape="rect" id="node2" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="247,5,401,32"/>
+<area shape="rect" id="node7" href="$classMeaPositionLogMgr_1_1Positions.html" title="Represents a collection of positions." alt="" coords="225,56,423,83"/>
+<area shape="rect" id="node9" href="$classMeaPositionLogDlg.html" title="A modeless dialog for recording new positions and managing positions that have already been recorded..." alt="" coords="257,169,391,196"/>
+<area shape="rect" id="node11" href="$classMeaPositionLogObserver.html" title="Interface for objects that need to be informed about changes to the position log." alt="" coords="6,132,173,159"/>
+<area shape="rect" id="node13" href="$classMeaPositionSaveDlg.html" title="The Save dialog for Position Log files." alt="" coords="253,220,395,247"/>
+</map>

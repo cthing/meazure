@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Magnifier</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Magnifier");</script>
+    <div class="Para">
+        <img src="../Graphics/Magnifier.gif" hspace="8" vspace="3" align="left" width="171" height="431" border="0" title="Magnifier" alt="Magnifier">
+        The magnifier provides a view of the area around a measurement tool. In
+        addition, the color of the pixel at the center of the view is shown.
+        There are three parts to the magnifier: the magnifier window,
+        the color display, and the zoom and freeze controls.
+    </div>
+    <div class="SubSection">Magnifier Window</div>
+    <div class="Para">
+        The magnifier window displays the area around the current <a href="ToolsOverview.htm">tool</a> (e.g.
+        cursor, crosshair) magnified by the current zoom factor. When the
+        <a href="CursorTool.htm">Cursor tool</a> or <a href="WindowTool.htm">Window tool</a> is selected,
+        the center of the magnifier is outlined
+        by a red square that corresponds to the hotspot of the cursor. When
+        a tool is selected that uses a <a href="Crosshair.htm">crosshair</a>, the red outline at the center
+        of the magnifier corresponds to the center of the crosshair that is being positioned.
+    </div>
+    <div class="Para">
+        A grid is overlaid on the magnifier window when the zoom factor is
+        4X or greater. To turn off this grid select the
+        <span class="MenuItem">Magnifier Grid</span> item on the
+        <span class="MenuItem">View</span> menu.
+    </div>
+    <div class="SubSection">Color Display</div>
+    <div class="Para">
+        The color of the pixel at the center of the magnifier window is shown
+        below the magnifier window. The color is shown in the swatch at the right
+        of the section and the color value is displayed on the left. The color
+        value is reported in one of the following formats depending on the selection made on the
+        <span class="MenuItem">Color Format</span> submenu on the
+        <span class="MenuItem">View</span> menu.
+        <br clear="left">
+        <ul class="BulletList">
+            <li><span class="LeadItem">RGB</span> - The color is displayed as separate red, green,
+            and blue components each as a value between 0 and 255 inclusive.</li>
+            <li><span class="LeadItem">#RRGGBB</span> - The color is displayed as a single six digit
+            hexadecimal number where the first two digits are the red component, the next two
+            digits are the green component and the last two digits are the blue component. The
+            value of each component is between 0 and 0xFF inclusive.</li>
+            <li><span class="LeadItem">CMY</span> - The color is displayed as separate cyan, magenta,
+            and yellow components each as a value between 0 and 255 inclusive.</li>
+            <li><span class="LeadItem">CMYK</span> - The color is displayed as separate cyan, magenta,
+            yellow, and black components.</li>
+            <li><span class="LeadItem">HSL</span> - The color is displayed as hue, saturation, and lightness
+            values.</li>
+            <li><span class="LeadItem">YCbCr</span> - The color is displayed as a luminance (Y) and two
+            chrominance values (Cb and Cr).</li>
+            <li><span class="LeadItem">YIQ</span> - The color is displayed as a luminance (Y) and two
+            chrominance values (Inphase, Quadrature). This format corresponds to that used in television
+            broadcasting.</li>
+        </ul>
+    </div>
+    <div class="SubSection">Zoom and Freeze</div>
+    <div class="Para">
+        At the bottom of the magnifier is the zoom slider. This control sets the
+        magnification factor between 1X and 32X. The zoom can also be controlled using
+        the <span class="MenuItem">Zoom In</span> and <span class="MenuItem">Zoom Out</span>
+        menu items on the <span class="MenuItem">View</span> menu or the Ctrl++ and Ctrl+-
+        keyboard combinations. At 6X and above, a grid is overlaid
+        on the magnifier window. To turn off this grid select the
+        <span class="MenuItem">Magnifier Grid</span> item on the
+        <span class="MenuItem">View</span> menu.
+    </div>
+    <div class="Para">
+        Next to the pixel color swatch is magnifier window freeze button. This button
+        acts like the pause button on a VCR. Depressing the button will freeze the
+        the current view in the magnifier window. Pressing the button again will
+        cause the magnifier window to go live.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="ToolsOverview.htm">Measurement Tools Overview</a>
+        <a href="CustomLayout.htm">Customizing Program Layout</a>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

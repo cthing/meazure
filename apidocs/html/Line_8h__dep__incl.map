@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="5,80,96,107"/>
+<area shape="rect" id="node7" href="$LineTool_8h.html" title="Line measurement tool header file." alt="" coords="121,80,201,107"/>
+<area shape="rect" id="node10" href="$CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="227,80,317,107"/>
+<area shape="rect" id="node13" href="$GridTool_8h.html" title="Grid overlay tool header file." alt="" coords="342,80,423,107"/>
+<area shape="rect" id="node16" href="$OriginTool_8h.html" title="Origin marker tool header file." alt="" coords="448,80,539,107"/>
+<area shape="rect" id="node5" href="$ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="233,155,311,181"/>
+</map>

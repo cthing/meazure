@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMeaFileProfile.html" title="Persists the application state to an XML file." alt="" coords="5,80,109,107"/>
+<area shape="rect" id="node5" href="$classMeaRegistryProfile.html" title="Persists the application state to the registry." alt="" coords="133,80,264,107"/>
+</map>

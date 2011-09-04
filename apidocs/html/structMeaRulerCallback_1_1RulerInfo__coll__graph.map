@@ -1,0 +1,5 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classMeaRuler.html" title="A ruler element." alt="" coords="79,96,156,123"/>
+<area shape="rect" id="node4" href="$classMeaGraphic.html" title="Base class for all graphic elements." alt="" coords="5,5,96,32"/>
+<area shape="rect" id="node6" href="$classMeaRulerCallback.html" title="Ruler drag callback mixin class." alt="" coords="121,5,247,32"/>
+</map>

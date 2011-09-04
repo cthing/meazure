@@ -1,0 +1,31 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="629,304,731,331"/>
+<area shape="rect" id="node22" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="896,453,965,480"/>
+<area shape="rect" id="node44" href="$Magnifier_8h.html" title="Header file for the screen magnifier." alt="" coords="208,304,293,331"/>
+<area shape="rect" id="node49" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="21,379,85,405"/>
+<area shape="rect" id="node58" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="1249,80,1351,107"/>
+<area shape="rect" id="node109" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="727,229,784,256"/>
+<area shape="rect" id="node5" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="815,379,921,405"/>
+<area shape="rect" id="node7" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="145,453,239,480"/>
+<area shape="rect" id="node9" href="$Label_8h.html" title="Header file for the label control." alt="" coords="644,453,708,480"/>
+<area shape="rect" id="node11" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="1149,379,1211,405"/>
+<area shape="rect" id="node36" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond..." alt="" coords="314,379,392,405"/>
+<area shape="rect" id="node40" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="417,379,524,405"/>
+<area shape="rect" id="node24" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="1318,453,1404,480"/>
+<area shape="rect" id="node29" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="1235,453,1293,480"/>
+<area shape="rect" id="node26" href="$Assert_8h.html" title="Defines the MeaAssert macro." alt="" coords="1326,528,1396,555"/>
+<area shape="rect" id="node60" href="$RulerPrefs_8h.html" title="Ruler property page header file." alt="" coords="1295,155,1388,181"/>
+<area shape="rect" id="node66" href="$CalibrationPrefs_8h.html" title="Calibration preferences property page header file." alt="" coords="1518,304,1641,331"/>
+<area shape="rect" id="node81" href="$ToolsPrefs_8h.html" title="Tool property page header file." alt="" coords="1155,155,1249,181"/>
+<area shape="rect" id="node96" href="$PrecisionPrefs_8h.html" title="Display precision property page header file." alt="" coords="1376,304,1493,331"/>
+<area shape="rect" id="node101" href="$CustomUnitsPrefs_8h.html" title="Custom measurement units property page header file." alt="" coords="912,304,1051,331"/>
+<area shape="rect" id="node105" href="$AdvancedPrefs_8h.html" title="Advanced preferences property page header file." alt="" coords="1551,155,1669,181"/>
+<area shape="rect" id="node62" href="$Ruler_8h.html" title="Ruler graphic header file." alt="" coords="1362,229,1424,256"/>
+<area shape="rect" id="node64" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="1273,304,1351,331"/>
+<area shape="rect" id="node70" href="$RulerSlider_8h.html" title="Header file for a slider control on a ruler background." alt="" coords="1535,379,1631,405"/>
+<area shape="rect" id="node72" href="$ScreenMgr_8h.html" title="Header file for the display screen manager." alt="" coords="1313,379,1409,405"/>
+<area shape="rect" id="node83" href="$Swatch_8h.html" title="Header file for a rectangular color swatch." alt="" coords="1146,229,1221,256"/>
+<area shape="rect" id="node85" href="$CrossHair_8h.html" title="Crosshair graphic header file." alt="" coords="1247,229,1337,256"/>
+<area shape="rect" id="node88" href="$DataWin_8h.html" title="Header file for a popup data display window." alt="" coords="1039,229,1121,256"/>
+<area shape="rect" id="node92" href="$Layout_8h.html" title="Header file for window layout utilities." alt="" coords="1125,304,1197,331"/>
+</map>

@@ -1,0 +1,13 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$Swatch_8h.html" title="Header file for a rectangular color swatch." alt="" coords="51,80,127,107"/>
+<area shape="rect" id="node5" href="$CrossHair_8h.html" title="Crosshair graphic header file." alt="" coords="152,80,243,107"/>
+<area shape="rect" id="node9" href="$DataWin_8h.html" title="Header file for a popup data display window." alt="" coords="275,80,357,107"/>
+<area shape="rect" id="node7" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="153,155,231,181"/>
+<area shape="rect" id="node11" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="5,304,75,331"/>
+<area shape="rect" id="node13" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="334,229,396,256"/>
+<area shape="rect" id="node36" href="$Layout_8h.html" title="Header file for window layout utilities." alt="" coords="357,155,429,181"/>
+<area shape="rect" id="node23" href="$Label_8h.html" title="Header file for the label control." alt="" coords="291,304,355,331"/>
+<area shape="rect" id="node26" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="99,304,185,331"/>
+<area shape="rect" id="node31" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="379,304,437,331"/>
+<area shape="rect" id="node28" href="$Assert_8h.html" title="Defines the MeaAssert macro." alt="" coords="107,379,177,405"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$classMeaAngularUnitsLabel.html" title="There are two categories of labels: those for angular measurements and those for linear measurements..." alt="" coords="5,155,157,181"/>
+<area shape="rect" id="node7" href="$classMeaLinearUnitsLabel.html" title="There are two categories of labels: those for angular measurements and those for linear measurements..." alt="" coords="182,155,324,181"/>
+<area shape="rect" id="node2" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="127,5,205,32"/>
+<area shape="rect" id="node9" href="$classMeaAreaUnitsLabel.html" title="Label for area measurements." alt="" coords="21,229,155,256"/>
+<area shape="rect" id="node11" href="$classMeaLengthUnitsLabel.html" title="Label for length measurements." alt="" coords="180,229,327,256"/>
+<area shape="rect" id="node13" href="$classMeaResUnitsLabel.html" title="Label for resolution measurements." alt="" coords="351,229,481,256"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node5" href="$classMeaAngleTool.html" title="Angle measurement tool." alt="" coords="284,5,388,32"/>
+<area shape="rect" id="node7" href="$classMeaCircleTool.html" title="Circle measurement tool." alt="" coords="284,56,388,83"/>
+<area shape="rect" id="node9" href="$classMeaCursorTool.html" title="Cursor position measurement tool." alt="" coords="281,107,391,133"/>
+<area shape="rect" id="node11" href="$classMeaLineTool.html" title="Line measurement tool." alt="" coords="289,157,383,184"/>
+<area shape="rect" id="node13" href="$classMeaPointTool.html" title="Point measurement tool." alt="" coords="285,208,387,235"/>
+<area shape="rect" id="node15" href="$classMeaRectTool.html" title="Rectangle measurement tool." alt="" coords="287,259,385,285"/>
+<area shape="rect" id="node17" href="$classMeaWindowTool.html" title="Window measurement tool." alt="" coords="277,309,395,336"/>
+<area shape="rect" id="node2" href="$classMeaTool.html" title="Abstract base class for all measurement tools." alt="" coords="6,157,77,184"/>
+</map>

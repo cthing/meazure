@@ -1,0 +1,152 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=Meazure.chm
+Contents file=Meazure.hhc
+Default Window=main
+Default topic=Topics\MeazureOverview.htm
+Display compile progress=No
+Full-text search=Yes
+Index file=Meazure.hhk
+Language=0x409 English (United States)
+Title=Meazure
+
+[WINDOWS]
+main="Meazure","Meazure.hhc","Meazure.hhk",,,,,,,0x62520,,0x3006,[337,241,1089,754],,,,,,,0
+
+[FILES]
+Topics\MeazureOverview.htm
+Topics\Layout.htm
+Topics\ToolInfoSection.htm
+Topics\ScreenInfoSection.htm
+Topics\Magnifier.htm
+Topics\StatusBar.htm
+Topics\ToolsOverview.htm
+Topics\CursorTool.htm
+Topics\PointTool.htm
+Topics\LineTool.htm
+Topics\RectTool.htm
+Topics\CircleTool.htm
+Topics\AngleTool.htm
+Topics\WindowTool.htm
+Topics\Rulers.htm
+Topics\ScreenGrid.htm
+Topics\ScreenGridSpacing.htm
+Topics\Crosshair.htm
+Topics\ScreenCapture.htm
+Topics\Units.htm
+Topics\Toolbar.htm
+Topics\Menus.htm
+Topics\InvertY.htm
+Topics\MoveOrigin.htm
+Topics\OriginMarker.htm
+Topics\AlwaysVisible.htm
+Topics\CustomLayout.htm
+Topics\Preferences.htm
+Topics\Calibration.htm
+Topics\RulerPrefs.htm
+Topics\ToolPrefs.htm
+Topics\PrecisionPrefs.htm
+Topics\CustomUnits.htm
+Topics\AdvancedPrefs.htm
+Topics\Profiles.htm
+Topics\SampleProfiles.htm
+Topics\MeasurementTasks.htm
+Topics\CaptureTasks.htm
+Topics\CustomizationTasks.htm
+Topics\MeasurementToolTask.htm
+Topics\MeasureAngleTask.htm
+Topics\MeasurePointTask.htm
+Topics\MeasureDistanceTask.htm
+Topics\MeasureImageTask.htm
+Topics\MeasureWindowTask.htm
+Topics\MoveCrosshairTask.htm
+Topics\ScreenSizeTask.htm
+Topics\ColorTask.htm
+Topics\ChangeCoordTask.htm
+Topics\SaveTask.htm
+Topics\HideSectionTask.htm
+Topics\HideDataWinTask.htm
+Topics\OnlineHelp.htm
+Topics\Launch.htm
+Topics\MultipleScreens.htm
+Topics\PositionLogging.htm
+Graphics\AppIcon.gif
+Graphics\HeaderLogo.gif
+Meazure.css
+Meazure.js
+
+[ALIAS]
+HIDR_MAINFRAME                  = Topics\MeazureOverview.htm
+HIDR_MEAZURTYPE                 = Topics\MeazureOverview.htm
+HIDD_ABOUTBOX                   = Topics\MeazureOverview.htm
+HIDD_PREF_CALIBRATION           = Topics\Calibration.htm
+HIDD_PREF_RULERS                = Topics\RulerPrefs.htm
+HIDD_PREF_TOOLS                 = Topics\ToolPrefs.htm
+HIDD_PREF_PRECISION             = Topics\PrecisionPrefs.htm
+HIDD_PREF_CUSTOM                = Topics\CustomUnits.htm
+HIDD_GRID_SPACING               = Topics\ScreenGridSpacing.htm
+HIDD_PREF_ADVANCED              = Topics\AdvancedPrefs.htm
+HIDD_POSITION_MGR               = Topics\PositionLogging.htm
+HID_MEA_CURSOR                  = Topics\CursorTool.htm
+HID_MEA_POINT                   = Topics\PointTool.htm
+HID_MEA_LINE                    = Topics\LineTool.htm
+HID_MEA_RECT                    = Topics\RectTool.htm
+HID_MEA_CIRCLE                  = Topics\CircleTool.htm
+HID_MEA_ANGLE                   = Topics\AngleTool.htm
+HID_MEA_WINDOW                  = Topics\WindowTool.htm
+HID_MEA_RULER                   = Topics\Rulers.htm
+HID_MEA_UNITS_PIXELS            = Topics\Units.htm
+HID_MEA_UNITS_TWIPS             = Topics\Units.htm
+HID_MEA_UNITS_INCHES            = Topics\Units.htm
+HID_MEA_UNITS_CM                = Topics\Units.htm
+HID_MEA_UNITS_MM                = Topics\Units.htm
+HID_MEA_UNITS_POINTS            = Topics\Units.htm
+HID_MEA_UNITS_PICAS             = Topics\Units.htm
+HID_MEA_DEGREES                 = Topics\Units.htm
+HID_MEA_RADIANS                 = Topics\Units.htm
+HID_MEA_UNITS_CUSTOM            = Topics\CustomUnits.htm
+HID_MEA_UNITS_DEF_CUSTOM        = Topics\CustomUnits.htm
+HID_MEA_ONTOP                   = Topics\AlwaysVisible.htm
+HID_MEA_INVERTY                 = Topics\InvertY.htm
+HID_MEA_ORIGIN                  = Topics\MoveOrigin.htm
+HID_MEA_RESET_ORIGIN            = Topics\MoveOrigin.htm
+HID_MEA_PREFERENCES             = Topics\Preferences.htm
+HID_MEA_ZOOM_IN                 = Topics\Magnifier.htm
+HID_MEA_ZOOM_OUT                = Topics\Magnifier.htm
+HID_MEA_MAGNIFIER               = Topics\Magnifier.htm
+HID_MEA_MAGGRID                 = Topics\Magnifier.htm
+HID_MEA_SCREEN_INFO             = Topics\CustomLayout.htm
+HID_MEA_DECFMT                  = Topics\Magnifier.htm
+HID_MEA_HEXFMT                  = Topics\Magnifier.htm
+HID_MEA_CMYFMT                  = Topics\Magnifier.htm
+HID_MEA_CMYKFMT                 = Topics\Magnifier.htm
+HID_MEA_HSLFMT                  = Topics\Magnifier.htm
+HID_MEA_YCBCRFMT                = Topics\Magnifier.htm
+HID_MEA_YIQFMT                  = Topics\Magnifier.htm
+HID_MEA_RUNSTATE                = Topics\Magnifier.htm
+HID_MEA_GRID                    = Topics\Magnifier.htm
+HID_MEA_SCREEN_GRID             = Topics\ScreenGrid.htm
+HID_MEA_SCREEN_GRID_SPACING     = Topics\ScreenGridSpacing.htm
+HID_MEA_SAVE_PROFILE            = Topics\Profiles.htm
+HID_MEA_LOAD_PROFILE            = Topics\Profiles.htm
+HID_HELP_SEARCH                 = Topics\MeazureOverview.htm
+HID_MEA_COPY_RGN                = Topics\ScreenCapture.htm
+HID_MEA_TOOL_INFO               = Topics\CustomLayout.htm
+HID_MEA_COLLAPSE                = Topics\CustomLayout.htm
+HID_VIEW_STATUSBAR              = Topics\CustomLayout.htm
+HID_MEA_HIDE_CROSSHAIR          = Topics\Crosshair.htm
+HID_MEA_FIND                    = Topics\Crosshair.htm
+HID_HELP_TOOL_INFO              = Topics\ToolInfoSection.htm
+HID_HELP_SCREEN_INFO            = Topics\ScreenInfoSection.htm
+HID_MEA_MANAGE_POSITIONS        = Topics\PositionLogging.htm
+HID_MEA_RECORD                  = Topics\PositionLogging.htm
+HID_MEA_DELETE_POSITIONS        = Topics\PositionLogging.htm
+HID_MEA_LOAD_POSITIONS          = Topics\PositionLogging.htm
+HID_MEA_SAVE_POSITIONS          = Topics\PositionLogging.htm
+HID_MEA_SAVE_POSITIONS_AS       = Topics\PositionLogging.htm
+
+[MAP]
+#include hid.h
+
+[INFOTYPES]
+

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Resolution Calibration</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Resolution Calibration");</script>
+    <div class="PicturePara">
+        <img src="../Graphics/CalibrationPref.gif" width="263" height="225" border="0" title="Resolution Calibration" alt="Resolution calibration">
+    </div>
+    <div class="Para">
+        Meazure obtains position information from the computer operating
+        system. This information is reported to Meazure in pixel units. To
+        display measurements in <a href="Units.htm">units</a> other than pixels,
+        Meazure must convert from pixels using the screen resolution. By default, Meazure uses the
+        screen resolution reported by the operating system. However, this value is inaccurate because
+        it does not reflect the physical dimensions of your display screen(s). Meazure allows you manually
+        determine an accurate resolution for each display screen connected to your system. It is highly
+        recommended that you calibrate Meazure the first time you use it and anytime you change a
+        screen&rsquo;s pixel dimensions (e.g. going from 1024 by 768 to 1280 by 1024 pixels).
+    </div>
+    <div class="Para">
+        To access the resolution calibration panel select the
+        <span class="MenuItem">Preferences</span> item on the
+        <span class="MenuItem">Edit</span> menu then
+        select the <span class="MenuItem">Calibration</span> tab on the Preferences
+        dialog.
+    </div>
+    <div class="Para">
+        The resolution calibration panel displays the calibration state for the screen
+        on which it is displayed. In a multiple screen environment, the calibration panel
+        must be dragged to the screen whose resolution is to be calibrated. The identification
+        of the screen is displayed with the title of the calibration panel frame.
+    </div>
+    <div class="Para">
+        The resolution calibration panel allows you to select whether to use the
+        operating system values for the horizontal and vertical screen resolutions
+        or to use a manual setting of these values. It is highly recommended that you
+        select the manual setting. Before describing the calibration process, the following
+        terms need to be defined:
+    </div>
+    <div class="Para">
+        <span class="LeadItem">Screen Resolution</span> - The resolution is the number of pixels per inch or centimeter
+        along the screen. The screen can have a different resolution in the horizontal and vertical directions
+        (e.g. 90 pixels/inch by 96 pixels/inch).
+    </div>
+    <div class="Para">
+        <span class="LeadItem">Screen Size</span> - The size of the screen is the number of pixels in the horizontal
+        and vertical directions (e.g. 1280 by 1024 pixels).
+    </div>
+    <div class="Para">
+        <span class="LeadItem">Screen Dimensions</span> - The screen dimensions are the length in inches or centimeters
+        in the horizontal and vertical directions (e.g. 13 inches by 10 inches).
+    </div>
+    <div class="Para">
+        There are three methods for manually setting the screen resolution: direct resolution entry,
+        direct dimension entry, or slider calibration. To use any of these methods select &quot;Set manually&quot;.
+        The resolution can be calibrated using either English or Metric units. Use the inch and
+        centimeter radio buttons to select the units to use for calibration. This selection affects only
+        the calibration units and does not change the measurement units.
+    </div>
+    <div class="Para">
+        <span class="LeadItem">Direct resolution entry</span> - If you know the exact screen resolution, use this
+        method to directly enter the horizontal and vertical values using the &quot;Rx&quot; and &quot;Ry&quot; text fields.
+        Resolution values must be specified in pixels per inch or pixels per centimeter depending on
+        the calibration units selected.
+    </div>
+    <div class="Para">
+        <span class="LeadItem">Direct dimension entry</span> - Using a ruler, you can measure the horizontal and
+        vertical dimensions of the screen. You can then enter these dimension values using the &quot;W&quot; and &quot;H&quot;
+        text fields. The dimension values must be specified in inches or centimeters depending on
+        the calibration units selected.
+    </div>
+    <div class="Para">
+        <span class="LeadItem">Slider measurement</span> - This method uses a ruler in conjunction
+        with the horizontal and vertical sliders on the panel to set the resolution.
+        Place a ruler on the screen and align it with the zero position on one of the
+        sliders. If resolution calibration is being performed in inches, move the slider
+        until it points to the one inch mark on the ruler. For metric calibration, move the
+        slider until is points to the two centimeter mark on the ruler.
+        Repeat this process for the remaining slider.
+    </div>
+    <div class="Para">
+        <img src="../Graphics/ScreenInfoCal.gif" width="229" height="137" border="0" align="right" title="Screen Information" alt="Screen information">
+        Note that when the operating system resolution is used, a warning button appears on
+        the <a href="ScreenInfoSection.htm">Screen Information section</a> of the program display.
+        Pressing this button displays the resolution calibration panel.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="Preferences.htm">Preferences</a>, <a href="Units.htm">Measurement Units</a>,
+        <a href="ScreenInfoSection.htm">Screen Information Section</a>,
+        <a href="MultipleScreens.htm">Multiple Screen Support</a>,
+        <a href="CustomUnits.htm">Custom Units</a>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

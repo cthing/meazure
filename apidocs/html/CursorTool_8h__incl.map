@@ -1,0 +1,22 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="1258,80,1349,107"/>
+<area shape="rect" id="node89" href="$DataWin_8h.html" title="Header file for a popup data display window." alt="" coords="1489,155,1572,181"/>
+<area shape="rect" id="node5" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="1275,155,1332,181"/>
+<area shape="rect" id="node50" href="$PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="709,155,832,181"/>
+<area shape="rect" id="node9" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="1252,229,1354,256"/>
+<area shape="rect" id="node27" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="1526,379,1596,405"/>
+<area shape="rect" id="node11" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="1185,304,1292,331"/>
+<area shape="rect" id="node13" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="1374,379,1468,405"/>
+<area shape="rect" id="node15" href="$Label_8h.html" title="Header file for the label control." alt="" coords="1129,379,1193,405"/>
+<area shape="rect" id="node17" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="995,304,1057,331"/>
+<area shape="rect" id="node41" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond..." alt="" coords="1082,304,1160,331"/>
+<area shape="rect" id="node45" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="1316,304,1422,331"/>
+<area shape="rect" id="node29" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="630,379,716,405"/>
+<area shape="rect" id="node34" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="852,379,910,405"/>
+<area shape="rect" id="node31" href="$Assert_8h.html" title="Defines the MeaAssert macro." alt="" coords="299,453,369,480"/>
+<area shape="rect" id="node58" href="$XMLParser_8h.html" title="Header file for the expat XML parser wrapper and support classes." alt="" coords="281,229,377,256"/>
+<area shape="rect" id="node78" href="$GUID_8h.html" title="Header file for a class representing a globally unique identifier." alt="" coords="704,229,768,256"/>
+<area shape="rect" id="node81" href="$ScreenMgr_8h.html" title="Header file for the display screen manager." alt="" coords="722,304,818,331"/>
+<area shape="rect" id="node60" href="$exval_8h.html" title="Header file for the expat compatible XML validator." alt="" coords="298,304,360,331"/>
+<area shape="rect" id="node93" href="$Layout_8h.html" title="Header file for window layout utilities." alt="" coords="1700,229,1772,256"/>
+</map>

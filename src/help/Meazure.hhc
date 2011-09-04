@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+    <param name="WindowName" value="main">
+    <param name="Window Styles" value="0x800025">
+</OBJECT>
+<UL>
+    <LI> <OBJECT type="text/sitemap">
+        <param name="Name" value="Meazure Topics">
+        </OBJECT>
+    <UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="General">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Meazure Overview">
+                <param name="Local" value="Topics\MeazureOverview.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Launching Meazure">
+                <param name="Local" value="Topics\Launch.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Online Help">
+                <param name="Local" value="Topics\OnlineHelp.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="Coordinates">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Multiple Display Screens">
+                <param name="Local" value="Topics\MultipleScreens.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Origin Marker">
+                <param name="Local" value="Topics\OriginMarker.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Inverting the Y-Axis">
+                <param name="Local" value="Topics\InvertY.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Moving the Origin">
+                <param name="Local" value="Topics\MoveOrigin.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="Customization">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Customizing Program Layout">
+                <param name="Local" value="Topics\CustomLayout.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Preferences">
+                <param name="Local" value="Topics\Preferences.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Resolution Calibration">
+                <param name="Local" value="Topics\Calibration.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Ruler Preferences">
+                <param name="Local" value="Topics\RulerPrefs.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Tools Preferences">
+                <param name="Local" value="Topics\ToolPrefs.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Precision Preferences">
+                <param name="Local" value="Topics\PrecisionPrefs.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Custom Units">
+                <param name="Local" value="Topics\CustomUnits.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Advanced Preferences">
+                <param name="Local" value="Topics\AdvancedPrefs.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Screen Grid Spacing">
+                <param name="Local" value="Topics\ScreenGridSpacing.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Always Visible">
+                <param name="Local" value="Topics\AlwaysVisible.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="Measurement">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Measurement Tools Overview">
+                <param name="Local" value="Topics\ToolsOverview.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Crosshair">
+                <param name="Local" value="Topics\Crosshair.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Cursor Tool">
+                <param name="Local" value="Topics\CursorTool.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Point Tool">
+                <param name="Local" value="Topics\PointTool.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Line Tool">
+                <param name="Local" value="Topics\LineTool.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Rectangle Tool">
+                <param name="Local" value="Topics\RectTool.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Circle Tool">
+                <param name="Local" value="Topics\CircleTool.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Angle Tool">
+                <param name="Local" value="Topics\AngleTool.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Window Tool">
+                <param name="Local" value="Topics\WindowTool.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Rulers">
+                <param name="Local" value="Topics\Rulers.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Screen Grid">
+                <param name="Local" value="Topics\ScreenGrid.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Measurement Units">
+                <param name="Local" value="Topics\Units.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="Profiles and Position Logging">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Position Logging">
+                <param name="Local" value="Topics\PositionLogging.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Profiles">
+                <param name="Local" value="Topics\Profiles.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Sample Profiles">
+                <param name="Local" value="Topics\SampleProfiles.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="Program Layout">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Meazure Program Layout">
+                <param name="Local" value="Topics\Layout.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Menus">
+                <param name="Local" value="Topics\Menus.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Toolbar">
+                <param name="Local" value="Topics\Toolbar.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Tool Information Section">
+                <param name="Local" value="Topics\ToolInfoSection.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Screen Information Section">
+                <param name="Local" value="Topics\ScreenInfoSection.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Magnifier">
+                <param name="Local" value="Topics\Magnifier.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Status Bar">
+                <param name="Local" value="Topics\StatusBar.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="Screen Capture">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Screen Capture">
+                <param name="Local" value="Topics\ScreenCapture.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+    </UL>
+    <LI> <OBJECT type="text/sitemap">
+        <param name="Name" value="Meazure Tasks">
+        </OBJECT>
+    <UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="Customization Tasks">
+            <param name="Local" value="Topics\CustomizationTasks.htm">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Hiding a Section of the Program">
+                <param name="Local" value="Topics\HideSectionTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Hiding the Floating Data Windows">
+                <param name="Local" value="Topics\HideDataWinTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Changing the Colors of the Crosshairs">
+                <param name="Local" value="Topics\ToolPrefs.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Changing the Color of Measurement Tool Lines">
+                <param name="Local" value="Topics\ToolPrefs.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Changing the Position of the Rulers">
+                <param name="Local" value="Topics\RulerPrefs.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Changing the Colors of the Rulers">
+                <param name="Local" value="Topics\RulerPrefs.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Using a Different Screen Resolution">
+                <param name="Local" value="Topics\Calibration.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="Measurement Tasks">
+            <param name="Local" value="Topics\MeasurementTasks.htm">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Selecting a Measurement Tool">
+                <param name="Local" value="Topics\MeasurementToolTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Measuring the Position of a Point">
+                <param name="Local" value="Topics\MeasurePointTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Measuring the Distance Between Two Points">
+                <param name="Local" value="Topics\MeasureDistanceTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Measuring the Size of an Image">
+                <param name="Local" value="Topics\MeasureImageTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Measuring the Size of a Window">
+                <param name="Local" value="Topics\MeasureWindowTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Measuring an Arbitrary Angle">
+                <param name="Local" value="Topics\MeasureAngleTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Moving a Crosshair One Pixel">
+                <param name="Local" value="Topics\MoveCrosshairTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Determining the Size and Resolution of the Screen">
+                <param name="Local" value="Topics\ScreenSizeTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Determining the Color of a Pixel">
+                <param name="Local" value="Topics\ColorTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Changing Coordinate Systems">
+                <param name="Local" value="Topics\ChangeCoordTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Saving the Position of a Measurement Tool">
+                <param name="Local" value="Topics\SaveTask.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+        <LI> <OBJECT type="text/sitemap">
+            <param name="Name" value="Screen Capture Tasks">
+            <param name="Local" value="Topics\CaptureTasks.htm">
+            </OBJECT>
+        <UL>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Capturing an Arbitrary Portion of the Screen">
+                <param name="Local" value="Topics\ScreenCapture.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+            <LI> <OBJECT type="text/sitemap">
+                <param name="Name" value="Capturing the Contents of a Window">
+                <param name="Local" value="Topics\ScreenCapture.htm">
+                <param name="ImageNumber" value="11">
+                </OBJECT>
+        </UL>
+    </UL>
+</UL>
+</BODY></HTML>

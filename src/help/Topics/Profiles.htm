@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Profiles</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Profiles");</script>
+    <div class="Para">
+        Meazure allows you to save the configuration of all <a href="ToolsOverview.htm">measurement
+        tools</a> to a disk file called a profile. The following information
+        is saved in a profile:
+        <ul class="BulletList">
+            <li>The currently selected measurement tool.</li>
+            <li>The positions of the <a href="PointTool.htm">Point</a>, <a href="LineTool.htm">Line</a>,
+                <a href="RectTool.htm">Rectangle</a>, <a href="CircleTool.htm">Circle</a>,
+                and <a href="AngleTool.htm">Angle</a> measurement tools.</li>
+            <li>The current measurement <a href="Units.htm">units</a>.</li>
+            <li>The position of the coordinate system <a href="MoveOrigin.htm">origin</a> and whether the direction of the y-axis is <a href="InvertY.htm">inverted</a>.</li>
+            <li>The positions of the <a href="Rulers.htm">rulers</a> and whether they are displayed.</li>
+            <li>The <a href="ScreenGridSpacing.htm">screen grid spacing</a> and whether the <a href="ScreenGrid.htm">grid</a> is displayed.</li>
+        </ul>
+    </div>
+    <div class="Para">
+        To save a profile, select the <span class="MenuItem">Save Profile</span>
+        item on the <span class="MenuItem">File</span> menu or use the Ctrl+S shortcut.
+        To load a profile, select the <span class="MenuItem">Load Profile</span>
+        item on the <span class="MenuItem">File</span> menu or use the Ctrl+O shortcut.
+        A profile can be automatically loaded at startup by specifying the file pathname
+        on the <a href="AdvancedPrefs.htm">Advanced Preferences</a> panel.
+    </div>
+    <div class="Para">
+        Profile files can be saved anywhere on disk. The files are identified by the
+        <span class="Pathname">.mea</span> extension. Double clicking on a profile file will
+        run the Meazure program and load the specified profile. Similarly, dragging
+        a profile file and dropping it on the Meazure program icon will run the program
+        and load the profile.
+    </div>
+    <div class="Para">
+        A number of <a href="SampleProfiles.htm">sample profiles</a> are provided with Meazure.
+    </div>
+    <div class="Para">
+        A profile file differs from a <a href="PositionLogging.htm">position log file</a> in the following way.
+        A profile file is designed to save a complete snapshot of the Meazure program. That is, all tool
+        positions, appearance settings, calibrations, and all other preferences are saved in a profile file.
+        In contrast, a position log file records the position of the current measurement tool at a point in
+        time and includes only those supporting items necessary to replay the positions.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="SampleProfiles.htm">Sample Profiles</a>,
+        <a href="ToolsOverview.htm">Measurement Tools Overview</a>,
+        <a href="AdvancedPrefs.htm">Advanced Preferences</a>,
+        <a href="PositionLogging.htm">Position Logging</a>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

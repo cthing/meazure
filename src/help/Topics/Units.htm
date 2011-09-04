@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Measurement Units</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Measurement Units");</script>
+    <div class="Para">
+        Meazure offers a variety of units in which to display linear and angular measurements
+        each selected using the <span class="MenuItem">Units</span> menu. The linear units are
+        used to measure positions, lengths and resolutions.
+        <ul class="BulletList">
+            <li><span class="LeadItem">Pixels</span> - Picture elements are the
+                fundamental unit of measure available from Meazure.</li>
+            <li><span class="LeadItem">Twips</span> - These units are typically used
+                by programs such as Visual Basic when designing screen
+                dialogs. One twip is equal to 1/1440 of an inch or 1/20
+                of a point.</li>
+            <li><span class="LeadItem">Points</span> - The point is most commonly
+                used in typography to measure the height of characters in
+                a font. One point is equal to 1/72 of an inch.</li>
+            <li><span class="LeadItem">Picas</span> - One pica is equal to 12 points.
+                Therefore, one pica is equal to 1/6 of an inch.</li>
+            <li><span class="LeadItem">Inches</span> - Standard English unit of measure.</li>
+            <li><span class="LeadItem">Centimeters</span> - Standard metric unit of
+                measure. There are 2.54 centimeters to one inch.</li>
+            <li><span class="LeadItem">Millimeters</span> - Standard metric unit of
+                measure. There are 25.4 millimeters to one inch.</li>
+        </ul>
+    </div>
+    <div class="Para">
+        Angles are measured using one of the following units.
+        <ul class="BulletList">
+            <li><span class="LeadItem">Degrees</span> - Measures between 0 and 360 degrees for
+            a full circle.</li>
+            <li><span class="LeadItem">Radians</span> - Measures between 0 and 2 * pi radians
+            for a full circle.</li>
+        </ul>
+    </div>
+    <div class="Para">
+        All linear units except pixels require Meazure to convert from pixels to
+        the desired units using the screen resolution (dots per inch). For the conversion
+        to be correct, the screen resolution values must be correct. By default, Meazure
+        uses the screen resolution values reported by the Windows operating system. These
+        values are not accurate. You should determine the true screen resolution using the
+        <a href="Calibration.htm">Resolution Calibration dialog</a>. When you first select
+        units that requires the use of the screen resolution, a dialog will be displayed
+        urging you to calibrate Meazure.
+        To learn more about the screen resolution see the
+        <a href="Calibration.htm">Resolution Calibration</a> online help.
+    </div>
+    <div class="Para">
+        A custom set of linear measurement units can be defined using the
+        <a href="CustomUnits.htm">Custom Units</a> preferences. Once a set of custom units
+        has been defined, it is displayed on and can be selected using the
+        <span class="MenuItem">Units</span> menu.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="Calibration.htm">Resolution Calibration</a>,
+        <a href="CustomUnits.htm">Custom Units</a>,
+        <a href="PrecisionPrefs.htm">Precision Preferences</a>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

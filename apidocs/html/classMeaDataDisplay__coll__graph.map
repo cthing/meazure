@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classMeaDataSection.html" title="The data display is divided into two major sections: Region and Screen." alt="" coords="5,173,123,200"/>
+<area shape="rect" id="node4" href="$classMeaImageButton.html" title="A button that uses bitmap resources." alt="" coords="148,173,268,200"/>
+<area shape="rect" id="node6" href="$classMeaDataDisplay_1_1DataItem.html" title="Each data display field is actually composed of a label, a text field, possibly a spin control..." alt="" coords="293,173,469,200"/>
+<area shape="rect" id="node8" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="235,5,313,32"/>
+<area shape="rect" id="node12" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="327,83,435,109"/>
+<area shape="rect" id="node10" href="$classMeaNumberField.html" title="Provides a text field control that allows only numeric entries." alt="" coords="460,83,580,109"/>
+</map>

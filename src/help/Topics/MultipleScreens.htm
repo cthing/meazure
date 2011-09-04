@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Multiple Screen Support</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Multiple Screen Support");</script>
+    <div class="PicturePara">
+        <img src="../Graphics/MultipleScreens.gif" width="339" height="158" border="0" title="Multiple Screens" alt="Multiple screens">
+    </div>
+    
+    <div class="SubSection">Overview</div>
+    <div class="Para">
+        The Meazure program supports systems with multiple display screens. The Windows operating system
+        supports extending the desktop across multiple screens. When the desktop is extended across multiple
+        screens, one screen must be designated as the primary screen. The upper left corner of the primary
+        display screen contains the origin of the overall coordinate system. Windows refers to the virtual
+        screen rectangle as the bounding rectangle that contains all screens. The above figure illustrates a
+        system with two display screens arranged side by side. The screen on the right side is 1280 by 1024
+        pixels and is designated the primary screen. The screen on the left is 1024 by 768 pixels. Notice
+        that the x-axis coordinates are negative for the left display.
+    </div>
+    
+    <div class="SubSection">Measuring with Multiple Screens</div>
+    <div class="Para">
+        The Meazure program seamlessly measures across multiple screens. Depending on the relative
+        orientation of the screens, the position coordinates may be negative. 
+    </div>
+    
+    <div class="SubSection">Screen Information</div>
+    <div class="Para">
+        The Meazure program always displays the <a href="Preferences.htm">size and resolution information</a>
+        for the screen containing the point being measured (e.g. the screen containing a crosshair that is
+        being dragged). As a the measuring point is moved between screens, the screen information is updated
+        to reflect the current screen.
+    </div>
+    
+    <div class="SubSection">Screen Resolution Calibration</div>
+    <div class="Para">
+        In a multiple display screen environment, each screen has its own resolution. The Meazure program
+        allows the resolution of each screen to be independently <a href="Calibration.htm">calibrated</a>.
+        It is important to calibrate each display screen so that measurements dependent on the screen
+        resolution (e.g. inches) are accurate.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="Preferences.htm">Resolution Calibration</a>,
+        <a href="ScreenInfoSection.htm">Screen Information Section</a>
+    </div>
+    
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Circle Tool</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Circle Tool");</script>
+    <div class="Para">
+        <img src="../Graphics/Circle.gif" hspace="5" vspace="3" align="left" width="114" height="114" border="0" title="Circle Tool" alt="Circle tool">
+        The circle measurement tool allows you to position two <a href="Crosshair.htm">crosshairs</a>, one
+        marking the center of a circle and the other marking a point on the circumference of the circle. This
+        tool is ideal for use with online maps. In addition, the screen area contained in the square bounding
+        the circle can be <a href="ScreenCapture.htm">captured</a> to the clipboard. Both the data window
+        attached to the crosshairs and Meazure&rsquo;s <a href="ToolInfoSection.htm">tool information
+        section</a> will display the measurement information. The <a href="Magnifier.htm">magnifier window</a>
+        will show the area around the crosshair that is being moved as well as the color of the pixel at the
+        center of the crosshair.
+    </div>
+    <div class="PicturePara">
+        <img src="../Graphics/CircleDisplay.gif" width="229" height="232" border="0" title="Circle Tool Display" alt="Circle tool display">
+    </div>
+    <div class="Para">
+        The tool information section displays the following measurements for the Circle tool:
+        <ul class="BulletList">
+            <li><span class="MeasurementItem">XV, YV</span> - The position of the crosshair at the center of the circle</li>
+            <li><span class="MeasurementItem">X1, Y1</span> - The position of the Point 1 crosshair on the circumference of the circle</li>
+            <li><span class="MeasurementItem">W, H</span> - The width and height of the bounding square. <span class="Formula">W = H = 2 * D</span></li>
+            <li><span class="MeasurementItem">D</span> - The radius of the circle. <span class="Formula">D = W / 2</span></li>
+            <li><img src="../Graphics/AngleMeasure.gif" hspace="5" vspace="3" align="right" width="91" height="88" border="0" title="Angle Measurement" alt="Angle measurement">
+                <span class="MeasurementItem">A</span> - The angle of the radius relative to the x-axis.
+                Using the default coordinate system, positive angles are measured clockwise from the positive x-axis to
+                the line from center of the circle to Point 1 on the circumference</li>
+            <li><span class="MeasurementItem">Ar</span> - The area of the circle. <span class="Formula">Ar = pi * D<sup>2</sup></span></li>
+        </ul>
+    </div>
+    <div class="Para">
+        Note that the calculation of W, H, D and Ar is always performed in pixel units and the result is
+        converted to the currently selected display units.
+    </div>
+    <div class="Para">
+        To capture the screen area bounded by the circle to the clipboard, select the <span class="MenuItem">Copy Region</span>
+        item from the <span class="MenuItem">Edit</span> menu or press Ctrl+R.
+    </div>
+    <div class="Para">
+        The mouse or keyboard can be used to position the crosshairs and fine adjustment can be made with the
+        up/down buttons adjacent to the position text fields. When using the mouse to drag a crosshair,
+        the SHIFT key can be used to lock the motion to the horizontal or vertical direction. In addition, the
+        entire rectangle can be moved by pressing the CTRL key while dragging one of the crosshairs.
+    </div>
+    <div class="Para">
+        <img src="../Graphics/CircleIcon.gif" hspace="5" vspace="3" align="left" width="20" height="20" border="0" title="Circle Tool Icon" alt="Circle tool icon">
+        To select the Circle tool choose the <span class="MenuItem">Circle</span> item on the
+        <span class="MenuItem">Tools</span> menu or click on the Circle tool icon on the <a href="Toolbar.htm">toolbar</a>.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="ToolsOverview.htm">Measurement Tools Overview</a>,
+        <a href="MeasurementToolTask.htm">Selecting a Measurement Tool</a>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

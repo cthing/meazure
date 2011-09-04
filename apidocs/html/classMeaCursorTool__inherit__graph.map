@@ -1,0 +1,4 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classMeaRadioTool.html" title="Abstract base class for tools whose use is mutually exclusive." alt="" coords="8,80,112,107"/>
+<area shape="rect" id="node4" href="$classMeaTool.html" title="Abstract base class for all measurement tools." alt="" coords="25,5,95,32"/>
+</map>

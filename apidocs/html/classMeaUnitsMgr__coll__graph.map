@@ -1,0 +1,16 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classMeaSingleton__T.html" title="MeaSingleton_T\&lt; MeaUnitsMgr \&gt;" alt="" coords="811,307,1027,333"/>
+<area shape="rect" id="node5" href="$classMeaCustomUnits.html" title="Provides linear measurements in user defined units." alt="" coords="316,77,439,104"/>
+<area shape="rect" id="node7" href="$classMeaLinearUnits.html" title="There are two major categories of units: linear and angular." alt="" coords="139,257,251,284"/>
+<area shape="rect" id="node11" href="$classMeaInchUnits.html" title="Provides linear measurements in inches." alt="" coords="327,128,428,155"/>
+<area shape="rect" id="node22" href="$classMeaMillimeterUnits.html" title="Provides linear measurements in millimeters." alt="" coords="311,179,444,205"/>
+<area shape="rect" id="node25" href="$classMeaCentimeterUnits.html" title="Provides linear measurements in centimeters." alt="" coords="307,229,447,256"/>
+<area shape="rect" id="node28" href="$classMeaPointUnits.html" title="Provides linear measurements in points." alt="" coords="324,280,431,307"/>
+<area shape="rect" id="node31" href="$classMeaTwipUnits.html" title="Provides linear measurements in twips." alt="" coords="326,331,429,357"/>
+<area shape="rect" id="node36" href="$classMeaPicaUnits.html" title="Provides linear measurements in picas." alt="" coords="326,381,429,408"/>
+<area shape="rect" id="node39" href="$classMeaPixelUnits.html" title="Provides linear measurements in pixels." alt="" coords="324,432,431,459"/>
+<area shape="rect" id="node9" href="$classMeaUnits.html" title="Measurement units are packaged into a class, one for each set of units (e.g." alt="" coords="5,343,83,369"/>
+<area shape="rect" id="node16" href="$classMeaAngularUnits.html" title="There are two major categories of units: linear and angular." alt="" coords="134,507,255,533"/>
+<area shape="rect" id="node14" href="$classMeaRadianUnits.html" title="Provides angular measurements in radians." alt="" coords="319,545,436,572"/>
+<area shape="rect" id="node19" href="$classMeaDegreeUnits.html" title="Provides angular measurements in degrees." alt="" coords="318,596,437,623"/>
+</map>

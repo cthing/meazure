@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$Label_8h.html" title="Header file for the label control." alt="" coords="5,80,69,107"/>
+<area shape="rect" id="node5" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="93,80,200,107"/>
+<area shape="rect" id="node7" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="128,155,221,181"/>
+<area shape="rect" id="node10" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="275,80,340,107"/>
+<area shape="rect" id="node18" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond..." alt="" coords="365,80,443,107"/>
+<area shape="rect" id="node22" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="468,80,575,107"/>
+<area shape="rect" id="node24" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="599,80,668,107"/>
+<area shape="rect" id="node14" href="$Assert_8h.html" title="Defines the MeaAssert macro." alt="" coords="335,155,405,181"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classMeaGUID.html" title="Represents a globally unique identifier (GUID) and common operations on a GUID." alt="" coords="609,17,687,44"/>
+<area shape="rect" id="node4" href="$classMeaPositionLogMgr.html" title="Manages the recording, saving and loading of tool positions." alt="" coords="579,108,717,135"/>
+<area shape="rect" id="node8" href="$classMeaSingleton__T.html" title="MeaSingleton_T\&lt; MeaPositionLogMgr \&gt;" alt="" coords="865,120,1119,147"/>
+<area shape="rect" id="node6" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="247,5,401,32"/>
+<area shape="rect" id="node11" href="$classMeaPositionLogMgr_1_1Positions.html" title="Represents a collection of positions." alt="" coords="225,56,423,83"/>
+<area shape="rect" id="node13" href="$classMeaPositionLogDlg.html" title="A modeless dialog for recording new positions and managing positions that have already been recorded..." alt="" coords="257,169,391,196"/>
+<area shape="rect" id="node15" href="$classMeaPositionLogObserver.html" title="Interface for objects that need to be informed about changes to the position log." alt="" coords="6,132,173,159"/>
+<area shape="rect" id="node17" href="$classMeaPositionSaveDlg.html" title="The Save dialog for Position Log files." alt="" coords="253,220,395,247"/>
+</map>

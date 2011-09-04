@@ -1,0 +1,19 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="499,80,555,107"/>
+<area shape="rect" id="node48" href="$PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="819,80,942,107"/>
+<area shape="rect" id="node7" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="385,155,487,181"/>
+<area shape="rect" id="node25" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="326,304,395,331"/>
+<area shape="rect" id="node9" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="202,229,309,256"/>
+<area shape="rect" id="node11" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="193,304,286,331"/>
+<area shape="rect" id="node13" href="$Label_8h.html" title="Header file for the label control." alt="" coords="441,304,505,331"/>
+<area shape="rect" id="node15" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="636,229,698,256"/>
+<area shape="rect" id="node39" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond..." alt="" coords="48,229,126,256"/>
+<area shape="rect" id="node43" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="383,229,490,256"/>
+<area shape="rect" id="node27" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="743,304,829,331"/>
+<area shape="rect" id="node32" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="529,304,587,331"/>
+<area shape="rect" id="node29" href="$Assert_8h.html" title="Defines the MeaAssert macro." alt="" coords="1176,379,1246,405"/>
+<area shape="rect" id="node56" href="$XMLParser_8h.html" title="Header file for the expat XML parser wrapper and support classes." alt="" coords="1223,155,1319,181"/>
+<area shape="rect" id="node76" href="$GUID_8h.html" title="Header file for a class representing a globally unique identifier." alt="" coords="814,155,878,181"/>
+<area shape="rect" id="node79" href="$ScreenMgr_8h.html" title="Header file for the display screen manager." alt="" coords="734,229,830,256"/>
+<area shape="rect" id="node58" href="$exval_8h.html" title="Header file for the expat compatible XML validator." alt="" coords="1240,229,1302,256"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$classMeaCircle.html" title="A circle element." alt="" coords="5,80,85,107"/>
+<area shape="rect" id="node5" href="$classMeaCrossHair.html" title="A crosshair element." alt="" coords="109,80,213,107"/>
+<area shape="rect" id="node7" href="$classMeaLine.html" title="A line element." alt="" coords="238,80,308,107"/>
+<area shape="rect" id="node9" href="$classMeaRectangle.html" title="A rectangle element." alt="" coords="333,80,437,107"/>
+<area shape="rect" id="node11" href="$classMeaRuler.html" title="A ruler element." alt="" coords="463,80,540,107"/>
+</map>

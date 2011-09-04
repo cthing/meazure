@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<profile version="2">
+    <info>
+        <title>Meazure Profile File</title>
+        <created date="2003-08-23T00:13:42+08:00"/>
+        <generator name="Meazure" version="2.0" build="53"/>
+        <machine name="DWEE"/>
+    </info>
+    <data>
+        <LinearUnits value="px"/>
+        <AngularUnits value="deg"/>
+        <InvertY value="false"/>
+        <OriginX value="0.0"/>
+        <OriginY value="0.0"/>
+        <AngleX1 value="720.0"/>
+        <AngleY1 value="462.0"/>
+        <AngleX2 value="720.0"/>
+        <AngleY2 value="562.0"/>
+        <AngleXV value="640.0"/>
+        <AngleYV value="512.0"/>
+        <CircleXV value="640.0"/>
+        <CircleYV value="512.0"/>
+        <CircleX1 value="670.0"/>
+        <CircleY1 value="542.0"/>
+        <ScrnGrid value="false"/>
+        <ScrnGridSpaceX value="100"/>
+        <ScrnGridSpaceY value="100"/>
+        <ScrnGridLinked value="true"/>
+        <LineX1 value="620.0"/>
+        <LineY1 value="532.0"/>
+        <LineX2 value="660.0"/>
+        <LineY2 value="492.0"/>
+        <PointX1 value="640.0"/>
+        <PointY1 value="512.0"/>
+        <RectX1 value="0.0"/>
+        <RectY1 value="0.0"/>
+        <RectX2 value="799.0"/>
+        <RectY2 value="599.0"/>
+        <Rulers value="false"/>
+        <RulerSet0-XPos value="0"/>
+        <RulerSet0-YPos value="0"/>
+        <RulerSet1-XPos value="-1024"/>
+        <RulerSet1-YPos value="0"/>
+        <CurrentRadioTool value="RectTool"/>
+    </data>
+</profile>

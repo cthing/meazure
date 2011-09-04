@@ -1,0 +1,17 @@
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classMeaAdvancedPrefs.html" title="Property page for the advanced preferences." alt="" coords="556,71,689,97"/>
+<area shape="rect" id="node4" href="$classMeaCalibrationPrefs.html" title="Property page for screen resolution calibration preferences." alt="" coords="553,172,692,199"/>
+<area shape="rect" id="node6" href="$classMeaNumberField.html" title="Provides a text field control that allows only numeric entries." alt="" coords="280,67,400,93"/>
+<area shape="rect" id="node18" href="$classMeaCustomUnitsPrefs.html" title="Property page for custom measurement units preferences." alt="" coords="547,121,699,148"/>
+<area shape="rect" id="node8" href="$classMeaRulerSlider.html" title="Slider control on a ruler background." alt="" coords="285,171,395,197"/>
+<area shape="rect" id="node10" href="$classMeaRulerPrefs.html" title="Property page for setting ruler preferences." alt="" coords="569,224,676,251"/>
+<area shape="rect" id="node12" href="$classMeaRuler.html" title="A ruler element." alt="" coords="301,225,379,252"/>
+<area shape="rect" id="node14" href="$classMeaGraphic.html" title="Base class for all graphic elements." alt="" coords="37,280,129,307"/>
+<area shape="rect" id="node25" href="$classMeaCrossHair.html" title="A crosshair element." alt="" coords="288,333,392,360"/>
+<area shape="rect" id="node16" href="$classMeaRulerCallback.html" title="Ruler drag callback mixin class." alt="" coords="19,224,146,251"/>
+<area shape="rect" id="node21" href="$classMeaPrecisionPrefs.html" title="Property page for setting display precisions for each set of measurement units." alt="" coords="557,327,688,353"/>
+<area shape="rect" id="node23" href="$classMeaToolsPrefs.html" title="Property page for specifying the following tool preferences:" alt="" coords="569,276,677,303"/>
+<area shape="rect" id="node28" href="$classMeaCrossHairCallback.html" title="Crosshair activity callback mixin class." alt="" coords="5,336,160,363"/>
+<area shape="rect" id="node30" href="$classMeaDataWin.html" title="A popup data display window." alt="" coords="291,384,389,411"/>
+<area shape="rect" id="node32" href="$classMeaSwatch.html" title="Rectangular color swatch window." alt="" coords="295,276,385,303"/>
+</map>

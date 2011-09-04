@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Menus</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+    <style type="text/css">
+        TD { vertical-align: top; }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Menus");</script>
+    <div class="PicturePara">
+        <img src="../Graphics/Menubar.gif" width="199" height="20" border="0" title="Menu Bar" alt="Menu bar">
+    </div>
+    <div class="SubSection">File Menu</div>
+    <div class="Para">
+        <table border="1" cellspacing="0" cellpadding="4">
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="LoadPositions">Load Positions...</a></div><div class="ShortCut">Ctrl+O</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Loads the <a href="PositionLogging.htm">position log file</a> specified by the file selection dialog.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="SavePositions">Save Positions</a></div><div class="ShortCut">Ctrl+S</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Save the current recorded positions to the <a href="PositionLogging.htm">position log file</a>.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="SavePositionsAs">Save Positions As...</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Save the current recorded positions to the <a href="PositionLogging.htm">position log file</a> specified by the file selection dialog.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="LoadProfile">Load Profile...</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Loads the <a href="Profiles.htm">profile</a> specified by the file selection dialog.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="SaveProfile">Save Profile...</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Saves the current tool configuration to the <a href="Profiles.htm">profile</a> specified by the file selection dialog.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="Exit">Exit</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Terminates the program.
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="SubSection">Edit Menu</div>
+    <div class="Para">
+        <table border="1" cellspacing="0" cellpadding="4">
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="Cut">Cut</a></div><div class="ShortCut">Ctrl+X</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Cuts the selected text field contents to the clipboard.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="Copy">Copy</a></div><div class="ShortCut">Ctrl+C</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Copies the selected text field contents to the clipboard.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="CopyRegion">Copy Region</a></div><div class="ShortCut">Ctrl+R</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        If the <a href="RectTool.htm">Rectangle</a>, <a href="CircleTool.htm">Circle</a>, or <a href="WindowTool.htm">Window tool</a> is selected, this menu item copies to the clipboard
+                        the contents of the screen bounded by the tool.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="Paste">Paste</a></div><div class="ShortCut">Ctrl+V</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Pastes the contents of the clipboard into the text field that has the focus.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="Delete">Delete</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Deletes the selected text field contents.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="RecordPosition">Record Position</a></div><div class="ShortCut">Ctrl+P</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        <a href="PositionLogging.htm">Records the position</a> of the current measurement tool.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="ManagePositions">Manage Positions</a></td>
+                <td>
+                    <div class="MenuDesc">
+                        Displays the <a href="PositionLogging.htm">position management dialog</a>.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="DeletePositions">Delete Positions</a></td>
+                <td>
+                    <div class="MenuDesc">
+                        Deletes all recorded positions.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="Preferences">Preferences...</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Displays the <a href="Preferences.htm">preferences dialog</a>.
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="SubSection">Tools Menu</div>
+    <div class="Para">
+        <table border="1" cellspacing="0" cellpadding="4">
+            <tr>
+                <td nowrap>
+                    <div class="MenuItem"><a href="CursorTool.htm" name="Cursor">Cursor</a></div>
+                    <div class="MenuItem"><a href="PointTool.htm" name="Point">Point</a></div>
+                    <div class="MenuItem"><a href="LineTool.htm" name="Line">Line</a></div>
+                    <div class="MenuItem"><a href="RectTool.htm" name="Rectangle">Rectangle</a></div>
+                    <div class="MenuItem"><a href="CircleTool.htm" name="Circle">Circle</a></div>
+                    <div class="MenuItem"><a href="AngleTool.htm" name="Angle">Angle</a></div>
+                    <div class="MenuItem"><a href="WindowTool.htm" name="Window">Window</a></div>
+                </td>
+                <td>
+                    <div class="MenuDesc">
+                        Selects a measurement tool. Only one of these
+                        measurement tools can be selected at a time.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="Rulers">Rulers</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Displays the <a href="Rulers.htm">rulers</a> on the screen. Rulers can be displayed
+                        in conjunction with any of the other measurement tools.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="ScreenGrid">Screen Grid</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Overlays a <a href="ScreenGrid.htm">rectangular grid</a> on the screen. The grid can
+                        be used in conjunction with any of the other measurement
+                        tools.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="ScreenGridSpacing">Screen Grid Spacing...</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Displays a dialog that allows you to <a href="ScreenGridSpacing.htm">adjust the spacing</a> of the
+                        the screen grid.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="HideCrosshair">Hide Crosshairs</a></div><div class="ShortCut">Ctrl+B</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Toggles the display of the current measurement tool's crosshairs.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="FindCrosshair">Find Crosshairs</a></div><div class="ShortCut">Ctrl+F</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        As an aid in finding lost tool <a href="Crosshair.htm">crosshairs</a>, selecting this
+                        menu item will cause the crosshairs to flash.
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="SubSection">Units Menu</div>
+    <div class="Para">
+        Selects the <a href="Units.htm">units</a> for displaying measurements.
+    </div>
+
+    <div class="SubSection">View Menu</div>
+    <div class="Para">
+        <table border="1" cellspacing="0" cellpadding="4">
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="CollapseExpand">Collapse/Expand</a></div><div class="ShortCut">Ctrl+H</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Hides all sections to provide a minimal visual footprint. If hidden, restores
+                        the original section layout.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap>
+                    <div class="MenuItem"><a name="Toolbar">Toolbar</a></div>
+                    <div class="MenuItem"><a name="ToolInfo">Tool Info</a></div>
+                    <div class="MenuItem"><a name="ScreenInfo">Screen Info</a></div>
+                    <div class="MenuItem"><a name="Magnifier">Magnifier</a></div>
+                    <div class="MenuItem"><a name="StatusBar">Status Bar</a></div>
+                </td>
+                <td>
+                    <div class="MenuDesc">
+                        Hides or displays the specified <a href="Layout.htm">program section</a>.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="MagnifierGrid">Magnifier Grid</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Toggles the display of the grid on the <a href="Magnifier.htm">magnifier</a> window. Note that
+                        the magnifier grid is only shown at 4X magnification and above.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="ZoomIn">Zoom In</a></div><div class="ShortCut">Ctrl++</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Increases the magnifier zoom.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="ZoomOut">Zoom Out</a></div><div class="ShortCut">Ctrl+-</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Decreases the magnifier zoom.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="FreezeMagnifier">Freeze Magnifier</a></div><div class="ShortCut">Ctrl+M</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Freezes the magnifier window so that its contents do not change.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="ColorFormat">Color Format</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Selects the display format for the pixel color value.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a href="InvertY.htm" name="InvertY">Invert Y</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Moves the origin and inverts the direction of the y-axis
+                        so that the positive y direction is up from the lower
+                        left of the screen.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a href="MoveOrigin.htm" name="SetOrigin">Set Origin</a></div><div class="ShortCut">Ctrl+A</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Sets the origin of the measurement coordinate system to the position
+                        of the current measurement tool.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a name="ResetOrigin">Reset Origin</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Resets the origin of the measurement coordinate system to its
+                        default location (top left corner of the screen).
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a href="AlwaysVisible.htm" name="AlwaysVisible">Always Visible</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Ensures that the Meazure program window and its tools cannot
+                        be obscured by other windows.
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="SubSection">Help Menu</div>
+    <div class="Para">
+        <table border="1" cellspacing="0" cellpadding="4">
+            <tr>
+                <td nowrap><div class="MenuItem"><a href="OnlineHelp.htm" name="Contents">Contents</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Displays the online help table of contents.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a href="OnlineHelp.htm" name="Search">Search...</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Displays the online help search pane.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a href="OnlineHelp.htm" name="Index">Index...</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Displays the index for the online help.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a href="OnlineHelp.htm" name="WhatsThis">What&rsquo;s This?</a></div><div class="ShortCut">Shift+F1</div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Displays a context help cursor that allows you to obtain help on any area of the program
+                        by clicking on that area.
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td nowrap><div class="MenuItem"><a href="OnlineHelp.htm" name="AboutMeazure">About Meazure</a></div></td>
+                <td>
+                    <div class="MenuDesc">
+                        Displays a dialog with important information about Meazure.
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

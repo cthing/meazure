@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Line Tool</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Line Tool");</script>
+    <div class="Para">
+        <img src="../Graphics/Line.gif" hspace="5" vspace="3" align="left" width="94" height="93" border="0" title="Line Tool" alt="Line tool">
+        The line measurement tool allows you to position two <a href="Crosshair.htm">crosshairs</a> anywhere on the
+        screen and measure the positions, distance and other information for the line connecting them. Both the data
+        window attached to the crosshairs and Meazure&rsquo;s <a href="ToolInfoSection.htm">tool information section</a>
+        will display the measurement information. The <a href="Magnifier.htm">magnifier window</a> will show the
+        area around the crosshair that is being moved as well as the color of the pixel at the center of the crosshair.
+    </div>
+    <div class="PicturePara">
+        <img src="../Graphics/LineDisplay.gif" width="229" height="238" border="0" title="Line Tool Display" alt="Line tool display">
+    </div>
+    <div class="Para">
+        The tool information section displays the following measurements for the Line tool:
+        <ul class="BulletList">
+            <li><span class="MeasurementItem">X1, Y1</span> - The position of the Point 1 crosshair</li>
+            <li><span class="MeasurementItem">X2, Y2</span> - The position of the Point 2 crosshair</li>
+            <li><span class="MeasurementItem">W, H</span> - The width and height of the bounding rectangle for the line. <span class="Formula">W = |X2 - X1| + 1</span>, <span class="Formula">H = |Y2 - Y1| + 1</span></li>
+            <li><span class="MeasurementItem">D</span> - The length of the line connecting the two crosshairs. <span class="Formula">D = sqrt(W&sup2; + H&sup2;)</span></li>
+            <li><img src="../Graphics/AngleMeasure.gif" hspace="5" vspace="3" align="right" width="91" height="88" border="0" title="Angle Measurement" alt="Angle measurement">
+                <span class="MeasurementItem">A</span> - The angle of the line relative to the x-axis.
+                Using the default coordinate system, positive angles are measured clockwise from the positive x-axis to
+                the line from Point 1 to Point 2</li>
+            <li><span class="MeasurementItem">Ar</span> - The area of the bounding rectangle for the line. <span class="Formula">Ar = (W * H)</span></li>
+        </ul>
+    </div>
+    <div class="Para">
+        Note that the calculation of W, H, D and Ar is always performed in pixel units and the result is
+        converted to the currently selected display units.
+    </div>
+    <div class="Para">
+        The mouse or keyboard can be used to position the crosshairs and fine adjustment can be made with the
+        up/down buttons adjacent to the position text fields. When using the mouse to drag a crosshair,
+        the SHIFT key can be used to lock the line to the horizontal or vertical direction. In addition, the
+        entire line can be moved by pressing the CTRL key while dragging one of the crosshairs.
+    </div>
+    <div class="Para">
+        <img src="../Graphics/LineIcon.gif" hspace="5" vspace="3" align="left" width="20" height="20" border="0" title="Line Tool Icon" alt="Line tool icon">
+        To select the Line tool choose the <span class="MenuItem">Line</span> item on the
+        <span class="MenuItem">Tools</span> menu or click on the Line tool icon on the <a href="Toolbar.htm">toolbar</a>.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="ToolsOverview.htm">Measurement Tools Overview</a>,
+        <a href="MeasurementToolTask.htm">Selecting a Measurement Tool</a>
+    </div>
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

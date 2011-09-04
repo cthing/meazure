@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+    <title>Custom Units</title>
+    <link rel="stylesheet" type="text/css" href="../Meazure.css">
+    <script type="text/javascript" language="JavaScript" src="../Meazure.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript" language="JavaScript">WriteHeader("Custom Units");</script>
+    <div class="PicturePara">
+        <img src="../Graphics/CustomUnitsPref.gif" width="263" height="225" border="0" title="Custom Units" alt="Custom units">
+    </div>
+    
+    <div class="SubSection">Overview</div>
+    <div class="Para">
+        The Meazure program provides a number of measurement units. However, it may be desirable
+        to perform measurements using a set of units that Meazure does not provide. For example,
+        when measuring distances on an online map, it may be useful to use the map's scale to provide
+        measurements in miles. This can be accomplished using Meazure's custom units capability.
+    </div>
+    <div class="Para">
+        A custom unit of measure consists of a name for the units and a scale factor. The Meazure
+        program stores these parameters so that the custom units are remembered between runs of the
+        program.
+    </div>
+    <div class="Para">
+        To access the custom units preferences panel, select the <span class="MenuItem">Define Custom</span>
+        item from the <span class="MenuItem">Units</span> menu. THe panel can also be accessed by selecting
+        the <span class="MenuItem">Preferences</span> item on the <span class="MenuItem">Edit</span> menu then
+        select the <span class="MenuItem">Custom Units</span> tab on the Preferences
+        dialog.
+    </div>
+
+    <div class="SubSection">Naming</div>
+    <div class="Para">
+        The first step in creating custom units is naming the units. Enter the full name for the
+        units in the top text field. This name is used on the Units menu to identify the units. The
+        name can be up to 16 characters. In the Abbreviation text field, enter a two letter abbreviation
+        for the units (e.g. mi for miles). The abbreviation is used to identify the units on the
+        <a href="ToolInfoSection.htm">Tool Information</a> and
+        <a href="ScreenInfoSection.htm">Screen Information</a> sections.
+    </div>
+
+    <div class="SubSection">Scale Factor</div>
+    <div class="Para">
+        Once a name and abbreviation for the custom units have been entered, the scale factor section
+        of the panel will be enabled. The scale factor is used to convert the custom units to and from
+        a set of units already known to Meazure. The scale factor can be applied directly to pixel
+        measurements or can be applied to a resolution independent set of units such as inches. The scale
+        factor is applied in the following manner depending on the text field selected.
+        <ul class="BulletList">
+            <li><span class="LeadItem">Pixel-based:</span><br>
+            <span class="Formula">length<sub>custom</sub> = length<sub>px</sub> / scale factor<sub>px per custom</sub></span></li>
+            <li><span class="LeadItem">Inch-based:</span><br>
+            <span class="Formula">length<sub>custom</sub> = length<sub>px</sub> / resolution<sub>px per in</sub> / scale factor<sub>in per custom</sub></span></li>
+            <li><span class="LeadItem">Centimeter-based:</span><br>
+            <span class="Formula">length<sub>custom</sub> = length<sub>px</sub> / resolution<sub>px per in</sub> * 2.54<sub>cm per in</sub> / scale factor<sub>cm per custom</sub></span></li>
+        </ul>
+    </div>
+    <div class="Para">
+        Note that accurate measurement using custom units based on inches or centimeters depends on the
+        accuracy of the screen resolution used in the conversion. To ensure accurate measurements,
+        <a href="Calibration.htm">calibrate the screen resolution</a> for your system.
+    </div>
+
+    <div class="SubSection">Display Precision</div>
+    <div class="Para">
+        It is likely that you will need to specify the number of decimal places to display for custom
+        units measurements. To set the precision of these measurements, press the Set Display Precision
+        button. This will display the <a href="PrecisionPrefs.htm">Precision</a> preference panel
+        allowing you to specify the number of decimal places to display for each type of custom units
+        measurement.
+    </div>
+
+    <div class="SubSection">Using the Custom Units</div>
+    <div class="Para">
+        Once custom units have been defined, they can be used by selecting name of the units on the
+        <span class="MenuItem">Units</span> menu. The name on the <span class="MenuItem">Units</span>
+        menu corresponds to the name entered on the Custom Units panel. Once the custom units are selected,
+        the abbreviation for the units is displayed beside each measurement text field on the
+        <a href="ToolInfoSection.htm">Tool Information</a> and
+        <a href="ScreenInfoSection.htm">Screen Information</a> sections.
+    </div>
+
+    <div class="SubSection">Deleting Custom Units</div>
+    <div class="Para">
+        If custom units have been defined and are no longer needed, they can be deleted by pressing
+        the Clear Units button on the Custom Units preference panel.
+    </div>
+
+    <div class="SubSection">Example</div>
+    <div class="Para">
+        For example, an online map uses a scale of 0.5 inch equals 1 mile and we want to perform measurements
+        in miles. Select the <span class="MenuItem">Define Custom</span> item on the
+        <span class="MenuItem">Units</span> menu. The Custom Units preference panel is displayed. Enter
+        "Miles" for the name of the units and enter "mi" for the abbreviation. The scale factor portion
+        of the panel is now enabled. Since the scale factor is based on inches, select the middle radio
+        button. Enter the scale factor 0.5 since half an inch is equal to one mile. Press the display
+        precision button and adjust the number of decimal places to display as needed. Press OK to close
+        the preferences dialog. Finally, select the <span class="MenuItem">Miles</span> item that now
+        appears in the <span class="MenuItem">Units</span> menu to perform measurements in miles.
+    </div>
+
+    <div class="SubSection">See Also</div>
+    <div class="SeeAlso">
+        <a href="Preferences.htm">Preferences</a>,
+        <a href="PrecisionPrefs.htm">Precision Preferences</a>,
+        <a href="Units.htm">Measurement Units</a>
+    </div>
+
+    <script type="text/javascript" language="JavaScript">WriteFooter();</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<map id="G" name="G">
+<area shape="rect" id="node6" href="$classMeaToolMgr.html" title="Manages the measurement tools including selection, enabling, disabling, and communicating various mes..." alt="" coords="1011,820,1104,847"/>
+<area shape="rect" id="node2" href="$classMeaRadioTool.html" title="Abstract base class for tools whose use is mutually exclusive." alt="" coords="1628,1105,1732,1132"/>
+<area shape="rect" id="node17" href="$classMeaRectTool.html" title="Rectangle measurement tool." alt="" coords="1796,1699,1895,1725"/>
+<area shape="rect" id="node52" href="$classMeaCircleTool.html" title="Circle measurement tool." alt="" coords="1793,1412,1897,1439"/>
+<area shape="rect" id="node66" href="$classMeaPointTool.html" title="Point measurement tool." alt="" coords="1795,440,1896,467"/>
+<area shape="rect" id="node82" href="$classMeaCursorTool.html" title="Cursor position measurement tool." alt="" coords="1791,1105,1900,1132"/>
+<area shape="rect" id="node86" href="$classMeaWindowTool.html" title="Window measurement tool." alt="" coords="1787,1868,1904,1895"/>
+<area shape="rect" id="node91" href="$classMeaLineTool.html" title="Line measurement tool." alt="" coords="1798,212,1893,239"/>
+<area shape="rect" id="node4" href="$classMeaTool.html" title="Abstract base class for all measurement tools." alt="" coords="1345,881,1415,908"/>
+<area shape="rect" id="node12" href="$classMeaRulerTool.html" title="Ruler measurement tool." alt="" coords="1629,717,1731,744"/>
+<area shape="rect" id="node49" href="$classMeaGridTool.html" title="Grid overlay tool." alt="" coords="1633,609,1727,636"/>
+<area shape="rect" id="node72" href="$classMeaScreenTool.html" title="Screen information tool." alt="" coords="1624,872,1736,899"/>
+<area shape="rect" id="node78" href="$classMeaOriginTool.html" title="Origin marker tool." alt="" coords="1627,984,1733,1011"/>
+<area shape="rect" id="node8" href="$classMeaSingleton__T.html" title="MeaSingleton_T\&lt; MeaToolMgr \&gt;" alt="" coords="1275,831,1485,857"/>
+<area shape="rect" id="node15" href="$classMeaRulerCallback.html" title="Ruler drag callback mixin class." alt="" coords="1317,717,1443,744"/>
+<area shape="rect" id="node20" href="$classMeaCrossHairCallback.html" title="Crosshair activity callback mixin class." alt="" coords="136,708,291,735"/>
+<area shape="rect" id="node28" href="$classMeaCrossHair.html" title="A crosshair element." alt="" coords="459,588,563,615"/>
+<area shape="rect" id="node22" href="$classMeaRectangle.html" title="A rectangle element." alt="" coords="625,1884,730,1911"/>
+<area shape="rect" id="node24" href="$classMeaGraphic.html" title="Base class for all graphic elements." alt="" coords="167,1717,259,1744"/>
+<area shape="rect" id="node58" href="$classMeaCircle.html" title="A circle element." alt="" coords="471,1719,551,1745"/>
+<area shape="rect" id="node62" href="$classMeaLine.html" title="A line element." alt="" coords="475,1195,546,1221"/>
+<area shape="rect" id="node26" href="$classMeaTimer.html" title="Implements a timer that issues timing messages at a higher priority than the standard windows timer t..." alt="" coords="174,1849,253,1876"/>
+<area shape="rect" id="node32" href="$classMeaDataWin.html" title="A popup data display window." alt="" coords="462,1315,559,1341"/>
+<area shape="rect" id="node34" href="$classMeaDataDisplay.html" title="This class is responsible for the display of all measurement data." alt="" coords="755,237,872,264"/>
+<area shape="rect" id="node36" href="$classMeaDataSection.html" title="The data display is divided into two major sections: Region and Screen." alt="" coords="451,237,570,264"/>
+<area shape="rect" id="node38" href="$classMeaImageButton.html" title="A button that uses bitmap resources." alt="" coords="451,187,571,213"/>
+<area shape="rect" id="node40" href="$classMeaDataDisplay_1_1DataItem.html" title="Each data display field is actually composed of a label, a text field, possibly a spin control..." alt="" coords="422,288,599,315"/>
+<area shape="rect" id="node42" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="6,200,85,227"/>
+<area shape="rect" id="node46" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="159,149,267,176"/>
+<area shape="rect" id="node44" href="$classMeaNumberField.html" title="Provides a text field control that allows only numeric entries." alt="" coords="153,5,273,32"/>
+<area shape="rect" id="node75" href="$structFSIZE.html" title="Represents a rectangular size." alt="" coords="1351,932,1409,959"/>
+</map>

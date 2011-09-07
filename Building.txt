@@ -93,14 +93,23 @@ http://msdn.microsoft.com/en-us/library/ms669985%28v=vs.85%29.aspx
     in the directory build-vs10 created above. The results are available in the
     directory build-vs10/Release
 
-20. To create the Meazure installer, enter the build-nmake directory and issue
+20. To run the unit tests run the following command from the root of the
+    source tree:
+
+        ctest
+
+    To obtain more detail if a test fails, run:
+
+        ctest -V
+
+21. To create the Meazure installer, enter the build-nmake directory and issue
     the command:
 
         nmake dist
 
     The results are available in the dist top level directory.
 
-21. The Meazure source code is heavily documented using the Doxygen comment
+22. The Meazure source code is heavily documented using the Doxygen comment
     syntax. The documentation corresponding to these comments has been
     generated and is available in the top level apidocs directory. To
     regenerate that documentation, change directories into the build-nmake

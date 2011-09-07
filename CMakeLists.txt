@@ -9,6 +9,8 @@ if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     message(WARNING "Meazure may not compile in a 64-bit build environment")
 endif()
 
+enable_testing()
+
 set(BOOST_ROOT "$ENV{ProgramFiles}/boost/boost_1_47_0")
 set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
@@ -84,6 +86,7 @@ endif()
 set(SUPPORT_DIR "${PROJECT_SOURCE_DIR}/support")
 set(TOOLS_DIR "${SUPPORT_DIR}/tools")
 set(REDIST_DIR "${SUPPORT_DIR}/redist")
+set(TEST_DIR "${PROJECT_SOURCE_DIR}/src/test")
 
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:wchar_t- /wd4100 /nologo")

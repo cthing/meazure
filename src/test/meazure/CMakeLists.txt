@@ -22,5 +22,6 @@ macro(add_meazure_test runner)
 endmacro(add_meazure_test)
 
 add_meazure_test(ColorsTest ${APP_DIR}/Colors.cpp)
+add_meazure_test(GUIDTest ${APP_DIR}/GUID.cpp)
 add_meazure_test(TimeStampTest ${APP_DIR}/TimeStamp.cpp)
 add_meazure_test(UtilsTest ${APP_DIR}/Utils.cpp)

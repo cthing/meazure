@@ -176,8 +176,8 @@ public:
     ///
     CString ToString() const;
 
+private:
     GUID    m_guid;             ///< Underlying GUID for the object.
 
-private:
     mutable CString m_buffer;   ///< Buffer holding the string representation of the GUID.
 };

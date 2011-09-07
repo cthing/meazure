@@ -1,16 +1,16 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="707,80,764,107"/>
-<area shape="rect" id="node48" href="$Ruler_8h.html" title="Ruler graphic header file." alt="" coords="906,80,968,107"/>
+<area shape="rect" id="node49" href="$Ruler_8h.html" title="Ruler graphic header file." alt="" coords="906,80,968,107"/>
 <area shape="rect" id="node7" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="351,155,453,181"/>
 <area shape="rect" id="node25" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="392,304,461,331"/>
 <area shape="rect" id="node9" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="168,229,275,256"/>
 <area shape="rect" id="node11" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="157,304,251,331"/>
 <area shape="rect" id="node13" href="$Label_8h.html" title="Header file for the label control." alt="" coords="292,304,356,331"/>
 <area shape="rect" id="node15" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="646,229,708,256"/>
-<area shape="rect" id="node39" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond..." alt="" coords="14,229,92,256"/>
-<area shape="rect" id="node43" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="349,229,456,256"/>
+<area shape="rect" id="node40" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond..." alt="" coords="14,229,92,256"/>
+<area shape="rect" id="node44" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="349,229,456,256"/>
 <area shape="rect" id="node27" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="486,304,572,331"/>
-<area shape="rect" id="node32" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="648,304,707,331"/>
-<area shape="rect" id="node29" href="$Assert_8h.html" title="Defines the MeaAssert macro." alt="" coords="477,379,547,405"/>
-<area shape="rect" id="node50" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="902,155,980,181"/>
+<area shape="rect" id="node33" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="648,304,707,331"/>
+<area shape="rect" id="node29" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="469,379,565,405"/>
+<area shape="rect" id="node51" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="902,155,980,181"/>
 </map>

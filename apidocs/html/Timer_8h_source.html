@@ -80,7 +80,7 @@
 <a name="l00024"></a>00024 <span class="preprocessor"></span>
 <a name="l00025"></a>00025 
 <a name="l00026"></a>00026 <span class="preprocessor">#include &quot;afxmt.h&quot;</span>
-<a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="Assert_8h.html" title="Defines the MeaAssert macro.">Assert.h</a>&quot;</span>
+<a name="l00027"></a>00027 <span class="preprocessor">#include &quot;<a class="code" href="MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary.">MeaAssert.h</a>&quot;</span>
 <a name="l00028"></a>00028 <span class="preprocessor">#include &quot;<a class="code" href="Messages_8h.html" title="Application-specific event messages.">Messages.h</a>&quot;</span>
 <a name="l00029"></a>00029 
 <a name="l00030"></a>00030 <span class="comment"></span>
@@ -106,7 +106,7 @@
 <a name="l00050"></a>00050 <span class="comment">    /// @param userData [in] Caller defined data.</span>
 <a name="l00051"></a>00051 <span class="comment">    ///</span>
 <a name="l00052"></a><a class="code" href="classMeaTimer.html#af905a0692c7ed51c127cbeba209afb63">00052</a> <span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code" href="classMeaTimer.html#af905a0692c7ed51c127cbeba209afb63" title="Registers the specified parent window to receive the timer messages.">Create</a>(CWnd *parent, WPARAM userData = 0) {
-<a name="l00053"></a>00053         <a class="code" href="Assert_8h.html#a2bbb95fb90b8342c2c48f57b92251657" title="Asserts the specified predicate.">MeaAssert</a>(parent != NULL);
+<a name="l00053"></a>00053         <a class="code" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657" title="Asserts the specified predicate.">MeaAssert</a>(parent != NULL);
 <a name="l00054"></a>00054         <a class="code" href="classMeaTimer.html#aa721a5962eac6896af38df14f08c88e6" title="Window to receive the timer expire message.">m_parent</a> = parent;
 <a name="l00055"></a>00055         <a class="code" href="classMeaTimer.html#a35bb2a97720e326e80533470feddfd61" title="Caller defined data.">m_userData</a> = userData;
 <a name="l00056"></a>00056     }
@@ -152,7 +152,7 @@
 </div>
 <hr size="1">
 <address style="align: right;"><small>
-Generated on Sun Sep 4 2011 10:54:33 for Meazure by <a href="http://www.doxygen.org/index.html">
+Generated on Tue Sep 6 2011 22:25:36 for Meazure by <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border=0>
 </a> 1.7.5.1</small></address>
 <address style="align: right;"><small>

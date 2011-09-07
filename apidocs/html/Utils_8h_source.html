@@ -443,52 +443,55 @@
 <a name="l00387"></a>00387 <span class="comment">    ///</span>
 <a name="l00388"></a>00388 <span class="comment"></span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classMeaUtils.html#a313938fe6b599e6bec8360c6eafd1ed0" title="Tests whether the specified string is a number.">IsNumber</a>(LPCTSTR str, <span class="keywordtype">double</span> *valuep = NULL);
 <a name="l00389"></a>00389 <span class="comment"></span>
-<a name="l00390"></a>00390 <span class="comment">    /// Tests whether the specified string is a boolean value.</span>
-<a name="l00391"></a>00391 <span class="comment">    ///</span>
-<a name="l00392"></a>00392 <span class="comment">    /// @param str      [in] String to test</span>
-<a name="l00393"></a>00393 <span class="comment">    /// @param valuep   [out] Value parsed from the string. NULL</span>
-<a name="l00394"></a>00394 <span class="comment">    ///                 if not interested. If the return value is</span>
-<a name="l00395"></a>00395 <span class="comment">    ///                 &lt;b&gt;false&lt;/b&gt;, valuep&#39;s value is undefined.</span>
-<a name="l00396"></a>00396 <span class="comment">    ///</span>
-<a name="l00397"></a>00397 <span class="comment">    /// @return &lt;b&gt;true&lt;/b&gt; if string represents a number.</span>
-<a name="l00398"></a>00398 <span class="comment">    ///</span>
-<a name="l00399"></a>00399 <span class="comment"></span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classMeaUtils.html#a52920df7567608d9ae05ea7f6e7b63bc" title="Tests whether the specified string is a boolean value.">IsBoolean</a>(LPCTSTR str, <span class="keywordtype">bool</span> *valuep = NULL);
-<a name="l00400"></a>00400 
-<a name="l00401"></a>00401 <span class="comment"></span>
-<a name="l00402"></a>00402 <span class="comment">    /// Converts standalone LF characters into a CR+LF pair.</span>
-<a name="l00403"></a>00403 <span class="comment">    /// Existing CR+LF pairs in the string are not effected.</span>
-<a name="l00404"></a>00404 <span class="comment">    ///</span>
-<a name="l00405"></a>00405 <span class="comment">    /// @param str      [in] String to process.</span>
-<a name="l00406"></a>00406 <span class="comment">    ///</span>
-<a name="l00407"></a>00407 <span class="comment">    /// @return Converted string.</span>
-<a name="l00408"></a>00408 <span class="comment">    ///</span>
-<a name="l00409"></a>00409 <span class="comment"></span>    <span class="keyword">static</span> CString <a class="code" href="classMeaUtils.html#a66d22301affc0080f6db240a61c60770" title="Converts standalone LF characters into a CR+LF pair.">LFtoCRLF</a>(CString str);
-<a name="l00410"></a>00410 <span class="comment"></span>
-<a name="l00411"></a>00411 <span class="comment">    /// Converts CR+LF pairs to a single LF character.</span>
-<a name="l00412"></a>00412 <span class="comment">    ///</span>
-<a name="l00413"></a>00413 <span class="comment">    /// @param str      [in] String to process.</span>
-<a name="l00414"></a>00414 <span class="comment">    ///</span>
-<a name="l00415"></a>00415 <span class="comment">    /// @return Converted string.</span>
-<a name="l00416"></a>00416 <span class="comment">    ///</span>
-<a name="l00417"></a>00417 <span class="comment"></span>    <span class="keyword">static</span> CString <a class="code" href="classMeaUtils.html#acba2efa297ca1caf1b448fdf49cea3dd" title="Converts CR+LF pairs to a single LF character.">CRLFtoLF</a>(CString str);
-<a name="l00418"></a>00418 
-<a name="l00419"></a>00419 <span class="keyword">private</span>:<span class="comment"></span>
-<a name="l00420"></a>00420 <span class="comment">    /// All members of this class are static. No instances</span>
-<a name="l00421"></a>00421 <span class="comment">    /// of this class are ever created.</span>
-<a name="l00422"></a>00422 <span class="comment">    ///</span>
-<a name="l00423"></a><a class="code" href="classMeaUtils.html#a934d1db195d83cddf770b7be74eb6de3">00423</a> <span class="comment"></span>    <a class="code" href="classMeaUtils.html#a934d1db195d83cddf770b7be74eb6de3" title="All members of this class are static.">MeaUtils</a>() { }
-<a name="l00424"></a>00424 <span class="comment"></span>
-<a name="l00425"></a>00425 <span class="comment">    /// All members of this class are static. No instances</span>
-<a name="l00426"></a>00426 <span class="comment">    /// of this class are ever created.</span>
-<a name="l00427"></a>00427 <span class="comment">    ///</span>
-<a name="l00428"></a><a class="code" href="classMeaUtils.html#a87c8769bdbef38f8b5be30053ee914d8">00428</a> <span class="comment"></span>    <a class="code" href="classMeaUtils.html#a87c8769bdbef38f8b5be30053ee914d8" title="All members of this class are static.">~MeaUtils</a>() { }
-<a name="l00429"></a>00429 };
-<a name="l00430"></a>00430 
+<a name="l00390"></a>00390 <span class="comment">    /// Tests whether the specified string is a boolean value. For</span>
+<a name="l00391"></a>00391 <span class="comment">    /// the purpose of this method, the strings &quot;1&quot;, &quot;TRUE&quot;, &quot;true&quot;</span>
+<a name="l00392"></a>00392 <span class="comment">    /// are boolean &lt;b&gt;true&lt;/b&gt; values, while &quot;0&quot;, &quot;FALSE&quot;, &quot;false&quot;</span>
+<a name="l00393"></a>00393 <span class="comment">    /// are boolean &lt;b&gt;false&lt;/b&gt;.</span>
+<a name="l00394"></a>00394 <span class="comment">    ///</span>
+<a name="l00395"></a>00395 <span class="comment">    /// @param str      [in] String to test</span>
+<a name="l00396"></a>00396 <span class="comment">    /// @param valuep   [out] Value parsed from the string. NULL</span>
+<a name="l00397"></a>00397 <span class="comment">    ///                 if not interested. If the return value is</span>
+<a name="l00398"></a>00398 <span class="comment">    ///                 &lt;b&gt;false&lt;/b&gt;, valuep&#39;s value is undefined.</span>
+<a name="l00399"></a>00399 <span class="comment">    ///</span>
+<a name="l00400"></a>00400 <span class="comment">    /// @return &lt;b&gt;true&lt;/b&gt; if string represents a boolean value.</span>
+<a name="l00401"></a>00401 <span class="comment">    ///</span>
+<a name="l00402"></a>00402 <span class="comment"></span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="classMeaUtils.html#a52920df7567608d9ae05ea7f6e7b63bc" title="Tests whether the specified string is a boolean value.">IsBoolean</a>(LPCTSTR str, <span class="keywordtype">bool</span> *valuep = NULL);
+<a name="l00403"></a>00403 
+<a name="l00404"></a>00404 <span class="comment"></span>
+<a name="l00405"></a>00405 <span class="comment">    /// Converts standalone LF characters into a CR+LF pair.</span>
+<a name="l00406"></a>00406 <span class="comment">    /// Existing CR+LF pairs in the string are not effected.</span>
+<a name="l00407"></a>00407 <span class="comment">    ///</span>
+<a name="l00408"></a>00408 <span class="comment">    /// @param str      [in] String to process.</span>
+<a name="l00409"></a>00409 <span class="comment">    ///</span>
+<a name="l00410"></a>00410 <span class="comment">    /// @return Converted string.</span>
+<a name="l00411"></a>00411 <span class="comment">    ///</span>
+<a name="l00412"></a>00412 <span class="comment"></span>    <span class="keyword">static</span> CString <a class="code" href="classMeaUtils.html#a66d22301affc0080f6db240a61c60770" title="Converts standalone LF characters into a CR+LF pair.">LFtoCRLF</a>(CString str);
+<a name="l00413"></a>00413 <span class="comment"></span>
+<a name="l00414"></a>00414 <span class="comment">    /// Converts CR+LF pairs to a single LF character.</span>
+<a name="l00415"></a>00415 <span class="comment">    ///</span>
+<a name="l00416"></a>00416 <span class="comment">    /// @param str      [in] String to process.</span>
+<a name="l00417"></a>00417 <span class="comment">    ///</span>
+<a name="l00418"></a>00418 <span class="comment">    /// @return Converted string.</span>
+<a name="l00419"></a>00419 <span class="comment">    ///</span>
+<a name="l00420"></a>00420 <span class="comment"></span>    <span class="keyword">static</span> CString <a class="code" href="classMeaUtils.html#acba2efa297ca1caf1b448fdf49cea3dd" title="Converts CR+LF pairs to a single LF character.">CRLFtoLF</a>(CString str);
+<a name="l00421"></a>00421 
+<a name="l00422"></a>00422 <span class="keyword">private</span>:<span class="comment"></span>
+<a name="l00423"></a>00423 <span class="comment">    /// All members of this class are static. No instances</span>
+<a name="l00424"></a>00424 <span class="comment">    /// of this class are ever created.</span>
+<a name="l00425"></a>00425 <span class="comment">    ///</span>
+<a name="l00426"></a><a class="code" href="classMeaUtils.html#a934d1db195d83cddf770b7be74eb6de3">00426</a> <span class="comment"></span>    <a class="code" href="classMeaUtils.html#a934d1db195d83cddf770b7be74eb6de3" title="All members of this class are static.">MeaUtils</a>() { }
+<a name="l00427"></a>00427 <span class="comment"></span>
+<a name="l00428"></a>00428 <span class="comment">    /// All members of this class are static. No instances</span>
+<a name="l00429"></a>00429 <span class="comment">    /// of this class are ever created.</span>
+<a name="l00430"></a>00430 <span class="comment">    ///</span>
+<a name="l00431"></a><a class="code" href="classMeaUtils.html#a87c8769bdbef38f8b5be30053ee914d8">00431</a> <span class="comment"></span>    <a class="code" href="classMeaUtils.html#a87c8769bdbef38f8b5be30053ee914d8" title="All members of this class are static.">~MeaUtils</a>() { }
+<a name="l00432"></a>00432 };
+<a name="l00433"></a>00433 
 </pre></div></div>
 </div>
 <hr size="1">
 <address style="align: right;"><small>
-Generated on Sun Sep 4 2011 10:54:33 for Meazure by <a href="http://www.doxygen.org/index.html">
+Generated on Tue Sep 6 2011 22:25:36 for Meazure by <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border=0>
 </a> 1.7.5.1</small></address>
 <address style="align: right;"><small>

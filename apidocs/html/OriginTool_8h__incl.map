@@ -1,17 +1,17 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="254,80,311,107"/>
-<area shape="rect" id="node48" href="$Line_8h.html" title="Line graphic header file." alt="" coords="854,155,911,181"/>
+<area shape="rect" id="node49" href="$Line_8h.html" title="Line graphic header file." alt="" coords="854,155,911,181"/>
 <area shape="rect" id="node7" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="405,155,507,181"/>
 <area shape="rect" id="node25" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="68,304,137,331"/>
 <area shape="rect" id="node9" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="712,229,819,256"/>
 <area shape="rect" id="node11" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="768,304,861,331"/>
 <area shape="rect" id="node13" href="$Label_8h.html" title="Header file for the label control." alt="" coords="557,304,621,331"/>
 <area shape="rect" id="node15" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="225,229,287,256"/>
-<area shape="rect" id="node39" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond..." alt="" coords="558,229,636,256"/>
-<area shape="rect" id="node43" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="312,229,419,256"/>
+<area shape="rect" id="node40" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond..." alt="" coords="558,229,636,256"/>
+<area shape="rect" id="node44" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="312,229,419,256"/>
 <area shape="rect" id="node27" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="213,304,299,331"/>
-<area shape="rect" id="node32" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="475,304,533,331"/>
-<area shape="rect" id="node29" href="$Assert_8h.html" title="Defines the MeaAssert macro." alt="" coords="714,379,784,405"/>
-<area shape="rect" id="node50" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="843,229,921,256"/>
-<area shape="rect" id="node52" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="946,229,1011,256"/>
+<area shape="rect" id="node33" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="475,304,533,331"/>
+<area shape="rect" id="node29" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="708,379,804,405"/>
+<area shape="rect" id="node51" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="843,229,921,256"/>
+<area shape="rect" id="node53" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="946,229,1011,256"/>
 </map>

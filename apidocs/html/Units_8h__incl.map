@@ -1,7 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node11" href="$Label_8h.html" title="Header file for the label control." alt="" coords="240,80,304,107"/>
 <area shape="rect" id="node13" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="328,80,397,107"/>
-<area shape="rect" id="node15" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="505,80,591,107"/>
-<area shape="rect" id="node20" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="421,80,480,107"/>
-<area shape="rect" id="node17" href="$Assert_8h.html" title="Defines the MeaAssert macro." alt="" coords="513,155,583,181"/>
+<area shape="rect" id="node15" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="506,80,592,107"/>
+<area shape="rect" id="node21" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="421,80,480,107"/>
+<area shape="rect" id="node17" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="503,155,599,181"/>
 </map>

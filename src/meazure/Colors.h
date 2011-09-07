@@ -160,7 +160,17 @@ public:
     static void HSLtoRGB(const HSL& hsl, COLORREF& rgb);
 
 private:
-    typedef std::map<Item, COLORREF> Colors;        ///< Maps items to their colors.
+    /// All members of this class are static. No instances
+    /// of this class are ever created.
+    ///
+    MeaColors() { }
+
+    /// All members of this class are static. No instances
+    /// of this class are ever created.
+    ///
+    ~MeaColors() { }
+
+   typedef std::map<Item, COLORREF> Colors;        ///< Maps items to their colors.
 
     /// Determines the minimum of two values.
     /// @return Minimum value.

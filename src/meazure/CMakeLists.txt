@@ -3,7 +3,7 @@ add_definitions(-D_AFXDLL)
 set(CMAKE_MFC_FLAG 2)
 
 set(top_SRCS
-    Assert.h
+    MeaAssert.h
     ChildView.cpp
     ChildView.h
     Colors.cpp

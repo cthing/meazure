@@ -19,7 +19,7 @@
 
 #include "StdAfx.h"
 #include "Resource.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "GridTool.h"
 #include "Colors.h"
 #include "ScreenMgr.h"

@@ -18,7 +18,7 @@
  */
 
 #include "StdAfx.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "WindowTool.h"
 #include "Layout.h"
 #include "Colors.h"

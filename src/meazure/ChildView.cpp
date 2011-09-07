@@ -19,7 +19,7 @@
 
 #include "stdafx.h"
 #include "Resource.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "Layout.h"
 #include "ChildView.h"
 #include "Colors.h"

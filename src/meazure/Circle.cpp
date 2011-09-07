@@ -18,7 +18,7 @@
  */
 
 #include "StdAfx.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "Circle.h"
 #include "Colors.h"
 #include "ScreenMgr.h"

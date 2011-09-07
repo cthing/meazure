@@ -18,7 +18,7 @@
  */
 
 #include "StdAfx.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "CrossHair.h"
 #include "Resource.h"
 #include "ScreenMgr.h"

@@ -22,7 +22,7 @@
 
 #pragma once
 
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "NumberField.h"
 #include "RulerSlider.h"
 #include "ScreenMgr.h"

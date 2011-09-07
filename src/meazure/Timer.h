@@ -24,7 +24,7 @@
 
 
 #include "afxmt.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "Messages.h"
 
 

@@ -18,7 +18,7 @@
  */
 
 #include "StdAfx.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "Resource.h"
 #include "CustomUnitsPrefs.h"
 #include "Preferences.h"

@@ -25,7 +25,7 @@
 #include <map>
 
 #include "Profile.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "ScreenTool.h"
 #include "CursorTool.h"
 #include "PointTool.h"

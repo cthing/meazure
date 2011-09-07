@@ -18,7 +18,7 @@
  */
 
 #include "StdAfx.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "ToolMgr.h"
 #include "StatusBar.h"
 #include "ScreenMgr.h"

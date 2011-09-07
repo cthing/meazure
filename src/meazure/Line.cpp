@@ -19,7 +19,7 @@
 
 #include "StdAfx.h"
 #include "Line.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "Layout.h"
 #include "Colors.h"
 #include "ScreenMgr.h"

@@ -18,15 +18,13 @@
  */
 
 /// @file
-/// @brief Defines the MeaAssert macro. This macro is similar in function
-///     to ASSERT, but it is not compiled away in Release builds.
+/// @brief Defines the MeaAssert macro to override assert if necessary.
 
 #pragma once
 
 #include <assert.h>
 
-/// Asserts the specified predicate. Is not
-/// compiled out in Release builds.
+/// Asserts the specified predicate. Allows overriding assert if necessary.
 ///
 #define MeaAssert(exp) assert(exp)
 

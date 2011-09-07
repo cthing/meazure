@@ -19,7 +19,7 @@
 
 #include "StdAfx.h"
 #include <stdio.h>
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "Resource.h"
 #include "DataDisplay.h"
 #include "Layout.h"

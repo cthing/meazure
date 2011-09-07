@@ -19,7 +19,7 @@
 
 #pragma warning(disable: 4702)
 #include "exval.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #pragma warning(disable: 4511 4512)
 #include <boost/tokenizer.hpp>
 #include <boost/format.hpp>

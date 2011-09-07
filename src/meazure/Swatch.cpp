@@ -19,7 +19,7 @@
 
 #include "StdAfx.h"
 #include "Swatch.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 
 
 BEGIN_MESSAGE_MAP(MeaSwatch, CWnd)

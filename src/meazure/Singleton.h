@@ -22,7 +22,7 @@
 
 #pragma once
 
-#include "Assert.h"
+#include "MeaAssert.h"
 
 
 /// Defines a Singleton object. This macro must be called from the

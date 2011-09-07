@@ -19,7 +19,7 @@
 
 #include "StdAfx.h"
 #include "Resource.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 /// Compile the multiple monitor stub functions.
 #define COMPILE_MULTIMON_STUBS 1
 #include "ScreenMgr.h"

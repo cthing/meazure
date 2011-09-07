@@ -19,7 +19,7 @@
 
 #include "StdAfx.h"
 #include "Tool.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include <crtdbg.h>
 
 

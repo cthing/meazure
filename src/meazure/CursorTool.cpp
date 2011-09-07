@@ -18,7 +18,7 @@
  */
 
 #include "StdAfx.h"
-#include "Assert.h"
+#include "MeaAssert.h"
 #include "CursorTool.h"
 #include "Hooks/Hooks.h"
 #include "Resource.h"

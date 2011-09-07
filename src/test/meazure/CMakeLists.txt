@@ -21,5 +21,6 @@ macro(add_meazure_test runner)
     add_test(${runner} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${runner})    
 endmacro(add_meazure_test)
 
-add_meazure_test(UtilsTest ${APP_DIR}/Utils.cpp)
+add_meazure_test(ColorsTest ${APP_DIR}/Colors.cpp)
 add_meazure_test(TimeStampTest ${APP_DIR}/TimeStamp.cpp)
+add_meazure_test(UtilsTest ${APP_DIR}/Utils.cpp)

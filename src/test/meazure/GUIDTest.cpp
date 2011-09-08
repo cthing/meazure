@@ -109,7 +109,28 @@ namespace
         guid1.Data4[7] = 0xDA;
         
         MeaGUID guid2(guid1Str);
-        validateEqual(guid1, guid2);    
+        validateEqual(guid1, guid2);
+        
+        try {
+            MeaGUID guid3(_T(""));
+            BOOST_FAIL("MeaGUID did not throw");
+        } catch(COleException* e) {
+            delete e;
+        }
+        
+        try {
+            MeaGUID guid3(_T("FOO"));
+            BOOST_FAIL("MeaGUID did not throw");
+        } catch(COleException* e) {
+            delete e;
+        }
+        
+        try {
+            MeaGUID guid3(_T("6B29FC40-CA47-1067-B31D-00DD010662D"));
+            BOOST_FAIL("MeaGUID did not throw");
+        } catch(COleException* e) {
+            delete e;
+        }
     }
     
     void TestAssignOperatorGUID()

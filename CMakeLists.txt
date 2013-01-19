@@ -15,7 +15,7 @@ set(BOOST_ROOT "$ENV{ProgramFiles}/boost/boost_1_47_0")
 set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
-set(Boost_ADDITIONAL_VERSIONS "1.47" "1.47.0")
+set(Boost_ADDITIONAL_VERSIONS "1.47" "1.47.0" "1.52" "1.52.0")
 find_package(Boost COMPONENTS date_time REQUIRED)
 
 include_directories(${Boost_INCLUDE_DIRS})

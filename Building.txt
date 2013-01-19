@@ -28,7 +28,8 @@ others to augment these instructions for building on other versions of Windows.
 
 6. Download and install Python from http://www.python.org/download/
 
-7. Download and install Inno Setup from http://www.jrsoftware.org/isinfo.php
+7. Download and install Inno Setup from http://www.jrsoftware.org/isinfo.php and
+   add "C:\Program Files\Inno Setup 5" to the PATH
 
 8. Download and install the Microsoft HTML Help Workshop from
 http://msdn.microsoft.com/en-us/library/ms669985%28v=vs.85%29.aspx
@@ -40,10 +41,17 @@ http://msdn.microsoft.com/en-us/library/ms669985%28v=vs.85%29.aspx
 11. Download and install MiKTEX from http://miktex.org/
 
 12. Meazure uses the Boost library including the date_time module. While there
-    are many ways to obtain Boost, I built it from source by following the
-    instructions in the checked answer:
+    are many ways to obtain Boost, It is best to build boost from source.
 
-    http://stackoverflow.com/questions/2629421/how-to-use-boost-in-visual-studio-2010
+    a. Download the latest Boost from http://www.boost.org
+
+    b. Unpack the archive into the directory C:\Program Files\boost
+
+    c. At the root of the boost source directory run the command: bootstrap.bat
+
+    d. Run the command: b2 --toolset=msvc-10.0 --build-type=complete stage
+
+    e. Wait a long time while Boost builds...
 
 13. Once Boost has built, record its installation root directory
     (e.g. C:\Program Files\boost\boost_1_47_0) and set the environment
@@ -94,7 +102,7 @@ http://msdn.microsoft.com/en-us/library/ms669985%28v=vs.85%29.aspx
     directory build-vs10/Release
 
 20. To run the unit tests run the following command from the root of the
-    source tree:
+    build tree (e.g. build-nmake):
 
         ctest
 

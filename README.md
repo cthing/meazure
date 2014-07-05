@@ -45,7 +45,7 @@ Refer to the Building.txt file on the project site for
 information on how to build Meazure from source.
 
 
-## Chnagelog
+## Changelog
 
 ### Changes 2.0 to 2.0.1
 

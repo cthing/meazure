@@ -1,11 +1,9 @@
-
-Meazure(TM) 2.0.1 Readme
+# Meazure(tm) 2.0.1
 
 Copyright 2001, 2004, 2011 C Thing Software
 
 
-System Requirements
--------------------
+## System Requirements
 
 - Pentium 300 MHz processor or higher
 - Windows XP, Vista, Windows 7
@@ -15,8 +13,7 @@ System Requirements
 - 5.6 MB disk space
 
 
-Installation
-------------
+## Installation
 
 Meazure comes with an installer tool to install all
 program files on the system. In addition to installing
@@ -28,8 +25,7 @@ to run the Meazure program. This configuration includes:
 - Creating an entry on the Program menu
 
 
-Online Help
------------
+## Online Help
 
 Meazure includes extensive online help. The program's
 Help menu provides access to the table of contents and
@@ -38,29 +34,27 @@ context sensitive help is available using the F1 key,
 the SHIFT+F1 keys, and the What's This item on the
 Help menu.
 
-License
--------
+## License
 
 Refer to the License.txt file distributed with this program
 for details on the licensing of the Meazure program.
 
-Building
---------
+## Building
 
 Refer to the Building.txt file on the project site for
 information on how to build Meazure from source.
 
 
-Changes 2.0 to 2.0.1
---------------------
+## Chnagelog
+
+### Changes 2.0 to 2.0.1
 
 - Publish Meazure as an Open Source project on GitHub under
   the GNU General Public License.
 
 - Windows 98, ME, NT and 2000 are no longer supported.
 
-Changes 1.0 to 2.0
-------------------
+### Changes 1.0 to 2.0
 
 - Feature: A log of tool positions can be recorded and
   saved. The position log can be reloaded and played
@@ -130,16 +124,14 @@ Changes 1.0 to 2.0
 - Windows 95 is no longer supported.
 
 
-Known Issues
-------------
+## Known Issues
 
 - On Windows XP (all versions) the display of the crosshair
   tooltip (e.g. "Point 1") is intermittent due to a problem
   with version 6 of the Microsoft comctl32.dll.
 
 
-Feedback
---------
+## Feedback
 
 Please contact us with your comments and suggestions at:
 

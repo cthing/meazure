@@ -1,4 +1,4 @@
-# Meazure<sup>tm</sup> 2.0.1
+# Meazure<sup>TM</sup> 2.0.1
 
 Copyright 2001, 2004, 2011 C Thing Software
 

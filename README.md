@@ -36,7 +36,7 @@ Help menu.
 
 ## License
 
-Refer to the License.txt file distributed with this program
+Refer to the LICENSE file distributed with this program
 for details on the licensing of the Meazure program.
 
 ## Building

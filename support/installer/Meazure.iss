@@ -17,7 +17,7 @@ AppUpdatesURL=http://www.cthing.com
 AppCopyright=Copyright 2001, 2004, 2011 C Thing Software
 DefaultDirName={pf}\Meazure
 DefaultGroupName=Meazure
-LicenseFile=..\..\License.txt
+LicenseFile=..\..\LICENSE
 PrivilegesRequired=admin
 
 [Tasks]
@@ -49,7 +49,7 @@ Source: "..\..\build-nmake\Release\Meazure.exe";  DestDir: "{app}"; Components: 
 Source: "..\..\build-nmake\Release\Meazure.chm";  DestDir: "{app}"; Components: help; Flags: ignoreversion
 Source: "..\..\build-nmake\Release\Hooks.dll";    DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "..\..\build-nmake\Release\libexpat.dll"; DestDir: "{app}"; Components: core; Flags: ignoreversion
-Source: "..\..\License.txt";                      DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "..\..\LICENSE";                          DestDir: "{app}"; Components: core; Flags: ignoreversion
 source: "..\..\COPYING";                          DestDir: "{app}"; COmponents: core; Flags: ignoreversion
 Source: "..\..\Readme.txt";                       DestDir: "{app}"; Components: core; Flags: ignoreversion isreadme
 ; DTD files
@@ -74,7 +74,7 @@ Type: files; Name: "{app}\xmltok.dll"
 Name: "{group}\Meazure";           Filename: "{app}\Meazure.exe"; Components: core
 Name: "{group}\Meazure Help";      Filename: "{app}\Meazure.chm"; Components: help
 Name: "{group}\Meazure Readme";    Filename: "{app}\Readme.txt";  Components: core
-Name: "{group}\Meazure License";   Filename: "{app}\License.txt"; Components: core
+Name: "{group}\Meazure License";   Filename: "{app}\LICENSE"; Components: core
 Name: "{group}\Uninstall Meazure"; Filename: {uninstallexe}; Components: core
 Name: "{userdesktop}\Meazure";     Filename: "{app}\Meazure.exe"; MinVersion: 4,4; Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Meazure"; Filename: "{app}\Meazure.exe"; MinVersion: 6,0; Tasks: quicklaunchicon

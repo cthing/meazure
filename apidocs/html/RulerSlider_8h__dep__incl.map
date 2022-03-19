@@ -1,6 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$CalibrationPrefs_8h.html" title="Calibration preferences property page header file." alt="" coords="5,80,128,107"/>
-<area shape="rect" id="node5" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="15,155,117,181"/>
-<area shape="rect" id="node7" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="21,229,112,256"/>
-<area shape="rect" id="node9" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="25,304,108,331"/>
+<map id="RulerSlider.h" name="RulerSlider.h">
+<area shape="rect" id="node1" title="Header file for a slider control on a ruler background." alt="" coords="19,5,115,32"/>
+<area shape="rect" id="node2" href="$CalibrationPrefs_8h.html" title="Calibration preferences property page header file." alt="" coords="5,80,129,107"/>
+<area shape="rect" id="node3" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="16,155,119,181"/>
+<area shape="rect" id="node4" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="22,229,113,256"/>
+<area shape="rect" id="node5" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="25,304,109,331"/>
 </map>

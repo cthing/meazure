@@ -1,5 +1,5 @@
 #
-# Copyright 2001, 2004, 2011 C Thing Software
+# Copyright 2001 C Thing Software
 #
 # This file is part of Meazure.
 # 

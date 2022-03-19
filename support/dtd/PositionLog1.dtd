@@ -1,7 +1,7 @@
 <!--
   Meazure Position Log File DTD Version 1
 	
-  Copyright 2004, 2011  C Thing Software
+  Copyright 2004 C Thing Software
 
   The position log file records the location of the current tool along
   with the information about the tool's environment (e.g. screen

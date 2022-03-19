@@ -1,4 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="11,80,101,107"/>
-<area shape="rect" id="node5" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="14,155,97,181"/>
+<map id="Preferences.h" name="Preferences.h">
+<area shape="rect" id="node1" title="Program preferences property sheet header file." alt="" coords="5,5,108,32"/>
+<area shape="rect" id="node2" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="11,80,102,107"/>
+<area shape="rect" id="node3" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="15,155,99,181"/>
 </map>

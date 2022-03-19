@@ -150,7 +150,7 @@ endif()
 
 set_source_files_properties(hid.h PROPERTIES GENERATED TRUE)
 
-add_custom_target(help
+add_custom_target(apphelp
                   DEPENDS ${DEST_HELP_DIR}/Meazure.chm
                   SOURCES ${HELP_APP} ${TEMPLATES} ${TOPICS} ${IMAGES} ${IMAGE_SRCS})
 add_custom_command(OUTPUT ${DEST_HELP_DIR}/Meazure.chm

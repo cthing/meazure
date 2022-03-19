@@ -1,0 +1,4 @@
+<map id="MeaLabel" name="MeaLabel">
+<area shape="rect" id="node1" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="5,80,84,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="12,5,77,32"/>
+</map>

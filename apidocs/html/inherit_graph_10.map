@@ -1,3 +1,10 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$structev_1_1ParseNode_1_1LessOp.html" title="Used by STL to compare two ParseNode objects." alt="" coords="6,5,165,32"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,71,57"/>
+<area shape="rect" id="node2" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="119,31,197,57"/>
+<area shape="rect" id="node3" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="245,31,353,57"/>
+<area shape="rect" id="node4" href="$classMeaAngularUnitsLabel.html" title="There are two categories of labels: those for angular measurements and those for linear measurements." alt="" coords="401,5,553,32"/>
+<area shape="rect" id="node5" href="$classMeaLinearUnitsLabel.html" title="There are two categories of labels: those for angular measurements and those for linear measurements." alt="" coords="406,56,549,83"/>
+<area shape="rect" id="node6" href="$classMeaAreaUnitsLabel.html" title="Label for area measurements." alt="" coords="607,5,742,32"/>
+<area shape="rect" id="node7" href="$classMeaLengthUnitsLabel.html" title="Label for length measurements." alt="" coords="601,56,748,83"/>
+<area shape="rect" id="node8" href="$classMeaResUnitsLabel.html" title="Label for resolution measurements." alt="" coords="609,107,740,133"/>
 </map>

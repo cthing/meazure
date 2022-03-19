@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -297,7 +297,7 @@ void MeaMagnifier::Draw(HDC hDC)
     // Center the magnifier around cursor
     //
     if (m_runState == Run) {
-        GetParent()->SendMessage(MeaGetPositionMsg, 0, reinterpret_cast<LONG>(&m_curPos));
+        GetParent()->SendMessage(MeaGetPositionMsg, 0, reinterpret_cast<WPARAM>(&m_curPos));
     }
 
     //

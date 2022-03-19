@@ -1,28 +1,29 @@
 ; Inno Setup Script for Meazure
 ;
-; Copyright 2001, 2004, 2011 C Thing Software
+; Copyright 2001 C Thing Software
 
 [Setup]
 AppId=Meazure
 AppName=Meazure
-AppVerName=Meazure 2.0.1
-AppVersion=2.0.1
+AppVerName=Meazure 3.0
+AppVersion=3.0
 AppMutex=MeazureInstallerMutex
 OutputDir=..\..\dist
-OutputBaseFilename=meazr201
+OutputBaseFilename=meazr30
 AppPublisher=C Thing Software
-AppPublisherURL=http://www.cthing.com
-AppSupportURL=http://www.cthing.com
-AppUpdatesURL=http://www.cthing.com
-AppCopyright=Copyright 2001, 2004, 2011 C Thing Software
-DefaultDirName={pf}\Meazure
+AppPublisherURL=https://www.cthing.com
+AppSupportURL=https://www.cthing.com
+AppUpdatesURL=https://www.cthing.com
+AppCopyright=Copyright 2001 C Thing Software
+DefaultDirName={commonpf}\Meazure
 DefaultGroupName=Meazure
 LicenseFile=..\..\LICENSE
 PrivilegesRequired=admin
+UsedUserAreasWarning=no
+ArchitecturesInstallIn64BitMode=x64
 
 [Tasks]
 Name: "desktopicon";     Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"; MinVersion: 4,4
-Name: "quicklaunchicon"; Description: "Create a &Quick Launch icon"; GroupDescription: "Additional icons:"; MinVersion: 4,4; Flags: unchecked
 
 [Types]
 Name: "complete"; Description: "Complete installation"
@@ -38,9 +39,10 @@ Name: "profiles"; Description: "Sample Profiles"; Types: complete custom
 Name: "{app}\Profiles"; Components: core
 
 [Files]
-; Visual C++ 6.0 + MFC redistributable system files
+; Visual C++ and MFC redistributable system files
 Source: "..\..\build-nmake\Release\mfc*.dll";             DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "..\..\build-nmake\Release\msvc*.dll";            DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "..\..\build-nmake\Release\vcruntime*.dll";       DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "..\..\build-nmake\Release\Microsoft.*.manifest"; DestDir: "{app}"; Components: core; Flags: ignoreversion skipifsourcedoesntexist
 ; HTML Help support
 Source: "..\redist\hhupd.exe"; DestDir: "{tmp}"; Components: core; Check: Runhhupd
@@ -49,9 +51,8 @@ Source: "..\..\build-nmake\Release\Meazure.exe";  DestDir: "{app}"; Components: 
 Source: "..\..\build-nmake\Release\Meazure.chm";  DestDir: "{app}"; Components: help; Flags: ignoreversion
 Source: "..\..\build-nmake\Release\Hooks.dll";    DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "..\..\build-nmake\Release\libexpat.dll"; DestDir: "{app}"; Components: core; Flags: ignoreversion
-Source: "..\..\LICENSE";                          DestDir: "{app}"; Components: core; Flags: ignoreversion
-source: "..\..\COPYING";                          DestDir: "{app}"; COmponents: core; Flags: ignoreversion
-Source: "..\..\Readme.txt";                       DestDir: "{app}"; Components: core; Flags: ignoreversion isreadme
+Source: "..\..\LICENSE";                          DestDir: "{app}"; DestName: "LICENSE.txt"; Components: core; Flags: ignoreversion
+Source: "..\..\README.md";                        DestDir: "{app}"; DestName: "README.txt"; Components: core; Flags: ignoreversion
 ; DTD files
 Source: "..\dtd\PositionLog1.dtd";   DestDir: "{app}\dtd"; Components: core; Flags: ignoreversion
 ; Sample profiles
@@ -73,11 +74,9 @@ Type: files; Name: "{app}\xmltok.dll"
 [Icons]
 Name: "{group}\Meazure";           Filename: "{app}\Meazure.exe"; Components: core
 Name: "{group}\Meazure Help";      Filename: "{app}\Meazure.chm"; Components: help
-Name: "{group}\Meazure Readme";    Filename: "{app}\Readme.txt";  Components: core
-Name: "{group}\Meazure License";   Filename: "{app}\LICENSE"; Components: core
-Name: "{group}\Uninstall Meazure"; Filename: {uninstallexe}; Components: core
+Name: "{group}\Meazure Readme";    Filename: "{app}\README.txt";  Components: core
+Name: "{group}\Meazure License";   Filename: "{app}\LICENSE.txt"; Components: core
 Name: "{userdesktop}\Meazure";     Filename: "{app}\Meazure.exe"; MinVersion: 4,4; Tasks: desktopicon
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\Meazure"; Filename: "{app}\Meazure.exe"; MinVersion: 6,0; Tasks: quicklaunchicon
 
 [Registry]
 ; Profile file type

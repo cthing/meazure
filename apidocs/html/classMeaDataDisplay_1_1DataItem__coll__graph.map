@@ -1,5 +1,8 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="6,5,84,32"/>
-<area shape="rect" id="node6" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="98,83,205,109"/>
-<area shape="rect" id="node4" href="$classMeaNumberField.html" title="Provides a text field control that allows only numeric entries." alt="" coords="231,83,351,109"/>
+<map id="MeaDataDisplay::DataItem" name="MeaDataDisplay::DataItem">
+<area shape="rect" id="node1" title="Each data display field is actually composed of a label, a text field, possibly a spin control,..." alt="" coords="63,247,241,273"/>
+<area shape="rect" id="node2" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="6,81,85,108"/>
+<area shape="rect" id="node6" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="98,157,206,184"/>
+<area shape="rect" id="node3" title=" " alt="" coords="13,5,78,32"/>
+<area shape="rect" id="node4" href="$classMeaNumberField.html" title="Provides a text field control that allows only numeric entries." alt="" coords="231,157,351,184"/>
+<area shape="rect" id="node5" title=" " alt="" coords="263,81,318,108"/>
 </map>

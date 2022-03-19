@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -248,7 +248,7 @@ CString MeaXMLParserHandler::GetFilePathname()
 //*************************************************************************
 
 
-LPCTSTR MeaXMLParser::m_homeURL = _T("http://www.cthing.com/");
+LPCTSTR MeaXMLParser::m_homeURL = _T("https://www.cthing.com/");
 
 
 MeaXMLParser::MeaXMLParser(MeaXMLParserHandler *handler, bool buildDOM) :
@@ -432,7 +432,7 @@ int MeaXMLParser::ExternalEntityRefHandler(XML_Parser parser,
             GetModuleFileName(NULL, pathname, _MAX_PATH);
             _tsplitpath_s(pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, NULL, 0, NULL, 0);
 
-            sysId = CString(drive) + CString(dir) + sysId.Mid(_tcslen(MeaXMLParser::m_homeURL));
+            sysId = CString(drive) + CString(dir) + sysId.Mid(static_cast<int>(_tcslen(MeaXMLParser::m_homeURL)));
             sysId.Replace(_T('/'), _T('\\'));
 
             ps->m_pathnameStack->push(sysId);
@@ -586,7 +586,7 @@ void MeaXMLParser::HandleValidationError(const ev::ValidationError& error)
     CString title(reinterpret_cast<LPCSTR>(IDS_MEA_VALIDATION_TITLE));
     CString msg, errorMsg;
     
-    msg.Format(IDS_MEA_VALIDATION_MSG, m_handler->GetFilePathname(),
+    msg.Format(IDS_MEA_VALIDATION_MSG, static_cast<LPCTSTR>(m_handler->GetFilePathname()),
                 error.GetLineNumber(), error.GetCharacterPosition() + 1);
 
     switch (error.GetCode()) {
@@ -714,8 +714,8 @@ CString MeaXMLParser::Encode(const CString& src)
 #else
     const unsigned char *str = reinterpret_cast<const unsigned char*>(static_cast<LPCTSTR>(src));
     const unsigned char *sptr;
-    int len = _mbslen(str);
-    int i;
+    const size_t len = _mbslen(str);
+    size_t i;
 
     for (i = 0, sptr = str; i < len; i++, sptr = _mbsinc(sptr)) {
         switch(*sptr) {

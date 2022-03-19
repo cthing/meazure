@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -78,7 +78,7 @@ void MeaSwatch::SetColor(COLORREF color)
 {
     CBrush *brush   = new CBrush(color);
     if (m_hWnd != NULL) {
-        ::SetClassLong(m_hWnd, GCL_HBRBACKGROUND, reinterpret_cast<LONG>(static_cast<HBRUSH>(*brush)));
+        ::SetClassLongPtr(m_hWnd, GCLP_HBRBACKGROUND, reinterpret_cast<LONG_PTR>(static_cast<HBRUSH>(*brush)));
     }
     
     DestroyColors();

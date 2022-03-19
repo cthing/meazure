@@ -1,5 +1,6 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="15,80,117,107"/>
-<area shape="rect" id="node5" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="21,155,112,181"/>
-<area shape="rect" id="node7" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="25,229,108,256"/>
+<map id="CalibrationPrefs.h" name="CalibrationPrefs.h">
+<area shape="rect" id="node1" title="Calibration preferences property page header file." alt="" coords="5,5,129,32"/>
+<area shape="rect" id="node2" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="16,80,119,107"/>
+<area shape="rect" id="node3" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="22,155,113,181"/>
+<area shape="rect" id="node4" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="25,229,109,256"/>
 </map>

@@ -1,4 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMeaTool.html" title="Abstract base class for all measurement tools." alt="" coords="5,5,75,32"/>
-<area shape="rect" id="node4" href="$classMeaRulerCallback.html" title="Ruler drag callback mixin class." alt="" coords="99,5,225,32"/>
+<map id="MeaRulerTool" name="MeaRulerTool">
+<area shape="rect" id="node1" title="Ruler measurement tool." alt="" coords="51,80,153,107"/>
+<area shape="rect" id="node2" href="$classMeaTool.html" title="Abstract base class for all measurement tools." alt="" coords="5,5,76,32"/>
+<area shape="rect" id="node3" href="$classMeaRulerCallback.html" title="Ruler drag callback mixin class." alt="" coords="100,5,227,32"/>
 </map>

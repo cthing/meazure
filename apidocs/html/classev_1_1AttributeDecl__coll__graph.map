@@ -1,7 +1,8 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classev_1_1ElementDecl.html" title="Represents an element declaration." alt="" coords="163,280,279,307"/>
-<area shape="rect" id="node4" href="$classev_1_1Validator.html" title="The star of the show, this call performs XML validation for the expat parser." alt="" coords="208,97,301,124"/>
-<area shape="rect" id="node8" href="$classev_1_1DFA.html" title="This class represents a deterministic finite state automaton (DFA) (i.e." alt="" coords="135,189,203,216"/>
+<map id="ev::AttributeDecl" name="ev::AttributeDecl">
+<area shape="rect" id="node1" title="Represents an attribute declaration." alt="" coords="155,365,272,392"/>
+<area shape="rect" id="node2" href="$classev_1_1ElementDecl.html" title="Represents an element declaration." alt="" coords="155,276,271,303"/>
+<area shape="rect" id="node3" href="$classev_1_1DFA.html" title="This class represents a deterministic finite state automaton (DFA) (i.e." alt="" coords="135,187,203,213"/>
+<area shape="rect" id="node4" href="$classev_1_1ParseNode.html" title="Represents a node in the parse tree that is constructed by parsing the content model." alt="" coords="5,96,112,123"/>
+<area shape="rect" id="node5" href="$classev_1_1Validator.html" title="The star of the show, this call performs XML validation for the expat parser." alt="" coords="208,96,301,123"/>
 <area shape="rect" id="node6" href="$classev_1_1IValidationHandler.html" title="An application class mixin inherits from the IValidationHandler interface and overrides the HandleVal..." alt="" coords="181,5,328,32"/>
-<area shape="rect" id="node10" href="$classev_1_1ParseNode.html" title="Represents a node in the parse tree that is constructed by parsing the content model." alt="" coords="5,97,112,124"/>
 </map>

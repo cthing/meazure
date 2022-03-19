@@ -1,11 +1,12 @@
-<map id="G" name="G">
-<area shape="rect" id="node5" href="$classMeaCentimeterUnits.html" title="Provides linear measurements in centimeters." alt="" coords="291,5,431,32"/>
-<area shape="rect" id="node7" href="$classMeaCustomUnits.html" title="Provides linear measurements in user defined units." alt="" coords="300,56,423,83"/>
-<area shape="rect" id="node9" href="$classMeaInchUnits.html" title="Provides linear measurements in inches." alt="" coords="311,107,412,133"/>
-<area shape="rect" id="node11" href="$classMeaMillimeterUnits.html" title="Provides linear measurements in millimeters." alt="" coords="295,157,428,184"/>
-<area shape="rect" id="node13" href="$classMeaPicaUnits.html" title="Provides linear measurements in picas." alt="" coords="310,208,413,235"/>
-<area shape="rect" id="node15" href="$classMeaPixelUnits.html" title="Provides linear measurements in pixels." alt="" coords="308,259,415,285"/>
-<area shape="rect" id="node17" href="$classMeaPointUnits.html" title="Provides linear measurements in points." alt="" coords="308,309,415,336"/>
-<area shape="rect" id="node19" href="$classMeaTwipUnits.html" title="Provides linear measurements in twips." alt="" coords="310,360,413,387"/>
+<map id="MeaLinearUnits" name="MeaLinearUnits">
+<area shape="rect" id="node1" title="There are two major categories of units: linear and angular." alt="" coords="131,183,243,209"/>
+<area shape="rect" id="node3" href="$classMeaCentimeterUnits.html" title="Provides linear measurements in centimeters." alt="" coords="291,5,431,32"/>
+<area shape="rect" id="node4" href="$classMeaCustomUnits.html" title="Provides linear measurements in user defined units." alt="" coords="299,56,422,83"/>
+<area shape="rect" id="node5" href="$classMeaInchUnits.html" title="Provides linear measurements in inches." alt="" coords="310,107,411,133"/>
+<area shape="rect" id="node6" href="$classMeaMillimeterUnits.html" title="Provides linear measurements in millimeters." alt="" coords="294,157,427,184"/>
+<area shape="rect" id="node7" href="$classMeaPicaUnits.html" title="Provides linear measurements in picas." alt="" coords="309,208,412,235"/>
+<area shape="rect" id="node8" href="$classMeaPixelUnits.html" title="Provides linear measurements in pixels." alt="" coords="307,259,414,285"/>
+<area shape="rect" id="node9" href="$classMeaPointUnits.html" title="Provides linear measurements in points." alt="" coords="307,309,414,336"/>
+<area shape="rect" id="node10" href="$classMeaTwipUnits.html" title="Provides linear measurements in twips." alt="" coords="309,360,412,387"/>
 <area shape="rect" id="node2" href="$classMeaUnits.html" title="Measurement units are packaged into a class, one for each set of units (e.g." alt="" coords="5,183,83,209"/>
 </map>

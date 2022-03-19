@@ -1,4 +1,9 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classev_1_1IValidationHandler.html" title="An application class mixin inherits from the IValidationHandler interface and overrides the HandleVal..." alt="" coords="5,5,152,32"/>
-<area shape="rect" id="node3" href="$classMeaXMLParser.html" title="Provides SAX style XML parsing." alt="" coords="201,5,311,32"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,132,116,159"/>
+<area shape="rect" id="node2" href="$classMeaAdvancedPrefs.html" title="Property page for the advanced preferences." alt="" coords="173,5,307,32"/>
+<area shape="rect" id="node3" href="$classMeaCalibrationPrefs.html" title="Property page for screen resolution calibration preferences." alt="" coords="171,56,309,83"/>
+<area shape="rect" id="node4" href="$classMeaCustomUnitsPrefs.html" title="Property page for custom measurement units preferences." alt="" coords="164,107,316,133"/>
+<area shape="rect" id="node5" href="$classMeaPrecisionPrefs.html" title="Property page for setting display precisions for each set of measurement units." alt="" coords="175,157,305,184"/>
+<area shape="rect" id="node6" href="$classMeaRulerPrefs.html" title="Property page for setting ruler preferences." alt="" coords="187,208,293,235"/>
+<area shape="rect" id="node7" href="$classMeaToolsPrefs.html" title="Property page for specifying the following tool preferences:" alt="" coords="186,259,294,285"/>
 </map>

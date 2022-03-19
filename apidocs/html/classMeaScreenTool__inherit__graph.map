@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMeaTool.html" title="Abstract base class for all measurement tools." alt="" coords="26,5,96,32"/>
+<map id="MeaScreenTool" name="MeaScreenTool">
+<area shape="rect" id="node1" title="Screen information tool." alt="" coords="5,80,117,107"/>
+<area shape="rect" id="node2" href="$classMeaTool.html" title="Abstract base class for all measurement tools." alt="" coords="26,5,97,32"/>
 </map>

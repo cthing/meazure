@@ -1,6 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$ToolsPrefs_8h.html" title="Tool property page header file." alt="" coords="9,80,103,107"/>
-<area shape="rect" id="node5" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="5,155,107,181"/>
-<area shape="rect" id="node7" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="11,229,101,256"/>
-<area shape="rect" id="node9" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="14,304,97,331"/>
+<map id="Swatch.h" name="Swatch.h">
+<area shape="rect" id="node1" title="Header file for a rectangular color swatch." alt="" coords="19,5,95,32"/>
+<area shape="rect" id="node2" href="$ToolsPrefs_8h.html" title="Tool property page header file." alt="" coords="9,80,104,107"/>
+<area shape="rect" id="node3" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="5,155,108,181"/>
+<area shape="rect" id="node4" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="11,229,102,256"/>
+<area shape="rect" id="node5" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="15,304,99,331"/>
 </map>

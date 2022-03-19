@@ -1,7 +1,9 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMeaCircle.html" title="A circle element." alt="" coords="5,80,85,107"/>
-<area shape="rect" id="node5" href="$classMeaCrossHair.html" title="A crosshair element." alt="" coords="109,80,213,107"/>
-<area shape="rect" id="node7" href="$classMeaLine.html" title="A line element." alt="" coords="238,80,308,107"/>
-<area shape="rect" id="node9" href="$classMeaRectangle.html" title="A rectangle element." alt="" coords="333,80,437,107"/>
-<area shape="rect" id="node11" href="$classMeaRuler.html" title="A ruler element." alt="" coords="463,80,540,107"/>
+<map id="MeaGraphic" name="MeaGraphic">
+<area shape="rect" id="node1" title="Base class for all graphic elements." alt="" coords="227,80,319,107"/>
+<area shape="rect" id="node3" href="$classMeaCircle.html" title="A circle element." alt="" coords="5,155,85,181"/>
+<area shape="rect" id="node4" href="$classMeaCrossHair.html" title="A crosshair element." alt="" coords="109,155,213,181"/>
+<area shape="rect" id="node5" href="$classMeaLine.html" title="A line element." alt="" coords="238,155,309,181"/>
+<area shape="rect" id="node6" href="$classMeaRectangle.html" title="A rectangle element." alt="" coords="333,155,438,181"/>
+<area shape="rect" id="node7" href="$classMeaRuler.html" title="A ruler element." alt="" coords="463,155,540,181"/>
+<area shape="rect" id="node2" title=" " alt="" coords="244,5,303,32"/>
 </map>

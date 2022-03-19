@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -82,7 +82,7 @@ bool MeaLabel::Create(LPCTSTR label, DWORD style, const POINT& topLeft,
 
     // Get the bounding box for the text.
     //
-    CSize sz = dc->GetTextExtent(label, _tcslen(label));
+    CSize sz = dc->GetTextExtent(label, static_cast<int>(_tcslen(label)));
     ReleaseDC(dc);
 
     // Set the window to the character height and the text length.

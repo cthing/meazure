@@ -1,17 +1,12 @@
-# Meazure<sup>TM</sup> 2.0.1
+# Meazure<sup>TM</sup> 3.0
 
-Copyright 2001, 2004, 2011 C Thing Software
+Copyright 2001 C Thing Software
 
 
-## System Requirements
+## Minimum System Requirements
 
-- Pentium 300 MHz processor or higher
-- Windows XP, Vista, Windows 7
-- Internet Explorer 6.0 or above (for online Help)
-- 64 MB memory or higher
-- 4 MB video memory or higher
-- 5.6 MB disk space
-
+- Windows 10
+- 64-bit system
 
 ## Installation
 
@@ -20,32 +15,26 @@ program files on the system. In addition to installing
 the program files, the installer configures the system
 to run the Meazure program. This configuration includes:
 
-- Associating the file suffix .mea with the Meazure program
+- Associating the file suffix `.mea` with the Meazure program
 - Optionally placing an icon on the desktop
-- Creating an entry on the Program menu
-
-
-## Online Help
-
-Meazure includes extensive online help. The program's
-Help menu provides access to the table of contents and
-index, as well as a search capability. In addition,
-context sensitive help is available using the F1 key,
-the SHIFT+F1 keys, and the What's This item on the
-Help menu.
 
 ## License
 
-Refer to the LICENSE file distributed with this program
+Refer to the [LICENSE](LICENSE) file distributed with this program
 for details on the licensing of the Meazure program.
 
 ## Building
 
-Refer to the Building.txt file on the project site for
-information on how to build Meazure from source.
+Refer to [Building.md](Building.md) for information on how to build Meazure from source.
 
 
 ## Changelog
+
+### Changes 2.0.1 to 3.0
+
+- Supported on Windows 10 and above
+
+- Requires a 64-bit system
 
 ### Changes 2.0 to 2.0.1
 
@@ -123,17 +112,6 @@ information on how to build Meazure from source.
 
 - Windows 95 is no longer supported.
 
-
-## Known Issues
-
-- On Windows XP (all versions) the display of the crosshair
-  tooltip (e.g. "Point 1") is intermittent due to a problem
-  with version 6 of the Microsoft comctl32.dll.
-
-
 ## Feedback
 
-Please contact us with your comments and suggestions at:
-
-meafeedback@cthing.com
-http://www.cthing.com
+Please [open an issue on GitHub](https://github.com/cthing/meazure/issues) for feature requests and to report bugs.

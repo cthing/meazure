@@ -15,8 +15,8 @@ function WriteFooter()
     document.write("    </div>\n");
     document.write("    <hr width='95%'>\n");
     document.write("    <div class='Footer'>\n");
-    document.write("    <div class='Copyright'>Copyright &copy; 2001, 2004, 2011 C Thing Software</div>\n");
-    document.write("    <div class='Contact'>Contact <a href='mailto:meafeedback@cthing.com'>C Thing Software</a> or visit us at <a href='http://www.cthing.com' target='new'>www.cthing.com</a></div>\n");
+    document.write("    <div class='Copyright'>Copyright &copy; 2001 C Thing Software</div>\n");
+    document.write("    <div class='Contact'>Contact <a href='mailto:meafeedback@cthing.com'>C Thing Software</a> or visit us at <a href='https://www.cthing.com' target='new'>www.cthing.com</a></div>\n");
     document.write("    <div class='FooterBottom'></div>\n");
     document.write("</div>\n");
 }

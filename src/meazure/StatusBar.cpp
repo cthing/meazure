@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -46,12 +46,7 @@ void MeaStatusBar::SetIdleMessage(LPCTSTR msg)
 LRESULT MeaStatusBar::OnSetText(WPARAM wParam, LPARAM lParam)
 {
     CString idleMessage = MAKEINTRESOURCE(AFX_IDS_IDLEMESSAGE);
-
-    if ((lParam != 0) && (idleMessage == reinterpret_cast<LPTSTR>(lParam))) {
-        lParam = reinterpret_cast<LPARAM>(m_idleMsg.GetBuffer(256));
-    }
-
-    return CStatusBar::OnSetText(wParam, lParam);
+    return CStatusBar::OnSetText(idleMessage);
 }
 
 

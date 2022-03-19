@@ -1,0 +1,4 @@
+<map id="MeaImageButton" name="MeaImageButton">
+<area shape="rect" id="node1" title="A button that uses bitmap resources." alt="" coords="5,80,125,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="31,5,100,32"/>
+</map>

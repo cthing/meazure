@@ -175,6 +175,6 @@ set(meazure_SRCS
 )
 
 add_executable(Meazure WIN32 ${meazure_SRCS})
-add_dependencies(Meazure help libexpat hooks)
+add_dependencies(Meazure apphelp libexpat hooks)
 target_link_libraries(Meazure libexpat hooks Version.lib ${HTML_HELP_LIBRARY})
 set_target_properties(Meazure PROPERTIES LINK_FLAGS "/MANIFEST")

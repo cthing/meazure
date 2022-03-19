@@ -6,13 +6,9 @@ add_custom_target(dist
                   
 add_dependencies(dist Meazure)
 
-if(MFC_FOUND)
-    set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
-    include(InstallRequiredSystemLibraries)
-    set(REDIST_FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS})
-else(MFC_FOUND)
-    file(GLOB REDIST_FILES "${REDIST_DIR}/msvc*.dll" "${REDIST_DIR}/mfc*.dll" "${REDIST_DIR}/Microsoft.*.manifest")
-endif(MFC_FOUND)
+set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
+include(InstallRequiredSystemLibraries)
+set(REDIST_FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS})
 
 set(DEST_REDIST_FILES)
 foreach(REDIST_FILE ${REDIST_FILES})

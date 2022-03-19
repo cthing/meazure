@@ -1,13 +1,10 @@
 /**
 
-@mainpage Meazure 2.1 - Source Code Documentation
-@image html Logo.gif
-
-@image html MeazureIcon.gif
+@mainpage Meazure 3.0 - Source Code Documentation
 
 @section overview Overview
 These pages document the source code for the Meazure program. Instructions for
-building the program from source code are provided in the file Building.txt at
+building the program from source code are provided in the file Building.md at
 the root of the source tree.
 
 */

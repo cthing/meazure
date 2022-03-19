@@ -1,4 +1,5 @@
-<map id="G" name="G">
+<map id="MeaFileProfile" name="MeaFileProfile">
+<area shape="rect" id="node1" title="Persists the application state to an XML file." alt="" coords="65,80,169,107"/>
 <area shape="rect" id="node2" href="$classMeaProfile.html" title="Base class for the persisting the application state to either the Registry or a file." alt="" coords="5,5,88,32"/>
-<area shape="rect" id="node4" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="112,5,267,32"/>
+<area shape="rect" id="node3" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="112,5,267,32"/>
 </map>

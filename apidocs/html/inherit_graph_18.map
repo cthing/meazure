@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classMeaAdvancedPrefs.html" title="Property page for the advanced preferences." alt="" coords="5,5,139,32"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classev_1_1IValidationHandler.html" title="An application class mixin inherits from the IValidationHandler interface and overrides the HandleVal..." alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node2" href="$classMeaXMLParser.html" title="Provides SAX style XML parsing." alt="" coords="200,5,311,32"/>
 </map>

@@ -1,14 +1,23 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="349,80,405,107"/>
-<area shape="rect" id="node7" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="467,155,569,181"/>
-<area shape="rect" id="node25" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="553,304,623,331"/>
-<area shape="rect" id="node9" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="764,229,871,256"/>
-<area shape="rect" id="node11" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="817,304,911,331"/>
-<area shape="rect" id="node13" href="$Label_8h.html" title="Header file for the label control." alt="" coords="68,304,132,331"/>
-<area shape="rect" id="node15" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="277,229,339,256"/>
-<area shape="rect" id="node40" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond..." alt="" coords="661,229,739,256"/>
-<area shape="rect" id="node44" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="465,229,572,256"/>
-<area shape="rect" id="node27" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="442,304,528,331"/>
-<area shape="rect" id="node33" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="156,304,215,331"/>
-<area shape="rect" id="node29" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="437,379,533,405"/>
+<map id="ScreenTool.h" name="ScreenTool.h">
+<area shape="rect" id="node1" title="Screen information tool header file." alt="" coords="326,5,425,32"/>
+<area shape="rect" id="node2" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="347,80,404,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,304,44,331"/>
+<area shape="rect" id="node4" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="465,155,568,181"/>
+<area shape="rect" id="node12" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="554,304,623,331"/>
+<area shape="rect" id="node5" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="762,229,869,256"/>
+<area shape="rect" id="node6" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="814,304,907,331"/>
+<area shape="rect" id="node7" href="$Label_8h.html" title="Header file for the label control." alt="" coords="69,304,133,331"/>
+<area shape="rect" id="node8" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="275,229,337,256"/>
+<area shape="rect" id="node18" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond." alt="" coords="659,229,737,256"/>
+<area shape="rect" id="node20" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="463,229,570,256"/>
+<area shape="rect" id="node21" title=" " alt="" coords="594,229,634,256"/>
+<area shape="rect" id="node9" title=" " alt="" coords="221,379,284,405"/>
+<area shape="rect" id="node10" title=" " alt="" coords="291,304,337,331"/>
+<area shape="rect" id="node11" title=" " alt="" coords="362,304,418,331"/>
+<area shape="rect" id="node13" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="443,304,529,331"/>
+<area shape="rect" id="node16" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="157,304,215,331"/>
+<area shape="rect" id="node14" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="438,379,534,405"/>
+<area shape="rect" id="node15" title=" " alt="" coords="451,453,521,480"/>
+<area shape="rect" id="node17" title=" " alt="" coords="140,379,197,405"/>
+<area shape="rect" id="node19" title=" " alt="" coords="656,304,740,331"/>
 </map>

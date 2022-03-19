@@ -19,7 +19,6 @@
 
 #include "StdAfx.h"
 #include <TimeStamp.h>
-#include <boost/test/included/unit_test_framework.hpp>
 #include <boost/test/included/unit_test.hpp>
 
 #ifdef _DEBUG

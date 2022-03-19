@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -51,8 +51,8 @@ time_t MeaParseTimeStamp(const CString& timeStr)
     // The boost time/date routines don't want to see the
     // 'T' or 'Z' in delimited time strings so remove them.
     //
-    int tpos = ts.find('T');
-    int zpos = ts.find('Z');
+    int tpos = static_cast<int>(ts.find('T'));
+    int zpos = static_cast<int>(ts.find('Z'));
 
     if (tpos != -1) {
         ts.replace(tpos, 1, 1, ' ');
@@ -74,9 +74,9 @@ time_t MeaParseTimeStamp(const CString& timeStr)
     date tdate = tlocal.date();
     time_duration tdur = tlocal.time_of_day();
 
-    tstruct.tm_hour  = tdur.hours();
-    tstruct.tm_min   = tdur.minutes();
-    tstruct.tm_sec   = tdur.seconds();
+    tstruct.tm_hour  = static_cast<int>(tdur.hours());
+    tstruct.tm_min   = static_cast<int>(tdur.minutes());
+    tstruct.tm_sec   = static_cast<int>(tdur.seconds());
 
     tstruct.tm_year  = tdate.year() - 1900;
     tstruct.tm_mon   = tdate.month() - 1;

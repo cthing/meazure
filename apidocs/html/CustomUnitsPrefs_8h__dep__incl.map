@@ -1,5 +1,6 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="23,80,125,107"/>
-<area shape="rect" id="node5" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="29,155,120,181"/>
-<area shape="rect" id="node7" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="33,229,116,256"/>
+<map id="CustomUnitsPrefs.h" name="CustomUnitsPrefs.h">
+<area shape="rect" id="node1" title="Custom measurement units property page header file." alt="" coords="5,5,144,32"/>
+<area shape="rect" id="node2" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="23,80,126,107"/>
+<area shape="rect" id="node3" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="29,155,120,181"/>
+<area shape="rect" id="node4" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="33,229,117,256"/>
 </map>

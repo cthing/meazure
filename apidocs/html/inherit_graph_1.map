@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classCChildView.html" title="The view class for the application." alt="" coords="5,5,93,32"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,103,32"/>
+<area shape="rect" id="node2" href="$classMeaColorDialog.html" title="Derived class of CColorDialog that manages persisting custom colors and simplifies using the dialog." alt="" coords="151,5,264,32"/>
 </map>

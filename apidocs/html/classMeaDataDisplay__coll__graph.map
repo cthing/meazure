@@ -1,8 +1,13 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMeaDataSection.html" title="The data display is divided into two major sections: Region and Screen." alt="" coords="5,173,123,200"/>
-<area shape="rect" id="node4" href="$classMeaImageButton.html" title="A button that uses bitmap resources." alt="" coords="148,173,268,200"/>
-<area shape="rect" id="node6" href="$classMeaDataDisplay_1_1DataItem.html" title="Each data display field is actually composed of a label, a text field, possibly a spin control..." alt="" coords="293,173,469,200"/>
-<area shape="rect" id="node8" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="235,5,313,32"/>
-<area shape="rect" id="node12" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="327,83,435,109"/>
-<area shape="rect" id="node10" href="$classMeaNumberField.html" title="Provides a text field control that allows only numeric entries." alt="" coords="460,83,580,109"/>
+<map id="MeaDataDisplay" name="MeaDataDisplay">
+<area shape="rect" id="node1" title="This class is responsible for the display of all measurement data." alt="" coords="160,483,277,509"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,247,64,273"/>
+<area shape="rect" id="node3" href="$classMeaDataSection.html" title="The data display is divided into two major sections: Region and Screen." alt="" coords="89,247,207,273"/>
+<area shape="rect" id="node4" title=" " alt="" coords="175,157,244,184"/>
+<area shape="rect" id="node11" href="$classMeaImageButton.html" title="A button that uses bitmap resources." alt="" coords="232,247,352,273"/>
+<area shape="rect" id="node5" href="$classMeaDataDisplay_1_1DataItem.html" title="Each data display field is actually composed of a label, a text field, possibly a spin control,..." alt="" coords="377,247,554,273"/>
+<area shape="rect" id="node6" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="319,81,398,108"/>
+<area shape="rect" id="node10" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="411,157,519,184"/>
+<area shape="rect" id="node7" title=" " alt="" coords="326,5,391,32"/>
+<area shape="rect" id="node8" href="$classMeaNumberField.html" title="Provides a text field control that allows only numeric entries." alt="" coords="544,157,664,184"/>
+<area shape="rect" id="node9" title=" " alt="" coords="577,81,631,108"/>
 </map>

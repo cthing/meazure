@@ -1,3 +1,8 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classMeaPositionLogMgr_1_1DesktopInfo.html" title="Represents all information of interest about the system at the time a position is recorded..." alt="" coords="5,5,219,32"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classMeaProfile.html" title="Base class for the persisting the application state to either the Registry or a file." alt="" coords="63,5,146,32"/>
+<area shape="rect" id="node2" href="$classMeaFileProfile.html" title="Persists the application state to an XML file." alt="" coords="269,56,373,83"/>
+<area shape="rect" id="node3" href="$classMeaRegistryProfile.html" title="Persists the application state to the registry." alt="" coords="255,5,386,32"/>
+<area shape="rect" id="node4" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,107,204,149"/>
+<area shape="rect" id="node5" href="$classMeaPositionLogMgr.html" title="Manages the recording, saving and loading of tool positions." alt="" coords="252,111,389,137"/>
+<area shape="rect" id="node6" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="27,56,182,83"/>
 </map>

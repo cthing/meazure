@@ -1,4 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMeaFileProfile.html" title="Persists the application state to an XML file." alt="" coords="5,80,109,107"/>
-<area shape="rect" id="node5" href="$classMeaPositionLogMgr.html" title="Manages the recording, saving and loading of tool positions." alt="" coords="134,80,271,107"/>
+<map id="MeaXMLParserHandler" name="MeaXMLParserHandler">
+<area shape="rect" id="node1" title="Mix&#45;in class for XML parser callback methods." alt="" coords="52,5,207,32"/>
+<area shape="rect" id="node2" href="$classMeaFileProfile.html" title="Persists the application state to an XML file." alt="" coords="5,80,109,107"/>
+<area shape="rect" id="node3" href="$classMeaPositionLogMgr.html" title="Manages the recording, saving and loading of tool positions." alt="" coords="134,80,271,107"/>
 </map>

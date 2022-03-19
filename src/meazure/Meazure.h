@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -85,8 +85,6 @@ public:
     ///
     /// @param wParam   [in] Message ID.
     /// @param lParam   [in] MOUSEHOOKSTRUCT
-    ///
-    /// @return Always returns 0.
     ///
     afx_msg void OnMouseHook(WPARAM wParam, LPARAM lParam);
 

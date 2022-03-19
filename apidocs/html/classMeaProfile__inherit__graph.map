@@ -1,4 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMeaFileProfile.html" title="Persists the application state to an XML file." alt="" coords="5,80,109,107"/>
-<area shape="rect" id="node5" href="$classMeaRegistryProfile.html" title="Persists the application state to the registry." alt="" coords="133,80,264,107"/>
+<map id="MeaProfile" name="MeaProfile">
+<area shape="rect" id="node1" title="Base class for the persisting the application state to either the Registry or a file." alt="" coords="87,5,169,32"/>
+<area shape="rect" id="node2" href="$classMeaFileProfile.html" title="Persists the application state to an XML file." alt="" coords="5,80,109,107"/>
+<area shape="rect" id="node3" href="$classMeaRegistryProfile.html" title="Persists the application state to the registry." alt="" coords="133,80,264,107"/>
 </map>

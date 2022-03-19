@@ -1,4 +1,8 @@
 src/help/hid.h
+src/meazure/Meazure.aps
+src/meazure/RC[a-z][0-9][0-9]*
 support/tools/makehid/._makehid.py
 build*
 dist
+.vs/
+Testing/

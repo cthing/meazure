@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -41,7 +41,7 @@ MeaGUID& MeaGUID::Assign(LPCTSTR guidStr)
 
     int field[11];
     int count = _stscanf_s(guidStr,
-                           _T("%08lx-%04hx-%04hx-%02hx%02hx-%02hx%02hx%02hx%02hx%02hx%02hx"),
+                           _T("%08x-%04x-%04x-%02x%02x-%02x%02x%02x%02x%02x%02x"),
                            &field[0], &field[1], &field[2], &field[3],
                            &field[4], &field[5], &field[6], &field[7],
                            &field[8], &field[9], &field[10]);
@@ -49,11 +49,11 @@ MeaGUID& MeaGUID::Assign(LPCTSTR guidStr)
         AfxThrowOleException(E_INVALIDARG);
     }
 
-    m_guid.Data1 = static_cast<DWORD>(field[0]);
-    m_guid.Data2 = static_cast<WORD>(field[1]);
-    m_guid.Data3 = static_cast<WORD>(field[2]);
+    m_guid.Data1 = static_cast<unsigned long>(field[0]);
+    m_guid.Data2 = static_cast<unsigned short>(field[1]);
+    m_guid.Data3 = static_cast<unsigned short>(field[2]);
     for (int i = 0; i < 8; i++) {
-        m_guid.Data4[i] = static_cast<BYTE>(field[i+3]);
+        m_guid.Data4[i] = static_cast<unsigned char>(field[i+3]);
     }
 
     return *this;
@@ -63,7 +63,7 @@ MeaGUID& MeaGUID::Assign(LPCTSTR guidStr)
 CString MeaGUID::ToString() const
 {
     m_buffer.Format(
-                _T("%08lX-%04hX-%04hX-%02hX%02hX-%02hX%02hX%02hX%02hX%02hX%02hX"),
+                _T("%08lX-%04hX-%04hX-%02hhX%02hhX-%02hhX%02hhX%02hhX%02hhX%02hhX%02hhX"),
                 m_guid.Data1, m_guid.Data2, m_guid.Data3,
                 m_guid.Data4[0], m_guid.Data4[1], m_guid.Data4[2], m_guid.Data4[3],
                 m_guid.Data4[4], m_guid.Data4[5], m_guid.Data4[6], m_guid.Data4[7]);

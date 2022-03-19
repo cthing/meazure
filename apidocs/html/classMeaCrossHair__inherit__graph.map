@@ -1,3 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMeaGraphic.html" title="Base class for all graphic elements." alt="" coords="11,5,103,32"/>
+<map id="MeaCrossHair" name="MeaCrossHair">
+<area shape="rect" id="node1" title="A crosshair element." alt="" coords="5,155,109,181"/>
+<area shape="rect" id="node2" href="$classMeaGraphic.html" title="Base class for all graphic elements." alt="" coords="11,80,103,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="28,5,87,32"/>
 </map>

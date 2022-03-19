@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classMeaPositionSaveDlg.html" title="The Save dialog for Position Log files." alt="" coords="5,5,147,32"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,5,193,47"/>
+<area shape="rect" id="node2" href="$classMeaProfileMgr.html" title="Manages the saving and loading of profile files." alt="" coords="241,13,347,39"/>
 </map>

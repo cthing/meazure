@@ -1,4 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node5" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="95,80,191,107"/>
-<area shape="rect" id="node9" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="215,80,308,107"/>
+<map id="Timer.h" name="Timer.h">
+<area shape="rect" id="node1" title="Header file for a high priority timer." alt="" coords="111,5,176,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,71,107"/>
+<area shape="rect" id="node3" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="95,80,191,107"/>
+<area shape="rect" id="node5" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="215,80,309,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="109,155,178,181"/>
 </map>

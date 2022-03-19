@@ -1,14 +1,15 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMeaGridTool.html" title="Grid overlay tool." alt="" coords="134,56,229,83"/>
-<area shape="rect" id="node5" href="$classMeaOriginTool.html" title="Origin marker tool." alt="" coords="129,107,234,133"/>
-<area shape="rect" id="node7" href="$classMeaRadioTool.html" title="Abstract base class for tools whose use is mutually exclusive." alt="" coords="129,157,233,184"/>
-<area shape="rect" id="node23" href="$classMeaRulerTool.html" title="Ruler measurement tool." alt="" coords="131,208,232,235"/>
-<area shape="rect" id="node25" href="$classMeaScreenTool.html" title="Screen information tool." alt="" coords="125,259,237,285"/>
-<area shape="rect" id="node9" href="$classMeaAngleTool.html" title="Angle measurement tool." alt="" coords="292,5,396,32"/>
-<area shape="rect" id="node11" href="$classMeaCircleTool.html" title="Circle measurement tool." alt="" coords="292,56,396,83"/>
-<area shape="rect" id="node13" href="$classMeaCursorTool.html" title="Cursor position measurement tool." alt="" coords="289,107,399,133"/>
-<area shape="rect" id="node15" href="$classMeaLineTool.html" title="Line measurement tool." alt="" coords="297,157,391,184"/>
-<area shape="rect" id="node17" href="$classMeaPointTool.html" title="Point measurement tool." alt="" coords="293,208,395,235"/>
-<area shape="rect" id="node19" href="$classMeaRectTool.html" title="Rectangle measurement tool." alt="" coords="295,259,393,285"/>
-<area shape="rect" id="node21" href="$classMeaWindowTool.html" title="Window measurement tool." alt="" coords="285,309,403,336"/>
+<map id="MeaTool" name="MeaTool">
+<area shape="rect" id="node1" title="Abstract base class for all measurement tools." alt="" coords="5,157,76,184"/>
+<area shape="rect" id="node2" href="$classMeaGridTool.html" title="Grid overlay tool." alt="" coords="133,56,227,83"/>
+<area shape="rect" id="node3" href="$classMeaOriginTool.html" title="Origin marker tool." alt="" coords="127,107,233,133"/>
+<area shape="rect" id="node4" href="$classMeaRadioTool.html" title="Abstract base class for tools whose use is mutually exclusive." alt="" coords="128,157,232,184"/>
+<area shape="rect" id="node12" href="$classMeaRulerTool.html" title="Ruler measurement tool." alt="" coords="129,208,231,235"/>
+<area shape="rect" id="node13" href="$classMeaScreenTool.html" title="Screen information tool." alt="" coords="124,259,236,285"/>
+<area shape="rect" id="node5" href="$classMeaAngleTool.html" title="Angle measurement tool." alt="" coords="291,5,395,32"/>
+<area shape="rect" id="node6" href="$classMeaCircleTool.html" title="Circle measurement tool." alt="" coords="291,56,395,83"/>
+<area shape="rect" id="node7" href="$classMeaCursorTool.html" title="Cursor position measurement tool." alt="" coords="288,107,397,133"/>
+<area shape="rect" id="node8" href="$classMeaLineTool.html" title="Line measurement tool." alt="" coords="295,157,390,184"/>
+<area shape="rect" id="node9" href="$classMeaPointTool.html" title="Point measurement tool." alt="" coords="292,208,393,235"/>
+<area shape="rect" id="node10" href="$classMeaRectTool.html" title="Rectangle measurement tool." alt="" coords="293,259,392,285"/>
+<area shape="rect" id="node11" href="$classMeaWindowTool.html" title="Window measurement tool." alt="" coords="284,309,401,336"/>
 </map>

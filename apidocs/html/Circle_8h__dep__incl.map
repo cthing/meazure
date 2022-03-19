@@ -1,4 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="5,80,96,107"/>
-<area shape="rect" id="node5" href="$ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="11,155,89,181"/>
+<map id="Circle.h" name="Circle.h">
+<area shape="rect" id="node1" title="Circle graphic header file." alt="" coords="17,5,84,32"/>
+<area shape="rect" id="node2" href="$CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="5,80,96,107"/>
+<area shape="rect" id="node3" href="$ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="11,155,90,181"/>
 </map>

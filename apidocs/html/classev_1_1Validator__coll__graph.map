@@ -1,3 +1,4 @@
-<map id="G" name="G">
+<map id="ev::Validator" name="ev::Validator">
+<area shape="rect" id="node1" title="The star of the show, this call performs XML validation for the expat parser." alt="" coords="32,95,125,121"/>
 <area shape="rect" id="node2" href="$classev_1_1IValidationHandler.html" title="An application class mixin inherits from the IValidationHandler interface and overrides the HandleVal..." alt="" coords="5,5,152,32"/>
 </map>

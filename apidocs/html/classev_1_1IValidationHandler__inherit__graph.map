@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMeaXMLParser.html" title="Provides SAX style XML parsing." alt="" coords="23,80,133,107"/>
+<map id="ev::IValidationHandler" name="ev::IValidationHandler">
+<area shape="rect" id="node1" title="An application class mixin inherits from the IValidationHandler interface and overrides the HandleVal..." alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node2" href="$classMeaXMLParser.html" title="Provides SAX style XML parsing." alt="" coords="23,80,134,107"/>
 </map>

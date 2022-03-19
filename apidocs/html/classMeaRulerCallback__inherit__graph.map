@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMeaRulerTool.html" title="Ruler measurement tool." alt="" coords="17,80,119,107"/>
+<map id="MeaRulerCallback" name="MeaRulerCallback">
+<area shape="rect" id="node1" title="Ruler drag callback mixin class." alt="" coords="5,5,132,32"/>
+<area shape="rect" id="node2" href="$classMeaRulerTool.html" title="Ruler measurement tool." alt="" coords="18,80,119,107"/>
 </map>

@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "resource.h"
 
@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -27,18 +25,18 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
     "#define _AFX_NO_OLE_RESOURCES\r\n"
@@ -66,27 +64,33 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-IDR_MAINFRAME           ICON    DISCARDABLE     "res\\Meazure.ico"
-IDI_LOG_ICON            ICON    DISCARDABLE     "res\\Log.ico"
+IDR_MAINFRAME           ICON                    "res\\Meazure.ico"
+
+IDI_LOG_ICON            ICON                    "res\\Log.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Bitmap
 //
 
-IDR_MAINFRAME           BITMAP  MOVEABLE PURE   "res\\Toolbar.bmp"
-IDB_MEA_NORMPAUSE       BITMAP  DISCARDABLE     "res\\PauseNormal.bmp"
-IDB_MEA_SELPAUSE        BITMAP  DISCARDABLE     "res\\PauseActive.bmp"
-IDB_LOGO                BITMAP  DISCARDABLE     "res\\Logo.bmp"
-IDB_FLAG                BITMAP  DISCARDABLE     "res\\Flag.bmp"
-IDB_MEA_WARNING         BITMAP  DISCARDABLE     "res\\Warning.bmp"
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+IDB_MEA_NORMPAUSE       BITMAP                  "res\\PauseNormal.bmp"
+
+IDB_MEA_SELPAUSE        BITMAP                  "res\\PauseActive.bmp"
+
+IDB_LOGO                BITMAP                  "res\\Logo.bmp"
+
+IDB_MEA_WARNING         BITMAP                  "res\\Warning.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Toolbar
 //
 
-IDR_MAINFRAME TOOLBAR DISCARDABLE  16, 16
+IDR_MAINFRAME TOOLBAR 16, 16
 BEGIN
     BUTTON      ID_MEA_CURSOR
     BUTTON      ID_MEA_POINT
@@ -106,7 +110,7 @@ END
 // Menu
 //
 
-IDR_MAINFRAME MENU PRELOAD DISCARDABLE 
+IDR_MAINFRAME MENU
 BEGIN
     POPUP "&File"
     BEGIN
@@ -213,10 +217,10 @@ END
 // Accelerator
 //
 
-IDR_MAINFRAME ACCELERATORS PRELOAD MOVEABLE PURE 
+IDR_MAINFRAME ACCELERATORS
 BEGIN
-    187,            ID_MEA_ZOOM_IN,         VIRTKEY, CONTROL, NOINVERT
-    189,            ID_MEA_ZOOM_OUT,        VIRTKEY, CONTROL, NOINVERT
+    VK_OEM_PLUS,    ID_MEA_ZOOM_IN,         VIRTKEY, CONTROL, NOINVERT
+    VK_OEM_MINUS,   ID_MEA_ZOOM_OUT,        VIRTKEY, CONTROL, NOINVERT
     "A",            ID_MEA_ORIGIN,          VIRTKEY, CONTROL, NOINVERT
     "B",            ID_MEA_HIDE_CROSSHAIR,  VIRTKEY, CONTROL, NOINVERT
     "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
@@ -245,36 +249,24 @@ END
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 222, 198
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_ABOUTBOX DIALOGEX 0, 0, 223, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About Meazure"
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
-    LTEXT           "meafeedback@cthing.com",IDC_FEEDBACK_EMAIL,68,124,86,8,
-                    SS_NOTIFY
     LTEXT           "Meazure",IDC_PROGRAM_TITLE,40,15,36,8,SS_NOPREFIX
-    LTEXT           "Copyright 2001-2011  C Thing Software",IDC_STATIC,18,
-                    44,136,8
-    DEFPUSHBUTTON   "OK",IDOK,85,177,50,14,WS_GROUP
+    LTEXT           "Copyright 2001 C Thing Software",IDC_STATIC,18,44,136,8
+    DEFPUSHBUTTON   "OK",IDOK,85,63,50,14,WS_GROUP
     ICON            IDR_MAINFRAME,IDC_STATIC,11,16,20,20
-    CONTROL         145,IDC_STATIC,"Static",SS_BITMAP,168,10,47,46
+    CONTROL         IDB_LOGO,IDC_STATIC,"Static",SS_BITMAP,169,10,47,46
     LTEXT           "www.cthing.com",IDC_HOME_URL,40,25,54,8,SS_NOTIFY
-    GROUPBOX        "",IDC_STATIC,7,57,208,115
     GROUPBOX        "",IDC_STATIC,7,7,156,49
-    LTEXT           "Thanks for using Meazure. This program is dedicated to those who were touched by the tragedies of September 11, 2001. If you find this program useful, please do whatever you can to bring light to their darkness. ",
-                    IDC_STATIC,13,66,196,33
-    LTEXT           "We'd love to get your feedback on this program and hear how you made a difference. Please email:",
-                    IDC_STATIC,13,103,195,17
-    LTEXT           "Thank you and peace,",IDC_STATIC,13,139,73,8
-    LTEXT           "Baron Roberts",IDC_STATIC,13,149,46,8
-    LTEXT           "Founder, C Thing Software",IDC_STATIC,13,159,86,8
-    CONTROL         155,IDC_STATIC,"Static",SS_BITMAP,166,142,37,22
     LTEXT           "Version: ",IDC_PROGRAM_VERSION,110,15,47,8,SS_NOPREFIX
-    LTEXT           "Build: ",IDC_PROGRAM_BUILD,118,26,39,8
+    LTEXT           "Build: ",IDC_PROGRAM_BUILD,110,26,39,8
 END
 
-IDD_PREF_RULERS DIALOG DISCARDABLE  0, 0, 216, 127
-STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+IDD_PREF_RULERS DIALOG 0, 0, 216, 127
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Rulers"
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -284,29 +276,24 @@ BEGIN
     PUSHBUTTON      "&Border...",IDC_RULER_BORDER_BTN,67,68,55,14
     PUSHBUTTON      "&Default",IDC_RULER_BACK_DEF,127,46,35,14
     PUSHBUTTON      "De&fault",IDC_RULER_BORDER_DEF,127,68,35,14
-    CONTROL         "Slider1",IDC_RULER_OPACITY,"msctls_trackbar32",TBS_BOTH | 
-                    TBS_NOTICKS | TBS_TOOLTIPS | WS_TABSTOP,91,95,68,9
+    CONTROL         "Slider1",IDC_RULER_OPACITY,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_TOOLTIPS | WS_TABSTOP,91,95,68,9
     LTEXT           "100%",IDC_RULER_OPACITY_LABEL2,161,95,18,8
     LTEXT           "Opacity:  20",IDC_RULER_OPACITY_LABEL1,51,95,39,8
 END
 
-IDD_PREF_CALIBRATION DIALOG DISCARDABLE  0, 0, 216, 127
-STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+IDD_PREF_CALIBRATION DIALOG 0, 0, 216, 127
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Calibration"
 FONT 8, "MS Sans Serif"
 BEGIN
-    CONTROL         "Use operating system value",IDC_AUTO_RES,"Button",
-                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,13,25,103,10
-    CONTROL         "Set manually (recommended)",IDC_MANUAL_RES,"Button",
-                    BS_AUTORADIOBUTTON,13,35,107,10
+    CONTROL         "Use operating system value",IDC_AUTO_RES,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,13,25,103,10
+    CONTROL         "Set manually (recommended)",IDC_MANUAL_RES,"Button",BS_AUTORADIOBUTTON,13,35,107,10
     EDITTEXT        IDC_CAL_RX_FIELD,52,63,35,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_CAL_RY_FIELD,108,63,35,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_CAL_W_FIELD,52,79,35,12,ES_AUTOHSCROLL
     EDITTEXT        IDC_CAL_H_FIELD,108,79,35,12,ES_AUTOHSCROLL
-    CONTROL         "Progress1",IDC_CAL_RX_SLIDER,"msctls_progress32",
-                    WS_BORDER,41,104,127,12
-    CONTROL         "Progress2",IDC_CAL_RY_SLIDER,"msctls_progress32",
-                    PBS_VERTICAL | WS_BORDER,189,15,14,101
+    CONTROL         "Progress1",IDC_CAL_RX_SLIDER,"msctls_progress32",WS_BORDER,41,104,127,12
+    CONTROL         "Progress2",IDC_CAL_RY_SLIDER,"msctls_progress32",PBS_VERTICAL | WS_BORDER,189,15,14,101
     GROUPBOX        "Resolution",IDC_CALRES_TITLE,7,7,202,113
     LTEXT           "pix./in",IDC_CAL_RES_LABEL,146,64,28,10
     LTEXT           "Ry:",IDC_CAL_RY_LABEL,95,65,12,8
@@ -314,20 +301,15 @@ BEGIN
     LTEXT           "in",IDC_CAL_DIM_LABEL,146,81,25,8
     LTEXT           "H:",IDC_CAL_H_LABEL,99,81,8,8
     LTEXT           "W:",IDC_CAL_W_LABEL,41,81,10,8
-    LTEXT           "Enter resolution, or screen dimensions, or\nplace a ruler by the sliders and adjust.",
-                    IDC_CAL_INSTR,40,44,131,18
-    LTEXT           "Adjust sliders to 1 inch mark on a ruler.",
-                    IDC_CAL_INSTR2,41,93,122,8
-    CONTROL         "in.",IDC_CAL_INCHES,"Button",BS_AUTORADIOBUTTON | 
-                    WS_GROUP | WS_TABSTOP,128,35,20,10
-    CONTROL         "cm.",IDC_CAL_CM,"Button",BS_AUTORADIOBUTTON,153,35,24,
-                    10
-    LTEXT           "For multiple screens, move dialog to screen of interest.",
-                    IDC_STATIC,13,16,171,8
+    LTEXT           "Enter resolution, or screen dimensions, or\nplace a ruler by the sliders and adjust.",IDC_CAL_INSTR,40,44,131,18
+    LTEXT           "Adjust sliders to 1 inch mark on a ruler.",IDC_CAL_INSTR2,41,93,122,8
+    CONTROL         "in.",IDC_CAL_INCHES,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,128,35,20,10
+    CONTROL         "cm.",IDC_CAL_CM,"Button",BS_AUTORADIOBUTTON,153,35,24,10
+    LTEXT           "For multiple screens, move dialog to screen of interest.",IDC_STATIC,13,16,171,8
 END
 
-IDD_PREF_TOOLS DIALOG DISCARDABLE  0, 0, 216, 127
-STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+IDD_PREF_TOOLS DIALOG 0, 0, 216, 127
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Tools"
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -344,44 +326,35 @@ BEGIN
     PUSHBUTTON      "&Highlight...",IDC_TOOLS_CHHILITE_BTN,75,69,59,12
     PUSHBUTTON      "&Default",IDC_TOOLS_LINE_DEF,150,16,50,12
     PUSHBUTTON      "&Color...",IDC_TOOLS_LINE_BTN,76,16,59,12
-    CONTROL         "Show popup data windows",IDC_MEA_DATA_WIN,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,75,96,101,10
+    CONTROL         "Show popup data windows",IDC_MEA_DATA_WIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,75,96,101,10
     GROUPBOX        "",IDC_DATAWIN_SAMPLE,17,89,48,26
-    CONTROL         "Slider1",IDC_CH_OPACITY,"msctls_trackbar32",TBS_BOTH | 
-                    TBS_NOTICKS | TBS_TOOLTIPS | WS_TABSTOP,114,85,68,9
+    CONTROL         "Slider1",IDC_CH_OPACITY,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | TBS_TOOLTIPS | WS_TABSTOP,114,85,68,9
     LTEXT           "100%",IDC_CH_OPACITY_LABEL2,184,85,18,8
     LTEXT           "Opacity:  20",IDC_CH_OPACITY_LABEL1,74,85,39,8
-    CONTROL         "Show origin marker",IDC_MEA_ORIGIN_MARKER,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,75,107,76,10
+    CONTROL         "Show origin marker",IDC_MEA_ORIGIN_MARKER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,75,107,76,10
 END
 
-IDD_GRID_SPACING DIALOG DISCARDABLE  0, 0, 120, 103
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_GRID_SPACING DIALOG 0, 0, 120, 103
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Grid Spacing"
 FONT 8, "MS Sans Serif"
 BEGIN
     EDITTEXT        IDC_GRID_HSPACE,43,28,31,14,ES_AUTOHSCROLL
-    CONTROL         "Spin2",IDC_GRID_HSPACE_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,103,28,10,14
+    CONTROL         "Spin2",IDC_GRID_HSPACE_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,103,28,10,14
     EDITTEXT        IDC_GRID_VSPACE,43,46,31,14,ES_AUTOHSCROLL
-    CONTROL         "Spin4",IDC_GRID_VSPACE_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,103,46,10,14
+    CONTROL         "Spin4",IDC_GRID_VSPACE_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,103,46,10,14
     PUSHBUTTON      "OK",IDOK,7,82,50,14
     PUSHBUTTON      "Cancel",IDCANCEL,63,82,50,14
     LTEXT           "Horizontal:",IDC_STATIC,7,31,34,8
     LTEXT           "Vertical:",IDC_STATIC,15,49,26,8
     LTEXT           "pixels",IDC_STATIC,77,49,18,8
     LTEXT           "pixels",IDC_STATIC,77,31,18,8
-    CONTROL         "Link horizontal and vertical",IDC_GRID_LINK,"Button",
-                    BS_AUTOCHECKBOX | WS_TABSTOP,7,65,100,10
-    LTEXT           "Enter spacing values between 40 and 1000 pixels.",
-                    IDC_STATIC,7,7,106,18
+    CONTROL         "Link horizontal and vertical",IDC_GRID_LINK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,7,65,100,10
+    LTEXT           "Enter spacing values between 40 and 1000 pixels.",IDC_STATIC,7,7,106,18
 END
 
-IDD_PREF_ADVANCED DIALOG DISCARDABLE  0, 0, 216, 127
-STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+IDD_PREF_ADVANCED DIALOG 0, 0, 216, 127
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Advanced"
 FONT 8, "MS Sans Serif"
 BEGIN
@@ -391,44 +364,39 @@ BEGIN
     PUSHBUTTON      "&Clear",IDC_CLEAR_PROFILE,178,19,25,14
     GROUPBOX        "Master Reset",IDC_STATIC,7,47,202,73
     PUSHBUTTON      "R E S E T",IDC_MASTER_RESET,82,99,50,14
-    LTEXT           "The master reset restores all factory default settings. All customizations will be lost, including resolution calibration, custom units settings and color selections. A master reset cannot be undone.",
-                    IDC_STATIC,15,59,184,32
+    LTEXT           "The master reset restores all factory default settings. All customizations will be lost, including resolution calibration, custom units settings and color selections. A master reset cannot be undone.",IDC_STATIC,15,59,184,32
 END
 
-IDD_RES_WARNING DIALOG DISCARDABLE  0, 0, 186, 106
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_RES_WARNING DIALOG 0, 0, 186, 106
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Warning - Screen Resolution"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "Calibrate",IDOK,35,85,50,14
     PUSHBUTTON      "Continue",IDCANCEL,101,85,50,14
     ICON            "",IDC_MEA_WARNING,7,7,21,20
-    LTEXT           "To accurately display the requested units, Meazure requires the correct screen resolution (pixels/inch).",
-                    IDC_STATIC,36,7,143,27
-    LTEXT           "Windows can provide a default value for the screen resolution but this value is not accurate. It is highly recommended that you manually measure the resolution using the Calibration preference panel.",
-                    IDC_STATIC,36,37,143,43
+    LTEXT           "To accurately display the requested units, Meazure requires the correct screen resolution (pixels/inch).",IDC_STATIC,36,7,143,27
+    LTEXT           "Windows can provide a default value for the screen resolution but this value is not accurate. It is highly recommended that you manually measure the resolution using the Calibration preference panel.",IDC_STATIC,36,37,143,43
 END
 
-IDD_DIM_WARNING DIALOG DISCARDABLE  0, 0, 186, 73
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_DIM_WARNING DIALOG 0, 0, 186, 73
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Warning - Screen Resolution"
 FONT 8, "MS Sans Serif"
 BEGIN
     DEFPUSHBUTTON   "Calibrate",IDOK,35,52,50,14
     PUSHBUTTON      "Continue",IDCANCEL,101,52,50,14
     ICON            "",IDC_MEA_WARNING,7,7,21,20
-    LTEXT           "The pixel dimensions of the screen have changed since the last time the screen resolution was measured. Please recalibrate the screen resolution using the Calibration preference panel.",
-                    IDC_STATIC,36,7,143,42
+    LTEXT           "The pixel dimensions of the screen have changed since the last time the screen resolution was measured. Please recalibrate the screen resolution using the Calibration preference panel.",IDC_STATIC,36,7,143,42
 END
 
-IDD_POSITION_MGR DIALOG DISCARDABLE  0, 0, 186, 108
-STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+IDD_POSITION_MGR DIALOG 0, 0, 186, 108
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Positions"
 FONT 8, "MS Sans Serif"
 BEGIN
     SCROLLBAR       IDC_MEA_POSITION_SCROLLBAR,7,7,172,11,WS_TABSTOP
-    EDITTEXT        IDC_MEA_POSITION_DESC,48,48,131,21,ES_MULTILINE | 
-                    ES_AUTOVSCROLL | ES_WANTRETURN
+    EDITTEXT        IDC_MEA_POSITION_DESC,48,48,131,21,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN
     PUSHBUTTON      "Add",IDC_MEA_ADD_POSITION,7,75,40,11
     PUSHBUTTON      "Replace",IDC_MEA_REPLACE_POSITION,51,75,40,11
     PUSHBUTTON      "Delete",IDC_MEA_DELETE_POSITION,95,75,40,11
@@ -444,98 +412,71 @@ BEGIN
     PUSHBUTTON      "Save As...",IDC_MEA_SAVE_POSITIONS_AS,95,90,40,11
 END
 
-IDD_POSITION_SAVE DIALOG DISCARDABLE  0, 0, 216, 46
-STYLE DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS
+IDD_POSITION_SAVE DIALOG 0, 0, 216, 46
+STYLE DS_SETFONT | DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS
 FONT 8, "MS Sans Serif"
 BEGIN
     EDITTEXT        IDC_LOG_TITLE,54,1,155,12,ES_AUTOHSCROLL
     LTEXT           "Log Title:",IDC_STATIC,6,3,37,8
     LTEXT           "Description:",IDC_STATIC,6,20,41,8
-    EDITTEXT        IDC_LOG_DESC,54,20,155,21,ES_MULTILINE | ES_AUTOVSCROLL | 
-                    ES_WANTRETURN
+    EDITTEXT        IDC_LOG_DESC,54,20,155,21,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN
 END
 
-IDD_PREF_PRECISION DIALOG DISCARDABLE  0, 0, 216, 127
-STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+IDD_PREF_PRECISION DIALOG 0, 0, 216, 127
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Precision"
 FONT 8, "MS Sans Serif"
 BEGIN
     GROUPBOX        "",IDC_STATIC,7,3,202,28
-    LTEXT           "Set the number of decimal places to display for each measurement field in each system of units.",
-                    IDC_STATIC,13,11,168,17
+    LTEXT           "Set the number of decimal places to display for each measurement field in each system of units.",IDC_STATIC,13,11,168,17
     GROUPBOX        "Units",IDC_STATIC,7,33,202,32
-    CONTROL         "px",IDC_PREC_PX,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
-                    WS_TABSTOP,15,42,23,10
+    CONTROL         "px",IDC_PREC_PX,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,15,42,23,10
     CONTROL         "tp",IDC_PREC_TP,"Button",BS_AUTORADIOBUTTON,49,42,22,10
     CONTROL         "pt",IDC_PREC_PT,"Button",BS_AUTORADIOBUTTON,82,42,22,10
-    CONTROL         "pc",IDC_PREC_PC,"Button",BS_AUTORADIOBUTTON,115,42,24,
-                    10
+    CONTROL         "pc",IDC_PREC_PC,"Button",BS_AUTORADIOBUTTON,115,42,24,10
     CONTROL         "in",IDC_PREC_IN,"Button",BS_AUTORADIOBUTTON,15,53,21,10
     CONTROL         "cm",IDC_PREC_CM,"Button",BS_AUTORADIOBUTTON,49,53,25,10
     CONTROL         "mm",IDC_PREC_MM,"Button",BS_AUTORADIOBUTTON,82,53,27,10
-    CONTROL         "custom",IDC_PREC_CUSTOM,"Button",BS_AUTORADIOBUTTON,115,
-                    53,39,10
-    CONTROL         "deg",IDC_PREC_DEG,"Button",BS_AUTORADIOBUTTON,174,42,28,
-                    10
-    CONTROL         "rad",IDC_PREC_RAD,"Button",BS_AUTORADIOBUTTON,174,53,26,
-                    10
-    GROUPBOX        "Decimal Places  (between 0 and 6)",IDC_STATIC,7,67,202,
-                    53
+    CONTROL         "custom",IDC_PREC_CUSTOM,"Button",BS_AUTORADIOBUTTON,115,53,39,10
+    CONTROL         "deg",IDC_PREC_DEG,"Button",BS_AUTORADIOBUTTON,174,42,28,10
+    CONTROL         "rad",IDC_PREC_RAD,"Button",BS_AUTORADIOBUTTON,174,53,26,10
+    GROUPBOX        "Decimal Places  (between 0 and 6)",IDC_STATIC,7,67,202,53
     LTEXT           "X:",IDC_PREC_X_LABEL,21,78,8,8
     EDITTEXT        IDC_PREC_X_FIELD,30,76,24,12,ES_AUTOHSCROLL
-    CONTROL         "Spin1",IDC_PREC_X_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,47,75,10,14
+    CONTROL         "Spin1",IDC_PREC_X_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,47,75,10,14
     LTEXT           "W:",IDC_PREC_W_LABEL,19,92,10,8
     EDITTEXT        IDC_PREC_W_FIELD,30,90,24,12,ES_AUTOHSCROLL
-    CONTROL         "Spin1",IDC_PREC_W_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,47,89,10,14
+    CONTROL         "Spin1",IDC_PREC_W_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,47,89,10,14
     LTEXT           "Rx:",IDC_PREC_RX_LABEL,17,106,12,8
     EDITTEXT        IDC_PREC_RX_FIELD,30,104,24,12,ES_AUTOHSCROLL
-    CONTROL         "Spin1",IDC_PREC_RX_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,47,103,10,14
+    CONTROL         "Spin1",IDC_PREC_RX_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,47,103,10,14
     LTEXT           "Y:",IDC_PREC_Y_LABEL,71,78,8,8
     EDITTEXT        IDC_PREC_Y_FIELD,80,76,24,12,ES_AUTOHSCROLL
-    CONTROL         "Spin1",IDC_PREC_Y_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,98,75,10,14
+    CONTROL         "Spin1",IDC_PREC_Y_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,98,75,10,14
     LTEXT           "H:",IDC_PREC_H_LABEL,71,92,8,8
     EDITTEXT        IDC_PREC_H_FIELD,80,90,24,12,ES_AUTOHSCROLL
-    CONTROL         "Spin1",IDC_PREC_H_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,98,89,10,14
+    CONTROL         "Spin1",IDC_PREC_H_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,98,89,10,14
     LTEXT           "Ry:",IDC_PREC_RY_LABEL,67,106,12,8
     EDITTEXT        IDC_PREC_RY_FIELD,80,104,24,12,ES_AUTOHSCROLL
-    CONTROL         "Spin1",IDC_PREC_RY_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,98,103,10,14
+    CONTROL         "Spin1",IDC_PREC_RY_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,98,103,10,14
     LTEXT           "D:",IDC_PREC_D_LABEL,121,78,8,8
     EDITTEXT        IDC_PREC_D_FIELD,130,76,24,12,ES_AUTOHSCROLL
-    CONTROL         "Spin1",IDC_PREC_D_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,148,75,10,14
+    CONTROL         "Spin1",IDC_PREC_D_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,148,75,10,14
     LTEXT           "Ar:",IDC_PREC_AR_LABEL,119,92,10,8
     EDITTEXT        IDC_PREC_AR_FIELD,130,90,24,12,ES_AUTOHSCROLL
-    CONTROL         "Spin1",IDC_PREC_AR_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,148,89,10,14
+    CONTROL         "Spin1",IDC_PREC_AR_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,148,89,10,14
     LTEXT           "A:",IDC_PREC_A_LABEL,167,78,8,8
     EDITTEXT        IDC_PREC_A_FIELD,176,76,24,12,ES_AUTOHSCROLL
-    CONTROL         "Spin1",IDC_PREC_A_SPIN,"msctls_updown32",
-                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | 
-                    UDS_ARROWKEYS | UDS_NOTHOUSANDS,194,75,10,14
+    CONTROL         "Spin1",IDC_PREC_A_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,194,75,10,14
     PUSHBUTTON      "Default",IDC_PREC_DEF,165,101,39,14
 END
 
-IDD_PREF_CUSTOM DIALOG DISCARDABLE  0, 0, 216, 127
-STYLE WS_CHILD | WS_DISABLED | WS_CAPTION
+IDD_PREF_CUSTOM DIALOG 0, 0, 216, 127
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Custom Units"
 FONT 8, "MS Sans Serif"
 BEGIN
-    CONTROL         "",IDC_CUST_PX,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
-                    WS_TABSTOP,24,59,9,8
+    CONTROL         "",IDC_CUST_PX,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,24,59,9,8
     CONTROL         "",IDC_CUST_IN,"Button",BS_AUTORADIOBUTTON,24,73,9,8
     CONTROL         "",IDC_CUST_CM,"Button",BS_AUTORADIOBUTTON,24,87,9,8
     EDITTEXT        IDC_CUST_PX_FIELD,37,57,41,12,ES_AUTOHSCROLL
@@ -554,8 +495,7 @@ BEGIN
     LTEXT           "custom unit",IDC_CUST_IN_ABBREV,132,73,37,8
     LTEXT           "custom unit",IDC_CUST_CM_ABBREV,147,87,37,8
     PUSHBUTTON      "Clear Units",IDC_CUST_CLEAR,116,102,77,12
-    LTEXT           "Set a resolution dependent or independent scale factor.",
-                    IDC_CUST_BASIS_LABEL,13,46,176,8
+    LTEXT           "Set a resolution dependent or independent scale factor.",IDC_CUST_BASIS_LABEL,13,46,176,8
     LTEXT           "(2 char. limit)",IDC_STATIC,109,33,40,8
     LTEXT           "(16 char. limit)",IDC_STATIC,157,19,44,8
 END
@@ -567,14 +507,14 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 215
+        RIGHTMARGIN, 216
         TOPMARGIN, 7
-        BOTTOMMARGIN, 191
+        BOTTOMMARGIN, 77
     END
 
     IDD_PREF_RULERS, DIALOG
@@ -673,26 +613,38 @@ END
 // Cursor
 //
 
-IDC_HAND_CUR            CURSOR  DISCARDABLE     "res\\Hand.cur"
+IDC_HAND_CUR            CURSOR                  "res\\Hand.cur"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // String Table
 //
 
-STRINGTABLE PRELOAD DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "Meazure"
 END
 
-STRINGTABLE PRELOAD DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "Meazure"
     AFX_IDS_IDLEMESSAGE     "For Help, press F1"
     AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "EXT"
     ID_INDICATOR_CAPS       "CAP"
@@ -702,7 +654,7 @@ BEGIN
     ID_INDICATOR_REC        "REC"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_APP_ABOUT            "Display program information\nAbout"
     ID_APP_EXIT             "Quit the application\nExit"
@@ -713,18 +665,18 @@ BEGIN
     ID_HELP                 "Display help for current task or command\nHelp"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
     ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_CLEAR           "Erase the selection\nErase"
     ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
@@ -739,12 +691,12 @@ BEGIN
     ID_EDIT_REDO            "Redo the previously undone action\nRedo"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCSIZE          "Change the window size"
     AFX_IDS_SCMOVE          "Change the window position"
@@ -755,7 +707,7 @@ BEGIN
     AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCRESTORE       "Restore the window to normal size"
     AFX_IDS_SCTASKLIST      "Activate Task List"
@@ -767,7 +719,7 @@ BEGIN
     IDS_MEA_INCHES          "in"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_MEA_CURSOR           "Track cursor position\nCursor"
     ID_MEA_POINT            "Measure with a point\nPoint"
@@ -784,7 +736,7 @@ BEGIN
     ID_MEA_UNITS_MM         "Display units in millimeters\nMillimeters"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_MEA_UNITS_POINTS     "Display units in points\nPoints"
     ID_MEA_UNITS_PICAS      "Display units in picas\nPicas"
@@ -801,7 +753,7 @@ BEGIN
     ID_MEA_SCREEN_GRID      "Show or hide the screen grid\nToggle Screen Grid"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_RES_INCHES      "px / in"
     IDS_MEA_RES_CM          "px / cm"
@@ -816,7 +768,7 @@ BEGIN
     IDS_MEA_RESOLUTION_X    "Rx:"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_SCREEN          "Screen %d"
     IDS_MEA_RESOLUTION_Y    "Ry:"
@@ -834,7 +786,7 @@ BEGIN
     IDS_MEA_RECTANGLE       "Rectangle"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_WINDOW          "Window"
     IDS_MEA_EMPTY           " "
@@ -855,7 +807,7 @@ BEGIN
     IDS_MEA_FE_INVALID_FILE "There was an attempt to use an invalid file handle"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_MEA_SCREEN_GRID_SPACING "Set screen grid spacing\nSet grid spacing"
     ID_MEA_SAVE_PROFILE     "Save current configuration as a profile\nSave Profile"
@@ -868,7 +820,7 @@ BEGIN
     ID_MEA_FIND             "Flash the crosshair(s)\nFlash crosshair(s)"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_FE_REMOVE_CURRENT_DIR 
                             "The current working directory cannot be removed"
@@ -889,7 +841,7 @@ BEGIN
     IDS_MEA_PICAS           "pc"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_COLLAPSE        "Colla&pse\tCtrl+H"
     IDS_MEA_EXPAND          "E&xpand\tCtrl+H"
@@ -909,7 +861,7 @@ BEGIN
     IDS_MEA_NO_SAVE_LOG     "Could not save position log file\n%s"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_NO_LOAD_LOG     "Could not load position log file\n%s"
     IDS_MEA_ASK_SAVE        "Positions have been recorded but have not yet been saved. \n\nSave these positions?"
@@ -936,7 +888,7 @@ BEGIN
                             "The required attribute '%s' is missing in element '%s'."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_BAD_ATTRIBUTE_VALUE 
                             "The value of the attribute '%s' in element '%s'\nis not allowed."
@@ -960,7 +912,7 @@ BEGIN
     IDS_MEA_DUPLICATE_ATTRIBUTE "A duplicate attribute was encountered."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_DOC_ELEMENT     "Unrecognizable content following the document element."
     IDS_MEA_ENTITY_REF      "Illegal parameter entity reference."
@@ -984,7 +936,7 @@ BEGIN
     IDS_MEA_ENTITY_DECLARED_IN_PE "Entity declared in a paramter entity."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_INVALID_LOGFILE "Invalid Log file"
     IDS_MEA_INVALID_DESKTOPID "Invalid desktop ID '%s' in Log file"
@@ -1004,7 +956,7 @@ BEGIN
     IDS_MEA_AREA_LABEL_FMT  "sq. %s"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_MEA_RGBFMT           "Show color in RGB format\nShow in RGB format"
     ID_MEA_RGBHEXFMT        "Show color in hex #RRGGBB format\nShow in hex RGB format"
@@ -1014,7 +966,7 @@ BEGIN
     ID_MEA_YCBCRFMT         "Show color in YCbCr format\nShow in YCbCr format"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     ID_MEA_YIQFMT           "Show color in YIQ format\nShow in YIQ format"
     ID_MEA_ZOOM_IN          "Increase the magnifier zoom\nIncrease zoom"
@@ -1025,7 +977,7 @@ BEGIN
     ID_MEA_UNITS_SET_CUSTOM "Specify custom measurement units\nDefine Custom Units"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEA_RES_LABEL_FMT   "px / %s"
     IDS_MEA_CUSTOM_UNITS    "WW"
@@ -1040,7 +992,7 @@ BEGIN
     IDS_MEA_PREC_VALUE      "Precision value must be between 0 and %d, inclusive.\nThe value has been reset to %d."
 END
 
-#endif    // English (U.S.) resources
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

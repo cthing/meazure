@@ -1,7 +1,8 @@
-<map id="G" name="G">
+<map id="MeaXMLParser" name="MeaXMLParser">
+<area shape="rect" id="node1" title="Provides SAX style XML parsing." alt="" coords="173,184,283,211"/>
 <area shape="rect" id="node2" href="$classev_1_1IValidationHandler.html" title="An application class mixin inherits from the IValidationHandler interface and overrides the HandleVal..." alt="" coords="5,5,152,32"/>
-<area shape="rect" id="node6" href="$classev_1_1Validator.html" title="The star of the show, this call performs XML validation for the expat parser." alt="" coords="84,96,177,123"/>
-<area shape="rect" id="node4" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="201,96,356,123"/>
-<area shape="rect" id="node9" href="$classMeaXMLNode.html" title="A node in the XML DOM." alt="" coords="381,96,483,123"/>
-<area shape="rect" id="node11" href="$classMeaXMLAttributes.html" title="The class contains the attributes associated with an XML start element." alt="" coords="368,5,496,32"/>
+<area shape="rect" id="node3" href="$classev_1_1Validator.html" title="The star of the show, this call performs XML validation for the expat parser." alt="" coords="84,95,177,121"/>
+<area shape="rect" id="node4" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="201,95,356,121"/>
+<area shape="rect" id="node5" href="$classMeaXMLNode.html" title="A node in the XML DOM." alt="" coords="381,95,483,121"/>
+<area shape="rect" id="node6" href="$classMeaXMLAttributes.html" title="The class contains the attributes associated with an XML start element." alt="" coords="368,5,496,32"/>
 </map>

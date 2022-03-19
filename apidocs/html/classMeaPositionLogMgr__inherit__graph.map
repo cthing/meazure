@@ -1,4 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="5,5,160,32"/>
-<area shape="rect" id="node4" href="$classMeaSingleton__T.html" title="MeaSingleton_T\&lt; MeaPositionLogMgr \&gt;" alt="" coords="185,5,439,32"/>
+<map id="MeaPositionLogMgr" name="MeaPositionLogMgr">
+<area shape="rect" id="node1" title="Manages the recording, saving and loading of tool positions." alt="" coords="114,95,251,121"/>
+<area shape="rect" id="node2" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="5,13,160,39"/>
+<area shape="rect" id="node3" href="$classMeaSingleton__T.html" title=" " alt="" coords="185,5,383,47"/>
 </map>

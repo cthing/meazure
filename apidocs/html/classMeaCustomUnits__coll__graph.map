@@ -1,4 +1,5 @@
-<map id="G" name="G">
+<map id="MeaCustomUnits" name="MeaCustomUnits">
+<area shape="rect" id="node1" title="Provides linear measurements in user defined units." alt="" coords="5,155,128,181"/>
 <area shape="rect" id="node2" href="$classMeaLinearUnits.html" title="There are two major categories of units: linear and angular." alt="" coords="11,80,123,107"/>
-<area shape="rect" id="node4" href="$classMeaUnits.html" title="Measurement units are packaged into a class, one for each set of units (e.g." alt="" coords="28,5,105,32"/>
+<area shape="rect" id="node3" href="$classMeaUnits.html" title="Measurement units are packaged into a class, one for each set of units (e.g." alt="" coords="28,5,105,32"/>
 </map>

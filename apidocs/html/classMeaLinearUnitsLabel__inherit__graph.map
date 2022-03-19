@@ -1,7 +1,9 @@
-<map id="G" name="G">
-<area shape="rect" id="node7" href="$classMeaAreaUnitsLabel.html" title="Label for area measurements." alt="" coords="5,229,139,256"/>
-<area shape="rect" id="node9" href="$classMeaLengthUnitsLabel.html" title="Label for length measurements." alt="" coords="164,229,311,256"/>
-<area shape="rect" id="node11" href="$classMeaResUnitsLabel.html" title="Label for resolution measurements." alt="" coords="335,229,465,256"/>
-<area shape="rect" id="node2" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="183,80,291,107"/>
-<area shape="rect" id="node4" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="198,5,276,32"/>
+<map id="MeaLinearUnitsLabel" name="MeaLinearUnitsLabel">
+<area shape="rect" id="node1" title="There are two categories of labels: those for angular measurements and those for linear measurements." alt="" coords="167,229,309,256"/>
+<area shape="rect" id="node5" href="$classMeaAreaUnitsLabel.html" title="Label for area measurements." alt="" coords="5,304,140,331"/>
+<area shape="rect" id="node6" href="$classMeaLengthUnitsLabel.html" title="Label for length measurements." alt="" coords="165,304,311,331"/>
+<area shape="rect" id="node7" href="$classMeaResUnitsLabel.html" title="Label for resolution measurements." alt="" coords="335,304,466,331"/>
+<area shape="rect" id="node2" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="184,155,292,181"/>
+<area shape="rect" id="node3" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="199,80,277,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="205,5,271,32"/>
 </map>

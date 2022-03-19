@@ -1,4 +1,14 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$exval_8h.html" title="Header file for the expat compatible XML validator." alt="" coords="366,80,428,107"/>
-<area shape="rect" id="node21" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="612,80,708,107"/>
+<map id="XMLParser.h" name="XMLParser.h">
+<area shape="rect" id="node1" title="Header file for the expat XML parser wrapper and support classes." alt="" coords="385,5,481,32"/>
+<area shape="rect" id="node2" href="$exval_8h.html" title="Header file for the expat compatible XML validator." alt="" coords="367,80,429,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="5,155,52,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="584,155,639,181"/>
+<area shape="rect" id="node11" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="613,80,709,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="77,155,178,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="202,155,261,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="285,155,354,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="378,155,418,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="443,155,481,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="505,155,560,181"/>
+<area shape="rect" id="node12" title=" " alt="" coords="663,155,733,181"/>
 </map>

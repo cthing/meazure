@@ -1,0 +1,4 @@
+<map id="MeaStatusBar" name="MeaStatusBar">
+<area shape="rect" id="node1" title="CStatusBar derived class that allows the overriding of the message displayed when the application is ..." alt="" coords="5,80,111,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="13,5,103,32"/>
+</map>

@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classMeaPrecisionPrefs.html" title="Property page for setting display precisions for each set of measurement units." alt="" coords="5,5,136,32"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,5,199,47"/>
+<area shape="rect" id="node2" href="$classMeaScreenMgr.html" title="Provides information on the display monitor(s)." alt="" coords="247,13,357,39"/>
 </map>

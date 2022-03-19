@@ -1,4 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$Ruler_8h.html" title="Ruler graphic header file." alt="" coords="21,80,83,107"/>
-<area shape="rect" id="node5" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="13,155,91,181"/>
+<map id="RulerPrefs.h" name="RulerPrefs.h">
+<area shape="rect" id="node1" title="Ruler property page header file." alt="" coords="5,5,99,32"/>
+<area shape="rect" id="node2" href="$Ruler_8h.html" title="Ruler graphic header file." alt="" coords="21,80,83,107"/>
+<area shape="rect" id="node3" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="13,155,91,181"/>
 </map>

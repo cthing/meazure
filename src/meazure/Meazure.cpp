@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -78,7 +78,7 @@ BOOL CMeazureApp::InitInstance()
 
     // Ensure that only one instance of the app is running.
     //
-    if (InterlockedExchange(reinterpret_cast<LPLONG>(const_cast<HWND*>(&g_meaMainWnd)), reinterpret_cast<LONG>(g_meaMainWnd)) != NULL) {
+    if (InterlockedExchange64(reinterpret_cast<LONG64*>(const_cast<HWND*>(&g_meaMainWnd)), reinterpret_cast<LONG64>(g_meaMainWnd)) != NULL) {
 
         // Bring the window forward if obscured.
 
@@ -117,6 +117,10 @@ BOOL CMeazureApp::InitInstance()
     //
     InitCommonControls();       // To support XP visual styles, if available
     CWinApp::InitInstance();
+
+    // Enable HTML Help
+    //
+    EnableHtmlHelp();
     
     // Set the base key for saving/restoring state in the registry
     //
@@ -138,7 +142,7 @@ BOOL CMeazureApp::InitInstance()
         WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
         NULL, NULL);
 
-    InterlockedExchange(reinterpret_cast<LPLONG>(const_cast<HWND*>(&g_meaMainWnd)), reinterpret_cast<LONG>(pFrame->m_hWnd));
+    InterlockedExchange64(reinterpret_cast<LONG64*>(const_cast<HWND*>(&g_meaMainWnd)), reinterpret_cast<LONG64>(pFrame->m_hWnd));
 
     if (pFrame->IsNewInstall()) {
         OnAppAbout();
@@ -184,7 +188,6 @@ BOOL CMeazureApp::SaveAllModified()
 
 void CMeazureApp::WinHelp(DWORD dwData, UINT nCmd)
 {
-
     switch (nCmd) {
     case HELP_CONTEXT:
         TRACE("Context: %s, 0x%X\n", m_pszHelpFilePath, dwData);
@@ -207,7 +210,7 @@ void CMeazureApp::WinHelp(DWORD dwData, UINT nCmd)
             q.fExecute          = FALSE;        // TRUE to initiate the search.
             q.pszWindow         = NULL;         // Window to display in
             TRACE("Search: %s, 0x%X\n", m_pszHelpFilePath, dwData);
-            ::HtmlHelp(*AfxGetMainWnd(), m_pszHelpFilePath, HH_DISPLAY_SEARCH, reinterpret_cast<DWORD>(&q));
+            ::HtmlHelp(*AfxGetMainWnd(), m_pszHelpFilePath, HH_DISPLAY_SEARCH, reinterpret_cast<DWORD_PTR>(&q));
         }
         break;
     case HELP_FINDER:
@@ -258,7 +261,6 @@ public:
 protected:
     //{{AFX_MSG(CAboutDlg)
     afx_msg void OnHomeUrl();
-    afx_msg void OnFeedbackEmail();
     afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
     afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
     //}}AFX_MSG
@@ -266,10 +268,6 @@ protected:
     /// @fn OnHomeUrl()
     /// Called when the home page URL text link is clicked. Brings up
     /// a browser pointed at the home page.
-
-    /// @fn OnFeedbackEmail()
-    /// Called when the feedback email text link is clicked. Brings up
-    /// the email client.
 
     /// @fn OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
     /// Called when a control on the dialog needs to have its color set.
@@ -309,7 +307,6 @@ COLORREF CAboutDlg::m_visitedColor      = RGB(128, 0, 128); // Purple
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
     //{{AFX_MSG_MAP(CAboutDlg)
     ON_BN_CLICKED(IDC_HOME_URL, OnHomeUrl)
-    ON_BN_CLICKED(IDC_FEEDBACK_EMAIL, OnFeedbackEmail)
     ON_WM_CTLCOLOR()
     ON_WM_SETCURSOR()
     //}}AFX_MSG_MAP
@@ -357,13 +354,11 @@ BOOL CAboutDlg::OnInitDialog()
     // Set the links font
     //
     CStatic *url = static_cast<CStatic*>(GetDlgItem(IDC_HOME_URL));
-    CStatic *email = static_cast<CStatic*>(GetDlgItem(IDC_FEEDBACK_EMAIL));
     font = url->GetFont();
     font->GetLogFont(&lf);
     lf.lfUnderline = TRUE;
     m_linkFont.CreateFontIndirect(&lf);
     url->SetFont(&m_linkFont);
-    email->SetFont(&m_linkFont);
 
     m_linkCursor = AfxGetApp()->LoadCursor(IDC_HAND_CUR);
 
@@ -388,11 +383,6 @@ HBRUSH CAboutDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
         pDC->SetBkMode(TRANSPARENT);
     }
 
-    if (pWnd->GetDlgCtrlID() == IDC_FEEDBACK_EMAIL) {
-        pDC->SetTextColor(m_emailed ? m_visitedColor : m_unvisitedColor);
-        pDC->SetBkMode(TRANSPARENT);
-    }
-
     return hbr;
 }
 
@@ -400,16 +390,15 @@ HBRUSH CAboutDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
 BOOL CAboutDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) 
 {
     CPoint point;
-    CRect  rect1, rect2;
+    CRect  rect;
 
     //
     // Test if cursor is over control
     //
     if (nHitTest == HTCLIENT) {
         GetCursorPos(&point);
-        GetDlgItem(IDC_HOME_URL)->GetWindowRect(&rect1);
-        GetDlgItem(IDC_FEEDBACK_EMAIL)->GetWindowRect(&rect2);
-        if (rect1.PtInRect(point) || rect2.PtInRect(point)) {
+        GetDlgItem(IDC_HOME_URL)->GetWindowRect(&rect);
+        if (rect.PtInRect(point)) {
             ::SetCursor(m_linkCursor);
             return(TRUE);
         }
@@ -427,7 +416,7 @@ void CAboutDlg::OnHomeUrl()
     url = _T("http://") + url;
     HINSTANCE h = ShellExecute(NULL, _T("open"), url, NULL, NULL, SW_SHOWNORMAL);
 
-    if (reinterpret_cast<UINT>(h) > 32) {
+    if (reinterpret_cast<INT_PTR>(h) > 32) {
         m_visited = true;
 
         Invalidate();
@@ -435,27 +424,6 @@ void CAboutDlg::OnHomeUrl()
     } else {
         CString msg;
         msg.Format(IDS_MEA_NOEXEC, static_cast<LPCTSTR>(url));
-        MessageBox(msg, NULL, MB_OK | MB_ICONERROR);
-    }
-}
-
-
-void CAboutDlg::OnFeedbackEmail() 
-{
-    CString email;
-
-    static_cast<CStatic*>(GetDlgItem(IDC_FEEDBACK_EMAIL))->GetWindowText(email);
-    email = _T("mailto:") + email;
-    HINSTANCE h = ShellExecute(NULL, _T("open"), email, NULL, NULL, SW_SHOWNORMAL);
-
-    if (reinterpret_cast<UINT>(h) > 32) {
-        m_emailed = true;
-
-        Invalidate();
-        UpdateWindow();
-    } else {
-        CString msg;
-        msg.Format(IDS_MEA_NOEXEC, static_cast<LPCTSTR>(email));
         MessageBox(msg, NULL, MB_OK | MB_ICONERROR);
     }
 }

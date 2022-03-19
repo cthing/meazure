@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -19,12 +19,16 @@
 
 #include "StdAfx.h"
 #include "Utils.h"
+#include <float.h>
 
 
 CString MeaUtils::DblToStr(double value)
 {
+    CString fmt;
+    fmt.Format(_T("%%.%df"), DBL_DIG - 1);
+
     CString numStr;
-    numStr.Format(_T("%.15f"), value);
+    numStr.Format(fmt, value);
 
     int idx = numStr.GetLength();
     while (idx-- > 1) {

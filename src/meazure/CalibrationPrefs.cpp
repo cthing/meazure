@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -487,7 +487,7 @@ void MeaCalibrationPrefs::UpdateCurrentScreen()
     CWnd* frame = GetDlgItem(IDC_CALRES_TITLE);
     if (frame != NULL) {
         CString title;
-        title.Format(IDS_MEA_CALRES_TITLE, mgr.GetScreenName(m_currentIter));
+        title.Format(IDS_MEA_CALRES_TITLE, static_cast<LPCTSTR>(mgr.GetScreenName(m_currentIter)));
         frame->SetWindowText(title);
 
         MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());

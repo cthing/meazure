@@ -1,5 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMeaCrossHair.html" title="A crosshair element." alt="" coords="72,96,176,123"/>
-<area shape="rect" id="node4" href="$classMeaGraphic.html" title="Base class for all graphic elements." alt="" coords="5,5,96,32"/>
-<area shape="rect" id="node6" href="$classMeaCrossHairCallback.html" title="Crosshair activity callback mixin class." alt="" coords="121,5,276,32"/>
+<map id="MeaCrossHairCallback::CHInfo" name="MeaCrossHairCallback::CHInfo">
+<area shape="rect" id="node1" title="Callback information structure." alt="" coords="47,260,202,301"/>
+<area shape="rect" id="node2" href="$classMeaCrossHair.html" title="A crosshair element." alt="" coords="73,171,177,197"/>
+<area shape="rect" id="node3" href="$classMeaGraphic.html" title="Base class for all graphic elements." alt="" coords="5,81,97,108"/>
+<area shape="rect" id="node4" title=" " alt="" coords="22,5,81,32"/>
+<area shape="rect" id="node5" href="$classMeaCrossHairCallback.html" title="Crosshair activity callback mixin class." alt="" coords="122,81,277,108"/>
 </map>

@@ -5,7 +5,7 @@
     font-family: arial, helvetica, sans-serif;
     font-size: 10pt;
     font-weight: bold;
-    color: black;
+    color: white;
     margin-left: 5pt;
     margin-right: 5pt;
 }
@@ -14,7 +14,7 @@
     font-size: 6pt;
 }
 .HeaderCell {
-    background-color: red;
+    background-color: #212529;
 }
 
 /* Footer */

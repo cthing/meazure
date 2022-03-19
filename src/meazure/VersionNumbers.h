@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -21,7 +21,7 @@
 /// @brief This file defines the file and product version numbers. It is
 ///     included by Meazure.rc2 and becomes part of the program resources.
 
-#define FILE_VERSION            2,0,1,5
-#define PRODUCT_VERSION         2,0,1,5
-#define STR_FILE_VERSION        "2, 0, 1, 5\0"
-#define STR_PRODUCT_VERSION     "2, 0, 1, 5\0"
+#define FILE_VERSION            3,0,0,1
+#define PRODUCT_VERSION         3,0,0,1
+#define STR_FILE_VERSION        "3, 0, 0, 1\0"
+#define STR_PRODUCT_VERSION     "3, 0, 0, 1\0"

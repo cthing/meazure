@@ -1,5 +1,6 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$structFSIZE.html" title="Represents a rectangular size." alt="" coords="37,5,96,32"/>
-<area shape="rect" id="node4" href="$classMeaScreenMgr.html" title="Provides information on the display monitor(s)." alt="" coords="206,5,316,32"/>
-<area shape="rect" id="node6" href="$classMeaSingleton__T.html" title="MeaSingleton_T\&lt; MeaScreenMgr \&gt;" alt="" coords="223,109,449,136"/>
+<map id="MeaScreenMgr::Screen" name="MeaScreenMgr::Screen">
+<area shape="rect" id="node1" title="Represents a single display screen." alt="" coords="225,117,384,143"/>
+<area shape="rect" id="node2" href="$classMeaScreenMgr.html" title="Provides information on the display monitor(s)." alt="" coords="133,5,244,32"/>
+<area shape="rect" id="node3" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,109,199,151"/>
+<area shape="rect" id="node4" href="$structFSIZE.html" title="Represents a rectangular size." alt="" coords="279,5,338,32"/>
 </map>

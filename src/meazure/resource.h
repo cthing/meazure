@@ -1,5 +1,5 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
+// Microsoft Visual C++ generated include file.
 // Used by Meazure.rc
 //
 #define IDD_ABOUTBOX                    100
@@ -23,7 +23,6 @@
 #define IDD_PREF_ADVANCED               142
 #define IDB_LOGO                        145
 #define IDC_HAND_CUR                    146
-#define IDB_FLAG                        155
 #define IDD_RES_WARNING                 156
 #define IDD_DIM_WARNING                 159
 #define IDB_MEA_WARNING                 160
@@ -394,7 +393,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        165
+#define _APS_NEXT_RESOURCE_VALUE        166
 #define _APS_NEXT_COMMAND_VALUE         32846
 #define _APS_NEXT_CONTROL_VALUE         1180
 #define _APS_NEXT_SYMED_VALUE           129

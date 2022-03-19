@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -320,7 +320,7 @@ bool MeaPositionLogMgr::Save(bool askPathname)
     }
 
     Write(indent, _T("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"));
-    Write(indent, _T("<!DOCTYPE positionLog SYSTEM \"http://www.cthing.com/dtd/PositionLog1.dtd\">\n"));
+    Write(indent, _T("<!DOCTYPE positionLog SYSTEM \"https://www.cthing.com/dtd/PositionLog1.dtd\">\n"));
     Write(indent, _T("<positionLog version=\"%d\">\n"), g_versionInfo.GetLogFileMajor());
     indent++;
         WriteInfoSection(indent);
@@ -567,7 +567,7 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) throw(CFileException)
 
     Write(indent, _T("<info>\n"));
     indent++;
-        Write(indent, _T("<title>%s</title>\n"), MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_title)));
+        Write(indent, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_title))));
         Write(indent, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(NULL))));
         Write(indent, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
                 static_cast<LPCTSTR>(AfxGetAppName()),
@@ -575,7 +575,7 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) throw(CFileException)
                 g_versionInfo.GetProductBuild());
         Write(indent, _T("<machine name=\"%s\"/>\n"), nameBuffer);
         if (!m_desc.IsEmpty()) {
-            Write(indent, _T("<desc>%s</desc>\n"), MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_desc)));
+            Write(indent, _T("<desc>%s</desc>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_desc))));
         }
     indent--;
     Write(indent, _T("</info>\n"));
@@ -711,7 +711,7 @@ void MeaPositionLogMgr::Screen::Load(const MeaXMLNode* screenNode)
 void MeaPositionLogMgr::Screen::Save(MeaPositionLogMgr& mgr, int indent) const
         throw(CFileException)
 {
-    mgr.Write(indent, _T("<screen desc=\"%s\" primary=\"%s\">\n"), m_desc,
+    mgr.Write(indent, _T("<screen desc=\"%s\" primary=\"%s\">\n"), static_cast<LPCTSTR>(m_desc),
         (m_primary ? _T("true") : _T("false")));
     indent++;
         mgr.Write(indent, _T("<rect top=\"%s\" bottom=\"%s\" left=\"%s\" right=\"%s\"/>\n"),
@@ -1275,7 +1275,7 @@ void MeaPositionLogMgr::Position::Save(int indent) const
                     static_cast<LPCTSTR>(m_timestamp));
     indent++;
         if (!m_desc.IsEmpty()) {
-            m_mgr->Write(indent, _T("<desc>%s</desc>\n"), MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_desc)));
+            m_mgr->Write(indent, _T("<desc>%s</desc>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_desc))));
         }
 
         m_mgr->Write(indent, _T("<points>\n"));
@@ -1397,7 +1397,7 @@ void MeaPositionLogMgr::Positions::Delete(int posIndex) throw(std::out_of_range)
     // Delete the last entry in the map since it has been
     // moved "down" one index.
     //
-    m_posMap.erase(m_posMap.size() - 1);
+    m_posMap.erase(static_cast<int>(m_posMap.size()) - 1);
 }
 
 

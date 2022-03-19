@@ -39,7 +39,7 @@ BEGIN
             VALUE "FileDescription", "Measure, magnify, and capture objects on the screen\0"
             VALUE "FileVersion", STR_FILE_VERSION
             VALUE "InternalName", "Meazure\0"
-            VALUE "LegalCopyright", "Copyright 2004, 2011, C Thing Software\0"
+            VALUE "LegalCopyright", "Copyright 2004 C Thing Software\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "Meazure.exe\0"
             VALUE "PrivateBuild", "\0"

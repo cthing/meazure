@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -393,7 +393,7 @@ int CChildView::GetMenuWidth()
         CRect rect;
 
         GetMenuItemRect(*this, *menu, i, rect);
-        width += rect.Width();
+        width += rect.Width() + GetSystemMetrics(SM_CXFOCUSBORDER);
     }
 
     return width + GetSystemMetrics(SM_CXVSCROLL) + 1;

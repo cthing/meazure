@@ -20,7 +20,6 @@
 #define COMPILE_LAYERED_WINDOW_STUBS
 #include "LayeredWindows.h"
 #include <Colors.h>
-#include <boost/test/included/unit_test_framework.hpp>
 #include <boost/test/included/unit_test.hpp>
 
 #ifdef _DEBUG

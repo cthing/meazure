@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classMeaSingleton__T.html" title="MeaSingleton_T\&lt; MeaProfileMgr \&gt;" alt="" coords="5,96,227,123"/>
+<map id="MeaProfileMgr" name="MeaProfileMgr">
+<area shape="rect" id="node1" title="Manages the saving and loading of profile files." alt="" coords="47,5,152,32"/>
+<area shape="rect" id="node2" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,95,193,136"/>
 </map>

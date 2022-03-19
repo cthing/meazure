@@ -1,3 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$PositionLogDlg_8h.html" title="Header file for the position recording and management dialog." alt="" coords="21,80,141,107"/>
+<map id="PositionLogObserver.h" name="PositionLogObserver.h">
+<area shape="rect" id="node1" title="Header file declaring an interface for observers of the position log." alt="" coords="5,5,157,32"/>
+<area shape="rect" id="node2" href="$PositionLogDlg_8h.html" title="Header file for the position recording and management dialog." alt="" coords="21,80,141,107"/>
 </map>

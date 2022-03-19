@@ -1,7 +1,8 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$classMeaAngleTool.html" title="Angle measurement tool." alt="" coords="5,80,109,107"/>
-<area shape="rect" id="node5" href="$classMeaCircleTool.html" title="Circle measurement tool." alt="" coords="133,80,237,107"/>
-<area shape="rect" id="node7" href="$classMeaLineTool.html" title="Line measurement tool." alt="" coords="262,80,356,107"/>
-<area shape="rect" id="node9" href="$classMeaPointTool.html" title="Point measurement tool." alt="" coords="381,80,483,107"/>
-<area shape="rect" id="node11" href="$classMeaRectTool.html" title="Rectangle measurement tool." alt="" coords="507,80,605,107"/>
+<map id="MeaCrossHairCallback" name="MeaCrossHairCallback">
+<area shape="rect" id="node1" title="Crosshair activity callback mixin class." alt="" coords="232,5,387,32"/>
+<area shape="rect" id="node2" href="$classMeaAngleTool.html" title="Angle measurement tool." alt="" coords="5,80,109,107"/>
+<area shape="rect" id="node3" href="$classMeaCircleTool.html" title="Circle measurement tool." alt="" coords="133,80,237,107"/>
+<area shape="rect" id="node4" href="$classMeaLineTool.html" title="Line measurement tool." alt="" coords="262,80,357,107"/>
+<area shape="rect" id="node5" href="$classMeaPointTool.html" title="Point measurement tool." alt="" coords="381,80,483,107"/>
+<area shape="rect" id="node6" href="$classMeaRectTool.html" title="Rectangle measurement tool." alt="" coords="507,80,605,107"/>
 </map>

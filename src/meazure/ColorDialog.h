@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -48,7 +48,7 @@ public:
     ///
     /// @return IDOK or IDCANCEL.
     ///
-    virtual int DoModal();
+    virtual INT_PTR DoModal();
     
     /// Called when the dialog window has been created but before
     /// it is visible. This method customizes the dialog for this

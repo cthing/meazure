@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -164,8 +164,6 @@ private:
     /// Creates the tool's graphical components. The components include
     /// the window rectangle and the data window. The Enable() method must
     /// be called to make the tool visible.
-    ///
-    /// @return <b>true</b> if the window is successfully created.
     ///
     void    Create();
 

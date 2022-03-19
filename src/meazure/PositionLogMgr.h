@@ -1,5 +1,5 @@
 /*
- * Copyright 2001, 2004, 2011 C Thing Software
+ * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
  * 
@@ -775,8 +775,7 @@ private:
         ///
         /// @return Number of positions.
         ///
-        unsigned int Size() const { return m_posMap.size(); }
-
+        unsigned int Size() const { return static_cast<unsigned int>(m_posMap.size()); }
 
         /// Adds the specified position to the collection of positions.
         ///

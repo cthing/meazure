@@ -1,8 +1,9 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$structFSIZE.html" title="Represents a rectangular size." alt="" coords="5,83,64,109"/>
-<area shape="rect" id="node4" href="$classMeaLinearUnits.html" title="There are two major categories of units: linear and angular." alt="" coords="88,83,200,109"/>
-<area shape="rect" id="node6" href="$classMeaUnits.html" title="Measurement units are packaged into a class, one for each set of units (e.g." alt="" coords="188,5,265,32"/>
-<area shape="rect" id="node10" href="$classMeaAngularUnits.html" title="There are two major categories of units: linear and angular." alt="" coords="225,83,345,109"/>
-<area shape="rect" id="node8" href="$classMeaGUID.html" title="Represents a globally unique identifier (GUID) and common operations on a GUID." alt="" coords="370,83,448,109"/>
-<area shape="rect" id="node13" href="$structFPOINT.html" title="Represents a point." alt="" coords="473,83,540,109"/>
+<map id="MeaPositionLogMgr::DesktopInfo" name="MeaPositionLogMgr::DesktopInfo">
+<area shape="rect" id="node1" title="Represents all information of interest about the system at the time a position is recorded." alt="" coords="157,171,303,212"/>
+<area shape="rect" id="node2" href="$classMeaGUID.html" title="Represents a globally unique identifier (GUID) and common operations on a GUID." alt="" coords="5,81,84,108"/>
+<area shape="rect" id="node3" href="$structFPOINT.html" title="Represents a point." alt="" coords="108,81,176,108"/>
+<area shape="rect" id="node4" href="$structFSIZE.html" title="Represents a rectangular size." alt="" coords="201,81,259,108"/>
+<area shape="rect" id="node5" href="$classMeaLinearUnits.html" title="There are two major categories of units: linear and angular." alt="" coords="283,81,395,108"/>
+<area shape="rect" id="node6" href="$classMeaUnits.html" title="Measurement units are packaged into a class, one for each set of units (e.g." alt="" coords="370,5,447,32"/>
+<area shape="rect" id="node7" href="$classMeaAngularUnits.html" title="There are two major categories of units: linear and angular." alt="" coords="420,81,541,108"/>
 </map>

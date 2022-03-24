@@ -2,7 +2,6 @@
 
 Copyright 2001 C Thing Software
 
-
 ## Minimum System Requirements
 
 - Windows 10
@@ -27,14 +26,16 @@ for details on the licensing of the Meazure program.
 
 Refer to [Building.md](Building.md) for information on how to build Meazure from source.
 
-
 ## Changelog
 
 ### Changes 2.0.1 to 3.0-SNAPSHOT
 
-- Supported on Windows 10 and above
+- Supported on Windows 10 and above.
 
-- Requires a 64-bit system
+- Requires a 64-bit system.
+
+- The minimum screen grid spacing has been reduced from 40 to 10 pixels and the maximum spacing
+  has been increased from 1000 to 4000 pixels.
 
 ### Changes 2.0 to 2.0.1
 

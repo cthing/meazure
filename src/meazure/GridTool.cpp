@@ -34,8 +34,8 @@ const CString MeaGridTool::kToolName(_T("GridTool"));
 
 // Defaults
 //
-const int   MeaGridTool::kDefMinSpacing     = 40;
-const int   MeaGridTool::kDefMaxSpacing     = 1000;
+const int   MeaGridTool::kDefMinSpacing     = 10;
+const int   MeaGridTool::kDefMaxSpacing     = 4000;
 const int   MeaGridTool::kDefDefaultSpacing = 100;
 const bool  MeaGridTool::kDefGrid           = false;
 const bool  MeaGridTool::kDefLinked         = true;

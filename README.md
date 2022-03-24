@@ -1,4 +1,4 @@
-# Meazure<sup>TM</sup> 3.0
+# Meazure<sup>TM</sup> 3.0-SNAPSHOT
 
 Copyright 2001 C Thing Software
 
@@ -30,7 +30,7 @@ Refer to [Building.md](Building.md) for information on how to build Meazure from
 
 ## Changelog
 
-### Changes 2.0.1 to 3.0
+### Changes 2.0.1 to 3.0-SNAPSHOT
 
 - Supported on Windows 10 and above
 

@@ -24,11 +24,8 @@
 
 CString MeaUtils::DblToStr(double value)
 {
-    CString fmt;
-    fmt.Format(_T("%%.%df"), DBL_DIG - 1);
-
     CString numStr;
-    numStr.Format(fmt, value);
+    numStr.Format(_T("%.*f"), DBL_DIG - 1, value);
 
     int idx = numStr.GetLength();
     while (idx-- > 1) {

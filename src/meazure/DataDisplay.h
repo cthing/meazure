@@ -51,7 +51,8 @@ enum MeaFields {
     MeaScreenWidthField     = 0x0800,       ///< Screen width data field.
     MeaScreenHeightField    = 0x1000,       ///< Screen height data field.
     MeaResXField            = 0x2000,       ///< Data field for the screen resolution in the X dimension.
-    MeaResYField            = 0x4000        ///< Data field for the screen resolution in the Y dimension.
+    MeaResYField            = 0x4000,       ///< Data field for the screen resolution in the Y dimension.
+    MeaAspectField          = 0x8000        ///< Aspect ratio field.
 };
 
 /// The data display is divided into two major sections: Region and Screen.
@@ -260,6 +261,10 @@ public:
     /// Displays the specified angle.
     /// @param angle    [in] Angle, in current angular units.
     void ShowAngle(double angle);
+
+    /// Displays the aspect ratio of the specified width and height (i.e. width/height).
+    /// @param size    [in] Width and height, in current units.
+    void ShowAspect(const FSIZE& size);
 
     /// Displays the rectangular area calculated from the specified width and height.
     /// @param size     [in] Width and height, in current units.
@@ -563,6 +568,9 @@ private:
                                                     ///< length fields.
     static const int            kAngleChars;        ///< Number of visible and allowable characters for
                                                     ///< the angle field.
+    static const int            kAspectChars;       ///< Number of visible and allowable characters for
+                                                    ///< the aspect ratio field.
+    static const int            kAspectPrecision;   ///< Number of decimal places for the aspect ratio field
     static const int            kAreaChars;         ///< Number of visible and allowable characters for
                                                     ///< the area field.
     static const int            kResChars;          ///< Number of visible and allowable characters for
@@ -607,6 +615,7 @@ private:
     DataItem    m_height;           ///< Height data item.
     DataItem    m_length;           ///< Distance data item.
     DataItem    m_angle;            ///< Angle data item.
+    DataItem    m_aspect;           ///< Aspect ratio.
     DataItem    m_area;             ///< Area data item.
 
     DataItem    m_screenWidth;      ///< Screen width data item.

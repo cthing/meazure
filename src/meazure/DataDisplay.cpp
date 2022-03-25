@@ -35,6 +35,8 @@ const int           MeaDataDisplay::kLabelSpacing           = 3;
 const int           MeaDataDisplay::DataItem::kSpinWidth    = 17;
 const unsigned int  MeaDataDisplay::kLengthChars            = 6;
 const int           MeaDataDisplay::kAngleChars             = 6;
+const int           MeaDataDisplay::kAspectChars            = 17;
+const int           MeaDataDisplay::kAspectPrecision        = FLT_DIG - 1;
 const int           MeaDataDisplay::kAreaChars              = 17;
 const int           MeaDataDisplay::kResChars               = 6;
 
@@ -67,6 +69,7 @@ MeaDataDisplay::MeaDataDisplay() : CWnd(),
     m_fields.insert(&m_height.GetField());
     m_fields.insert(&m_length.GetField());
     m_fields.insert(&m_angle.GetField());
+    m_fields.insert(&m_aspect.GetField());
     m_fields.insert(&m_area.GetField());
     m_fields.insert(&m_screenWidth.GetField());
     m_fields.insert(&m_screenHeight.GetField());
@@ -189,7 +192,7 @@ bool MeaDataDisplay::CreateRegionSection()
         return false;
     }
 
-    // Create the dimension, angle and area controls
+    // Create the dimension, angle, aspect ratio and area controls
     //
     if (!m_width.CreateField(IDS_MEA_WIDTH, kLengthChars, &m_regionSection, MeaWidthField)) {
         return false;
@@ -201,6 +204,9 @@ bool MeaDataDisplay::CreateRegionSection()
         return false;
     }
     if (!m_angle.CreateField(IDS_MEA_ANGLE, kAngleChars, &m_regionSection, MeaAngleField)) {
+        return false;
+    }
+    if (!m_aspect.CreateField(IDS_MEA_ASPECT, kAspectChars, &m_regionSection, MeaAspectField)) {
         return false;
     }
     if (!m_area.CreateField(IDS_MEA_AREA, kAreaChars, &m_regionSection, MeaAreaField)) {
@@ -237,7 +243,8 @@ bool MeaDataDisplay::CreateRegionSection()
 
     MeaLayout::AlignRight(point.x, &m_x1.GetTitleLabel(), &m_x2.GetTitleLabel(),
         &m_xv.GetTitleLabel(), &m_width.GetTitleLabel(),
-        &m_length.GetTitleLabel(), &m_area.GetTitleLabel(), NULL);
+        &m_length.GetTitleLabel(), &m_aspect.GetTitleLabel(),
+        & m_area.GetTitleLabel(), NULL);
 
     MeaLayout::PlaceAfter(m_x1.GetTitleLabel(), m_x1.GetField(), kLabelSpacing);
     MeaLayout::PlaceAfter(m_x1.GetField(), m_x1.GetSpin(), 0);
@@ -298,6 +305,12 @@ bool MeaDataDisplay::CreateRegionSection()
     MeaLayout::AlignCenter(point.y, &m_length.GetTitleLabel(), &m_length.GetField(),
         &m_length.GetUnitsLabel(), &m_angle.GetTitleLabel(), &m_angle.GetField(),
         &m_angle.GetUnitsLabel(), NULL);
+
+    point.y += lineHeight;
+
+    MeaLayout::PlaceAfter(m_aspect.GetTitleLabel(), m_aspect.GetField(), kLabelSpacing);
+
+    MeaLayout::AlignCenter(point.y, &m_aspect.GetTitleLabel(), &m_aspect.GetField(), NULL);
 
     point.y += lineHeight;
 
@@ -504,6 +517,15 @@ void MeaDataDisplay::ShowAngle(double angle)
 }
 
 
+void MeaDataDisplay::ShowAspect(const FSIZE& size) {
+    double aspectRatio = (size.cy == 0) ? 0.0 : ((double)size.cx / (double)size.cy);
+
+    CString vstr;
+    vstr.Format(_T("%0.*f"), kAspectPrecision, aspectRatio);
+    m_aspect.SetText(vstr);
+}
+
+
 void MeaDataDisplay::ShowRectArea(const FSIZE& size)
 {
     m_area.SetText(MeaUnitsMgr::Instance().Format(MeaAr, size.cx * size.cy));
@@ -553,6 +575,7 @@ void MeaDataDisplay::EnableRegionFields(UINT enableFields, UINT editableFields)
     m_height.SetReadOnly(!(editableFields & MeaHeightField));
     m_length.SetReadOnly(!(editableFields & MeaDistanceField));
     m_angle.SetReadOnly(!(editableFields & MeaAngleField));
+    m_aspect.SetReadOnly(!(editableFields & MeaAspectField));
     m_area.SetReadOnly(!(editableFields & MeaAreaField));
 
     m_x1.Enable((enableFields & MeaX1Field) != 0);
@@ -566,6 +589,7 @@ void MeaDataDisplay::EnableRegionFields(UINT enableFields, UINT editableFields)
     m_height.Enable((enableFields & MeaHeightField) != 0);
     m_length.Enable((enableFields & MeaDistanceField) != 0);
     m_angle.Enable((enableFields & MeaAngleField) != 0);
+    m_aspect.Enable((enableFields & MeaAspectField) != 0);
     m_area.Enable((enableFields & MeaAreaField) != 0);
 }
 
@@ -596,6 +620,7 @@ void MeaDataDisplay::ClearRegionData()
     m_height.SetText(_T(""));
     m_length.SetText(_T(""));
     m_angle.SetText(_T(""));
+    m_aspect.SetText(_T(""));
     m_area.SetText(_T(""));
 }
 

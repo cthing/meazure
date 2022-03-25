@@ -460,6 +460,17 @@ public:
         }
     }
 
+    /// Displays the aspect ratio of the specified size in the aspect ratio field of
+    /// the data display.
+    ///
+    /// @param size    [in] Width and height of the bounding rectangle.
+    ///
+    void ShowAspect(const FSIZE& size) {
+        if (m_dataDisplay != NULL) {
+            m_dataDisplay->ShowAspect(size);
+        }
+    }
+
     /// Displays the rectangular area calculated from the
     /// specified width and height in the area field of the
     /// data display.

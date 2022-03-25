@@ -635,6 +635,7 @@ END
 STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "Meazure"
+    IDS_MEA_ASPECT          "As:"
 END
 
 STRINGTABLE

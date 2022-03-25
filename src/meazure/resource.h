@@ -14,6 +14,7 @@
 #define ID_MEA_MASTER_RESET             126
 #define IDR_MAINFRAME                   128
 #define IDR_MEAZURTYPE                  129
+#define IDS_MEA_ASPECT                  129
 #define IDD_PREF_RULERS                 135
 #define IDD_PREF_TOOLS                  136
 #define IDB_MEA_NORMPAUSE               138

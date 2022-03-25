@@ -200,6 +200,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>DisableCrosshairs</b>
 <tr class="memitem:ac47d0b00b1502c3fe3147ddfb3309a14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ac47d0b00b1502c3fe3147ddfb3309a14">ShowAngle</a> (double angle)</td></tr>
 <tr class="memdesc:ac47d0b00b1502c3fe3147ddfb3309a14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified angle in the angle field of the data display.  <a href="classMeaToolMgr.html#ac47d0b00b1502c3fe3147ddfb3309a14">More...</a><br /></td></tr>
 <tr class="separator:ac47d0b00b1502c3fe3147ddfb3309a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6c8df9ebd4d6cd228bb9f9d13e34cf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ad6c8df9ebd4d6cd228bb9f9d13e34cf7">ShowAspect</a> (const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;size)</td></tr>
+<tr class="memdesc:ad6c8df9ebd4d6cd228bb9f9d13e34cf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the aspect ratio of the specified size in the aspect ratio field of the data display.  <a href="classMeaToolMgr.html#ad6c8df9ebd4d6cd228bb9f9d13e34cf7">More...</a><br /></td></tr>
+<tr class="separator:ad6c8df9ebd4d6cd228bb9f9d13e34cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36f102b4779a5b1e2c579c01f7479ffb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a36f102b4779a5b1e2c579c01f7479ffb">ShowRectArea</a> (const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;size)</td></tr>
 <tr class="memdesc:a36f102b4779a5b1e2c579c01f7479ffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the rectangular area calculated from the specified width and height in the area field of the data display.  <a href="classMeaToolMgr.html#a36f102b4779a5b1e2c579c01f7479ffb">More...</a><br /></td></tr>
 <tr class="separator:a36f102b4779a5b1e2c579c01f7479ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1258,6 +1261,44 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="ad6c8df9ebd4d6cd228bb9f9d13e34cf7" name="ad6c8df9ebd4d6cd228bb9f9d13e34cf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6c8df9ebd4d6cd228bb9f9d13e34cf7">&#9670;&nbsp;</a></span>ShowAspect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeaToolMgr::ShowAspect </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Displays the aspect ratio of the specified size in the aspect ratio field of the data display. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>[in] Width and height of the bounding rectangle. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a9e763e76100a09601b276f9205bcc09b">MeaDataDisplay::ShowAspect()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaLineTool.html#aa44ac322418324ddd11102bc695cac6f">MeaLineTool::Update()</a>, <a class="el" href="classMeaRectTool.html#a74a54e803a0f3dbea7ac2a82196514f5">MeaRectTool::Update()</a>, and <a class="el" href="classMeaWindowTool.html#ac1ab7a2ad63fd7d2a39f6299daa25bb5">MeaWindowTool::Update()</a>.</p>
+
+</div>
+</div>
 <a id="ab81d33183af740f90b2d39da2ea1a6b2" name="ab81d33183af740f90b2d39da2ea1a6b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab81d33183af740f90b2d39da2ea1a6b2">&#9670;&nbsp;</a></span>ShowCalButton()</h2>
 
@@ -1927,7 +1968,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <hr size="1">
 <address style="align: right;"><small>
-Generated on Wed Mar 23 2022 23:49:18 for Meazure by <a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 24 2022 17:33:59 for Meazure by <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border=0>
 </a> 1.9.3</small></address>
 <address style="align: right;"><small>

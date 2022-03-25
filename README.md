@@ -37,6 +37,9 @@ Refer to [Building.md](Building.md) for information on how to build Meazure from
 - The minimum screen grid spacing has been reduced from 40 to 10 pixels and the maximum spacing
   has been increased from 1000 to 4000 pixels.
 
+- Feature: The aspect ratio (i.e. width / height) is now displayed for the Rectangle, Window,
+  and Line tools. For the Line tool, the aspect ratio is based on the bounding rectangle.  
+
 ### Changes 2.0 to 2.0.1
 
 - Publish Meazure as an Open Source project on GitHub under

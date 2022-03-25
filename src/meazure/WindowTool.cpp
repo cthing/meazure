@@ -74,7 +74,7 @@ void MeaWindowTool::Enable()
                         MeaX2Field | MeaY2Field |
                         MeaWidthField | MeaHeightField |
                         MeaDistanceField | MeaAngleField |
-                        MeaAreaField, 0);
+                        MeaAspectField | MeaAreaField, 0);
 
     // Create the window rectangle
     //
@@ -155,6 +155,7 @@ void MeaWindowTool::Update(MeaUpdateReason reason)
         m_mgr->ShowWH(wh);
         m_mgr->ShowDistance(wh);
         m_mgr->ShowAngle(MeaLayout::GetAngle(p1, p2));
+        m_mgr->ShowAspect(wh);
         m_mgr->ShowRectArea(wh);
 
         // Update the screen information based on the

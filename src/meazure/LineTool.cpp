@@ -193,7 +193,7 @@ void MeaLineTool::Enable()
                                 MeaX2Field | MeaY2Field |
                                 MeaWidthField | MeaHeightField |
                                 MeaDistanceField | MeaAngleField |
-                                MeaAreaField,
+                                MeaAspectField | MeaAreaField,
                                 MeaX1Field | MeaY1Field |
                                 MeaX2Field | MeaY2Field);
 
@@ -249,6 +249,7 @@ void MeaLineTool::Update(MeaUpdateReason reason)
         m_mgr->ShowWH(wh);
         m_mgr->ShowDistance(wh);
         m_mgr->ShowAngle(MeaLayout::GetAngle(p1, p2));
+        m_mgr->ShowAspect(wh);
         m_mgr->ShowRectArea(wh);
 
         // The screen information depends on the

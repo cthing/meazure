@@ -18,7 +18,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Meazure
+   <div id="projectname">Meazure<span id="projectnumber">&#160;3.0</span>
    </div>
   </td>
  </tr>
@@ -155,6 +155,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>DisableCrosshairs</b>
 <tr class="memitem:ab0d8ae59f078ee4bd06a7dc64884a768"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ab0d8ae59f078ee4bd06a7dc64884a768">SetPosition</a> (const <a class="el" href="classMeaRadioTool.html#aeaba97e21b2b7a099965f28b24d15b9f">MeaRadioTool::PointMap</a> &amp;points)</td></tr>
 <tr class="memdesc:ab0d8ae59f078ee4bd06a7dc64884a768"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the current radio tool.  <a href="classMeaToolMgr.html#ab0d8ae59f078ee4bd06a7dc64884a768">More...</a><br /></td></tr>
 <tr class="separator:ab0d8ae59f078ee4bd06a7dc64884a768"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c3589106c6405f214156af2dba0184"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#af8c3589106c6405f214156af2dba0184">SetPositionToCursor</a> (<a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> xfield, <a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> yfield)</td></tr>
+<tr class="memdesc:af8c3589106c6405f214156af2dba0184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the specified position based on the current location of the cursor.  <a href="classMeaToolMgr.html#af8c3589106c6405f214156af2dba0184">More...</a><br /></td></tr>
+<tr class="separator:af8c3589106c6405f214156af2dba0184"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20a53e8290adaa69ee044a02d90fd18d"><td class="memItemLeft" align="right" valign="top">const POINT &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a20a53e8290adaa69ee044a02d90fd18d">GetPosition</a> () const</td></tr>
 <tr class="memdesc:a20a53e8290adaa69ee044a02d90fd18d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a representative position from the current radio tool.  <a href="classMeaToolMgr.html#a20a53e8290adaa69ee044a02d90fd18d">More...</a><br /></td></tr>
 <tr class="separator:a20a53e8290adaa69ee044a02d90fd18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1151,7 +1154,46 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, and <a class="el" href="classMeaToolMgr.html#aeb64da019fddd12ce64dcdb5757d4383">SetPosition()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#ac6bb8240cb5130aed234b178e68d3f48">CChildView::OnDataChange()</a>, <a class="el" href="classMeaToolMgr.html#aeb64da019fddd12ce64dcdb5757d4383">SetPosition()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classCChildView.html#ac6bb8240cb5130aed234b178e68d3f48">CChildView::OnDataChange()</a>, <a class="el" href="classMeaToolMgr.html#aeb64da019fddd12ce64dcdb5757d4383">SetPosition()</a>, <a class="el" href="classMeaToolMgr.html#af8c3589106c6405f214156af2dba0184">SetPositionToCursor()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+
+</div>
+</div>
+<a id="af8c3589106c6405f214156af2dba0184" name="af8c3589106c6405f214156af2dba0184"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8c3589106c6405f214156af2dba0184">&#9670;&nbsp;</a></span>SetPositionToCursor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeaToolMgr::SetPositionToCursor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramname"><em>xfield</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramname"><em>yfield</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the specified position based on the current location of the cursor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xfield</td><td>[in] X position to set </td></tr>
+    <tr><td class="paramname">yfield</td><td>[in] Y position to set </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#aeb64da019fddd12ce64dcdb5757d4383">SetPosition()</a>.</p>
 
 </div>
 </div>
@@ -1967,12 +2009,6 @@ Additional Inherited Members</h2></td></tr>
 </ul>
 </div><!-- contents -->
 <hr size="1">
-<address style="align: right;"><small>
-Generated on Thu Mar 24 2022 17:33:59 for Meazure by <a href="http://www.doxygen.org/index.html">
-<img src="doxygen.png" alt="doxygen" align="middle" border=0>
-</a> 1.9.3</small></address>
-<address style="align: right;"><small>
-Copyright 2011 C Thing Software
-</small></address>
+<address style="align: right;"><small>Copyright 2011 C Thing Software</small></address>
 </body>
 </html>

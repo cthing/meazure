@@ -35,8 +35,17 @@
 }
 
 /* Body */
-BODY {
+body {
     margin: 0in;
+}
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 5px;
 }
 .Page {
     margin: 0.125in;
@@ -91,8 +100,7 @@ BODY {
 .ShortCut {
     font-family: arial, helvetica, sans-serif;
     font-size: 10pt;
-    font-weight: normal;
-    margin-top: 2pt;
+    font-weight: bold;
 }
 .SeeAlso {
     font-family: arial, helvetica, sans-serif;

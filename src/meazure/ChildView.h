@@ -229,6 +229,9 @@ protected:
     afx_msg void OnDefineCustomUnits();
     afx_msg void OnUpdateCustomUnits(CCmdUI* pCmdUI);
     afx_msg void OnCustomUnits();
+    afx_msg void OnSetPosition1ToCursor();
+    afx_msg void OnSetPosition2ToCursor();
+    afx_msg void OnSetPosition3ToCursor();
     //}}AFX_MSG
 
     DECLARE_MESSAGE_MAP()

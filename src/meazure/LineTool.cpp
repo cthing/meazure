@@ -288,6 +288,8 @@ void MeaLineTool::SetPosition(MeaFields which, int pixels)
     case MeaY2Field:
         m_point2.y = pixels;
         break;
+    default:
+        return;
     }
 
     // Reposition the tool based on the crosshair locations.

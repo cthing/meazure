@@ -350,6 +350,8 @@ void MeaAngleTool::SetPosition(MeaFields which, int pixels)
     case MeaYVField:
         m_vertex.y = pixels;
         break;
+    default:
+        return;
     }
 
     // Reposition the tool based on the crosshair locations.

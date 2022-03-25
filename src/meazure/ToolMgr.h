@@ -293,6 +293,13 @@ public:
         m_currentRadioTool->SetPosition(points);
     }
 
+    /// Sets the specified position based on the current location of the cursor.
+    /// 
+    /// @param xfield  [in] X position to set
+    /// @param yfield  [in] Y position to set
+    /// 
+    void    SetPositionToCursor(MeaFields xfield, MeaFields yfield);
+
     /// Returns a representative position from the current radio tool.
     ///
     /// @return The current radio tool returns a point that represents

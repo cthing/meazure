@@ -224,6 +224,9 @@
 #define ID_MEA_UNITS_SET_CUSTOM         32843
 #define ID_MEA_UNITS_CUSTOM             32844
 #define ID_MEA_UNITS_DEF_CUSTOM         32845
+#define ID_MEA_POS1                     32846
+#define ID_MEA_POS2                     32847
+#define ID_MEA_POS3                     32848
 #define IDS_MEA_PIXELS                  61204
 #define IDS_MEA_CM                      61205
 #define IDS_MEA_MM                      61206
@@ -395,7 +398,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        166
-#define _APS_NEXT_COMMAND_VALUE         32846
+#define _APS_NEXT_COMMAND_VALUE         32850
 #define _APS_NEXT_CONTROL_VALUE         1180
 #define _APS_NEXT_SYMED_VALUE           129
 #endif

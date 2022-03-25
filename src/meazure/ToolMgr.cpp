@@ -86,6 +86,15 @@ MeaToolMgr::~MeaToolMgr()
 }
 
 
+void MeaToolMgr::SetPositionToCursor(MeaFields xfield, MeaFields yfield)
+{
+    POINT point;
+    GetCursorPos(&point);
+    SetPosition(xfield, point.x);
+    SetPosition(yfield, point.y);
+}
+
+
 void MeaToolMgr::SaveProfile(MeaProfile& profile)
 {
     ToolsMap::const_iterator iter;

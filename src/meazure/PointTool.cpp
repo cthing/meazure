@@ -216,6 +216,8 @@ void MeaPointTool::SetPosition(MeaFields which, int pixels)
         m_center.x = pixels;
     } else if (which == MeaY1Field) {
         m_center.y = pixels;
+    } else {
+        return;
     }
 
     // Reposition the tool based on the crosshair locations.

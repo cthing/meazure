@@ -336,6 +336,8 @@ void MeaCircleTool::SetPosition(MeaFields which, int pixels)
     case MeaY1Field:
         m_perimeter.y = pixels;
         break;
+    default:
+        return;
     }
 
     // Reposition the tool based on the crosshair locations.

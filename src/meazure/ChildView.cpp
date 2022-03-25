@@ -130,6 +130,9 @@ BEGIN_MESSAGE_MAP(CChildView,CWnd )
     ON_UPDATE_COMMAND_UI(ID_MEA_UNITS_PICAS, OnUpdateUnits)
     ON_UPDATE_COMMAND_UI(ID_MEA_SAVE_POSITIONS_AS, OnUpdateSavePositions)
     ON_COMMAND(ID_MEA_UNITS_CUSTOM, OnCustomUnits)
+    ON_COMMAND(ID_MEA_POS1, OnSetPosition1ToCursor)
+    ON_COMMAND(ID_MEA_POS2, OnSetPosition2ToCursor)
+    ON_COMMAND(ID_MEA_POS3, OnSetPosition3ToCursor)
     //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -605,6 +608,24 @@ void CChildView::OnDefineCustomUnits()
 {
     m_prefs.SetActivePage(&m_prefs.m_customPrefs);
     OnPreferences();
+}
+
+
+void CChildView::OnSetPosition1ToCursor()
+{
+    MeaToolMgr::Instance().SetPositionToCursor(MeaX1Field, MeaY1Field);
+}
+
+
+void CChildView::OnSetPosition2ToCursor()
+{
+    MeaToolMgr::Instance().SetPositionToCursor(MeaX2Field, MeaY2Field);
+}
+
+
+void CChildView::OnSetPosition3ToCursor()
+{
+    MeaToolMgr::Instance().SetPositionToCursor(MeaXVField, MeaYVField);
 }
 
 

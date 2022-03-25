@@ -26,6 +26,13 @@ for details on the licensing of the Meazure program.
 
 Refer to [Building.md](Building.md) for information on how to build Meazure from source.
 
+## Known Issues
+
+- Meazure may report incorrect measurements if Windows Display "Make everything bigger" greater than 100% is used
+  (see [issue #9](https://github.com/cthing/meazure/issues/9)). To work around this issue, right-click on Meazure.exe
+  and select Properties. In the properties dialog, select the Compatibility tab. Press the "Change high DPI settings"
+  button. Check the box next to "Override high DPI scaling behavior Scaling performed by: Application".
+
 ## Changelog
 
 ### Changes 2.0.1 to 3.0-SNAPSHOT

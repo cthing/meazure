@@ -234,6 +234,9 @@ BEGIN
     "B",            ID_MEA_HIDE_CROSSHAIR,  VIRTKEY, CONTROL, NOINVERT
     "O",            ID_MEA_LOAD_POSITIONS,  VIRTKEY, CONTROL, NOINVERT
     "A",            ID_MEA_ORIGIN,          VIRTKEY, CONTROL, NOINVERT
+    "1",            ID_MEA_POS1,            VIRTKEY, SHIFT, CONTROL, NOINVERT
+    "2",            ID_MEA_POS2,            VIRTKEY, SHIFT, CONTROL, NOINVERT
+    "3",            ID_MEA_POS3,            VIRTKEY, SHIFT, CONTROL, NOINVERT
     "P",            ID_MEA_RECORD,          VIRTKEY, CONTROL, NOINVERT
     "M",            ID_MEA_RUNSTATE,        VIRTKEY, CONTROL, NOINVERT
     "S",            ID_MEA_SAVE_POSITIONS,  VIRTKEY, CONTROL, NOINVERT
@@ -241,9 +244,6 @@ BEGIN
     VK_OEM_MINUS,   ID_MEA_ZOOM_OUT,        VIRTKEY, CONTROL, NOINVERT
     VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
     VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
-    "1",            ID_MEA_POS1,            VIRTKEY, CONTROL, NOINVERT
-    "2",            ID_MEA_POS2,            VIRTKEY, CONTROL, NOINVERT
-    "3",            ID_MEA_POS3,            VIRTKEY, CONTROL, NOINVERT
 END
 
 

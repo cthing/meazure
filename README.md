@@ -47,10 +47,10 @@ Refer to [Building.md](Building.md) for information on how to build Meazure from
 - Feature: The aspect ratio (i.e. width / height) is now displayed for the Rectangle, Window,
   and Line tools. For the Line tool, the aspect ratio is based on the bounding rectangle.
 
-- Feature: Measurement tool crosshair positions can now be set using hotkeys. Pressing the Ctrl-1, Ctrl-2,
-  or Ctrl-3 moves the corresponding tool crosshair to the current location of the mouse pointer. For
-  example, if the Line tool is being used, pressing Ctrl-2 will move the line's number 2 crosshair to
-  the current mouse location.
+- Feature: Measurement tool crosshair positions can now be set using hotkeys. Pressing the Ctrl+Shift+1,
+  Ctrl+Shift+2, or Ctrl+Shift+3 moves the corresponding tool crosshair to the current location of the mouse 
+  pointer. For example, if the Line tool is being used, pressing Ctrl+Shift+2 will move the line's number 2
+  crosshair to the current mouse location.
 
 ### Changes 2.0 to 2.0.1
 

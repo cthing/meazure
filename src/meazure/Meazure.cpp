@@ -144,10 +144,6 @@ BOOL CMeazureApp::InitInstance()
 
     InterlockedExchange64(reinterpret_cast<LONG64*>(const_cast<HWND*>(&g_meaMainWnd)), reinterpret_cast<LONG64>(pFrame->m_hWnd));
 
-    if (pFrame->IsNewInstall()) {
-        OnAppAbout();
-    }
-
     // Set the help file pathname by replacing the old WinHelp
     // .hlp with the new HTML Help .chm.
     TCHAR *cptr = const_cast<TCHAR*>(_tcsstr(m_pszHelpFilePath, _T(".hlp")));

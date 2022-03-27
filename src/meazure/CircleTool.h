@@ -163,6 +163,18 @@ public:
     ///
     virtual void    GetPosition(MeaPositionLogMgr::Position& position) const;
 
+    /// Increments the specified position field.
+    /// 
+    /// @param which Field to increment
+    ///
+    virtual void    IncPosition(MeaFields which);
+
+    /// Decrements the specified position field.
+    /// 
+    /// @param which Field to decrement
+    ///
+    virtual void    DecPosition(MeaFields which);
+
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position
     /// logs.

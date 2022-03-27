@@ -92,9 +92,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~CChildView</b> ()
 <tr class="memitem:ac3ba1eef6610ebcb681f801513820800"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChildView.html#ac3ba1eef6610ebcb681f801513820800">InitView</a> ()</td></tr>
 <tr class="memdesc:ac3ba1eef6610ebcb681f801513820800"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called at startup right before the app windows are shown.  <a href="classCChildView.html#ac3ba1eef6610ebcb681f801513820800">More...</a><br /></td></tr>
 <tr class="separator:ac3ba1eef6610ebcb681f801513820800"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8dec5cbb205082b37cf30b59aa46c71"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCChildView.html#af8dec5cbb205082b37cf30b59aa46c71">PreCreateWindow</a> (CREATESTRUCT &amp;cs)</td></tr>
-<tr class="memdesc:af8dec5cbb205082b37cf30b59aa46c71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called before the window is created.  <a href="classCChildView.html#af8dec5cbb205082b37cf30b59aa46c71">More...</a><br /></td></tr>
-<tr class="separator:af8dec5cbb205082b37cf30b59aa46c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07e87a6c3606422ff10d45a47d702c7e"><td class="memItemLeft" align="right" valign="top"><a id="a07e87a6c3606422ff10d45a47d702c7e" name="a07e87a6c3606422ff10d45a47d702c7e"></a>
+virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><b>PreCreateWindow</b> (CREATESTRUCT &amp;cs)</td></tr>
+<tr class="separator:a07e87a6c3606422ff10d45a47d702c7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e24dfbf3bd291e07cab0831683080f6"><td class="memItemLeft" align="right" valign="top"><a id="a7e24dfbf3bd291e07cab0831683080f6" name="a7e24dfbf3bd291e07cab0831683080f6"></a>
+virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><b>PreTranslateMessage</b> (MSG *pMsg)</td></tr>
+<tr class="separator:a7e24dfbf3bd291e07cab0831683080f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -2401,41 +2404,6 @@ If a position log file is specified on the command-line, that file is loaded. </
 </dl>
 
 <p class="reference">References <a class="el" href="classMeaMagnifier.html#a32580ce1dc4877e949881c2cc3173c7d">MeaMagnifier::CanZoomOut()</a>, and <a class="el" href="classCChildView.html#a6bf156e6c5c248e1b085ed2ad94670fb">m_magnifier</a>.</p>
-
-</div>
-</div>
-<a id="af8dec5cbb205082b37cf30b59aa46c71" name="af8dec5cbb205082b37cf30b59aa46c71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8dec5cbb205082b37cf30b59aa46c71">&#9670;&nbsp;</a></span>PreCreateWindow()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">CChildView::PreCreateWindow </td>
-          <td>(</td>
-          <td class="paramtype">CREATESTRUCT &amp;&#160;</td>
-          <td class="paramname"><em>cs</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Called before the window is created. </p>
-<p >Sets up the View window class. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">cs</td><td>[in] Window creation information structure. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if the pre-creation process was successful. </dd></dl>
 
 </div>
 </div>

@@ -104,6 +104,18 @@ public:
     ///
     virtual const POINT& GetPosition() const = 0;
 
+    /// Increments the specified position field. 
+    /// 
+    /// @param which Position field to increment
+    ///
+    virtual void         IncPosition(MeaFields which);
+
+    /// Decrements the specified position field. 
+    /// 
+    /// @param which Position field to decrement
+    ///
+    virtual void         DecPosition(MeaFields which);
+
 
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position

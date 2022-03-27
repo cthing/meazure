@@ -83,6 +83,16 @@ void MeaTool::SetPosition(MeaFields, int)
 }
 
 
+void MeaTool::IncPosition(MeaFields which)
+{
+}
+
+
+void MeaTool::DecPosition(MeaFields which)
+{
+}
+
+
 void MeaTool::ColorsChanged()
 {
 }

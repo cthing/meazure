@@ -460,6 +460,60 @@ void MeaAngleTool::GetPosition(MeaPositionLogMgr::Position& position) const
 }
 
 
+void MeaAngleTool::IncPosition(MeaFields which)
+{
+    switch (which) {
+    case MeaX1Field:
+        SetPosition(which, m_point1.x + 1);
+        break;
+    case MeaY1Field:
+        SetPosition(which, m_point1.y + 1);
+        break;
+    case MeaX2Field:
+        SetPosition(which, m_point2.x + 1);
+        break;
+    case MeaY2Field:
+        SetPosition(which, m_point2.y + 1);
+        break;
+    case MeaXVField:
+        SetPosition(which, m_vertex.x + 1);
+        break;
+    case MeaYVField:
+        SetPosition(which, m_vertex.y + 1);
+        break;
+    default:
+        break;
+    }
+}
+
+
+void MeaAngleTool::DecPosition(MeaFields which)
+{
+    switch (which) {
+    case MeaX1Field:
+        SetPosition(which, m_point1.x - 1);
+        break;
+    case MeaY1Field:
+        SetPosition(which, m_point1.y - 1);
+        break;
+    case MeaX2Field:
+        SetPosition(which, m_point2.x - 1);
+        break;
+    case MeaY2Field:
+        SetPosition(which, m_point2.y - 1);
+        break;
+    case MeaXVField:
+        SetPosition(which, m_vertex.x - 1);
+        break;
+    case MeaYVField:
+        SetPosition(which, m_vertex.y - 1);
+        break;
+    default:
+        break;
+    }
+}
+
+
 void MeaAngleTool::ColorsChanged()
 {
     // Set the crosshair colors.

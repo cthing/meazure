@@ -274,6 +274,30 @@ void MeaPointTool::GetPosition(MeaPositionLogMgr::Position& position) const
 }
 
 
+void MeaPointTool::IncPosition(MeaFields which)
+{
+    // Increment the specified position component.
+    //
+    if (which == MeaX1Field) {
+        SetPosition(which, m_center.x + 1);
+    } else if (which == MeaY1Field) {
+        SetPosition(which, m_center.y + 1);
+    }
+}
+
+
+void MeaPointTool::DecPosition(MeaFields which)
+{
+    // Decrement the specified position component.
+    //
+    if (which == MeaX1Field) {
+        SetPosition(which, m_center.x - 1);
+    } else if (which == MeaY1Field) {
+        SetPosition(which, m_center.y - 1);
+    }
+}
+
+
 void MeaPointTool::ColorsChanged()
 {
     // Redraw the crosshair in the new colors.

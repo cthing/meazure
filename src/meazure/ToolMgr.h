@@ -320,6 +320,21 @@ public:
         m_currentRadioTool->GetPosition(position);
     }
 
+    /// Increments the specified position field. 
+    /// 
+    /// @param which Position field to increment
+    ///
+    void    IncPosition(MeaFields which) {
+        m_currentRadioTool->IncPosition(which);
+    }
+
+    /// Decrements the specified position field. 
+    /// 
+    /// @param which Position field to decrement
+    ///
+    void    DecPosition(MeaFields which) {
+        m_currentRadioTool->DecPosition(which);
+    }
 
     /// Indicates if the current radio tool has a rectangular region
     /// that can be captured.

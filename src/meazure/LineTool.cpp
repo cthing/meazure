@@ -379,6 +379,48 @@ void MeaLineTool::GetPosition(MeaPositionLogMgr::Position& position) const
 }
 
 
+void MeaLineTool::IncPosition(MeaFields which)
+{
+    switch (which) {
+    case MeaX1Field:
+        SetPosition(which, m_point1.x + 1);
+        break;
+    case MeaY1Field:
+        SetPosition(which, m_point1.y + 1);
+        break;
+    case MeaX2Field:
+        SetPosition(which, m_point2.x + 1);
+        break;
+    case MeaY2Field:
+        SetPosition(which, m_point2.y + 1);
+        break;
+    default:
+        break;
+    }
+}
+
+
+void MeaLineTool::DecPosition(MeaFields which)
+{
+    switch (which) {
+    case MeaX1Field:
+        SetPosition(which, m_point1.x - 1);
+        break;
+    case MeaY1Field:
+        SetPosition(which, m_point1.y - 1);
+        break;
+    case MeaX2Field:
+        SetPosition(which, m_point2.x - 1);
+        break;
+    case MeaY2Field:
+        SetPosition(which, m_point2.y - 1);
+        break;
+    default:
+        break;
+    }
+}
+
+
 void MeaLineTool::ColorsChanged()
 {
     // Set the crosshair colors.

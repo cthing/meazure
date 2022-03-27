@@ -114,10 +114,7 @@ public:
     virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
     //}}AFX_VIRTUAL
 
-    /// @fn PreCreateWindow(CREATESTRUCT& cs)
-    /// Called before the window is created. Sets up the View window class.
-    /// @param cs       [in] Window creation information structure.
-    /// @return TRUE if the pre-creation process was successful.
+    virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 protected:
     /// Called when new units are selected from the Units menu.

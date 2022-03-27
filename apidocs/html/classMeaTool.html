@@ -100,6 +100,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaTool</b> ()</t
 <tr class="memitem:a5b516edb23e4c399701c00c985fc195c"><td class="memItemLeft" align="right" valign="top">virtual const POINT &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTool.html#a5b516edb23e4c399701c00c985fc195c">GetPosition</a> () const =0</td></tr>
 <tr class="memdesc:a5b516edb23e4c399701c00c985fc195c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the tool's current position.  <a href="classMeaTool.html#a5b516edb23e4c399701c00c985fc195c">More...</a><br /></td></tr>
 <tr class="separator:a5b516edb23e4c399701c00c985fc195c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4989672958ab82f89e6552d7b54489e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTool.html#aa4989672958ab82f89e6552d7b54489e">IncPosition</a> (<a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> which)</td></tr>
+<tr class="memdesc:aa4989672958ab82f89e6552d7b54489e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the specified position field.  <a href="classMeaTool.html#aa4989672958ab82f89e6552d7b54489e">More...</a><br /></td></tr>
+<tr class="separator:aa4989672958ab82f89e6552d7b54489e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a44d849864d13d8807832092df6ab94"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTool.html#a5a44d849864d13d8807832092df6ab94">DecPosition</a> (<a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> which)</td></tr>
+<tr class="memdesc:a5a44d849864d13d8807832092df6ab94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the specified position field.  <a href="classMeaTool.html#a5a44d849864d13d8807832092df6ab94">More...</a><br /></td></tr>
+<tr class="separator:a5a44d849864d13d8807832092df6ab94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae9e4d5acbb84910c8681b5d831dea9b"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">GetToolName</a> () const =0</td></tr>
 <tr class="memdesc:aae9e4d5acbb84910c8681b5d831dea9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the tool.  <a href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">More...</a><br /></td></tr>
 <tr class="separator:aae9e4d5acbb84910c8681b5d831dea9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,6 +210,44 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p >Typically a derived class redraws its components with the new colors and opacities. </p>
 
 <p>Reimplemented in <a class="el" href="classMeaAngleTool.html#ada7429d2df72657702fed49527924e43">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a881c42c7811241a46a3e5c03e5b93e56">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#a98f1dcbe6016a43aacf084b4376eb64d">MeaCursorTool</a>, <a class="el" href="classMeaGridTool.html#aeb0786cc28dcbe0ecfb60c42377b16c0">MeaGridTool</a>, <a class="el" href="classMeaLineTool.html#a277c7a608f6a7fba7108ef294d2ad9d2">MeaLineTool</a>, <a class="el" href="classMeaOriginTool.html#a3d2133f76f57f6af3dff7b8d2d8dc918">MeaOriginTool</a>, <a class="el" href="classMeaPointTool.html#a1a567beb25f6e9e8cc00e7ddfa315a35">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#a033e061bb3c09ec7e9386b994cad2faf">MeaRectTool</a>, <a class="el" href="classMeaRulerTool.html#a529f4a88f57ba2f5362ab422c0e20643">MeaRulerTool</a>, and <a class="el" href="classMeaWindowTool.html#ad6bc180a59ec1ba63109da5de13359f2">MeaWindowTool</a>.</p>
+
+</div>
+</div>
+<a id="a5a44d849864d13d8807832092df6ab94" name="a5a44d849864d13d8807832092df6ab94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a44d849864d13d8807832092df6ab94">&#9670;&nbsp;</a></span>DecPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeaTool::DecPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramname"><em>which</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Decrements the specified position field. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">which</td><td>Position field to decrement </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#ae8dadf2af4ab557b6cb72c64ff2a6919">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a71f42fe463fe3a29e5724a4ebb5f61ca">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#ab269d9cb0cb62fa716f2a67eb7e84872">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a2f13df0ab90ce4707a8ba11123369ed0">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#a6a41e9b1c26fc0e7c236cf8c964a5daf">MeaRectTool</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a08d315fb7045773d1bc0e6577288c6df">MeaToolMgr::DecPosition()</a>.</p>
 
 </div>
 </div>
@@ -335,6 +379,44 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p>Implemented in <a class="el" href="classMeaAngleTool.html#a23efc33aea91b16ff423d6cbf59304ea">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#abcbec4b4cdf089277722251f2463b2cd">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#a5f14dd734f1f55b55a6d0844c274821b">MeaCursorTool</a>, <a class="el" href="classMeaGridTool.html#af1a1780feb76ddc977101ffb9126efd7">MeaGridTool</a>, <a class="el" href="classMeaLineTool.html#aab8c58e1fb4ce084b397d9d110dfab68">MeaLineTool</a>, <a class="el" href="classMeaOriginTool.html#a6c68a87dd08e79b709fb348529dc7b24">MeaOriginTool</a>, <a class="el" href="classMeaPointTool.html#ab84791b47efa0164b7c110e9b16424c1">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#a9dc2db46678bc1a35440a4bd02b49d59">MeaRectTool</a>, <a class="el" href="classMeaRulerTool.html#aa6f20ec3e2672d0fc63afa873cbec3d2">MeaRulerTool</a>, <a class="el" href="classMeaScreenTool.html#a4db088622236ad0120c5f645b914a904">MeaScreenTool</a>, and <a class="el" href="classMeaWindowTool.html#aecde809106cffdd96a452125852ccab0">MeaWindowTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a1a2f2f5c76b6b3bcabb509e3890914d7">MeaToolMgr::GetToolName()</a>, <a class="el" href="classMeaToolMgr.html#a5937ebf229ec33616acd6589037087c0">MeaToolMgr::LoadProfile()</a>, and <a class="el" href="classMeaToolMgr.html#ab2ac8ea5e457379f500a8dcdce769cd6">MeaToolMgr::SaveProfile()</a>.</p>
+
+</div>
+</div>
+<a id="aa4989672958ab82f89e6552d7b54489e" name="aa4989672958ab82f89e6552d7b54489e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4989672958ab82f89e6552d7b54489e">&#9670;&nbsp;</a></span>IncPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeaTool::IncPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramname"><em>which</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Increments the specified position field. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">which</td><td>Position field to increment </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a680e3e617993ef06a7dfa619c9374728">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#acbda07339b6f07ab8504f876ed57c4b6">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#a67f18b7514f271df6ae3dfe515d33ca4">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a4c9ecb25681508002104571dac269be6">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#a48c0b1986f3a1a97172897c49ae9e4e5">MeaRectTool</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a9d9ef93c92642c5d86f4efa018753c37">MeaToolMgr::IncPosition()</a>.</p>
 
 </div>
 </div>

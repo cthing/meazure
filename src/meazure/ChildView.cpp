@@ -40,6 +40,11 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 
+#define CHAR_1 49
+#define CHAR_2 50
+#define CHAR_3 51
+
+
 BEGIN_MESSAGE_MAP(CChildView,CWnd )
     ON_COMMAND_RANGE(ID_MEA_UNITS_PIXELS, ID_MEA_UNITS_PICAS, OnUnits)
     ON_COMMAND_RANGE(ID_MEA_DEGREES, ID_MEA_RADIANS, OnAngles)
@@ -451,6 +456,63 @@ void CChildView::OnSaveProfile()
 void CChildView::OnLoadProfile() 
 {
     MeaProfileMgr::Instance().Load();
+}
+
+
+BOOL CChildView::PreTranslateMessage(MSG* pMsg)
+{
+    bool pressed = false;
+
+    if (pMsg->message == WM_KEYDOWN) {
+        auto incPosition = [&pressed](int keyCode, MeaFields which) {
+            if (MeaUtils::IsKeyPressed(keyCode)) {
+                MeaToolMgr::Instance().IncPosition(which);
+                pressed = true;
+            }
+        };
+
+        auto decPosition = [&pressed](int keyCode, MeaFields which) {
+            if (MeaUtils::IsKeyPressed(keyCode)) {
+                MeaToolMgr::Instance().DecPosition(which);
+                pressed = true;
+            }
+        };
+
+        switch (pMsg->wParam) {
+        case VK_DOWN:
+            if (MeaUtils::IsKeyPressed(VK_CONTROL)) {
+                incPosition(CHAR_1, MeaY1Field);
+                incPosition(CHAR_2, MeaY2Field);
+                incPosition(CHAR_3, MeaYVField);
+            }
+            break;
+        case VK_UP:
+            if (MeaUtils::IsKeyPressed(VK_CONTROL)) {
+                decPosition(CHAR_1, MeaY1Field);
+                decPosition(CHAR_2, MeaY2Field);
+                decPosition(CHAR_3, MeaYVField);
+            }
+            break;
+        case VK_LEFT:
+            if (MeaUtils::IsKeyPressed(VK_CONTROL)) {
+                decPosition(CHAR_1, MeaX1Field);
+                decPosition(CHAR_2, MeaX2Field);
+                decPosition(CHAR_3, MeaXVField);
+            }
+            break;
+        case VK_RIGHT:
+            if (MeaUtils::IsKeyPressed(VK_CONTROL)) {
+                incPosition(CHAR_1, MeaX1Field);
+                incPosition(CHAR_2, MeaX2Field);
+                incPosition(CHAR_3, MeaXVField);
+            }
+            break;
+        default:
+            break;
+        }
+    }
+
+    return pressed ? TRUE : CWnd::PreTranslateMessage(pMsg);
 }
 
 

@@ -419,6 +419,13 @@ public:
     ///
     static CString CRLFtoLF(CString str);
 
+
+    /// Indicates whether the specified key is being pressed.
+    ///
+    /// @param keyCode  ASCII character code or VK_* for a virtual key.
+    /// 
+    static bool IsKeyPressed(int keyCode);
+
 private:
     /// All members of this class are static. No instances
     /// of this class are ever created.

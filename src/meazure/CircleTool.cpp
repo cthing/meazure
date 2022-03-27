@@ -436,6 +436,48 @@ void MeaCircleTool::GetPosition(MeaPositionLogMgr::Position& position) const
 }
 
 
+void MeaCircleTool::IncPosition(MeaFields which)
+{
+    switch (which) {
+    case MeaXVField:
+        SetPosition(which, m_center.x + 1);
+        break;
+    case MeaYVField:
+        SetPosition(which, m_center.y + 1);
+        break;
+    case MeaX1Field:
+        SetPosition(which, m_perimeter.x + 1);
+        break;
+    case MeaY1Field:
+        SetPosition(which, m_perimeter.y + 1);
+        break;
+    default:
+        break;
+    }
+}
+
+
+void MeaCircleTool::DecPosition(MeaFields which)
+{
+    switch (which) {
+    case MeaXVField:
+        SetPosition(which, m_center.x - 1);
+        break;
+    case MeaYVField:
+        SetPosition(which, m_center.y - 1);
+        break;
+    case MeaX1Field:
+        SetPosition(which, m_perimeter.x - 1);
+        break;
+    case MeaY1Field:
+        SetPosition(which, m_perimeter.y - 1);
+        break;
+    default:
+        break;
+    }
+}
+
+
 void MeaCircleTool::ColorsChanged()
 {
     // Set the crosshair colors.

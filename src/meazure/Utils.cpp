@@ -21,6 +21,8 @@
 #include "Utils.h"
 #include <float.h>
 
+#define PRESSED_MASK 0x8000
+
 
 CString MeaUtils::DblToStr(double value)
 {
@@ -118,4 +120,10 @@ CString MeaUtils::CRLFtoLF(CString str)
     CString conv(str);
     conv.Replace(_T("\r\n"), _T("\n"));
     return conv;
+}
+
+
+bool MeaUtils::IsKeyPressed(int keyCode)
+{
+    return (GetKeyState(keyCode) & PRESSED_MASK) == PRESSED_MASK;
 }

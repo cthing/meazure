@@ -406,6 +406,48 @@ void MeaRectTool::GetPosition(MeaPositionLogMgr::Position& position) const
 }
 
 
+void MeaRectTool::IncPosition(MeaFields which)
+{
+    switch (which) {
+    case MeaX1Field:
+        SetPosition(which, m_point1.x + 1);
+        break;
+    case MeaY1Field:
+        SetPosition(which, m_point1.y + 1);
+        break;
+    case MeaX2Field:
+        SetPosition(which, m_point2.x + 1);
+        break;
+    case MeaY2Field:
+        SetPosition(which, m_point2.y + 1);
+        break;
+    default:
+        break;
+    }
+}
+
+
+void MeaRectTool::DecPosition(MeaFields which)
+{
+    switch (which) {
+    case MeaX1Field:
+        SetPosition(which, m_point1.x - 1);
+        break;
+    case MeaY1Field:
+        SetPosition(which, m_point1.y - 1);
+        break;
+    case MeaX2Field:
+        SetPosition(which, m_point2.x - 1);
+        break;
+    case MeaY2Field:
+        SetPosition(which, m_point2.y - 1);
+        break;
+    default:
+        break;
+    }
+}
+
+
 void MeaRectTool::ColorsChanged()
 {
     // Redraw the crosshairs in the new colors.

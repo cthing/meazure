@@ -164,6 +164,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>DisableCrosshairs</b>
 <tr class="memitem:addcf8c25ed5c363a20dc0f9dbb540dd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#addcf8c25ed5c363a20dc0f9dbb540dd9">GetPosition</a> (<a class="el" href="classMeaPositionLogMgr_1_1Position.html">MeaPositionLogMgr::Position</a> &amp;position) const</td></tr>
 <tr class="memdesc:addcf8c25ed5c363a20dc0f9dbb540dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current radio tool's position as a position object.  <a href="classMeaToolMgr.html#addcf8c25ed5c363a20dc0f9dbb540dd9">More...</a><br /></td></tr>
 <tr class="separator:addcf8c25ed5c363a20dc0f9dbb540dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9ef93c92642c5d86f4efa018753c37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a9d9ef93c92642c5d86f4efa018753c37">IncPosition</a> (<a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> which)</td></tr>
+<tr class="memdesc:a9d9ef93c92642c5d86f4efa018753c37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the specified position field.  <a href="classMeaToolMgr.html#a9d9ef93c92642c5d86f4efa018753c37">More...</a><br /></td></tr>
+<tr class="separator:a9d9ef93c92642c5d86f4efa018753c37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08d315fb7045773d1bc0e6577288c6df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a08d315fb7045773d1bc0e6577288c6df">DecPosition</a> (<a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> which)</td></tr>
+<tr class="memdesc:a08d315fb7045773d1bc0e6577288c6df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the specified position field.  <a href="classMeaToolMgr.html#a08d315fb7045773d1bc0e6577288c6df">More...</a><br /></td></tr>
+<tr class="separator:a08d315fb7045773d1bc0e6577288c6df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adae5ecb4b99e4d1281a539967b45b425"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#adae5ecb4b99e4d1281a539967b45b425">HasRegion</a> () const</td></tr>
 <tr class="memdesc:adae5ecb4b99e4d1281a539967b45b425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the current radio tool has a rectangular region that can be captured.  <a href="classMeaToolMgr.html#adae5ecb4b99e4d1281a539967b45b425">More...</a><br /></td></tr>
 <tr class="separator:adae5ecb4b99e4d1281a539967b45b425"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -401,6 +407,42 @@ Additional Inherited Members</h2></td></tr>
 <p class="reference">References <a class="el" href="classMeaToolMgr.html#a0de645300fce1cb11b2148d8e7609695">m_crosshairsEnabled</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#aff96d4a2ac06688acea0af23afef0816">MeaAngleTool::EnableCrosshairs()</a>, <a class="el" href="classMeaCircleTool.html#a5ca646d92295e262c46c853478680788">MeaCircleTool::EnableCrosshairs()</a>, <a class="el" href="classMeaLineTool.html#a48b26cbdf4bdf87adb5a38aadd2275fd">MeaLineTool::EnableCrosshairs()</a>, <a class="el" href="classMeaPointTool.html#a0eb863e7aa3c6b54639baa0374d914fd">MeaPointTool::EnableCrosshairs()</a>, <a class="el" href="classMeaRectTool.html#a2176600f3c31f76a3ab3def5e0a42b4a">MeaRectTool::EnableCrosshairs()</a>, <a class="el" href="classCChildView.html#acaf88744268ead9e80c9c4593d40ffb5">CChildView::OnHideCrosshairs()</a>, <a class="el" href="classCChildView.html#aefbc52f4ae4948f1ed37c07c20586a4e">CChildView::OnUpdateFindCrosshair()</a>, and <a class="el" href="classCChildView.html#a87cdf1e9cf80860d52a5915c2cbbec16">CChildView::OnUpdateHideCrosshairs()</a>.</p>
+
+</div>
+</div>
+<a id="a08d315fb7045773d1bc0e6577288c6df" name="a08d315fb7045773d1bc0e6577288c6df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08d315fb7045773d1bc0e6577288c6df">&#9670;&nbsp;</a></span>DecPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeaToolMgr::DecPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramname"><em>which</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Decrements the specified position field. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">which</td><td>Position field to decrement </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="classMeaTool.html#a5a44d849864d13d8807832092df6ab94">MeaTool::DecPosition()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
 </div>
 </div>
@@ -889,6 +931,42 @@ Additional Inherited Members</h2></td></tr>
 <p class="reference">References <a class="el" href="classMeaRadioTool.html#a7aaa8ec1b634c60d890bf4b29eac371b">MeaRadioTool::HasRegion()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classCChildView.html#afbb9e208a68dd8bc4aa1a6415f6ef3b2">CChildView::OnCopyRegion()</a>.</p>
+
+</div>
+</div>
+<a id="a9d9ef93c92642c5d86f4efa018753c37" name="a9d9ef93c92642c5d86f4efa018753c37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d9ef93c92642c5d86f4efa018753c37">&#9670;&nbsp;</a></span>IncPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeaToolMgr::IncPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramname"><em>which</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Increments the specified position field. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">which</td><td>Position field to increment </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="classMeaTool.html#aa4989672958ab82f89e6552d7b54489e">MeaTool::IncPosition()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
 </div>
 </div>

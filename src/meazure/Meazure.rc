@@ -207,6 +207,9 @@ BEGIN
         MENUITEM "&Index...",                   ID_HELP_INDEX
         MENUITEM "&What's this?\tShift+F1",     ID_CONTEXT_HELP
         MENUITEM SEPARATOR
+        MENUITEM "Meazure Releases",            ID_HELP_MEAZURERELEASES
+        MENUITEM "Report an Issue",             ID_HELP_REPORTANISSUE
+        MENUITEM SEPARATOR
         MENUITEM "&About Meazure",              ID_APP_ABOUT
     END
 END
@@ -252,20 +255,23 @@ END
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOGEX 0, 0, 223, 84
+IDD_ABOUTBOX DIALOGEX 0, 0, 223, 140
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About Meazure"
 FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     LTEXT           "Meazure",IDC_PROGRAM_TITLE,40,15,36,8,SS_NOPREFIX
     LTEXT           "Copyright 2001 C Thing Software",IDC_STATIC,18,44,136,8
-    DEFPUSHBUTTON   "OK",IDOK,85,63,50,14,WS_GROUP
-    ICON            IDR_MAINFRAME,IDC_STATIC,11,16,20,20
+    DEFPUSHBUTTON   "OK",IDOK,85,119,50,14,WS_GROUP
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,16,21,20
     CONTROL         IDB_LOGO,IDC_STATIC,"Static",SS_BITMAP,169,10,47,46
     LTEXT           "www.cthing.com",IDC_HOME_URL,40,25,54,8,SS_NOTIFY
     GROUPBOX        "",IDC_STATIC,7,7,156,49
     LTEXT           "Version: ",IDC_PROGRAM_VERSION,110,15,47,8,SS_NOPREFIX
     LTEXT           "Build: ",IDC_PROGRAM_BUILD,110,26,39,8
+    GROUPBOX        "",IDC_STATIC,7,57,209,57
+    LTEXT           "We hope Meazure is a valuable addition to your software toolbox. Please consider making a financial contribution. Thank you!",IDC_STATIC,16,66,191,27
+    PUSHBUTTON      "Contribute",IDC_CONTRIBUTE,16,95,50,14
 END
 
 IDD_PREF_RULERS DIALOG 0, 0, 216, 127
@@ -517,7 +523,7 @@ BEGIN
         LEFTMARGIN, 7
         RIGHTMARGIN, 216
         TOPMARGIN, 7
-        BOTTOMMARGIN, 77
+        BOTTOMMARGIN, 133
     END
 
     IDD_PREF_RULERS, DIALOG
@@ -639,6 +645,7 @@ STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "Meazure"
     IDS_MEA_ASPECT          "As:"
+    IDS_MEA_ISSUE_URL       "https://github.com/cthing/meazure/issues"
 END
 
 STRINGTABLE
@@ -994,6 +1001,13 @@ BEGIN
     IDS_MEA_MASTER_RESET    "Proceed with reset?"
     IDS_MEA_CIRCLE_STATUS   "CTRL moves circle, CTRL+R captures region"
     IDS_MEA_PREC_VALUE      "Precision value must be between 0 and %d, inclusive.\nThe value has been reset to %d."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_MEA_CTHING_URL      "https://www.cthing.com"
+    IDS_MEA_RELEASES_URL    "https://github.com/cthing/meazure/releases"
+    IDS_MEA_CONTRIBUTE_URL  "https://github.com/sponsors/baron1405"
 END
 
 #endif    // English (United States) resources

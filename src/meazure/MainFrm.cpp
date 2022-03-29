@@ -60,6 +60,8 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
     ON_COMMAND(ID_CONTEXT_HELP, CFrameWnd::OnContextHelp)
     ON_UPDATE_COMMAND_UI(ID_CONTEXT_HELP, OnUpdateHelpMenu)
     ON_COMMAND(ID_DEFAULT_HELP, CFrameWnd::OnHelpFinder)
+    ON_COMMAND(ID_HELP_MEAZURERELEASES, OnMeazureReleases)
+    ON_COMMAND(ID_HELP_REPORTANISSUE, OnReportIssue)
     ON_MESSAGE(MeaPrefsApplyMsg, OnPrefsApply)
     ON_MESSAGE(MeaShowCalPrefsMsg, OnShowCalPrefs)
     ON_MESSAGE(WM_COPYDATA, OnCopyData)
@@ -370,6 +372,18 @@ void CMainFrame::OnHelpIndex()
 }
 
 
+void CMainFrame::OnMeazureReleases()
+{
+    OpenUrl(IDS_MEA_RELEASES_URL);
+}
+
+
+void CMainFrame::OnReportIssue()
+{
+    OpenUrl(IDS_MEA_ISSUE_URL);
+}
+
+
 void CMainFrame::OnEndSession(BOOL bEnding) 
 {
     if (bEnding) {
@@ -443,4 +457,21 @@ void CMainFrame::OnViewStatusbar()
 void CMainFrame::OnUpdateViewStatusbar(CCmdUI* pCmdUI) 
 {
     pCmdUI->SetCheck(m_statusbarVisible);
+}
+
+
+bool CMainFrame::OpenUrl(int urlId)
+{
+    CString url;
+    url.LoadStringA(urlId);
+    HINSTANCE h = ShellExecute(NULL, _T("open"), url, NULL, NULL, SW_SHOWNORMAL);
+
+    if (reinterpret_cast<INT_PTR>(h) <= 32) {
+        CString msg;
+        msg.Format(IDS_MEA_NOEXEC, static_cast<LPCTSTR>(url));
+        MessageBox(msg, NULL, MB_OK | MB_ICONERROR);
+        return false;
+    }
+
+    return true;
 }

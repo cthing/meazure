@@ -23,7 +23,6 @@
 #pragma once
 
 #include "Singleton.h"
-#include <multimon.h>
 #include <map>
 #include "Profile.h"
 #include "Utils.h"

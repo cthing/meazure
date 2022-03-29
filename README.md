@@ -7,12 +7,11 @@ Copyright 2001 C Thing Software
 - Windows 10
 - 64-bit system
 
-## Installation
+## Downloading and Installation
 
-Meazure comes with an installer tool to install all
-program files on the system. In addition to installing
-the program files, the installer configures the system
-to run the Meazure program. This configuration includes:
+The Windows installer for Meazure can be [downloaded from GitHub](https://github.com/cthing/meazure/releases).
+In addition to installing the program files, the installer configures the system to run the Meazure program.
+This configuration includes:
 
 - Associating the file suffix `.mea` with the Meazure program
 - Optionally placing an icon on the desktop
@@ -32,6 +31,15 @@ Refer to [Building.md](Building.md) for information on how to build Meazure from
   (see [issue #9](https://github.com/cthing/meazure/issues/9)). To work around this issue, right-click on Meazure.exe
   and select Properties. In the properties dialog, select the Compatibility tab. Press the "Change high DPI settings"
   button. Check the box next to "Override high DPI scaling behavior Scaling performed by: Application".
+  
+## Feedback
+
+Please [open an issue on GitHub](https://github.com/cthing/meazure/issues) for feature requests and to report bugs.
+
+## Financial Contributions
+
+We hope Meazure is a valuable addition to your software toolbox. Please consider
+making a [financial contribution](https://github.com/sponsors/baron1405). Thank you!
 
 ## Changelog
 
@@ -131,7 +139,3 @@ Refer to [Building.md](Building.md) for information on how to build Meazure from
   has been corrected.
 
 - Windows 95 is no longer supported.
-
-## Feedback
-
-Please [open an issue on GitHub](https://github.com/cthing/meazure/issues) for feature requests and to report bugs.

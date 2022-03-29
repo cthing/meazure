@@ -140,9 +140,10 @@ void MeaToolMgr::MasterReset()
 }
 
 
-void MeaToolMgr::SetStatus(UINT id) const
+void MeaToolMgr::SetStatus(int id) const
 {
-    CString str(reinterpret_cast<LPCSTR>(id));
+    CString str;
+    str.LoadStringA(id);
 
     MeaStatusBar *bar = static_cast<MeaStatusBar*>(static_cast<CFrameWnd*>(AfxGetMainWnd())->GetControlBar(AFX_IDW_STATUS_BAR));
     bar->SetIdleMessage(str);

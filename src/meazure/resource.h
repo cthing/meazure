@@ -15,6 +15,7 @@
 #define IDR_MAINFRAME                   128
 #define IDR_MEAZURTYPE                  129
 #define IDS_MEA_ASPECT                  129
+#define IDS_MEA_ISSUE_URL               130
 #define IDD_PREF_RULERS                 135
 #define IDD_PREF_TOOLS                  136
 #define IDB_MEA_NORMPAUSE               138
@@ -31,6 +32,9 @@
 #define IDD_POSITION_MGR                163
 #define IDD_POSITION_SAVE               164
 #define IDD_PREF_PRECISION              165
+#define IDS_MEA_CTHING_URL              166
+#define IDS_MEA_RELEASES_URL            167
+#define IDS_MEA_CONTRIBUTE_URL          168
 #define IDC_ORIENT_TOP                  1004
 #define IDC_ORIENT_BOTTOM               1005
 #define IDC_ORIENT_LEFT                 1006
@@ -168,6 +172,7 @@
 #define IDC_RULER_OPACITY_LABEL2        1177
 #define IDC_MEA_ORIGIN_MARKER           1178
 #define IDC_MASTER_RESET                1179
+#define IDC_CONTRIBUTE                  1182
 #define ID_MEA_CURSOR                   32771
 #define ID_MEA_POINT                    32772
 #define ID_MEA_LINE                     32773
@@ -227,6 +232,8 @@
 #define ID_MEA_POS1                     32846
 #define ID_MEA_POS2                     32847
 #define ID_MEA_POS3                     32848
+#define ID_HELP_REPORTANISSUE           32850
+#define ID_HELP_MEAZURERELEASES         32851
 #define IDS_MEA_PIXELS                  61204
 #define IDS_MEA_CM                      61205
 #define IDS_MEA_MM                      61206
@@ -397,9 +404,9 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        166
-#define _APS_NEXT_COMMAND_VALUE         32850
-#define _APS_NEXT_CONTROL_VALUE         1180
+#define _APS_NEXT_RESOURCE_VALUE        168
+#define _APS_NEXT_COMMAND_VALUE         32852
+#define _APS_NEXT_CONTROL_VALUE         1183
 #define _APS_NEXT_SYMED_VALUE           129
 #endif
 #endif

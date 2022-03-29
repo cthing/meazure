@@ -257,6 +257,7 @@ public:
 protected:
     //{{AFX_MSG(CAboutDlg)
     afx_msg void OnHomeUrl();
+    afx_msg void OnContribute();
     afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
     afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
     //}}AFX_MSG
@@ -283,6 +284,12 @@ protected:
     DECLARE_MESSAGE_MAP()
 
 private:
+    /// Opens the specified URL in a web browser.
+    /// 
+    /// @param urlId  String resource ID for the URL 
+    /// @return true if the browser was opened.
+    bool    OpenUrl(int urlId);
+
     static bool     m_visited;          ///< Indicates if the home page has been visited.
     static bool     m_emailed;          ///< Indicates if the email link has been visited.
     static COLORREF m_unvisitedColor;   ///< Link color before it has been visited.
@@ -303,6 +310,7 @@ COLORREF CAboutDlg::m_visitedColor      = RGB(128, 0, 128); // Purple
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
     //{{AFX_MSG_MAP(CAboutDlg)
     ON_BN_CLICKED(IDC_HOME_URL, OnHomeUrl)
+    ON_BN_CLICKED(IDC_CONTRIBUTE, OnContribute)
     ON_WM_CTLCOLOR()
     ON_WM_SETCURSOR()
     //}}AFX_MSG_MAP
@@ -406,22 +414,35 @@ BOOL CAboutDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 
 void CAboutDlg::OnHomeUrl() 
 {
-    CString url;
-
-    static_cast<CStatic*>(GetDlgItem(IDC_HOME_URL))->GetWindowText(url);
-    url = _T("http://") + url;
-    HINSTANCE h = ShellExecute(NULL, _T("open"), url, NULL, NULL, SW_SHOWNORMAL);
-
-    if (reinterpret_cast<INT_PTR>(h) > 32) {
+    if (OpenUrl(IDS_MEA_CTHING_URL)) {
         m_visited = true;
 
         Invalidate();
         UpdateWindow();
-    } else {
+    }
+}
+
+
+void CAboutDlg::OnContribute()
+{
+    OpenUrl(IDS_MEA_CONTRIBUTE_URL);
+}
+
+
+bool CAboutDlg::OpenUrl(int urlId)
+{
+    CString url;
+    url.LoadString(urlId);
+    HINSTANCE h = ShellExecute(NULL, _T("open"), url, NULL, NULL, SW_SHOWNORMAL);
+
+    if (reinterpret_cast<INT_PTR>(h) <= 32) {
         CString msg;
         msg.Format(IDS_MEA_NOEXEC, static_cast<LPCTSTR>(url));
         MessageBox(msg, NULL, MB_OK | MB_ICONERROR);
+        return false;
     }
+
+    return true;
 }
 
 

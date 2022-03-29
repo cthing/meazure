@@ -221,6 +221,13 @@ protected:
     /// @param pCmdUI   [in] UI command class to update the menu item.
     afx_msg void OnUpdateHelpMenu(CCmdUI* pCmdUI);
 
+    /// Called to open the Meazure GitHub releases web page.
+    afx_msg void OnMeazureReleases();
+
+    /// Called to open the Meazure GitHub issue web page.
+    ///
+    afx_msg void OnReportIssue();
+
     /// Called when the Apply button is pressed on the preferences
     /// dialog.
     /// @param wParam   [in] Not used.
@@ -260,6 +267,12 @@ private:
     /// Selects whether to show the status bar.
     /// @param enable       [in] Indicates whether the status bar should be visible.
     void    ViewStatusbar(bool enable);
+
+    /// Opens the specified URL in a web browser.
+    /// 
+    /// @param urlId  String resource ID for the URL 
+    /// @return true if the browser was opened.
+    bool    OpenUrl(int urlId);
 
     bool    m_newInstall;           ///< Indicates if this is the first time the app has been run.
     int     m_toolbarHeight;        ///< Height of the toolbar, in pixels.

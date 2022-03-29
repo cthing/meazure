@@ -356,7 +356,7 @@ public:
     ///
     /// @param id       [in] String resource ID.
     ///
-    void SetStatus(UINT id) const;
+    void SetStatus(int id) const;
 
 
     /// Supervises enabling the appropriate fields in the

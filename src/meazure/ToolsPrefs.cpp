@@ -139,8 +139,8 @@ BOOL MeaToolsPrefs::OnInitDialog()
         m_dataWin.SetOpacity(alpha);
     }
     m_dataWin.Show();
-    m_dataWin.SetWindowPos(NULL, rect.left, rect.top, rect.Width(),
-                            MeaLayout::GetWindowHeight(m_dataWin), SWP_NOZORDER);
+    m_dataWin.SetWindowPos(NULL, rect.left, rect.top - 2, rect.Width(),
+                            MeaLayout::GetWindowHeight(m_dataWin) - 2, SWP_NOZORDER);
 
     // Configure the opacity slider.
     //

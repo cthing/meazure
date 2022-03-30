@@ -3,75 +3,70 @@ set(HELP_APP Meazure.hhp Meazure.hhc Meazure.hhk Meazure.css Meazure.js)
 source_group("Help App" FILES ${HELP_APP})
 
 set(IMAGES
-    Graphics/AdvancedPref.gif
+    Graphics/AdvancedPref.png
     Graphics/Angle.gif
-    Graphics/AngleDisplay.gif
+    Graphics/AngleDisplay.png
     Graphics/AngleIcon.gif
     Graphics/AngleMeasure.gif
-    Graphics/AppAllSections.gif
     Graphics/AppIcon.gif
-    Graphics/AppMinimal.gif
-    Graphics/AppNoMag.gif
-    Graphics/AppNoMagScreenInfo.gif
-    Graphics/AppNoMagScreenToolInfo.gif
-    Graphics/AppNoScreenInfo.gif
-    Graphics/AppNoStatus.gif
-    Graphics/AppNoToolbar.gif
-    Graphics/AppNoToolInfo.gif
-    Graphics/AppPositionInfo.gif
+    Graphics/AppMinimal.png
+    Graphics/AppNoMag.png
+    Graphics/AppNoScreenInfo.png
+    Graphics/AppNoStatus.png
+    Graphics/AppNoToolbar.png
+    Graphics/AppNoToolInfo.png
+    Graphics/AppPositionInfo.png
     Graphics/ArbitraryAngleMeasure.gif
-    Graphics/CalibrationPref.gif
+    Graphics/CalibrationPref.png
     Graphics/Circle.gif
-    Graphics/CircleDisplay.gif
+    Graphics/CircleDisplay.png
     Graphics/CircleIcon.gif
-    Graphics/ColorDialog.gif
-    Graphics/ColorDisplay.gif
+    Graphics/ColorDisplay.png
     Graphics/CrossHair.gif
     Graphics/CrossHairFlash.gif
     Graphics/CrossHairSel.gif
     Graphics/Cursor.gif
-    Graphics/CursorDisplay.gif
+    Graphics/CursorDisplay.png
     Graphics/CursorIcon.gif
-    Graphics/CustomUnitsPref.gif
+    Graphics/CustomUnitsPref.png
     Graphics/DataWin.gif
     Graphics/DefaultCoords.gif
-    Graphics/Grid.gif
-    Graphics/GridDialog.gif
+    Graphics/Grid.png
+    Graphics/GridDialog.png
     Graphics/GridIcon.gif
     Graphics/HeaderLogo.gif
     Graphics/InvertedY.gif
-    Graphics/KeyboardPosition.gif
+    Graphics/KeyboardPosition.png
     Graphics/Line.gif
-    Graphics/LineDisplay.gif
+    Graphics/LineDisplay.png
     Graphics/LineIcon.gif
-    Graphics/Magnifier.gif
+    Graphics/Magnifier.png
     Graphics/Menubar.gif
     Graphics/MoveOrigin.gif
     Graphics/MultipleScreens.gif
     Graphics/OriginMarkerDefault.gif
     Graphics/OriginMarkerInverted.gif
-    Graphics/PointDisplay.gif
+    Graphics/PointDisplay.png
     Graphics/PointIcon.gif
-    Graphics/PositionManager.gif
-    Graphics/PositionSave.gif
-    Graphics/PrecisionPref.gif
-    Graphics/ProfileDialog.gif
+    Graphics/PositionManager.png
+    Graphics/PositionSave.png
+    Graphics/PrecisionPref.png
     Graphics/Rectangle.gif
-    Graphics/RectDisplay.gif
+    Graphics/RectDisplay.png
     Graphics/RectIcon.gif
     Graphics/RulerIcon.gif
-    Graphics/Rulers.gif
-    Graphics/RulersPref.gif
-    Graphics/ScreenInfoCal.gif
-    Graphics/ScreenInfoSection.gif
-    Graphics/Sections.gif
-    Graphics/Sections.psd
-    Graphics/StatusBar.gif
-    Graphics/Toolbar.gif
-    Graphics/ToolInfoSection.gif
-    Graphics/ToolsPref.gif
-    Graphics/Window.gif
-    Graphics/WindowDisplay.gif
+    Graphics/Rulers.png
+    Graphics/RulersPref.png
+    Graphics/ScreenInfoCal.png
+    Graphics/ScreenInfoSection.png
+    Graphics/Sections.png
+    Graphics/Sections.xcf
+    Graphics/StatusBar.png
+    Graphics/Toolbar.png
+    Graphics/ToolInfoSection.png
+    Graphics/ToolsPref.png
+    Graphics/Window.png
+    Graphics/WindowDisplay.png
     Graphics/WindowIcon.gif)
 source_group(Images FILES ${IMAGES})
 

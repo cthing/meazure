@@ -56,6 +56,7 @@ Source: "..\..\README.md";                        DestDir: "{app}"; DestName: "R
 ; DTD files
 Source: "..\dtd\PositionLog1.dtd";   DestDir: "{app}\dtd"; Components: core; Flags: ignoreversion
 ; Sample profiles
+Source: "..\profiles\1920x1080.mea"; DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
 Source: "..\profiles\1024x768.mea";  DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
 Source: "..\profiles\1280x1024.mea"; DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
 Source: "..\profiles\640x480.mea";   DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly

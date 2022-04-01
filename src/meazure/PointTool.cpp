@@ -33,7 +33,7 @@ MeaPointTool::MeaPointTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
     MeaCrossHairCallback()
 {
     // Set the default tool position. The crosshair is initially
-    // is placed at the center of the screen containing the app.
+    // is placed at the center of the screen containing the application.
     //
     m_center = MeaScreenMgr::Instance().GetCenter();
     m_anchorPoint = m_center;

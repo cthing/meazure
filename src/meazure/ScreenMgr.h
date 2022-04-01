@@ -384,7 +384,7 @@ public:
     }
 
     /// Indicates whether the virtual screen rectangle has changed
-    /// since the last time the app was run. If the virtual screen
+    /// since the last time the application was run. If the virtual screen
     /// size has changed, re-calibration is recommended.
     ///
     /// @return <b>true</b> if the virtual screen rectangle has changed.

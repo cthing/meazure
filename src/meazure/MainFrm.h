@@ -33,7 +33,7 @@
 class CMainFrame : public CFrameWnd
 {
 public:
-    static const bool kDefAlwaysVisible;    ///< Indicates whether the app's
+    static const bool kDefAlwaysVisible;    ///< Indicates whether the application's
                                             ///< window is always the topmost
                                             ///< window by default.
 
@@ -104,7 +104,7 @@ public:
     ///
     void    LoadProfile(MeaProfile& profile);
 
-    /// Called at startup right before the app windows are shown.
+    /// Called at startup right before the application windows are shown.
     /// Shows/hides the portions of the view according to the registry
     /// profile.
     ///
@@ -242,7 +242,7 @@ protected:
     /// @return Always returns 0.
     afx_msg LRESULT OnShowCalPrefs(WPARAM wParam, LPARAM lParam);
 
-    /// Called when a second copy of the app is launched with
+    /// Called when a second copy of the application is launched with
     /// a file specified on the command line. This method receives
     /// the pathname of the file and loads it.
     /// @param wParam   [in] Not used.
@@ -274,7 +274,7 @@ private:
     /// @return true if the browser was opened.
     bool    OpenUrl(int urlId);
 
-    bool    m_newInstall;           ///< Indicates if this is the first time the app has been run.
+    bool    m_newInstall;           ///< Indicates if this is the first time the application has been run.
     int     m_toolbarHeight;        ///< Height of the toolbar, in pixels.
     int     m_statusbarHeight;      ///< Height of the status bar, in pixels.
     int     m_appWidth;             ///< Total width of the application, in pixels.

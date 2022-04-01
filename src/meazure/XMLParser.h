@@ -394,7 +394,7 @@ public:
     void*   GetBuffer(int len) { return XML_GetBuffer(m_parser, len); }
 
     /// Parses the XML data contained in the buffer obtained by a previous
-    /// call to GetBuffer. Each call to this method must be preceeded by
+    /// call to GetBuffer. Each call to this method must be preceded by
     /// a call to GetBuffer.
     ///
     /// @param len      [in] Actual number of bytes loaded into the buffer.
@@ -498,7 +498,7 @@ private:
                                         const XML_Char *systemId,
                                         const XML_Char *publicId);
 
-    /// Called by the underlying expat parser when a DOCTYPE delcaraction is
+    /// Called by the underlying expat parser when a DOCTYPE declaration is
     /// encountered in the XML file.
     ///
     /// @param userData     [in] this

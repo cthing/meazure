@@ -93,13 +93,13 @@ public:
 
 
     /// Visually flashes the tool. The tool crosshair is cycled
-    /// between a hilite color and its normal color a number of times.
+    /// between a highlight color and its normal color a number of times.
     /// Flashing the tool helps the user find it on the screen.
     ///
     virtual void Flash();
 
     /// Visually strobes the tool. The tool crosshair is cycled
-    /// between a hilite color and its normal color once. In addition,
+    /// between a highlight color and its normal color once. In addition,
     /// the data window attached to the crosshair is cycled between
     /// hidden and visible. Strobing the tool is done to visually confirm
     /// position recording.

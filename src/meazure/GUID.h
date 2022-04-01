@@ -135,7 +135,7 @@ public:
     MeaGUID&    Assign(LPCTSTR guidStr);
 
     /// Assign the specified MeaGUID object to this.
-    /// @param guid     [in] MeaGUID object to assing.
+    /// @param guid     [in] MeaGUID object to assign.
     /// @return This object.
     MeaGUID&    Assign(const MeaGUID& guid) {
         if (this != &guid) {
@@ -151,7 +151,7 @@ public:
     bool    IsEqual(const MeaGUID& guid) const { return IsEqual(guid.m_guid); }
 
     /// Tests the specified GUID structure for equality with this.
-    /// @param guid     [in] Opeating system defined GUID structure.
+    /// @param guid     [in] Operating system defined GUID structure.
     /// @return <b>true</b> if the specified GUID structure equals this object.
     bool    IsEqual(const GUID& guid) const {
         return ((m_guid.Data1 == guid.Data1) &&

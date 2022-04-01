@@ -254,13 +254,13 @@ public:
 
     /// Causes the current radio tool to flash. Typically flashing
     /// a tool causes its crosshairs to cycle a number of times
-    /// between their normal visual state and a hilited state.
+    /// between their normal visual state and a highlighted state.
     ///
     void FlashTool() const { m_currentRadioTool->Flash(); }
     
     /// Causes the current radio tool to strobe. Typically strobing
     /// a tool causes its crosshairs to cycle once between their
-    /// normal visual state and a hilited state.
+    /// normal visual state and a highlighted state.
     ///
     void StrobeTool() const { m_currentRadioTool->Strobe(); }
 

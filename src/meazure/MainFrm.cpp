@@ -155,7 +155,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
     m_wndView.InitView();
     InitView();
 
-    // Show the app.
+    // Show the application.
     //
     UpdateVisibility();
     ShowWindow(SW_SHOW);
@@ -235,11 +235,11 @@ void CMainFrame::LoadProfile(MeaProfile& profile)
 
         m_alwaysVisible = profile.ReadBool(_T("AlwaysVisible"), m_alwaysVisible);
 
-        // Make sure the app is somewhere visible on the screen
+        // Make sure the application is somewhere visible on the screen
         //
         wp.rcNormalPosition = MeaScreenMgr::Instance().EnsureVisible(wp.rcNormalPosition);
 
-        wp.showCmd = SW_HIDE;   // Don't show the app until we are ready
+        wp.showCmd = SW_HIDE;   // Don't show the application until we are ready
         SetWindowPlacement(&wp);
     }
 

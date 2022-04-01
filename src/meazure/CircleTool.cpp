@@ -35,7 +35,7 @@ MeaCircleTool::MeaCircleTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
     MeaCrossHairCallback(), m_curPos(&m_center)
 {
     // Set the default tool positions. The center of the circle
-    // is placed at the center of the screen containing the app.
+    // is placed at the center of the screen containing the application.
     //
     m_center = MeaScreenMgr::Instance().GetCenter();
     m_perimeter = m_center;

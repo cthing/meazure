@@ -29,7 +29,7 @@
 #include "resource.h"
 
 
-/// The application class. Instantiating this class starts the app.
+/// The application class. Instantiating this class starts the application.
 ///
 class CMeazureApp : public CWinApp
 {
@@ -39,7 +39,7 @@ public:
     CMeazureApp();
 
     /// Called by the framework to see if each modified doc wants
-    /// to save before the app goes away.
+    /// to save before the application goes away.
     ///
     /// @return TRUE if safe to exit the application, FALSE otherwise.
     ///

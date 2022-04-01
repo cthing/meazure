@@ -47,7 +47,7 @@ public:
         LineFore,           ///< Line foreground color.
         CrossHairBack,      ///< Crosshair background color.
         CrossHairBorder,    ///< Crosshair edge color.
-        CrossHairHilite,    ///< Crosshair hilite color.
+        CrossHairHilite,    ///< Crosshair highlight color.
         CrossHairOpacity,   ///< Opacity of the crosshair.
         RulerBack,          ///< Ruler background color.
         RulerBorder,        ///< Ruler edge and tick mark color.

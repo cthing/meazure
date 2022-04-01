@@ -31,7 +31,7 @@
 
 
 /// The view class for the application. There is only a single view
-/// in this app and it is owned directly by the application frame window.
+/// in this application and it is owned directly by the application frame window.
 ///
 class CChildView : public CWnd
 {
@@ -104,7 +104,7 @@ public:
     ///
     void    LoadStartupFile(const CString& cmdLineFile) const;
 
-    /// Called at startup right before the app windows are shown. Shows/hides
+    /// Called at startup right before the application windows are shown. Shows/hides
     /// the portions of the view according to the registry profile.
     ///
     void    InitView();
@@ -400,10 +400,10 @@ protected:
     /// Called to toggle the application window between a collapsed presentation
     /// and an expanded presentation. Note that the expanded state maintains the
     /// the display state of individual sections of the application so that expanding
-    /// the app does not display sections that have been explicitly hidden.
+    /// the application does not display sections that have been explicitly hidden.
 
     /// @fn OnUpdateCollapse(CCmdUI* pCmdUI)
-    /// Updates the state of the collapse menu item to reflect whether the app is
+    /// Updates the state of the collapse menu item to reflect whether the application is
     /// currently in a collapsed presentation.
     /// @param pCmdUI   [in] UI command object for updating the menu item.
 
@@ -495,7 +495,7 @@ private:
     ///
     void    ApplyPreferences(int prefPage = MeaPreferences::kAllPages);
 
-    /// If no sections are shown, nuke the app margins. Otherwise add app margins.
+    /// If no sections are shown, nuke the application margins. Otherwise add application margins.
     ///
     void    CheckMargins();
     
@@ -540,7 +540,7 @@ private:
     void    ViewMagnifier(bool enable);
 
     CSize           m_margin;                   ///< Vertical and horizontal margins around major sections.
-    bool            m_enabled;                  ///< Used in determining margins when the app is collapsed.
+    bool            m_enabled;                  ///< Used in determining margins when the application is collapsed.
     bool            m_profileMagnifierEnabled;  ///< Indicates if the stored user preference is to show
                                                 ///< the magnifier window.
     bool            m_profileScreenEnabled;     ///< Indicates if the stored user preference is to show

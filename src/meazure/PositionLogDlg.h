@@ -25,7 +25,7 @@
 #include "PositionLogObserver.h"
 
 
-/// A modeless dialog for recording new positions and managing positions
+/// A non-modal dialog for recording new positions and managing positions
 /// that have already been recorded. Besides recording positions, the
 /// dialog allows individual positions to be deleted, replaced, and
 /// annotated.
@@ -38,7 +38,7 @@ class MeaPositionLogDlg : public CDialog, public MeaPositionLogObserver
 {
 public:
     /// Constructs the position manager dialog. Since this is
-    /// a modeless dialog, its Create method is called followed
+    /// a non-modal dialog, its Create method is called followed
     /// by a call to ShowWindow.
     ///
     MeaPositionLogDlg();
@@ -170,7 +170,7 @@ protected:
 
     /// Called after the non-client area of the dialog is destroyed.
     /// This is the last step in dialog destruction and is the place
-    /// where a modeless dialog class instance can be deleted.
+    /// where a non-modal dialog class instance can be deleted.
     ///
     virtual void PostNcDestroy();
 

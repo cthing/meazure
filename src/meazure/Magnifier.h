@@ -34,12 +34,12 @@
 /// Provides a screen magnifier window complete with freeze frame, optional
 /// pixel grid and pixel color capture. A number of color spaces are available
 /// for the display of the captured pixel color. The contents of the screen are
-/// read and displayed in this window using a 1X thru 32X zoom factor.
+/// read and displayed in this window using a 1X through 32X zoom factor.
 /// Note that layered windows will not appear in the magnifier. Similarly,
 /// windows rendered using DirectX will appear black since they are drawing
 /// directly to the hardware and displaying using a hardware overlay.
 ///
-/// Typically, the magnifier is centered on the active graphic element, usaually
+/// Typically, the magnifier is centered on the active graphic element, usually
 /// a crosshair.
 ///
 class MeaMagnifier : public CWnd
@@ -143,7 +143,7 @@ public:
     ///
     void    ZoomIn() { SetZoomIndex(m_zoomIndex + 1); }
     
-    /// Zooms out the magnfier. If the magnifier is already
+    /// Zooms out the magnifier. If the magnifier is already
     /// at the maximum zoom, calling this method has no effect.
     ///
     void    ZoomOut() { SetZoomIndex(m_zoomIndex - 1); }
@@ -203,7 +203,7 @@ public:
     ///
     void        SetRunState(RunState runState);
     
-    /// Returns the display mode of the magnfier.
+    /// Returns the display mode of the magnifier.
     ///
     /// @return Magnifier display mode.
     ///
@@ -278,7 +278,7 @@ private:
     static const int    kMaxZoomIndex;      ///< Index of the maximum allowable zoom factor.
     static const int    kMinZoomIndex;      ///< Index of the minimum allowable zoom factor.
     static const int    kZoomFactorArr[];   ///< Arrays of zoom factors selected by the zoom index.
-    static const int    kMinGridFactor;     ///< Minimu zoom factor below which the grid is not displayed.
+    static const int    kMinGridFactor;     ///< Minimum zoom factor below which the grid is not displayed.
 
 
     /// Reads an appropriately sized region around the cursor and

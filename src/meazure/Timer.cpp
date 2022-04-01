@@ -24,7 +24,7 @@
 MeaTimer::MeaTimer() : m_timerThread(NULL), m_stopEvent(FALSE, TRUE),
     m_exitEvent(FALSE, TRUE), m_elapse(0), m_parent(NULL), m_userData(0)
 {
-    // The m_exitEvent indicates whether we are in the timer proc. Since
+    // The m_exitEvent indicates whether we are in the timer procedure. Since
     // we are just starting, we are not in the timer thread.
     //
     m_exitEvent.SetEvent();
@@ -91,7 +91,7 @@ UINT MeaTimer::TimerProc()
     m_exitEvent.ResetEvent();
 
     //
-    // Wait for the requested amount of time interruptable by stop event.
+    // Wait for the requested amount of time interruptible by stop event.
     //
     DWORD ret = ::WaitForSingleObject(m_stopEvent, m_elapse);
 

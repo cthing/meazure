@@ -317,10 +317,10 @@ BEGIN
     LTEXT           "For multiple screens, move dialog to screen of interest.",IDC_STATIC,13,16,171,8
 END
 
-IDD_PREF_TOOLS DIALOG 0, 0, 216, 127
+IDD_PREF_TOOLS DIALOGEX 0, 0, 216, 127
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Tools"
-FONT 8, "MS Sans Serif"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
 BEGIN
     GROUPBOX        "Lines",IDC_STATIC,7,7,202,25
     GROUPBOX        "Crosshairs",IDC_STATIC,7,34,202,86
@@ -635,6 +635,11 @@ BEGIN
     0
 END
 
+IDD_PREF_TOOLS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -856,10 +861,10 @@ STRINGTABLE
 BEGIN
     IDS_MEA_COLLAPSE        "Colla&pse\tCtrl+H"
     IDS_MEA_EXPAND          "E&xpand\tCtrl+H"
-    IDS_MEA_POINT_STATUS    "SHIFT locks to H or V"
-    IDS_MEA_LINE_STATUS     "SHIFT locks to H or V, CTRL moves line"
-    IDS_MEA_RECT_STATUS     "CTRL moves rect, CTRL+R captures region"
-    IDS_MEA_WIN_STATUS      "CTRL+R captures window"
+    IDS_MEA_POINT_STATUS    "Shift locks to H or V"
+    IDS_MEA_LINE_STATUS     "Shift locks to H or V, Ctrl moves line"
+    IDS_MEA_RECT_STATUS     "Ctrl moves rect, Ctrl+R captures region"
+    IDS_MEA_WIN_STATUS      "Ctrl+R captures window"
     IDS_MEA_FIELD_VALUE     "Please enter a value greater than 0."
     IDS_MEA_GRID_FIELD_VALUE "Please enter a value between 40 and 1000."
     IDS_MEA_CAL_WARNING     "Calibrate screen resolution"
@@ -894,7 +899,7 @@ BEGIN
     IDS_MEA_UNCONTAINED_CHARACTER_DATA 
                             "Text outside of a containing element is not allowed."
     IDS_MEA_MISMATCHED_FIXED_VALUE 
-                            "The value for for attribute '%s' in element '%s'\ncannot be changed."
+                            "The value for attribute '%s' in element '%s'\ncannot be changed."
     IDS_MEA_MISSING_REQUIRED_ATTRIBUTE 
                             "The required attribute '%s' is missing in element '%s'."
 END
@@ -919,7 +924,7 @@ BEGIN
     IDS_MEA_INVALID_TOKEN   "File is not well formed XML,\nthere was an invalid token"
     IDS_MEA_UNCLOSED_TOKEN  "A token was not closed."
     IDS_MEA_PARTIAL_CHAR    "Encountered a partial character."
-    IDS_MEA_TAG_MISMATCH    "Miscmatched tag."
+    IDS_MEA_TAG_MISMATCH    "Mismatched tag."
     IDS_MEA_DUPLICATE_ATTRIBUTE "A duplicate attribute was encountered."
 END
 
@@ -944,7 +949,7 @@ BEGIN
                             "Error in processing external entity reference."
     IDS_MEA_NOT_STANDALONE  "The document is not standalone."
     IDS_MEA_UNEXPECTED_STATE "Unexpected parser state - parser bug."
-    IDS_MEA_ENTITY_DECLARED_IN_PE "Entity declared in a paramter entity."
+    IDS_MEA_ENTITY_DECLARED_IN_PE "Entity declared in a parameter entity."
 END
 
 STRINGTABLE
@@ -954,7 +959,7 @@ BEGIN
     IDS_MEA_INVALID_DESKTOPREF "Invalid desktop ID reference '%s' in Log file"
     IDS_MEA_ANGLE_LBL       "Angle"
     IDS_MEA_VERTEX          "Vertex"
-    IDS_MEA_ANGLE_STATUS    "SHIFT locks to H or V, CTRL moves angle"
+    IDS_MEA_ANGLE_STATUS    "Shift locks to H or V, Ctrl moves angle"
     IDS_MEA_XV              "XV:"
     IDS_MEA_YV              "YV:"
     IDS_MEA_POSDLG_TITLE    "Positions - %s"
@@ -999,7 +1004,7 @@ BEGIN
     IDS_MEA_CUSTOM_FACTOR_WARNING 
                             "The scale factor field must not be empty\nand the value must be greater than zero."
     IDS_MEA_MASTER_RESET    "Proceed with reset?"
-    IDS_MEA_CIRCLE_STATUS   "CTRL moves circle, CTRL+R captures region"
+    IDS_MEA_CIRCLE_STATUS   "Ctrl moves circle, Ctrl+R captures region"
     IDS_MEA_PREC_VALUE      "Precision value must be between 0 and %d, inclusive.\nThe value has been reset to %d."
 END
 

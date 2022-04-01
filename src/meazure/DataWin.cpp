@@ -159,7 +159,7 @@ bool MeaDataWin::Create(BYTE opacity,
         m_winHeight += m_textHeight;
     }
 
-    // Get the mx length of the labels.
+    // Get the max length of the labels.
     //
     m_dataOffset = 0;
 

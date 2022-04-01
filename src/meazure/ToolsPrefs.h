@@ -31,7 +31,7 @@
 /// <ul>
 ///     <li>Line color</li>
 ///     <li>Crosshair normal background</li>
-///     <li>Crosshair hilite color</li>
+///     <li>Crosshair highlight color</li>
 ///     <li>Crosshair border color</li>
 ///     <li>Crosshair opacity</li>
 ///     <li>Display of popup data window</li>
@@ -71,7 +71,7 @@ public:
     COLORREF    m_lineColor;        ///< Line color.
     COLORREF    m_backColor;        ///< Crosshair background color.
     COLORREF    m_borderColor;      ///< Crosshair border color.
-    COLORREF    m_hiliteColor;      ///< Crosshair hilite color.
+    COLORREF    m_hiliteColor;      ///< Crosshair highlight color.
 
 
     /// Called when the property page is created. This method
@@ -139,13 +139,13 @@ protected:
     /// crosshair sample.
 
     /// @fn OnChangeHiliteColor()
-    /// Called when the hilite color button is pressed. Displays a
-    /// color picker for selecting a new hilite color and displays the
-    /// selected color in the hilite crosshair sample.
+    /// Called when the highlight color button is pressed. Displays a
+    /// color picker for selecting a new highlight color and displays the
+    /// selected color in the highlight crosshair sample.
 
     /// @fn OnDefHiliteColor()
-    /// Called when the default hilite color button is pressed. The
-    /// default hilite color is set and displayed on the hilite crosshair
+    /// Called when the default highlight color button is pressed. The
+    /// default highlight color is set and displayed on the highlight crosshair
     /// sample.
 
     /// @fn OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
@@ -159,7 +159,7 @@ protected:
 private:
     MeaSwatch       m_line;         ///< Swatch to display the line color.
     MeaCrossHair    m_normalCH;     ///< Sample crosshair to preview the normal background color.
-    MeaCrossHair    m_hiliteCH;     ///< Sample crosshair to preview the hilite color.
+    MeaCrossHair    m_hiliteCH;     ///< Sample crosshair to preview the highlight color.
     MeaDataWin      m_dataWin;      ///< Sample data popup window.
 };
 

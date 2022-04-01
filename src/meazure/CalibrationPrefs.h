@@ -81,7 +81,7 @@ public:
     virtual BOOL OnInitDialog();
 
     /// Called when the page becomes active. This method ensures
-    /// the the calibration information reflects the screen on which
+    /// the calibration information reflects the screen on which
     /// the page is being displayed.
     ///
     /// @return TRUE, indicating that the page is active.

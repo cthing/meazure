@@ -177,7 +177,7 @@ public:
     ///
     /// @param borderColor  [in] Color for the crosshair border lines
     /// @param backColor    [in] Normal background color
-    /// @param hiliteColor  [in] Hilite background color
+    /// @param hiliteColor  [in] Highlight background color
     ///
     void    SetColors(COLORREF borderColor, COLORREF backColor, COLORREF hiliteColor);
 
@@ -249,7 +249,7 @@ protected:
     afx_msg void OnLButtonUp(UINT flags, CPoint point);
 
     /// Called when the crosshair is cycling between normal
-    /// and hilited display as a result of a call to the Flash()
+    /// and highlighted display as a result of a call to the Flash()
     /// method. This method redraws the crosshair in the
     /// appropriate background color.
     ///
@@ -296,7 +296,7 @@ private:
     /// the SetRegion() method. The DrawCrossHair() method simply draws
     /// the appropriate background color and frames the window's region.
     /// The background color depends on whether the crosshair is in a
-    /// hilite state or not.
+    /// highlight state or not.
     ///
     /// @param dc   [in] Device context into which the crosshair is drawn
     ///
@@ -322,7 +322,7 @@ private:
     bool                    m_mouseOver;        ///< Indicates if the pointer is over the crosshair
     CBrush                  *m_backBrush;       ///< Brush to paint the normal crosshair background
     CBrush                  *m_borderBrush;     ///< Brush to paint the crosshair border
-    CBrush                  *m_hiliteBrush;     ///< Brush to paint the hilited crosshair background
+    CBrush                  *m_hiliteBrush;     ///< Brush to paint the highlighted crosshair background
     CSize                   m_pointerOffset;    ///< Offset from the pointer location in the window to the center of the crosshair
     DrawState               m_drawState;        ///< Indicates how the crosshair should be drawn
     int                     m_flashCount;       ///< Number of times to flash the crosshair

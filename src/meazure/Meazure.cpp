@@ -39,7 +39,7 @@ static char THIS_FILE[] = __FILE__;
 
 
 // Shared global variables. Used by the Mouse Hook
-// DLL to route pointer movement messages back to this app.
+// DLL to route pointer movement messages back to this application.
 
 #pragma data_seg("MeaMainShared")
 volatile HWND   g_meaMainWnd = NULL;
@@ -76,7 +76,7 @@ BOOL CMeazureApp::InitInstance()
     MeaCommandLineInfo cmdLineInfo;
     ParseCommandLine(cmdLineInfo);
 
-    // Ensure that only one instance of the app is running.
+    // Ensure that only one instance of the application is running.
     //
     if (InterlockedExchange64(reinterpret_cast<LONG64*>(const_cast<HWND*>(&g_meaMainWnd)), reinterpret_cast<LONG64>(g_meaMainWnd)) != NULL) {
 

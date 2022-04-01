@@ -77,13 +77,13 @@ public:
     void SetToggleType(bool toggle) { m_toggle = toggle; }
     
 
-    /// Loads the button's bitamps.
+    /// Loads the button's bitmaps.
     ///
     /// @param up       [in] Resource ID of image to use for up appearance when enabled.
     /// @param down     [in] Resource ID of image to use for down appearance when enabled.
     ///                 If 0, the up image is used.
     /// @param disabled [in] Resource ID of image to use for disabled appearance.
-    ///                 If 0, the up image is halftoned gray
+    ///                 If 0, the up image is half-toned gray
     ///
     void LoadBitmaps(UINT up, UINT down, UINT disabled = 0)
           { m_up = up; m_down = down; m_disabled = disabled; } 

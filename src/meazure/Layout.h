@@ -25,7 +25,7 @@
 #include <math.h>
 #include "Units.h"
 
-/// Returns the absolute value of the the argument.
+/// Returns the absolute value of the argument.
 #define MEA_ABS(a)      (((a)<0) ? -(a) : (a))
 
 /// Returns 1 if a >= 0, -1 if a < 0.

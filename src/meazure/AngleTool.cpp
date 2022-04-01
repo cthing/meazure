@@ -37,7 +37,7 @@ MeaAngleTool::MeaAngleTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
     MeaCrossHairCallback(), m_curPos(&m_point1)
 {
     // Set the default tool positions. The vertex is placed
-    // at the center of the screen containing the app.
+    // at the center of the screen containing the application.
     //
     m_vertex = MeaScreenMgr::Instance().GetCenter();
     m_point1 = m_vertex;
@@ -772,7 +772,7 @@ void MeaAngleTool::UpdateBisector()
     bool angleSign    = MeaLayout::GetAngle(v, p1, p2) >= 0.0;
     bool bisectorSign = MeaLayout::GetAngle(v, p1, pB) >= 0.0;
 
-    // If we need to flip the bisector, add 180 degrees and recalc
+    // If we need to flip the bisector, add 180 degrees and recalculate
     // its location.
     //
     if ((angleSign && !bisectorSign) || (!angleSign && bisectorSign)) {

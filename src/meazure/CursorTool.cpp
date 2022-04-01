@@ -83,7 +83,7 @@ void MeaCursorTool::Enable()
     //
     m_mgr->SetStatus(IDS_MEA_CURSOR_STATUS);
 
-    POINT point;            // Ensure pos initialized
+    POINT point;            // Ensure position initialized
     GetCursorPos(&point);
     m_cursorPos = point;
 

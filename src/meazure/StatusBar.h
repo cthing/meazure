@@ -72,5 +72,5 @@ protected:
     DECLARE_MESSAGE_MAP()
 
 private:
-    CString m_idleMsg;  ///< Message to display when app is idle.
+    CString m_idleMsg;  ///< Message to display when application is idle.
 };

@@ -33,7 +33,7 @@ HHOOK   g_meaMouseHook = NULL;
 #pragma comment(linker, "/section:MeaHooksShared,rws")
 
 
-// Unexported Globals 
+// Globals not exported
 
 HINSTANCE g_hInstDll = NULL;
 
@@ -68,7 +68,7 @@ BOOL APIENTRY DllMain(HINSTANCE hModule, DWORD  reason, LPVOID /* lpReserved */)
 /// @param nCode    [in] Hook code.
 /// @param wParam   [in] Message identifier.
 /// @param lParam   [in] Mouse information structure.
-/// @return Resolut of chain execution.
+/// @return Resolution of chain execution.
 ///
 LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam)
 {

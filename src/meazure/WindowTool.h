@@ -30,7 +30,7 @@
 /// Window measurement tool. This tool tracks the mouse pointer and attempts
 /// to identify the deepest window in the window hierarchy under the pointer.
 /// the dimensions of that window are displayed. The tool consists of a
-/// rectangle that is used to hilite the window selected for measurement. In
+/// rectangle that is used to highlight the window selected for measurement. In
 /// addition, a data window is attached to the rectangle to provide a measurement
 /// information popup.
 ///
@@ -178,8 +178,8 @@ private:
     CPoint          m_point1;           ///< Upper left position of the window rectangle
     CPoint          m_point2;           ///< Lower right position of the window rectangle
 
-    MeaRectangle    m_rectangle;        ///< Window hilite rectangle
-    HWND            m_currentWnd;       ///< Window currently hilited
-    HWND            m_hiliteWnd;        ///< Window to hilite
+    MeaRectangle    m_rectangle;        ///< Window highlight rectangle
+    HWND            m_currentWnd;       ///< Window currently highlighted
+    HWND            m_hiliteWnd;        ///< Window to highlight
     MeaDataWin      m_dataWin;          ///< Data window tooltip
 };

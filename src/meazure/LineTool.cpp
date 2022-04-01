@@ -35,7 +35,7 @@ MeaLineTool::MeaLineTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
     MeaCrossHairCallback(), m_curPos(&m_point1)
 {
     // Set the default tool positions. The line is initially
-    // placed at the center of the screen containing the app.
+    // placed at the center of the screen containing the application.
     //
     m_point1 = MeaScreenMgr::Instance().GetCenter();
     m_point2 = m_point1;

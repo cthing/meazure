@@ -149,7 +149,7 @@ afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><b>OnPaint</b> (
 <tr class="memdesc:ac1a696efd55b94150c941a45a708fcca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the left mouse button is released while the pointer is captured by the crosshair window.  <a href="classMeaCrossHair.html#ac1a696efd55b94150c941a45a708fcca">More...</a><br /></td></tr>
 <tr class="separator:ac1a696efd55b94150c941a45a708fcca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ec2464808db1389a6135172253b6a81"><td class="memItemLeft" align="right" valign="top">afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#a9ec2464808db1389a6135172253b6a81">OnTimer</a> (UINT_PTR timerId)</td></tr>
-<tr class="memdesc:a9ec2464808db1389a6135172253b6a81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the crosshair is cycling between normal and hilited display as a result of a call to the <a class="el" href="classMeaCrossHair.html#a7fb8fe3e462b0e311702921f9aaf453a" title="Visually flashes the crosshair by cycling its background between normal and hilited the number of tim...">Flash()</a> method.  <a href="classMeaCrossHair.html#a9ec2464808db1389a6135172253b6a81">More...</a><br /></td></tr>
+<tr class="memdesc:a9ec2464808db1389a6135172253b6a81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the crosshair is cycling between normal and highlighted display as a result of a call to the <a class="el" href="classMeaCrossHair.html#a7fb8fe3e462b0e311702921f9aaf453a" title="Visually flashes the crosshair by cycling its background between normal and hilited the number of tim...">Flash()</a> method.  <a href="classMeaCrossHair.html#a9ec2464808db1389a6135172253b6a81">More...</a><br /></td></tr>
 <tr class="separator:a9ec2464808db1389a6135172253b6a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
@@ -209,7 +209,7 @@ CBrush *&#160;</td><td class="memItemRight" valign="bottom"><b>m_borderBrush</b>
 <tr class="separator:ac0fcf447d6e7704b71430b56d21acd06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1d1aaed6edc5beb351280b7d1fd9847"><td class="memItemLeft" align="right" valign="top"><a id="ab1d1aaed6edc5beb351280b7d1fd9847" name="ab1d1aaed6edc5beb351280b7d1fd9847"></a>
 CBrush *&#160;</td><td class="memItemRight" valign="bottom"><b>m_hiliteBrush</b></td></tr>
-<tr class="memdesc:ab1d1aaed6edc5beb351280b7d1fd9847"><td class="mdescLeft">&#160;</td><td class="mdescRight">Brush to paint the hilited crosshair background. <br /></td></tr>
+<tr class="memdesc:ab1d1aaed6edc5beb351280b7d1fd9847"><td class="mdescLeft">&#160;</td><td class="mdescRight">Brush to paint the highlighted crosshair background. <br /></td></tr>
 <tr class="separator:ab1d1aaed6edc5beb351280b7d1fd9847"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6fc782bd6db3eb8f87be8a61e3e3317"><td class="memItemLeft" align="right" valign="top"><a id="ac6fc782bd6db3eb8f87be8a61e3e3317" name="ac6fc782bd6db3eb8f87be8a61e3e3317"></a>
 CSize&#160;</td><td class="memItemRight" valign="bottom"><b>m_pointerOffset</b></td></tr>
@@ -467,7 +467,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 </div><div class="memdoc">
 
 <p>Draws the crosshair background and border. </p>
-<p >Before this method is called, the shape of the crosshair has already been set by the <a class="el" href="classMeaCrossHair.html#a8b52e2b6d2b7dcd34301242dccd903c3" title="Forms the window into the shape of the crosshair.">SetRegion()</a> method. The <a class="el" href="classMeaCrossHair.html#afbbb68f69b04e05dc34b7e007fa69f58" title="Draws the crosshair background and border.">DrawCrossHair()</a> method simply draws the appropriate background color and frames the window's region. The background color depends on whether the crosshair is in a hilite state or not.</p>
+<p >Before this method is called, the shape of the crosshair has already been set by the <a class="el" href="classMeaCrossHair.html#a8b52e2b6d2b7dcd34301242dccd903c3" title="Forms the window into the shape of the crosshair.">SetRegion()</a> method. The <a class="el" href="classMeaCrossHair.html#afbbb68f69b04e05dc34b7e007fa69f58" title="Draws the crosshair background and border.">DrawCrossHair()</a> method simply draws the appropriate background color and frames the window's region. The background color depends on whether the crosshair is in a highlight state or not.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dc</td><td>[in] Device context into which the crosshair is drawn </td></tr>
@@ -851,7 +851,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 </table>
 </div><div class="memdoc">
 
-<p>Called when the crosshair is cycling between normal and hilited display as a result of a call to the <a class="el" href="classMeaCrossHair.html#a7fb8fe3e462b0e311702921f9aaf453a" title="Visually flashes the crosshair by cycling its background between normal and hilited the number of tim...">Flash()</a> method. </p>
+<p>Called when the crosshair is cycling between normal and highlighted display as a result of a call to the <a class="el" href="classMeaCrossHair.html#a7fb8fe3e462b0e311702921f9aaf453a" title="Visually flashes the crosshair by cycling its background between normal and hilited the number of tim...">Flash()</a> method. </p>
 <p >This method redraws the crosshair in the appropriate background color.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -938,7 +938,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
   <table class="params">
     <tr><td class="paramname">borderColor</td><td>[in] Color for the crosshair border lines </td></tr>
     <tr><td class="paramname">backColor</td><td>[in] Normal background color </td></tr>
-    <tr><td class="paramname">hiliteColor</td><td>[in] Hilite background color </td></tr>
+    <tr><td class="paramname">hiliteColor</td><td>[in] Highlight background color </td></tr>
   </table>
   </dd>
 </dl>

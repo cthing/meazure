@@ -203,8 +203,6 @@ BEGIN
     POPUP "&Help"
     BEGIN
         MENUITEM "&Contents",                   ID_HELP_FINDER
-        MENUITEM "&Search...",                  ID_HELP_SEARCH
-        MENUITEM "&Index...",                   ID_HELP_INDEX
         MENUITEM "&What's this?\tShift+F1",     ID_CONTEXT_HELP
         MENUITEM SEPARATOR
         MENUITEM "Meazure Releases",            ID_HELP_MEAZURERELEASES

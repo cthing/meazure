@@ -149,7 +149,7 @@ Static Private Member Functions</h2></td></tr>
 <tr class="memdesc:aa086760faafc192344fe247519611e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the underlying expat parser when an external entity reference is encountered.  <a href="classMeaXMLParser.html#aa086760faafc192344fe247519611e75">More...</a><br /></td></tr>
 <tr class="separator:aa086760faafc192344fe247519611e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98ce6458d4689056e261a96781e87de7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParser.html#a98ce6458d4689056e261a96781e87de7">DoctypeDeclHandler</a> (void *userData, const XML_Char *doctypeName, const XML_Char *sysid, const XML_Char *pubid, int has_internal_subset)</td></tr>
-<tr class="memdesc:a98ce6458d4689056e261a96781e87de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the underlying expat parser when a DOCTYPE delcaraction is encountered in the XML file.  <a href="classMeaXMLParser.html#a98ce6458d4689056e261a96781e87de7">More...</a><br /></td></tr>
+<tr class="memdesc:a98ce6458d4689056e261a96781e87de7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the underlying expat parser when a DOCTYPE declaration is encountered in the XML file.  <a href="classMeaXMLParser.html#a98ce6458d4689056e261a96781e87de7">More...</a><br /></td></tr>
 <tr class="separator:a98ce6458d4689056e261a96781e87de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f65207485baf8763baf8e15064ff956"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParser.html#a7f65207485baf8763baf8e15064ff956">ElementDeclHandler</a> (void *userData, const XML_Char *name, XML_Content *model)</td></tr>
 <tr class="memdesc:a7f65207485baf8763baf8e15064ff956"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the underlying expat parser when a DTD element declaration is encountered.  <a href="classMeaXMLParser.html#a7f65207485baf8763baf8e15064ff956">More...</a><br /></td></tr>
@@ -478,7 +478,7 @@ static LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL</
 </table>
 </div><div class="memdoc">
 
-<p>Called by the underlying expat parser when a DOCTYPE delcaraction is encountered in the XML file. </p>
+<p>Called by the underlying expat parser when a DOCTYPE declaration is encountered in the XML file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">userData</td><td>[in] this </td></tr>
@@ -916,7 +916,7 @@ static LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL</
 </div><div class="memdoc">
 
 <p>Parses the XML data contained in the buffer obtained by a previous call to GetBuffer. </p>
-<p >Each call to this method must be preceeded by a call to GetBuffer.</p>
+<p >Each call to this method must be preceded by a call to GetBuffer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">len</td><td>[in] Actual number of bytes loaded into the buffer. </td></tr>

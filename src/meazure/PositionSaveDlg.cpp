@@ -71,15 +71,3 @@ void MeaPositionSaveDlg::DoDataExchange(CDataExchange* pDX)
     DDX_Text(pDX, IDC_LOG_TITLE, m_title);
     //}}AFX_DATA_MAP
 }
-
-
-BOOL MeaPositionSaveDlg::OnFileNameOK()
-{
-    BOOL result = CFileDialog::OnFileNameOK();
-
-    if (result == 0) {
-        UpdateData(TRUE);
-    }
-
-    return result;
-}

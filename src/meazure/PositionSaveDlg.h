@@ -74,12 +74,6 @@ protected:
     /// @param pDX      [in] DDX operation object.
     ///
     virtual void DoDataExchange(CDataExchange* pDX);
-    
-    /// Called when the Save button is pressed.
-    ///
-    /// @return 0 indicating the save should continue.
-    ///
-    virtual BOOL OnFileNameOK();
 };
 
 //{{AFX_INSERT_LOCATION}}

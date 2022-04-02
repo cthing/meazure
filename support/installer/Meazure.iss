@@ -100,13 +100,79 @@ Filename: "{app}\Meazure.exe"; Description: "Launch Meazure"; Flags: nowait post
 [Code]
 program Setup;
 
+const
+  DELAY_MILLIS = 250;
+  MAX_DELAY_MILLIS = 90000;
+
+  
 function Runhhupd(): Boolean;
 var
-  S: String;
+  chm: string;
 begin
-  RegQueryStringValue(HKCR, '.chm', '', S);
-  Result := (S = '');
+  RegQueryStringValue(HKCR, '.chm', '', chm);
+  Result := (chm = '');
 end;
+
+
+function GetUninstallString32: string;
+var
+  uninstallString: string;
+begin
+  uninstallString := '';
+  RegQueryStringValue(HKLM32, 'Software\Microsoft\Windows\CurrentVersion\Uninstall\Meazure_is1', 'UninstallString', uninstallString);
+  Result := uninstallString;
+end;
+
+
+function IsUpgrade32: Boolean;
+begin
+  Result := (GetUninstallString32() <> '');
+end;
+
+
+function UninstallApplication32(): Boolean;
+var
+  resultCode: Integer;
+  uninstallStr: string;
+  delayCounter: Integer;
+begin
+  // Uninstall the application
+  Log('Uninstall of 32-bit version');
+  uninstallStr := RemoveQuotes(GetUninstallString32());
+  Result := Exec(uninstallStr, '/SILENT /NORESTART /SUPPRESSMSGBOXES /LOG', '', SW_HIDE, ewWaitUntilTerminated, resultCode) and (resultCode = 0);
+  if not Result then
+  begin
+    Log('Uninstall of 32-bit version failed!');
+    Exit
+  end;
+  Log('32-bit version uninstalled!');
+
+  // Unfortunately, the uninstaller will return before the uninstall is complete. Poll until
+  // the uninstaller is deleted. A more robust but unnecessarily complex solution would be to
+  // poll the process table for the uninstaller.
+  Log('Waiting for uninstaller to complete');
+  delayCounter := 0;
+  repeat
+    Sleep(DELAY_MILLIS);
+    delayCounter := delayCounter + DELAY_MILLIS;
+  until not FileExists(uninstallStr) or (delayCounter >= MAX_DELAY_MILLIS);
+  if (delayCounter >= MAX_DELAY_MILLIS) then
+    Log('32-bit version uninstall timeout exceeded');
+  Log('Waited ' + IntToStr(delayCounter) + ' ms for 32-bit version uninstall');
+end;
+
+
+procedure CurStepChanged(CurStep: TSetupStep);
+begin
+  if (CurStep = ssInstall) then
+  begin
+    if (IsUpgrade32()) then
+    begin
+      UninstallApplication32();
+    end;
+  end;
+end;
+
 
 begin
 end.

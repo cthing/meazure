@@ -52,10 +52,6 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
     // Global help commands
     ON_COMMAND(ID_HELP_FINDER, CFrameWnd::OnHelpFinder)
     ON_UPDATE_COMMAND_UI(ID_HELP_FINDER, OnUpdateHelpMenu)
-    ON_COMMAND(ID_HELP_SEARCH, OnHelpSearch)
-    ON_UPDATE_COMMAND_UI(ID_HELP_SEARCH, OnUpdateHelpMenu)
-    ON_COMMAND(ID_HELP_INDEX, OnHelpIndex)
-    ON_UPDATE_COMMAND_UI(ID_HELP_INDEX, OnUpdateHelpMenu)
     ON_COMMAND(ID_HELP, CFrameWnd::OnHelp)
     ON_COMMAND(ID_CONTEXT_HELP, CFrameWnd::OnContextHelp)
     ON_UPDATE_COMMAND_UI(ID_CONTEXT_HELP, OnUpdateHelpMenu)
@@ -357,18 +353,6 @@ LRESULT CMainFrame::OnShowCalPrefs(WPARAM wParam, LPARAM lParam)
 void CMainFrame::OnUpdateHelpMenu(CCmdUI* pCmdUI)
 {
     pCmdUI->Enable(GetFileAttributes(AfxGetApp()->m_pszHelpFilePath) != 0xffffffff);
-}
-
-
-void CMainFrame::OnHelpSearch()
-{
-    AfxGetApp()->WinHelp(0, HELP_COMMAND);
-}
-
-
-void CMainFrame::OnHelpIndex()
-{
-    AfxGetApp()->WinHelp(0, HELP_INDEX);
 }
 
 

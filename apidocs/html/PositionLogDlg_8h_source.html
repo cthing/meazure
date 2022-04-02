@@ -73,7 +73,7 @@ $(function() {
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;<a class="code" href="PositionLogObserver_8h.html">PositionLogObserver.h</a>&quot;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"></span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/// A modeless dialog for recording new positions and managing positions</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/// A non-modal dialog for recording new positions and managing positions</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">/// that have already been recorded. Besides recording positions, the</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/// dialog allows individual positions to be deleted, replaced, and</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/// annotated.</span></div>
@@ -86,7 +86,7 @@ $(function() {
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">    /// Constructs the position manager dialog. Since this is</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">    /// a modeless dialog, its Create method is called followed</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">    /// a non-modal dialog, its Create method is called followed</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">    /// by a call to ShowWindow.</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">    ///</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"></span>    <a class="code hl_function" href="classMeaPositionLogDlg.html#a1b9f6dc54696fb79b3c9aa821c37f0f6">MeaPositionLogDlg</a>();</div>
@@ -218,7 +218,7 @@ $(function() {
 <div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment"></span> </div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">    /// Called after the non-client area of the dialog is destroyed.</span></div>
 <div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">    /// This is the last step in dialog destruction and is the place</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">    /// where a modeless dialog class instance can be deleted.</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">    /// where a non-modal dialog class instance can be deleted.</span></div>
 <div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">    ///</span></div>
 <div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment"></span>    virtual <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaPositionLogDlg.html#ae9b1a99446929b2a27c6078675f80b8e">PostNcDestroy</a>();</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment"></span> </div>
@@ -257,7 +257,7 @@ $(function() {
 <div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment">//{{AFX_INSERT_LOCATION}}</span></div>
 <div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">// Microsoft Visual C++ will insert additional declarations immediately before the previous line.</span></div>
 <div class="ttc" id="aPositionLogObserver_8h_html"><div class="ttname"><a href="PositionLogObserver_8h.html">PositionLogObserver.h</a></div><div class="ttdoc">Header file declaring an interface for observers of the position log.</div></div>
-<div class="ttc" id="aclassMeaPositionLogDlg_html"><div class="ttname"><a href="classMeaPositionLogDlg.html">MeaPositionLogDlg</a></div><div class="ttdoc">A modeless dialog for recording new positions and managing positions that have already been recorded.</div><div class="ttdef"><b>Definition:</b> PositionLogDlg.h:38</div></div>
+<div class="ttc" id="aclassMeaPositionLogDlg_html"><div class="ttname"><a href="classMeaPositionLogDlg.html">MeaPositionLogDlg</a></div><div class="ttdoc">A non-modal dialog for recording new positions and managing positions that have already been recorded...</div><div class="ttdef"><b>Definition:</b> PositionLogDlg.h:38</div></div>
 <div class="ttc" id="aclassMeaPositionLogDlg_html_a012cd683975d81eab5cd9a11d0c97b1f"><div class="ttname"><a href="classMeaPositionLogDlg.html#a012cd683975d81eab5cd9a11d0c97b1f">MeaPositionLogDlg::GetScrollPos</a></div><div class="ttdeci">int GetScrollPos() const</div><div class="ttdoc">Returns the scrollbar value which is the position list index.</div><div class="ttdef"><b>Definition:</b> PositionLogDlg.cpp:155</div></div>
 <div class="ttc" id="aclassMeaPositionLogDlg_html_a0ad946247cb54b177f4cfdba69a5b940"><div class="ttname"><a href="classMeaPositionLogDlg.html#a0ad946247cb54b177f4cfdba69a5b940">MeaPositionLogDlg::Create</a></div><div class="ttdeci">BOOL Create()</div><div class="ttdoc">Creates the window for the dialog.</div><div class="ttdef"><b>Definition:</b> PositionLogDlg.h:59</div></div>
 <div class="ttc" id="aclassMeaPositionLogDlg_html_a1b9f6dc54696fb79b3c9aa821c37f0f6"><div class="ttname"><a href="classMeaPositionLogDlg.html#a1b9f6dc54696fb79b3c9aa821c37f0f6">MeaPositionLogDlg::MeaPositionLogDlg</a></div><div class="ttdeci">MeaPositionLogDlg()</div><div class="ttdoc">Constructs the position manager dialog.</div><div class="ttdef"><b>Definition:</b> PositionLogDlg.cpp:49</div></div>

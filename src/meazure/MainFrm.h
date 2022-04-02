@@ -208,14 +208,6 @@ protected:
     /// Updates the view status bar menu item.
     /// @param pCmdUI       [in] UI command class to update the menu item.
 
-    /// Called when the Search / Index item is selected on the
-    /// Help menu.
-    afx_msg void OnHelpSearch();
-
-    /// Called when the Search / Index item is selected on the
-    /// Help menu.
-    afx_msg void OnHelpIndex();
-
     /// Called before the Help menu is displayed. Tests to see
     /// if the help file exists.
     /// @param pCmdUI   [in] UI command class to update the menu item.

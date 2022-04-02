@@ -1,4 +1,4 @@
-# Meazure<sup>TM</sup> 3.0-SNAPSHOT
+# Meazure<sup>TM</sup> 3.0
 
 Copyright 2001 C Thing Software
 

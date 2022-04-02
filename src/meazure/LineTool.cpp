@@ -211,7 +211,7 @@ void MeaLineTool::Enable()
     m_line.Show();
     EnableCrosshairs();
     Flash();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -294,7 +294,7 @@ void MeaLineTool::SetPosition(MeaFields which, int pixels)
 
     // Reposition the tool based on the crosshair locations.
     //
-    if (which == MeaX1Field || which == MeaY1Field) {
+    if (which & MeaX1Field || which & MeaY1Field) {
         m_point1 = MeaScreenMgr::Instance().LimitPosition(m_point1);
         m_point1CH.SetPosition(m_point1);
         m_curPos = &m_point1;
@@ -307,7 +307,7 @@ void MeaLineTool::SetPosition(MeaFields which, int pixels)
 
     // Update the data display.
     //
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -330,7 +330,7 @@ void MeaLineTool::SetPosition(const PointMap& points)
     // Reposition the tool and update the data display.
     //
     SetPosition();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -470,7 +470,7 @@ void MeaLineTool::OnCHEnter(const CHInfo *info)
     } else {
         m_dataWin2.Show();
     }
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -554,5 +554,5 @@ void MeaLineTool::OnCHMove(const CHInfo *info)
         m_line.SetPosition(m_point1, m_point2);
     }
 
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }

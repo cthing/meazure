@@ -30,7 +30,7 @@
 
 /// Reason hint for the tool Update method.
 ///
-enum MeaUpdateReason {
+enum class MeaUpdateReason {
     NormalUpdate,       ///< Normal request for displaying the tool's data
     UnitsChanged,       ///< Measurement units have changed
     OriginChanged,      ///< Coordinate system origin has moved

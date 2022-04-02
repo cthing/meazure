@@ -454,7 +454,7 @@ void MeaPositionLogMgr::ProcessDOM(const MeaXMLNode* dom)
     for (MeaXMLNode::NodeIter_c iter = dom->GetChildIter(); !dom->AtEnd(iter); ++iter) {
         MeaXMLNode* node = *iter;
         
-        if (node->GetType() == MeaXMLNode::Element) {
+        if (node->GetType() == MeaXMLNode::Type::Element) {
             if (node->GetData() == _T("info")) {
                 ProcessInfoNode(node);
             } else if (node->GetData() == _T("desktops")) {
@@ -478,7 +478,7 @@ void MeaPositionLogMgr::ProcessInfoNode(const MeaXMLNode* infoNode)
     for (MeaXMLNode::NodeIter_c iter = infoNode->GetChildIter(); !infoNode->AtEnd(iter); ++iter) {
         MeaXMLNode* node = *iter;
         
-        if (node->GetType() == MeaXMLNode::Element) {
+        if (node->GetType() == MeaXMLNode::Type::Element) {
             if (node->GetData() == _T("title")) {
                 m_title = ProcessDataNodes(node);
             } else if (node->GetData() == _T("desc")) {
@@ -549,7 +549,7 @@ CString MeaPositionLogMgr::ProcessDataNodes(const MeaXMLNode* elementNode)
     for (MeaXMLNode::NodeIter_c iter = elementNode->GetChildIter(); !elementNode->AtEnd(iter); ++iter) {
         MeaXMLNode* node = *iter;
         
-        if (node->GetType() == MeaXMLNode::Data) {
+        if (node->GetType() == MeaXMLNode::Type::Data) {
             data += node->GetData();
         }
     }
@@ -691,7 +691,7 @@ void MeaPositionLogMgr::Screen::Load(const MeaXMLNode* screenNode)
         MeaXMLNode* node = *iter;
         const MeaXMLAttributes& attrs = node->GetAttributes();
 
-        if (node->GetType() == MeaXMLNode::Element) {
+        if (node->GetType() == MeaXMLNode::Type::Element) {
             if (node->GetData() == _T("rect")) {
                 attrs.GetValueDbl(_T("top"), m_rect.top, def);
                 attrs.GetValueDbl(_T("bottom"), m_rect.bottom, def);
@@ -808,7 +808,7 @@ void MeaPositionLogMgr::DesktopInfo::Load(const MeaXMLNode* desktopNode)
         MeaXMLNode* node = *iter;
         const MeaXMLAttributes& attrs = node->GetAttributes();
 
-        if (node->GetType() == MeaXMLNode::Element) {
+        if (node->GetType() == MeaXMLNode::Type::Element) {
             if (node->GetData() == _T("units")) {
                 attrs.GetValueStr(_T("length"), valueStr, def);
                 SetLinearUnits(valueStr);
@@ -1172,12 +1172,12 @@ void MeaPositionLogMgr::Position::Show() const
         }
 
         unitsMgr.SetLinearUnits(unitsStr);
-        toolMgr.UpdateTools(UnitsChanged);
+        toolMgr.UpdateTools(MeaUpdateReason::UnitsChanged);
     }
 
     if (anglesStr != unitsMgr.GetAngularUnitsStr()) {
         unitsMgr.SetAngularUnits(anglesStr);
-        toolMgr.UpdateTools(UnitsChanged);
+        toolMgr.UpdateTools(MeaUpdateReason::UnitsChanged);
     }
 
     // Set the origin and y-axis orientation.
@@ -1192,7 +1192,7 @@ void MeaPositionLogMgr::Position::Show() const
 
     if ((newOrigin.x != unitsMgr.GetOrigin().x) || (newOrigin.y != unitsMgr.GetOrigin().y)) {
         unitsMgr.SetOrigin(newOrigin);
-        toolMgr.UpdateTools(OriginChanged);
+        toolMgr.UpdateTools(MeaUpdateReason::OriginChanged);
     }
 
     // Show the points.
@@ -1215,7 +1215,7 @@ void MeaPositionLogMgr::Position::Load(const MeaXMLNode* positionNode)
     for (MeaXMLNode::NodeIter_c iter = positionNode->GetChildIter(); !positionNode->AtEnd(iter); ++iter) {
         MeaXMLNode* node = *iter;
 
-        if (node->GetType() == MeaXMLNode::Element) {
+        if (node->GetType() == MeaXMLNode::Type::Element) {
             if (node->GetData() == _T("desc")) {
                 SetDesc(ProcessDataNodes(node));
             } else if (node->GetData() == _T("points")) {
@@ -1223,7 +1223,7 @@ void MeaPositionLogMgr::Position::Load(const MeaXMLNode* positionNode)
                     MeaXMLNode* pointNode = *pointIter;
                     const MeaXMLAttributes& attrs = pointNode->GetAttributes();
 
-                    if ((pointNode->GetType() == MeaXMLNode::Element) && (pointNode->GetData() == _T("point"))) {
+                    if ((pointNode->GetType() == MeaXMLNode::Type::Element) && (pointNode->GetData() == _T("point"))) {
                         CString name;
                         FPOINT pt;
                         attrs.GetValueStr(_T("name"), name, def);
@@ -1237,7 +1237,7 @@ void MeaPositionLogMgr::Position::Load(const MeaXMLNode* positionNode)
                     MeaXMLNode* pointNode = *pointIter;
                     const MeaXMLAttributes& attrs = pointNode->GetAttributes();
 
-                    if (pointNode->GetType() == MeaXMLNode::Element) {
+                    if (pointNode->GetType() == MeaXMLNode::Type::Element) {
                         if (pointNode->GetData() == _T("width")) {
                             attrs.GetValueDbl(_T("value"), m_width, def);
                             m_fieldMask |= MeaWidthField;

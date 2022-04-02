@@ -100,7 +100,7 @@ void MeaWindowTool::Enable()
     m_rectangle.Show();
     m_dataWin.Show();
 
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -128,11 +128,11 @@ void MeaWindowTool::Update(MeaUpdateReason reason)
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
-        if ((reason == UnitsChanged) || (reason == OriginChanged) || (reason == AllChanged)) {
+        if ((reason == MeaUpdateReason::UnitsChanged) || (reason == MeaUpdateReason::OriginChanged) || (reason == MeaUpdateReason::AllChanged)) {
             m_dataWin.Hide();
             m_dataWin.Show();
         }
-        if ((reason == DataWinArming) || (reason == AllChanged)) {
+        if ((reason == MeaUpdateReason::DataWinArming) || (reason == MeaUpdateReason::AllChanged)) {
             if (MeaDataWin::IsArmed()) {
                 m_dataWin.Show();
             } else {
@@ -261,7 +261,7 @@ void MeaWindowTool::OnMouseHook(WPARAM /* wParam */, LPARAM lParam)
     //
     if (FindWindow()) {
         m_rectangle.SetPosition(m_point1, m_point2);
-        Update(NormalUpdate);
+        Update(MeaUpdateReason::NormalUpdate);
     }
 }
 

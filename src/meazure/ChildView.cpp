@@ -283,7 +283,7 @@ void CChildView::MasterReset()
     toolMgr.DisableRadioTools();
     toolMgr.MasterReset();
     toolMgr.ChangeRadioToolEnable();
-    toolMgr.UpdateTools(AllChanged);
+    toolMgr.UpdateTools(MeaUpdateReason::AllChanged);
 }
 
 
@@ -597,7 +597,7 @@ void CChildView::OnUnits(UINT nID)
         break;
     }
 
-    MeaToolMgr::Instance().UpdateTools(UnitsChanged);
+    MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
 }
 
 
@@ -637,7 +637,7 @@ void CChildView::OnAngles(UINT nID)
         break;
     }
 
-    MeaToolMgr::Instance().UpdateTools(UnitsChanged);
+    MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
 }
 
 
@@ -662,7 +662,7 @@ void CChildView::OnUpdateCustomUnits(CCmdUI* pCmdUI)
 void CChildView::OnCustomUnits() 
 {
     MeaUnitsMgr::Instance().SetLinearUnits(MeaCustomId);
-    MeaToolMgr::Instance().UpdateTools(UnitsChanged);
+    MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
 }
 
 
@@ -771,7 +771,7 @@ void CChildView::OnUpdateInvertY(CCmdUI* pCmdUI)
 void CChildView::OnOrigin() 
 {
     MeaUnitsMgr::Instance().SetOrigin(MeaToolMgr::Instance().GetPosition());
-    MeaToolMgr::Instance().UpdateTools(OriginChanged);
+    MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::OriginChanged);
 }
 
 
@@ -940,17 +940,17 @@ void CChildView::OnUpdateMagnifier(CCmdUI* pCmdUI)
 
 void CChildView::OnRunState() 
 {
-    if (m_magnifier.GetRunState() == MeaMagnifier::Run) {
-        m_magnifier.SetRunState(MeaMagnifier::Freeze);
+    if (m_magnifier.GetRunState() == MeaMagnifier::RunState::Run) {
+        m_magnifier.SetRunState(MeaMagnifier::RunState::Freeze);
     } else {
-        m_magnifier.SetRunState(MeaMagnifier::Run);
+        m_magnifier.SetRunState(MeaMagnifier::RunState::Run);
     }
 }
 
 
 void CChildView::OnUpdateRunState(CCmdUI* pCmdUI) 
 {
-    pCmdUI->SetCheck(m_magnifier.GetRunState() == MeaMagnifier::Freeze);
+    pCmdUI->SetCheck(m_magnifier.GetRunState() == MeaMagnifier::RunState::Freeze);
 }
 
 
@@ -1303,7 +1303,7 @@ void CChildView::ApplyPreferences(int prefsPage)
         else
             MeaToolMgr::Instance().DisableTool(MeaOriginTool::kToolName);
 
-        MeaToolMgr::Instance().UpdateTools(DataWinArming);
+        MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::DataWinArming);
     }
 
     // Precision preferences
@@ -1323,7 +1323,7 @@ void CChildView::ApplyPreferences(int prefsPage)
         unitsMgr.SetAngularDisplayPrecisions(MeaDegreesId,    m_prefs.m_precisionPrefs.GetAngularPrecisions(MeaDegreesId));
         unitsMgr.SetAngularDisplayPrecisions(MeaRadiansId,    m_prefs.m_precisionPrefs.GetAngularPrecisions(MeaRadiansId));
 
-        MeaToolMgr::Instance().UpdateTools(UnitsChanged);
+        MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
     }
 
     // Custom units preferences
@@ -1347,14 +1347,14 @@ void CChildView::ApplyPreferences(int prefsPage)
         //
         if (unitsMgr.GetLinearUnitsId() == MeaCustomId && !customUnits->HaveCustomUnits()) {
             unitsMgr.SetLinearUnits(MeaPixelsId);
-            MeaToolMgr::Instance().UpdateTools(UnitsChanged);
+            MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
         }
         // If we pressed Apply while on the custom units page or custom units are currently
         // set, show/update the custom units displayed.
         //
         else if (prefsPage == MeaPreferences::kCustomPage || unitsMgr.GetLinearUnitsId() == MeaCustomId) {
             unitsMgr.SetLinearUnits(MeaCustomId);
-            MeaToolMgr::Instance().UpdateTools(UnitsChanged);
+            MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
         }
     }
 

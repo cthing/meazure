@@ -134,11 +134,11 @@ void MeaCursorTool::Update(MeaUpdateReason reason)
         // If the units or origin changes, force an update of
         // the data window information.
         //
-        if ((reason == UnitsChanged) || (reason == OriginChanged)) {
+        if ((reason == MeaUpdateReason::UnitsChanged) || (reason == MeaUpdateReason::OriginChanged)) {
             m_dataWin.Hide();
             m_dataWin.Show();
         }
-        if (reason == DataWinArming) {
+        if (reason == MeaUpdateReason::DataWinArming) {
             if (MeaDataWin::IsArmed()) {
                 m_dataWin.Show();
             } else {
@@ -204,5 +204,5 @@ void MeaCursorTool::OnMouseHook(WPARAM /* wParam */, LPARAM lParam)
     m_cursorPos.x = GET_X_LPARAM(lParam);
     m_cursorPos.y = GET_Y_LPARAM(lParam);
 
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }

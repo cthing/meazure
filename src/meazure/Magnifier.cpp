@@ -39,7 +39,7 @@ END_MESSAGE_MAP()
 const int                       MeaMagnifier::kDefZoomIndex = 1;
 const bool                      MeaMagnifier::kDefShowGrid  = true;
 const MeaMagnifier::ColorFmt    MeaMagnifier::kDefColorFmt  = RGBFmt;
-const MeaMagnifier::RunState    MeaMagnifier::kDefRunState  = Run;
+const MeaMagnifier::RunState    MeaMagnifier::kDefRunState  = RunState::Run;
 
 const int   MeaMagnifier::kUpdateRate       = 70;
 const int   MeaMagnifier::kZoomHeight       = 22;
@@ -211,7 +211,7 @@ void MeaMagnifier::Disable()
 void MeaMagnifier::SetRunState(RunState runState)
 {
     if (m_runState != runState) {
-        m_runStateBtn.SetState(runState == Freeze);
+        m_runStateBtn.SetState(runState == RunState::Freeze);
         ChangeRunState(runState);
     }
 }
@@ -219,7 +219,7 @@ void MeaMagnifier::SetRunState(RunState runState)
 
 void MeaMagnifier::OnRunState()
 {
-    ChangeRunState((GetRunState() == Run) ? Freeze : Run);
+    ChangeRunState((GetRunState() == RunState::Run) ? RunState::Freeze : RunState::Run);
 }
 
 
@@ -229,7 +229,7 @@ void MeaMagnifier::ChangeRunState(RunState runState)
         m_runState = runState;
 
         if (m_enabled) {
-            if (m_runState == Run) {
+            if (m_runState == RunState::Run) {
                 OnHPTimer(0, 0);
             } else {
                 m_timer.Stop();
@@ -296,7 +296,7 @@ void MeaMagnifier::Draw(HDC hDC)
     //
     // Center the magnifier around cursor
     //
-    if (m_runState == Run) {
+    if (m_runState == RunState::Run) {
         GetParent()->SendMessage(MeaGetPositionMsg, 0, reinterpret_cast<WPARAM>(&m_curPos));
     }
 

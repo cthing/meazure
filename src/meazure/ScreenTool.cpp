@@ -72,7 +72,7 @@ void MeaScreenTool::Enable()
                                     MeaScreenHeightField |
                                     MeaResXField |
                                     MeaResYField, 0);
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -133,7 +133,7 @@ void MeaScreenTool::SetPosition(const POINT& pos)
         m_anyOSRes = mgr.AnyOSRes();
         m_name = mgr.GetScreenName(iter);
 
-        Update(NormalUpdate);
+        Update(MeaUpdateReason::NormalUpdate);
     }
 }
 

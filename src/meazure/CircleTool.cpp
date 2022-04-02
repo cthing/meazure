@@ -220,7 +220,7 @@ void MeaCircleTool::Enable()
     m_line.Show();
     EnableCrosshairs();
     Flash();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -342,7 +342,7 @@ void MeaCircleTool::SetPosition(MeaFields which, int pixels)
 
     // Reposition the tool based on the crosshair locations.
     //
-    if (which == MeaXVField || which == MeaYVField) {
+    if (which & MeaXVField || which & MeaYVField) {
         m_center = MeaScreenMgr::Instance().LimitPosition(m_center);
         m_centerCH.SetPosition(m_center);
         m_curPos = &m_center;
@@ -357,7 +357,7 @@ void MeaCircleTool::SetPosition(MeaFields which, int pixels)
 
     // Update the data display.
     //
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -380,7 +380,7 @@ void MeaCircleTool::SetPosition(const PointMap& points)
     // Reposition the tool and update the data display.
     //
     SetPosition();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -528,7 +528,7 @@ void MeaCircleTool::OnCHEnter(const CHInfo *info)
     } else {
         m_dataWinPerimeter.Show();
     }
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -609,5 +609,5 @@ void MeaCircleTool::OnCHMove(const CHInfo *info)
     m_circle.SetPosition(m_center, m_perimeter);
     m_line.SetPosition(m_center, m_perimeter);
 
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }

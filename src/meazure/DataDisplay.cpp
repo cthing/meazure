@@ -648,7 +648,7 @@ LRESULT MeaDataSection::OnFieldEntry(WPARAM wParam, LPARAM id)
 LRESULT MeaDataDisplay::OnFieldEntry(WPARAM wParam, LPARAM id)
 {
     FPOINT pos;
-    int pixels = 0;
+    LONG pixels = 0;
     const MeaNumberField *field = NULL;
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
@@ -694,7 +694,7 @@ LRESULT MeaDataDisplay::OnFieldEntry(WPARAM wParam, LPARAM id)
         break;
     }
 
-    GetParent()->SendMessage(MeaDataChangeMsg, pixels + static_cast<int>(wParam), id);
+    GetParent()->SendMessage(MeaDataChangeMsg, static_cast<WPARAM>(pixels) + wParam, id);
     MeaAssert(field != NULL);
     const_cast<MeaNumberField*>(field)->SetFocus();
 

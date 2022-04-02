@@ -101,7 +101,7 @@ void MeaOriginTool::Enable()
     m_xAxis.Show();
     m_yAxis.Show();
 
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 

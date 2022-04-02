@@ -151,7 +151,7 @@ public:
 
     /// Indicates the type of the DOM node.
     ///
-    enum Type {
+    enum class Type {
         Unknown,        ///< Initial type for a DOM node.
         Element,        ///< The node represents an XML element.
         Data            ///< The node represents data contained between XML elements.

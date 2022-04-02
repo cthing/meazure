@@ -104,7 +104,7 @@ void MeaGridTool::Enable()
     }
 
     MeaTool::Enable();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -145,7 +145,7 @@ void MeaGridTool::Update(MeaUpdateReason reason)
 void MeaGridTool::UpdateH()
 {
     if (IsEnabled()) {
-        MeaTool::Update(NormalUpdate);
+        MeaTool::Update(MeaUpdateReason::NormalUpdate);
 
         // To prevent visual artifacts and to improve
         // performance, hide the grid lines, move then
@@ -161,7 +161,7 @@ void MeaGridTool::UpdateH()
 void MeaGridTool::UpdateV()
 {
     if (IsEnabled()) {
-        MeaTool::Update(NormalUpdate);
+        MeaTool::Update(MeaUpdateReason::NormalUpdate);
 
         // To prevent visual artifacts and to improve
         // performance, hide the grid lines, move then

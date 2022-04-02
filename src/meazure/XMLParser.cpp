@@ -129,20 +129,20 @@ MeaXMLAttributes& MeaXMLAttributes::Assign(const MeaXMLAttributes& attrs)
 //*************************************************************************
 
 
-MeaXMLNode::MeaXMLNode() : m_type(Unknown), m_parent(NULL)
+MeaXMLNode::MeaXMLNode() : m_type(Type::Unknown), m_parent(NULL)
 {
 }
 
 
 MeaXMLNode::MeaXMLNode(const CString& elementName,
-                       const MeaXMLAttributes& attrs) : m_type(Element),
+                       const MeaXMLAttributes& attrs) : m_type(Type::Element),
                        m_data(elementName), m_attributes(attrs),
                        m_parent(NULL)
 {
 }
 
 
-MeaXMLNode::MeaXMLNode(const CString& data) : m_type(Data), m_data(data),
+MeaXMLNode::MeaXMLNode(const CString& data) : m_type(Type::Data), m_data(data),
     m_parent(NULL)
 {
 }

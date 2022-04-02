@@ -256,7 +256,7 @@ void MeaAngleTool::Enable()
     m_lineB.Show();
     EnableCrosshairs();
     Flash();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -356,12 +356,12 @@ void MeaAngleTool::SetPosition(MeaFields which, int pixels)
 
     // Reposition the tool based on the crosshair locations.
     //
-    if (which == MeaX1Field || which == MeaY1Field) {
+    if (which & MeaX1Field || which & MeaY1Field) {
         m_point1 = MeaScreenMgr::Instance().LimitPosition(m_point1);
         m_point1CH.SetPosition(m_point1);
         m_curPos = &m_point1;
         m_line1.SetPosition(m_vertex, m_point1);
-    } else if (which == MeaX2Field || which == MeaY2Field) {
+    } else if (which & MeaX2Field || which & MeaY2Field) {
         m_point2 = MeaScreenMgr::Instance().LimitPosition(m_point2);
         m_point2CH.SetPosition(m_point2);
         m_curPos = &m_point2;
@@ -376,7 +376,7 @@ void MeaAngleTool::SetPosition(MeaFields which, int pixels)
 
     // Update the data display.
     //
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -403,7 +403,7 @@ void MeaAngleTool::SetPosition(const PointMap& points)
     // Reposition the tool and update the data display.
     //
     SetPosition();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -580,7 +580,7 @@ void MeaAngleTool::OnCHEnter(const CHInfo *info)
         break;
     }
 
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -736,7 +736,7 @@ void MeaAngleTool::OnCHMove(const CHInfo *info)
         m_line2.SetPosition(m_vertex, m_point2);
     }
 
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 

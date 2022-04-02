@@ -164,7 +164,7 @@ void MeaPointTool::Enable()
     //
     EnableCrosshairs();
     Flash();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -212,9 +212,9 @@ void MeaPointTool::SetPosition(MeaFields which, int pixels)
 {
     // Set the specified position component.
     //
-    if (which == MeaX1Field) {
+    if (which & MeaX1Field) {
         m_center.x = pixels;
-    } else if (which == MeaY1Field) {
+    } else if (which & MeaY1Field) {
         m_center.y = pixels;
     } else {
         return;
@@ -223,7 +223,7 @@ void MeaPointTool::SetPosition(MeaFields which, int pixels)
     // Reposition the tool based on the crosshair locations.
     //
     SetPosition();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -240,7 +240,7 @@ void MeaPointTool::SetPosition(const PointMap& points)
     // Reposition the tool and update the data display.
     //
     SetPosition();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -278,9 +278,9 @@ void MeaPointTool::IncPosition(MeaFields which)
 {
     // Increment the specified position component.
     //
-    if (which == MeaX1Field) {
+    if (which & MeaX1Field) {
         SetPosition(which, m_center.x + 1);
-    } else if (which == MeaY1Field) {
+    } else if (which & MeaY1Field) {
         SetPosition(which, m_center.y + 1);
     }
 }
@@ -290,9 +290,9 @@ void MeaPointTool::DecPosition(MeaFields which)
 {
     // Decrement the specified position component.
     //
-    if (which == MeaX1Field) {
+    if (which & MeaX1Field) {
         SetPosition(which, m_center.x - 1);
-    } else if (which == MeaY1Field) {
+    } else if (which & MeaY1Field) {
         SetPosition(which, m_center.y - 1);
     }
 }
@@ -330,7 +330,7 @@ void MeaPointTool::OnCHEnter(const CHInfo* /* info */)
     // Show the crosshair's data window.
     //
     m_dataWin.Show();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }
 
 
@@ -366,5 +366,5 @@ void MeaPointTool::OnCHMove(const CHInfo *info)
     }
 
     SetPosition();
-    Update(NormalUpdate);
+    Update(MeaUpdateReason::NormalUpdate);
 }

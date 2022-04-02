@@ -63,7 +63,7 @@ public:
 
     /// Indicates whether the magnifier is running or in freeze frame mode.
     ///
-    enum RunState {
+    enum class RunState {
         Run     = 0,        ///< Magnifier is in real time mode.
         Freeze  = 1         ///< Magnifier is in freeze frame mode.
     };

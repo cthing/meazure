@@ -205,7 +205,7 @@ public:
     ///
     /// @param reason       [in] Reason the update was requested.
     ///
-    void UpdateTools(MeaUpdateReason reason = NormalUpdate) const {
+    void UpdateTools(MeaUpdateReason reason = MeaUpdateReason::NormalUpdate) const {
         ToolsMap::const_iterator iter;
         for (iter = m_tools.begin(); iter != m_tools.end(); ++iter) {
             (*iter).second->Update(reason);
@@ -406,7 +406,7 @@ public:
         if (m_dataDisplay != NULL) {
             m_dataDisplay->ShowXY1(point, cpoint);
         }
-        m_rulerTool->SetIndicator(MeaRuler::Ind1, point);
+        m_rulerTool->SetIndicator(MeaRuler::IndicatorId::Ind1, point);
     }
 
     /// Displays the specified point in the X2/Y2 fields
@@ -420,7 +420,7 @@ public:
         if (m_dataDisplay != NULL) {
             m_dataDisplay->ShowXY2(point, cpoint);
         }
-        m_rulerTool->SetIndicator(MeaRuler::Ind2, point);
+        m_rulerTool->SetIndicator(MeaRuler::IndicatorId::Ind2, point);
     }
 
     /// Displays the specified point in the XV/YV fields
@@ -434,7 +434,7 @@ public:
         if (m_dataDisplay != NULL) {
             m_dataDisplay->ShowXYV(point, cpoint);
         }
-        m_rulerTool->SetIndicator(MeaRuler::Ind3, point);
+        m_rulerTool->SetIndicator(MeaRuler::IndicatorId::Ind3, point);
     }
 
     /// Displays the specified size in the width and height

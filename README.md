@@ -55,7 +55,7 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 - Feature: The aspect ratio (i.e. width / height) is now displayed for the Rectangle, Window,
   and Line tools. For the Line tool, the aspect ratio is based on the bounding rectangle.
 
-- Feature: The kayboard can now be used to position crosshairs. Pressing the Ctrl+1, Ctrl+2 and/or Ctrl+3
+- Feature: The keyboard can now be used to position crosshairs. Pressing the Ctrl+1, Ctrl+2 and/or Ctrl+3
   plus one of the arrow keys will move the corresponding tool crosshair one pixel. For example, pressing
   Ctrl+1 and the Up arrow key will move the Point 1 crosshair up one pixel.
 

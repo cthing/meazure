@@ -43,7 +43,7 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 ## Changelog
 
-### Changes 2.0.1 to 3.0-SNAPSHOT
+### Changes 2.0.1 to 3.0
 
 - Supported on Windows 10 and above.
 

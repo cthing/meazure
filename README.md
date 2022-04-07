@@ -31,6 +31,10 @@ Refer to [Building.md](Building.md) for information on how to build Meazure from
 
 ## Known Issues
 
+- To open a position log file saved by Meazure 3.0 using Meazure 2.0, edit the position log file and change the DOCTYPE
+  URL on line 2 from `https:` to `http:`. Position log files saved by Meazure 2.0 can be opened by Meazure 3.0 without
+  modification.
+
 - Meazure may report incorrect measurements if Windows Display "Make everything bigger" greater than 100% is used
   (see [issue #9](https://github.com/cthing/meazure/issues/9)). To work around this issue, right-click on Meazure.exe
   and select Properties. In the properties dialog, select the Compatibility tab. Press the "Change high DPI settings"

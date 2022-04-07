@@ -248,7 +248,8 @@ CString MeaXMLParserHandler::GetFilePathname()
 //*************************************************************************
 
 
-LPCTSTR MeaXMLParser::m_homeURL = _T("https://www.cthing.com/");
+CString MeaXMLParser::m_homeURL1(_T("https://www.cthing.com/"));
+CString MeaXMLParser::m_homeURL2(_T("http://www.cthing.com/"));
 
 
 MeaXMLParser::MeaXMLParser(MeaXMLParserHandler *handler, bool buildDOM) :
@@ -427,12 +428,19 @@ int MeaXMLParser::ExternalEntityRefHandler(XML_Parser parser,
         MeaXMLParser *ps = reinterpret_cast<MeaXMLParser*>(parser);
         CString sysId(FromUTF8(systemId));
 
-        if (sysId.Find(MeaXMLParser::m_homeURL) == 0) {
+        int homeURLPos = sysId.Find(MeaXMLParser::m_homeURL1);
+        int homeURLLen = MeaXMLParser::m_homeURL1.GetLength();
+        if (homeURLPos < 0) {
+            homeURLPos = sysId.Find(MeaXMLParser::m_homeURL2);
+            homeURLLen = MeaXMLParser::m_homeURL2.GetLength();
+        }
+
+        if (homeURLPos == 0) {
             TCHAR pathname[_MAX_PATH], drive[_MAX_DRIVE], dir[_MAX_DIR];
             GetModuleFileName(NULL, pathname, _MAX_PATH);
             _tsplitpath_s(pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, NULL, 0, NULL, 0);
 
-            sysId = CString(drive) + CString(dir) + sysId.Mid(static_cast<int>(_tcslen(MeaXMLParser::m_homeURL)));
+            sysId = CString(drive) + CString(dir) + sysId.Mid(homeURLLen);
             sysId.Replace(_T('/'), _T('\\'));
 
             ps->m_pathnameStack->push(sysId);

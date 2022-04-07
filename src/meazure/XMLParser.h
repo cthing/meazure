@@ -542,19 +542,20 @@ private:
                                      const XML_Char *dflt,
                                      int isrequired);
 
-    /// Called when an XML parsing error occurrs. Queries
+    /// Called when an XML parsing error occurs. Queries
     /// the parser to determine the error and displays a dialog
     /// with a description of the problem.
     ///
     void         HandleParserError();
     
-    /// Called when an XML validation error occurrs.
+    /// Called when an XML validation error occurs.
     ///
     /// @param error        [in] Describes the validation error.
     ///
     virtual void HandleValidationError(const ev::ValidationError& error);
 
-    static LPCTSTR          m_homeURL;          ///< URL for cthing.com
+    static CString          m_homeURL1;         ///< URL for cthing.com
+    static CString          m_homeURL2;         ///< URL for cthing.com
 
     XML_Parser              m_parser;           ///< The expat XML parser.
     bool                    m_isSubParser;      ///< Indicates whether this is an external entity sub-parser.

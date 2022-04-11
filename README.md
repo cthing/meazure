@@ -20,6 +20,11 @@ This configuration includes:
 - Associating the file suffix `.mea` with the Meazure program
 - Optionally placing an icon on the desktop
 
+## User Guide
+
+The Meazure User Guide is [available online](https://github.com/cthing/meazure/wiki) and is bundled with the
+Meazure program as the help contents.
+
 ## License
 
 Refer to the [LICENSE](LICENSE) file distributed with this program

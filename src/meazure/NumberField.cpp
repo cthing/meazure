@@ -141,7 +141,9 @@ LRESULT MeaNumberField::OnPaste(WPARAM, LPARAM)
 {
     COleDataObject obj;
 
-    if (obj.AttachClipboard()) {
+    bool editable = (GetStyle() & ES_READONLY) != ES_READONLY;
+
+    if (editable && obj.AttachClipboard()) {
         if (obj.IsDataAvailable(CF_TEXT)) {
             HGLOBAL hmem = obj.GetGlobalData(CF_TEXT);
             CMemFile sf(static_cast<BYTE*>(::GlobalLock(hmem)), ::GlobalSize(hmem));

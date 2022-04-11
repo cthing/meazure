@@ -44,6 +44,7 @@
 1. Verify the Tool Information section label reads ***Cursor***
 1. Verify ***X1*** and ***Y1*** text fields are enabled but not editable
 1. Verify ***X1*** and ***Y1*** up/down buttons are enabled but do not do anything
+1. Verify you cannot paste a number into the ***X1*** or ***Y1*** fields
 1. Verify all other fields in the Tool Information section are disabled
 1. Verify the Data window appears next to cursor showing the ***X1*** and ***Y1*** coordinates of the cursor
 1. Move the cursor to each corner of screen and verify that the Tool Information and Data window values agree
@@ -72,6 +73,7 @@
 1. Verify the Data window position changes to avoid being hidden
 1. Verify crosshair is centered in Magnifier and the view tracks the crosshair position
 1. Enter new ***X1*** and ***Y1*** values in the text fields and verify crosshair moves to the specified position
+1. Paste new numerical values into the ***X1*** and ***Y1*** fields and verify the crosshair moves to the specified position
 1. Use the ***X1*** and ***Y1*** up/down buttons to verify crosshair moves in the correct direction
 1. Drag the crosshair while holding down ***Shift*** key and verify that only horizontal and vertical motions are allowed
 1. Ensure Meazure has the keyboard focus by clicking on the Meazure window frame

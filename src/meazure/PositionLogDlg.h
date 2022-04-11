@@ -86,16 +86,6 @@ public:
     ///
     virtual void PositionsDeleted();
 
-
-    /// Called to preprocess windows messages. This override
-    /// allows accelerators to be processed for the dialog.
-    ///
-    /// @param pMsg     [in] Windows message to process.
-    ///
-    /// @return TRUE if message translated.
-    ///
-    virtual BOOL PreTranslateMessage(MSG* pMsg);
-
     // ClassWizard generated virtual function overrides
     //{{AFX_VIRTUAL(MeaPositionLogDlg)
     virtual BOOL OnInitDialog();

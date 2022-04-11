@@ -98,18 +98,6 @@ void MeaPositionLogDlg::SetDlgTitle()
 }
 
 
-BOOL MeaPositionLogDlg::PreTranslateMessage(MSG* pMsg)
-{
-    HACCEL hAccel = static_cast<CMainFrame*>(AfxGetMainWnd())->GetAccelTable();
-
-    if (!(hAccel && ::TranslateAccelerator(AfxGetApp()->m_pMainWnd->m_hWnd, hAccel, pMsg))) {
-        return CDialog::PreTranslateMessage(pMsg);
-    } else {
-        return TRUE;
-    }
-}
-
-
 void MeaPositionLogDlg::OnLoadPositions() 
 {
     MeaPositionLogMgr::Instance().Load();

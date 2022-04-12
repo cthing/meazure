@@ -128,10 +128,10 @@ Private Member Functions</h2></td></tr>
 <tr class="memdesc:a173d139ae3e8c28ac470de1156a3beff"><td class="mdescLeft">&#160;</td><td class="mdescRight">The parser has not assignment semantics so this method is purposely undefined. <br /></td></tr>
 <tr class="separator:a173d139ae3e8c28ac470de1156a3beff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68915f7d7c8d86983586bd098af3cfad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParser.html#a68915f7d7c8d86983586bd098af3cfad">HandleParserError</a> ()</td></tr>
-<tr class="memdesc:a68915f7d7c8d86983586bd098af3cfad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an XML parsing error occurrs.  <a href="classMeaXMLParser.html#a68915f7d7c8d86983586bd098af3cfad">More...</a><br /></td></tr>
+<tr class="memdesc:a68915f7d7c8d86983586bd098af3cfad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an XML parsing error occurs.  <a href="classMeaXMLParser.html#a68915f7d7c8d86983586bd098af3cfad">More...</a><br /></td></tr>
 <tr class="separator:a68915f7d7c8d86983586bd098af3cfad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10ebdf75cf604f9db31dc9f018f888b1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParser.html#a10ebdf75cf604f9db31dc9f018f888b1">HandleValidationError</a> (const <a class="el" href="classev_1_1ValidationError.html">ev::ValidationError</a> &amp;error)</td></tr>
-<tr class="memdesc:a10ebdf75cf604f9db31dc9f018f888b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an XML validation error occurrs.  <a href="classMeaXMLParser.html#a10ebdf75cf604f9db31dc9f018f888b1">More...</a><br /></td></tr>
+<tr class="memdesc:a10ebdf75cf604f9db31dc9f018f888b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an XML validation error occurs.  <a href="classMeaXMLParser.html#a10ebdf75cf604f9db31dc9f018f888b1">More...</a><br /></td></tr>
 <tr class="separator:a10ebdf75cf604f9db31dc9f018f888b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
@@ -207,10 +207,14 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_buildDOM</b></td></
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a41de5ec13aa0b582f69a63f5cae70d7f"><td class="memItemLeft" align="right" valign="top"><a id="a41de5ec13aa0b582f69a63f5cae70d7f" name="a41de5ec13aa0b582f69a63f5cae70d7f"></a>
-static LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL</b> = _T(&quot;https://www.cthing.com/&quot;)</td></tr>
-<tr class="memdesc:a41de5ec13aa0b582f69a63f5cae70d7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">URL for cthing.com. <br /></td></tr>
-<tr class="separator:a41de5ec13aa0b582f69a63f5cae70d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff24f2a83393e7e9be1ab7bd638f6466"><td class="memItemLeft" align="right" valign="top"><a id="aff24f2a83393e7e9be1ab7bd638f6466" name="aff24f2a83393e7e9be1ab7bd638f6466"></a>
+static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL1</b></td></tr>
+<tr class="memdesc:aff24f2a83393e7e9be1ab7bd638f6466"><td class="mdescLeft">&#160;</td><td class="mdescRight">URL for cthing.com. <br /></td></tr>
+<tr class="separator:aff24f2a83393e7e9be1ab7bd638f6466"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf8e64c9af0b35ca59ff4cbe0b360a3a"><td class="memItemLeft" align="right" valign="top"><a id="aaf8e64c9af0b35ca59ff4cbe0b360a3a" name="aaf8e64c9af0b35ca59ff4cbe0b360a3a"></a>
+static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2</b></td></tr>
+<tr class="memdesc:aaf8e64c9af0b35ca59ff4cbe0b360a3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">URL for cthing.com. <br /></td></tr>
+<tr class="separator:aaf8e64c9af0b35ca59ff4cbe0b360a3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Provides SAX style XML parsing. </p>
@@ -704,7 +708,7 @@ static LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL</
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value 1, to indicate that the entity has been successfully parsed and parsing of the remainder of the XML file should continue. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLParser.html#a397207b267046fb6a07c943bf197c480">FromUTF8()</a>, <a class="el" href="classMeaXMLParser.html#a339a3c9e6b984354e12eb23dbec47469">m_context</a>, <a class="el" href="classMeaXMLParser.html#a5ba84f19ff126cfb239220320e9bdf9f">m_handler</a>, <a class="el" href="classMeaXMLParser.html#a41de5ec13aa0b582f69a63f5cae70d7f">m_homeURL</a>, <a class="el" href="classMeaXMLParser.html#a980e8ab5dfa23b67205e56a3a098d17e">m_pathnameStack</a>, and <a class="el" href="classMeaXMLParserHandler.html#a4cd57112d84a6381f9b540da59bb6cfa">MeaXMLParserHandler::ParseEntity()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLParser.html#a397207b267046fb6a07c943bf197c480">FromUTF8()</a>, <a class="el" href="classMeaXMLParser.html#a339a3c9e6b984354e12eb23dbec47469">m_context</a>, <a class="el" href="classMeaXMLParser.html#a5ba84f19ff126cfb239220320e9bdf9f">m_handler</a>, <a class="el" href="classMeaXMLParser.html#aff24f2a83393e7e9be1ab7bd638f6466">m_homeURL1</a>, <a class="el" href="classMeaXMLParser.html#aaf8e64c9af0b35ca59ff4cbe0b360a3a">m_homeURL2</a>, <a class="el" href="classMeaXMLParser.html#a980e8ab5dfa23b67205e56a3a098d17e">m_pathnameStack</a>, and <a class="el" href="classMeaXMLParserHandler.html#a4cd57112d84a6381f9b540da59bb6cfa">MeaXMLParserHandler::ParseEntity()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaXMLParser.html#a359bf533d0b31a1923ecc990dd6b4654">MeaXMLParser()</a>.</p>
 
@@ -842,7 +846,7 @@ static LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL</
 </table>
 </div><div class="memdoc">
 
-<p>Called when an XML parsing error occurrs. </p>
+<p>Called when an XML parsing error occurs. </p>
 <p >Queries the parser to determine the error and displays a dialog with a description of the problem. </p>
 
 <p class="reference">References <a class="el" href="classMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">MeaXMLParserHandler::GetFilePathname()</a>, <a class="el" href="classMeaXMLParser.html#a5ba84f19ff126cfb239220320e9bdf9f">m_handler</a>, <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>, and <a class="el" href="classMeaXMLParser.html#a980e8ab5dfa23b67205e56a3a098d17e">m_pathnameStack</a>.</p>
@@ -875,7 +879,7 @@ static LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL</
 </table>
 </div><div class="memdoc">
 
-<p>Called when an XML validation error occurrs. </p>
+<p>Called when an XML validation error occurs. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">error</td><td>[in] Describes the validation error. </td></tr>

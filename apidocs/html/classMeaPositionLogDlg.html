@@ -99,9 +99,6 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaPositionLogDlg
 <tr class="memitem:a6b93e02466cb656ea683e06657820f72"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogDlg.html#a6b93e02466cb656ea683e06657820f72">PositionsDeleted</a> ()</td></tr>
 <tr class="memdesc:a6b93e02466cb656ea683e06657820f72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when all recorded positions have been deleted.  <a href="classMeaPositionLogDlg.html#a6b93e02466cb656ea683e06657820f72">More...</a><br /></td></tr>
 <tr class="separator:a6b93e02466cb656ea683e06657820f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d5444634eb9f5c39cc8cc7b205a2f31"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogDlg.html#a1d5444634eb9f5c39cc8cc7b205a2f31">PreTranslateMessage</a> (MSG *pMsg)</td></tr>
-<tr class="memdesc:a1d5444634eb9f5c39cc8cc7b205a2f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to preprocess windows messages.  <a href="classMeaPositionLogDlg.html#a1d5444634eb9f5c39cc8cc7b205a2f31">More...</a><br /></td></tr>
-<tr class="separator:a1d5444634eb9f5c39cc8cc7b205a2f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82906561bfa35a3c57ff4a2fb15d9bb5"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogDlg.html#a82906561bfa35a3c57ff4a2fb15d9bb5">OnInitDialog</a> ()</td></tr>
 <tr class="memdesc:a82906561bfa35a3c57ff4a2fb15d9bb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called right before the dialog is displayed.  <a href="classMeaPositionLogDlg.html#a82906561bfa35a3c57ff4a2fb15d9bb5">More...</a><br /></td></tr>
 <tr class="separator:a82906561bfa35a3c57ff4a2fb15d9bb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -864,42 +861,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>UpdateEnable</b> () c
 <p >This is the last step in dialog destruction and is the place where a non-modal dialog class instance can be deleted. </p>
 
 <p class="reference">References <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaPositionLogMgr &gt;::Instance()</a>, <a class="el" href="classMeaSingleton__T.html#a68eb6955739fdfd98a81d744fa9cc438">MeaSingleton_T&lt; MeaPositionLogMgr &gt;::IsDestroyed()</a>, <a class="el" href="classMeaPositionLogMgr.html#a02d7e5f25d1c7a56a81ba2e8f62d2e70">MeaPositionLogMgr::ManageDlgDestroyed()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a11419f1ca45b8df3851f7041245fe4a5">MeaPositionLogMgr::SetObserver()</a>.</p>
-
-</div>
-</div>
-<a id="a1d5444634eb9f5c39cc8cc7b205a2f31" name="a1d5444634eb9f5c39cc8cc7b205a2f31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d5444634eb9f5c39cc8cc7b205a2f31">&#9670;&nbsp;</a></span>PreTranslateMessage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">BOOL MeaPositionLogDlg::PreTranslateMessage </td>
-          <td>(</td>
-          <td class="paramtype">MSG *&#160;</td>
-          <td class="paramname"><em>pMsg</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Called to preprocess windows messages. </p>
-<p >This override allows accelerators to be processed for the dialog.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pMsg</td><td>[in] Windows message to process.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>TRUE if message translated. </dd></dl>
 
 </div>
 </div>

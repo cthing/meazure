@@ -21,7 +21,7 @@
 /// @brief This file defines the file and product version numbers. It is
 ///     included by Meazure.rc2 and becomes part of the program resources.
 
-#define FILE_VERSION            3,0,1,1
-#define PRODUCT_VERSION         3,0,1,1
-#define STR_FILE_VERSION        "3, 0, 1, 1\0"
-#define STR_PRODUCT_VERSION     "3, 0, 1, 1\0"
+#define FILE_VERSION            3,0,2,1
+#define PRODUCT_VERSION         3,0,2,1
+#define STR_FILE_VERSION        "3, 0, 2, 1\0"
+#define STR_PRODUCT_VERSION     "3, 0, 2, 1\0"

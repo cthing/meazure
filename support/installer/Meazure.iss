@@ -5,11 +5,11 @@
 [Setup]
 AppId=Meazure
 AppName=Meazure
-AppVerName=Meazure 3.0.1
-AppVersion=3.0.1
+AppVerName=Meazure 3.0.2
+AppVersion=3.0.2
 AppMutex=MeazureInstallerMutex
 OutputDir=..\..\dist
-OutputBaseFilename=meazr301x64
+OutputBaseFilename=meazr302x64
 AppPublisher=C Thing Software
 AppPublisherURL=https://www.cthing.com
 AppSupportURL=https://www.cthing.com

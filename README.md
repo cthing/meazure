@@ -56,9 +56,17 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 ## Changelog
 
+### Changes 3.0.1 to 3.0.2
+
+- Fix: Should not be able to paste numbers into readonly data fields.
+
+- Fix: Unable to cut, copy, paste in description field on position log dialog.
+
+- Fix: Typos in help content.
+
 ### Changes 3.0 to 3.0.1
 
-- Fix bug in position log loading
+- Fix: Not able to load position log files created by 2.0.
 
 ### Changes 2.0.1 to 3.0
 

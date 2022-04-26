@@ -53,12 +53,9 @@ public:
     ///
     void    SetSliderPos(int pos);
 
-    // ClassWizard generated virtual function overrides
-    //{{AFX_VIRTUAL(MeaRulerSlider)
     public:
-    virtual BOOL Create(DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID);
-    virtual void PreSubclassWindow();
-    //}}AFX_VIRTUAL
+    virtual BOOL Create(DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID) override;
+    virtual void PreSubclassWindow() override;
 
     /// @fn Create(DWORD dwStyle, const RECT& rect, CWnd* pParentWnd, UINT nID)
     /// Creates the window for the ruler slider control.
@@ -87,8 +84,6 @@ protected:
     ///
     void DrawCalipers(CDC* pDC);
 
-    // Generated message map functions
-    //{{AFX_MSG(MeaRulerSlider)
     afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
     afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
     afx_msg void OnMouseMove(UINT nFlags, CPoint point);
@@ -96,7 +91,7 @@ protected:
     afx_msg BOOL OnEraseBkgnd(CDC* pDC);
     afx_msg void OnSize(UINT nType, int cx, int cy);
     afx_msg void OnEnable(BOOL bEnable);
-    //}}AFX_MSG
+
     DECLARE_MESSAGE_MAP()
 
     /// @fn OnLButtonDown(UINT nFlags, CPoint point)
@@ -138,9 +133,9 @@ protected:
     /// @param bEnable  [in] Indicates if the control has been enabled or disabled.
 
 private:
-    static const int kHotSpotOffset;    ///< Offset around the caliper that is draggable.
-    static const int kTickPosition;     ///< Relative position for the ruler tick marks.
-    static const int kTickFactor;       ///< The tick height is the thickness of the window divided by this factor.
+    static constexpr int kHotSpotOffset { 4 };  ///< Offset around the caliper that is draggable.
+    static constexpr int kTickPosition { 10 };  ///< Relative position for the ruler tick marks.
+    static constexpr int kTickFactor { 4 };     ///< The tick height is the thickness of the window divided by this factor.
 
 
     /// Indicates whether the specified slider position is in the draggable area.
@@ -151,7 +146,7 @@ private:
 
     bool        m_vertical;             ///< Indicates if the slider is oriented vertically.
     bool        m_captured;             ///< Indicates if the slider thumb control captured.
-    bool        m_sliderActive;         ///< Indaictes the slider can be dragged.
+    bool        m_sliderActive;         ///< Indicates the slider can be dragged.
     CFont       m_posFont;              ///< Font used for displaying the current slider position.
     CPen        m_activePen;            ///< Pen to draw the control when enabled.
     CPen        m_inactivePen;          ///< Pen to draw the control when disabled.

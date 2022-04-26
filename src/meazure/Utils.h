@@ -379,13 +379,13 @@ public:
     /// precision floating point value.
     ///
     /// @param str      [in] String to test
-    /// @param valuep   [out] Value parsed from the string. NULL
+    /// @param valuep   [out] Value parsed from the string. nullptr
     ///                 if not interested. If the return value is
     ///                 <b>false</b>, valuep's value is undefined.
     ///
     /// @return <b>true</b> if string represents a number.
     ///
-    static bool IsNumber(LPCTSTR str, double *valuep = NULL);
+    static bool IsNumber(LPCTSTR str, double *valuep = nullptr);
 
     /// Tests whether the specified string is a boolean value. For
     /// the purpose of this method, the strings "1", "TRUE", "true"
@@ -393,13 +393,13 @@ public:
     /// are boolean <b>false</b>.
     ///
     /// @param str      [in] String to test
-    /// @param valuep   [out] Value parsed from the string. NULL
+    /// @param valuep   [out] Value parsed from the string. nullptr
     ///                 if not interested. If the return value is
     ///                 <b>false</b>, valuep's value is undefined.
     ///
     /// @return <b>true</b> if string represents a boolean value.
     ///
-    static bool IsBoolean(LPCTSTR str, bool *valuep = NULL);
+    static bool IsBoolean(LPCTSTR str, bool *valuep = nullptr);
 
 
     /// Converts standalone LF characters into a CR+LF pair.

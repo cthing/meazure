@@ -34,42 +34,35 @@ IMPLEMENT_DYNCREATE(MeaAdvancedPrefs, CPropertyPage)
 
 
 BEGIN_MESSAGE_MAP(MeaAdvancedPrefs, CPropertyPage)
-    //{{AFX_MSG_MAP(MeaAdvancedPrefs)
     ON_BN_CLICKED(IDC_PROFILE_BTN, OnProfileBtn)
     ON_EN_CHANGE(IDC_PROFILE_PATHNAME, OnChangeProfilePathname)
     ON_BN_CLICKED(IDC_CLEAR_PROFILE, OnClearProfile)
     ON_BN_CLICKED(IDC_MASTER_RESET, OnMasterReset)
-    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 
 MeaAdvancedPrefs::MeaAdvancedPrefs() : CPropertyPage(MeaAdvancedPrefs::IDD),
-    m_startupProfileDlg(NULL)
+    m_startupProfileDlg(nullptr), m_startupProfile(_T(""))
 {
-    //{{AFX_DATA_INIT(MeaAdvancedPrefs)
-    m_startupProfile = _T("");
-    //}}AFX_DATA_INIT
 }
 
 
 MeaAdvancedPrefs::~MeaAdvancedPrefs()
 {
-    m_startupProfileDlg = NULL;
+    m_startupProfileDlg = nullptr;
 }
 
 
 void MeaAdvancedPrefs::DoDataExchange(CDataExchange* pDX)
 {
     CPropertyPage::DoDataExchange(pDX);
-    //{{AFX_DATA_MAP(MeaAdvancedPrefs)
     DDX_Text(pDX, IDC_PROFILE_PATHNAME, m_startupProfile);
-    //}}AFX_DATA_MAP
 }
 
 
 void MeaAdvancedPrefs::OnProfileBtn() 
 {
-    MeaAssert(m_startupProfileDlg != NULL);
+    MeaAssert(m_startupProfileDlg != nullptr);
     if (m_startupProfileDlg->DoModal() == IDOK) {
         CEdit *edit = static_cast<CEdit*>(GetDlgItem(IDC_PROFILE_PATHNAME));
         edit->SetWindowText(m_startupProfileDlg->GetPathName());
@@ -94,7 +87,7 @@ void MeaAdvancedPrefs::OnMasterReset()
 {
     if (AfxMessageBox(IDS_MEA_MASTER_RESET, MB_YESNO | MB_ICONWARNING) == IDYES) {
         MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());
-        MeaAssert(sheet != NULL);
+        MeaAssert(sheet != nullptr);
 
         sheet->EndDialog(ID_MEA_MASTER_RESET);
     }

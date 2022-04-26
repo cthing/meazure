@@ -32,7 +32,8 @@ set(TOOLS_DIR "${SUPPORT_DIR}/tools")
 set(TEST_DIR "${PROJECT_SOURCE_DIR}/src/test")
 
 set(CMAKE_BUILD_TYPE Release)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:wchar_t- /wd4100 /nologo")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:wchar_t- /wd4100 /nologo /WX")
 
 if(CMAKE_BUILD_TOOL MATCHES "nmake")
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR}/${CMAKE_BUILD_TYPE})

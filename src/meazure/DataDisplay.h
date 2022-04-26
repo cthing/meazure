@@ -292,7 +292,7 @@ public:
     ///If one of the enabled text fields has the focus, a pointer
     /// to that window is returned.
     ///
-    /// @return Pointer to enabled field if it has the focus and NULL
+    /// @return Pointer to enabled field if it has the focus and <b>nullptr</b>
     ///         otherwise.
     ///
     MeaNumberField* GetFieldFocus() const;
@@ -343,16 +343,16 @@ private:
         /// Constructs a data item. To complete the data item for use, the
         /// appropriate set of Create* methods must be called.
         ///
-        DataItem() : m_spin(NULL), m_unitsLabel(NULL) { }
+        DataItem() : m_spin(nullptr), m_unitsLabel(nullptr) { }
 
         /// Destroys a data item.
         ///
         ~DataItem() {
             try {
-                if (m_unitsLabel != NULL) {
+                if (m_unitsLabel != nullptr) {
                     MeaUnitsMgr::Instance().DeleteUnitsLabel(m_unitsLabel);
                 }
-                if (m_spin != NULL) {
+                if (m_spin != nullptr) {
                     delete m_spin;
                 }
             }
@@ -451,7 +451,7 @@ private:
         void    SetReadOnly(bool readonly) {
             m_field.SetReadOnly(readonly);
             m_field.ModifyStyle(readonly ? (WS_GROUP | WS_TABSTOP) : 0, readonly ? 0 : (WS_GROUP | WS_TABSTOP));
-            if (m_spin != NULL) {
+            if (m_spin != nullptr) {
                 m_spin->EnableWindow(!readonly);
             }
         }
@@ -494,7 +494,7 @@ private:
         /// @param upper    [in] Upper spin control value, inclusive.
         ///
         void    SetSpinRange(int lower, int upper) {
-            if (m_spin != NULL) {
+            if (m_spin != nullptr) {
                 m_spin->SetRange32(lower, upper);
             }
         }
@@ -505,7 +505,7 @@ private:
         /// @param pos      [in] Value for the spin control.
         ///
         void    SetSpinPos(int pos) {
-            if (m_spin != NULL && m_spin->IsWindowEnabled()) {
+            if (m_spin != nullptr && m_spin->IsWindowEnabled()) {
                 m_spin->SetPos(pos);
             }
         }
@@ -529,7 +529,7 @@ private:
         /// @return Spin control.
         ///
         CSpinButtonCtrl&    GetSpin()       {
-            MeaAssert(m_spin != NULL);
+            MeaAssert(m_spin != nullptr);
             return *m_spin;
         }
 
@@ -539,18 +539,18 @@ private:
         /// @return Units label object.
         ///
         MeaUnitsLabel&      GetUnitsLabel() {
-            MeaAssert(m_unitsLabel != NULL);
+            MeaAssert(m_unitsLabel != nullptr);
             return *m_unitsLabel;
         }
 
     private:
-        static const int    kSpinWidth;     ///< Width for the spin control, in pixels.
+        static constexpr int kSpinWidth { 17 };     ///< Width for the spin control, in pixels.
         
         MeaLabel        m_titleLabel;       ///< Left side label for the data item.
         MeaNumberField  m_field;            ///< Data item's text field.
         CSpinButtonCtrl *m_spin;            ///< Spin control associated with the text field
-                                            ///< or NULL if no spin control for this data item.
-        MeaUnitsLabel   *m_unitsLabel;      ///< Units label or NULL if no units label for this
+                                            ///< or nullptr if no spin control for this data item.
+        MeaUnitsLabel   *m_unitsLabel;      ///< Units label or nullptr if no units label for this
                                             ///< data item.
     };
 
@@ -558,23 +558,16 @@ private:
     typedef std::set<MeaNumberField*>   Fields;     ///< A set of numerical text fields.
 
 
-    static const RECT           kMargin;            ///< Margins for the sections, in pixels.
-    static const SIZE           kControlSpacing;    ///< Horizontal and vertical spacing for the
-                                                    ///< controls in a data item, in pixels.
-    static const int            kSectionSpacing;    ///< Vertical spacing between sections, in pixels.
-    static const int            kLabelSpacing;      ///< Spacing between labels and their text fields,
-                                                    ///< in pixels.
-    static const unsigned int   kLengthChars;       ///< Number of visible and allowable characters for
-                                                    ///< length fields.
-    static const int            kAngleChars;        ///< Number of visible and allowable characters for
-                                                    ///< the angle field.
-    static const int            kAspectChars;       ///< Number of visible and allowable characters for
-                                                    ///< the aspect ratio field.
-    static const int            kAspectPrecision;   ///< Number of decimal places for the aspect ratio field
-    static const int            kAreaChars;         ///< Number of visible and allowable characters for
-                                                    ///< the area field.
-    static const int            kResChars;          ///< Number of visible and allowable characters for
-                                                    ///< the screen resolution fields.
+    static constexpr RECT kMargin { 7, 17, 7, 7 };          ///< Margins for the sections, in pixels.
+    static constexpr SIZE kControlSpacing { 7, 5 };         ///< Horizontal and vertical spacing for the controls in a data item, in pixels.
+    static constexpr int kSectionSpacing { 3 };             ///< Vertical spacing between sections, in pixels.
+    static constexpr int kLabelSpacing { 3 };               ///< Spacing between labels and their text fields, in pixels.
+    static constexpr unsigned int kLengthChars { 6 };       ///< Number of visible and allowable characters for length fields.
+    static constexpr int kAngleChars { 6 };                 ///< Number of visible and allowable characters for the angle field.
+    static constexpr int kAspectChars { 17 };               ///< Number of visible and allowable characters for the aspect ratio field.
+    static constexpr int kAspectPrecision { FLT_DIG - 1 };  ///< Number of decimal places for the aspect ratio field
+    static constexpr int kAreaChars { 17 };                 ///< Number of visible and allowable characters for the area field.
+    static constexpr int kResChars { 6 };                   ///< Number of visible and allowable characters for the screen resolution fields.
 
     /// Creates the section devoted to displaying radio tool
     /// measurements.

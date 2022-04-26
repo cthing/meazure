@@ -25,12 +25,6 @@
 #include <math.h>
 #include "Units.h"
 
-/// Returns the absolute value of the argument.
-#define MEA_ABS(a)      (((a)<0) ? -(a) : (a))
-
-/// Returns 1 if a >= 0, -1 if a < 0.
-#define MEA_SGN(a)      (((a)<0) ? -1 : 1)
-
 
 /// Utility methods for performing various window layout tasks.
 ///
@@ -40,7 +34,7 @@ public:
     /// at the specified x location.
     ///
     /// @param leftX        [in] Align each window's left edge to this x position, in pixels.
-    /// @param ...          [in] CWnd pointers terminated by NULL.
+    /// @param ...          [in] CWnd pointers terminated by nullptr.
     ///
     static void AlignLeft(int leftX, ...);
 
@@ -48,7 +42,7 @@ public:
     /// aligned. The widest window is positioned at the specified x location.
     ///
     /// @param leftX        [in] Widest window starts at this x position, in pixels.
-    /// @param ...          [in] CWnd pointers terminated by NULL.
+    /// @param ...          [in] CWnd pointers terminated by nullptr.
     ///
     static void AlignRight(int leftX, ...);
 
@@ -56,7 +50,7 @@ public:
     /// center. The top of the tallest window begins at the specified y position.
     ///
     /// @param topY         [in] Tallest window begins at this y position, in pixels.
-    /// @param ...          [in] CWnd pointers terminated by NULL.
+    /// @param ...          [in] CWnd pointers terminated by nullptr.
     ///
     static void AlignCenter(int topY, ...);
 
@@ -64,7 +58,7 @@ public:
     /// edge of the specified base window.
     ///
     /// @param baseWnd      [in] Align windows relative to this base window.
-    /// @param ...          [in] CWnd pointers terminated by NULL.
+    /// @param ...          [in] CWnd pointers terminated by nullptr.
     ///
     static void AlignRightTo(const CWnd *baseWnd, ...);
 
@@ -87,7 +81,7 @@ public:
     /// @return <b>true</b> if the method succeeds.
     ///
     static bool SetWindowPos(const CWnd& wnd, int x, int y) {
-        return ::SetWindowPos(wnd.m_hWnd, NULL, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER) ? true : false;
+        return ::SetWindowPos(wnd.m_hWnd, nullptr, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER) ? true : false;
     }
 
     /// Sets the size of the specified window.
@@ -99,7 +93,7 @@ public:
     /// @return <b>true</b> if the method succeeds.
     ///
     static bool SetWindowSize(const CWnd& wnd, int cx, int cy) {
-        return ::SetWindowPos(wnd.m_hWnd, NULL, 0, 0, cx, cy, SWP_NOMOVE | SWP_NOZORDER) ? true : false;
+        return ::SetWindowPos(wnd.m_hWnd, nullptr, 0, 0, cx, cy, SWP_NOMOVE | SWP_NOZORDER) ? true : false;
     }
 
     /// Returns the height of the specified window.
@@ -124,7 +118,7 @@ public:
     static bool SetWindowHeight(const CWnd& wnd, int cy) {
         CRect rect;
         wnd.GetWindowRect(rect);
-        return ::SetWindowPos(wnd.m_hWnd, NULL, 0, 0, rect.Width(), cy, SWP_NOMOVE | SWP_NOZORDER) ? true : false;
+        return ::SetWindowPos(wnd.m_hWnd, nullptr, 0, 0, rect.Width(), cy, SWP_NOMOVE | SWP_NOZORDER) ? true : false;
     }
 
     /// Moves the specified window vertically.
@@ -139,7 +133,7 @@ public:
         wnd.GetWindowRect(rect);
         CWnd *parentWnd = wnd.GetParent();
         parentWnd->ScreenToClient(rect);
-        return ::SetWindowPos(wnd.m_hWnd, NULL, rect.left, rect.top + cy, 0, 0, SWP_NOSIZE | SWP_NOZORDER) ? true : false;
+        return ::SetWindowPos(wnd.m_hWnd, nullptr, rect.left, rect.top + cy, 0, 0, SWP_NOSIZE | SWP_NOZORDER) ? true : false;
     }
 
     /// Calculates the bounding dimensions for all the children of

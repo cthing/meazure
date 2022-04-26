@@ -27,13 +27,13 @@
 
 MEA_SINGLETON_DEF(MeaProfileMgr);       ///< Managers are singletons.
 
-LPCTSTR MeaProfileMgr::m_ext = _T("mea");
-LPCTSTR MeaProfileMgr::m_filter = _T("Meazure Profiles (*.mea)|*.mea|All Files (*.*)|*.*||");
+LPCTSTR MeaProfileMgr::m_ext { _T("mea") };
+LPCTSTR MeaProfileMgr::m_filter { _T("Meazure Profiles (*.mea)|*.mea|All Files (*.*)|*.*||") };
 
 
 MeaProfileMgr::MeaProfileMgr() : MeaSingleton_T<MeaProfileMgr>(),
-    m_saveDialog(NULL),
-    m_loadDialog(NULL),
+    m_saveDialog(nullptr),
+    m_loadDialog(nullptr),
     m_saveDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_SAVE_PROFILE_DLG)),
     m_loadDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_LOAD_PROFILE_DLG))
 {
@@ -44,8 +44,8 @@ MeaProfileMgr::MeaProfileMgr() : MeaSingleton_T<MeaProfileMgr>(),
     //
     TCHAR pathname[MAX_PATH], drive[_MAX_DRIVE], path[_MAX_DIR];
 
-    if (::GetModuleFileName(NULL, pathname, MAX_PATH) > 0) {
-        _tsplitpath_s(pathname, drive, _MAX_DRIVE, path, _MAX_DIR, NULL, 0, NULL, 0);
+    if (::GetModuleFileName(nullptr, pathname, MAX_PATH) > 0) {
+        _tsplitpath_s(pathname, drive, _MAX_DRIVE, path, _MAX_DIR, nullptr, 0, nullptr, 0);
         m_initialDir = drive;
         m_initialDir += path;
         m_initialDir += _T("Profiles");
@@ -89,8 +89,8 @@ void MeaProfileMgr::MasterReset()
 
 CFileDialog* MeaProfileMgr::CreateSaveDialog()
 {
-    if (m_saveDialog == NULL) {
-        m_saveDialog = new CFileDialog(FALSE, m_ext, NULL,
+    if (m_saveDialog == nullptr) {
+        m_saveDialog = new CFileDialog(FALSE, m_ext, nullptr,
             OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, m_filter);
         m_saveDialog->m_ofn.lpstrTitle = m_saveDlgTitle;
         m_saveDialog->m_ofn.lpstrInitialDir = m_initialDir;
@@ -101,8 +101,8 @@ CFileDialog* MeaProfileMgr::CreateSaveDialog()
 
 CFileDialog* MeaProfileMgr::CreateLoadDialog()
 {
-    if (m_loadDialog == NULL) {
-        m_loadDialog = new CFileDialog(TRUE, m_ext, NULL,
+    if (m_loadDialog == nullptr) {
+        m_loadDialog = new CFileDialog(TRUE, m_ext, nullptr,
             OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, m_filter);
         m_loadDialog->m_ofn.lpstrTitle = m_loadDlgTitle;
         m_loadDialog->m_ofn.lpstrInitialDir = m_initialDir;
@@ -123,7 +123,7 @@ void MeaProfileMgr::Load()
         //
         // Remember the directory for persisting.
         //
-        _tsplitpath_s(pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, NULL, 0, NULL, 0);
+        _tsplitpath_s(pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, nullptr, 0, nullptr, 0);
         m_initialDir = drive;
         m_initialDir += dir;
 
@@ -143,13 +143,13 @@ void MeaProfileMgr::Load(LPCTSTR pathname) const
         CString msg;
         fe->GetErrorMessage(errStr, 256);
         msg.Format(IDS_MEA_NO_LOAD_PROFILE, errStr);
-        MessageBox(*AfxGetMainWnd(), msg, NULL, MB_OK | MB_ICONERROR);
+        MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
         fe->Delete();
     } catch (MeaXMLParserException&) {
         // Handled by the parser.
     } catch (...) {
         CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_NO_PROFILE));
-        MessageBox(*AfxGetMainWnd(), msg, NULL, MB_OK | MB_ICONERROR);
+        MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
     }
 }
 
@@ -166,7 +166,7 @@ void MeaProfileMgr::Save()
         //
         // Remember the directory for persisting.
         //
-        _tsplitpath_s(pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, NULL, 0, NULL, 0);
+        _tsplitpath_s(pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, nullptr, 0, nullptr, 0);
         m_initialDir = drive;
         m_initialDir += dir;
 
@@ -182,7 +182,7 @@ void MeaProfileMgr::Save()
             CString msg;
             fe->GetErrorMessage(errStr, 256);
             msg.Format(IDS_MEA_NO_SAVE_PROFILE, errStr);
-            MessageBox(*AfxGetMainWnd(), msg, NULL, MB_OK | MB_ICONERROR);
+            MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
             fe->Delete();
         }
     }
@@ -194,7 +194,7 @@ bool MeaProfileMgr::IsProfileFile(LPCTSTR filename)
     TCHAR ext[_MAX_EXT];
     int i = 0;
 
-    _tsplitpath_s(filename, NULL, 0, NULL, 0, NULL, 0, ext, _MAX_EXT);
+    _tsplitpath_s(filename, nullptr, 0, nullptr, 0, nullptr, 0, ext, _MAX_EXT);
     if (ext[i] == _T('.')) {
         i++;
     }

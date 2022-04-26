@@ -55,7 +55,7 @@ public:
     ///
     /// @return <b>TRUE</b> to indicate Windows should set the input focus.
     ///
-    virtual BOOL OnInitDialog();
+    virtual BOOL OnInitDialog() override;
 
 protected:
     /// Called when the user clicks the checkbox that controls whether
@@ -81,19 +81,19 @@ protected:
     /// @param pDX      [in] Object containing the dialog data exchange
     ///                 context.
     ///
-    virtual void DoDataExchange(CDataExchange* pDX);
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
     /// Called when the dialog's OK button is pressed. The method
     /// verifies that the spacing fields contain valid numerical
     /// values. If not, a dialog is displayed, the erroneous field
     /// is selected and the dialog is not dismissed.
     ///
-    virtual void OnOK();
+    virtual void OnOK() override;
 
     /// Called when the dialog's Cancel button is pressed. The method
     /// restores the original spacing values.
     ///
-    virtual void OnCancel();
+    virtual void OnCancel() override;
 
 private:
     /// Updates the dialog's controls to reflect the member variable
@@ -142,11 +142,11 @@ class MeaGridTool : public MeaTool
 public:
     // Defaults
     //
-    static const int        kDefMinSpacing;         ///< Minimum allowable grid spacing in pixels
-    static const int        kDefMaxSpacing;         ///< Maximum allowable grid spacing in pixels
-    static const int        kDefDefaultSpacing;     ///< Default grid spacing in pixels
-    static const bool       kDefGrid;               ///< Default grid display state
-    static const bool       kDefLinked;             ///< Default spacing link state
+    static constexpr int kDefMinSpacing { 10 };         ///< Minimum allowable grid spacing in pixels
+    static constexpr int kDefMaxSpacing { 4000 };       ///< Maximum allowable grid spacing in pixels
+    static constexpr int kDefDefaultSpacing { 100 };    ///< Default grid spacing in pixels
+    static constexpr bool kDefGrid { false };           ///< Default grid display state
+    static constexpr bool kDefLinked { true };          ///< Default spacing link state
 
     static const CString    kToolName;              ///< "GridTool"
 
@@ -164,11 +164,11 @@ public:
 
     /// Displays the Grid tool.
     ///
-    virtual void    Enable();
+    virtual void    Enable() override;
 
     /// Hides the Grid tool.
     ///
-    virtual void    Disable();
+    virtual void    Disable() override;
 
 
     /// Persists the state of the tool to the specified profile object.
@@ -177,19 +177,19 @@ public:
     ///                 Typically an MeaFileProfile or MeaRegistryProfile
     ///                 object.
     ///
-    virtual void    SaveProfile(MeaProfile& profile);
+    virtual void    SaveProfile(MeaProfile& profile) override;
 
     /// Restores the state of the tool from the specified profile object.
     ///
     /// @param profile  [in] The source for the state information. Typically
     ///                 an MeaFileProfile or MeaRegistryProfile object.
     ///
-    virtual void    LoadProfile(MeaProfile& profile);
+    virtual void    LoadProfile(MeaProfile& profile) override;
 
 
     /// Resets the tool to its default state.
     ///
-    virtual void    MasterReset();
+    virtual void    MasterReset() override;
 
 
     /// Draws the horizontal and vertical grid lines, if the tool
@@ -197,7 +197,7 @@ public:
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
-    virtual void    Update(MeaUpdateReason reason);
+    virtual void    Update(MeaUpdateReason reason) override;
 
     /// Draws the horizontal grid lines.
     ///
@@ -214,7 +214,7 @@ public:
     ///
     /// @return Name of the tool ("GridTool").
     ///
-    virtual CString GetToolName() const;
+    virtual CString GetToolName() const override;
 
 
     /// Returns the tool's current position which, for the Grid tool,
@@ -222,13 +222,13 @@ public:
     ///
     /// @return The position (0, 0)
     ///
-    virtual const POINT& GetPosition() const;
+    virtual const POINT& GetPosition() const override;
 
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The grid lines are redrawn in their new colors.
     ///
-    virtual void ColorsChanged();
+    virtual void ColorsChanged() override;
 
 
     /// Sets the horizontal and vertical grid spacing.

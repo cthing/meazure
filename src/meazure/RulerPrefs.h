@@ -44,10 +44,8 @@ public:
     ///
     ~MeaRulerPrefs();
 
-    //{{AFX_DATA(MeaRulerPrefs)
     enum { IDD = IDD_PREF_RULERS };
     int     m_opacity;
-    //}}AFX_DATA
 
     /// @var m_opacity
     /// Opacity of the ruler where 0 is transparent and 255 is opaque.
@@ -66,10 +64,8 @@ public:
     ///
     virtual BOOL OnInitDialog();
 
-    //{{AFX_VIRTUAL(MeaRulerPrefs)
     protected:
-    virtual void DoDataExchange(CDataExchange* pDX);
-    //}}AFX_VIRTUAL
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
     /// @fn DoDataExchange(CDataExchange* pDX)
     /// Performs Dynamic Data Exchange (DDX) for the page.
@@ -78,13 +74,11 @@ public:
     ///             and the member variables.
 
 protected:
-    //{{AFX_MSG(MeaRulerPrefs)
     afx_msg void OnChangeBkColor();
     afx_msg void OnChangeBorderColor();
     afx_msg void OnDefBkColor();
     afx_msg void OnDefBorderColor();
     afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-    //}}AFX_MSG
 
     /// @fn OnChangeBkColor()
     /// Called when the background color button is pressed. This method
@@ -119,5 +113,3 @@ private:
     MeaRuler        m_vRuler;       ///< Vertical sample ruler.
     MeaRuler        m_hRuler;       ///< Horizontal sample ruler.
 };
-
-//{{AFX_INSERT_LOCATION}}

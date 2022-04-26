@@ -35,9 +35,9 @@ class MeaOriginTool : public MeaTool
 {
 public:
     // Defaults
-    static const bool       kShowMarker;        ///< Indicates whether to show the origin marker by default
+    static constexpr bool kShowMarker { true }; ///< Indicates whether to show the origin marker by default
 
-    static const CString    kToolName;          ///< "OriginTool"
+    static const CString kToolName;             ///< "OriginTool"
 
 
     /// Constructs a new instance of an Origin marker tool. To use
@@ -57,11 +57,11 @@ public:
     /// Displays the Origin tool. If the Create() method has not been
     /// previously called, it will be called by Enable.
     ///
-    virtual void Enable();
+    virtual void Enable() override;
 
     /// Hides the Origin tool.
     ///
-    virtual void Disable();
+    virtual void Disable() override;
 
 
     /// Requests that the tool update its position based on the current
@@ -69,7 +69,7 @@ public:
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
-    virtual void Update(MeaUpdateReason reason);
+    virtual void Update(MeaUpdateReason reason) override;
 
 
     /// Persists the state of the tool to the specified profile object.
@@ -78,19 +78,19 @@ public:
     ///                 Typically an MeaFileProfile or MeaRegistryProfile
     ///                 object.
     ///
-    virtual void SaveProfile(MeaProfile& profile);
+    virtual void SaveProfile(MeaProfile& profile) override;
 
     /// Restores the state of the tool from the specified profile object.
     ///
     /// @param profile  [in] The source for the state information. Typically
     ///                 an MeaFileProfile or MeaRegistryProfile object.
     ///
-    virtual void LoadProfile(MeaProfile& profile);
+    virtual void LoadProfile(MeaProfile& profile) override;
 
 
     /// Resets the tool to its default state.
     ///
-    virtual void MasterReset();
+    virtual void MasterReset() override;
 
 
     /// Returns the tool's current position which, for the Origin tool,
@@ -98,7 +98,7 @@ public:
     ///
     /// @return The location of the origin, in pixels
     ///
-    virtual const POINT& GetPosition() const;
+    virtual const POINT& GetPosition() const override;
 
 
     /// Returns the name of the tool. Each tool has a unique name
@@ -107,13 +107,13 @@ public:
     ///
     /// @return Name of the tool ("OriginTool").
     ///
-    virtual CString GetToolName() const;
+    virtual CString GetToolName() const override;
 
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The origin lines are redrawn in their new colors.
     ///
-    virtual void ColorsChanged();
+    virtual void ColorsChanged() override;
 
 private:
     /// Creates the tool's graphical components. The Origin tool consists

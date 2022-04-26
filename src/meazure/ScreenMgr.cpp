@@ -29,14 +29,10 @@
 MEA_SINGLETON_DEF(MeaScreenMgr);        ///< Managers are singletons.
 
 
-const bool MeaScreenMgr::kDefUseManualRes = false;
-const bool MeaScreenMgr::kDefCalInInches = true;
-
-
 MeaScreenMgr::MeaScreenMgr() : MeaSingleton_T<MeaScreenMgr>(),
     m_sizeChanged(false)
 {
-    EnumDisplayMonitors(NULL, NULL, CreateScreens, reinterpret_cast<LPARAM>(this));
+    EnumDisplayMonitors(nullptr, nullptr, CreateScreens, reinterpret_cast<LPARAM>(this));
     MeaAssert(m_screens.size() > 0);
 
     m_virtualRect.left = GetSystemMetrics(SM_XVIRTUALSCREEN);
@@ -49,8 +45,8 @@ MeaScreenMgr::MeaScreenMgr() : MeaSingleton_T<MeaScreenMgr>(),
 MeaScreenMgr::~MeaScreenMgr()
 {
     try {
-        for (Screens::iterator iter = m_screens.begin(); iter != m_screens.end(); ++iter) {
-            delete (*iter).second;
+        for (const auto& screenEntry : m_screens) {
+            delete screenEntry.second;
         }
     }
     catch(...) {
@@ -66,23 +62,25 @@ void MeaScreenMgr::SaveProfile(MeaProfile& profile) const
         profile.WriteInt(_T("ScreenH"), m_virtualRect.Height());
 
         ScreenIter iter;
-        int i;
+        int screenIdx { 0 };
 
         profile.WriteInt(_T("NumScreens"), GetNumScreens());
-        for (iter = GetScreenIter(), i = 0; !AtEnd(iter); ++iter, i++) {
+        for (const auto& screenEntry : m_screens) {
             CString tag;
             bool useManualRes;
             FSIZE manualRes;
 
-            (*iter).second->GetScreenRes(useManualRes, manualRes);
+            screenEntry.second->GetScreenRes(useManualRes, manualRes);
 
-            tag.Format(_T("Screen%d-"), i);
-            profile.WriteInt(tag + _T("CenterX"), (*iter).second->GetCenter().x);
-            profile.WriteInt(tag + _T("CenterY"), (*iter).second->GetCenter().y);
+            tag.Format(_T("Screen%d-"), screenIdx);
+            profile.WriteInt(tag + _T("CenterX"), screenEntry.second->GetCenter().x);
+            profile.WriteInt(tag + _T("CenterY"), screenEntry.second->GetCenter().y);
             profile.WriteBool(tag + _T("UseManualRes"), useManualRes);
             profile.WriteStr(tag + _T("ManualResX"), MeaUtils::DblToStr(manualRes.cx));
             profile.WriteStr(tag + _T("ManualResY"), MeaUtils::DblToStr(manualRes.cy));
-            profile.WriteBool(tag + _T("CalInInches"), (*iter).second->GetCalInInches());
+            profile.WriteBool(tag + _T("CalInInches"), screenEntry.second->GetCalInInches());
+
+            screenIdx++;
         }
     }
 }
@@ -102,8 +100,9 @@ void MeaScreenMgr::LoadProfile(MeaProfile& profile)
             manualRes.cx = profile.ReadDbl(_T("ManualResX"), 0.0);
             manualRes.cy = profile.ReadDbl(_T("ManualResY"), 0.0);
             
-            for (ScreenIter iter = GetScreenIter(); !AtEnd(iter); ++iter)
-                (*iter).second->SetScreenRes(useManualRes, &manualRes);
+            for (const auto& screenEntry : m_screens) {
+                screenEntry.second->SetScreenRes(useManualRes, &manualRes);
+            }
         } else {
             for (int i = 0; i < numScreens; i++) {
                 CString tag;
@@ -114,7 +113,7 @@ void MeaScreenMgr::LoadProfile(MeaProfile& profile)
                 center.y = profile.ReadInt(tag + _T("CenterY"), 0);
 
                 Screen* screen = GetScreen(center);
-                if (screen != NULL) {
+                if (screen != nullptr) {
                     FSIZE manualRes;
     
                     bool useManualRes = profile.ReadBool(tag + _T("UseManualRes"), kDefUseManualRes);
@@ -133,10 +132,10 @@ void MeaScreenMgr::LoadProfile(MeaProfile& profile)
 
 void MeaScreenMgr::MasterReset() const
 {
-    for (ScreenIter iter = GetScreenIter(); !AtEnd(iter); ++iter) {
-        Screen* screen = (*iter).second;
+    for (const auto& screenEntry : m_screens) {
+        Screen* screen = screenEntry.second;
 
-        if (screen != NULL) {
+        if (screen != nullptr) {
             FSIZE manualRes;
 
             manualRes.cx = 0.0;
@@ -152,7 +151,7 @@ void MeaScreenMgr::MasterReset() const
 const CPoint& MeaScreenMgr::GetCenter() const
 {
     HMONITOR mon = MonitorFromWindow(*AfxGetMainWnd(), MONITOR_DEFAULTTONEAREST);
-    MeaAssert(mon != NULL);
+    MeaAssert(mon != nullptr);
     Screens::const_iterator iter = m_screens.find(mon);
     MeaAssert(iter != m_screens.end());
     return (*iter).second->GetCenter();
@@ -172,9 +171,9 @@ CRect MeaScreenMgr::EnsureVisible(const RECT& windowRect) const
 {
     CRect rect(windowRect);
 
-    if (MonitorFromRect(&windowRect, MONITOR_DEFAULTTONULL) == NULL) {
+    if (MonitorFromRect(&windowRect, MONITOR_DEFAULTTONULL) == nullptr) {
         HMONITOR mon = MonitorFromRect(&windowRect, MONITOR_DEFAULTTONEAREST);
-        MeaAssert(mon != NULL);
+        MeaAssert(mon != nullptr);
         Screens::const_iterator iter = m_screens.find(mon);
         MeaAssert(iter != m_screens.end());
 
@@ -191,9 +190,9 @@ CPoint MeaScreenMgr::LimitPosition(const CPoint& pt) const
 {
     CPoint limitPt(pt);
 
-    if (MonitorFromPoint(limitPt, MONITOR_DEFAULTTONULL) == NULL) {
+    if (MonitorFromPoint(limitPt, MONITOR_DEFAULTTONULL) == nullptr) {
         HMONITOR mon = MonitorFromPoint(limitPt, MONITOR_DEFAULTTONEAREST);
-        MeaAssert(mon != NULL);
+        MeaAssert(mon != nullptr);
         Screens::const_iterator iter = m_screens.find(mon);
         MeaAssert(iter != m_screens.end());
 
@@ -218,10 +217,10 @@ CPoint MeaScreenMgr::LimitPosition(const CPoint& pt) const
 
 MeaScreenMgr::Screen* MeaScreenMgr::GetScreen(const POINT& point) const
 {
-    Screen *screen = NULL;
+    Screen *screen = nullptr;
 
     HMONITOR mon = MonitorFromPoint(point, MONITOR_DEFAULTTONULL);
-    if (mon != NULL) {
+    if (mon != nullptr) {
         Screens::const_iterator iter = m_screens.find(mon);
         MeaAssert(iter != m_screens.end());
         screen = (*iter).second;
@@ -234,7 +233,7 @@ MeaScreenMgr::Screen* MeaScreenMgr::GetScreen(const POINT& point) const
 MeaScreenMgr::ScreenIter MeaScreenMgr::GetScreenIter(const CWnd* wnd) const
 {
     HMONITOR mon = MonitorFromWindow(*wnd, MONITOR_DEFAULTTONEAREST);
-    MeaAssert(mon != NULL);
+    MeaAssert(mon != nullptr);
 
     Screens::const_iterator iter = m_screens.find(mon);
     MeaAssert(iter != m_screens.end());
@@ -245,7 +244,7 @@ MeaScreenMgr::ScreenIter MeaScreenMgr::GetScreenIter(const CWnd* wnd) const
 MeaScreenMgr::ScreenIter MeaScreenMgr::GetScreenIter(const POINT& point) const
 {
     HMONITOR mon = MonitorFromPoint(point, MONITOR_DEFAULTTONEAREST);
-    MeaAssert(mon != NULL);
+    MeaAssert(mon != nullptr);
 
     Screens::const_iterator iter = m_screens.find(mon);
     MeaAssert(iter != m_screens.end());
@@ -256,7 +255,7 @@ MeaScreenMgr::ScreenIter MeaScreenMgr::GetScreenIter(const POINT& point) const
 MeaScreenMgr::ScreenIter MeaScreenMgr::GetScreenIter(const RECT& rect) const
 {
     HMONITOR mon = MonitorFromRect(&rect, MONITOR_DEFAULTTONEAREST);
-    MeaAssert(mon != NULL);
+    MeaAssert(mon != nullptr);
 
     Screens::const_iterator iter = m_screens.find(mon);
     MeaAssert(iter != m_screens.end());
@@ -268,10 +267,10 @@ FSIZE MeaScreenMgr::GetOSScreenRes() const
 {
     FSIZE res;
 
-    HDC dc = ::GetDC(NULL);
+    HDC dc = ::GetDC(nullptr);
     res.cx  = static_cast<double>(::GetDeviceCaps(dc, LOGPIXELSX));
     res.cy  = static_cast<double>(::GetDeviceCaps(dc, LOGPIXELSY));
-    ::ReleaseDC(NULL, dc);
+    ::ReleaseDC(nullptr, dc);
 
     return res;
 }
@@ -336,7 +335,7 @@ void MeaScreenMgr::Screen::SetScreenRes(bool useManualRes, const FSIZE *manualRe
 {
     m_useManualRes = useManualRes;
 
-    if (manualRes != NULL) {
+    if (manualRes != nullptr) {
         m_manualRes = *manualRes;
     }
 

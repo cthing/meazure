@@ -33,9 +33,9 @@
 class CMainFrame : public CFrameWnd
 {
 public:
-    static const bool kDefAlwaysVisible;    ///< Indicates whether the application's
-                                            ///< window is always the topmost
-                                            ///< window by default.
+    static constexpr bool kDefAlwaysVisible { true };   ///< Indicates whether the application's
+                                                        ///< window is always the topmost
+                                                        ///< window by default.
 
     /// Constructs the application's frame window.
     ///
@@ -47,13 +47,13 @@ public:
 #ifdef _DEBUG
     /// Verifies that the frame window is valid.
     ///
-    virtual void AssertValid() const;
+    virtual void AssertValid() const override;
     
     /// Dumps the state of the frame window.
     ///
     /// @param dc   [in] Device context for debugging output.
     ///
-    virtual void Dump(CDumpContext& dc) const;
+    virtual void Dump(CDumpContext& dc) const override;
 #endif
 
     /// Returns the view window associated with the frame.
@@ -121,12 +121,10 @@ public:
 protected: 
     DECLARE_DYNAMIC(CMainFrame)
 
-    //{{AFX_VIRTUAL(CMainFrame)
-protected:
-    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs) override;
+
 public:
-    virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
-    //}}AFX_VIRTUAL
+    virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo) override;
 
     /// @fn PreCreateWindow(CREATESTRUCT& cs)
     /// Called before the window is created to set the appearance
@@ -153,7 +151,6 @@ protected:
     bool    m_toolbarVisible;           ///< Indicates if the toolbar is currently visible.
     bool    m_statusbarVisible;         ///< Indicates if the status bar is currently visible.
 
-    //{{AFX_MSG(CMainFrame)
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
     afx_msg void OnSetFocus(CWnd *pOldWnd);
     afx_msg void OnAlwaysVisible();
@@ -164,7 +161,6 @@ protected:
     afx_msg void OnUpdateViewToolbar(CCmdUI* pCmdUI);
     afx_msg void OnViewStatusbar();
     afx_msg void OnUpdateViewStatusbar(CCmdUI* pCmdUI);
-    //}}AFX_MSG
 
     /// @fn OnCreate(LPCREATESTRUCT lpCreateStruct)
     /// Creates the main frame window, the toolbar and the view.
@@ -272,6 +268,3 @@ private:
     int     m_appWidth;             ///< Total width of the application, in pixels.
     CString m_cmdLineFile;          ///< Filename specified on the command line, if any.
 };
-
-
-//{{AFX_INSERT_LOCATION}}

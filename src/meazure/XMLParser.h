@@ -127,7 +127,7 @@ protected:
     /// @param atts         [in] Array of attribute name/value pairs from expat.
     ///                     In the array the name is followed by the value which
     ///                     is then followed by another name and so on until a
-    ///                     NULL is encountered.
+    ///                     nullptr is encountered.
     /// @param numSpecified [in] Number of attributes in the array that have been
     ///                     explicitly specified versus set by default from the DTD.
     ///                     The atts array is organized such that the explicitly
@@ -220,7 +220,7 @@ public:
     /// @param child        [in] Node to add as a child.
     ///
     void AddChild(MeaXMLNode* child) {
-        MeaAssert(child != NULL);
+        MeaAssert(child != nullptr);
         child->SetParent(this);
         m_children.push_back(child);
     }
@@ -405,7 +405,7 @@ public:
 
     /// If a DOM was constructed, this method returns its root node.
     ///
-    /// @return Root node of the DOM or NULL if none was constructed.
+    /// @return Root node of the DOM or nullptr if none was constructed.
     ///
     const MeaXMLNode*   GetDOM() const { return m_dom; }
 
@@ -455,7 +455,7 @@ private:
     /// @param userData     [in] this
     /// @param elementName  [in] Name of the opened element.
     /// @param attrs        [in] Array of attributes arranged as name followed
-    ///                     by value and terminated by a NULL entry.
+    ///                     by value and terminated by a nullptr entry.
     ///
     static void StartElementHandler(void *userData, const XML_Char *elementName,
                                     const XML_Char **attrs);
@@ -471,7 +471,7 @@ private:
     ///
     /// @param userData     [in] this
     /// @param s            [in] Buffer containing character data. The buffer
-    ///                     might not be NULL terminated so the len parameter
+    ///                     might not be nullptr terminated so the len parameter
     ///                     must be used to determine the end of the buffer.
     /// @param len          [in] Number of bytes of data in the buffer, s.
     ///
@@ -486,7 +486,7 @@ private:
     ///                     SetBasePath method.
     /// @param systemId     [in] The XML system identifier for the entity.
     /// @param publicId     [in] The XML public identifier for the entity. This
-    ///                     parameter will be NULL if no public identifier was
+    ///                     parameter will be nullptr if no public identifier was
     ///                     specified for the entity.
     ///
     /// @return The value 1, to indicate that the entity has been successfully
@@ -504,7 +504,7 @@ private:
     /// @param userData     [in] this
     /// @param doctypeName  [in] Document element name.
     /// @param sysid        [in] The XML system identifier for the DTD.
-    /// @param pubid        [in] The public identifier for the DTD, or NULL if none.
+    /// @param pubid        [in] The public identifier for the DTD, or nullptr if none.
     /// @param has_internal_subset  [in] Non-zero if an internal DTD subset has
     ///                     been specified.
     ///
@@ -567,6 +567,6 @@ private:
     const XML_Char*         m_context;          ///< Internal expat parser state.
 
     bool                    m_buildDOM;         ///< Indicates whether a DOM is being built.
-    MeaXMLNode*             m_dom;              ///< Root node of the DOM being built, or NULL.
+    MeaXMLNode*             m_dom;              ///< Root node of the DOM being built, or nullptr.
     NodeStack*              m_nodeStack;        ///< Stack of XML DOM nodes.
 };

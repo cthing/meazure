@@ -44,13 +44,7 @@ public:
     ///
     ~MeaPrecisionPrefs();
 
-
-    //{{AFX_DATA(MeaPrecisionPrefs)
     enum { IDD = IDD_PREF_PRECISION };
-        // NOTE - ClassWizard will add data members here.
-        //    DO NOT EDIT what you see in these blocks of generated code !
-    //}}AFX_DATA
-
 
     /// Sets the display precisions for the specified linear measurement units.
     ///
@@ -105,10 +99,8 @@ public:
     ///
     virtual BOOL OnInitDialog();
 
-    //{{AFX_VIRTUAL(MeaPrecisionPrefs)
     protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-    //}}AFX_VIRTUAL
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
     /// @fn DoDataExchange(CDataExchange* pDX)
     /// Performs Dynamic Data Exchange (DDX) for the page.
@@ -117,7 +109,6 @@ public:
     ///             and the member variables.
 
 protected:
-    //{{AFX_MSG(MeaPrecisionPrefs)
     afx_msg void OnCm();
     afx_msg void OnCustom();
     afx_msg void OnDeg();
@@ -139,7 +130,7 @@ protected:
     afx_msg void OnKillFocusY();
     afx_msg void OnDefault();
     afx_msg void OnChange();
-    //}}AFX_MSG
+
     DECLARE_MESSAGE_MAP()
 
     /// @fn OnCm()
@@ -238,7 +229,7 @@ private:
     MeaPrecisionPrefs& operator=(const MeaPrecisionPrefs&);
 
 
-    static const int kMaxPlaces;        ///< Maximum allowable number of decimal places
+    static constexpr int kMaxPlaces { 6 };        ///< Maximum allowable number of decimal places
 
 
     /// Ensures radio button behavior among the units radio buttons.
@@ -332,6 +323,3 @@ private:
 
     bool        m_lockout;      ///< Prevents circular notification of text field changes.
 };
-
-
-//{{AFX_INSERT_LOCATION}}

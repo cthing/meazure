@@ -28,7 +28,7 @@
 
 const CSize MeaCircle::kMargin(1, 1);
 
-int*    MeaCircle::m_varr = NULL;
+int* MeaCircle::m_varr { nullptr };
 
 
 BEGIN_MESSAGE_MAP(MeaCircle, MeaGraphic)
@@ -40,7 +40,7 @@ MeaCircle::MeaCircle() : MeaGraphic(),
     m_center(kInitCoord, kInitCoord),
     m_perimeter(kInitCoord, kInitCoord),
     m_foreBrush(new CBrush(MeaColors::Get(MeaColors::LineFore))),
-    m_arr(NULL), m_count(0)
+    m_arr(nullptr), m_count(0)
 {
 }
 
@@ -50,11 +50,11 @@ MeaCircle::~MeaCircle()
     try {
         m_timer.Stop();
 
-        if (m_varr != NULL) {
+        if (m_varr != nullptr) {
             delete [] m_varr;
-            m_varr = NULL;
+            m_varr = nullptr;
         }
-        if (m_arr != NULL) {
+        if (m_arr != nullptr) {
             delete [] m_arr;
         }
 
@@ -81,7 +81,7 @@ bool MeaCircle::Create(const CWnd *parent)
     // Single the circular region is composed of a series of rectangles, preload
     // the vertex count array with 4, the number of vertices composing a rectangle.
     //
-    if (m_varr == NULL) {
+    if (m_varr == nullptr) {
         m_varr = new int[size];
         for (UINT i = 0; i < size; i++) {
             m_varr[i] = 4;
@@ -90,7 +90,7 @@ bool MeaCircle::Create(const CWnd *parent)
 
     // Allocate space for each vertex.
     //
-    if (m_arr == NULL) {
+    if (m_arr == nullptr) {
         m_arr = new POINT[4 * size];
     }
 
@@ -100,7 +100,7 @@ bool MeaCircle::Create(const CWnd *parent)
 
     // Create the window for the circle.
     //
-    CString wndClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW, NULL, *m_foreBrush);
+    CString wndClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW, nullptr, *m_foreBrush);
     return MeaGraphic::Create(wndClass, CSize(0, 0), parent);
 }
 
@@ -122,14 +122,14 @@ void MeaCircle::SetColor(COLORREF color)
     // that defines the color of the circle.
     //
     CBrush *brush   = new CBrush(color);
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         ::SetClassLongPtr(m_hWnd, GCLP_HBRBACKGROUND, reinterpret_cast<LONG_PTR>(static_cast<HBRUSH>(*brush)));
     }
     
     delete m_foreBrush;
     m_foreBrush = brush;
 
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         Invalidate();
         UpdateWindow();
     }
@@ -217,12 +217,12 @@ LRESULT MeaCircle::OnHPTimer(WPARAM, LPARAM)
 
     // Create a polygonal window region made up of polygons.
     //
-    MeaAssert(m_arr != NULL);
+    MeaAssert(m_arr != nullptr);
     HRGN region = ::CreatePolyPolygonRgn(m_arr, m_varr, static_cast<int>(m_count), ALTERNATE);
     ::OffsetRgn(region, -rect.left, -rect.top);
     SetWindowRgn(region, TRUE); 
     
-    SetWindowPos(NULL, rect.left, rect.top, rect.Width(), rect.Height(),
+    SetWindowPos(nullptr, rect.left, rect.top, rect.Width(), rect.Height(),
             SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSENDCHANGING);
     if (m_visible) {
         Show();

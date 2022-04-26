@@ -31,7 +31,7 @@
 /// @param singleton_t  Type of the singleton object.
 ///
 #define MEA_SINGLETON_DEF(singleton_t)                              \
-    singleton_t* MeaSingleton_T<singleton_t>::m_instance = NULL;    \
+    singleton_t* MeaSingleton_T<singleton_t>::m_instance = nullptr; \
     bool MeaSingleton_T<singleton_t>::m_destroyed = false;
 
 /// Declares a Singleton object. This macro must be called from
@@ -51,7 +51,7 @@
 /// object is created when the Instance() method is called the first
 /// time. The object is destroy when DestroyInstance() is called.
 ///
-template <class singleton_t>
+template <typename singleton_t>
 class MeaSingleton_T
 {
 public:
@@ -73,7 +73,7 @@ public:
     ///
     static singleton_t& Instance() {
         MeaAssert(!m_destroyed);
-        if (m_instance == NULL) {
+        if (m_instance == nullptr) {
             m_instance = new singleton_t();
         }
         return *m_instance;
@@ -86,7 +86,7 @@ public:
     ///
     static void DestroyInstance() {
         delete m_instance;
-        m_instance = NULL;
+        m_instance = nullptr;
         m_destroyed = true;
     }
 

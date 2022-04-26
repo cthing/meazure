@@ -27,8 +27,6 @@
 
 
 const CString   MeaLineTool::kToolName(_T("LineTool"));
-const UINT      MeaLineTool::kPoint1Id  = 1;
-const UINT      MeaLineTool::kPoint2Id  = 2;
 
 
 MeaLineTool::MeaLineTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
@@ -51,7 +49,7 @@ MeaLineTool::~MeaLineTool()
 {
     try {
         Disable();
-        m_curPos = NULL;
+        m_curPos = nullptr;
     }
     catch(...) {
         MeaAssert(false);
@@ -67,14 +65,14 @@ bool MeaLineTool::Create()
                             MeaColors::Get(MeaColors::CrossHairBack),
                             MeaColors::Get(MeaColors::CrossHairHilite),
                             MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, NULL, IDS_MEA_POINT1, kPoint1Id)) {
+                            this, nullptr, IDS_MEA_POINT1, kPoint1Id)) {
         return false;
     }
     if (!m_point2CH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
                             MeaColors::Get(MeaColors::CrossHairBack),
                             MeaColors::Get(MeaColors::CrossHairHilite),
                             MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, NULL, IDS_MEA_POINT2, kPoint2Id)) {
+                            this, nullptr, IDS_MEA_POINT2, kPoint2Id)) {
         return false;
     }
 

@@ -24,7 +24,7 @@
 #include <afxole.h>
 
 
-int MeaNumberField::m_edgeHeight = -1;
+int MeaNumberField::m_edgeHeight { -1 };
 
 
 BEGIN_MESSAGE_MAP(MeaNumberField, CEdit)
@@ -65,13 +65,13 @@ bool MeaNumberField::Create(DWORD style, const POINT& topLeft,
     SetFont(defaultFont, FALSE);
 
     CDC *dc = GetDC();
-    if (dc == NULL) {
+    if (dc == nullptr) {
         return false;
     }
 
     // Select the new font into the DC
     //
-    if (dc->SelectStockObject(DEFAULT_GUI_FONT) == NULL) {
+    if (dc->SelectStockObject(DEFAULT_GUI_FONT) == nullptr) {
         ReleaseDC(dc);
         return false;
     }
@@ -98,7 +98,7 @@ BOOL MeaNumberField::PreTranslateMessage(MSG* msg)
 {
     if (msg->message == WM_KEYDOWN) {
         CWnd *parent = GetParent();
-        if (parent != NULL) {
+        if (parent != nullptr) {
             if (msg->wParam == VK_UP) {
                 parent->SendMessage(MeaFieldArrowMsg, 1, GetDlgCtrlID());
                 return TRUE;
@@ -121,7 +121,7 @@ void MeaNumberField::OnKillFocus(CWnd *win)
     CEdit::OnKillFocus(win);
 
     CWnd *parent = GetParent();
-    if (parent != NULL) {
+    if (parent != nullptr) {
         parent->SendMessage(MeaFieldFocusMsg, 0, GetDlgCtrlID());
     }
 }
@@ -146,12 +146,12 @@ LRESULT MeaNumberField::OnPaste(WPARAM, LPARAM)
     if (editable && obj.AttachClipboard()) {
         if (obj.IsDataAvailable(CF_TEXT)) {
             HGLOBAL hmem = obj.GetGlobalData(CF_TEXT);
-            CMemFile sf(static_cast<BYTE*>(::GlobalLock(hmem)), ::GlobalSize(hmem));
+            CMemFile sf(static_cast<BYTE*>(::GlobalLock(hmem)), static_cast<UINT>(::GlobalSize(hmem)));
 
             CString buffer;
 
-            LPTSTR str = buffer.GetBufferSetLength(::GlobalSize(hmem));
-            sf.Read(str, ::GlobalSize(hmem));
+            LPTSTR str = buffer.GetBufferSetLength(static_cast<int>(::GlobalSize(hmem)));
+            sf.Read(str, static_cast<UINT>(::GlobalSize(hmem)));
             ::GlobalUnlock(hmem);
             buffer.ReleaseBuffer();
             buffer.FreeExtra();

@@ -42,20 +42,18 @@ public:
     /// @param pParentWnd       [in] A pointer to the file dialog-box object’s
     ///                         parent or owner window.
     ///
-    explicit MeaPositionSaveDlg(LPCTSTR lpszDefExt = NULL,
-        LPCTSTR lpszFileName = NULL,
-        LPCTSTR lpszFilter = NULL,
-        CWnd* pParentWnd = NULL);
+    explicit MeaPositionSaveDlg(LPCTSTR lpszDefExt = nullptr,
+        LPCTSTR lpszFileName = nullptr,
+        LPCTSTR lpszFilter = nullptr,
+        CWnd* pParentWnd = nullptr);
 
     /// Destroys a position log file dialog.
     ///
     virtual ~MeaPositionSaveDlg();
 
-    //{{AFX_DATA(MeaPositionSaveDlg)
     enum { IDD = IDD_POSITION_SAVE };
     CString m_desc;
     CString m_title;
-    //}}AFX_DATA
 
     /// @var m_desc
     /// Position Log file description.
@@ -64,17 +62,11 @@ public:
     /// Title for the dialog.
 
 protected:
-    //{{AFX_MSG(MeaPositionSaveDlg)
-        // NOTE - the ClassWizard will add and remove member functions here.
-    //}}AFX_MSG
     DECLARE_MESSAGE_MAP()
 
     /// Performs dynamic data exchange (DDX) for the dialog.
     ///
     /// @param pDX      [in] DDX operation object.
     ///
-    virtual void DoDataExchange(CDataExchange* pDX);
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 };
-
-//{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ will insert additional declarations immediately before the previous line.

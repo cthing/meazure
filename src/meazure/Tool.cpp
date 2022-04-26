@@ -23,7 +23,7 @@
 #include <crtdbg.h>
 
 
-POINT MeaTool::m_defaultPos = { 0, 0 };
+POINT MeaTool::m_defaultPos { 0, 0 };
 
 
 MeaTool::MeaTool(MeaToolMgr* mgr) :
@@ -34,7 +34,7 @@ MeaTool::MeaTool(MeaToolMgr* mgr) :
 
 MeaTool::~MeaTool()
 {
-    m_mgr = NULL;
+    m_mgr = nullptr;
 }
 
 

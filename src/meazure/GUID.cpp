@@ -32,7 +32,7 @@ MeaGUID::MeaGUID()
 
 MeaGUID& MeaGUID::Assign(LPCTSTR guidStr)
 {
-    if (guidStr == NULL) {
+    if (guidStr == nullptr) {
         AfxThrowOleException(E_POINTER);
     }
     if (_tcslen(guidStr) != 36) {

@@ -49,23 +49,23 @@ public:
     ///
     /// @param profile  [in] Not used.
     ///
-    virtual void LoadProfile(MeaProfile& profile);
+    virtual void LoadProfile(MeaProfile& profile) override;
 
     /// Enables the display of the tool. This method must be called
     /// to properly set up the tool for use.
     ///
-    virtual void Enable();
+    virtual void Enable() override;
 
     /// Disables the tool. This method must be called to properly
     /// tear down the tool.
     ///
-    virtual void Disable();
+    virtual void Disable() override;
 
     /// Updates the display of the tool's information.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
-    virtual void Update(MeaUpdateReason reason);
+    virtual void Update(MeaUpdateReason reason) override;
 
 
     /// Returns the name of the tool. Each tool has a unique name
@@ -74,7 +74,7 @@ public:
     ///
     /// @return Name of the tool ("GridTool").
     ///
-    virtual CString GetToolName() const;
+    virtual CString GetToolName() const override;
 
 
     /// Provides the tool a position so that it can determine which
@@ -89,7 +89,7 @@ public:
     ///
     /// @return The position (0, 0)
     ///
-    virtual const POINT& GetPosition() const;
+    virtual const POINT& GetPosition() const override;
 
 private:
     CRect   m_rect;         ///< Rectangle representing the current display screen

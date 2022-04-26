@@ -40,10 +40,9 @@ public:
     ///
     ~MeaAdvancedPrefs();
 
-    //{{AFX_DATA(MeaAdvancedPrefs)
     enum { IDD = IDD_PREF_ADVANCED };
+
     CString m_startupProfile;
-    //}}AFX_DATA
 
     /// @var m_startupProfile
     /// Profile file to load on application startup.
@@ -51,10 +50,8 @@ public:
     
     CFileDialog *m_startupProfileDlg;       ///< File dialog for selecting the startup profile file.
 
-    //{{AFX_VIRTUAL(MeaAdvancedPrefs)
     protected:
-    virtual void DoDataExchange(CDataExchange* pDX);
-    //}}AFX_VIRTUAL
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
     /// @fn DoDataExchange(CDataExchange* pDX)
     /// Performs Dynamic Data Exchange (DDX) for the page.
@@ -63,12 +60,10 @@ public:
     ///             and the member variables.
 
 protected:
-    //{{AFX_MSG(MeaAdvancedPrefs)
     afx_msg void OnProfileBtn();
     afx_msg void OnChangeProfilePathname();
     afx_msg void OnClearProfile();
     afx_msg void OnMasterReset();
-    //}}AFX_MSG
 
     /// @fn OnProfileBtn()
     /// When the browse button is pressed, this method is called to
@@ -88,6 +83,3 @@ protected:
 
     DECLARE_MESSAGE_MAP()
 };
-
-
-//{{AFX_INSERT_LOCATION}}

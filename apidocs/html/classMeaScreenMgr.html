@@ -138,9 +138,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MasterReset</b> () co
 <tr class="memitem:ad60f69d68296d70d248e948de7b64b20"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#ad60f69d68296d70d248e948de7b64b20">AnyOSRes</a> () const</td></tr>
 <tr class="memdesc:ad60f69d68296d70d248e948de7b64b20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether any screen is using the operating system reported resolution.  <a href="classMeaScreenMgr.html#ad60f69d68296d70d248e948de7b64b20">More...</a><br /></td></tr>
 <tr class="separator:ad60f69d68296d70d248e948de7b64b20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cd8fe6be2c3b97cd5f6cfc128b06d2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#a1cd8fe6be2c3b97cd5f6cfc128b06d2d">SetScreenRes</a> (const <a class="el" href="classMeaScreenMgr.html#a5f33e0e7a08fdd43e61ff66aaa6b07b6">ScreenIter</a> &amp;iter, bool useManualRes, const <a class="el" href="structFSIZE.html">FSIZE</a> *manualRes=NULL) const</td></tr>
-<tr class="memdesc:a1cd8fe6be2c3b97cd5f6cfc128b06d2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the resolution for the screen pointed to by the specified iterator.  <a href="classMeaScreenMgr.html#a1cd8fe6be2c3b97cd5f6cfc128b06d2d">More...</a><br /></td></tr>
-<tr class="separator:a1cd8fe6be2c3b97cd5f6cfc128b06d2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6baa5caf7f965bdaa134bc90340ed40f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#a6baa5caf7f965bdaa134bc90340ed40f">SetScreenRes</a> (const <a class="el" href="classMeaScreenMgr.html#a5f33e0e7a08fdd43e61ff66aaa6b07b6">ScreenIter</a> &amp;iter, bool useManualRes, const <a class="el" href="structFSIZE.html">FSIZE</a> *manualRes=nullptr) const</td></tr>
+<tr class="memdesc:a6baa5caf7f965bdaa134bc90340ed40f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the resolution for the screen pointed to by the specified iterator.  <a href="classMeaScreenMgr.html#a6baa5caf7f965bdaa134bc90340ed40f">More...</a><br /></td></tr>
+<tr class="separator:a6baa5caf7f965bdaa134bc90340ed40f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a415f3f6fcf249a9aab248a5cd692a809"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#a415f3f6fcf249a9aab248a5cd692a809">IsPrimary</a> (const <a class="el" href="classMeaScreenMgr.html#a5f33e0e7a08fdd43e61ff66aaa6b07b6">ScreenIter</a> &amp;iter) const</td></tr>
 <tr class="memdesc:a415f3f6fcf249a9aab248a5cd692a809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the screen pointed to by the specified iterator is the primary.  <a href="classMeaScreenMgr.html#a415f3f6fcf249a9aab248a5cd692a809">More...</a><br /></td></tr>
 <tr class="separator:a415f3f6fcf249a9aab248a5cd692a809"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -172,13 +172,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MasterReset</b> () co
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a9b46947724a5f2eae00a35dbd9177f49"><td class="memItemLeft" align="right" valign="top">static const bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#a9b46947724a5f2eae00a35dbd9177f49">kDefUseManualRes</a> = false</td></tr>
-<tr class="memdesc:a9b46947724a5f2eae00a35dbd9177f49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use manual resolution by default.  <a href="classMeaScreenMgr.html#a9b46947724a5f2eae00a35dbd9177f49">More...</a><br /></td></tr>
-<tr class="separator:a9b46947724a5f2eae00a35dbd9177f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe7b62c930cb35810f1c7d44712d7313"><td class="memItemLeft" align="right" valign="top"><a id="afe7b62c930cb35810f1c7d44712d7313" name="afe7b62c930cb35810f1c7d44712d7313"></a>
-static const bool&#160;</td><td class="memItemRight" valign="bottom"><b>kDefCalInInches</b> = true</td></tr>
-<tr class="memdesc:afe7b62c930cb35810f1c7d44712d7313"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calibrate in inches by default. <br /></td></tr>
-<tr class="separator:afe7b62c930cb35810f1c7d44712d7313"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a109f46957f6837b9117fe3061244917b"><td class="memItemLeft" align="right" valign="top"><a id="a109f46957f6837b9117fe3061244917b" name="a109f46957f6837b9117fe3061244917b"></a>
+static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>kDefUseManualRes</b> { false }</td></tr>
+<tr class="memdesc:a109f46957f6837b9117fe3061244917b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use manual resolution by default. <br /></td></tr>
+<tr class="separator:a109f46957f6837b9117fe3061244917b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b38e31b2741e22d401207311d4e7026"><td class="memItemLeft" align="right" valign="top"><a id="a5b38e31b2741e22d401207311d4e7026" name="a5b38e31b2741e22d401207311d4e7026"></a>
+static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>kDefCalInInches</b> { true }</td></tr>
+<tr class="memdesc:a5b38e31b2741e22d401207311d4e7026"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calibrate in inches by default. <br /></td></tr>
+<tr class="separator:a5b38e31b2741e22d401207311d4e7026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -189,6 +190,10 @@ typedef std::map&lt; HMONITOR, <a class="el" href="classMeaScreenMgr_1_1Screen.h
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:af7dc5f784aa1bea087ee949e4d422bb4"><td class="memItemLeft" align="right" valign="top"><a id="af7dc5f784aa1bea087ee949e4d422bb4" name="af7dc5f784aa1bea087ee949e4d422bb4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaScreenMgr</b> ()</td></tr>
+<tr class="memdesc:af7dc5f784aa1bea087ee949e4d422bb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managers are singletons. <br /></td></tr>
+<tr class="separator:af7dc5f784aa1bea087ee949e4d422bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3081970f3a7c98aedef65c7490c9bf9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#a3081970f3a7c98aedef65c7490c9bf9e">MeaScreenMgr</a> (const <a class="el" href="classMeaScreenMgr.html">MeaScreenMgr</a> &amp;)</td></tr>
 <tr class="memdesc:a3081970f3a7c98aedef65c7490c9bf9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managers are singletons.  <a href="classMeaScreenMgr.html#a3081970f3a7c98aedef65c7490c9bf9e">More...</a><br /></td></tr>
 <tr class="separator:a3081970f3a7c98aedef65c7490c9bf9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -346,7 +351,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRulerTool.html#a9e853280405532917371e20dd24acf60">MeaRulerTool::Enable()</a>, <a class="el" href="classMeaLinearUnits.html#a6c41237418e2cffaf0923c2e2c1c3e21">MeaLinearUnits::FindResFromCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a486b54a77e240d2bec27752c1844b134">MeaLinearUnits::FindResFromPos()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaRulerTool.html#a4d72c78a3e528386d5bf7a5e9e10fdcb">MeaRulerTool::LoadProfile()</a>, <a class="el" href="classMeaScreenMgr.html#aec7cac274ac01711ffe65264789c3c2e">LoadProfile()</a>, <a class="el" href="classMeaScreenMgr.html#a9109722d1fb7e1fcb7da9167e96ea768">MasterReset()</a>, <a class="el" href="classCChildView.html#aef1f8bcdab57bdbfa8ed22316851228e">CChildView::OnPreferences()</a>, and <a class="el" href="classMeaScreenMgr.html#a69ad949eec579d47c385f2ad98a5cf65">SaveProfile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRulerTool.html#a41d7b63173530e1aaa77ec3744d31d9e">MeaRulerTool::Enable()</a>, <a class="el" href="classMeaLinearUnits.html#a6c41237418e2cffaf0923c2e2c1c3e21">MeaLinearUnits::FindResFromCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a486b54a77e240d2bec27752c1844b134">MeaLinearUnits::FindResFromPos()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaRulerTool.html#a6aa0381908c9ac9a63ff8721a27c8890">MeaRulerTool::LoadProfile()</a>, and <a class="el" href="classCChildView.html#aef1f8bcdab57bdbfa8ed22316851228e">CChildView::OnPreferences()</a>.</p>
 
 </div>
 </div>
@@ -410,6 +415,8 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>TRUE to continue enumeration of monitors. </dd></dl>
 
 <p class="reference">References <a class="el" href="classMeaScreenMgr.html#a619c7036a5d1dfd0704f06cb170bc632">GetNumScreens()</a>, <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>, <a class="el" href="classMeaScreenMgr_1_1Screen.html#a9ffccb55f7fc7a99df3e9148964cfcd7">MeaScreenMgr::Screen::SetName()</a>, and <a class="el" href="classMeaScreenMgr_1_1Screen.html#a3509d54a947903174b4dfe138a48c957">MeaScreenMgr::Screen::SetPrimary()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaScreenMgr.html#af7dc5f784aa1bea087ee949e4d422bb4">MeaScreenMgr()</a>.</p>
 
 </div>
 </div>
@@ -502,7 +509,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a6ba102d9faffc1ef35a6aaa0440b6726">MeaAngleTool::MeaAngleTool()</a>, <a class="el" href="classMeaCircleTool.html#ab740f93e90109c17f390aa2c3e4157bf">MeaCircleTool::MeaCircleTool()</a>, <a class="el" href="classMeaLineTool.html#a36d2b1ddff3d24798eebf334792e2bf1">MeaLineTool::MeaLineTool()</a>, <a class="el" href="classMeaPointTool.html#ad11864f4889820b5b5322999fe121614">MeaPointTool::MeaPointTool()</a>, and <a class="el" href="classMeaRectTool.html#a1655a14c1a7d06d660a0d208f82b2297">MeaRectTool::MeaRectTool()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaLineTool.html#a36d2b1ddff3d24798eebf334792e2bf1">MeaLineTool::MeaLineTool()</a>, and <a class="el" href="classMeaRectTool.html#a1655a14c1a7d06d660a0d208f82b2297">MeaRectTool::MeaRectTool()</a>.</p>
 
 </div>
 </div>
@@ -615,7 +622,7 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classMeaScreenMgr_1_1Screen.html" title="Represents a single display screen.">Screen</a> containing the specified point or NULL if the point is not contained by any screen. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classMeaScreenMgr_1_1Screen.html" title="Represents a single display screen.">Screen</a> containing the specified point or nullptr if the point is not contained by any screen. </dd></dl>
 
 <p class="reference">References <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
 
@@ -651,7 +658,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaLinearUnits.html#a2ec29f2bfa840db8ef2f675e75958f8a">MeaLinearUnits::ConvertCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a857498b5c3b5eaad15bce8501fec71f7">MeaLinearUnits::ConvertPos()</a>, <a class="el" href="classMeaRuler.html#a764641e4a9d3ead42743e4da9f08c075">MeaRuler::Create()</a>, <a class="el" href="classMeaCrossHair.html#a4cd05afb491a259cf4842f574a6d7cc5">MeaCrossHair::Create()</a>, <a class="el" href="classMeaMagnifier.html#a43fab540ebc153093706623836bc4c55">MeaMagnifier::Draw()</a>, <a class="el" href="classMeaLayout.html#ad8da9dc24587ddc1876627521a7b5d12">MeaLayout::DrawOpacityBackground()</a>, <a class="el" href="classMeaRulerTool.html#a9e853280405532917371e20dd24acf60">MeaRulerTool::Enable()</a>, <a class="el" href="classMeaLinearUnits.html#a6c41237418e2cffaf0923c2e2c1c3e21">MeaLinearUnits::FindResFromCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a486b54a77e240d2bec27752c1844b134">MeaLinearUnits::FindResFromPos()</a>, <a class="el" href="classMeaLinearUnits.html#a7ee3f3c8f86e663005d9098aad5a2c0b">MeaLinearUnits::GetMinorIncr()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaRulerTool.html#a4d72c78a3e528386d5bf7a5e9e10fdcb">MeaRulerTool::LoadProfile()</a>, <a class="el" href="classMeaScreenMgr.html#aec7cac274ac01711ffe65264789c3c2e">LoadProfile()</a>, <a class="el" href="classMeaScreenMgr.html#a9109722d1fb7e1fcb7da9167e96ea768">MasterReset()</a>, <a class="el" href="classCChildView.html#aef1f8bcdab57bdbfa8ed22316851228e">CChildView::OnPreferences()</a>, <a class="el" href="classMeaScreenMgr.html#a69ad949eec579d47c385f2ad98a5cf65">SaveProfile()</a>, <a class="el" href="classMeaScreenTool.html#a0bb091a549581f3580fbf8138000eece">MeaScreenTool::SetPosition()</a>, <a class="el" href="classMeaLinearUnits.html#a6e6dd745026d19baa89053a6f2b64522">MeaLinearUnits::UnconvertCoord()</a>, <a class="el" href="classMeaDataWin.html#aaeaf7c8d0c16323b709da46f9df0b606">MeaDataWin::Update()</a>, <a class="el" href="classMeaOriginTool.html#a366c64ef10528401811ed60297886760">MeaOriginTool::Update()</a>, and <a class="el" href="classMeaCalibrationPrefs.html#af3ffdacfa5f98a3abaa8689f10292a09">MeaCalibrationPrefs::UpdateCurrentScreen()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaLinearUnits.html#a2ec29f2bfa840db8ef2f675e75958f8a">MeaLinearUnits::ConvertCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a857498b5c3b5eaad15bce8501fec71f7">MeaLinearUnits::ConvertPos()</a>, <a class="el" href="classMeaRuler.html#a673f1ac35b78a04d9b1f76590aa08e98">MeaRuler::Create()</a>, <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">MeaCrossHair::Create()</a>, <a class="el" href="classMeaMagnifier.html#a43fab540ebc153093706623836bc4c55">MeaMagnifier::Draw()</a>, <a class="el" href="classMeaLayout.html#ad8da9dc24587ddc1876627521a7b5d12">MeaLayout::DrawOpacityBackground()</a>, <a class="el" href="classMeaRulerTool.html#a41d7b63173530e1aaa77ec3744d31d9e">MeaRulerTool::Enable()</a>, <a class="el" href="classMeaLinearUnits.html#a6c41237418e2cffaf0923c2e2c1c3e21">MeaLinearUnits::FindResFromCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a486b54a77e240d2bec27752c1844b134">MeaLinearUnits::FindResFromPos()</a>, <a class="el" href="classMeaLinearUnits.html#a7ee3f3c8f86e663005d9098aad5a2c0b">MeaLinearUnits::GetMinorIncr()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaRulerTool.html#a6aa0381908c9ac9a63ff8721a27c8890">MeaRulerTool::LoadProfile()</a>, <a class="el" href="classCChildView.html#aef1f8bcdab57bdbfa8ed22316851228e">CChildView::OnPreferences()</a>, <a class="el" href="classMeaScreenTool.html#a0bb091a549581f3580fbf8138000eece">MeaScreenTool::SetPosition()</a>, <a class="el" href="classMeaLinearUnits.html#a6e6dd745026d19baa89053a6f2b64522">MeaLinearUnits::UnconvertCoord()</a>, <a class="el" href="classMeaDataWin.html#aaeaf7c8d0c16323b709da46f9df0b606">MeaDataWin::Update()</a>, <a class="el" href="classMeaOriginTool.html#a5877486bcbf1392f8b780e2390c01aff">MeaOriginTool::Update()</a>, and <a class="el" href="classMeaCalibrationPrefs.html#af3ffdacfa5f98a3abaa8689f10292a09">MeaCalibrationPrefs::UpdateCurrentScreen()</a>.</p>
 
 </div>
 </div>
@@ -812,7 +819,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classMeaScreenMgr_1_1Screen.html" title="Represents a single display screen.">Screen</a> rectangle, in pixels. </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="classMeaMagnifier.html#a43fab540ebc153093706623836bc4c55">MeaMagnifier::Draw()</a>, <a class="el" href="classMeaRulerTool.html#a9e853280405532917371e20dd24acf60">MeaRulerTool::Enable()</a>, <a class="el" href="classMeaLinearUnits.html#a6c41237418e2cffaf0923c2e2c1c3e21">MeaLinearUnits::FindResFromCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a486b54a77e240d2bec27752c1844b134">MeaLinearUnits::FindResFromPos()</a>, <a class="el" href="classMeaRulerTool.html#a4d72c78a3e528386d5bf7a5e9e10fdcb">MeaRulerTool::LoadProfile()</a>, <a class="el" href="classMeaCalibrationPrefs.html#ab3fad26c1c51ce8c66b1662b6b8c3eb2">MeaCalibrationPrefs::OnCaliperChange()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a35d87797e6da256897162b6a883bd6b0">MeaCalibrationPrefs::OnHFieldChange()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a71fd2dcec8618c63620605512ef949be">MeaCalibrationPrefs::OnRxFieldChange()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a3d02e6450d5c2eeb378890022bf86cca">MeaCalibrationPrefs::OnRyFieldChange()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a4d4eb74fad1e8cbd792566686dd113ba">MeaCalibrationPrefs::OnWFieldChange()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a1b6c4c19827cdb7a442b5fc62f263ba2">MeaPositionLogMgr::Screen::Screen()</a>, <a class="el" href="classMeaScreenTool.html#a0bb091a549581f3580fbf8138000eece">MeaScreenTool::SetPosition()</a>, <a class="el" href="classMeaDataWin.html#aaeaf7c8d0c16323b709da46f9df0b606">MeaDataWin::Update()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a3facd4c07c37bd41aa4dab74a2b68251">MeaCalibrationPrefs::UpdateView()</a>, and <a class="el" href="classMeaCalibrationPrefs.html#adfa928b87102ff6bde3476cc47df3c82">MeaCalibrationPrefs::Validate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaMagnifier.html#a43fab540ebc153093706623836bc4c55">MeaMagnifier::Draw()</a>, <a class="el" href="classMeaRulerTool.html#a41d7b63173530e1aaa77ec3744d31d9e">MeaRulerTool::Enable()</a>, <a class="el" href="classMeaLinearUnits.html#a6c41237418e2cffaf0923c2e2c1c3e21">MeaLinearUnits::FindResFromCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a486b54a77e240d2bec27752c1844b134">MeaLinearUnits::FindResFromPos()</a>, <a class="el" href="classMeaRulerTool.html#a6aa0381908c9ac9a63ff8721a27c8890">MeaRulerTool::LoadProfile()</a>, <a class="el" href="classMeaCalibrationPrefs.html#ab3fad26c1c51ce8c66b1662b6b8c3eb2">MeaCalibrationPrefs::OnCaliperChange()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a35d87797e6da256897162b6a883bd6b0">MeaCalibrationPrefs::OnHFieldChange()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a71fd2dcec8618c63620605512ef949be">MeaCalibrationPrefs::OnRxFieldChange()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a3d02e6450d5c2eeb378890022bf86cca">MeaCalibrationPrefs::OnRyFieldChange()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a4d4eb74fad1e8cbd792566686dd113ba">MeaCalibrationPrefs::OnWFieldChange()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a1b6c4c19827cdb7a442b5fc62f263ba2">MeaPositionLogMgr::Screen::Screen()</a>, <a class="el" href="classMeaScreenTool.html#a0bb091a549581f3580fbf8138000eece">MeaScreenTool::SetPosition()</a>, <a class="el" href="classMeaDataWin.html#aaeaf7c8d0c16323b709da46f9df0b606">MeaDataWin::Update()</a>, <a class="el" href="classMeaCalibrationPrefs.html#a3facd4c07c37bd41aa4dab74a2b68251">MeaCalibrationPrefs::UpdateView()</a>, and <a class="el" href="classMeaCalibrationPrefs.html#adfa928b87102ff6bde3476cc47df3c82">MeaCalibrationPrefs::Validate()</a>.</p>
 
 </div>
 </div>
@@ -901,7 +908,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">Referenced by <a class="el" href="classMeaLinearUnits.html#a2ec29f2bfa840db8ef2f675e75958f8a">MeaLinearUnits::ConvertCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a857498b5c3b5eaad15bce8501fec71f7">MeaLinearUnits::ConvertPos()</a>, <a class="el" href="classMeaRuler.html#a764641e4a9d3ead42743e4da9f08c075">MeaRuler::Create()</a>, <a class="el" href="classMeaCrossHair.html#a4cd05afb491a259cf4842f574a6d7cc5">MeaCrossHair::Create()</a>, <a class="el" href="classMeaLayout.html#ad8da9dc24587ddc1876627521a7b5d12">MeaLayout::DrawOpacityBackground()</a>, <a class="el" href="classMeaLinearUnits.html#a6c41237418e2cffaf0923c2e2c1c3e21">MeaLinearUnits::FindResFromCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a486b54a77e240d2bec27752c1844b134">MeaLinearUnits::FindResFromPos()</a>, <a class="el" href="classMeaLinearUnits.html#a7ee3f3c8f86e663005d9098aad5a2c0b">MeaLinearUnits::GetMinorIncr()</a>, <a class="el" href="classCChildView.html#aef1f8bcdab57bdbfa8ed22316851228e">CChildView::OnPreferences()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a1b6c4c19827cdb7a442b5fc62f263ba2">MeaPositionLogMgr::Screen::Screen()</a>, <a class="el" href="classMeaScreenTool.html#a0bb091a549581f3580fbf8138000eece">MeaScreenTool::SetPosition()</a>, <a class="el" href="classMeaLinearUnits.html#a6e6dd745026d19baa89053a6f2b64522">MeaLinearUnits::UnconvertCoord()</a>, <a class="el" href="classMeaOriginTool.html#a366c64ef10528401811ed60297886760">MeaOriginTool::Update()</a>, and <a class="el" href="classMeaCalibrationPrefs.html#adfa928b87102ff6bde3476cc47df3c82">MeaCalibrationPrefs::Validate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaLinearUnits.html#a2ec29f2bfa840db8ef2f675e75958f8a">MeaLinearUnits::ConvertCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a857498b5c3b5eaad15bce8501fec71f7">MeaLinearUnits::ConvertPos()</a>, <a class="el" href="classMeaRuler.html#a673f1ac35b78a04d9b1f76590aa08e98">MeaRuler::Create()</a>, <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">MeaCrossHair::Create()</a>, <a class="el" href="classMeaLayout.html#ad8da9dc24587ddc1876627521a7b5d12">MeaLayout::DrawOpacityBackground()</a>, <a class="el" href="classMeaLinearUnits.html#a6c41237418e2cffaf0923c2e2c1c3e21">MeaLinearUnits::FindResFromCoord()</a>, <a class="el" href="classMeaLinearUnits.html#a486b54a77e240d2bec27752c1844b134">MeaLinearUnits::FindResFromPos()</a>, <a class="el" href="classMeaLinearUnits.html#a7ee3f3c8f86e663005d9098aad5a2c0b">MeaLinearUnits::GetMinorIncr()</a>, <a class="el" href="classCChildView.html#aef1f8bcdab57bdbfa8ed22316851228e">CChildView::OnPreferences()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a1b6c4c19827cdb7a442b5fc62f263ba2">MeaPositionLogMgr::Screen::Screen()</a>, <a class="el" href="classMeaScreenTool.html#a0bb091a549581f3580fbf8138000eece">MeaScreenTool::SetPosition()</a>, <a class="el" href="classMeaLinearUnits.html#a6e6dd745026d19baa89053a6f2b64522">MeaLinearUnits::UnconvertCoord()</a>, <a class="el" href="classMeaOriginTool.html#a5877486bcbf1392f8b780e2390c01aff">MeaOriginTool::Update()</a>, and <a class="el" href="classMeaCalibrationPrefs.html#adfa928b87102ff6bde3476cc47df3c82">MeaCalibrationPrefs::Validate()</a>.</p>
 
 </div>
 </div>
@@ -934,7 +941,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaScreenMgr.html#a945afe7a2ec3b315deba8171d439c972">m_virtualRect</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaDataWin.html#a7585099488bf2fc35a7b3adab35c9cd9">MeaDataWin::CalcWidth()</a>, <a class="el" href="classMeaLinearUnits.html#a2ec29f2bfa840db8ef2f675e75958f8a">MeaLinearUnits::ConvertCoord()</a>, <a class="el" href="classMeaCircle.html#a6c5da8d21b65f4543ae731813f81c808">MeaCircle::Create()</a>, <a class="el" href="classMeaLine.html#a9b9e47a6c371d8d153fa51252160665f">MeaLine::Create()</a>, <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>, <a class="el" href="classMeaRuler.html#a8915065687385b2a40fc91718622067f">MeaRuler::DrawRuler()</a>, <a class="el" href="classMeaScreenMgr.html#aa35955b6e7dad2330ebb689c2d7dac5d">GetOffScreen()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaGridTool.html#a9fad0ac620b42466a11c719e8f8c8638">MeaGridTool::SetLines()</a>, <a class="el" href="classMeaGridTool.html#abf4d2ed4829901a877f9e919a551bf09">MeaGridTool::ShowLines()</a>, <a class="el" href="classMeaLinearUnits.html#a6e6dd745026d19baa89053a6f2b64522">MeaLinearUnits::UnconvertCoord()</a>, and <a class="el" href="classMeaOriginTool.html#a366c64ef10528401811ed60297886760">MeaOriginTool::Update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaDataWin.html#a7585099488bf2fc35a7b3adab35c9cd9">MeaDataWin::CalcWidth()</a>, <a class="el" href="classMeaLinearUnits.html#a2ec29f2bfa840db8ef2f675e75958f8a">MeaLinearUnits::ConvertCoord()</a>, <a class="el" href="classMeaCircle.html#a7fdc0058a04bee8650ce7d1049c3818e">MeaCircle::Create()</a>, <a class="el" href="classMeaLine.html#ab0d31917cdb38d22a9f3630132baafa9">MeaLine::Create()</a>, <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>, <a class="el" href="classMeaRuler.html#a8915065687385b2a40fc91718622067f">MeaRuler::DrawRuler()</a>, <a class="el" href="classMeaScreenMgr.html#aa35955b6e7dad2330ebb689c2d7dac5d">GetOffScreen()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaGridTool.html#a9fad0ac620b42466a11c719e8f8c8638">MeaGridTool::SetLines()</a>, <a class="el" href="classMeaGridTool.html#abf4d2ed4829901a877f9e919a551bf09">MeaGridTool::ShowLines()</a>, <a class="el" href="classMeaLinearUnits.html#a6e6dd745026d19baa89053a6f2b64522">MeaLinearUnits::UnconvertCoord()</a>, and <a class="el" href="classMeaOriginTool.html#a5877486bcbf1392f8b780e2390c01aff">MeaOriginTool::Update()</a>.</p>
 
 </div>
 </div>
@@ -1033,7 +1040,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaCrossHair.html#a2c236daf2de142e67b90056f5d835859">MeaCrossHair::FillInfo()</a>, <a class="el" href="classMeaRuler.html#aeaf8989e0350f6aff6f0a95cb4a4c60c">MeaRuler::FillInfo()</a>, <a class="el" href="classMeaAngleTool.html#a83e6d60ea4f8509a142c8e502e0a758e">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#ad296671110ff62cbcd42cb227933dcb9">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#aace026d83ec7a134bea91caa3abd7e79">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaRectTool.html#a680f2150bfa729f3fdd3f537c2236699">MeaRectTool::OnCHMove()</a>, <a class="el" href="classMeaPointTool.html#a9a23e2973459c01a1738a8faf516b2a0">MeaPointTool::SetPosition()</a>, <a class="el" href="classMeaAngleTool.html#a1d712455393a2b3b63a53aff8c0bd93d">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#ad340d6a3845a59b5b98ff181e6e823da">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#a6f7f6d9631602f30f290a97fa77e75ac">MeaLineTool::SetPosition()</a>, and <a class="el" href="classMeaRectTool.html#a3d7d394bc47a0d1b0af9b41c2e9248c5">MeaRectTool::SetPosition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaCrossHair.html#a2c236daf2de142e67b90056f5d835859">MeaCrossHair::FillInfo()</a>, <a class="el" href="classMeaRuler.html#aeaf8989e0350f6aff6f0a95cb4a4c60c">MeaRuler::FillInfo()</a>, <a class="el" href="classMeaAngleTool.html#a71125449362745a432ff0648f255f36f">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#a09e318ee5aa9580e18bd47f6d5cbd2c9">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#abe6423f3d92dc0fc2e8d708eb4458d24">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaRectTool.html#aacbe2a77ecf3578ea6cea95b8929ca48">MeaRectTool::OnCHMove()</a>, <a class="el" href="classMeaPointTool.html#a9a23e2973459c01a1738a8faf516b2a0">MeaPointTool::SetPosition()</a>, <a class="el" href="classMeaAngleTool.html#ab34d9b2b1ff4bf40f58266413d41533b">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#a357c2f206bdd6f6accb942025c0d4efd">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#a02e7f361e8601f2c8735cc49b89c6432">MeaLineTool::SetPosition()</a>, and <a class="el" href="classMeaRectTool.html#ab1659d8d9f457370ebb1dc94d6d8bde0">MeaRectTool::SetPosition()</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1068,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaScreenMgr.html#a5aa7137423766e5088393db95df823fb">AtEnd()</a>, <a class="el" href="structFSIZE.html#a0a8fae8d3c42f2ca26b78685ce561a67">FSIZE::cx</a>, <a class="el" href="structFSIZE.html#a202a5eea3bb25b7cb901562fa170be73">FSIZE::cy</a>, <a class="el" href="classMeaScreenMgr.html#ac0c125b4dd945ecfcb06035da4437a1b">GetScreen()</a>, <a class="el" href="classMeaScreenMgr.html#a315eda9353960099ead68494ce52a340">GetScreenIter()</a>, <a class="el" href="classMeaProfile.html#a873ccfaf491ab4172563e73a179b89e2">MeaProfile::GetVersion()</a>, <a class="el" href="classMeaScreenMgr.html#afe7b62c930cb35810f1c7d44712d7313">kDefCalInInches</a>, <a class="el" href="classMeaScreenMgr.html#a9b46947724a5f2eae00a35dbd9177f49">kDefUseManualRes</a>, <a class="el" href="classMeaScreenMgr.html#a8e7894fda07c847a467c3ab098acdf51">m_sizeChanged</a>, <a class="el" href="classMeaScreenMgr.html#a945afe7a2ec3b315deba8171d439c972">m_virtualRect</a>, <a class="el" href="classMeaProfile.html#a8f0652361d3f5f578b3a18bc4d6db2f1">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#a9d3b43bec7463e24ed05405f5120f5d0">MeaProfile::ReadDbl()</a>, <a class="el" href="classMeaProfile.html#ac21af58df0802d2617a4c56bf8459fd3">MeaProfile::ReadInt()</a>, <a class="el" href="classMeaScreenMgr_1_1Screen.html#a0b36a28b238f2b7cad4a5ad752cda13d">MeaScreenMgr::Screen::SetCalInInches()</a>, <a class="el" href="classMeaScreenMgr_1_1Screen.html#a16537ee730df50ccb119443ca4fd3446">MeaScreenMgr::Screen::SetScreenRes()</a>, and <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>.</p>
+<p class="reference">References <a class="el" href="structFSIZE.html#a0a8fae8d3c42f2ca26b78685ce561a67">FSIZE::cx</a>, <a class="el" href="structFSIZE.html#a202a5eea3bb25b7cb901562fa170be73">FSIZE::cy</a>, <a class="el" href="classMeaScreenMgr.html#ac0c125b4dd945ecfcb06035da4437a1b">GetScreen()</a>, <a class="el" href="classMeaProfile.html#a873ccfaf491ab4172563e73a179b89e2">MeaProfile::GetVersion()</a>, <a class="el" href="classMeaScreenMgr.html#a5b38e31b2741e22d401207311d4e7026">kDefCalInInches</a>, <a class="el" href="classMeaScreenMgr.html#a109f46957f6837b9117fe3061244917b">kDefUseManualRes</a>, <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>, <a class="el" href="classMeaScreenMgr.html#a8e7894fda07c847a467c3ab098acdf51">m_sizeChanged</a>, <a class="el" href="classMeaScreenMgr.html#a945afe7a2ec3b315deba8171d439c972">m_virtualRect</a>, <a class="el" href="classMeaProfile.html#a8f0652361d3f5f578b3a18bc4d6db2f1">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#a9d3b43bec7463e24ed05405f5120f5d0">MeaProfile::ReadDbl()</a>, <a class="el" href="classMeaProfile.html#ac21af58df0802d2617a4c56bf8459fd3">MeaProfile::ReadInt()</a>, <a class="el" href="classMeaScreenMgr_1_1Screen.html#a0b36a28b238f2b7cad4a5ad752cda13d">MeaScreenMgr::Screen::SetCalInInches()</a>, <a class="el" href="classMeaScreenMgr_1_1Screen.html#a2bfe6c516c9bb0c4b17c5cf4fa1b702d">MeaScreenMgr::Screen::SetScreenRes()</a>, and <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classCChildView.html#a9697bc4d097d424af9e69076ba386e92">CChildView::LoadProfile()</a>.</p>
 
@@ -1091,7 +1098,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaScreenMgr.html#a5aa7137423766e5088393db95df823fb">AtEnd()</a>, <a class="el" href="structFSIZE.html#a0a8fae8d3c42f2ca26b78685ce561a67">FSIZE::cx</a>, <a class="el" href="structFSIZE.html#a202a5eea3bb25b7cb901562fa170be73">FSIZE::cy</a>, <a class="el" href="classMeaUtils.html#abbfadc87cd7ae877af4088917fb73dce">MeaUtils::DblToStr()</a>, <a class="el" href="classMeaScreenMgr.html#a619c7036a5d1dfd0704f06cb170bc632">GetNumScreens()</a>, <a class="el" href="classMeaScreenMgr.html#a315eda9353960099ead68494ce52a340">GetScreenIter()</a>, <a class="el" href="classMeaScreenMgr.html#a945afe7a2ec3b315deba8171d439c972">m_virtualRect</a>, <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#a9e92e97f35582d0a06de7a2d23ecae11">MeaProfile::WriteBool()</a>, <a class="el" href="classMeaProfile.html#a1043bc7c641693654d8f010474471b2d">MeaProfile::WriteInt()</a>, and <a class="el" href="classMeaProfile.html#ac0db05a7d33046a0e3b62b0c44a55367">MeaProfile::WriteStr()</a>.</p>
+<p class="reference">References <a class="el" href="structFSIZE.html#a0a8fae8d3c42f2ca26b78685ce561a67">FSIZE::cx</a>, <a class="el" href="structFSIZE.html#a202a5eea3bb25b7cb901562fa170be73">FSIZE::cy</a>, <a class="el" href="classMeaUtils.html#abbfadc87cd7ae877af4088917fb73dce">MeaUtils::DblToStr()</a>, <a class="el" href="classMeaScreenMgr.html#a619c7036a5d1dfd0704f06cb170bc632">GetNumScreens()</a>, <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>, <a class="el" href="classMeaScreenMgr.html#a945afe7a2ec3b315deba8171d439c972">m_virtualRect</a>, <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#a9e92e97f35582d0a06de7a2d23ecae11">MeaProfile::WriteBool()</a>, <a class="el" href="classMeaProfile.html#a1043bc7c641693654d8f010474471b2d">MeaProfile::WriteInt()</a>, and <a class="el" href="classMeaProfile.html#ac0db05a7d33046a0e3b62b0c44a55367">MeaProfile::WriteStr()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classCChildView.html#ab8a4c0344473815ab78864b9e90a0826">CChildView::SaveProfile()</a>.</p>
 
@@ -1144,8 +1151,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a1cd8fe6be2c3b97cd5f6cfc128b06d2d" name="a1cd8fe6be2c3b97cd5f6cfc128b06d2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cd8fe6be2c3b97cd5f6cfc128b06d2d">&#9670;&nbsp;</a></span>SetScreenRes()</h2>
+<a id="a6baa5caf7f965bdaa134bc90340ed40f" name="a6baa5caf7f965bdaa134bc90340ed40f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6baa5caf7f965bdaa134bc90340ed40f">&#9670;&nbsp;</a></span>SetScreenRes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1169,7 +1176,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> *&#160;</td>
-          <td class="paramname"><em>manualRes</em> = <code>NULL</code>&#160;</td>
+          <td class="paramname"><em>manualRes</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1228,34 +1235,6 @@ Additional Inherited Members</h2></td></tr>
 <p class="reference">References <a class="el" href="classMeaScreenMgr.html#a8e7894fda07c847a467c3ab098acdf51">m_sizeChanged</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a32a6cc54394a6da69554bf9fe9e2249c">MeaUnitsMgr::SetLinearUnits()</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a9b46947724a5f2eae00a35dbd9177f49" name="a9b46947724a5f2eae00a35dbd9177f49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b46947724a5f2eae00a35dbd9177f49">&#9670;&nbsp;</a></span>kDefUseManualRes</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const bool MeaScreenMgr::kDefUseManualRes = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Use manual resolution by default. </p>
-<p >Managers are singletons. </p>
-
-<p class="reference">Referenced by <a class="el" href="classMeaScreenMgr.html#aec7cac274ac01711ffe65264789c3c2e">LoadProfile()</a>, and <a class="el" href="classMeaScreenMgr.html#a9109722d1fb7e1fcb7da9167e96ea768">MasterReset()</a>.</p>
 
 </div>
 </div>

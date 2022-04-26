@@ -48,7 +48,7 @@ public:
 
     /// Copy constructor.
     ///
-    /// @param guid     [in] MeaGUID object ot be copied.
+    /// @param guid     [in] MeaGUID object to be copied.
     ///
     MeaGUID(const MeaGUID& guid) { Assign(guid); }
 

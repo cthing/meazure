@@ -75,12 +75,12 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaLine</b> ()</td></tr>
 <tr class="memdesc:a8e38e511609b394733fdef154212869c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the line. <br /></td></tr>
 <tr class="separator:a8e38e511609b394733fdef154212869c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b9e47a6c371d8d153fa51252160665f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLine.html#a9b9e47a6c371d8d153fa51252160665f">Create</a> (int shrink, const CWnd *parent=NULL)</td></tr>
-<tr class="memdesc:a9b9e47a6c371d8d153fa51252160665f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the line.  <a href="classMeaLine.html#a9b9e47a6c371d8d153fa51252160665f">More...</a><br /></td></tr>
-<tr class="separator:a9b9e47a6c371d8d153fa51252160665f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69f1d45f9a6c57df0c230cccce67eca8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLine.html#a69f1d45f9a6c57df0c230cccce67eca8">Hide</a> ()</td></tr>
-<tr class="memdesc:a69f1d45f9a6c57df0c230cccce67eca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hides the graphic.  <a href="classMeaLine.html#a69f1d45f9a6c57df0c230cccce67eca8">More...</a><br /></td></tr>
-<tr class="separator:a69f1d45f9a6c57df0c230cccce67eca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0d31917cdb38d22a9f3630132baafa9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLine.html#ab0d31917cdb38d22a9f3630132baafa9">Create</a> (int shrink, const CWnd *parent=nullptr)</td></tr>
+<tr class="memdesc:ab0d31917cdb38d22a9f3630132baafa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the line.  <a href="classMeaLine.html#ab0d31917cdb38d22a9f3630132baafa9">More...</a><br /></td></tr>
+<tr class="separator:ab0d31917cdb38d22a9f3630132baafa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03eb40b8356bf96ed84058194a4fdaf1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLine.html#a03eb40b8356bf96ed84058194a4fdaf1">Hide</a> () override</td></tr>
+<tr class="memdesc:a03eb40b8356bf96ed84058194a4fdaf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hides the graphic.  <a href="classMeaLine.html#a03eb40b8356bf96ed84058194a4fdaf1">More...</a><br /></td></tr>
+<tr class="separator:a03eb40b8356bf96ed84058194a4fdaf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a70ae6b944519511141957d030768b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLine.html#a3a70ae6b944519511141957d030768b8">SetPosition</a> (const POINT &amp;startPoint, const POINT &amp;endPoint)</td></tr>
 <tr class="memdesc:a3a70ae6b944519511141957d030768b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the line.  <a href="classMeaLine.html#a3a70ae6b944519511141957d030768b8">More...</a><br /></td></tr>
 <tr class="separator:a3a70ae6b944519511141957d030768b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,7 +193,7 @@ static const CSize&#160;</td><td class="memItemRight" valign="bottom"><b>kMargin
 <tr class="memdesc:aaced644da4d355027a1fa08128ffac86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Padding around line bounding rectangle, in pixels. <br /></td></tr>
 <tr class="separator:aaced644da4d355027a1fa08128ffac86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a6fa260bbdaafdb817ec11ce695cba2"><td class="memItemLeft" align="right" valign="top"><a id="a6a6fa260bbdaafdb817ec11ce695cba2" name="a6a6fa260bbdaafdb817ec11ce695cba2"></a>
-static int *&#160;</td><td class="memItemRight" valign="bottom"><b>m_varr</b> = NULL</td></tr>
+static int *&#160;</td><td class="memItemRight" valign="bottom"><b>m_varr</b> = nullptr</td></tr>
 <tr class="memdesc:a6a6fa260bbdaafdb817ec11ce695cba2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of coordinates comprising each polygon making up the window region (always 4 in our case) <br /></td></tr>
 <tr class="separator:a6a6fa260bbdaafdb817ec11ce695cba2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -210,13 +210,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_visible</b></td></t
 <tr class="separator:aa34ff08ab8981a04398f48df2fb7c95d inherit pro_attribs_classMeaGraphic"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad9b8c5e7d5841ec42e9b99668fc9e27 inherit pro_attribs_classMeaGraphic"><td class="memItemLeft" align="right" valign="top"><a id="aad9b8c5e7d5841ec42e9b99668fc9e27" name="aad9b8c5e7d5841ec42e9b99668fc9e27"></a>
 const CWnd *&#160;</td><td class="memItemRight" valign="bottom"><b>m_parent</b></td></tr>
-<tr class="memdesc:aad9b8c5e7d5841ec42e9b99668fc9e27 inherit pro_attribs_classMeaGraphic"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphic's parent window or NULL if graphic is a popup window. <br /></td></tr>
+<tr class="memdesc:aad9b8c5e7d5841ec42e9b99668fc9e27 inherit pro_attribs_classMeaGraphic"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphic's parent window or nullptr if graphic is a popup window. <br /></td></tr>
 <tr class="separator:aad9b8c5e7d5841ec42e9b99668fc9e27 inherit pro_attribs_classMeaGraphic"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_attribs_classMeaGraphic"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classMeaGraphic')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classMeaGraphic.html">MeaGraphic</a></td></tr>
-<tr class="memitem:a797d299d6257baa8f38049c8899afde6 inherit pro_static_attribs_classMeaGraphic"><td class="memItemLeft" align="right" valign="top"><a id="a797d299d6257baa8f38049c8899afde6" name="a797d299d6257baa8f38049c8899afde6"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoord</b> = -1000</td></tr>
-<tr class="memdesc:a797d299d6257baa8f38049c8899afde6 inherit pro_static_attribs_classMeaGraphic"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary initial coordinate for placing new graphics. <br /></td></tr>
-<tr class="separator:a797d299d6257baa8f38049c8899afde6 inherit pro_static_attribs_classMeaGraphic"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd65ca393182a337a14ff12d13e38cca inherit pro_static_attribs_classMeaGraphic"><td class="memItemLeft" align="right" valign="top"><a id="acd65ca393182a337a14ff12d13e38cca" name="acd65ca393182a337a14ff12d13e38cca"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoord</b> { -1000 }</td></tr>
+<tr class="memdesc:acd65ca393182a337a14ff12d13e38cca inherit pro_static_attribs_classMeaGraphic"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary initial coordinate for placing new graphics. <br /></td></tr>
+<tr class="separator:acd65ca393182a337a14ff12d13e38cca inherit pro_static_attribs_classMeaGraphic"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A line element. </p>
@@ -272,7 +272,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 </div><div class="memdoc">
 
 <p>Constructs a line. </p>
-<p >Prior to displaying the line with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaLine.html#a9b9e47a6c371d8d153fa51252160665f" title="Creates the window for the line.">Create()</a> method must be called to create the line's window. </p>
+<p >Prior to displaying the line with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaLine.html#ab0d31917cdb38d22a9f3630132baafa9" title="Creates the window for the line.">Create()</a> method must be called to create the line's window. </p>
 
 </div>
 </div>
@@ -327,8 +327,8 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 
 </div>
 </div>
-<a id="a9b9e47a6c371d8d153fa51252160665f" name="a9b9e47a6c371d8d153fa51252160665f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b9e47a6c371d8d153fa51252160665f">&#9670;&nbsp;</a></span>Create()</h2>
+<a id="ab0d31917cdb38d22a9f3630132baafa9" name="ab0d31917cdb38d22a9f3630132baafa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0d31917cdb38d22a9f3630132baafa9">&#9670;&nbsp;</a></span>Create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -343,7 +343,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const CWnd *&#160;</td>
-          <td class="paramname"><em>parent</em> = <code>NULL</code>&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -358,7 +358,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">shrink</td><td>[in] Distance, in pixels, to shrink line from start and end points. The typical use for this parameter is in the Line tool. Shrinking the line allows the contents of the end points to be clear for viewing and measuring. </td></tr>
-    <tr><td class="paramname">parent</td><td>[in] Parent window or <b>NULL</b> if the line does not have an immediate parent. If a parent window is specified, the line is created as a child window (<b>WS_CHILD</b>). Otherwise the line is created as a popup window (<b>WS_POPUP</b>) and is assigned the main window as a parent.</td></tr>
+    <tr><td class="paramname">parent</td><td>[in] Parent window or <b>nullptr</b> if the line does not have an immediate parent. If a parent window is specified, the line is created as a child window (<b>WS_CHILD</b>). Otherwise the line is created as a popup window (<b>WS_POPUP</b>) and is assigned the main window as a parent.</td></tr>
   </table>
   </dd>
 </dl>
@@ -415,12 +415,12 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 
 <p class="reference">References <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, and <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a83e6d60ea4f8509a142c8e502e0a758e">MeaAngleTool::OnCHMove()</a>, and <a class="el" href="classMeaLineTool.html#aace026d83ec7a134bea91caa3abd7e79">MeaLineTool::OnCHMove()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a71125449362745a432ff0648f255f36f">MeaAngleTool::OnCHMove()</a>, and <a class="el" href="classMeaLineTool.html#abe6423f3d92dc0fc2e8d708eb4458d24">MeaLineTool::OnCHMove()</a>.</p>
 
 </div>
 </div>
-<a id="a69f1d45f9a6c57df0c230cccce67eca8" name="a69f1d45f9a6c57df0c230cccce67eca8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69f1d45f9a6c57df0c230cccce67eca8">&#9670;&nbsp;</a></span>Hide()</h2>
+<a id="a03eb40b8356bf96ed84058194a4fdaf1" name="a03eb40b8356bf96ed84058194a4fdaf1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03eb40b8356bf96ed84058194a4fdaf1">&#9670;&nbsp;</a></span>Hide()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -437,19 +437,19 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Hides the graphic. </p>
-<p >Call the <a class="el" href="classMeaLine.html#a9b9e47a6c371d8d153fa51252160665f" title="Creates the window for the line.">Create()</a> method prior to calling this method for the first time. </p>
+<p >Call the <a class="el" href="classMeaLine.html#ab0d31917cdb38d22a9f3630132baafa9" title="Creates the window for the line.">Create()</a> method prior to calling this method for the first time. </p>
 
 <p>Reimplemented from <a class="el" href="classMeaGraphic.html#a231700e892c41b20ac90fabde13f82e3">MeaGraphic</a>.</p>
 
 <p class="reference">References <a class="el" href="classMeaGraphic.html#a231700e892c41b20ac90fabde13f82e3">MeaGraphic::Hide()</a>, <a class="el" href="classMeaLine.html#a6b14dc0603f5fa001d4e121faca8ecca">m_timer</a>, and <a class="el" href="classMeaTimer.html#a28f502161cb1a8cd68aabe54b26dd64a">MeaTimer::Stop()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaGridTool.html#a31da6c256c7338a11b31e4d40e6de8e3">MeaGridTool::DeleteLines()</a>, <a class="el" href="classMeaAngleTool.html#ac94b61bebcbe764aa55adf1fd47f73a0">MeaAngleTool::Disable()</a>, <a class="el" href="classMeaCircleTool.html#a5f99934f1d7dd1a03af954649e5366b3">MeaCircleTool::Disable()</a>, <a class="el" href="classMeaLineTool.html#a98c2e0eb44832aa2feed03cac87ba03b">MeaLineTool::Disable()</a>, and <a class="el" href="classMeaOriginTool.html#a31342c082a7f1c4dc69d61472bac55cc">MeaOriginTool::Disable()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#aeb96be479a9a58e7ea4455d16cc0b58a">MeaAngleTool::Disable()</a>, <a class="el" href="classMeaCircleTool.html#a1b45a98d8c398de7a75671d88daad8c1">MeaCircleTool::Disable()</a>, <a class="el" href="classMeaLineTool.html#a4e894818f5261dde8bfa8e047c1c480a">MeaLineTool::Disable()</a>, and <a class="el" href="classMeaOriginTool.html#a20ce2fe92c43e9ba1e99ec3283063550">MeaOriginTool::Disable()</a>.</p>
 
 </div>
 </div>
@@ -528,7 +528,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 <p>The window region is composed of single pixel rectangles arranged in a line from the start point to the end point. </p>
 <p >The location of each rectangle is determined using the Bresenham algorithm adapted from "Graphics Gems", Academic Press, 1990, p. 685. The line needs to be created in this brute force way because relying on the polygon region method produces a horrible looking line. </p>
 
-<p class="reference">References <a class="el" href="classMeaLine.html#a4e6737091da9e8d30511afcb4c6798fd">AddPoint()</a>, <a class="el" href="classMeaLine.html#af7012dea045c7c9adc8093d32938c4e4">m_count</a>, <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>, <a class="el" href="Layout_8h.html#a4db1899c4c84c23533d678a8e4ca10fa">MEA_ABS</a>, and <a class="el" href="Layout_8h.html#a60f1a02221d2ca01369d6f0924d84c3d">MEA_SGN</a>.</p>
+<p class="reference">References <a class="el" href="classMeaLine.html#a4e6737091da9e8d30511afcb4c6798fd">AddPoint()</a>, <a class="el" href="classMeaLine.html#af7012dea045c7c9adc8093d32938c4e4">m_count</a>, <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, and <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaLine.html#a809388678c3fead77c6e9543cbbc875a">OnHPTimer()</a>.</p>
 
@@ -560,7 +560,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 
 <p class="reference">References <a class="el" href="classMeaLine.html#a65bbe1a1aa8f3a0b62e834c88455a860">m_foreBrush</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#ada7429d2df72657702fed49527924e43">MeaAngleTool::ColorsChanged()</a>, <a class="el" href="classMeaCircleTool.html#a881c42c7811241a46a3e5c03e5b93e56">MeaCircleTool::ColorsChanged()</a>, <a class="el" href="classMeaLineTool.html#a277c7a608f6a7fba7108ef294d2ad9d2">MeaLineTool::ColorsChanged()</a>, and <a class="el" href="classMeaOriginTool.html#a3d2133f76f57f6af3dff7b8d2d8dc918">MeaOriginTool::ColorsChanged()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#aa4d4f35a305af1aac2514083d2a787d2">MeaAngleTool::ColorsChanged()</a>, <a class="el" href="classMeaCircleTool.html#ad15aa87b81f3a264ddfdc95a415594d6">MeaCircleTool::ColorsChanged()</a>, <a class="el" href="classMeaLineTool.html#ab953c2c8ffbbea8bf3700af6ea366c35">MeaLineTool::ColorsChanged()</a>, and <a class="el" href="classMeaOriginTool.html#ae5163cb6bb675b0f92d001c0e945f1d5">MeaOriginTool::ColorsChanged()</a>.</p>
 
 </div>
 </div>
@@ -601,7 +601,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 
 <p class="reference">References <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a1e17d12b818e225add79a808f4759dae">Angled</a>, <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a83dec057e37935326ef57c71d554f11b">Horizontal</a>, <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, <a class="el" href="classMeaLine.html#ac25226b1e6534333b51687fb58a43c30">m_orientation</a>, <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>, <a class="el" href="classMeaLine.html#a6b14dc0603f5fa001d4e121faca8ecca">m_timer</a>, <a class="el" href="classMeaGraphic.html#aa34ff08ab8981a04398f48df2fb7c95d">MeaGraphic::m_visible</a>, <a class="el" href="classMeaLine.html#ae1cd7adbe18c73f471a3aa9fdc35503e">m_wasAngled</a>, <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">MeaGraphic::Show()</a>, <a class="el" href="classMeaTimer.html#a0926c1d43229b2fcae319e8126d1a1c2">MeaTimer::Start()</a>, and <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a43baa2eb9c53bbcc1e5be4319e1b992d">Vertical</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a83e6d60ea4f8509a142c8e502e0a758e">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#ad296671110ff62cbcd42cb227933dcb9">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#aace026d83ec7a134bea91caa3abd7e79">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaAngleTool.html#a1d712455393a2b3b63a53aff8c0bd93d">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#ad340d6a3845a59b5b98ff181e6e823da">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#a6f7f6d9631602f30f290a97fa77e75ac">MeaLineTool::SetPosition()</a>, <a class="el" href="classMeaOriginTool.html#a366c64ef10528401811ed60297886760">MeaOriginTool::Update()</a>, and <a class="el" href="classMeaAngleTool.html#a1e5ce35de5886ec6c12afc0aefe4a5fb">MeaAngleTool::UpdateBisector()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a71125449362745a432ff0648f255f36f">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#a09e318ee5aa9580e18bd47f6d5cbd2c9">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#abe6423f3d92dc0fc2e8d708eb4458d24">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaAngleTool.html#ab34d9b2b1ff4bf40f58266413d41533b">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#a357c2f206bdd6f6accb942025c0d4efd">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#a02e7f361e8601f2c8735cc49b89c6432">MeaLineTool::SetPosition()</a>, <a class="el" href="classMeaOriginTool.html#a5877486bcbf1392f8b780e2390c01aff">MeaOriginTool::Update()</a>, and <a class="el" href="classMeaAngleTool.html#a1e5ce35de5886ec6c12afc0aefe4a5fb">MeaAngleTool::UpdateBisector()</a>.</p>
 
 </div>
 </div>

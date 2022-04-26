@@ -137,10 +137,7 @@ BOOL MeaCalibrationPrefs::OnSetActive()
 
 BOOL MeaCalibrationPrefs::OnKillActive()
 {
-    if (!Validate()) {
-        return FALSE;
-    }
-    return CPropertyPage::OnKillActive();
+    return Validate() ? CPropertyPage::OnKillActive() : FALSE;
 }
 
 
@@ -293,7 +290,7 @@ void MeaCalibrationPrefs::UpdateSliders()
 void MeaCalibrationPrefs::UpdateSlider(UINT sliderId, double res)
 {
     MeaRulerSlider *slider = static_cast<MeaRulerSlider*>(GetDlgItem(sliderId));
-    if (slider != NULL) {
+    if (slider != nullptr) {
         int resValue = static_cast<int>(IsMetric() ? 2.0 * res / 2.54 : res);
         slider->SetSliderPos(resValue);
     }
@@ -396,12 +393,12 @@ bool MeaCalibrationPrefs::GetFieldValue(UINT fieldId, double& value)
 {
     CWnd* field = GetDlgItem(fieldId);
 
-    if (field != NULL) {
+    if (field != nullptr) {
         CString str;
 
         field->GetWindowText(str);
         if (!str.IsEmpty()) {
-            double v = _tcstod(str, NULL);
+            double v = _tcstod(str, nullptr);
             if (IsMetric()) {
                 if ((fieldId == IDC_CAL_H_FIELD) || (fieldId == IDC_CAL_W_FIELD)) {
                     v /= 2.54;
@@ -474,7 +471,7 @@ void MeaCalibrationPrefs::UpdateView()
 
 void MeaCalibrationPrefs::UpdateCurrentScreen()
 {
-    if (GetSafeHwnd() == NULL) {
+    if (GetSafeHwnd() == nullptr) {
         return;
     }
 
@@ -485,13 +482,13 @@ void MeaCalibrationPrefs::UpdateCurrentScreen()
     m_currentIter = mgr.GetScreenIter(winRect);
     
     CWnd* frame = GetDlgItem(IDC_CALRES_TITLE);
-    if (frame != NULL) {
+    if (frame != nullptr) {
         CString title;
         title.Format(IDS_MEA_CALRES_TITLE, static_cast<LPCTSTR>(mgr.GetScreenName(m_currentIter)));
         frame->SetWindowText(title);
 
         MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());
-        MeaAssert(sheet != NULL);
+        MeaAssert(sheet != nullptr);
 
         if (sheet->GetActivePage() == this) {
             UpdateView();

@@ -35,24 +35,18 @@ IMPLEMENT_DYNCREATE(MeaRulerPrefs, CPropertyPage)
 
 
 BEGIN_MESSAGE_MAP(MeaRulerPrefs, CPropertyPage)
-    //{{AFX_MSG_MAP(MeaRulerPrefs)
     ON_BN_CLICKED(IDC_RULER_BACK_BTN, OnChangeBkColor)
     ON_BN_CLICKED(IDC_RULER_BORDER_BTN, OnChangeBorderColor)
     ON_BN_CLICKED(IDC_RULER_BACK_DEF, OnDefBkColor)
     ON_BN_CLICKED(IDC_RULER_BORDER_DEF, OnDefBorderColor)
     ON_WM_HSCROLL()
-    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 
 MeaRulerPrefs::MeaRulerPrefs() : CPropertyPage(MeaRulerPrefs::IDD),
-    m_backColor(0), m_borderColor(0)
+    m_backColor(0), m_borderColor(0), m_opacity(0)
 {
     m_psp.dwFlags &= ~(PSP_HASHELP);
-
-    //{{AFX_DATA_INIT(MeaRulerPrefs)
-    m_opacity = 0;
-    //}}AFX_DATA_INIT
 }
 
 
@@ -64,9 +58,7 @@ MeaRulerPrefs::~MeaRulerPrefs()
 void MeaRulerPrefs::DoDataExchange(CDataExchange* pDX)
 {
     CPropertyPage::DoDataExchange(pDX);
-    //{{AFX_DATA_MAP(MeaRulerPrefs)
     DDX_Slider(pDX, IDC_RULER_OPACITY, m_opacity);
-    //}}AFX_DATA_MAP
 }
 
 
@@ -87,11 +79,11 @@ BOOL MeaRulerPrefs::OnInitDialog()
     rulerSample->GetWindowRect(sampleRect);
     ScreenToClient(sampleRect);
 
-    m_vRuler.Create(m_borderColor, m_backColor, 255, MeaRuler::Vertical, sampleRect, NULL, this);
+    m_vRuler.Create(m_borderColor, m_backColor, 255, MeaRuler::Vertical, sampleRect, nullptr, this);
     m_vRuler.GetClientRect(rulerRect);
     horizRect = sampleRect;
     horizRect.left += rulerRect.Width() - 1;
-    m_hRuler.Create(m_borderColor, m_backColor, 255, MeaRuler::Horizontal, horizRect, NULL, this);
+    m_hRuler.Create(m_borderColor, m_backColor, 255, MeaRuler::Horizontal, horizRect, nullptr, this);
 
     m_vRuler.SetPosition(sampleRect.left);
     m_hRuler.SetPosition(sampleRect.top);

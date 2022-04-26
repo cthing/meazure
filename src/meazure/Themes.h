@@ -48,12 +48,12 @@ typedef HANDLE HTHEME;
 
 // Implement API stubs.
 //
-BOOL    (WINAPI* g_pfnIsThemeActive)(void) = NULL;
-HTHEME  (WINAPI* g_pfnOpenThemeData)(HWND, LPCWSTR) = NULL;
-HRESULT (WINAPI* g_pfnCloseThemeData)(HTHEME) = NULL;
-HRESULT (WINAPI* g_pfnDrawThemeBackground)(HTHEME, HDC, int, int, const RECT*, const RECT*) = NULL;
-BOOL    (WINAPI* g_pfnDrawThemeEdge)(HTHEME, HDC, int, int, const RECT*, UINT, UINT, RECT*) = NULL;
-BOOL    g_fThemeInitDone = FALSE;
+BOOL(WINAPI* g_pfnIsThemeActive)(void) { nullptr };
+HTHEME(WINAPI* g_pfnOpenThemeData)(HWND, LPCWSTR) { nullptr };
+HRESULT(WINAPI* g_pfnCloseThemeData)(HTHEME) { nullptr };
+HRESULT(WINAPI* g_pfnDrawThemeBackground)(HTHEME, HDC, int, int, const RECT*, const RECT*) { nullptr };
+BOOL(WINAPI* g_pfnDrawThemeEdge)(HTHEME, HDC, int, int, const RECT*, UINT, UINT, RECT*) { nullptr };
+BOOL g_fThemeInitDone { FALSE };
 
 
 BOOL InitThemeStubs(void)
@@ -61,25 +61,25 @@ BOOL InitThemeStubs(void)
     HMODULE hUXTheme;
 
     if (g_fThemeInitDone) {
-        return g_pfnIsThemeActive != NULL;
+        return g_pfnIsThemeActive != nullptr;
     }
 
     hUXTheme = GetModuleHandle(TEXT("UXTHEME"));
-    if ((hUXTheme != NULL) &&
-        (*(FARPROC*)&g_pfnIsThemeActive = GetProcAddress(hUXTheme, "IsThemeActive")) != NULL &&
-        (*(FARPROC*)&g_pfnOpenThemeData = GetProcAddress(hUXTheme, "OpenThemeData")) != NULL &&
-        (*(FARPROC*)&g_pfnCloseThemeData = GetProcAddress(hUXTheme, "CloseThemeData")) != NULL &&
-        (*(FARPROC*)&g_pfnDrawThemeBackground = GetProcAddress(hUXTheme, "DrawThemeBackground")) != NULL &&
-        (*(FARPROC*)&g_pfnDrawThemeEdge = GetProcAddress(hUXTheme, "DrawThemeEdge")) != NULL
+    if ((hUXTheme != nullptr) &&
+        (*(FARPROC*)&g_pfnIsThemeActive = GetProcAddress(hUXTheme, "IsThemeActive")) != nullptr &&
+        (*(FARPROC*)&g_pfnOpenThemeData = GetProcAddress(hUXTheme, "OpenThemeData")) != nullptr &&
+        (*(FARPROC*)&g_pfnCloseThemeData = GetProcAddress(hUXTheme, "CloseThemeData")) != nullptr &&
+        (*(FARPROC*)&g_pfnDrawThemeBackground = GetProcAddress(hUXTheme, "DrawThemeBackground")) != nullptr &&
+        (*(FARPROC*)&g_pfnDrawThemeEdge = GetProcAddress(hUXTheme, "DrawThemeEdge")) != nullptr
        ) {
         g_fThemeInitDone = TRUE;
         return TRUE;
     } else {
-        g_pfnIsThemeActive = NULL;
-        g_pfnOpenThemeData = NULL;
-        g_pfnCloseThemeData = NULL;
-        g_pfnDrawThemeBackground = NULL;
-        g_pfnDrawThemeEdge = NULL;
+        g_pfnIsThemeActive = nullptr;
+        g_pfnOpenThemeData = nullptr;
+        g_pfnCloseThemeData = nullptr;
+        g_pfnDrawThemeBackground = nullptr;
+        g_pfnDrawThemeEdge = nullptr;
         g_fThemeInitDone = TRUE;
         return FALSE;
     }
@@ -102,7 +102,7 @@ xOpenThemeData(HWND hwnd, LPCWSTR pszClassList)
     if (InitThemeStubs()) {
         return g_pfnOpenThemeData(hwnd, pszClassList);
     }
-    return NULL;
+    return nullptr;
 }
 
 

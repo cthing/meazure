@@ -50,7 +50,7 @@ public:
     /// @param userData [in] Caller defined data.
     ///
     void    Create(CWnd *parent, WPARAM userData = 0) {
-        MeaAssert(parent != NULL);
+        MeaAssert(parent != nullptr);
         m_parent = parent;
         m_userData = userData;
     }

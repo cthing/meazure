@@ -40,9 +40,9 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 
-#define CHAR_1 49
-#define CHAR_2 50
-#define CHAR_3 51
+static constexpr int CHAR_1 { 49 };
+static constexpr int CHAR_2 { 50 };
+static constexpr int CHAR_3 { 51 };
 
 
 BEGIN_MESSAGE_MAP(CChildView,CWnd )
@@ -55,7 +55,6 @@ BEGIN_MESSAGE_MAP(CChildView,CWnd )
     ON_MESSAGE(MeaShowCalPrefsMsg, OnShowCalPrefs)
     ON_MESSAGE(MeaGetPositionMsg, OnGetPosition)
     ON_MESSAGE(MeaHPTimerMsg, OnHPTimer)
-    //{{AFX_MSG_MAP(CChildView)
     ON_WM_CREATE()
     ON_UPDATE_COMMAND_UI(ID_MEA_UNITS_CM, OnUpdateUnits)
     ON_UPDATE_COMMAND_UI(ID_MEA_DEGREES, OnUpdateAngles)
@@ -138,16 +137,7 @@ BEGIN_MESSAGE_MAP(CChildView,CWnd )
     ON_COMMAND(ID_MEA_POS1, OnSetPosition1ToCursor)
     ON_COMMAND(ID_MEA_POS2, OnSetPosition2ToCursor)
     ON_COMMAND(ID_MEA_POS3, OnSetPosition3ToCursor)
-    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
-
-
-// Defaults
-const bool CChildView::kDefToolbarVisible = true;
-const bool CChildView::kDefStatusbarVisible = true;
-const bool CChildView::kDefToolInfoVisible = true;
-const bool CChildView::kDefScreenInfoVisible = true;
-const bool CChildView::kDefMagnifierVisible = true;
 
 
 CChildView::CChildView() : CWnd(),
@@ -171,7 +161,7 @@ CChildView::CChildView() : CWnd(),
 CChildView::~CChildView()
 {
     try {
-        MeaToolMgr::Instance().SetDataDisplay(NULL);
+        MeaToolMgr::Instance().SetDataDisplay(nullptr);
     }
     catch(...) {
         MeaAssert(false);
@@ -315,7 +305,7 @@ BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs)
     cs.dwExStyle |= WS_EX_CLIENTEDGE;
     cs.style &= ~WS_BORDER;
     cs.lpszClass = AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW|CS_DBLCLKS, 
-        ::LoadCursor(NULL, IDC_ARROW), GetSysColorBrush(COLOR_BTNFACE), NULL);
+        ::LoadCursor(nullptr, IDC_ARROW), GetSysColorBrush(COLOR_BTNFACE), nullptr);
 
     return TRUE;
 }
@@ -1177,7 +1167,7 @@ void CChildView::OnUpdateScreenInfo(CCmdUI* pCmdUI)
 
 LRESULT CChildView::OnDataChange(WPARAM wParam, LPARAM lParam)
 {
-    MeaToolMgr::Instance().SetPosition(static_cast<MeaFields>(lParam), wParam);
+    MeaToolMgr::Instance().SetPosition(static_cast<MeaFields>(lParam), static_cast<int>(wParam));
     return 0;
 }
 
@@ -1202,7 +1192,7 @@ void CChildView::OnPreferences()
 {
     // If the preferences dialog is already displayed, leave it alone.
     //
-    if (m_prefs.GetSafeHwnd() != NULL) {
+    if (m_prefs.GetSafeHwnd() != nullptr) {
         return;
     }
 
@@ -1269,7 +1259,7 @@ void CChildView::OnPreferences()
     m_prefs.m_advancedPrefs.m_startupProfile = m_startupProfile;
     m_prefs.m_advancedPrefs.m_startupProfileDlg = MeaProfileMgr::Instance().CreateLoadDialog();
 
-    int res = m_prefs.DoModal();
+    INT_PTR res = m_prefs.DoModal();
     if (res == IDOK) {
         ApplyPreferences();
     } else if (res == ID_MEA_MASTER_RESET) {
@@ -1280,7 +1270,7 @@ void CChildView::OnPreferences()
 
 LRESULT CChildView::OnPrefsApply(WPARAM /* wParam */, LPARAM lParam)
 {
-    ApplyPreferences(lParam);
+    ApplyPreferences(static_cast<int>(lParam));
     return 0;
 }
 
@@ -1373,13 +1363,11 @@ void CChildView::ApplyPreferences(int prefsPage)
     // Calibration preferences
     //
     if (prefsPage == MeaPreferences::kAllPages || prefsPage == MeaPreferences::kCalibrationPage) {
-        MeaCalibrationPrefs::ScreenMap::const_iterator calIter;
         MeaScreenMgr& screenMgr = MeaScreenMgr::Instance();
 
-        for (calIter = m_prefs.m_calibrationPrefs.m_screens.begin();
-                calIter != m_prefs.m_calibrationPrefs.m_screens.end(); calIter++) {
-            MeaScreenMgr::ScreenIter screenIter = (*calIter).first;
-            const MeaCalibrationPrefs::Screen& screen = (*calIter).second;
+        for (const auto& screenEntry : m_prefs.m_calibrationPrefs.m_screens) {
+            MeaScreenMgr::ScreenIter screenIter = screenEntry.first;
+            const MeaCalibrationPrefs::Screen& screen = screenEntry.second;
 
             bool useManualRes = (screen.m_resMode == MeaCalibrationPrefs::AutoRes) ? false : true;
             FSIZE manualRes = screen.m_res;
@@ -1405,7 +1393,7 @@ void CChildView::OnCopyRegion()
 {
     MeaToolMgr& mgr = MeaToolMgr::Instance();
 
-    if (mgr.HasRegion() && ::OpenClipboard(m_hWnd) != NULL) {
+    if (mgr.HasRegion() && ::OpenClipboard(m_hWnd) != 0) {
         // We must use a timer to allow the region tool to disable
         // before we copy the screen image to the clipboard. Otherwise
         // we'll capture the tool's outline and crosshairs as part of
@@ -1425,7 +1413,7 @@ LRESULT CChildView::OnHPTimer(WPARAM, LPARAM)
 
     // Create a memory context and bitmap for it.
     //
-    HDC screenDC = ::CreateDC(_T("DISPLAY"), NULL, NULL, NULL);
+    HDC screenDC = ::CreateDC(_T("DISPLAY"), nullptr, nullptr, nullptr);
     HDC memDC = ::CreateCompatibleDC(screenDC);
 
     HBITMAP screenBitmap = ::CreateCompatibleBitmap(screenDC, rect.Width(), rect.Height());
@@ -1463,9 +1451,9 @@ void CChildView::OnEditCopy()
     MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
     MeaNumberField *colorField = m_magnifier.GetFieldFocus();
 
-    if (dataField != NULL) {
+    if (dataField != nullptr) {
         dataField->Copy();
-    } else if (colorField != NULL) {
+    } else if (colorField != nullptr) {
         colorField->Copy();
     }
 }
@@ -1475,7 +1463,7 @@ void CChildView::OnEditCut()
 {
     MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
 
-    if (dataField != NULL) {
+    if (dataField != nullptr) {
         dataField->Cut();
     }
 }
@@ -1485,7 +1473,7 @@ void CChildView::OnEditPaste()
 {
     MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
 
-    if (dataField != NULL) {
+    if (dataField != nullptr) {
         dataField->Paste();
     }
 }
@@ -1495,7 +1483,7 @@ void CChildView::OnEditClear()
 {
     MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
 
-    if (dataField != NULL) {
+    if (dataField != nullptr) {
         dataField->Clear();
     }
 }
@@ -1506,8 +1494,8 @@ void CChildView::OnUpdateEditCopy(CCmdUI* pCmdUI)
     MeaNumberField *dataField  = m_dataDisplay.GetFieldFocus();
     MeaNumberField *colorField = m_magnifier.GetFieldFocus();
 
-    pCmdUI->Enable(((dataField != NULL) && dataField->IsTextSelected()) ||
-                   ((colorField != NULL) && colorField->IsTextSelected()));
+    pCmdUI->Enable(((dataField != nullptr) && dataField->IsTextSelected()) ||
+                   ((colorField != nullptr) && colorField->IsTextSelected()));
 }
 
 
@@ -1515,7 +1503,7 @@ void CChildView::OnUpdateEditCut(CCmdUI* pCmdUI)
 {
     MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
 
-    pCmdUI->Enable((dataField != NULL) && dataField->IsTextSelected());
+    pCmdUI->Enable((dataField != nullptr) && dataField->IsTextSelected());
 }
 
 
@@ -1523,7 +1511,7 @@ void CChildView::OnUpdateEditPaste(CCmdUI* pCmdUI)
 {
     MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
 
-    pCmdUI->Enable(::IsClipboardFormatAvailable(CF_TEXT) && (dataField != NULL));
+    pCmdUI->Enable(::IsClipboardFormatAvailable(CF_TEXT) && (dataField != nullptr));
 }
 
 
@@ -1531,5 +1519,5 @@ void CChildView::OnUpdateEditClear(CCmdUI* pCmdUI)
 {
     MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
 
-    pCmdUI->Enable((dataField != NULL) && dataField->IsTextSelected());
+    pCmdUI->Enable((dataField != nullptr) && dataField->IsTextSelected());
 }

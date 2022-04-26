@@ -77,10 +77,10 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaCrossHair</b> ()</td></tr>
 <tr class="memdesc:a9b275a0fe42f89349c9a238cf15e15f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the circle. <br /></td></tr>
 <tr class="separator:a9b275a0fe42f89349c9a238cf15e15f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cd05afb491a259cf4842f574a6d7cc5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#a4cd05afb491a259cf4842f574a6d7cc5">Create</a> (COLORREF borderColor, COLORREF backColor, COLORREF hiliteColor, BYTE opacity, <a class="el" href="classMeaCrossHairCallback.html">MeaCrossHairCallback</a> *callback, const CWnd *parent=NULL, UINT toolTipId=0xffff, UINT id=0xffff)</td></tr>
-<tr class="memdesc:a4cd05afb491a259cf4842f574a6d7cc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the crosshair.  <a href="classMeaCrossHair.html#a4cd05afb491a259cf4842f574a6d7cc5">More...</a><br /></td></tr>
-<tr class="separator:a4cd05afb491a259cf4842f574a6d7cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fb8fe3e462b0e311702921f9aaf453a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#a7fb8fe3e462b0e311702921f9aaf453a">Flash</a> (int flashCount=<a class="el" href="classMeaCrossHair.html#acb1737af9b0a547544bcb2d463d82e6a">kFlashCount</a>)</td></tr>
+<tr class="memitem:afbf2612329d66a1dd448a9afd9b08c8c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">Create</a> (COLORREF borderColor, COLORREF backColor, COLORREF hiliteColor, BYTE opacity, <a class="el" href="classMeaCrossHairCallback.html">MeaCrossHairCallback</a> *callback, const CWnd *parent=nullptr, UINT toolTipId=0xffff, UINT id=0xffff)</td></tr>
+<tr class="memdesc:afbf2612329d66a1dd448a9afd9b08c8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the crosshair.  <a href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">More...</a><br /></td></tr>
+<tr class="separator:afbf2612329d66a1dd448a9afd9b08c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fb8fe3e462b0e311702921f9aaf453a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#a7fb8fe3e462b0e311702921f9aaf453a">Flash</a> (int flashCount=<a class="el" href="classMeaCrossHair.html#a9e4e42e77c606959f9d106b8a463c0c6">kFlashCount</a>)</td></tr>
 <tr class="memdesc:a7fb8fe3e462b0e311702921f9aaf453a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Visually flashes the crosshair by cycling its background between normal and hilited the number of times specified.  <a href="classMeaCrossHair.html#a7fb8fe3e462b0e311702921f9aaf453a">More...</a><br /></td></tr>
 <tr class="separator:a7fb8fe3e462b0e311702921f9aaf453a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b7c6bad980e90233a932ecbb3d6e66a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#a1b7c6bad980e90233a932ecbb3d6e66a">SetPosition</a> (const POINT &amp;center)</td></tr>
@@ -118,14 +118,14 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaGraphic</b> ()
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:acb1737af9b0a547544bcb2d463d82e6a"><td class="memItemLeft" align="right" valign="top"><a id="acb1737af9b0a547544bcb2d463d82e6a" name="acb1737af9b0a547544bcb2d463d82e6a"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kFlashCount</b> = 9</td></tr>
-<tr class="memdesc:acb1737af9b0a547544bcb2d463d82e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of times to flash the crosshair when <a class="el" href="classMeaCrossHair.html#a7fb8fe3e462b0e311702921f9aaf453a" title="Visually flashes the crosshair by cycling its background between normal and hilited the number of tim...">Flash()</a> is called. <br /></td></tr>
-<tr class="separator:acb1737af9b0a547544bcb2d463d82e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5696c7690a1b0aee63b6cd3cae1493f"><td class="memItemLeft" align="right" valign="top"><a id="ad5696c7690a1b0aee63b6cd3cae1493f" name="ad5696c7690a1b0aee63b6cd3cae1493f"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kStrobeCount</b> = 1</td></tr>
-<tr class="memdesc:ad5696c7690a1b0aee63b6cd3cae1493f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of times to flash the crosshair when Strobe() is called. <br /></td></tr>
-<tr class="separator:ad5696c7690a1b0aee63b6cd3cae1493f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e4e42e77c606959f9d106b8a463c0c6"><td class="memItemLeft" align="right" valign="top"><a id="a9e4e42e77c606959f9d106b8a463c0c6" name="a9e4e42e77c606959f9d106b8a463c0c6"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kFlashCount</b> { 9 }</td></tr>
+<tr class="memdesc:a9e4e42e77c606959f9d106b8a463c0c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of times to flash the crosshair when <a class="el" href="classMeaCrossHair.html#a7fb8fe3e462b0e311702921f9aaf453a" title="Visually flashes the crosshair by cycling its background between normal and hilited the number of tim...">Flash()</a> is called. <br /></td></tr>
+<tr class="separator:a9e4e42e77c606959f9d106b8a463c0c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68c61f75b0c3cf9fbcf92014d0cd1564"><td class="memItemLeft" align="right" valign="top"><a id="a68c61f75b0c3cf9fbcf92014d0cd1564" name="a68c61f75b0c3cf9fbcf92014d0cd1564"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kStrobeCount</b> { 1 }</td></tr>
+<tr class="memdesc:a68c61f75b0c3cf9fbcf92014d0cd1564"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of times to flash the crosshair when Strobe() is called. <br /></td></tr>
+<tr class="separator:a68c61f75b0c3cf9fbcf92014d0cd1564"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -271,11 +271,11 @@ static SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>m_spread</b></
 <tr class="memdesc:a2fd3b765580526e3edf6af3d9a8a686c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Half the length of the base of a triangular section of the crosshair, in pixels. <br /></td></tr>
 <tr class="separator:a2fd3b765580526e3edf6af3d9a8a686c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84f272e874a4f09c524775f63dfc7985"><td class="memItemLeft" align="right" valign="top"><a id="a84f272e874a4f09c524775f63dfc7985" name="a84f272e874a4f09c524775f63dfc7985"></a>
-static UINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_flashInterval</b> = 100</td></tr>
+static UINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_flashInterval</b> { 100 }</td></tr>
 <tr class="memdesc:a84f272e874a4f09c524775f63dfc7985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of milliseconds to hold each display state while flashing the crosshair. <br /></td></tr>
 <tr class="separator:a84f272e874a4f09c524775f63dfc7985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0361504b3e35238257634fb14edd8ea"><td class="memItemLeft" align="right" valign="top"><a id="ac0361504b3e35238257634fb14edd8ea" name="ac0361504b3e35238257634fb14edd8ea"></a>
-static int *&#160;</td><td class="memItemRight" valign="bottom"><b>m_numCoords</b> = NULL</td></tr>
+static int *&#160;</td><td class="memItemRight" valign="bottom"><b>m_numCoords</b> { nullptr }</td></tr>
 <tr class="memdesc:ac0361504b3e35238257634fb14edd8ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of coordinates in each rectangle making up part of the crosshair (4) <br /></td></tr>
 <tr class="separator:ac0361504b3e35238257634fb14edd8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -292,13 +292,13 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_visible</b></td></t
 <tr class="separator:aa34ff08ab8981a04398f48df2fb7c95d inherit pro_attribs_classMeaGraphic"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad9b8c5e7d5841ec42e9b99668fc9e27 inherit pro_attribs_classMeaGraphic"><td class="memItemLeft" align="right" valign="top"><a id="aad9b8c5e7d5841ec42e9b99668fc9e27" name="aad9b8c5e7d5841ec42e9b99668fc9e27"></a>
 const CWnd *&#160;</td><td class="memItemRight" valign="bottom"><b>m_parent</b></td></tr>
-<tr class="memdesc:aad9b8c5e7d5841ec42e9b99668fc9e27 inherit pro_attribs_classMeaGraphic"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphic's parent window or NULL if graphic is a popup window. <br /></td></tr>
+<tr class="memdesc:aad9b8c5e7d5841ec42e9b99668fc9e27 inherit pro_attribs_classMeaGraphic"><td class="mdescLeft">&#160;</td><td class="mdescRight">Graphic's parent window or nullptr if graphic is a popup window. <br /></td></tr>
 <tr class="separator:aad9b8c5e7d5841ec42e9b99668fc9e27 inherit pro_attribs_classMeaGraphic"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_attribs_classMeaGraphic"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classMeaGraphic')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classMeaGraphic.html">MeaGraphic</a></td></tr>
-<tr class="memitem:a797d299d6257baa8f38049c8899afde6 inherit pro_static_attribs_classMeaGraphic"><td class="memItemLeft" align="right" valign="top"><a id="a797d299d6257baa8f38049c8899afde6" name="a797d299d6257baa8f38049c8899afde6"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoord</b> = -1000</td></tr>
-<tr class="memdesc:a797d299d6257baa8f38049c8899afde6 inherit pro_static_attribs_classMeaGraphic"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary initial coordinate for placing new graphics. <br /></td></tr>
-<tr class="separator:a797d299d6257baa8f38049c8899afde6 inherit pro_static_attribs_classMeaGraphic"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd65ca393182a337a14ff12d13e38cca inherit pro_static_attribs_classMeaGraphic"><td class="memItemLeft" align="right" valign="top"><a id="acd65ca393182a337a14ff12d13e38cca" name="acd65ca393182a337a14ff12d13e38cca"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoord</b> { -1000 }</td></tr>
+<tr class="memdesc:acd65ca393182a337a14ff12d13e38cca inherit pro_static_attribs_classMeaGraphic"><td class="mdescLeft">&#160;</td><td class="mdescRight">An arbitrary initial coordinate for placing new graphics. <br /></td></tr>
+<tr class="separator:acd65ca393182a337a14ff12d13e38cca inherit pro_static_attribs_classMeaGraphic"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A crosshair element. </p>
@@ -352,13 +352,13 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 </div><div class="memdoc">
 
 <p>Constructs a crosshair. </p>
-<p >Prior to displaying the crosshair with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaCrossHair.html#a4cd05afb491a259cf4842f574a6d7cc5" title="Creates the window for the crosshair.">Create()</a> method must be called to create the crosshair's window. </p>
+<p >Prior to displaying the crosshair with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c" title="Creates the window for the crosshair.">Create()</a> method must be called to create the crosshair's window. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4cd05afb491a259cf4842f574a6d7cc5" name="a4cd05afb491a259cf4842f574a6d7cc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cd05afb491a259cf4842f574a6d7cc5">&#9670;&nbsp;</a></span>Create()</h2>
+<a id="afbf2612329d66a1dd448a9afd9b08c8c" name="afbf2612329d66a1dd448a9afd9b08c8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afbf2612329d66a1dd448a9afd9b08c8c">&#9670;&nbsp;</a></span>Create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -397,7 +397,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const CWnd *&#160;</td>
-          <td class="paramname"><em>parent</em> = <code>NULL</code>, </td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -427,8 +427,8 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
     <tr><td class="paramname">backColor</td><td>[in] Background color for the crosshair. Each triangular section of the crosshair is drawn in the background color. The crosshair is displayed in the background color when the pointer is not over the crosshair. </td></tr>
     <tr><td class="paramname">hiliteColor</td><td>[in] Background color for the crosshair when the pointer is over the crosshair. </td></tr>
     <tr><td class="paramname">opacity</td><td>[in] Opacity value for the crosshair expressed as a value between 0 (transparent) and 255 (opaque) inclusive. </td></tr>
-    <tr><td class="paramname">callback</td><td>[in] A class derived from <a class="el" href="classMeaCrossHairCallback.html" title="Crosshair activity callback mixin class.">MeaCrossHairCallback</a> that wants to receive notification of crosshair events. Can be set to NULL if no callback is desired. </td></tr>
-    <tr><td class="paramname">parent</td><td>[in] Parent window or <b>NULL</b> if the crosshair does not have an immediate parent. If a parent window is specified, the crosshair is created as a child window (<b>WS_CHILD</b>). Otherwise the crosshair is created as a popup window (<b>WS_POPUP</b>) and is assigned the main window as a parent. </td></tr>
+    <tr><td class="paramname">callback</td><td>[in] A class derived from <a class="el" href="classMeaCrossHairCallback.html" title="Crosshair activity callback mixin class.">MeaCrossHairCallback</a> that wants to receive notification of crosshair events. Can be set to <b>nullptr</b> if no callback is desired. </td></tr>
+    <tr><td class="paramname">parent</td><td>[in] Parent window or <b>nullptr</b> if the crosshair does not have an immediate parent. If a parent window is specified, the crosshair is created as a child window (<b>WS_CHILD</b>). Otherwise the crosshair is created as a popup window (<b>WS_POPUP</b>) and is assigned the main window as a parent. </td></tr>
     <tr><td class="paramname">toolTipId</td><td>[in] String resource ID for the tooltip associated with the crosshair. </td></tr>
     <tr><td class="paramname">id</td><td>[in] Caller-defined ID for the crosshair.</td></tr>
   </table>
@@ -547,7 +547,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
           <td class="memname">void MeaCrossHair::Flash </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>flashCount</em> = <code><a class="el" href="classMeaCrossHair.html#acb1737af9b0a547544bcb2d463d82e6a">kFlashCount</a></code></td><td>)</td>
+          <td class="paramname"><em>flashCount</em> = <code><a class="el" href="classMeaCrossHair.html#a9e4e42e77c606959f9d106b8a463c0c6">kFlashCount</a></code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -563,7 +563,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 
 <p class="reference">References <a class="el" href="classMeaCrossHair.html#a650bb68544cb4806fe02f588f2c11244ac7af674266a8309d3352cc69b3a08b9c">Inverted</a>, <a class="el" href="classMeaCrossHair.html#aba797ed09b740f185fc5dfb16ed81e54">m_drawState</a>, <a class="el" href="classMeaCrossHair.html#ae4827fd464d93641bb63820d6248ebfc">m_flashCount</a>, and <a class="el" href="classMeaCrossHair.html#a84f272e874a4f09c524775f63dfc7985">m_flashInterval</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a9012ca0408f13e21dea5af79e58a6110">MeaAngleTool::Flash()</a>, <a class="el" href="classMeaCircleTool.html#ae18a15b55cf59bd7952cfca8bd9eafe3">MeaCircleTool::Flash()</a>, <a class="el" href="classMeaLineTool.html#a66a82987b05f1a89fc9f941d7c4e934b">MeaLineTool::Flash()</a>, <a class="el" href="classMeaPointTool.html#a304a1c65d2d5f1405992f4b0f0e6b213">MeaPointTool::Flash()</a>, <a class="el" href="classMeaRectTool.html#ac2bcd5f0467aa03bb2a9b58a5d7abf77">MeaRectTool::Flash()</a>, <a class="el" href="classMeaAngleTool.html#af6f6d9a619d673dc19cb7432ca8a778d">MeaAngleTool::Strobe()</a>, <a class="el" href="classMeaCircleTool.html#a7d414664bcd7f306d34eae844b987161">MeaCircleTool::Strobe()</a>, <a class="el" href="classMeaLineTool.html#afd00e9c2616d31e38834ceaf1c79ce82">MeaLineTool::Strobe()</a>, <a class="el" href="classMeaPointTool.html#ac333a8bd080a9f07110b8b3aba29ca8f">MeaPointTool::Strobe()</a>, and <a class="el" href="classMeaRectTool.html#a472b33212fa08636d3b40b3ae4d8e05d">MeaRectTool::Strobe()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a137784729bacd922021bcea37d1d0945">MeaAngleTool::Flash()</a>, <a class="el" href="classMeaCircleTool.html#a191acffacf91fb6dd312646624de1493">MeaCircleTool::Flash()</a>, <a class="el" href="classMeaLineTool.html#a4e889884c515ae82b592295e4b6b6a50">MeaLineTool::Flash()</a>, <a class="el" href="classMeaPointTool.html#a3cfa587a69ae9a558eabe105cdb4faf8">MeaPointTool::Flash()</a>, <a class="el" href="classMeaRectTool.html#a81b7d99846ea6fcd752cec6aea809587">MeaRectTool::Flash()</a>, <a class="el" href="classMeaAngleTool.html#a98447ffaa861b2b1463d6ea3fe84156b">MeaAngleTool::Strobe()</a>, <a class="el" href="classMeaCircleTool.html#ace6e13c1a15954ee9fdd6a3de4434479">MeaCircleTool::Strobe()</a>, <a class="el" href="classMeaLineTool.html#a27bf18af12563afd62f0931430337e6b">MeaLineTool::Strobe()</a>, <a class="el" href="classMeaPointTool.html#aad6dfd19d83830aee782072b6267f13e">MeaPointTool::Strobe()</a>, and <a class="el" href="classMeaRectTool.html#ae556cb593b12bd4a50366b30e65fe7ec">MeaRectTool::Strobe()</a>.</p>
 
 </div>
 </div>
@@ -945,7 +945,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 
 <p class="reference">References <a class="el" href="classMeaCrossHair.html#a088ebad9dd0f4a2bc4c6c00ec17df314">DestroyColors()</a>, <a class="el" href="classMeaCrossHair.html#a1b1bf429972ec71cfcf1bebd6a7941c7">m_backBrush</a>, <a class="el" href="classMeaCrossHair.html#ac0fcf447d6e7704b71430b56d21acd06">m_borderBrush</a>, and <a class="el" href="classMeaCrossHair.html#ab1d1aaed6edc5beb351280b7d1fd9847">m_hiliteBrush</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#ada7429d2df72657702fed49527924e43">MeaAngleTool::ColorsChanged()</a>, <a class="el" href="classMeaCircleTool.html#a881c42c7811241a46a3e5c03e5b93e56">MeaCircleTool::ColorsChanged()</a>, <a class="el" href="classMeaLineTool.html#a277c7a608f6a7fba7108ef294d2ad9d2">MeaLineTool::ColorsChanged()</a>, <a class="el" href="classMeaPointTool.html#a1a567beb25f6e9e8cc00e7ddfa315a35">MeaPointTool::ColorsChanged()</a>, <a class="el" href="classMeaRectTool.html#a033e061bb3c09ec7e9386b994cad2faf">MeaRectTool::ColorsChanged()</a>, <a class="el" href="classMeaCrossHair.html#a4cd05afb491a259cf4842f574a6d7cc5">Create()</a>, <a class="el" href="classMeaToolsPrefs.html#ac00bd2654c979078ec1effba162ff962">MeaToolsPrefs::OnChangeBackColor()</a>, <a class="el" href="classMeaToolsPrefs.html#a47240daea1e46fbbd037c4bcfb93e7a5">MeaToolsPrefs::OnChangeBorderColor()</a>, <a class="el" href="classMeaToolsPrefs.html#a576d7c4db3cd994cdf897d1c01180560">MeaToolsPrefs::OnChangeHiliteColor()</a>, <a class="el" href="classMeaToolsPrefs.html#a1fa840dfca0e60aae17f0d0c6f7ecc60">MeaToolsPrefs::OnDefBackColor()</a>, <a class="el" href="classMeaToolsPrefs.html#a647287303aed2f64547d2b51487e578f">MeaToolsPrefs::OnDefBorderColor()</a>, and <a class="el" href="classMeaToolsPrefs.html#a0deba1d5b54093642f2ec3f672f32cc6">MeaToolsPrefs::OnDefHiliteColor()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#aa4d4f35a305af1aac2514083d2a787d2">MeaAngleTool::ColorsChanged()</a>, <a class="el" href="classMeaCircleTool.html#ad15aa87b81f3a264ddfdc95a415594d6">MeaCircleTool::ColorsChanged()</a>, <a class="el" href="classMeaLineTool.html#ab953c2c8ffbbea8bf3700af6ea366c35">MeaLineTool::ColorsChanged()</a>, <a class="el" href="classMeaPointTool.html#ac85413e42bbb2fe90561647f1995e19b">MeaPointTool::ColorsChanged()</a>, <a class="el" href="classMeaRectTool.html#a8b460fe648aec6484259802a9f78588a">MeaRectTool::ColorsChanged()</a>, <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">Create()</a>, <a class="el" href="classMeaToolsPrefs.html#ac00bd2654c979078ec1effba162ff962">MeaToolsPrefs::OnChangeBackColor()</a>, <a class="el" href="classMeaToolsPrefs.html#a47240daea1e46fbbd037c4bcfb93e7a5">MeaToolsPrefs::OnChangeBorderColor()</a>, <a class="el" href="classMeaToolsPrefs.html#a576d7c4db3cd994cdf897d1c01180560">MeaToolsPrefs::OnChangeHiliteColor()</a>, <a class="el" href="classMeaToolsPrefs.html#a1fa840dfca0e60aae17f0d0c6f7ecc60">MeaToolsPrefs::OnDefBackColor()</a>, <a class="el" href="classMeaToolsPrefs.html#a647287303aed2f64547d2b51487e578f">MeaToolsPrefs::OnDefBorderColor()</a>, and <a class="el" href="classMeaToolsPrefs.html#a0deba1d5b54093642f2ec3f672f32cc6">MeaToolsPrefs::OnDefHiliteColor()</a>.</p>
 
 </div>
 </div>
@@ -975,7 +975,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 
 <p class="reference">References <a class="el" href="LayeredWindows_8h.html#aebe32a6e3c61801eda42b700cd446f4f">LWA_ALPHA</a>, <a class="el" href="classMeaCrossHair.html#a7ae664eaea9b595a881b503cc4d5582e">m_opacity</a>, <a class="el" href="classMeaGraphic.html#aad9b8c5e7d5841ec42e9b99668fc9e27">MeaGraphic::m_parent</a>, and <a class="el" href="LayeredWindows_8h.html#a8c3dfae21b51e3c874491a88d240fad1">SetLayeredWindowAttributes</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#ada7429d2df72657702fed49527924e43">MeaAngleTool::ColorsChanged()</a>, <a class="el" href="classMeaCircleTool.html#a881c42c7811241a46a3e5c03e5b93e56">MeaCircleTool::ColorsChanged()</a>, <a class="el" href="classMeaLineTool.html#a277c7a608f6a7fba7108ef294d2ad9d2">MeaLineTool::ColorsChanged()</a>, <a class="el" href="classMeaPointTool.html#a1a567beb25f6e9e8cc00e7ddfa315a35">MeaPointTool::ColorsChanged()</a>, <a class="el" href="classMeaRectTool.html#a033e061bb3c09ec7e9386b994cad2faf">MeaRectTool::ColorsChanged()</a>, <a class="el" href="classMeaCrossHair.html#a4cd05afb491a259cf4842f574a6d7cc5">Create()</a>, <a class="el" href="classMeaToolsPrefs.html#a5613d72ca88ce3070df9649cce7b9986">MeaToolsPrefs::OnHScroll()</a>, and <a class="el" href="classMeaToolsPrefs.html#a7a15c4c4aa51a15b2fe2e3ff9bbd7a20">MeaToolsPrefs::OnInitDialog()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#aa4d4f35a305af1aac2514083d2a787d2">MeaAngleTool::ColorsChanged()</a>, <a class="el" href="classMeaCircleTool.html#ad15aa87b81f3a264ddfdc95a415594d6">MeaCircleTool::ColorsChanged()</a>, <a class="el" href="classMeaLineTool.html#ab953c2c8ffbbea8bf3700af6ea366c35">MeaLineTool::ColorsChanged()</a>, <a class="el" href="classMeaPointTool.html#ac85413e42bbb2fe90561647f1995e19b">MeaPointTool::ColorsChanged()</a>, <a class="el" href="classMeaRectTool.html#a8b460fe648aec6484259802a9f78588a">MeaRectTool::ColorsChanged()</a>, <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">Create()</a>, <a class="el" href="classMeaToolsPrefs.html#a5613d72ca88ce3070df9649cce7b9986">MeaToolsPrefs::OnHScroll()</a>, and <a class="el" href="classMeaToolsPrefs.html#a7a15c4c4aa51a15b2fe2e3ff9bbd7a20">MeaToolsPrefs::OnInitDialog()</a>.</p>
 
 </div>
 </div>
@@ -1005,7 +1005,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 
 <p class="reference">References <a class="el" href="classMeaCrossHair.html#ac354a044b43c71329deb787c2266ae22">GetLeftTop()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a83e6d60ea4f8509a142c8e502e0a758e">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#ad296671110ff62cbcd42cb227933dcb9">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#aace026d83ec7a134bea91caa3abd7e79">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaRectTool.html#a680f2150bfa729f3fdd3f537c2236699">MeaRectTool::OnCHMove()</a>, <a class="el" href="classMeaToolsPrefs.html#a7a15c4c4aa51a15b2fe2e3ff9bbd7a20">MeaToolsPrefs::OnInitDialog()</a>, <a class="el" href="classMeaPointTool.html#a9a23e2973459c01a1738a8faf516b2a0">MeaPointTool::SetPosition()</a>, <a class="el" href="classMeaAngleTool.html#a1d712455393a2b3b63a53aff8c0bd93d">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#ad340d6a3845a59b5b98ff181e6e823da">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#a6f7f6d9631602f30f290a97fa77e75ac">MeaLineTool::SetPosition()</a>, and <a class="el" href="classMeaRectTool.html#a3d7d394bc47a0d1b0af9b41c2e9248c5">MeaRectTool::SetPosition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a71125449362745a432ff0648f255f36f">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#a09e318ee5aa9580e18bd47f6d5cbd2c9">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#abe6423f3d92dc0fc2e8d708eb4458d24">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaRectTool.html#aacbe2a77ecf3578ea6cea95b8929ca48">MeaRectTool::OnCHMove()</a>, <a class="el" href="classMeaToolsPrefs.html#a7a15c4c4aa51a15b2fe2e3ff9bbd7a20">MeaToolsPrefs::OnInitDialog()</a>, <a class="el" href="classMeaPointTool.html#a9a23e2973459c01a1738a8faf516b2a0">MeaPointTool::SetPosition()</a>, <a class="el" href="classMeaAngleTool.html#ab34d9b2b1ff4bf40f58266413d41533b">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#a357c2f206bdd6f6accb942025c0d4efd">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#a02e7f361e8601f2c8735cc49b89c6432">MeaLineTool::SetPosition()</a>, and <a class="el" href="classMeaRectTool.html#ab1659d8d9f457370ebb1dc94d6d8bde0">MeaRectTool::SetPosition()</a>.</p>
 
 </div>
 </div>
@@ -1037,7 +1037,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kInitCoor
 
 <p class="reference">References <a class="el" href="classMeaCrossHair.html#a767001c8f0466bb6e0021cd6e5801588">m_halfSize</a>, <a class="el" href="classMeaCrossHair.html#ac0361504b3e35238257634fb14edd8ea">m_numCoords</a>, <a class="el" href="classMeaCrossHair.html#a24f6346b9e6caece60e6de5ad796ef1b">m_size</a>, and <a class="el" href="classMeaCrossHair.html#a2fd3b765580526e3edf6af3d9a8a686c">m_spread</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaCrossHair.html#a4cd05afb491a259cf4842f574a6d7cc5">Create()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">Create()</a>.</p>
 
 </div>
 </div>

@@ -52,7 +52,7 @@
 class MeaToolMgr : public MeaSingleton_T<MeaToolMgr>
 {
 public:
-    static const bool   kDefCrosshairsEnabled;      ///< Crosshairs are enabled by default.
+    static constexpr bool kDefCrosshairsEnabled { true };   ///< Crosshairs are enabled by default.
 
 
     /// Persists the state of the manager to the specified profile object.
@@ -100,11 +100,10 @@ public:
     /// a tool hides it.
     ///
     void DisableRadioTools() {
-        if (m_dataDisplay != NULL)
+        if (m_dataDisplay != nullptr)
             m_dataDisplay->ClearRegionData();
-        ToolsMap::const_iterator iter;
-        for (iter = m_tools.begin(); iter != m_tools.end(); ++iter) {
-            MeaTool *tool = (*iter).second;
+        for (const auto& toolEntry : m_tools) {
+            MeaTool *tool = toolEntry.second;
             if (tool->IsRadioTool() && tool->IsEnabled()) {
                 tool->Disable();
             }
@@ -182,7 +181,7 @@ public:
     void ChangeRadioToolEnable() {
         DisableRadioTools();
         EnableRadioTool();
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->SetRegionLabel(GetLabelId());
         }
     }
@@ -206,18 +205,16 @@ public:
     /// @param reason       [in] Reason the update was requested.
     ///
     void UpdateTools(MeaUpdateReason reason = MeaUpdateReason::NormalUpdate) const {
-        ToolsMap::const_iterator iter;
-        for (iter = m_tools.begin(); iter != m_tools.end(); ++iter) {
-            (*iter).second->Update(reason);
+        for (const auto& toolEntry : m_tools) {
+            toolEntry.second->Update(reason);
         }
     }
 
     /// Informs all tools that the color style sheet has changed.
     ///
     void ColorsChanged() const {
-        ToolsMap::const_iterator iter;
-        for (iter = m_tools.begin(); iter != m_tools.end(); ++iter) {
-            (*iter).second->ColorsChanged();
+        for (const auto& toolEntry : m_tools) {
+            toolEntry.second->ColorsChanged();
         }
     }
 
@@ -389,7 +386,7 @@ public:
     /// @param pos      [in] Point defining a screen.
     /// 
     void UpdateScreenInfo(const POINT& pos) {
-        if (m_screenTool != NULL) {
+        if (m_screenTool != nullptr) {
             m_screenTool->SetPosition(pos);
         }
     }
@@ -403,7 +400,7 @@ public:
     /// @param cpoint   [in] Point, in the current units.
     ///
     void ShowXY1(const POINT& point, const FPOINT& cpoint) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowXY1(point, cpoint);
         }
         m_rulerTool->SetIndicator(MeaRuler::IndicatorId::Ind1, point);
@@ -417,7 +414,7 @@ public:
     /// @param cpoint   [in] Point, in the current units.
     ///
     void ShowXY2(const POINT& point, const FPOINT& cpoint) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowXY2(point, cpoint);
         }
         m_rulerTool->SetIndicator(MeaRuler::IndicatorId::Ind2, point);
@@ -431,7 +428,7 @@ public:
     /// @param cpoint   [in] Point, in the current units.
     ///
     void ShowXYV(const POINT& point, const FPOINT& cpoint) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowXYV(point, cpoint);
         }
         m_rulerTool->SetIndicator(MeaRuler::IndicatorId::Ind3, point);
@@ -443,7 +440,7 @@ public:
     /// @param size     [in] Width and height, in the current units
     ///
     void ShowWH(const FSIZE& size) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowWH(size);
         }
     }
@@ -455,7 +452,7 @@ public:
     ///                 this parameter, in the current units
     ///
     void ShowDistance(const FSIZE& size) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowDistance(size);
         }
     }
@@ -466,7 +463,7 @@ public:
     /// @param dist     [in] The distance, in the current units
     ///
     void ShowDistance(double dist) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowDistance(dist);
         }
     }
@@ -477,7 +474,7 @@ public:
     /// @param angle    [in] Angle value, in the current angular units.
     ///
     void ShowAngle(double angle) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowAngle(angle);
         }
     }
@@ -488,7 +485,7 @@ public:
     /// @param size    [in] Width and height of the bounding rectangle.
     ///
     void ShowAspect(const FSIZE& size) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowAspect(size);
         }
     }
@@ -501,7 +498,7 @@ public:
     ///                 rectangular area is calculated, in current units.
     ///
     void ShowRectArea(const FSIZE& size) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowRectArea(size);
         }
     }
@@ -513,7 +510,7 @@ public:
     ///                     area is calculated, in the current units.
     ///
     void ShowCircleArea(double radius) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowCircleArea(radius);
         }
     }
@@ -523,7 +520,7 @@ public:
     /// @param name     [in] Name to be displayed.
     ///
     void ShowScreenName(const CString& name) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowScreenName(name);
         }
     }
@@ -534,7 +531,7 @@ public:
     /// @param size     [in] Width and height, in the current units.
     ///
     void ShowScreenWH(const FSIZE& size) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowScreenWH(size);
         }
     }
@@ -545,7 +542,7 @@ public:
     /// @param res      [in] Screen resolution, in the current units.
     ///
     void ShowScreenRes(const FSIZE& res) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowScreenRes(res);
         }
     }
@@ -556,7 +553,7 @@ public:
     ///                 calibration button should be displayed.
     ///
     void ShowCalButton(bool show) {
-        if (m_dataDisplay != NULL) {
+        if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowCalButton(show);
         }
     }

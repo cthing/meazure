@@ -105,8 +105,8 @@ public:
 class MeaCrossHair : public MeaGraphic
 {
 public:
-    static const int kFlashCount;       ///< Number of times to flash the crosshair when Flash() is called
-    static const int kStrobeCount;      ///< Number of times to flash the crosshair when Strobe() is called
+    static constexpr int kFlashCount { 9 };       ///< Number of times to flash the crosshair when Flash() is called
+    static constexpr int kStrobeCount { 1 };      ///< Number of times to flash the crosshair when Strobe() is called
     
 
     /// Constructs a crosshair. Prior to displaying the crosshair with
@@ -139,8 +139,8 @@ public:
     ///                     inclusive.
     /// @param callback     [in] A class derived from MeaCrossHairCallback that
     ///                     wants to receive notification of crosshair events.
-    ///                     Can be set to NULL if no callback is desired.
-    /// @param parent       [in] Parent window or <b>NULL</b> if the crosshair does
+    ///                     Can be set to <b>nullptr</b> if no callback is desired.
+    /// @param parent       [in] Parent window or <b>nullptr</b> if the crosshair does
     ///                     not have an immediate parent. If a parent window is
     ///                     specified, the crosshair is created as a child window
     ///                     (<b>WS_CHILD</b>). Otherwise the crosshair is created
@@ -154,7 +154,7 @@ public:
     ///
     bool    Create(COLORREF borderColor, COLORREF backColor, COLORREF hiliteColor,
                     BYTE opacity, MeaCrossHairCallback *callback,
-                    const CWnd *parent = NULL, UINT toolTipId = 0xffff,
+                    const CWnd *parent = nullptr, UINT toolTipId = 0xffff,
                     UINT id = 0xffff);
 
 

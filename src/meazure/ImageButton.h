@@ -42,7 +42,7 @@ public:
     /// Constructs an image button with no images specified; the LoadBitmaps
     /// method must be called.
     ///
-    MeaImageButton() : CButton(), m_theme(NULL), m_up(0), m_down(0),
+    MeaImageButton() : CButton(), m_theme(nullptr), m_up(0), m_down(0),
         m_disabled(0), m_depressed(false), m_toggle(false) { }
     
     /// Destroys a image button object.
@@ -68,7 +68,7 @@ public:
     ///
     /// @return <b>TRUE</b> if message was processed.
     ///
-    virtual BOOL PreTranslateMessage(MSG* pMsg);
+    virtual BOOL PreTranslateMessage(MSG* pMsg) override;
 
     /// Specifies whether the button is a push button or a toggle button.
     ///
@@ -105,7 +105,7 @@ public:
     void SetState(bool state) {
         m_depressed = state;
         CButton::SetState(state);
-        InvalidateRect(NULL);
+        InvalidateRect(nullptr);
     }
 
 protected:

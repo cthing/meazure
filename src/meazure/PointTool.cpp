@@ -30,12 +30,11 @@ const CString MeaPointTool::kToolName(_T("PointTool"));
 
 
 MeaPointTool::MeaPointTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
-    MeaCrossHairCallback()
+    MeaCrossHairCallback(), m_center(MeaScreenMgr::Instance().GetCenter())
 {
     // Set the default tool position. The crosshair is initially
     // is placed at the center of the screen containing the application.
     //
-    m_center = MeaScreenMgr::Instance().GetCenter();
     m_anchorPoint = m_center;
 }
 
@@ -59,7 +58,7 @@ bool MeaPointTool::Create()
                             MeaColors::Get(MeaColors::CrossHairBack),
                             MeaColors::Get(MeaColors::CrossHairHilite),
                             MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, NULL, IDS_MEA_POINT1)) {
+                            this, nullptr, IDS_MEA_POINT1)) {
         return false;
     }
 

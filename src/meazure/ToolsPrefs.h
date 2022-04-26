@@ -50,12 +50,10 @@ public:
     ///
     ~MeaToolsPrefs();
 
-    //{{AFX_DATA(MeaToolsPrefs)
     enum { IDD = IDD_PREF_TOOLS };
     BOOL    m_showDataWin;
     int     m_opacity;
     BOOL    m_originMarker;
-    //}}AFX_DATA
 
     /// @var m_showDataWin
     /// Preference variable indicating whether the data window popup should be displayed.
@@ -83,10 +81,8 @@ public:
     ///
     virtual BOOL OnInitDialog();
 
-    //{{AFX_VIRTUAL(MeaToolsPrefs)
     protected:
-    virtual void DoDataExchange(CDataExchange* pDX);
-    //}}AFX_VIRTUAL
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
     /// @fn DoDataExchange(CDataExchange* pDX)
     /// Performs Dynamic Data Exchange (DDX) for the page.
@@ -95,7 +91,6 @@ public:
     ///             and the member variables.
 
 protected:
-    //{{AFX_MSG(MeaToolsPrefs)
     afx_msg void OnChangeLineColor();
     afx_msg void OnDefLineColor();
     afx_msg void OnChangeBorderColor();
@@ -106,7 +101,7 @@ protected:
     afx_msg void OnDefHiliteColor();
     afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
     afx_msg void OnChange();
-    //}}AFX_MSG
+
     DECLARE_MESSAGE_MAP()
 
     /// @fn OnChangeLineColor()
@@ -162,6 +157,3 @@ private:
     MeaCrossHair    m_hiliteCH;     ///< Sample crosshair to preview the highlight color.
     MeaDataWin      m_dataWin;      ///< Sample data popup window.
 };
-
-
-//{{AFX_INSERT_LOCATION}}

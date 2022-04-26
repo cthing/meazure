@@ -33,10 +33,8 @@ IMPLEMENT_DYNAMIC(MeaPreferences, CPropertySheet)
 
 
 BEGIN_MESSAGE_MAP(MeaPreferences, CPropertySheet)
-    //{{AFX_MSG_MAP(MeaPreferences)
     ON_WM_MOVE()
     ON_WM_CREATE()
-    //}}AFX_MSG_MAP
     ON_BN_CLICKED(ID_APPLY_NOW, OnApply)
 END_MESSAGE_MAP()
 

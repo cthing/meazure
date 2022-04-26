@@ -90,48 +90,40 @@ $(function() {
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">    /// @param pParentWnd       [in] A pointer to the file dialog-box object’s</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">    ///                         parent or owner window.</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classMeaPositionSaveDlg.html#a104ea7d040cd3ed649c9559354387c21">MeaPositionSaveDlg</a>(LPCTSTR lpszDefExt = NULL,</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        LPCTSTR lpszFileName = NULL,</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        LPCTSTR lpszFilter = NULL,</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        CWnd* pParentWnd = NULL);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classMeaPositionSaveDlg.html#afffef3402e53882037631bee7ad730d8">MeaPositionSaveDlg</a>(LPCTSTR lpszDefExt = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        LPCTSTR lpszFileName = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        LPCTSTR lpszFilter = <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        CWnd* pParentWnd = <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"></span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">    /// Destroys a position log file dialog.</span></div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    ///</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classMeaPositionSaveDlg.html#a4cacecbe61c26b49c402731713cf8be3">~MeaPositionSaveDlg</a>();</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="comment">//{{AFX_DATA(MeaPositionSaveDlg)</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keyword">enum</span> { IDD = IDD_POSITION_SAVE };</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classMeaPositionSaveDlg.html#abac050ae0a2c64048ab8728c36a0607e">   56</a></span>    CString <a class="code hl_variable" href="classMeaPositionSaveDlg.html#abac050ae0a2c64048ab8728c36a0607e">m_desc</a>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classMeaPositionSaveDlg.html#aa6fc54b8e9401d4866cfbb49d10905d1">   57</a></span>    CString <a class="code hl_variable" href="classMeaPositionSaveDlg.html#aa6fc54b8e9401d4866cfbb49d10905d1">m_title</a>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">//}}AFX_DATA</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"></span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    /// @var m_desc</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">    /// Position Log file description.</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"></span><span class="comment"></span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">    /// @var m_title</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">    /// Title for the dialog.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment"></span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">//{{AFX_MSG(MeaPositionSaveDlg)</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="comment">// NOTE - the ClassWizard will add and remove member functions here.</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">//}}AFX_MSG</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    DECLARE_MESSAGE_MAP()</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">/// Performs dynamic data exchange (DDX) for the dialog.</span><span class="comment"></span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">    /// @param pDX      [in] DDX operation object.</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"></span>    virtual <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaPositionSaveDlg.html#a5b9744655417c635ff1cf4b787262cbd">DoDataExchange</a>(CDataExchange* pDX);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>};</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">//{{AFX_INSERT_LOCATION}}</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">// Microsoft Visual C++ will insert additional declarations immediately before the previous line.</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">enum</span> { IDD = IDD_POSITION_SAVE };</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classMeaPositionSaveDlg.html#abac050ae0a2c64048ab8728c36a0607e">   55</a></span>    CString <a class="code hl_variable" href="classMeaPositionSaveDlg.html#abac050ae0a2c64048ab8728c36a0607e">m_desc</a>;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classMeaPositionSaveDlg.html#aa6fc54b8e9401d4866cfbb49d10905d1">   56</a></span>    CString <a class="code hl_variable" href="classMeaPositionSaveDlg.html#aa6fc54b8e9401d4866cfbb49d10905d1">m_title</a>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"></span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">    /// @var m_desc</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">    /// Position Log file description.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment"></span><span class="comment"></span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">    /// @var m_title</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">    /// Title for the dialog.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment"></span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    DECLARE_MESSAGE_MAP()</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">/// Performs dynamic data exchange (DDX) for the dialog.</span><span class="comment"></span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    /// @param pDX      [in] DDX operation object.</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"></span>    virtual <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaPositionSaveDlg.html#a09b8abdbb542caefbd813508dd686a9c">DoDataExchange</a>(CDataExchange* pDX) override;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>};</div>
 <div class="ttc" id="aclassMeaPositionSaveDlg_html"><div class="ttname"><a href="classMeaPositionSaveDlg.html">MeaPositionSaveDlg</a></div><div class="ttdoc">The Save dialog for Position Log files.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.h:31</div></div>
-<div class="ttc" id="aclassMeaPositionSaveDlg_html_a104ea7d040cd3ed649c9559354387c21"><div class="ttname"><a href="classMeaPositionSaveDlg.html#a104ea7d040cd3ed649c9559354387c21">MeaPositionSaveDlg::MeaPositionSaveDlg</a></div><div class="ttdeci">MeaPositionSaveDlg(LPCTSTR lpszDefExt=NULL, LPCTSTR lpszFileName=NULL, LPCTSTR lpszFilter=NULL, CWnd *pParentWnd=NULL)</div><div class="ttdoc">Constructs a position log file dialog.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.cpp:41</div></div>
-<div class="ttc" id="aclassMeaPositionSaveDlg_html_a4cacecbe61c26b49c402731713cf8be3"><div class="ttname"><a href="classMeaPositionSaveDlg.html#a4cacecbe61c26b49c402731713cf8be3">MeaPositionSaveDlg::~MeaPositionSaveDlg</a></div><div class="ttdeci">virtual ~MeaPositionSaveDlg()</div><div class="ttdoc">Destroys a position log file dialog.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.cpp:60</div></div>
-<div class="ttc" id="aclassMeaPositionSaveDlg_html_a5b9744655417c635ff1cf4b787262cbd"><div class="ttname"><a href="classMeaPositionSaveDlg.html#a5b9744655417c635ff1cf4b787262cbd">MeaPositionSaveDlg::DoDataExchange</a></div><div class="ttdeci">virtual void DoDataExchange(CDataExchange *pDX)</div><div class="ttdoc">Performs dynamic data exchange (DDX) for the dialog.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.cpp:65</div></div>
-<div class="ttc" id="aclassMeaPositionSaveDlg_html_aa6fc54b8e9401d4866cfbb49d10905d1"><div class="ttname"><a href="classMeaPositionSaveDlg.html#aa6fc54b8e9401d4866cfbb49d10905d1">MeaPositionSaveDlg::m_title</a></div><div class="ttdeci">CString m_title</div><div class="ttdoc">Title for the dialog.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.h:57</div></div>
-<div class="ttc" id="aclassMeaPositionSaveDlg_html_abac050ae0a2c64048ab8728c36a0607e"><div class="ttname"><a href="classMeaPositionSaveDlg.html#abac050ae0a2c64048ab8728c36a0607e">MeaPositionSaveDlg::m_desc</a></div><div class="ttdeci">CString m_desc</div><div class="ttdoc">Position Log file description.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.h:56</div></div>
+<div class="ttc" id="aclassMeaPositionSaveDlg_html_a09b8abdbb542caefbd813508dd686a9c"><div class="ttname"><a href="classMeaPositionSaveDlg.html#a09b8abdbb542caefbd813508dd686a9c">MeaPositionSaveDlg::DoDataExchange</a></div><div class="ttdeci">virtual void DoDataExchange(CDataExchange *pDX) override</div><div class="ttdoc">Performs dynamic data exchange (DDX) for the dialog.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.cpp:58</div></div>
+<div class="ttc" id="aclassMeaPositionSaveDlg_html_a4cacecbe61c26b49c402731713cf8be3"><div class="ttname"><a href="classMeaPositionSaveDlg.html#a4cacecbe61c26b49c402731713cf8be3">MeaPositionSaveDlg::~MeaPositionSaveDlg</a></div><div class="ttdeci">virtual ~MeaPositionSaveDlg()</div><div class="ttdoc">Destroys a position log file dialog.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.cpp:53</div></div>
+<div class="ttc" id="aclassMeaPositionSaveDlg_html_aa6fc54b8e9401d4866cfbb49d10905d1"><div class="ttname"><a href="classMeaPositionSaveDlg.html#aa6fc54b8e9401d4866cfbb49d10905d1">MeaPositionSaveDlg::m_title</a></div><div class="ttdeci">CString m_title</div><div class="ttdoc">Title for the dialog.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.h:56</div></div>
+<div class="ttc" id="aclassMeaPositionSaveDlg_html_abac050ae0a2c64048ab8728c36a0607e"><div class="ttname"><a href="classMeaPositionSaveDlg.html#abac050ae0a2c64048ab8728c36a0607e">MeaPositionSaveDlg::m_desc</a></div><div class="ttdeci">CString m_desc</div><div class="ttdoc">Position Log file description.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.h:55</div></div>
+<div class="ttc" id="aclassMeaPositionSaveDlg_html_afffef3402e53882037631bee7ad730d8"><div class="ttname"><a href="classMeaPositionSaveDlg.html#afffef3402e53882037631bee7ad730d8">MeaPositionSaveDlg::MeaPositionSaveDlg</a></div><div class="ttdeci">MeaPositionSaveDlg(LPCTSTR lpszDefExt=nullptr, LPCTSTR lpszFileName=nullptr, LPCTSTR lpszFilter=nullptr, CWnd *pParentWnd=nullptr)</div><div class="ttdoc">Constructs a position log file dialog.</div><div class="ttdef"><b>Definition:</b> PositionSaveDlg.cpp:38</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1">
 <address style="align: right;"><small>Copyright 2011 C Thing Software</small></address>

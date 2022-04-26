@@ -26,8 +26,8 @@
 // Shared global variables
 
 #pragma data_seg("MeaHooksShared")
-DWORD   g_meaHookThreadId = 0;
-HHOOK   g_meaMouseHook = NULL;
+DWORD g_meaHookThreadId { 0 };
+HHOOK g_meaMouseHook { nullptr };
 #pragma data_seg()
 
 #pragma comment(linker, "/section:MeaHooksShared,rws")
@@ -35,7 +35,7 @@ HHOOK   g_meaMouseHook = NULL;
 
 // Globals not exported
 
-HINSTANCE g_hInstDll = NULL;
+HINSTANCE g_hInstDll { nullptr };
 
 
 /// Entry point for the DLL.
@@ -82,25 +82,25 @@ LRESULT CALLBACK MouseHookProc(int nCode, WPARAM wParam, LPARAM lParam)
 
 bool MeaEnableMouseHook()
 {
-    _ASSERT(g_meaMouseHook == NULL);
+    _ASSERT(g_meaMouseHook == nullptr);
 
     g_meaHookThreadId = GetCurrentThreadId();
     g_meaMouseHook = SetWindowsHookEx(WH_MOUSE, MouseHookProc, g_hInstDll, 0);
 
-    return (g_meaMouseHook != NULL);
+    return (g_meaMouseHook != nullptr);
 }
 
 bool MeaDisableMouseHook()
 {
-    _ASSERT(g_meaMouseHook != NULL);
+    _ASSERT(g_meaMouseHook != nullptr);
 
     // Turn off the hook
     bool ret = UnhookWindowsHookEx(g_meaMouseHook) ? true : false;
-    g_meaMouseHook = NULL;
+    g_meaMouseHook = nullptr;
 
     // Flush any pending hook messages from the queue
     MSG msg;
-    while (PeekMessage(&msg, NULL,  MEA_MOUSE_MSG, MEA_MOUSE_MSG, PM_REMOVE)) {
+    while (PeekMessage(&msg, nullptr,  MEA_MOUSE_MSG, MEA_MOUSE_MSG, PM_REMOVE)) {
     }
     
     return ret;

@@ -36,9 +36,9 @@ class MeaRulerTool : public MeaTool, public MeaRulerCallback
 public:
     // Defaults
     //
-    static const bool       kShowRulers;    ///< Indicates if the rulers are shown by default
+    static constexpr bool kShowRulers { false };    ///< Indicates if the rulers are shown by default
 
-    static const CString    kToolName;      ///< "RulerTool"
+    static const CString kToolName;                 ///< "RulerTool"
 
     /// Constructs a new instance of the Ruler tool. To use a
     /// newly constructed Ruler tool, the Enable() method must be
@@ -55,18 +55,18 @@ public:
 
     /// Displays the Ruler tool.
     ///
-    virtual void Enable();
+    virtual void Enable() override;
 
     /// Hides the Ruler tool.
     ///
-    virtual void Disable();
+    virtual void Disable() override;
 
     
     /// Positions and draws the rulers.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
-    virtual void Update(MeaUpdateReason reason);
+    virtual void Update(MeaUpdateReason reason) override;
 
 
     /// Persists the state of the tool to the specified profile object.
@@ -75,19 +75,19 @@ public:
     ///                 Typically an MeaFileProfile or MeaRegistryProfile
     ///                 object.
     ///
-    virtual void SaveProfile(MeaProfile& profile);
+    virtual void SaveProfile(MeaProfile& profile) override;
 
     /// Restores the state of the tool from the specified profile object.
     ///
     /// @param profile  [in] The source for the state information. Typically
     ///                 an MeaFileProfile or MeaRegistryProfile object.
     ///
-    virtual void LoadProfile(MeaProfile& profile);
+    virtual void LoadProfile(MeaProfile& profile) override;
 
 
     /// Resets the tool to its default state.
     ///
-    virtual void MasterReset();
+    virtual void MasterReset() override;
 
 
     /// Returns the name of the tool. Each tool has a unique name
@@ -96,7 +96,7 @@ public:
     ///
     /// @return Name of the tool ("RulerTool").
     ///
-    virtual CString GetToolName() const;
+    virtual CString GetToolName() const override;
 
 
     /// Returns the tool's current position which, for the Ruler tool,
@@ -104,13 +104,13 @@ public:
     ///
     /// @return The position (0, 0)
     ///
-    virtual const POINT&    GetPosition() const;
+    virtual const POINT&    GetPosition() const override;
 
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The rulers are redrawn in their new colors.
     ///
-    virtual void    ColorsChanged();
+    virtual void    ColorsChanged() override;
 
 
     /// Sets the position of the specified ruler indicator. The ruler
@@ -129,7 +129,7 @@ public:
     ///
     /// @param info     [in] Ruler information structure
     ///
-    virtual void OnRulerMove(const RulerInfo *info);
+    virtual void OnRulerMove(const RulerInfo *info) override;
 
 private:
     /// Class representing a single screen's set of rulers. A ruler

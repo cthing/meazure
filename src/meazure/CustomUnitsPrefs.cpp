@@ -34,7 +34,6 @@ IMPLEMENT_DYNCREATE(MeaCustomUnitsPrefs, CPropertyPage)
 
 
 BEGIN_MESSAGE_MAP(MeaCustomUnitsPrefs, CPropertyPage)
-    //{{AFX_MSG_MAP(MeaCustomUnitsPrefs)
     ON_BN_CLICKED(IDC_CUST_CLEAR, OnClear)
     ON_EN_CHANGE(IDC_CUST_CM_FIELD, OnCentimeterChange)
     ON_EN_CHANGE(IDC_CUST_NAME_FIELD, OnNameChange)
@@ -45,62 +44,58 @@ BEGIN_MESSAGE_MAP(MeaCustomUnitsPrefs, CPropertyPage)
     ON_BN_CLICKED(IDC_CUST_PX, OnPixelBasis)
     ON_EN_CHANGE(IDC_CUST_IN_FIELD, OnInchChange)
     ON_EN_CHANGE(IDC_CUST_PX_FIELD, OnPixelChange)
-    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 
 MeaCustomUnitsPrefs::MeaCustomUnitsPrefs() : CPropertyPage(MeaCustomUnitsPrefs::IDD),
     m_lockout(false),
-    m_nameField(NULL),
-    m_abbrevField(NULL),
-    m_precisionButton(NULL),
-    m_basisLabel(NULL),
-    m_pxButton(NULL),
-    m_inButton(NULL),
-    m_cmButton(NULL),
-    m_pxLabel(NULL),
-    m_inLabel(NULL),
-    m_cmLabel(NULL),
-    m_pxAbbrev(NULL),
-    m_inAbbrev(NULL),
-    m_cmAbbrev(NULL)
+    m_nameField(nullptr),
+    m_abbrevField(nullptr),
+    m_precisionButton(nullptr),
+    m_basisLabel(nullptr),
+    m_pxButton(nullptr),
+    m_inButton(nullptr),
+    m_cmButton(nullptr),
+    m_pxLabel(nullptr),
+    m_inLabel(nullptr),
+    m_cmLabel(nullptr),
+    m_pxAbbrev(nullptr),
+    m_inAbbrev(nullptr),
+    m_cmAbbrev(nullptr),
+    m_abbrev(_T("")),
+    m_name(_T("")),
+    m_scaleBasis(MeaCustomUnits::PixelBasis),
+    m_pxScaleFactor(1.0),
+    m_inScaleFactor(1.0),
+    m_cmScaleFactor(1.0)
 {
-    //{{AFX_DATA_INIT(MeaCustomUnitsPrefs)
-    m_abbrev = _T("");
-    m_name = _T("");
-    m_scaleBasis = MeaCustomUnits::PixelBasis;
-    m_pxScaleFactor = 1.0;
-    m_inScaleFactor = 1.0;
-    m_cmScaleFactor = 1.0;
-    //}}AFX_DATA_INIT
 }
 
 
 MeaCustomUnitsPrefs::~MeaCustomUnitsPrefs()
 {
-    m_nameField         = NULL;
-    m_abbrevField       = NULL;
-    m_precisionButton   = NULL;
-    m_basisLabel        = NULL;
+    m_nameField = nullptr;
+    m_abbrevField = nullptr;
+    m_precisionButton = nullptr;
+    m_basisLabel = nullptr;
 
-    m_pxButton  = NULL;
-    m_inButton  = NULL;
-    m_cmButton  = NULL;
+    m_pxButton = nullptr;
+    m_inButton = nullptr;
+    m_cmButton = nullptr;
 
-    m_pxLabel   = NULL;
-    m_inLabel   = NULL;
-    m_cmLabel   = NULL;
+    m_pxLabel = nullptr;
+    m_inLabel = nullptr;
+    m_cmLabel = nullptr;
 
-    m_pxAbbrev  = NULL;
-    m_inAbbrev  = NULL;
-    m_cmAbbrev  = NULL;
+    m_pxAbbrev = nullptr;
+    m_inAbbrev = nullptr;
+    m_cmAbbrev = nullptr;
 }
 
 
 void MeaCustomUnitsPrefs::DoDataExchange(CDataExchange* pDX)
 {
     CPropertyPage::DoDataExchange(pDX);
-    //{{AFX_DATA_MAP(MeaCustomUnitsPrefs)
     DDX_Text(pDX, IDC_CUST_ABBREV_FIELD, m_abbrev);
     DDV_MaxChars(pDX, m_abbrev, 2);
     DDX_Text(pDX, IDC_CUST_NAME_FIELD, m_name);
@@ -109,7 +104,6 @@ void MeaCustomUnitsPrefs::DoDataExchange(CDataExchange* pDX)
     DDX_Text(pDX, IDC_CUST_PX_FIELD, m_pxScaleFactor);
     DDX_Text(pDX, IDC_CUST_IN_FIELD, m_inScaleFactor);
     DDX_Text(pDX, IDC_CUST_CM_FIELD, m_cmScaleFactor);
-    //}}AFX_DATA_MAP
 }
 
 
@@ -159,11 +153,11 @@ BOOL MeaCustomUnitsPrefs::OnInitDialog()
 
 void MeaCustomUnitsPrefs::SetCheck(UINT buttonId)
 {
-    MeaAssert(m_pxButton != NULL);
+    MeaAssert(m_pxButton != nullptr);
     m_pxButton->SetCheck((buttonId == IDC_CUST_PX) ? 1 : 0);
-    MeaAssert(m_inButton != NULL);
+    MeaAssert(m_inButton != nullptr);
     m_inButton->SetCheck((buttonId == IDC_CUST_IN) ? 1 : 0);
-    MeaAssert(m_cmButton != NULL);
+    MeaAssert(m_cmButton != nullptr);
     m_cmButton->SetCheck((buttonId == IDC_CUST_CM) ? 1 : 0);
 }
 
@@ -180,7 +174,7 @@ BOOL MeaCustomUnitsPrefs::OnKillActive()
 
 BOOL MeaCustomUnitsPrefs::OnSetActive() 
 {
-    if (m_abbrevField != NULL) {
+    if (m_abbrevField != nullptr) {
         m_lockout = true;
         OnAbbrevChange();
         m_lockout = false;
@@ -205,9 +199,9 @@ bool MeaCustomUnitsPrefs::Validate()
     CString name;
     CString abbrev;
 
-    MeaAssert(m_nameField != NULL);
+    MeaAssert(m_nameField != nullptr);
     m_nameField->GetWindowText(name);
-    MeaAssert(m_abbrevField != NULL);
+    MeaAssert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(abbrev);
 
     // The name and abbreviation fields must either both be empty
@@ -224,7 +218,7 @@ bool MeaCustomUnitsPrefs::Validate()
     m_inScaleField.GetValue(inScale);
     m_cmScaleField.GetValue(cmScale);
 
-    MeaNumberField* field = NULL;
+    MeaNumberField* field = nullptr;
 
     if (pxScale <= 0.0) {
         field = &m_pxScaleField;
@@ -234,7 +228,7 @@ bool MeaCustomUnitsPrefs::Validate()
         field = &m_cmScaleField;
     }
 
-    if (field != NULL) {
+    if (field != nullptr) {
         AfxMessageBox(IDS_MEA_CUSTOM_FACTOR_WARNING, MB_OK | MB_ICONSTOP);
         field->SetSel(0, -1);
         return false;
@@ -295,41 +289,41 @@ void MeaCustomUnitsPrefs::EnableScaleFactor()
     CString name;
     CString abbrev;
     
-    MeaAssert(m_nameField != NULL);
+    MeaAssert(m_nameField != nullptr);
     m_nameField->GetWindowText(name);
     name.TrimLeft();
     name.TrimRight();
     
-    MeaAssert(m_abbrevField != NULL);
+    MeaAssert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(abbrev);
     abbrev.TrimLeft();
     abbrev.TrimRight();
 
     bool notEmpty = !name.IsEmpty() && !abbrev.IsEmpty();
 
-    MeaAssert((m_basisLabel != NULL) && (m_precisionButton != NULL));
+    MeaAssert((m_basisLabel != nullptr) && (m_precisionButton != nullptr));
     m_basisLabel->EnableWindow(notEmpty);
     m_precisionButton->EnableWindow(notEmpty);
 
-    MeaAssert((m_pxButton != NULL) &&
-              (m_pxLabel != NULL) &&
-              (m_pxAbbrev != NULL));
+    MeaAssert((m_pxButton != nullptr) &&
+              (m_pxLabel != nullptr) &&
+              (m_pxAbbrev != nullptr));
     m_pxButton->EnableWindow(notEmpty);
     m_pxScaleField.EnableWindow(notEmpty);
     m_pxLabel->EnableWindow(notEmpty);
     m_pxAbbrev->EnableWindow(notEmpty);
 
-    MeaAssert((m_inButton != NULL) &&
-              (m_inLabel != NULL) &&
-              (m_inAbbrev != NULL));
+    MeaAssert((m_inButton != nullptr) &&
+              (m_inLabel != nullptr) &&
+              (m_inAbbrev != nullptr));
     m_inButton->EnableWindow(notEmpty);
     m_inScaleField.EnableWindow(notEmpty);
     m_inLabel->EnableWindow(notEmpty);
     m_inAbbrev->EnableWindow(notEmpty);
 
-    MeaAssert((m_cmButton != NULL) &&
-              (m_cmLabel != NULL) &&
-              (m_cmAbbrev != NULL));
+    MeaAssert((m_cmButton != nullptr) &&
+              (m_cmLabel != nullptr) &&
+              (m_cmAbbrev != nullptr));
     m_cmButton->EnableWindow(notEmpty);
     m_cmScaleField.EnableWindow(notEmpty);
     m_cmLabel->EnableWindow(notEmpty);
@@ -383,7 +377,7 @@ void MeaCustomUnitsPrefs::OnAbbrevChange()
 {
     CString label;
     
-    MeaAssert(m_abbrevField != NULL);
+    MeaAssert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(label);
     label.TrimLeft();
     label.TrimRight();
@@ -392,11 +386,11 @@ void MeaCustomUnitsPrefs::OnAbbrevChange()
         label.LoadString(IDS_MEA_CUSTOM_LABEL);
     }
 
-    MeaAssert(m_pxAbbrev != NULL);
+    MeaAssert(m_pxAbbrev != nullptr);
     m_pxAbbrev->SetWindowText(label);
-    MeaAssert(m_inAbbrev != NULL);
+    MeaAssert(m_inAbbrev != nullptr);
     m_inAbbrev->SetWindowText(label);
-    MeaAssert(m_cmAbbrev != NULL);
+    MeaAssert(m_cmAbbrev != nullptr);
     m_cmAbbrev->SetWindowText(label);
 
     EnableScaleFactor();
@@ -410,9 +404,9 @@ void MeaCustomUnitsPrefs::OnClear()
     CString name;
     CString abbrev;
 
-    MeaAssert(m_nameField != NULL);
+    MeaAssert(m_nameField != nullptr);
     m_nameField->GetWindowText(name);
-    MeaAssert(m_abbrevField != NULL);
+    MeaAssert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(abbrev);
 
     if (!name.IsEmpty() || !abbrev.IsEmpty()) {
@@ -428,7 +422,7 @@ void MeaCustomUnitsPrefs::OnClear()
 void MeaCustomUnitsPrefs::OnPrecision() 
 {
     MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());
-    MeaAssert(sheet != NULL);
+    MeaAssert(sheet != nullptr);
     
     sheet->ShowCustomPrecision();
 }

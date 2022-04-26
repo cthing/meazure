@@ -34,7 +34,7 @@ const CString MeaWindowTool::kToolName(_T("WindowTool"));
 MeaWindowTool::MeaWindowTool(MeaToolMgr* mgr) :
     MeaRadioTool(mgr), m_pointerPos(0, 0),
     m_point1(-1, -1), m_point2(-1, -1),
-    m_currentWnd(NULL), m_hiliteWnd(NULL)
+    m_currentWnd(nullptr), m_hiliteWnd(nullptr)
 {
 }
 
@@ -43,8 +43,8 @@ MeaWindowTool::~MeaWindowTool()
 {
     try {
         Disable();
-        m_currentWnd = NULL;
-        m_hiliteWnd = NULL;
+        m_currentWnd = nullptr;
+        m_hiliteWnd = nullptr;
     }
     catch(...) {
         MeaAssert(false);
@@ -66,7 +66,7 @@ void MeaWindowTool::Enable()
 
     MeaTool::Enable();
 
-    m_currentWnd = NULL;
+    m_currentWnd = nullptr;
 
     // Tell the tool manager which display fields we are using.
     //
@@ -277,7 +277,7 @@ bool MeaWindowTool::FindWindow()
     HWND hWnd2 = ChildWindowFromPointEx(m_hiliteWnd, pos,
         CWP_SKIPINVISIBLE | CWP_SKIPTRANSPARENT);
 
-    if (hWnd2 != NULL) {
+    if (hWnd2 != nullptr) {
         m_hiliteWnd = hWnd2;
         EnumChildWindows(m_hiliteWnd, EnumChildProc, reinterpret_cast<LPARAM>(this));
     }
@@ -287,7 +287,7 @@ bool MeaWindowTool::FindWindow()
     bool ret = ((m_hiliteWnd != m_currentWnd) && (m_hiliteWnd != m_rectangle.m_hWnd));
 
     if (ret) {
-        if (m_hiliteWnd != NULL) {
+        if (m_hiliteWnd != nullptr) {
             RECT rect;
 
             GetWindowRect(m_hiliteWnd, &rect);

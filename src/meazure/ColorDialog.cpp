@@ -21,10 +21,7 @@
 #include "ColorDialog.h"
 
 
-const int MeaColorDialog::kNumCustomColors = 16;
-
-
-COLORREF MeaColorDialog::m_defColors[] = {
+COLORREF MeaColorDialog::m_defColors[] {
     RGB(0x50, 0x50, 0x50),      // 0 - Default crosshair border color
     RGB(0xFF, 0xFF, 0xFF),      // 1
     RGB(0xFF, 0xFF, 0xFF),      // 2
@@ -42,7 +39,7 @@ COLORREF MeaColorDialog::m_defColors[] = {
     RGB(0xFF, 0xFF, 0xFF),      // 14
     RGB(0xFF, 0xFF, 0xFF),      // 15
 };
-COLORREF MeaColorDialog::m_customColors[] = {
+COLORREF MeaColorDialog::m_customColors[] {
     m_defColors[0],
     m_defColors[1],
     m_defColors[2],

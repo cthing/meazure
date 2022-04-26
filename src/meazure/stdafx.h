@@ -21,8 +21,6 @@
 
 #pragma once
 
-#pragma warning(disable : 4244 4290 4702)
-
 // Including SDKDDKVer.h defines the highest available Windows platform.
 
 // If you wish to build your application for a previous Windows platform, include WinSDKVer.h and
@@ -31,7 +29,7 @@
 #include <WinSDKVer.h>
 #endif
 
-#define  _WIN32_WINNT   0x0501          // Support for WinXP and newer
+#define  _WIN32_WINNT   _WIN32_WINNT_WIN10
 
 #include <SDKDDKVer.h>
 
@@ -48,7 +46,3 @@
 #ifndef _AFX_NO_AFXCMN_SUPPORT
 #include <afxcmn.h>         // MFC support for Windows Common Controls
 #endif // _AFX_NO_AFXCMN_SUPPORT
-
-
-//{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ will insert additional declarations immediately before the previous line.

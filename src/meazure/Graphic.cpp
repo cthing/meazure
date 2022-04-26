@@ -21,35 +21,31 @@
 #include "Graphic.h"
 
 
-const int MeaGraphic::kInitCoord = -1000;
-
-
 MeaGraphic::MeaGraphic() : CWnd(),
-    m_id(0xFFFF), m_visible(false), m_parent(NULL)
+    m_id(0xFFFF), m_visible(false), m_parent(nullptr)
 {
 }
 
 
 MeaGraphic::~MeaGraphic()
 {
-    m_parent = NULL;
+    m_parent = nullptr;
 }
 
 
-bool MeaGraphic::Create(LPCTSTR classname, const SIZE& size, const CWnd *parent,
-                        UINT id)
+bool MeaGraphic::Create(LPCTSTR classname, const SIZE& size, const CWnd *parent, UINT id)
 {
     m_id = id;
     m_parent = parent;
 
-    return CreateEx(0, classname, "", ((parent == NULL) ? WS_POPUP : WS_CHILD),
-        0, 0, size.cx, size.cy, ((parent == NULL) ? *AfxGetMainWnd() : *parent), 0) ? true : false;
+    return CreateEx(0, classname, "", ((parent == nullptr) ? WS_POPUP : WS_CHILD),
+        0, 0, size.cx, size.cy, ((parent == nullptr) ? *AfxGetMainWnd() : *parent), 0) ? true : false;
 }
 
 
 void MeaGraphic::Show()
 {
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         ShowWindow(SW_SHOWNOACTIVATE);
         m_visible = true;
     }
@@ -58,7 +54,7 @@ void MeaGraphic::Show()
 
 void MeaGraphic::Hide()
 {
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         m_visible = false;
         ShowWindow(SW_HIDE);
     }

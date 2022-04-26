@@ -116,9 +116,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsModified</b> () con
 <tr class="memitem:a2b74978ba5bee13afa814f154e2c8469"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">ShowPosition</a> (unsigned int posIndex)</td></tr>
 <tr class="memdesc:a2b74978ba5bee13afa814f154e2c8469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Works with the tool manager to set the radio tool and its position based on the specified position in the list.  <a href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">More...</a><br /></td></tr>
 <tr class="separator:a2b74978ba5bee13afa814f154e2c8469"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf246e14537995c6f99b2707a05ba50a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">Load</a> (LPCTSTR pathname=NULL)</td></tr>
-<tr class="memdesc:aaf246e14537995c6f99b2707a05ba50a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the specified position log file.  <a href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">More...</a><br /></td></tr>
-<tr class="separator:aaf246e14537995c6f99b2707a05ba50a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4588ad32348d85956aa347a689c2fafb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">Load</a> (LPCTSTR pathname=nullptr)</td></tr>
+<tr class="memdesc:a4588ad32348d85956aa347a689c2fafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the specified position log file.  <a href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">More...</a><br /></td></tr>
+<tr class="separator:a4588ad32348d85956aa347a689c2fafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf0eeda1254ee2c9914d6919f78cf450"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save</a> (bool askPathname)</td></tr>
 <tr class="memdesc:acf0eeda1254ee2c9914d6919f78cf450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the recorded positions to a log file.  <a href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">More...</a><br /></td></tr>
 <tr class="separator:acf0eeda1254ee2c9914d6919f78cf450"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -142,12 +142,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ManagePositions</b> (
 void&#160;</td><td class="memItemRight" valign="bottom"><b>MasterReset</b> ()</td></tr>
 <tr class="memdesc:add722853eaa5b11c22a3e30860e12d71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the position manager to its default state. <br /></td></tr>
 <tr class="separator:add722853eaa5b11c22a3e30860e12d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac99655f65375546e49016dd685adf3c0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#ac99655f65375546e49016dd685adf3c0">ParseEntity</a> (<a class="el" href="classMeaXMLParser.html">MeaXMLParser</a> &amp;parser, const CString &amp;pathname)</td></tr>
-<tr class="memdesc:ac99655f65375546e49016dd685adf3c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called during the XML parsing of the log file, to parse an external entity such as a DTD.  <a href="classMeaPositionLogMgr.html#ac99655f65375546e49016dd685adf3c0">More...</a><br /></td></tr>
-<tr class="separator:ac99655f65375546e49016dd685adf3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69b0ec1d63da23c48f62d94b3c1e4d59"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a69b0ec1d63da23c48f62d94b3c1e4d59">GetFilePathname</a> ()</td></tr>
-<tr class="memdesc:a69b0ec1d63da23c48f62d94b3c1e4d59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pathname of the currently parsed log file.  <a href="classMeaPositionLogMgr.html#a69b0ec1d63da23c48f62d94b3c1e4d59">More...</a><br /></td></tr>
-<tr class="separator:a69b0ec1d63da23c48f62d94b3c1e4d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addd3882873059363d59e2831f4d4de9c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">ParseEntity</a> (<a class="el" href="classMeaXMLParser.html">MeaXMLParser</a> &amp;parser, const CString &amp;pathname) override</td></tr>
+<tr class="memdesc:addd3882873059363d59e2831f4d4de9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called during the XML parsing of the log file, to parse an external entity such as a DTD.  <a href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">More...</a><br /></td></tr>
+<tr class="separator:addd3882873059363d59e2831f4d4de9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30f63f448713041c02f75e612db9fc24"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a30f63f448713041c02f75e612db9fc24">GetFilePathname</a> () override</td></tr>
+<tr class="memdesc:a30f63f448713041c02f75e612db9fc24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pathname of the currently parsed log file.  <a href="classMeaPositionLogMgr.html#a30f63f448713041c02f75e612db9fc24">More...</a><br /></td></tr>
+<tr class="separator:a30f63f448713041c02f75e612db9fc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMeaXMLParserHandler"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMeaXMLParserHandler')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMeaXMLParserHandler.html">MeaXMLParserHandler</a></td></tr>
 <tr class="memitem:a737f134c93bedbcb0ba1a7c1207bd65d inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a737f134c93bedbcb0ba1a7c1207bd65d">MeaXMLParserHandler</a> ()</td></tr>
 <tr class="memdesc:a737f134c93bedbcb0ba1a7c1207bd65d inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty constructor for the handler class.  <a href="classMeaXMLParserHandler.html#a737f134c93bedbcb0ba1a7c1207bd65d">More...</a><br /></td></tr>
@@ -205,6 +205,10 @@ typedef std::map&lt; <a class="el" href="classMeaGUID.html">MeaGUID</a>, int, <a
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:aff01cd8fd0b49a2af2c408400317c6ed"><td class="memItemLeft" align="right" valign="top"><a id="aff01cd8fd0b49a2af2c408400317c6ed" name="aff01cd8fd0b49a2af2c408400317c6ed"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaPositionLogMgr</b> ()</td></tr>
+<tr class="memdesc:aff01cd8fd0b49a2af2c408400317c6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managers are singletons. <br /></td></tr>
+<tr class="separator:aff01cd8fd0b49a2af2c408400317c6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39286914a59672ab4d668d50d25e0046"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a39286914a59672ab4d668d50d25e0046">MeaPositionLogMgr</a> (const <a class="el" href="classMeaPositionLogMgr.html">MeaPositionLogMgr</a> &amp;)</td></tr>
 <tr class="memdesc:a39286914a59672ab4d668d50d25e0046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managers are singletons.  <a href="classMeaPositionLogMgr.html#a39286914a59672ab4d668d50d25e0046">More...</a><br /></td></tr>
 <tr class="separator:a39286914a59672ab4d668d50d25e0046"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,13 +226,13 @@ Private Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ManageDlgDestroyed</b> ()</td></tr>
 <tr class="memdesc:a02d7e5f25d1c7a56a81ba2e8f62d2e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the position management dialog is destroyed. <br /></td></tr>
 <tr class="separator:a02d7e5f25d1c7a56a81ba2e8f62d2e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac89b0465a8e18bf9cbc4e890acf7b47c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">WriteInfoSection</a> (int indent)  throw (CFileException)</td></tr>
+<tr class="memitem:ac89b0465a8e18bf9cbc4e890acf7b47c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">WriteInfoSection</a> (int indent)</td></tr>
 <tr class="memdesc:ac89b0465a8e18bf9cbc4e890acf7b47c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the general information section of the position log file.  <a href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">More...</a><br /></td></tr>
 <tr class="separator:ac89b0465a8e18bf9cbc4e890acf7b47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a38e27d5c9ad65d3b6d56438a1cf17d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">WriteDesktopsSection</a> (int indent)  throw (CFileException)</td></tr>
+<tr class="memitem:a6a38e27d5c9ad65d3b6d56438a1cf17d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">WriteDesktopsSection</a> (int indent)</td></tr>
 <tr class="memdesc:a6a38e27d5c9ad65d3b6d56438a1cf17d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the desktop information section of the position log file.  <a href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">More...</a><br /></td></tr>
 <tr class="separator:a6a38e27d5c9ad65d3b6d56438a1cf17d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d572f6ba719396948d24d275bcb1700"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a8d572f6ba719396948d24d275bcb1700">WritePositionsSection</a> (int indent)  throw (CFileException)</td></tr>
+<tr class="memitem:a8d572f6ba719396948d24d275bcb1700"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a8d572f6ba719396948d24d275bcb1700">WritePositionsSection</a> (int indent)</td></tr>
 <tr class="memdesc:a8d572f6ba719396948d24d275bcb1700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the positions section of the position log file.  <a href="classMeaPositionLogMgr.html#a8d572f6ba719396948d24d275bcb1700">More...</a><br /></td></tr>
 <tr class="separator:a8d572f6ba719396948d24d275bcb1700"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61e20de9dfc50b108122f7e055be4049"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a61e20de9dfc50b108122f7e055be4049">Open</a> (const CString &amp;pathname, UINT mode)</td></tr>
@@ -238,7 +242,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ManageDlgDestroyed</b
 void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
 <tr class="memdesc:acd917a79b4595cfa8847fc81da86452e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the currently open position log file. <br /></td></tr>
 <tr class="separator:acd917a79b4595cfa8847fc81da86452e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa4531c582388ae6cf28d648da9bbefb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#afa4531c582388ae6cf28d648da9bbefb">Write</a> (int indentLevel, LPCTSTR format,...)  throw (CFileException)</td></tr>
+<tr class="memitem:afa4531c582388ae6cf28d648da9bbefb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#afa4531c582388ae6cf28d648da9bbefb">Write</a> (int indentLevel, LPCTSTR format,...)</td></tr>
 <tr class="memdesc:afa4531c582388ae6cf28d648da9bbefb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Printf-like method for writing to a position log file.  <a href="classMeaPositionLogMgr.html#afa4531c582388ae6cf28d648da9bbefb">More...</a><br /></td></tr>
 <tr class="separator:afa4531c582388ae6cf28d648da9bbefb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc4dfa263d70e3671fe9c62cfccfb1a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">ProcessDOM</a> (const <a class="el" href="classMeaXMLNode.html">MeaXMLNode</a> *dom)</td></tr>
@@ -345,17 +349,18 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_modified</b></td></
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a13f882f70cc613d74c8950d78c5318f1"><td class="memItemLeft" align="right" valign="top">static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a13f882f70cc613d74c8950d78c5318f1">kChunkSize</a> = 1024</td></tr>
-<tr class="memdesc:a13f882f70cc613d74c8950d78c5318f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log file parsing buffer allocation increment.  <a href="classMeaPositionLogMgr.html#a13f882f70cc613d74c8950d78c5318f1">More...</a><br /></td></tr>
-<tr class="separator:a13f882f70cc613d74c8950d78c5318f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47517e41ae6e206bcdc6d554b08ee57d"><td class="memItemLeft" align="right" valign="top"><a id="a47517e41ae6e206bcdc6d554b08ee57d" name="a47517e41ae6e206bcdc6d554b08ee57d"></a>
-static LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>kExt</b> = _T(&quot;mpl&quot;)</td></tr>
-<tr class="memdesc:a47517e41ae6e206bcdc6d554b08ee57d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log file suffix. <br /></td></tr>
-<tr class="separator:a47517e41ae6e206bcdc6d554b08ee57d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5f3316905353ed1aa755961141f0773"><td class="memItemLeft" align="right" valign="top"><a id="ab5f3316905353ed1aa755961141f0773" name="ab5f3316905353ed1aa755961141f0773"></a>
-static LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>kFilter</b> = _T(&quot;Meazure <a class="el" href="classMeaPositionLogMgr_1_1Position.html">Position</a> Log Files (*.mpl)|*.mpl|All Files (*.*)|*.*||&quot;)</td></tr>
-<tr class="memdesc:ab5f3316905353ed1aa755961141f0773"><td class="mdescLeft">&#160;</td><td class="mdescRight">File dialog filter string. <br /></td></tr>
-<tr class="separator:ab5f3316905353ed1aa755961141f0773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11232e8ac0fdc5fc8fc1a26896b1a027"><td class="memItemLeft" align="right" valign="top"><a id="a11232e8ac0fdc5fc8fc1a26896b1a027" name="a11232e8ac0fdc5fc8fc1a26896b1a027"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kChunkSize</b> { 1024 }</td></tr>
+<tr class="memdesc:a11232e8ac0fdc5fc8fc1a26896b1a027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log file parsing buffer allocation increment. <br /></td></tr>
+<tr class="separator:a11232e8ac0fdc5fc8fc1a26896b1a027"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac5755438f96e0f36428fe0ec9b9262d"><td class="memItemLeft" align="right" valign="top"><a id="aac5755438f96e0f36428fe0ec9b9262d" name="aac5755438f96e0f36428fe0ec9b9262d"></a>
+static constexpr LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>kExt</b> { _T(&quot;mpl&quot;) }</td></tr>
+<tr class="memdesc:aac5755438f96e0f36428fe0ec9b9262d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log file suffix. <br /></td></tr>
+<tr class="separator:aac5755438f96e0f36428fe0ec9b9262d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23dfe83ed3d9fefb03eadd3ff8541624"><td class="memItemLeft" align="right" valign="top"><a id="a23dfe83ed3d9fefb03eadd3ff8541624" name="a23dfe83ed3d9fefb03eadd3ff8541624"></a>
+static constexpr LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><b>kFilter</b> { _T(&quot;Meazure <a class="el" href="classMeaPositionLogMgr_1_1Position.html">Position</a> Log Files (*.mpl)|*.mpl|All Files (*.*)|*.*||&quot;) }</td></tr>
+<tr class="memdesc:a23dfe83ed3d9fefb03eadd3ff8541624"><td class="mdescLeft">&#160;</td><td class="mdescRight">File dialog filter string. <br /></td></tr>
+<tr class="separator:a23dfe83ed3d9fefb03eadd3ff8541624"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
 Friends</h2></td></tr>
@@ -484,9 +489,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Constructs a file open dialog tailored to loading position log files. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classMeaPositionLogMgr_1_1Position.html" title="Represents a tool position.">Position</a> log file option dialog. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#a47517e41ae6e206bcdc6d554b08ee57d">kExt</a>, <a class="el" href="classMeaPositionLogMgr.html#ab5f3316905353ed1aa755961141f0773">kFilter</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#ad5833a947c976029f1fab754a1acf0c6">m_loadDialog</a>, and <a class="el" href="classMeaPositionLogMgr.html#a37c4d65c46b7caee5f232230570e0c19">m_loadDlgTitle</a>.</p>
+<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#aac5755438f96e0f36428fe0ec9b9262d">kExt</a>, <a class="el" href="classMeaPositionLogMgr.html#a23dfe83ed3d9fefb03eadd3ff8541624">kFilter</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#ad5833a947c976029f1fab754a1acf0c6">m_loadDialog</a>, and <a class="el" href="classMeaPositionLogMgr.html#a37c4d65c46b7caee5f232230570e0c19">m_loadDlgTitle</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">Load()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">Load()</a>.</p>
 
 </div>
 </div>
@@ -516,7 +521,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Constructs a file save dialog tailored to saving position log files. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="classMeaPositionLogMgr_1_1Position.html" title="Represents a tool position.">Position</a> log file save dialog. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#a47517e41ae6e206bcdc6d554b08ee57d">kExt</a>, <a class="el" href="classMeaPositionLogMgr.html#ab5f3316905353ed1aa755961141f0773">kFilter</a>, <a class="el" href="classMeaPositionLogMgr.html#a5eb87729e0cad3a7022a98c59c046400">m_desc</a>, <a class="el" href="classMeaPositionSaveDlg.html#abac050ae0a2c64048ab8728c36a0607e">MeaPositionSaveDlg::m_desc</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#aca83d6728e1495b29b0cf056a6c55fa0">m_saveDialog</a>, <a class="el" href="classMeaPositionLogMgr.html#a9cb797b489ad4e4e3da0fa79eb5df40d">m_saveDlgTitle</a>, <a class="el" href="classMeaPositionLogMgr.html#a15c1c035bc10f3d84d24f5aa810239b3">m_title</a>, and <a class="el" href="classMeaPositionSaveDlg.html#aa6fc54b8e9401d4866cfbb49d10905d1">MeaPositionSaveDlg::m_title</a>.</p>
+<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#aac5755438f96e0f36428fe0ec9b9262d">kExt</a>, <a class="el" href="classMeaPositionLogMgr.html#a23dfe83ed3d9fefb03eadd3ff8541624">kFilter</a>, <a class="el" href="classMeaPositionLogMgr.html#a5eb87729e0cad3a7022a98c59c046400">m_desc</a>, <a class="el" href="classMeaPositionSaveDlg.html#abac050ae0a2c64048ab8728c36a0607e">MeaPositionSaveDlg::m_desc</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#aca83d6728e1495b29b0cf056a6c55fa0">m_saveDialog</a>, <a class="el" href="classMeaPositionLogMgr.html#a9cb797b489ad4e4e3da0fa79eb5df40d">m_saveDlgTitle</a>, <a class="el" href="classMeaPositionLogMgr.html#a15c1c035bc10f3d84d24f5aa810239b3">m_title</a>, and <a class="el" href="classMeaPositionSaveDlg.html#aa6fc54b8e9401d4866cfbb49d10905d1">MeaPositionSaveDlg::m_title</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
 
@@ -587,10 +592,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#a2ddf1e054fa5956965dbe3b3c57eb8da">m_desktopInfoMap</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">WriteDesktopsSection()</a>.</p>
+
 </div>
 </div>
-<a id="a69b0ec1d63da23c48f62d94b3c1e4d59" name="a69b0ec1d63da23c48f62d94b3c1e4d59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69b0ec1d63da23c48f62d94b3c1e4d59">&#9670;&nbsp;</a></span>GetFilePathname()</h2>
+<a id="a30f63f448713041c02f75e612db9fc24" name="a30f63f448713041c02f75e612db9fc24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30f63f448713041c02f75e612db9fc24">&#9670;&nbsp;</a></span>GetFilePathname()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -607,7 +614,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -727,14 +734,14 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the specified file is a position log file. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#a47517e41ae6e206bcdc6d554b08ee57d">kExt</a>.</p>
+<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#aac5755438f96e0f36428fe0ec9b9262d">kExt</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classCChildView.html#a3f50efcc717d7dcb728f20624b594d20">CChildView::LoadStartupFile()</a>.</p>
 
 </div>
 </div>
-<a id="aaf246e14537995c6f99b2707a05ba50a" name="aaf246e14537995c6f99b2707a05ba50a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf246e14537995c6f99b2707a05ba50a">&#9670;&nbsp;</a></span>Load()</h2>
+<a id="a4588ad32348d85956aa347a689c2fafb" name="a4588ad32348d85956aa347a689c2fafb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4588ad32348d85956aa347a689c2fafb">&#9670;&nbsp;</a></span>Load()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -743,7 +750,7 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname">bool MeaPositionLogMgr::Load </td>
           <td>(</td>
           <td class="paramtype">LPCTSTR&#160;</td>
-          <td class="paramname"><em>pathname</em> = <code>NULL</code></td><td>)</td>
+          <td class="paramname"><em>pathname</em> = <code>nullptr</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -752,13 +759,13 @@ Additional Inherited Members</h2></td></tr>
 <p>Loads the specified position log file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pathname</td><td>[in] Pathname of file to load or NULL if a file dialog should be shown.</td></tr>
+    <tr><td class="paramname">pathname</td><td>[in] Pathname of file to load or nullptr if a file dialog should be shown.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if loaded, false if canceled or unable to load. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#aad3aac03ce439efddc9366d65137881a">ClearPositions()</a>, <a class="el" href="classMeaPositionLogMgr.html#acd917a79b4595cfa8847fc81da86452e">Close()</a>, <a class="el" href="classMeaPositionLogMgr.html#a039a016c27960840e1d654594596c753">CreateLoadDialog()</a>, <a class="el" href="classMeaXMLParser.html#a1f4cf48c0323d326f1d07b7821291682">MeaXMLParser::GetBuffer()</a>, <a class="el" href="classMeaXMLParser.html#ab259166ebb2b56f3c65f496102cd3170">MeaXMLParser::GetDOM()</a>, <a class="el" href="classMeaPositionLogMgr.html#a13f882f70cc613d74c8950d78c5318f1">kChunkSize</a>, <a class="el" href="classMeaPositionLogObserver.html#af8cf656633afea7e468df02f297e8368">MeaPositionLogObserver::LogLoaded()</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#a94c3a36423923356e519edd17fb8aa70">m_modified</a>, <a class="el" href="classMeaPositionLogMgr.html#a6005dd07efc9aeff8b67891c04c1a59e">m_observer</a>, <a class="el" href="classMeaPositionLogMgr.html#a4693f811e85da98708718696e27fb644">m_pathname</a>, <a class="el" href="classMeaPositionLogMgr.html#abb43ea708522b335a17e9fa4ec66fd62">m_stdioFile</a>, <a class="el" href="classMeaPositionLogMgr.html#a61e20de9dfc50b108122f7e055be4049">Open()</a>, <a class="el" href="classMeaXMLParser.html#abfccdb01a460b4e54663b6bc41a01094">MeaXMLParser::ParseBuffer()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a93e285a1383370369efdf593e59b6400">SaveIfModified()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#aad3aac03ce439efddc9366d65137881a">ClearPositions()</a>, <a class="el" href="classMeaPositionLogMgr.html#acd917a79b4595cfa8847fc81da86452e">Close()</a>, <a class="el" href="classMeaPositionLogMgr.html#a039a016c27960840e1d654594596c753">CreateLoadDialog()</a>, <a class="el" href="classMeaXMLParser.html#a1f4cf48c0323d326f1d07b7821291682">MeaXMLParser::GetBuffer()</a>, <a class="el" href="classMeaXMLParser.html#ab259166ebb2b56f3c65f496102cd3170">MeaXMLParser::GetDOM()</a>, <a class="el" href="classMeaPositionLogMgr.html#a11232e8ac0fdc5fc8fc1a26896b1a027">kChunkSize</a>, <a class="el" href="classMeaPositionLogObserver.html#af8cf656633afea7e468df02f297e8368">MeaPositionLogObserver::LogLoaded()</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#a94c3a36423923356e519edd17fb8aa70">m_modified</a>, <a class="el" href="classMeaPositionLogMgr.html#a6005dd07efc9aeff8b67891c04c1a59e">m_observer</a>, <a class="el" href="classMeaPositionLogMgr.html#a4693f811e85da98708718696e27fb644">m_pathname</a>, <a class="el" href="classMeaPositionLogMgr.html#abb43ea708522b335a17e9fa4ec66fd62">m_stdioFile</a>, <a class="el" href="classMeaPositionLogMgr.html#a61e20de9dfc50b108122f7e055be4049">Open()</a>, <a class="el" href="classMeaXMLParser.html#abfccdb01a460b4e54663b6bc41a01094">MeaXMLParser::ParseBuffer()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a93e285a1383370369efdf593e59b6400">SaveIfModified()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogDlg.html#af10f4acb26b20531b0ec8215ad4dfd52">MeaPositionLogDlg::OnLoadPositions()</a>.</p>
 
@@ -872,12 +879,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#abb43ea708522b335a17e9fa4ec66fd62">m_stdioFile</a>, and <a class="el" href="classMeaPositionLogMgr.html#a71c4f5757cb4c8810db9d9dcdef331b9">m_stdioOpen</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">Load()</a>, and <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">Load()</a>, and <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
 
 </div>
 </div>
-<a id="ac99655f65375546e49016dd685adf3c0" name="ac99655f65375546e49016dd685adf3c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac99655f65375546e49016dd685adf3c0">&#9670;&nbsp;</a></span>ParseEntity()</h2>
+<a id="addd3882873059363d59e2831f4d4de9c" name="addd3882873059363d59e2831f4d4de9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addd3882873059363d59e2831f4d4de9c">&#9670;&nbsp;</a></span>ParseEntity()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -905,7 +912,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1036,7 +1043,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaXMLNode.html#a77d610cc8a78a8cd2af055f9b5e89aec">MeaXMLNode::AtEnd()</a>, <a class="el" href="classMeaXMLNode.html#a5c946d37dc271fffd129686f040f4462a231afe47f3f37d3808096b36c28b4ded">MeaXMLNode::Element</a>, <a class="el" href="classMeaXMLNode.html#a2748e3d982a0f6101375f7b075c2f75e">MeaXMLNode::GetChildIter()</a>, <a class="el" href="classMeaXMLNode.html#a4fd8fe6763bda3ceb138277086a33b95">MeaXMLNode::GetData()</a>, <a class="el" href="classMeaXMLNode.html#a715427dae070677c871015d2323ebaef">MeaXMLNode::GetType()</a>, <a class="el" href="classMeaPositionLogMgr.html#abce3cf55871eecd3321c585cfcbed2d8">ProcessDesktopNode()</a>, <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">ProcessInfoNode()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a24a89d7c1eb5c0d264d7f7970e047f40">ProcessPositionNode()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">Load()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">Load()</a>.</p>
 
 </div>
 </div>
@@ -1266,7 +1273,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#af4ffaee770fca8fde32bfb4886dd26f6">IsModified()</a>, and <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">Load()</a>, and <a class="el" href="classCMeazureApp.html#ac3dc35107bfa6472190f313f92dacc92">CMeazureApp::SaveAllModified()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">Load()</a>, and <a class="el" href="classCMeazureApp.html#adfaa3a18f5c0994008dced08294116d6">CMeazureApp::SaveAllModified()</a>.</p>
 
 </div>
 </div>
@@ -1334,7 +1341,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#a6005dd07efc9aeff8b67891c04c1a59e">m_observer</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogDlg.html#a82906561bfa35a3c57ff4a2fb15d9bb5">MeaPositionLogDlg::OnInitDialog()</a>, and <a class="el" href="classMeaPositionLogDlg.html#ae9b1a99446929b2a27c6078675f80b8e">MeaPositionLogDlg::PostNcDestroy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogDlg.html#a6238090c95bbebd6a8c955eee44ac4f1">MeaPositionLogDlg::OnInitDialog()</a>, and <a class="el" href="classMeaPositionLogDlg.html#a6e25c792362c088438eb419a5325863d">MeaPositionLogDlg::PostNcDestroy()</a>.</p>
 
 </div>
 </div>
@@ -1364,7 +1371,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaPositionLogMgr_1_1Positions.html#a54a7ceada8bd211945a02d916af6b665">MeaPositionLogMgr::Positions::Get()</a>, <a class="el" href="classMeaPositionLogMgr.html#a14f110b8f5a322bf19c5e2a81f7ac993">m_positions</a>, <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Positions.html#a54f50ff1c12b1c01f79072c07e259c11">MeaPositionLogMgr::Positions::Size()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogDlg.html#a39832fb4452ec9e11da3eb4a7a4bcb2d">MeaPositionLogDlg::LogLoaded()</a>, <a class="el" href="classMeaPositionLogDlg.html#a28c2bd6d9cc9997a4cdf75ed1afafd18">MeaPositionLogDlg::OnHScroll()</a>, and <a class="el" href="classMeaPositionLogDlg.html#a82906561bfa35a3c57ff4a2fb15d9bb5">MeaPositionLogDlg::OnInitDialog()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogDlg.html#a77ce0e305386da30e08bcec6624443ba">MeaPositionLogDlg::LogLoaded()</a>, <a class="el" href="classMeaPositionLogDlg.html#a28c2bd6d9cc9997a4cdf75ed1afafd18">MeaPositionLogDlg::OnHScroll()</a>, and <a class="el" href="classMeaPositionLogDlg.html#a6238090c95bbebd6a8c955eee44ac4f1">MeaPositionLogDlg::OnInitDialog()</a>.</p>
 
 </div>
 </div>
@@ -1400,12 +1407,6 @@ Additional Inherited Members</h2></td></tr>
           <td>)</td>
           <td></td><td></td>
         </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2">CFileException</td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
       </table>
   </td>
   <td class="mlabels-right">
@@ -1423,10 +1424,16 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">CFileException</td><td>if there was a problem writing the information </td></tr>
+  </table>
+  </dd>
+</dl>
 
 <p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#abb43ea708522b335a17e9fa4ec66fd62">m_stdioFile</a>, and <a class="el" href="classMeaXMLParser.html#ac7b4dbaeae7f758b2b173844d0b7c828">MeaXMLParser::ToUTF8()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a1cc83ec81d4fb32b2a232c740fd06516">MeaPositionLogMgr::Screen::Save()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#a5f405d018e69c9389b7c4023c00e5f31">MeaPositionLogMgr::DesktopInfo::Save()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#a8238faacf86c44e1c00db5e88c84d8f2">MeaPositionLogMgr::DesktopInfo::SaveCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">WriteDesktopsSection()</a>, <a class="el" href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">WriteInfoSection()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a8d572f6ba719396948d24d275bcb1700">WritePositionsSection()</a>.</p>
 
 </div>
 </div>
@@ -1446,12 +1453,6 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramname"><em>indent</em></td><td>)</td>
           <td></td>
         </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2">CFileException</td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
       </table>
   </td>
   <td class="mlabels-right">
@@ -1467,6 +1468,14 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">CFileException</td><td>if there was a problem writing the information </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#ac057a563ec4926e9d92d6cf1e3170784">GetDesktopInfo()</a>, <a class="el" href="classMeaPositionLogMgr.html#a53b23eeeaad76916fe01b16eb9a39c8e">m_refCountMap</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#a5f405d018e69c9389b7c4023c00e5f31">MeaPositionLogMgr::DesktopInfo::Save()</a>, and <a class="el" href="classMeaPositionLogMgr.html#afa4531c582388ae6cf28d648da9bbefb">Write()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
 
@@ -1488,12 +1497,6 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramname"><em>indent</em></td><td>)</td>
           <td></td>
         </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2">CFileException</td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
       </table>
   </td>
   <td class="mlabels-right">
@@ -1509,8 +1512,14 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">CFileException</td><td>if there was a problem writing the information </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">References <a class="el" href="classMeaUtils.html#acba2efa297ca1caf1b448fdf49cea3dd">MeaUtils::CRLFtoLF()</a>, <a class="el" href="classMeaXMLParser.html#a0bbba1bedee036deb08d1b8fbb8a135e">MeaXMLParser::Encode()</a>, <a class="el" href="VersionInfo_8h.html#a6f78cac250dd1dd411db28fae5ec91a3">g_versionInfo</a>, <a class="el" href="classMeaVersionInfo.html#a75d067dcbf16296599a20c75f810aad0">MeaVersionInfo::GetProductBuild()</a>, <a class="el" href="classMeaVersionInfo.html#a0e28ffd16538af62b3712cc8d27e21ab">MeaVersionInfo::GetProductVersion()</a>, and <a class="el" href="TimeStamp_8h.html#a1ceca65fd90453d03a591dd7ed0c7a74">MeaMakeTimeStamp()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUtils.html#acba2efa297ca1caf1b448fdf49cea3dd">MeaUtils::CRLFtoLF()</a>, <a class="el" href="classMeaXMLParser.html#a0bbba1bedee036deb08d1b8fbb8a135e">MeaXMLParser::Encode()</a>, <a class="el" href="VersionInfo_8h.html#a6f78cac250dd1dd411db28fae5ec91a3">g_versionInfo</a>, <a class="el" href="classMeaVersionInfo.html#a75d067dcbf16296599a20c75f810aad0">MeaVersionInfo::GetProductBuild()</a>, <a class="el" href="classMeaVersionInfo.html#a0e28ffd16538af62b3712cc8d27e21ab">MeaVersionInfo::GetProductVersion()</a>, <a class="el" href="classMeaPositionLogMgr.html#a5eb87729e0cad3a7022a98c59c046400">m_desc</a>, <a class="el" href="classMeaPositionLogMgr.html#a15c1c035bc10f3d84d24f5aa810239b3">m_title</a>, <a class="el" href="TimeStamp_8h.html#a1ceca65fd90453d03a591dd7ed0c7a74">MeaMakeTimeStamp()</a>, and <a class="el" href="classMeaPositionLogMgr.html#afa4531c582388ae6cf28d648da9bbefb">Write()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
 
@@ -1532,12 +1541,6 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramname"><em>indent</em></td><td>)</td>
           <td></td>
         </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2">CFileException</td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
       </table>
   </td>
   <td class="mlabels-right">
@@ -1553,36 +1556,16 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">CFileException</td><td>if there was a problem writing the information </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#a14f110b8f5a322bf19c5e2a81f7ac993">m_positions</a>, <a class="el" href="classMeaPositionLogMgr_1_1Positions.html#a49a264613b85dd6334d2c400703080bc">MeaPositionLogMgr::Positions::Save()</a>, and <a class="el" href="classMeaPositionLogMgr.html#afa4531c582388ae6cf28d648da9bbefb">Write()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a13f882f70cc613d74c8950d78c5318f1" name="a13f882f70cc613d74c8950d78c5318f1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13f882f70cc613d74c8950d78c5318f1">&#9670;&nbsp;</a></span>kChunkSize</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const int MeaPositionLogMgr::kChunkSize = 1024</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Log file parsing buffer allocation increment. </p>
-<p >Managers are singletons. </p>
-
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">Load()</a>.</p>
 
 </div>
 </div>

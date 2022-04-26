@@ -43,7 +43,7 @@ public:
     ///
     /// @return TRUE if safe to exit the application, FALSE otherwise.
     ///
-    virtual BOOL SaveAllModified();
+    virtual BOOL SaveAllModified() override;
 
     /// Central interface to the windows help system. In this case
     /// we override the base class calls to the old WinHelp system and
@@ -54,12 +54,9 @@ public:
     ///
     virtual void WinHelp(DWORD dwData, UINT nCmd);
 
-    // ClassWizard generated virtual function overrides
-    //{{AFX_VIRTUAL(CMeazureApp)
     public:
-    virtual BOOL InitInstance();
-    virtual int ExitInstance();
-    //}}AFX_VIRTUAL
+    virtual BOOL InitInstance() override;
+    virtual int ExitInstance() override;
 
     /// @fn InitInstance()
     /// Performs all initialization for the application including
@@ -71,11 +68,7 @@ public:
     /// managers.
     /// @return Application exit code.
 
-    //{{AFX_MSG(CMeazureApp)
     afx_msg void OnAppAbout();
-        // NOTE - the ClassWizard will add and remove member functions here.
-        //    DO NOT EDIT what you see in these blocks of generated code !
-    //}}AFX_MSG
 
     /// @fn OnAppAbout()
     /// Displays the application About dialog.
@@ -90,7 +83,3 @@ public:
 
     DECLARE_MESSAGE_MAP()
 };
-
-
-//{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ will insert additional declarations immediately before the previous line.

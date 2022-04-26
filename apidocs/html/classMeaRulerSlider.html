@@ -79,12 +79,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaRulerSlider</b
 <tr class="memitem:aa1bb58725710a30ed687df0c34397dc2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRulerSlider.html#aa1bb58725710a30ed687df0c34397dc2">SetSliderPos</a> (int pos)</td></tr>
 <tr class="memdesc:aa1bb58725710a30ed687df0c34397dc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the position of the slider.  <a href="classMeaRulerSlider.html#aa1bb58725710a30ed687df0c34397dc2">More...</a><br /></td></tr>
 <tr class="separator:aa1bb58725710a30ed687df0c34397dc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a945a6c3cc026b684391552384d7e940e"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRulerSlider.html#a945a6c3cc026b684391552384d7e940e">Create</a> (DWORD dwStyle, const RECT &amp;rect, CWnd *pParentWnd, UINT nID)</td></tr>
-<tr class="memdesc:a945a6c3cc026b684391552384d7e940e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the ruler slider control.  <a href="classMeaRulerSlider.html#a945a6c3cc026b684391552384d7e940e">More...</a><br /></td></tr>
-<tr class="separator:a945a6c3cc026b684391552384d7e940e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa71032919d41bea0bd41bd43b4eb56e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRulerSlider.html#afa71032919d41bea0bd41bd43b4eb56e">PreSubclassWindow</a> ()</td></tr>
-<tr class="memdesc:afa71032919d41bea0bd41bd43b4eb56e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called right before the base class control is subclassed.  <a href="classMeaRulerSlider.html#afa71032919d41bea0bd41bd43b4eb56e">More...</a><br /></td></tr>
-<tr class="separator:afa71032919d41bea0bd41bd43b4eb56e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0517d64bf0db19857f6cadf5618fda14"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRulerSlider.html#a0517d64bf0db19857f6cadf5618fda14">Create</a> (DWORD dwStyle, const RECT &amp;rect, CWnd *pParentWnd, UINT nID) override</td></tr>
+<tr class="memdesc:a0517d64bf0db19857f6cadf5618fda14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the ruler slider control.  <a href="classMeaRulerSlider.html#a0517d64bf0db19857f6cadf5618fda14">More...</a><br /></td></tr>
+<tr class="separator:a0517d64bf0db19857f6cadf5618fda14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69d71203119a7067deaae5a2e07de2bb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRulerSlider.html#a69d71203119a7067deaae5a2e07de2bb">PreSubclassWindow</a> () override</td></tr>
+<tr class="memdesc:a69d71203119a7067deaae5a2e07de2bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called right before the base class control is subclassed.  <a href="classMeaRulerSlider.html#a69d71203119a7067deaae5a2e07de2bb">More...</a><br /></td></tr>
+<tr class="separator:a69d71203119a7067deaae5a2e07de2bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -135,7 +135,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_captured</b></td></
 <tr class="separator:a66aee6e2d2a35355b31fad5c22f76c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7bc12081ac4be9a46730ea6d566a0b2"><td class="memItemLeft" align="right" valign="top"><a id="af7bc12081ac4be9a46730ea6d566a0b2" name="af7bc12081ac4be9a46730ea6d566a0b2"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_sliderActive</b></td></tr>
-<tr class="memdesc:af7bc12081ac4be9a46730ea6d566a0b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indaictes the slider can be dragged. <br /></td></tr>
+<tr class="memdesc:af7bc12081ac4be9a46730ea6d566a0b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates the slider can be dragged. <br /></td></tr>
 <tr class="separator:af7bc12081ac4be9a46730ea6d566a0b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a782258dd6b8da67994e98a6096820899"><td class="memItemLeft" align="right" valign="top"><a id="a782258dd6b8da67994e98a6096820899" name="a782258dd6b8da67994e98a6096820899"></a>
 CFont&#160;</td><td class="memItemRight" valign="bottom"><b>m_posFont</b></td></tr>
@@ -168,18 +168,18 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>m_sliderPos</b></td></
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a68dceffb5dfd1b5a840590b7a072244c"><td class="memItemLeft" align="right" valign="top"><a id="a68dceffb5dfd1b5a840590b7a072244c" name="a68dceffb5dfd1b5a840590b7a072244c"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kHotSpotOffset</b> = 4</td></tr>
-<tr class="memdesc:a68dceffb5dfd1b5a840590b7a072244c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offset around the caliper that is draggable. <br /></td></tr>
-<tr class="separator:a68dceffb5dfd1b5a840590b7a072244c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee88ad0a5e17065ac4616c821cca5c11"><td class="memItemLeft" align="right" valign="top"><a id="aee88ad0a5e17065ac4616c821cca5c11" name="aee88ad0a5e17065ac4616c821cca5c11"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickPosition</b> = 10</td></tr>
-<tr class="memdesc:aee88ad0a5e17065ac4616c821cca5c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relative position for the ruler tick marks. <br /></td></tr>
-<tr class="separator:aee88ad0a5e17065ac4616c821cca5c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03a5c0f116af61f5fdeafe1e40e0e9be"><td class="memItemLeft" align="right" valign="top"><a id="a03a5c0f116af61f5fdeafe1e40e0e9be" name="a03a5c0f116af61f5fdeafe1e40e0e9be"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickFactor</b> = 4</td></tr>
-<tr class="memdesc:a03a5c0f116af61f5fdeafe1e40e0e9be"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tick height is the thickness of the window divided by this factor. <br /></td></tr>
-<tr class="separator:a03a5c0f116af61f5fdeafe1e40e0e9be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab33a066bbae55f9b760e3eac4234ffbe"><td class="memItemLeft" align="right" valign="top"><a id="ab33a066bbae55f9b760e3eac4234ffbe" name="ab33a066bbae55f9b760e3eac4234ffbe"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kHotSpotOffset</b> { 4 }</td></tr>
+<tr class="memdesc:ab33a066bbae55f9b760e3eac4234ffbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offset around the caliper that is draggable. <br /></td></tr>
+<tr class="separator:ab33a066bbae55f9b760e3eac4234ffbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad249747eb284ac1c43d6bcdd31f5eac7"><td class="memItemLeft" align="right" valign="top"><a id="ad249747eb284ac1c43d6bcdd31f5eac7" name="ad249747eb284ac1c43d6bcdd31f5eac7"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickPosition</b> { 10 }</td></tr>
+<tr class="memdesc:ad249747eb284ac1c43d6bcdd31f5eac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relative position for the ruler tick marks. <br /></td></tr>
+<tr class="separator:ad249747eb284ac1c43d6bcdd31f5eac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96ed6574c3076246c2467f2b200ab53"><td class="memItemLeft" align="right" valign="top"><a id="aa96ed6574c3076246c2467f2b200ab53" name="aa96ed6574c3076246c2467f2b200ab53"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickFactor</b> { 4 }</td></tr>
+<tr class="memdesc:aa96ed6574c3076246c2467f2b200ab53"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tick height is the thickness of the window divided by this factor. <br /></td></tr>
+<tr class="separator:aa96ed6574c3076246c2467f2b200ab53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Slider control on a ruler background. </p>
@@ -206,8 +206,8 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickFact
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a945a6c3cc026b684391552384d7e940e" name="a945a6c3cc026b684391552384d7e940e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a945a6c3cc026b684391552384d7e940e">&#9670;&nbsp;</a></span>Create()</h2>
+<a id="a0517d64bf0db19857f6cadf5618fda14" name="a0517d64bf0db19857f6cadf5618fda14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0517d64bf0db19857f6cadf5618fda14">&#9670;&nbsp;</a></span>Create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -247,7 +247,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickFact
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -300,7 +300,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickFact
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaRulerSlider.html#a03a5c0f116af61f5fdeafe1e40e0e9be">kTickFactor</a>, <a class="el" href="classMeaRulerSlider.html#aff2afac7722d57c9ebe7bc02811fe610">m_activeBrush</a>, <a class="el" href="classMeaRulerSlider.html#a0f61fa82078f34e494f9a387e82d3022">m_inactiveBrush</a>, <a class="el" href="classMeaRulerSlider.html#a1128e9973d1440d881cddd4ea33223b2">m_sliderRect</a>, and <a class="el" href="classMeaRulerSlider.html#af830f0703fa8581be51f3fb3c07820a6">m_vertical</a>.</p>
+<p class="reference">References <a class="el" href="classMeaRulerSlider.html#aa96ed6574c3076246c2467f2b200ab53">kTickFactor</a>, <a class="el" href="classMeaRulerSlider.html#aff2afac7722d57c9ebe7bc02811fe610">m_activeBrush</a>, <a class="el" href="classMeaRulerSlider.html#a0f61fa82078f34e494f9a387e82d3022">m_inactiveBrush</a>, <a class="el" href="classMeaRulerSlider.html#a1128e9973d1440d881cddd4ea33223b2">m_sliderRect</a>, and <a class="el" href="classMeaRulerSlider.html#af830f0703fa8581be51f3fb3c07820a6">m_vertical</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaRulerSlider.html#a8fcbd93af103f6404a26be11f4b56716">OnPaint()</a>.</p>
 
@@ -364,7 +364,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickFact
 
 <p class="reference">References <a class="el" href="classMeaRulerSlider.html#a304b8272b829a5235fc0c74e83fd1e9b">m_sliderPos</a>, <a class="el" href="classMeaRulerSlider.html#a1128e9973d1440d881cddd4ea33223b2">m_sliderRect</a>, and <a class="el" href="classMeaRulerSlider.html#af830f0703fa8581be51f3fb3c07820a6">m_vertical</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRulerSlider.html#a945a6c3cc026b684391552384d7e940e">Create()</a>, <a class="el" href="classMeaRulerSlider.html#a704220a6c8a0756879ec3b5f324947f1">OnSize()</a>, and <a class="el" href="classMeaRulerSlider.html#afa71032919d41bea0bd41bd43b4eb56e">PreSubclassWindow()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRulerSlider.html#a0517d64bf0db19857f6cadf5618fda14">Create()</a>, <a class="el" href="classMeaRulerSlider.html#a704220a6c8a0756879ec3b5f324947f1">OnSize()</a>, and <a class="el" href="classMeaRulerSlider.html#a69d71203119a7067deaae5a2e07de2bb">PreSubclassWindow()</a>.</p>
 
 </div>
 </div>
@@ -395,7 +395,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickFact
 <p>Indicates whether the specified slider position is in the draggable area. </p>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the position is in the draggable area for the slider. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaRulerSlider.html#a68dceffb5dfd1b5a840590b7a072244c">kHotSpotOffset</a>, and <a class="el" href="classMeaRulerSlider.html#a304b8272b829a5235fc0c74e83fd1e9b">m_sliderPos</a>.</p>
+<p class="reference">References <a class="el" href="classMeaRulerSlider.html#ab33a066bbae55f9b760e3eac4234ffbe">kHotSpotOffset</a>, and <a class="el" href="classMeaRulerSlider.html#a304b8272b829a5235fc0c74e83fd1e9b">m_sliderPos</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaRulerSlider.html#a609ea1079804da7e9aef1a5c0b56fdcf">OnLButtonDown()</a>, and <a class="el" href="classMeaRulerSlider.html#a013062af057c0badc977eba72941eddf">OnMouseMove()</a>.</p>
 
@@ -665,8 +665,8 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickFact
 
 </div>
 </div>
-<a id="afa71032919d41bea0bd41bd43b4eb56e" name="afa71032919d41bea0bd41bd43b4eb56e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa71032919d41bea0bd41bd43b4eb56e">&#9670;&nbsp;</a></span>PreSubclassWindow()</h2>
+<a id="a69d71203119a7067deaae5a2e07de2bb" name="a69d71203119a7067deaae5a2e07de2bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69d71203119a7067deaae5a2e07de2bb">&#9670;&nbsp;</a></span>PreSubclassWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -683,7 +683,7 @@ static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kTickFact
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

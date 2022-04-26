@@ -59,21 +59,21 @@ public:
     ///
     /// @param nIDCaption       [in] String table ID for the title of the preferences dialog.
     /// @param pParentWnd       [in] Parent window for the preferences dialog. If the value is
-    ///                         NULL, the dialog is a popup.
+    ///                         nullptr, the dialog is a popup.
     /// @param iSelectPage      [in] Preference page to display when the preferences dialog is shown.
     ///                         Default is the first page.
     /// 
-    explicit MeaPreferences(UINT nIDCaption, CWnd* pParentWnd = NULL, UINT iSelectPage = 0);
+    explicit MeaPreferences(UINT nIDCaption, CWnd* pParentWnd = nullptr, UINT iSelectPage = 0);
 
     /// Constructs the property sheet.
     ///
     /// @param pszCaption       [in] String for the title of the preferences dialog.
     /// @param pParentWnd       [in] Parent window for the preferences dialog. If the value is
-    ///                         NULL, the dialog is a popup.
+    ///                         nullptr, the dialog is a popup.
     /// @param iSelectPage      [in] Preference page to display when the preferences dialog is shown.
     ///                         Default is the first page.
     /// 
-    explicit MeaPreferences(LPCTSTR pszCaption, CWnd* pParentWnd = NULL, UINT iSelectPage = 0);
+    explicit MeaPreferences(LPCTSTR pszCaption, CWnd* pParentWnd = nullptr, UINT iSelectPage = 0);
     
     /// Destroys a property sheet instance.
     ///
@@ -92,15 +92,10 @@ public:
     MeaCustomUnitsPrefs m_customPrefs;          ///< Preference page for defining custom measurement units.
     MeaAdvancedPrefs    m_advancedPrefs;        ///< Preference page for setting a startup profile.
 
-    //{{AFX_VIRTUAL(MeaPreferences)
-    //}}AFX_VIRTUAL
-
 protected:
-    //{{AFX_MSG(MeaPreferences)
     afx_msg void OnMove(int x, int y);
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
     afx_msg void OnApply();
-    //}}AFX_MSG
 
     /// @fn OnMove(int x, int y)
     /// Called when the property sheet dialog is dragged. This method calls the
@@ -132,10 +127,7 @@ protected:
     ///
     /// @return TRUE if the message has been processed.
     ///
-    virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam);
+    virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam) override;
 
     DECLARE_MESSAGE_MAP()
 };
-
-
-//{{AFX_INSERT_LOCATION}}

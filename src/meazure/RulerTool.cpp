@@ -24,9 +24,6 @@
 #include "ScreenMgr.h"
 
 
-// Defaults
-const bool      MeaRulerTool::kShowRulers = false;
-
 const CString   MeaRulerTool::kToolName(_T("RulerTool"));
 
 
@@ -151,12 +148,12 @@ void MeaRulerTool::Enable()
                             MeaColors::Get(MeaColors::RulerBack),
                             MeaColors::GetA(MeaColors::RulerOpacity),
                             MeaRuler::Vertical,
-                            rect, this, NULL, i);
+                            rect, this, nullptr, i);
             m_rulers[i]->m_hRuler.Create(MeaColors::Get(MeaColors::RulerBorder),
                             MeaColors::Get(MeaColors::RulerBack),
                             MeaColors::GetA(MeaColors::RulerOpacity),
                             MeaRuler::Horizontal,
-                            rect, this, NULL, i);
+                            rect, this, nullptr, i);
 
             PositionRulers(i);
             for (int j = 0; j < MeaRuler::NumIndicators; j++) {
@@ -265,7 +262,7 @@ void MeaRulerTool::PositionIndicators(int rulerIdx, MeaRuler::IndicatorId indId)
 
 void MeaRulerTool::OnRulerMove(const RulerInfo *info)
 {
-    MeaAssert(info != NULL);
+    MeaAssert(info != nullptr);
 
     RulerSet* rulerSet = m_rulers[info->id];
 

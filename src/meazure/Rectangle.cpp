@@ -55,7 +55,7 @@ bool MeaRectangle::Create(int thk, int shrink, const CWnd *parent)
     m_thk = thk;
     m_shrink = shrink;
 
-    CString wndClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW, NULL,
+    CString wndClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW, nullptr,
         *m_foreBrush);
 
     if (!MeaGraphic::Create(wndClass, CSize(0, 0), parent)) {
@@ -94,7 +94,7 @@ void MeaRectangle::SetPosition(const POINT& point1, const POINT& point2)
 void MeaRectangle::SetColor(COLORREF color)
 {
     CBrush *brush   = new CBrush(color);
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         ::SetClassLongPtr(m_hWnd, GCLP_HBRBACKGROUND,
                         reinterpret_cast<LONG_PTR>(static_cast<HBRUSH>(*brush)));
     }
@@ -102,7 +102,7 @@ void MeaRectangle::SetColor(COLORREF color)
     delete m_foreBrush;
     m_foreBrush = brush;
 
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         Invalidate();
         UpdateWindow();
     }
@@ -119,7 +119,7 @@ LRESULT MeaRectangle::OnHPTimer(WPARAM, LPARAM)
     rect.NormalizeRect();
     rect.InflateRect(0, 0, 1, 1);
 
-    SetWindowPos(NULL, rect.left, rect.top, rect.Width(), rect.Height(),
+    SetWindowPos(nullptr, rect.left, rect.top, rect.Width(), rect.Height(),
             SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSENDCHANGING);
     SetRegion();
     

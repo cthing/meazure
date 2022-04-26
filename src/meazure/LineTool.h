@@ -56,18 +56,18 @@ public:
     /// Displays the Line tool. If the Create() method has not been
     /// previously called, it will be called by Enable.
     ///
-    virtual void Enable();
+    virtual void Enable() override;
 
     /// Hides the Line tool.
     ///
-    virtual void Disable();
+    virtual void Disable() override;
 
 
     /// Requests that the tool update the display of its position data.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
-    virtual void Update(MeaUpdateReason reason);
+    virtual void Update(MeaUpdateReason reason) override;
 
 
     /// Persists the state of the tool to the specified profile object.
@@ -76,31 +76,31 @@ public:
     ///                 Typically an MeaFileProfile or MeaRegistryProfile
     ///                 object.
     ///
-    virtual void SaveProfile(MeaProfile& profile);
+    virtual void SaveProfile(MeaProfile& profile) override;
 
     /// Restores the state of the tool from the specified profile object.
     ///
     /// @param profile  [in] The source for the state information. Typically
     ///                 an MeaFileProfile or MeaRegistryProfile object.
     ///
-    virtual void LoadProfile(MeaProfile& profile);
+    virtual void LoadProfile(MeaProfile& profile) override;
 
 
     /// Displays the tool's crosshairs. If the Enable() method has not
     /// been previously called, this method has no effect.
     ///
-    virtual void EnableCrosshairs();
+    virtual void EnableCrosshairs() override;
 
     /// Hides the tool's crosshairs.
     ///
-    virtual void DisableCrosshairs();
+    virtual void DisableCrosshairs() override;
 
 
     /// Visually flashes the tool. The tool crosshairs are cycled
     /// between a highlight color and their normal color a number of times.
     /// Flashing the tool helps the user find it on the screen.
     ///
-    virtual void Flash();
+    virtual void Flash() override;
 
     /// Visually strobes the tool. The tool crosshairs are cycled
     /// between a highlight color and their normal color once. In addition,
@@ -108,7 +108,7 @@ public:
     /// hidden and visible. Strobing the tool is done to visually confirm
     /// region capture and position recording.
     ///
-    virtual void Strobe();
+    virtual void Strobe() override;
 
 
     /// Sets the position of the tool. This method sets the position
@@ -120,7 +120,7 @@ public:
     /// @param which    [in] Position component
     /// @param pixels   [in] Position to set for the component, in pixels
     ///
-    virtual void    SetPosition(MeaFields which, int pixels);
+    virtual void    SetPosition(MeaFields which, int pixels) override;
 
     /// Sets the position of the tool. This method is called by the
     /// position log manager to play back a tool's position that was
@@ -128,7 +128,7 @@ public:
     ///
     /// @param points   [in] Map of positions for the tool's crosshairs.
     ///
-    virtual void    SetPosition(const PointMap& points);
+    virtual void    SetPosition(const PointMap& points) override;
     
     /// Returns the tool's current position. The current position is
     /// the position of the last crosshair entered or moved. The default
@@ -136,7 +136,7 @@ public:
     ///
     /// @return Current position
     ///
-    virtual const POINT&    GetPosition() const;
+    virtual const POINT&    GetPosition() const override;
 
     /// Records the position of the tool. This method is called by the
     /// position log manager to record a position.
@@ -144,19 +144,19 @@ public:
     /// @param position     [in] The tool's current position is recorded into
     ///                     the position log manager's position object.
     ///
-    virtual void    GetPosition(MeaPositionLogMgr::Position& position) const;
+    virtual void    GetPosition(MeaPositionLogMgr::Position& position) const override;
 
     /// Increments the specified position field.
     /// 
     /// @param which Field to increment
     ///
-    virtual void    IncPosition(MeaFields which);
+    virtual void    IncPosition(MeaFields which) override;
 
     /// Decrements the specified position field.
     /// 
     /// @param which Field to decrement
     ///
-    virtual void    DecPosition(MeaFields which);
+    virtual void    DecPosition(MeaFields which) override;
 
 
     /// Returns the name of the tool. Each tool has a unique name
@@ -165,21 +165,21 @@ public:
     ///
     /// @return Name of the tool ("LineTool").
     ///
-    virtual CString GetToolName() const;
+    virtual CString GetToolName() const override;
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.
     ///
     /// @return Resource ID for the label.
     ///
-    virtual UINT    GetLabelId() const;
+    virtual UINT    GetLabelId() const override;
 
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The crosshairs and line colors are updated as
     /// well as the crosshair and data window opacities.
     ///
-    virtual void ColorsChanged();
+    virtual void ColorsChanged() override;
 
 
     /// Called when the pointer enters one of the tool's crosshairs.
@@ -188,7 +188,7 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHEnter(const CHInfo *info);
+    virtual void OnCHEnter(const CHInfo *info) override;
 
     /// Called when the pointer leaves one of the tool's crosshairs.
     /// The crosshair exited is identified by the MeaCrossHairCallback::CHInfo
@@ -196,7 +196,7 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHLeave(const CHInfo *info);
+    virtual void OnCHLeave(const CHInfo *info) override;
 
     /// Called when the user attempts to drag one of the tool's
     /// crosshairs. The crosshair to be moved is identified by the
@@ -209,11 +209,11 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHMove(const CHInfo *info);
+    virtual void OnCHMove(const CHInfo *info) override;
 
 private:
-    static const UINT   kPoint1Id;      ///< ID for the point 1 crosshair
-    static const UINT   kPoint2Id;      ///< ID for the point 2 crosshair
+    static constexpr UINT kPoint1Id { 1 };      ///< ID for the point 1 crosshair
+    static constexpr UINT kPoint2Id { 2 };      ///< ID for the point 2 crosshair
 
 
     /// Creates the tool's graphical components. The components include

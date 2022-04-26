@@ -198,7 +198,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_buildDOM</b></td></
 <tr class="separator:af5d0e20c72910968c6b504385b89caa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a875633c7eae624dd46a8bc6aaf76d943"><td class="memItemLeft" align="right" valign="top"><a id="a875633c7eae624dd46a8bc6aaf76d943" name="a875633c7eae624dd46a8bc6aaf76d943"></a>
 <a class="el" href="classMeaXMLNode.html">MeaXMLNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_dom</b></td></tr>
-<tr class="memdesc:a875633c7eae624dd46a8bc6aaf76d943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Root node of the DOM being built, or NULL. <br /></td></tr>
+<tr class="memdesc:a875633c7eae624dd46a8bc6aaf76d943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Root node of the DOM being built, or nullptr. <br /></td></tr>
 <tr class="separator:a875633c7eae624dd46a8bc6aaf76d943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa25ae342e4a12f7537fc90c18f31e627"><td class="memItemLeft" align="right" valign="top"><a id="aa25ae342e4a12f7537fc90c18f31e627" name="aa25ae342e4a12f7537fc90c18f31e627"></a>
 <a class="el" href="classMeaXMLParser.html#a2215e9442f60f1159a36325e2c3687f3">NodeStack</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_nodeStack</b></td></tr>
@@ -418,7 +418,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">userData</td><td>[in] this </td></tr>
-    <tr><td class="paramname">s</td><td>[in] Buffer containing character data. The buffer might not be NULL terminated so the len parameter must be used to determine the end of the buffer. </td></tr>
+    <tr><td class="paramname">s</td><td>[in] Buffer containing character data. The buffer might not be nullptr terminated so the len parameter must be used to determine the end of the buffer. </td></tr>
     <tr><td class="paramname">len</td><td>[in] Number of bytes of data in the buffer, s. </td></tr>
   </table>
   </dd>
@@ -488,7 +488,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
     <tr><td class="paramname">userData</td><td>[in] this </td></tr>
     <tr><td class="paramname">doctypeName</td><td>[in] Document element name. </td></tr>
     <tr><td class="paramname">sysid</td><td>[in] The XML system identifier for the DTD. </td></tr>
-    <tr><td class="paramname">pubid</td><td>[in] The public identifier for the DTD, or NULL if none. </td></tr>
+    <tr><td class="paramname">pubid</td><td>[in] The public identifier for the DTD, or nullptr if none. </td></tr>
     <tr><td class="paramname">has_internal_subset</td><td>[in] Non-zero if an internal DTD subset has been specified. </td></tr>
   </table>
   </dd>
@@ -702,7 +702,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
     <tr><td class="paramname">context</td><td>[in] Expat internal parsing state. </td></tr>
     <tr><td class="paramname">base</td><td>[in] Base path for the entity previously set by the SetBasePath method. </td></tr>
     <tr><td class="paramname">systemId</td><td>[in] The XML system identifier for the entity. </td></tr>
-    <tr><td class="paramname">publicId</td><td>[in] The XML public identifier for the entity. This parameter will be NULL if no public identifier was specified for the entity.</td></tr>
+    <tr><td class="paramname">publicId</td><td>[in] The XML public identifier for the entity. This parameter will be nullptr if no public identifier was specified for the entity.</td></tr>
   </table>
   </dd>
 </dl>
@@ -787,7 +787,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
 
 <p class="reference">References <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">MeaPositionLogMgr::Load()</a>, <a class="el" href="classMeaFileProfile.html#a4007ab121cad73afe49a567a992eacae">MeaFileProfile::ParseEntity()</a>, <a class="el" href="classMeaPositionLogMgr.html#ac99655f65375546e49016dd685adf3c0">MeaPositionLogMgr::ParseEntity()</a>, and <a class="el" href="classMeaFileProfile.html#a2754ddab58ae7078fb3322646f3adf42">MeaFileProfile::ParseFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">MeaPositionLogMgr::Load()</a>, <a class="el" href="classMeaFileProfile.html#a291d697a73d4541146dd4cce73346815">MeaFileProfile::ParseEntity()</a>, <a class="el" href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">MeaPositionLogMgr::ParseEntity()</a>, and <a class="el" href="classMeaFileProfile.html#a2754ddab58ae7078fb3322646f3adf42">MeaFileProfile::ParseFile()</a>.</p>
 
 </div>
 </div>
@@ -815,11 +815,11 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
 </div><div class="memdoc">
 
 <p>If a DOM was constructed, this method returns its root node. </p>
-<dl class="section return"><dt>Returns</dt><dd>Root node of the DOM or NULL if none was constructed. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Root node of the DOM or nullptr if none was constructed. </dd></dl>
 
 <p class="reference">References <a class="el" href="classMeaXMLParser.html#a875633c7eae624dd46a8bc6aaf76d943">m_dom</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">MeaPositionLogMgr::Load()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">MeaPositionLogMgr::Load()</a>.</p>
 
 </div>
 </div>
@@ -931,7 +931,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
 
 <p class="reference">References <a class="el" href="classMeaXMLParser.html#a68915f7d7c8d86983586bd098af3cfad">HandleParserError()</a>, and <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#aaf246e14537995c6f99b2707a05ba50a">MeaPositionLogMgr::Load()</a>, <a class="el" href="classMeaFileProfile.html#a4007ab121cad73afe49a567a992eacae">MeaFileProfile::ParseEntity()</a>, <a class="el" href="classMeaPositionLogMgr.html#ac99655f65375546e49016dd685adf3c0">MeaPositionLogMgr::ParseEntity()</a>, and <a class="el" href="classMeaFileProfile.html#a2754ddab58ae7078fb3322646f3adf42">MeaFileProfile::ParseFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">MeaPositionLogMgr::Load()</a>, <a class="el" href="classMeaFileProfile.html#a291d697a73d4541146dd4cce73346815">MeaFileProfile::ParseEntity()</a>, <a class="el" href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">MeaPositionLogMgr::ParseEntity()</a>, and <a class="el" href="classMeaFileProfile.html#a2754ddab58ae7078fb3322646f3adf42">MeaFileProfile::ParseFile()</a>.</p>
 
 </div>
 </div>
@@ -1010,7 +1010,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
   <table class="params">
     <tr><td class="paramname">userData</td><td>[in] this </td></tr>
     <tr><td class="paramname">elementName</td><td>[in] Name of the opened element. </td></tr>
-    <tr><td class="paramname">attrs</td><td>[in] Array of attributes arranged as name followed by value and terminated by a NULL entry. </td></tr>
+    <tr><td class="paramname">attrs</td><td>[in] Array of attributes arranged as name followed by value and terminated by a nullptr entry. </td></tr>
   </table>
   </dd>
 </dl>

@@ -37,7 +37,7 @@ END_MESSAGE_MAP()
 
 
 MeaImageButton::MeaImageButton(UINT up, UINT down, UINT disabled) :
-    CButton(), m_theme(NULL), m_up(up), m_down(down), m_disabled(disabled),
+    CButton(), m_theme(nullptr), m_up(up), m_down(down), m_disabled(disabled),
     m_depressed(false), m_toggle(false)
 {
 }
@@ -45,7 +45,7 @@ MeaImageButton::MeaImageButton(UINT up, UINT down, UINT disabled) :
 
 MeaImageButton::~MeaImageButton()
 {
-    m_theme = NULL;
+    m_theme = nullptr;
 }
 
 
@@ -72,22 +72,18 @@ bool MeaImageButton::Create(DWORD dwStyle, CWnd* pParentWnd, UINT nID,
         brect.InflateRect(2 * border.cx, 2 * border.cy);
     }
 
-    if (!CButton::Create(NULL, dwStyle | WS_CHILD | BS_OWNERDRAW,
+    if (!CButton::Create(nullptr, dwStyle | WS_CHILD | BS_OWNERDRAW,
                         brect, pParentWnd, nID)) {
         return false;
     }
     
     // XP Theme support, if available
     //
-    if (IsThemeActive()) {
-        m_theme = OpenThemeData(*this, L"BUTTON");
-    } else {
-        m_theme = NULL; // Need to draw using standard GDI
-    }
+    m_theme = IsThemeActive() ? OpenThemeData(*this, L"BUTTON") : nullptr;
 
     if (toolTipID != 0xffff) {
         m_toolTip.Create(this, TTS_ALWAYSTIP);
-        m_toolTip.AddTool(this, toolTipID, NULL, 0);
+        m_toolTip.AddTool(this, toolTipID, nullptr, 0);
     }
 
     return true;
@@ -98,16 +94,16 @@ void MeaImageButton::OnDestroy()
 {
     CButton::OnDestroy();
 
-    if (m_theme != NULL) {
+    if (m_theme != nullptr) {
         CloseThemeData(m_theme);
-        m_theme = NULL;
+        m_theme = nullptr;
     }
 }
 
 
 BOOL MeaImageButton::PreTranslateMessage(MSG *pMsg)
 {
-    if (m_toolTip.m_hWnd != NULL) {
+    if (m_toolTip.m_hWnd != nullptr) {
         m_toolTip.RelayEvent(pMsg);
     }
     return CButton::PreTranslateMessage(pMsg);
@@ -174,11 +170,11 @@ void MeaImageButton::DrawItem(LPDRAWITEMSTRUCT dis)
     //
     // Draw the traditional pushbutton edge using DrawEdge
     //
-    if (m_theme != NULL) {
+    if (m_theme != nullptr) {
         if (isDown) {
-            DrawThemeEdge(m_theme, dis->hDC, BP_PUSHBUTTON, PBS_PRESSED, &dis->rcItem, EDGE_SUNKEN, BF_RECT | BF_MIDDLE | BF_SOFT, NULL);
+            DrawThemeEdge(m_theme, dis->hDC, BP_PUSHBUTTON, PBS_PRESSED, &dis->rcItem, EDGE_SUNKEN, BF_RECT | BF_MIDDLE | BF_SOFT, nullptr);
         } else {
-            DrawThemeEdge(m_theme, dis->hDC, BP_PUSHBUTTON, PBS_NORMAL, &dis->rcItem, EDGE_RAISED, BF_RECT | BF_MIDDLE | BF_SOFT, NULL);
+            DrawThemeEdge(m_theme, dis->hDC, BP_PUSHBUTTON, PBS_NORMAL, &dis->rcItem, EDGE_RAISED, BF_RECT | BF_MIDDLE | BF_SOFT, nullptr);
         }
     } else {
         if (isDown) {
@@ -225,6 +221,6 @@ void MeaImageButton::DrawItem(LPDRAWITEMSTRUCT dis)
 void MeaImageButton::OnLButtonDown(UINT nFlags, CPoint point) 
 {
     m_depressed = !m_depressed;
-    InvalidateRect(NULL);
+    InvalidateRect(nullptr);
     CButton::OnLButtonDown(nFlags, point);
 }

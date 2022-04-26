@@ -37,8 +37,8 @@
 class MeaDataWin: public CWnd
 {
 public:
-    static const bool kDefArmed;    ///< Indicates whether to display data windows by default.
-    static const int kNoLabelId;    ///< Indicates a data window label has not been specified.
+    static constexpr bool kDefArmed { true };       ///< Indicates whether to display data windows by default.
+    static constexpr int kNoLabelId { 0xffff };     ///< Indicates a data window label has not been specified.
 
 
     /// Constructs a data window. To use the data window, its Create method
@@ -65,14 +65,14 @@ public:
     /// @param aLabelId     [in] String resource ID for the angle label.
     /// @param parent       [in] Parent window for the data window if it is
     ///                     used as a child window. Typically, this parameter
-    ///                     is NULL, which creates a floating window.
+    ///                     is nullptr, which creates a floating window.
     ///
     /// @return <b>true</b> if the window is successfully created.
     ///
     bool    Create(BYTE opacity, UINT xLabelId = kNoLabelId, UINT yLabelId = kNoLabelId,
                     UINT wLabelId = kNoLabelId, UINT hLabelId = kNoLabelId,
                     UINT dLabelId = kNoLabelId, UINT aLabelId = kNoLabelId,
-                    const CWnd* parent = NULL);
+                    const CWnd* parent = nullptr);
 
 
     /// Displays the specified x and y coordinates. For the values
@@ -155,7 +155,7 @@ public:
     
     /// Hides the data window.
     ///
-    void    Hide() { if (m_hWnd != NULL) ShowWindow(SW_HIDE); }
+    void    Hide() { if (m_hWnd != nullptr) ShowWindow(SW_HIDE); }
 
     /// Flashes the text in the data window once. Typically used
     /// to indicate that a tool position has been recorded.
@@ -271,7 +271,7 @@ private:
     CString m_dData;        ///< Distance data converted to a string.
     CString m_aData;        ///< Angle data converted to a string.
 
-    const CWnd  *m_parent;      ///< Parent window or NULL if data window is floating.
+    const CWnd  *m_parent;      ///< Parent window or nullptr if data window is floating.
     CFont       m_font;         ///< Font for the data display.
     LONG        m_textHeight;   ///< Height of the text, in pixels.
     LONG        m_winHeight;    ///< Height of the data window, in pixels.

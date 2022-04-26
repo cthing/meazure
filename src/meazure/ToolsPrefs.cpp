@@ -36,7 +36,6 @@ IMPLEMENT_DYNCREATE(MeaToolsPrefs, CPropertyPage)
 
 
 BEGIN_MESSAGE_MAP(MeaToolsPrefs, CPropertyPage)
-    //{{AFX_MSG_MAP(MeaToolsPrefs)
     ON_BN_CLICKED(IDC_TOOLS_LINE_BTN, OnChangeLineColor)
     ON_BN_CLICKED(IDC_TOOLS_LINE_DEF, OnDefLineColor)
     ON_BN_CLICKED(IDC_TOOLS_CHBORDER_BTN, OnChangeBorderColor)
@@ -48,18 +47,13 @@ BEGIN_MESSAGE_MAP(MeaToolsPrefs, CPropertyPage)
     ON_WM_HSCROLL()
     ON_BN_CLICKED(IDC_MEA_DATA_WIN, OnChange)
     ON_BN_CLICKED(IDC_MEA_ORIGIN_MARKER, OnChange)
-    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 
 MeaToolsPrefs::MeaToolsPrefs() : CPropertyPage(MeaToolsPrefs::IDD),
-    m_lineColor(0), m_backColor(0), m_borderColor(0), m_hiliteColor(0)
+    m_lineColor(0), m_backColor(0), m_borderColor(0), m_hiliteColor(0),
+    m_showDataWin(FALSE), m_opacity(0), m_originMarker(FALSE)
 {
-    //{{AFX_DATA_INIT(MeaToolsPrefs)
-    m_showDataWin = FALSE;
-    m_opacity = 0;
-    m_originMarker = FALSE;
-    //}}AFX_DATA_INIT
 }
 
 
@@ -71,11 +65,9 @@ MeaToolsPrefs::~MeaToolsPrefs()
 void MeaToolsPrefs::DoDataExchange(CDataExchange* pDX)
 {
     CPropertyPage::DoDataExchange(pDX);
-    //{{AFX_DATA_MAP(MeaToolsPrefs)
     DDX_Check(pDX, IDC_MEA_DATA_WIN, m_showDataWin);
     DDX_Slider(pDX, IDC_CH_OPACITY, m_opacity);
     DDX_Check(pDX, IDC_MEA_ORIGIN_MARKER, m_originMarker);
-    //}}AFX_DATA_MAP
 }
 
 
@@ -106,7 +98,7 @@ BOOL MeaToolsPrefs::OnInitDialog()
     ScreenToClient(rect);
 
     m_normalCH.Create(m_borderColor, m_backColor, m_backColor,
-                        255, NULL, this);
+                        255, nullptr, this);
     m_normalCH.SetPosition(rect.CenterPoint());
     if (HaveLayeredWindows()) {
         m_normalCH.SetOpacity(alpha);
@@ -119,7 +111,7 @@ BOOL MeaToolsPrefs::OnInitDialog()
     ScreenToClient(rect);
 
     m_hiliteCH.Create(m_borderColor, m_hiliteColor, m_hiliteColor,
-                        255, NULL, this);
+                        255, nullptr, this);
     m_hiliteCH.SetPosition(rect.CenterPoint());
     if (HaveLayeredWindows()) {
         m_hiliteCH.SetOpacity(alpha);
@@ -139,7 +131,7 @@ BOOL MeaToolsPrefs::OnInitDialog()
         m_dataWin.SetOpacity(alpha);
     }
     m_dataWin.Show();
-    m_dataWin.SetWindowPos(NULL, rect.left, rect.top - 2, rect.Width(),
+    m_dataWin.SetWindowPos(nullptr, rect.left, rect.top - 2, rect.Width(),
                             MeaLayout::GetWindowHeight(m_dataWin) - 2, SWP_NOZORDER);
 
     // Configure the opacity slider.

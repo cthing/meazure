@@ -25,16 +25,6 @@
 #include "Layout.h"
 #include "LayeredWindows.h"
 
-    
-const int       MeaRuler::kMinMajorTickHeight   = 8;
-const double    MeaRuler::kMajorTickHeight      = 0.08;
-
-const int       MeaRuler::kMinMinorTickHeight   = 5;
-const double    MeaRuler::kMinorTickHeight      = 0.05;
-
-const int       MeaRuler::kMinMargin            = 1;
-const double    MeaRuler::kMargin               = 0.01;
-
 
 BEGIN_MESSAGE_MAP(MeaRuler, MeaGraphic)
     ON_WM_DESTROY()
@@ -54,7 +44,7 @@ MeaRuler::MeaRuler() :
     MeaGraphic(),
     m_borderColor(0),
     m_backColor(0),
-    m_callback(NULL),
+    m_callback(nullptr),
     m_orientation(Horizontal),
     m_position(0),
     m_labelPosition(Top),
@@ -62,8 +52,8 @@ MeaRuler::MeaRuler() :
     m_thk(0),
     m_mouseCaptured(false),
     m_opacity(255),
-    m_origRulerBitmap(NULL),
-    m_origBackBitmap(NULL)
+    m_origRulerBitmap(nullptr),
+    m_origBackBitmap(nullptr)
 {
     // Initially hide all position indicators.
     //
@@ -108,12 +98,12 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
 
     // Use the appropriate arrow cursor for the ruler orientation.
     //
-    if (parent != NULL) {
-        cursor = NULL;
+    if (parent != nullptr) {
+        cursor = nullptr;
     } else if (orientation == Horizontal) {
-        cursor = LoadCursor(NULL, IDC_SIZENS);
+        cursor = LoadCursor(nullptr, IDC_SIZENS);
     } else {
-        cursor = LoadCursor(NULL, IDC_SIZEWE);
+        cursor = LoadCursor(nullptr, IDC_SIZEWE);
     }
 
     CString wndClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW,
@@ -125,7 +115,7 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
 
     // If layered windows are available, set the ruler opacity.
     //
-    if (HaveLayeredWindows() && (parent == NULL)) {
+    if (HaveLayeredWindows() && (parent == nullptr)) {
         ModifyStyleEx(0, WS_EX_LAYERED);
         SetOpacity(opacity);
     }
@@ -158,12 +148,12 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
     if (orientation == Horizontal) {
         m_thk += 2 * m_margin.cy + m_majorTickHeight.cy;
 
-        SetWindowPos(NULL, 0, 0, targetRect.Width(), m_thk,
+        SetWindowPos(nullptr, 0, 0, targetRect.Width(), m_thk,
                      SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
     } else {
         m_thk += 2 * m_margin.cx + m_majorTickHeight.cx;
 
-        SetWindowPos(NULL, 0, 0, m_thk, targetRect.Height(),
+        SetWindowPos(nullptr, 0, 0, m_thk, targetRect.Height(),
                      SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
     }
     
@@ -172,7 +162,7 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
     // when the ruler is used as a sample on the preference page for
     // setting ruler preferences.
     //
-    if (HaveLayeredWindows() && (m_parent != NULL)) {
+    if (HaveLayeredWindows() && (m_parent != nullptr)) {
         CRect rect;
 
         GetClientRect(rect);
@@ -205,16 +195,16 @@ void MeaRuler::OnDestroy()
     m_hFont.DeleteObject();
     m_vFont.DeleteObject();
 
-    if (m_origRulerBitmap != NULL) {
+    if (m_origRulerBitmap != nullptr) {
         m_rulerDC.SelectObject(m_origRulerBitmap);
         m_rulerBitmap.DeleteObject();
         m_rulerDC.DeleteDC();
-        m_origRulerBitmap = NULL;
+        m_origRulerBitmap = nullptr;
 
         m_backDC.SelectObject(m_origBackBitmap);
         m_backBitmap.DeleteObject();
         m_backDC.DeleteDC();
-        m_origBackBitmap = NULL;
+        m_origBackBitmap = nullptr;
     }
 }
 
@@ -232,8 +222,8 @@ void MeaRuler::SetOpacity(BYTE opacity)
 {
     m_opacity = opacity;
 
-    if (m_hWnd != NULL) {
-        if (m_parent == NULL) {
+    if (m_hWnd != nullptr) {
+        if (m_parent == nullptr) {
             SetLayeredWindowAttributes(*this, 0, opacity, LWA_ALPHA);
         } else {
             Update();
@@ -263,8 +253,8 @@ void MeaRuler::SetPosition(int position)
 
         m_labelPosition = (m_position < targetCenter.y) ? Top : Bottom;
 
-        if (GetSafeHwnd() != NULL) {
-            SetWindowPos(NULL, m_targetRect.left, m_position, 0, 0,
+        if (GetSafeHwnd() != nullptr) {
+            SetWindowPos(nullptr, m_targetRect.left, m_position, 0, 0,
                 SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOSENDCHANGING);
         }
         break;
@@ -277,8 +267,8 @@ void MeaRuler::SetPosition(int position)
 
         m_labelPosition = (m_position < targetCenter.x) ? Left : Right;
 
-        if (GetSafeHwnd() != NULL) {
-            SetWindowPos(NULL, m_position, m_targetRect.top, 0, 0,
+        if (GetSafeHwnd() != nullptr) {
+            SetWindowPos(nullptr, m_position, m_targetRect.top, 0, 0,
                 SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_NOSENDCHANGING);
         }
         break;
@@ -292,7 +282,7 @@ void MeaRuler::SetPosition(int position)
 
 void MeaRuler::SetIndicator(IndicatorId indId, int pixel)
 {
-    if (GetSafeHwnd() != NULL) {
+    if (GetSafeHwnd() != nullptr) {
         CClientDC dc(this);
         DrawIndicator(indId, dc);
         m_indicatorLoc[indId] = pixel;
@@ -516,7 +506,7 @@ void MeaRuler::OnPaint()
     // the case when layered windows are available and the ruler is being
     // used as a sample on the preferences dialog.
     //
-    if (m_origRulerBitmap == NULL) {
+    if (m_origRulerBitmap == nullptr) {
         DrawRuler(dc);
     } else {
         CRect rect;
@@ -568,7 +558,7 @@ void MeaRuler::OnMouseMove(UINT flags, CPoint point)
         MeaRulerCallback::RulerInfo rulerInfo;
         FillInfo(rulerInfo, flags, point);
 
-        if (m_callback != NULL) {
+        if (m_callback != nullptr) {
             m_callback->OnRulerMove(&rulerInfo);
         }
     }

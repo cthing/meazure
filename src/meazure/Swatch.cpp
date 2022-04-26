@@ -28,7 +28,7 @@ END_MESSAGE_MAP()
 
 
 MeaSwatch::MeaSwatch() : CWnd(),
-    m_backBrush(NULL)
+    m_backBrush(nullptr)
 {
 }
 
@@ -36,7 +36,7 @@ MeaSwatch::MeaSwatch() : CWnd(),
 MeaSwatch::~MeaSwatch()
 {
     try {
-        if (m_backBrush != NULL) {
+        if (m_backBrush != nullptr) {
             delete m_backBrush;
         }
     }
@@ -57,19 +57,19 @@ bool MeaSwatch::Create(COLORREF color, const RECT &rect, CWnd *parent)
 {
     SetColor(color);
 
-    MeaAssert(m_backBrush != NULL);
+    MeaAssert(m_backBrush != nullptr);
     CString classname = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW,
-        NULL, *m_backBrush);
-    return CreateEx(0, classname, "", ((parent == NULL) ? WS_POPUP : WS_CHILD),
-        rect, ((parent == NULL) ? AfxGetMainWnd() : parent), 0) ? true : false;
+        nullptr, *m_backBrush);
+    return CreateEx(0, classname, "", ((parent == nullptr) ? WS_POPUP : WS_CHILD),
+        rect, ((parent == nullptr) ? AfxGetMainWnd() : parent), 0) ? true : false;
 }
 
 
 void MeaSwatch::DestroyColors()
 {
-    if (m_backBrush != NULL) {
+    if (m_backBrush != nullptr) {
         delete m_backBrush;
-        m_backBrush = NULL;
+        m_backBrush = nullptr;
     }
 }
 
@@ -77,14 +77,14 @@ void MeaSwatch::DestroyColors()
 void MeaSwatch::SetColor(COLORREF color)
 {
     CBrush *brush   = new CBrush(color);
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         ::SetClassLongPtr(m_hWnd, GCLP_HBRBACKGROUND, reinterpret_cast<LONG_PTR>(static_cast<HBRUSH>(*brush)));
     }
     
     DestroyColors();
     m_backBrush = brush;
 
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         Invalidate();
         UpdateWindow();
     }

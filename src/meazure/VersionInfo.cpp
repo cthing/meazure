@@ -31,7 +31,7 @@ MeaVersionInfo::MeaVersionInfo()
     DWORD handle;
     UINT len;
 
-    GetModuleFileName(NULL, pathname, _MAX_PATH);
+    GetModuleFileName(nullptr, pathname, _MAX_PATH);
     size = GetFileVersionInfoSize(pathname, &handle);
     m_data = new char[size];
     GetFileVersionInfo(pathname, 0, size, m_data);

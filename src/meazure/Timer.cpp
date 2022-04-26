@@ -21,8 +21,8 @@
 #include "Timer.h"
 
 
-MeaTimer::MeaTimer() : m_timerThread(NULL), m_stopEvent(FALSE, TRUE),
-    m_exitEvent(FALSE, TRUE), m_elapse(0), m_parent(NULL), m_userData(0)
+MeaTimer::MeaTimer() : m_timerThread(nullptr), m_stopEvent(FALSE, TRUE),
+    m_exitEvent(FALSE, TRUE), m_elapse(0), m_parent(nullptr), m_userData(0)
 {
     // The m_exitEvent indicates whether we are in the timer procedure. Since
     // we are just starting, we are not in the timer thread.
@@ -39,8 +39,8 @@ MeaTimer::~MeaTimer()
         //
         Stop();
 
-        m_timerThread = NULL;
-        m_parent = NULL;
+        m_timerThread = nullptr;
+        m_parent = nullptr;
     }
     catch(...) {
         MeaAssert(false);
@@ -52,7 +52,7 @@ void MeaTimer::Start(int elapse)
 {
     // The timer needs a parent object to send the timer expire event.
     //
-    MeaAssert(m_parent != NULL);
+    MeaAssert(m_parent != nullptr);
 
     // Only one thread at a time can set or read the timer thread ID.
     //
@@ -64,7 +64,7 @@ void MeaTimer::Start(int elapse)
     // words, multiple calls to Start will not cause multiple timer
     // threads to pile up.
     //
-    if (m_timerThread == NULL) {
+    if (m_timerThread == nullptr) {
         m_timerThread = AfxBeginThread(MeaTimer::TimerProc, this);
     }
     
@@ -100,7 +100,7 @@ UINT MeaTimer::TimerProc()
     // handler calls the timer Start method.
     //
     m_critSect.Lock();
-    m_timerThread = NULL;
+    m_timerThread = nullptr;
     m_critSect.Unlock();
 
     // Tell the parent that the timer has expired if the wait

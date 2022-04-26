@@ -32,16 +32,13 @@ BEGIN_MESSAGE_MAP(MeaDataWin, CWnd)
 END_MESSAGE_MAP()
 
 
-const bool  MeaDataWin::kDefArmed = true;
-const int   MeaDataWin::kNoLabelId = 0xffff;
-
-bool MeaDataWin::m_armed = kDefArmed;
-SIZE MeaDataWin::m_margin = { 3, 1 };
-UINT MeaDataWin::m_flashInterval = 100; // Flash interval in milliseconds
+bool MeaDataWin::m_armed { kDefArmed };
+SIZE MeaDataWin::m_margin { 3, 1 };
+UINT MeaDataWin::m_flashInterval { 100 };   // Flash interval in milliseconds
 
 
 MeaDataWin::MeaDataWin() : CWnd(),
-    m_parent(NULL),
+    m_parent(nullptr),
     m_textHeight(0),
     m_winHeight(0),
     m_dataOffset(0),
@@ -54,7 +51,7 @@ MeaDataWin::MeaDataWin() : CWnd(),
 
 MeaDataWin::~MeaDataWin()
 {
-    m_parent = NULL;
+    m_parent = nullptr;
 }
 
 
@@ -91,12 +88,12 @@ bool MeaDataWin::Create(BYTE opacity,
     // Create the window.
     //
     bool ret = CreateEx(
-                    (HaveLayeredWindows() && (parent == NULL)) ? WS_EX_LAYERED : 0,
+                    (HaveLayeredWindows() && (parent == nullptr)) ? WS_EX_LAYERED : 0,
                     AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW, 0),
                     "",
-                    ((parent == NULL) ? WS_POPUP : WS_CHILD) | WS_BORDER,
+                    ((parent == nullptr) ? WS_POPUP : WS_CHILD) | WS_BORDER,
                     0, 0, 5, 5,
-                    (parent == NULL) ? *AfxGetMainWnd() : *parent, 0) ? true : false;
+                    (parent == nullptr) ? *AfxGetMainWnd() : *parent, 0) ? true : false;
 
     SetOpacity(opacity);
 
@@ -128,7 +125,7 @@ bool MeaDataWin::Create(BYTE opacity,
     SetFont(&m_font, FALSE);
 
     CDC *dc = GetDC();
-    if (dc == NULL) {
+    if (dc == nullptr) {
         return false;
     }
 
@@ -213,8 +210,8 @@ void MeaDataWin::OnDestroy()
 
 void MeaDataWin::Show()
 {
-    if ((m_armed || (m_parent != NULL)) && (m_hWnd != NULL)) {
-        SetWindowPos(NULL, 0, 0, CalcWidth(), m_winHeight,
+    if ((m_armed || (m_parent != nullptr)) && (m_hWnd != nullptr)) {
+        SetWindowPos(nullptr, 0, 0, CalcWidth(), m_winHeight,
             SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
         ShowWindow(SW_SHOWNOACTIVATE);
     }
@@ -228,7 +225,7 @@ void MeaDataWin::Strobe()
         m_drawState = Inverted;
         Invalidate(FALSE);
         UpdateWindow();
-        SetTimer(ID_MEA_DATAWIN_TIMER, m_flashInterval, NULL);
+        SetTimer(ID_MEA_DATAWIN_TIMER, m_flashInterval, nullptr);
     }
 }
 
@@ -237,8 +234,8 @@ void MeaDataWin::SetOpacity(BYTE opacity)
 {
     m_opacity = opacity;
 
-    if (m_hWnd != NULL) {
-        if (m_parent == NULL) {
+    if (m_hWnd != nullptr) {
+        if (m_parent == nullptr) {
             SetLayeredWindowAttributes(*this, 0, opacity, LWA_ALPHA);
         } else {
             Invalidate(FALSE);
@@ -324,7 +321,7 @@ void MeaDataWin::Update(const CRect& rect)
             x -= winRect.Width();
         }
 
-        SetWindowPos(NULL, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+        SetWindowPos(nullptr, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
 
         Invalidate(FALSE);
         UpdateWindow();
@@ -336,7 +333,7 @@ void MeaDataWin::OnPaint()
 {
     CPaintDC dc(this);
 
-    if (!HaveLayeredWindows() || (m_parent == NULL)) {
+    if (!HaveLayeredWindows() || (m_parent == nullptr)) {
         DrawWin(dc);
     } else {
         CRect rect;
@@ -446,6 +443,6 @@ void MeaDataWin::OnTimer(UINT_PTR timerId)
     Invalidate(FALSE);
     UpdateWindow();
     if (--m_flashCount > 0) {
-        SetTimer(timerId, m_flashInterval, NULL);
+        SetTimer(timerId, m_flashInterval, nullptr);
     }
 }

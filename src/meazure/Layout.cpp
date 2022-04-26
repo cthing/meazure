@@ -30,7 +30,7 @@ void MeaLayout::AlignLeft(int leftX, ...)
     RECT rect;
 
     va_start(args, leftX);
-    while ((wnd = va_arg(args, CWnd*)) != NULL) {
+    while ((wnd = va_arg(args, CWnd*)) != nullptr) {
         wnd->GetWindowRect(&rect);
         wnd->GetParent()->ScreenToClient(&rect);
         SetWindowPos(*wnd, leftX, rect.top);
@@ -47,7 +47,7 @@ void MeaLayout::AlignRight(int leftX, ...)
     int maxWidth = 0;
 
     va_start(args, leftX);
-    while ((wnd = va_arg(args, CWnd*)) != NULL) {
+    while ((wnd = va_arg(args, CWnd*)) != nullptr) {
         wnd->GetWindowRect(&rect);
         if (rect.Width() > maxWidth) {
             maxWidth = rect.Width();
@@ -56,7 +56,7 @@ void MeaLayout::AlignRight(int leftX, ...)
     va_end(args);
 
     va_start(args, leftX);
-    while ((wnd = va_arg(args, CWnd*)) != NULL) {
+    while ((wnd = va_arg(args, CWnd*)) != nullptr) {
         wnd->GetWindowRect(&rect);
         wnd->GetParent()->ScreenToClient(&rect);
         SetWindowPos(*wnd, leftX + maxWidth - rect.Width(), rect.top);
@@ -76,7 +76,7 @@ void MeaLayout::AlignRightTo(const CWnd *baseWnd, ...)
     int rightX = rect.right;
 
     va_start(args, baseWnd);
-    while ((wnd = va_arg(args, CWnd*)) != NULL) {
+    while ((wnd = va_arg(args, CWnd*)) != nullptr) {
         wnd->GetWindowRect(&rect);
         wnd->GetParent()->ScreenToClient(&rect);
         SetWindowPos(*wnd, rightX - rect.Width(), rect.top);
@@ -93,7 +93,7 @@ void MeaLayout::AlignCenter(int topY, ...)
     int maxHeight = 0;
 
     va_start(args, topY);
-    while ((wnd = va_arg(args, CWnd*)) != NULL) {
+    while ((wnd = va_arg(args, CWnd*)) != nullptr) {
         wnd->GetWindowRect(&rect);
         if (rect.Height() > maxHeight) {
             maxHeight = rect.Height();
@@ -102,7 +102,7 @@ void MeaLayout::AlignCenter(int topY, ...)
     va_end(args);
 
     va_start(args, topY);
-    while ((wnd = va_arg(args, CWnd*)) != NULL) {
+    while ((wnd = va_arg(args, CWnd*)) != nullptr) {
         wnd->GetWindowRect(&rect);
         wnd->GetParent()->ScreenToClient(&rect);
         SetWindowPos(*wnd, rect.left, topY + (maxHeight - rect.Height()) / 2);
@@ -127,7 +127,7 @@ void MeaLayout::GetBoundingSize(SIZE *sizep, const CWnd* parentWnd)
     RECT rect;
     CRect boundingRect(0, 0, 0, 0);
 
-    for (CWnd *child = parentWnd->GetWindow(GW_CHILD); child != NULL; child = child->GetNextWindow()) {
+    for (CWnd *child = parentWnd->GetWindow(GW_CHILD); child != nullptr; child = child->GetNextWindow()) {
         child->GetWindowRect(&rect);
         boundingRect.UnionRect(boundingRect, &rect);
     }

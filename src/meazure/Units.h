@@ -1197,12 +1197,12 @@ private:
 class MeaUnitsMgr : public MeaSingleton_T<MeaUnitsMgr>
 {
 public:
-    static const bool       kDefHaveWarned;     ///< Indicates whether the user has
-                                                ///< already been warned about using the
-                                                ///< operating system reported resolution.
-    static const LPCTSTR    kDefLinearUnits;    ///< Default units for linear measurements.
-    static const LPCTSTR    kDefAngularUnits;   ///< Default units for angular measurements.
-    static const bool       kDefInvertY;        ///< Default orientation of the y-axis.
+    static constexpr bool kDefHaveWarned { false };             ///< Indicates whether the user has
+                                                                ///< already been warned about using the
+                                                                ///< operating system reported resolution.
+    static constexpr LPCTSTR kDefLinearUnits { _T("px") };      ///< Default units for linear measurements.
+    static constexpr LPCTSTR kDefAngularUnits { _T("deg") };    ///< Default units for angular measurements.
+    static constexpr bool kDefInvertY { false };                ///< Default orientation of the y-axis.
 
 
     /// Persists the state of the units manager to the specified
@@ -1271,13 +1271,12 @@ public:
     /// @return Linear measurement units object.
     ///
     MeaLinearUnits* GetLinearUnits(const CString& unitsStr) {
-        LinearUnitsMap::const_iterator iter;
-        for (iter = m_linearUnitsMap.begin(); iter != m_linearUnitsMap.end(); ++iter) {
-            if ((*iter).second->GetUnitsStr() == unitsStr) {
-                return (*iter).second;
+         for (const auto& unitsEntry : m_linearUnitsMap) {
+            if (unitsEntry.second->GetUnitsStr() == unitsStr) {
+                return unitsEntry.second;
             }
         }
-        return NULL;
+        return nullptr;
     }
 
     /// Returns the identifier for the current linear measurement units.
@@ -1308,13 +1307,12 @@ public:
     /// @return Angular measurement units object.
     ///
     MeaAngularUnits*    GetAngularUnits(const CString& unitsStr) {
-        AngularUnitsMap::const_iterator iter;
-        for (iter = m_angularUnitsMap.begin(); iter != m_angularUnitsMap.end(); ++iter) {
-            if ((*iter).second->GetUnitsStr() == unitsStr) {
-                return (*iter).second;
+        for (const auto& unitsEntry : m_angularUnitsMap) {
+            if (unitsEntry.second->GetUnitsStr() == unitsStr) {
+                return unitsEntry.second;
             }
         }
-        return NULL;
+        return nullptr;
     }
 
     /// Returns the identifier for the current angular measurement units.

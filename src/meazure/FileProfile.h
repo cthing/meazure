@@ -58,53 +58,53 @@ public:
     /// @param key      [in] Profile key to write
     /// @param value    [in] Boolean value for the key
     ///
-    virtual bool    WriteBool(LPCTSTR key, bool value);
+    virtual bool    WriteBool(LPCTSTR key, bool value) override;
 
     /// Writes an integer value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Integer value for the key
     ///
-    virtual bool    WriteInt(LPCTSTR key, int value);
+    virtual bool    WriteInt(LPCTSTR key, int value) override;
 
     /// Writes a double value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Double value for the key
     ///
-    virtual bool    WriteDbl(LPCTSTR key, double value);
+    virtual bool    WriteDbl(LPCTSTR key, double value) override;
 
     /// Writes a string value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] String value for the key
     ///
-    virtual bool    WriteStr(LPCTSTR key, LPCTSTR value);
+    virtual bool    WriteStr(LPCTSTR key, LPCTSTR value) override;
 
 
     /// Reads a boolean value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual bool    ReadBool(LPCTSTR key, bool defaultValue);
+    virtual bool    ReadBool(LPCTSTR key, bool defaultValue) override;
 
     /// Reads an unsigned integer value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual UINT    ReadInt(LPCTSTR key, int defaultValue);
+    virtual UINT    ReadInt(LPCTSTR key, int defaultValue) override;
 
     /// Reads a double value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual double  ReadDbl(LPCTSTR key, double defaultValue);
+    virtual double  ReadDbl(LPCTSTR key, double defaultValue) override;
 
     /// Reads a string value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual CString ReadStr(LPCTSTR key, LPCTSTR defaultValue);
+    virtual CString ReadStr(LPCTSTR key, LPCTSTR defaultValue) override;
 
     
     /// Indicates whether the profile is being written at
@@ -113,13 +113,13 @@ public:
     /// @return Always <b>true</b> because a file profile
     ///         is only written at the user's request.
     ///
-    virtual bool    UserInitiated();
+    virtual bool    UserInitiated() override;
     
     /// Returns the profile format version number.
     ///
     /// @return Profile format version number.
     ///
-    virtual int     GetVersion();
+    virtual int     GetVersion() override;
 
 
     /// Called when the XML parser encounters the start of an element.
@@ -130,7 +130,7 @@ public:
     ///
     virtual void    StartElementHandler(const CString& container,
                                         const CString& elementName,
-                                        const MeaXMLAttributes& attrs);
+                                        const MeaXMLAttributes& attrs) override;
 
     /// Called when the XML parser encounters character data.
     ///
@@ -138,7 +138,7 @@ public:
     /// @param data         [in] Character data.
     ///
     virtual void    CharacterDataHandler(const CString& container,
-                                         const CString& data);
+                                         const CString& data) override;
 
     /// Called when the XML parser needs to parse an external entity.
     ///
@@ -146,14 +146,14 @@ public:
     /// @param pathname [in] Pathname of the external entity to open and parse.
     ///
     virtual void    ParseEntity(MeaXMLParser& parser,
-                                const CString& pathname);
+                                const CString& pathname) override;
 
     /// Obtains the pathname of the profile file represented by an instance
     /// of this class.
     ///
     /// @return Pathname of the profile file.
     ///
-    virtual CString GetFilePathname();
+    virtual CString GetFilePathname() override;
 
 private:
     /// Printf style method that writes the specified values using the

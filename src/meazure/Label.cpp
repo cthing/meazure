@@ -60,13 +60,13 @@ bool MeaLabel::Create(LPCTSTR label, DWORD style, const POINT& topLeft,
     SetFont(defaultFont, FALSE);
 
     CDC *dc = GetDC();
-    if (dc == NULL) {
+    if (dc == nullptr) {
         return false;
     }
 
     // Select the new font into the DC
     //
-    if (dc->SelectStockObject(DEFAULT_GUI_FONT) == NULL) {
+    if (dc->SelectStockObject(DEFAULT_GUI_FONT) == nullptr) {
         ReleaseDC(dc);
         return false;
     }

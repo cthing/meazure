@@ -26,7 +26,6 @@ IMPLEMENT_DYNAMIC(MeaRulerSlider, CProgressCtrl)
 
 
 BEGIN_MESSAGE_MAP(MeaRulerSlider, CProgressCtrl)
-    //{{AFX_MSG_MAP(MeaRulerSlider)
     ON_WM_LBUTTONDOWN()
     ON_WM_LBUTTONUP()
     ON_WM_MOUSEMOVE()
@@ -34,13 +33,7 @@ BEGIN_MESSAGE_MAP(MeaRulerSlider, CProgressCtrl)
     ON_WM_ERASEBKGND()
     ON_WM_SIZE()
     ON_WM_ENABLE()
-    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
-
-    
-const int MeaRulerSlider::kHotSpotOffset    = 4;
-const int MeaRulerSlider::kTickPosition     = 10;
-const int MeaRulerSlider::kTickFactor       = 4;
 
 
 MeaRulerSlider::MeaRulerSlider() : CProgressCtrl(),
@@ -49,7 +42,7 @@ MeaRulerSlider::MeaRulerSlider() : CProgressCtrl(),
     m_sliderActive(false),
     m_sliderPos(0)
 {
-    VERIFY(m_posFont.CreatePointFont(80, _T("Arial"), NULL));
+    VERIFY(m_posFont.CreatePointFont(80, _T("Arial"), nullptr));
 
     m_activePen.CreatePen(PS_SOLID, 0, GetSysColor(COLOR_WINDOWTEXT));
     m_inactivePen.CreatePen(PS_SOLID, 0, GetSysColor(COLOR_INACTIVECAPTIONTEXT));
@@ -123,7 +116,7 @@ void MeaRulerSlider::OnLButtonDown(UINT /* nFlags */, CPoint point)
     m_captured = true;
 
     if (IsHot(m_vertical ? point.y : point.x)) {
-        SetCursor(LoadCursor(NULL, m_vertical ? IDC_SIZENS : IDC_SIZEWE));
+        SetCursor(LoadCursor(nullptr, m_vertical ? IDC_SIZENS : IDC_SIZEWE));
         m_sliderActive = true;
         
         Invalidate(TRUE);
@@ -176,7 +169,7 @@ void MeaRulerSlider::OnMouseMove(UINT /* nFlags */, CPoint point)
     }
 
     if (IsHot(m_vertical ? point.y : point.x)) {
-        SetCursor(LoadCursor(NULL, m_vertical ? IDC_SIZENS : IDC_SIZEWE));
+        SetCursor(LoadCursor(nullptr, m_vertical ? IDC_SIZENS : IDC_SIZEWE));
     }
 }
 

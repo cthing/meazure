@@ -38,7 +38,7 @@ public:
     /// @param pParentWnd   [in] Parent window for the dialog.
     ///
     explicit MeaColorDialog(UINT titleId = 0xFFFF, COLORREF clrInit = 0,
-        DWORD dwFlags = 0, CWnd* pParentWnd = NULL);
+        DWORD dwFlags = 0, CWnd* pParentWnd = nullptr);
 
     /// Destroys a color dialog.
     ///
@@ -48,7 +48,7 @@ public:
     ///
     /// @return IDOK or IDCANCEL.
     ///
-    virtual INT_PTR DoModal();
+    virtual INT_PTR DoModal() override;
     
     /// Called when the dialog window has been created but before
     /// it is visible. This method customizes the dialog for this
@@ -56,7 +56,7 @@ public:
     ///
     /// @return Always TRUE.
     ///
-    virtual BOOL OnInitDialog();
+    virtual BOOL OnInitDialog() override;
 
 
     /// Persists the state of the dialog (e.g. the custom colors)
@@ -80,7 +80,7 @@ public:
     static void MasterReset();
 
 private:
-    static const int kNumCustomColors;      ///< Number of available custom colors.
+    static constexpr int kNumCustomColors { 16 };      ///< Number of available custom colors.
 
 
     static COLORREF m_defColors[];          ///< Default colors.

@@ -26,12 +26,9 @@
 
 MEA_SINGLETON_DEF(MeaToolMgr);      ///< Managers are singletons.
 
-// Default
-const bool MeaToolMgr::kDefCrosshairsEnabled = true;
-
 
 MeaToolMgr::MeaToolMgr() : MeaSingleton_T<MeaToolMgr>(),
-    m_dataDisplay(NULL),
+    m_dataDisplay(nullptr),
     m_crosshairsEnabled(kDefCrosshairsEnabled)
 {
     // Radio tools
@@ -74,9 +71,8 @@ MeaToolMgr::MeaToolMgr() : MeaSingleton_T<MeaToolMgr>(),
 MeaToolMgr::~MeaToolMgr()
 {
     try {
-        ToolsMap::iterator iter;
-        for (iter = m_tools.begin(); iter != m_tools.end(); ++iter) {
-            delete (*iter).second;
+        for (const auto& toolEntry : m_tools) {
+            delete toolEntry.second;
         }
         m_tools.clear();
     }
@@ -97,9 +93,8 @@ void MeaToolMgr::SetPositionToCursor(MeaFields xfield, MeaFields yfield)
 
 void MeaToolMgr::SaveProfile(MeaProfile& profile)
 {
-    ToolsMap::const_iterator iter;
-    for (iter = m_tools.begin(); iter != m_tools.end(); ++iter) {
-        (*iter).second->SaveProfile(profile);
+    for (const auto& toolEntry : m_tools) {
+        toolEntry.second->SaveProfile(profile);
     }
 
     profile.WriteStr(_T("CurrentRadioTool"), m_currentRadioTool->GetToolName());
@@ -112,9 +107,8 @@ void MeaToolMgr::SaveProfile(MeaProfile& profile)
 
 void MeaToolMgr::LoadProfile(MeaProfile& profile)
 {
-    ToolsMap::const_iterator iter;
-    for (iter = m_tools.begin(); iter != m_tools.end(); ++iter) {
-        (*iter).second->LoadProfile(profile);
+    for (const auto& toolEntry : m_tools) {
+        toolEntry.second->LoadProfile(profile);
     }
 
     MeaTool* tool = m_tools[profile.ReadStr(_T("CurrentRadioTool"),
@@ -130,9 +124,8 @@ void MeaToolMgr::LoadProfile(MeaProfile& profile)
 
 void MeaToolMgr::MasterReset()
 {
-    ToolsMap::const_iterator iter;
-    for (iter = m_tools.begin(); iter != m_tools.end(); ++iter) {
-        (*iter).second->MasterReset();
+    for (const auto& toolEntry : m_tools) {
+        toolEntry.second->MasterReset();
     }
 
     m_currentRadioTool = m_cursorTool;
@@ -154,7 +147,7 @@ void MeaToolMgr::EnableRegionFields(UINT enableFields, UINT editableFields)
 {
     CPoint offScreen(MeaScreenMgr::Instance().GetOffScreen());
 
-    if (m_dataDisplay != NULL) {
+    if (m_dataDisplay != nullptr) {
         m_dataDisplay->EnableRegionFields(enableFields, editableFields);
     }
 
@@ -170,7 +163,7 @@ void MeaToolMgr::EnableRegionFields(UINT enableFields, UINT editableFields)
 
 void MeaToolMgr::EnableScreenFields(UINT enableFields, UINT editableFields)
 {
-    if (m_dataDisplay != NULL) {
+    if (m_dataDisplay != nullptr) {
         m_dataDisplay->EnableScreenFields(enableFields, editableFields);
     }
 }

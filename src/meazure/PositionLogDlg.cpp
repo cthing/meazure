@@ -32,7 +32,6 @@ static char THIS_FILE[] = __FILE__;
 
 
 BEGIN_MESSAGE_MAP(MeaPositionLogDlg, CDialog)
-    //{{AFX_MSG_MAP(MeaPositionLogDlg)
     ON_BN_CLICKED(IDC_MEA_ADD_POSITION, OnAddPosition)
     ON_BN_CLICKED(IDC_MEA_DELETE_ALL_POSITIONS, OnDeletePositions)
     ON_BN_CLICKED(IDC_MEA_DELETE_POSITION, OnDeletePosition)
@@ -42,7 +41,6 @@ BEGIN_MESSAGE_MAP(MeaPositionLogDlg, CDialog)
     ON_BN_CLICKED(IDC_MEA_LOAD_POSITIONS, OnLoadPositions)
     ON_BN_CLICKED(IDC_MEA_SAVE_POSITIONS, OnSavePositions)
     ON_BN_CLICKED(IDC_MEA_SAVE_POSITIONS_AS, OnSavePositionsAs)
-    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 
@@ -86,7 +84,7 @@ void MeaPositionLogDlg::SetDlgTitle()
     } else {
         TCHAR filename[_MAX_FNAME];
         TCHAR ext[_MAX_EXT];
-        _tsplitpath_s(pathname, NULL, 0, NULL, 0, filename, _MAX_FNAME, ext, _MAX_EXT);
+        _tsplitpath_s(pathname, nullptr, 0, nullptr, 0, filename, _MAX_FNAME, ext, _MAX_EXT);
         pathname = filename;
         pathname += ext;
     }
@@ -126,7 +124,7 @@ void MeaPositionLogDlg::PostNcDestroy()
     CDialog::PostNcDestroy();
     
     if (!MeaPositionLogMgr::IsDestroyed()) {
-        MeaPositionLogMgr::Instance().SetObserver(NULL);
+        MeaPositionLogMgr::Instance().SetObserver(nullptr);
         MeaPositionLogMgr::Instance().ManageDlgDestroyed();
     }
 

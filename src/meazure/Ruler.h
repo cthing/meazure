@@ -138,8 +138,8 @@ public:
     ///                     rectangle.
     /// @param callback     [in] A class derived from MeaRulerCallback that
     ///                     wants to receive notification of ruler movement.
-    ///                     Can be set to NULL if no callback is desired.
-    /// @param parent       [in] Parent window or <b>NULL</b> if the ruler does
+    ///                     Can be set to nullptr if no callback is desired.
+    /// @param parent       [in] Parent window or <b>nullptr</b> if the ruler does
     ///                     not have an immediate parent. If a parent window is
     ///                     specified, the ruler is created as a child window
     ///                     (<b>WS_CHILD</b>). Otherwise the ruler is created
@@ -153,8 +153,8 @@ public:
                    BYTE opacity,
                    Orientation orientation,
                    const CRect& targetRect,
-                   MeaRulerCallback *callback = NULL,
-                   const CWnd *parent = NULL,
+                   MeaRulerCallback *callback = nullptr,
+                   const CWnd *parent = nullptr,
                    UINT id = 0xffff);
 
 
@@ -222,7 +222,7 @@ public:
     /// Redraws the ruler.
     ///
     void    Update() {
-        if (m_hWnd != NULL) {
+        if (m_hWnd != nullptr) {
             Invalidate(FALSE);
             UpdateWindow();
         }
@@ -269,14 +269,14 @@ protected:
     afx_msg void OnLButtonUp(UINT flags, CPoint point);
 
 private:
-    static const int    kMinMajorTickHeight;    ///< Minimum height of the major tick marks, in pixels.
-    static const double kMajorTickHeight;       ///< Height of the major tick marks, in inches.
+    static constexpr int kMinMajorTickHeight { 8 };     ///< Minimum height of the major tick marks, in pixels.
+    static constexpr double kMajorTickHeight { 0.08 };  ///< Height of the major tick marks, in inches.
 
-    static const int    kMinMinorTickHeight;    ///< Minimum height of the minor tick marks, in pixels.
-    static const double kMinorTickHeight;       ///< Height of the minor tick marks, in inches.
+    static constexpr int kMinMinorTickHeight { 5 };     ///< Minimum height of the minor tick marks, in pixels.
+    static constexpr double kMinorTickHeight { 0.05 };  ///< Height of the minor tick marks, in inches.
 
-    static const int    kMinMargin;             ///< Minimum label height margin, in pixels.
-    static const double kMargin;                ///< Label height margin, in inches.
+    static constexpr int kMinMargin { 1 };              ///< Minimum label height margin, in pixels.
+    static constexpr double kMargin { 0.01 };           ///< Label height margin, in inches.
 
 
     /// Specifies the location of the ruler number labels. For horizontally

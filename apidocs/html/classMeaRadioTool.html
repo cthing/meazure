@@ -83,9 +83,9 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaRadioTool</b> ()</td></tr>
 <tr class="memdesc:af931e3efddcf309a5cea71e6221fa26a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the tool. <br /></td></tr>
 <tr class="separator:af931e3efddcf309a5cea71e6221fa26a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7272a30e319a3fe0ffcc0e6af8f18f3"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRadioTool.html#ae7272a30e319a3fe0ffcc0e6af8f18f3">IsRadioTool</a> ()</td></tr>
-<tr class="memdesc:ae7272a30e319a3fe0ffcc0e6af8f18f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates that the derived tool is a Radio tool and cannot be enabled until any other enabled Radio tool is disabled.  <a href="classMeaRadioTool.html#ae7272a30e319a3fe0ffcc0e6af8f18f3">More...</a><br /></td></tr>
-<tr class="separator:ae7272a30e319a3fe0ffcc0e6af8f18f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09e02564f419ded058f659615902ffdb"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRadioTool.html#a09e02564f419ded058f659615902ffdb">IsRadioTool</a> () override</td></tr>
+<tr class="memdesc:a09e02564f419ded058f659615902ffdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates that the derived tool is a Radio tool and cannot be enabled until any other enabled Radio tool is disabled.  <a href="classMeaRadioTool.html#a09e02564f419ded058f659615902ffdb">More...</a><br /></td></tr>
+<tr class="separator:a09e02564f419ded058f659615902ffdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed8e3222fc25c2f0d7f055ab06b8be3f"><td class="memItemLeft" align="right" valign="top">virtual UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRadioTool.html#aed8e3222fc25c2f0d7f055ab06b8be3f">GetLabelId</a> () const</td></tr>
 <tr class="memdesc:aed8e3222fc25c2f0d7f055ab06b8be3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a resource ID for the string used to label this tool on the data display.  <a href="classMeaRadioTool.html#aed8e3222fc25c2f0d7f055ab06b8be3f">More...</a><br /></td></tr>
 <tr class="separator:aed8e3222fc25c2f0d7f055ab06b8be3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,7 +183,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_enabled</b></td></t
 <tr class="separator:a0e2cf43da03346a96e5de4de7511da19 inherit pro_attribs_classMeaTool"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_attribs_classMeaTool"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classMeaTool')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classMeaTool.html">MeaTool</a></td></tr>
 <tr class="memitem:a32f0a61bd7a5b1358ef45ad78da72593 inherit pro_static_attribs_classMeaTool"><td class="memItemLeft" align="right" valign="top"><a id="a32f0a61bd7a5b1358ef45ad78da72593" name="a32f0a61bd7a5b1358ef45ad78da72593"></a>
-static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos</b> = { 0, 0 }</td></tr>
+static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos</b> { 0, 0 }</td></tr>
 <tr class="memdesc:a32f0a61bd7a5b1358ef45ad78da72593 inherit pro_static_attribs_classMeaTool"><td class="mdescLeft">&#160;</td><td class="mdescRight">A default position used by tools that do not have a defined position. This position is returned by the <a class="el" href="classMeaTool.html#a5b516edb23e4c399701c00c985fc195c" title="Returns the tool&#39;s current position.">GetPosition()</a> method. <br /></td></tr>
 <tr class="separator:a32f0a61bd7a5b1358ef45ad78da72593 inherit pro_static_attribs_classMeaTool"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -271,7 +271,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p>Hides the tool's crosshairs. </p>
 <p >This base class implementation does nothing. </p>
 
-<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a30ec5471d0b329450ca876fff13c161c">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a1323536770decfa8dc746cb5cd6d3d5f">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#a621286940caaafad0f18024736d7876c">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a8f12dd5f07671613379a58332ba59f55">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#a12a3bda2a741910eafe6fc05cdd9a8db">MeaRectTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a2be89d333a187129fdf631ecfecd677a">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#ad67bdd24de2f58e402f04c7ae7834e31">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#a7380c7577e6d2b1a9e4640a0ccdcc2b2">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#acbed2fd79165614d00bf022daa075405">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#aafa38fe352b9da8bb772c60d86a9e825">MeaRectTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a4d6a1d3d7f044047ba3e1caedc585506">MeaToolMgr::DisableCrosshairs()</a>.</p>
 
@@ -303,7 +303,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p>Displays the tool's crosshairs. </p>
 <p >If the <a class="el" href="classMeaTool.html#ae803a77d5f1207b3972eda7c4ca6bf02" title="Typically used by derived classes to show the tool.">Enable()</a> method has not been previously called, this method has no effect. This base class implementation does nothing. </p>
 
-<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#aff96d4a2ac06688acea0af23afef0816">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a5ca646d92295e262c46c853478680788">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#a48b26cbdf4bdf87adb5a38aadd2275fd">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a0eb863e7aa3c6b54639baa0374d914fd">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#a2176600f3c31f76a3ab3def5e0a42b4a">MeaRectTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a296619f8a5a8d3398e2edabc8f863a45">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#addcbb55b1c45f8e01a30effb1d0201ac">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#a0767fe260ebe8b8d6a0dba5414ae6ae9">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a45ac67e3454c9863082fa1ad554132db">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#a24830d9a7eef66bee7f5c291483d592a">MeaRectTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#ac4f2ee623a6508ded4782f1dedddcd8b">MeaToolMgr::EnableCrosshairs()</a>.</p>
 
@@ -335,7 +335,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p>Visually flashes the tool. </p>
 <p >Typically, if a tool uses crosshairs, they are cycled between a hilite color and their normal color a number of times. Flashing the tool helps the user find it on the screen. This base class implementation does nothing. </p>
 
-<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a9012ca0408f13e21dea5af79e58a6110">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#ae18a15b55cf59bd7952cfca8bd9eafe3">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#a66a82987b05f1a89fc9f941d7c4e934b">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a304a1c65d2d5f1405992f4b0f0e6b213">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#ac2bcd5f0467aa03bb2a9b58a5d7abf77">MeaRectTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a137784729bacd922021bcea37d1d0945">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a191acffacf91fb6dd312646624de1493">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#a4e889884c515ae82b592295e4b6b6a50">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a3cfa587a69ae9a558eabe105cdb4faf8">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#a81b7d99846ea6fcd752cec6aea809587">MeaRectTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#adad3b07b1148a7d641a2459cd5b8e5bd">MeaToolMgr::FlashTool()</a>.</p>
 
@@ -367,7 +367,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p>Returns a resource ID for the string used to label this tool on the data display. </p>
 <dl class="section return"><dt>Returns</dt><dd>Resource ID for the label. This base class implementation returns the resource ID for an empty string. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#ab60a4519f0a2e649046782ed34068eb6">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#ab977bc29fc7c786ca111ea7966ab0af4">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#a9d715716cb8d0d9088b1af059656c547">MeaCursorTool</a>, <a class="el" href="classMeaLineTool.html#aef038792780cf95e851c7d4856c00792">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a770afad7dd92bea5b20b73ac73704f0e">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#a90e5b887ac8784241d70233cdaeb3600">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#a2238088d63a79f5eaf38ed6b39386a10">MeaWindowTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a6c8f7498888a670f8f6257843b3650bd">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#af6eb795a42c6426780778749a221bcaa">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#a7a5e0d1a787da0ac903daafb7200b6a0">MeaCursorTool</a>, <a class="el" href="classMeaLineTool.html#ae853fca4dd746baf260fd7add44e21f1">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#abb72a7fd4a32f96e024cd3fddca83c53">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#a0338ba1efbf31b1737c47c2bdd8a9e7b">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#a41c3ed3c7120bde7a660e7d245df4b63">MeaWindowTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a8444bd73a403b9713dad6648c0922b6e">MeaToolMgr::GetLabelId()</a>.</p>
 
@@ -406,7 +406,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classMeaAngleTool.html#a04c118aa04dadd9cab34afa1d1541bf2">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a832de11acdfc3a5965da7c4d7b5dde3e">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#a6cf1f6928e2b3a31643427dd7ad9f2ce">MeaCursorTool</a>, <a class="el" href="classMeaLineTool.html#a069590d958c8adb8ce8af078bf045b37">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a229491e72df1a605b124d5c4dadaf96b">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#a861a57bc5f8dbe91edb71ca008528218">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#a544b58a2b7c38a52ba592e6b3cc58849">MeaWindowTool</a>.</p>
+<p>Implemented in <a class="el" href="classMeaAngleTool.html#a498db3517090c5a441c444793d91e49d">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a25a0ec52aea6497db93b480506d89317">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#ab8c0ff28cb8cd3236384a10630226196">MeaCursorTool</a>, <a class="el" href="classMeaLineTool.html#a9c53845f823786ad30d45a8602eb00c8">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a03d4f25c0bdf005b0f8d5f12d9f0990a">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#a57ab9720ec74cfa83614903796c288b8">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#a290d696a6989f56408307f8b5084e0e7">MeaWindowTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#addcf8c25ed5c363a20dc0f9dbb540dd9">MeaToolMgr::GetPosition()</a>.</p>
 
@@ -439,7 +439,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p >This rectangle can then be read for a screen capture.</p>
 <dl class="section return"><dt>Returns</dt><dd>The region rectangle. This base class implementation returns an empty rectangle. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classMeaCircleTool.html#aa4cd10901fd880a4ecf60b37ddbf8219">MeaCircleTool</a>, <a class="el" href="classMeaRectTool.html#a7729f94468669fedaa61552d2e0b5a79">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#a471c3c2a37afe0ff1c0fb23eadd610b7">MeaWindowTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaCircleTool.html#a36a4a41abe98a0ae62bfc17b6b3f0eed">MeaCircleTool</a>, <a class="el" href="classMeaRectTool.html#ae7325b2c5068478a706ddaaf1be1fbf4">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#adaf9a645192ab1b8573cb23dfc988c04">MeaWindowTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a5cc5ae6d486f7507d745ee61448c1674">MeaToolMgr::GetRegion()</a>.</p>
 
@@ -471,7 +471,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p>Indicates whether the derived tool uses crosshairs. </p>
 <dl class="section return"><dt>Returns</dt><dd>This base class implementation always returns <b>true</b>. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classMeaCursorTool.html#a47a46532b09739d60896aa44d97e2f4f">MeaCursorTool</a>, and <a class="el" href="classMeaWindowTool.html#a5e5c8c5fa9e2f9c8f5998f3c36fef374">MeaWindowTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaCursorTool.html#a7f04a24f8e0e138c8b4e4b456a8d7adb">MeaCursorTool</a>, and <a class="el" href="classMeaWindowTool.html#a4d349644fadf58bc1d7a4f6391e77f10">MeaWindowTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a77ef3434121b59cc7bbb1e7719d24ad6">MeaToolMgr::HasCrosshairs()</a>.</p>
 
@@ -503,14 +503,14 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p>Indicates whether the tool can define a rectangular region that can then be read for a screen capture. </p>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the tool defines a non-empty rectangular region. This base class implementation always returns <b>false</b>. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classMeaCircleTool.html#a875c8e415bf244580ab1f23627351467">MeaCircleTool</a>, <a class="el" href="classMeaRectTool.html#af84a83a8ff84c5fe70bced5d5ccf4d7c">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#a1fff025c0621815be0fc2bd619de1cb4">MeaWindowTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaCircleTool.html#a23a2af50d56cdd50916a8691be44182c">MeaCircleTool</a>, <a class="el" href="classMeaRectTool.html#a45dd1abd5dec7c19edf1fffb9817b776">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#ad4c35315bcd919e961529125e8f15d7d">MeaWindowTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#adae5ecb4b99e4d1281a539967b45b425">MeaToolMgr::HasRegion()</a>.</p>
 
 </div>
 </div>
-<a id="ae7272a30e319a3fe0ffcc0e6af8f18f3" name="ae7272a30e319a3fe0ffcc0e6af8f18f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7272a30e319a3fe0ffcc0e6af8f18f3">&#9670;&nbsp;</a></span>IsRadioTool()</h2>
+<a id="a09e02564f419ded058f659615902ffdb" name="a09e02564f419ded058f659615902ffdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09e02564f419ded058f659615902ffdb">&#9670;&nbsp;</a></span>IsRadioTool()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -527,7 +527,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -583,7 +583,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="classMeaCursorTool.html#a3703d5b2ae3424f0d4be98d844f73fca">MeaCursorTool</a>, and <a class="el" href="classMeaWindowTool.html#a98c0ac02bba013d25b169d2258c4e4a0">MeaWindowTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaCursorTool.html#abe67d7eee0c7b59753df05dd7d157d70">MeaCursorTool</a>, and <a class="el" href="classMeaWindowTool.html#a420dc64ad1d1cb499275e3c8c883968d">MeaWindowTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a680e6456691ade5c0241d186cee22dc5">MeaToolMgr::OnMouseHook()</a>.</p>
 
@@ -622,7 +622,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a3cf744ad709956d220a242a2c4fc3b44">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a3f07b148a3c6ee59401882f7c848de96">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#accdd8eab99d226e17f75f9dac00973b6">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a964edeb99df5ac11cec931241d09fc18">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#a2b8d685ddb7b2e73e0353d4f5ed0292b">MeaRectTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a66c48b6cf8564f7cb6df92b083e800d6">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a2e0cbf3a191685f4904df04428e322b9">MeaCircleTool</a>, <a class="el" href="classMeaLineTool.html#ab37d9f293ea4b623320f6a1afe4514ca">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#a5ca17148d441019dd7de8c8000b5717f">MeaPointTool</a>, and <a class="el" href="classMeaRectTool.html#adfc032706d13144d00d661813dbd24fc">MeaRectTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#ab0d8ae59f078ee4bd06a7dc64884a768">MeaToolMgr::SetPosition()</a>.</p>
 
@@ -654,7 +654,7 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p>Visually strobes the tool. </p>
 <p >Typically, if a tool uses crosshairs, they are cycled between a hilite color and their normal color once. In addition, if the tool has data windows attached to the crosshairs, they are cycled between hidden and visible. Strobing the tool is done to visually confirm region capture and position recording. This base class implementation does nothing. </p>
 
-<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#af6f6d9a619d673dc19cb7432ca8a778d">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#a7d414664bcd7f306d34eae844b987161">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#a6d5181aea292ab0c2bfaee00b7ee1b36">MeaCursorTool</a>, <a class="el" href="classMeaLineTool.html#afd00e9c2616d31e38834ceaf1c79ce82">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#ac333a8bd080a9f07110b8b3aba29ca8f">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#a472b33212fa08636d3b40b3ae4d8e05d">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#a00cb2f09818412dbb569ef0c506ba3e2">MeaWindowTool</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaAngleTool.html#a98447ffaa861b2b1463d6ea3fe84156b">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#ace6e13c1a15954ee9fdd6a3de4434479">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#aad80616068f610439a1b9a4558b67171">MeaCursorTool</a>, <a class="el" href="classMeaLineTool.html#a27bf18af12563afd62f0931430337e6b">MeaLineTool</a>, <a class="el" href="classMeaPointTool.html#aad6dfd19d83830aee782072b6267f13e">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#ae556cb593b12bd4a50366b30e65fe7ec">MeaRectTool</a>, and <a class="el" href="classMeaWindowTool.html#adb487854c6677214881a2c160e2ce3ed">MeaWindowTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#ae0aaa39657a99bea8665c50c8c893891">MeaToolMgr::StrobeTool()</a>.</p>
 

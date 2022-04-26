@@ -26,9 +26,7 @@
 #include "ScreenMgr.h"
 
 
-const CString   MeaRectTool::kToolName(_T("RectTool"));
-const UINT      MeaRectTool::kPoint1Id  = 1;
-const UINT      MeaRectTool::kPoint2Id  = 2;
+const CString MeaRectTool::kToolName(_T("RectTool"));
 
 
 MeaRectTool::MeaRectTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
@@ -54,7 +52,7 @@ MeaRectTool::~MeaRectTool()
 {
     try {
         Disable();
-        m_curPos = NULL;
+        m_curPos = nullptr;
     }
     catch(...) {
         MeaAssert(false);
@@ -70,14 +68,14 @@ bool MeaRectTool::Create()
                             MeaColors::Get(MeaColors::CrossHairBack),
                             MeaColors::Get(MeaColors::CrossHairHilite),
                             MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, NULL, IDS_MEA_POINT1, kPoint1Id)) {
+                            this, nullptr, IDS_MEA_POINT1, kPoint1Id)) {
         return false;
     }
     if (!m_point2CH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
                             MeaColors::Get(MeaColors::CrossHairBack),
                             MeaColors::Get(MeaColors::CrossHairHilite),
                             MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, NULL, IDS_MEA_POINT2, kPoint2Id)) {
+                            this, nullptr, IDS_MEA_POINT2, kPoint2Id)) {
         return false;
     }
     

@@ -107,9 +107,9 @@ public:
         ///
         /// @param mgr      [in] Parent manager.
         /// @param indent   [in] Output indentation level.
+        /// @throw CFileException if there was a problem saving the file
         ///
-        void Save(MeaPositionLogMgr& mgr, int indent) const
-             throw(CFileException);
+        void Save(MeaPositionLogMgr& mgr, int indent) const;
 
 
         /// Assignment operator for a screen object. Makes
@@ -292,9 +292,9 @@ public:
         ///
         /// @param mgr          [in] Parent manager.
         /// @param indent       [in] Output indentation level.
+        /// @throw CFileException is there was a problem saving the information
         ///
-        void Save(MeaPositionLogMgr& mgr, int indent) const
-             throw(CFileException);
+        void Save(MeaPositionLogMgr& mgr, int indent) const;
 
 
         /// Compares the specified desktop information object with this to determine equality.
@@ -395,9 +395,9 @@ public:
         ///
         /// @param mgr      [in] Parent manager.
         /// @param indent   [in] Output indentation level.
+        /// @throws CFileException if there was a problem saving the information
         ///
-        void SaveCustomPrecisions(MeaPositionLogMgr& mgr, int indent) const
-             throw(CFileException);
+        void SaveCustomPrecisions(MeaPositionLogMgr& mgr, int indent) const;
 
 
         MeaGUID             m_id;               ///< ID for use by a Position object to reference this object.
@@ -572,9 +572,9 @@ public:
         /// Saves the position in the position log file.
         ///
         /// @param indent       [in] Output indentation level.
+        /// @throw CFileException if there was a problem saving the position
         ///
-        void Save(int indent) const
-             throw(CFileException);
+        void Save(int indent) const;
 
     private:
         typedef std::map<CString, FPOINT> PointMap;     ///< Maps a point name to the coordinates of the point.
@@ -663,11 +663,11 @@ public:
 
     /// Loads the specified position log file.
     ///
-    /// @param pathname     [in] Pathname of file to load or NULL if a file dialog should be shown.
+    /// @param pathname     [in] Pathname of file to load or nullptr if a file dialog should be shown.
     ///
     /// @return <b>true</b> if loaded, false if canceled or unable to load.
     ///
-    bool Load(LPCTSTR pathname = NULL);
+    bool Load(LPCTSTR pathname = nullptr);
 
     /// Saves the recorded positions to a log file.
     ///
@@ -731,13 +731,13 @@ public:
     /// @param pathname     [in] Pathname of the external entity.
     ///
     virtual void    ParseEntity(MeaXMLParser& parser,
-                                const CString& pathname);
+                                const CString& pathname) override;
 
     /// Returns the pathname of the currently parsed log file.
     ///
     /// @return Pathname of the currently parsed position log file.
     ///
-    virtual CString GetFilePathname();
+    virtual CString GetFilePathname() override;
 
     /// Tests whether the specified filename represents a position
     /// log file.
@@ -789,8 +789,9 @@ private:
         /// @param posIndex     [in] Zero based index indicating where in
         ///                     the collection to place the position.
         /// @param position     [in] Position object to insert in the collection.
+        /// @throws std::out_of_range if the specified position is out of bounds
         ///
-        void Set(int posIndex, Position* position) throw(std::out_of_range);
+        void Set(int posIndex, Position* position);
 
         /// Returns the position object at the specified location in the collection.
         ///
@@ -798,16 +799,18 @@ private:
         ///
         /// @return Position object located at the specified location in the
         ///         collection.
+        /// @throws std::out_of_range if the specified position is out of bounds
         ///
-        Position& Get(int posIndex) throw(std::out_of_range);
+        Position& Get(int posIndex);
         
         /// Removes the position object from the specified location in the
         /// collection and destroys the object.
         ///
         /// @param posIndex     [in] Zero based index indicating where in
         ///                     the collection to delete a position.
+        /// @throws std::out_of_range if the specified position is out of bounds
         ///
-        void Delete(int posIndex) throw(std::out_of_range);
+        void Delete(int posIndex);
 
         /// Removes all positions from the collection and destroys the
         /// position objects.
@@ -818,8 +821,9 @@ private:
         /// Saves all positions in the collection to the log file.
         ///
         /// @param indent       [in] Output indentation level.
+        /// @throws CFileException if there was a problem saving the position
         ///
-        void Save(int indent) const throw(CFileException);
+        void Save(int indent) const;
 
     private:
         typedef std::map<int, Position*> PositionMap;       ///< Maps indices to position objects.
@@ -840,9 +844,9 @@ private:
     typedef std::map<MeaGUID, int, MeaGUID::less> RefCountMap;              ///< Maps a GUID to a reference count.
     
 
-    static const int    kChunkSize;     ///< Log file parsing buffer allocation increment.
-    static LPCTSTR      kExt;           ///< Log file suffix.
-    static LPCTSTR      kFilter;        ///< File dialog filter string.
+    static constexpr int kChunkSize { 1024 };       ///< Log file parsing buffer allocation increment.
+    static constexpr LPCTSTR kExt { _T("mpl") };    ///< Log file suffix.
+    static constexpr LPCTSTR kFilter { _T("Meazure Position Log Files (*.mpl)|*.mpl|All Files (*.*)|*.*||") };  ///< File dialog filter string.
 
 
     /// Constructs a file save dialog tailored to saving position log files.
@@ -860,20 +864,23 @@ private:
 
     /// Called when the position management dialog is destroyed.
     ///
-    void    ManageDlgDestroyed() { m_manageDialog = NULL; }
+    void    ManageDlgDestroyed() { m_manageDialog = nullptr; }
 
 
     /// Writes the general information section of the position log file.
     /// @param indent       [in] Output indentation level.
-    void    WriteInfoSection(int indent) throw(CFileException);
+    /// @throws CFileException if there was a problem writing the information
+    void    WriteInfoSection(int indent);
 
     /// Writes the desktop information section of the position log file.
     /// @param indent       [in] Output indentation level.
-    void    WriteDesktopsSection(int indent) throw(CFileException);
+    /// @throws CFileException if there was a problem writing the information
+    void    WriteDesktopsSection(int indent);
 
     /// Writes the positions section of the position log file.
     /// @param indent       [in] Output indentation level.
-    void    WritePositionsSection(int indent) throw(CFileException);
+    /// @throws CFileException if there was a problem writing the information
+    void    WritePositionsSection(int indent);
 
 
     /// Opens the specified position log file either for reading or writing.
@@ -894,8 +901,9 @@ private:
     /// @param indentLevel      [in] Output indentation level.
     /// @param format           [in] Printf-style format string.
     /// @param ...              [in] Items to write to the file.
+    /// @throws CFileException if there was a problem writing the information
     ///
-    void    Write(int indentLevel, LPCTSTR format, ...) throw(CFileException);
+    void    Write(int indentLevel, LPCTSTR format, ...);
 
 
     /// Handles the top level elements of the log file DOM and

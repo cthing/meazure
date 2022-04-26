@@ -34,21 +34,17 @@
 
 MEA_SINGLETON_DEF(MeaPositionLogMgr);   ///< Managers are singletons.
 
-const int   MeaPositionLogMgr::kChunkSize = 1024;
-LPCTSTR     MeaPositionLogMgr::kExt = _T("mpl");
-LPCTSTR     MeaPositionLogMgr::kFilter = _T("Meazure Position Log Files (*.mpl)|*.mpl|All Files (*.*)|*.*||");
-
 
 MeaPositionLogMgr::MeaPositionLogMgr() : MeaXMLParserHandler(),
     MeaSingleton_T<MeaPositionLogMgr>(),
-    m_observer(NULL),
-    m_saveDialog(NULL),
-    m_loadDialog(NULL),
+    m_observer(nullptr),
+    m_saveDialog(nullptr),
+    m_loadDialog(nullptr),
     m_saveDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_SAVE_LOG_DLG)),
     m_loadDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_LOAD_LOG_DLG)),
     m_stdioOpen(false),
     m_modified(false),
-    m_manageDialog(NULL)
+    m_manageDialog(nullptr)
 {
     m_title.Format(_T("%s Position Log File"), static_cast<LPCTSTR>(AfxGetAppName()));
 }
@@ -60,8 +56,8 @@ MeaPositionLogMgr::~MeaPositionLogMgr()
         delete m_saveDialog;
         delete m_loadDialog;
 
-        m_manageDialog = NULL;
-        m_observer = NULL;
+        m_manageDialog = nullptr;
+        m_observer = nullptr;
     }
     catch(...) {
         MeaAssert(false);
@@ -93,7 +89,7 @@ void MeaPositionLogMgr::MasterReset()
 
 void MeaPositionLogMgr::ManagePositions()
 {
-    if (m_manageDialog != NULL) {
+    if (m_manageDialog != nullptr) {
         m_manageDialog->SetFocus();
     } else {
         m_manageDialog = new MeaPositionLogDlg();
@@ -105,8 +101,8 @@ void MeaPositionLogMgr::ManagePositions()
 
 MeaPositionSaveDlg* MeaPositionLogMgr::CreateSaveDialog()
 {
-    if (m_saveDialog == NULL) {
-        m_saveDialog = new MeaPositionSaveDlg(kExt, NULL, kFilter);
+    if (m_saveDialog == nullptr) {
+        m_saveDialog = new MeaPositionSaveDlg(kExt, nullptr, kFilter);
         m_saveDialog->m_ofn.lpstrTitle = m_saveDlgTitle;
         m_saveDialog->m_ofn.lpstrInitialDir = m_initialDir;
         m_saveDialog->m_title = m_title;
@@ -118,8 +114,8 @@ MeaPositionSaveDlg* MeaPositionLogMgr::CreateSaveDialog()
 
 CFileDialog* MeaPositionLogMgr::CreateLoadDialog()
 {
-    if (m_loadDialog == NULL) {
-        m_loadDialog = new CFileDialog(TRUE, kExt, NULL,
+    if (m_loadDialog == nullptr) {
+        m_loadDialog = new CFileDialog(TRUE, kExt, nullptr,
             OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, kFilter);
         m_loadDialog->m_ofn.lpstrTitle = m_loadDlgTitle;
         m_loadDialog->m_ofn.lpstrInitialDir = m_initialDir;
@@ -136,7 +132,7 @@ void MeaPositionLogMgr::RecordPosition()
 
     m_modified = true;
 
-    if (m_observer != NULL) {
+    if (m_observer != nullptr) {
         m_observer->PositionAdded(m_positions.Size() - 1);
     }
 }
@@ -150,7 +146,7 @@ void MeaPositionLogMgr::ReplacePosition(int posIndex)
 
     m_modified = true;
 
-    if (m_observer != NULL) {
+    if (m_observer != nullptr) {
         m_observer->PositionReplaced(posIndex);
     }
 }
@@ -162,7 +158,7 @@ void MeaPositionLogMgr::DeletePosition(int posIndex)
 
     m_modified = HavePositions();
 
-    if (m_observer != NULL) {
+    if (m_observer != nullptr) {
         m_observer->PositionDeleted(posIndex);
     }
 }
@@ -175,7 +171,7 @@ void MeaPositionLogMgr::DeletePositions()
 
     m_modified = false;
 
-    if (m_observer != NULL) {
+    if (m_observer != nullptr) {
         m_observer->PositionsDeleted();
     }
 }
@@ -201,11 +197,10 @@ void MeaPositionLogMgr::ShowPosition(unsigned int posIndex)
 MeaGUID MeaPositionLogMgr::RecordDesktopInfo()
 {
     DesktopInfo desktopInfo;
-    DesktopInfoMap::const_iterator iter;
 
-    for (iter = m_desktopInfoMap.begin(); iter != m_desktopInfoMap.end(); ++iter) {
-        if (desktopInfo == (*iter).second) {
-            return (*iter).first;
+    for (const auto& desktopEntry : m_desktopInfoMap) {
+        if (desktopInfo == desktopEntry.second) {
+            return desktopEntry.first;
         }
     }
 
@@ -250,7 +245,7 @@ bool MeaPositionLogMgr::IsPositionFile(LPCTSTR filename)
     TCHAR ext[_MAX_EXT];
     int i = 0;
 
-    _tsplitpath_s(filename, NULL, 0, NULL, 0, NULL, 0, ext, _MAX_EXT);
+    _tsplitpath_s(filename, nullptr, 0, nullptr, 0, nullptr, 0, ext, _MAX_EXT);
     if (ext[i] == _T('.')) {
         i++;
     }
@@ -296,7 +291,7 @@ bool MeaPositionLogMgr::Save(bool askPathname)
             //
             // Remember the directory for persisting.
             //
-            _tsplitpath_s(m_pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, NULL, 0, NULL, 0);
+            _tsplitpath_s(m_pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, nullptr, 0, nullptr, 0);
             m_initialDir = drive;
             m_initialDir += dir;
 
@@ -333,7 +328,7 @@ bool MeaPositionLogMgr::Save(bool askPathname)
 
     m_modified = false;
 
-    if (m_observer != NULL) {
+    if (m_observer != nullptr) {
         m_observer->LogSaved();
     }
 
@@ -350,7 +345,7 @@ bool MeaPositionLogMgr::Load(LPCTSTR pathname)
         return false;
     }
 
-    if (pathname != NULL) {
+    if (pathname != nullptr) {
         m_pathname = pathname;
     } else {
         CFileDialog *dlg = CreateLoadDialog();
@@ -368,7 +363,7 @@ bool MeaPositionLogMgr::Load(LPCTSTR pathname)
     //
     // Remember the directory for persisting.
     //
-    _tsplitpath_s(m_pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, NULL, 0, NULL, 0);
+    _tsplitpath_s(m_pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, nullptr, 0, nullptr, 0);
     m_initialDir = drive;
     m_initialDir += dir;
 
@@ -400,10 +395,10 @@ bool MeaPositionLogMgr::Load(LPCTSTR pathname)
             // Handled by the parser.
         } catch (MeaLogFileException&) {
             CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_INVALID_LOGFILE));
-            MessageBox(*AfxGetMainWnd(), msg, NULL, MB_OK | MB_ICONERROR);
+            MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
         } catch (...) {
             CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_NO_POSITIONS));
-            MessageBox(*AfxGetMainWnd(), msg, NULL, MB_OK | MB_ICONERROR);
+            MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
         }
 
         Close();
@@ -416,7 +411,7 @@ bool MeaPositionLogMgr::Load(LPCTSTR pathname)
 
             m_modified = false;
 
-            if (m_observer != NULL) {
+            if (m_observer != nullptr) {
                 m_observer->LogLoaded();
             }
         }
@@ -439,7 +434,7 @@ bool MeaPositionLogMgr::Open(const CString &pathname, UINT mode)
         CString msg;
         fe.GetErrorMessage(errStr, 256);
         msg.Format(((mode & CFile::modeRead) ? IDS_MEA_NO_LOAD_LOG : IDS_MEA_NO_SAVE_LOG), errStr);
-        MessageBox(*AfxGetMainWnd(), msg, NULL, MB_OK | MB_ICONERROR);
+        MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
         return false;
     }
 
@@ -509,7 +504,7 @@ void MeaPositionLogMgr::ProcessDesktopNode(const MeaXMLNode* desktopNode)
 
         CString msg;
         msg.Format(IDS_MEA_INVALID_DESKTOPID, static_cast<LPCTSTR>(valueStr));
-        MessageBox(*AfxGetMainWnd(), msg, NULL, MB_OK | MB_ICONERROR);
+        MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
     }
 }
 
@@ -537,7 +532,7 @@ void MeaPositionLogMgr::ProcessPositionNode(const MeaXMLNode* positionNode)
 
         CString msg;
         msg.Format(IDS_MEA_INVALID_DESKTOPREF, static_cast<LPCTSTR>(idStr));
-        MessageBox(*AfxGetMainWnd(), msg, NULL, MB_OK | MB_ICONERROR);
+        MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
     }
 }
 
@@ -558,7 +553,7 @@ CString MeaPositionLogMgr::ProcessDataNodes(const MeaXMLNode* elementNode)
 }
 
 
-void MeaPositionLogMgr::WriteInfoSection(int indent) throw(CFileException)
+void MeaPositionLogMgr::WriteInfoSection(int indent)
 {
     TCHAR nameBuffer[MAX_COMPUTERNAME_LENGTH + 1];
     DWORD size = MAX_COMPUTERNAME_LENGTH + 1;
@@ -568,7 +563,7 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) throw(CFileException)
     Write(indent, _T("<info>\n"));
     indent++;
         Write(indent, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_title))));
-        Write(indent, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(NULL))));
+        Write(indent, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(nullptr))));
         Write(indent, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
                 static_cast<LPCTSTR>(AfxGetAppName()),
                 static_cast<LPCTSTR>(g_versionInfo.GetProductVersion()),
@@ -582,14 +577,13 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) throw(CFileException)
 }
 
 
-void MeaPositionLogMgr::WriteDesktopsSection(int indent) throw(CFileException)
+void MeaPositionLogMgr::WriteDesktopsSection(int indent)
 {
     Write(indent, _T("<desktops>\n"));
     indent++;
 
-    RefCountMap::const_iterator iter;
-    for (iter = m_refCountMap.begin(); iter != m_refCountMap.end(); ++iter) {
-        GetDesktopInfo((*iter).first).Save(*this, indent);
+    for (const auto& refCountEntry : m_refCountMap) {
+        GetDesktopInfo(refCountEntry.first).Save(*this, indent);
     }
 
     indent--;
@@ -597,7 +591,7 @@ void MeaPositionLogMgr::WriteDesktopsSection(int indent) throw(CFileException)
 }
 
 
-void MeaPositionLogMgr::WritePositionsSection(int indent) throw(CFileException)
+void MeaPositionLogMgr::WritePositionsSection(int indent)
 {
     Write(indent, _T("<positions>\n"));
     indent++;
@@ -607,7 +601,7 @@ void MeaPositionLogMgr::WritePositionsSection(int indent) throw(CFileException)
 }
 
 
-void MeaPositionLogMgr::Write(int indentLevel, LPCTSTR format, ...) throw(CFileException)
+void MeaPositionLogMgr::Write(int indentLevel, LPCTSTR format, ...)
 {
     CString indent(_T(' '), indentLevel * 4);
     CString str;
@@ -709,7 +703,6 @@ void MeaPositionLogMgr::Screen::Load(const MeaXMLNode* screenNode)
 
 
 void MeaPositionLogMgr::Screen::Save(MeaPositionLogMgr& mgr, int indent) const
-        throw(CFileException)
 {
     mgr.Write(indent, _T("<screen desc=\"%s\" primary=\"%s\">\n"), static_cast<LPCTSTR>(m_desc),
         (m_primary ? _T("true") : _T("false")));
@@ -788,14 +781,14 @@ void MeaPositionLogMgr::DesktopInfo::Init()
 void MeaPositionLogMgr::DesktopInfo::SetLinearUnits(const CString& unitsStr)
 {
     m_linearUnits = MeaUnitsMgr::Instance().GetLinearUnits(unitsStr);
-    MeaAssert(m_linearUnits != NULL);
+    MeaAssert(m_linearUnits != nullptr);
 }
 
 
 void MeaPositionLogMgr::DesktopInfo::SetAngularUnits(const CString& unitsStr)
 {
     m_angularUnits = MeaUnitsMgr::Instance().GetAngularUnits(unitsStr);
-    MeaAssert(m_angularUnits != NULL);
+    MeaAssert(m_angularUnits != nullptr);
 }
 
 
@@ -849,7 +842,6 @@ void MeaPositionLogMgr::DesktopInfo::Load(const MeaXMLNode* desktopNode)
 
 
 void MeaPositionLogMgr::DesktopInfo::Save(MeaPositionLogMgr& mgr, int indent) const
-        throw(CFileException)
 {
     mgr.Write(indent, _T("<desktop id=\"%s\">\n"), static_cast<LPCTSTR>(m_id));
     indent++;
@@ -874,9 +866,9 @@ void MeaPositionLogMgr::DesktopInfo::Save(MeaPositionLogMgr& mgr, int indent) co
 
         mgr.Write(indent, _T("<screens>\n"));
         indent++;
-            ScreenList::const_iterator iter;
-            for (iter = m_screens.begin(); iter != m_screens.end(); ++iter)
-                (*iter).Save(mgr, indent);
+            for (const auto& screen : m_screens) {
+                screen.Save(mgr, indent);
+            }
         indent--;
         mgr.Write(indent, _T("</screens>\n"));
 
@@ -932,7 +924,6 @@ void MeaPositionLogMgr::DesktopInfo::LoadCustomPrecisions(const MeaXMLNode* disp
 
 void MeaPositionLogMgr::DesktopInfo::SaveCustomPrecisions(MeaPositionLogMgr& mgr,
                                                           int indent) const
-             throw(CFileException)
 {
     const MeaUnits::DisplayPrecisionNames& precisionNames = m_linearUnits->GetDisplayPrecisionNames();
     unsigned int i;
@@ -955,7 +946,7 @@ void MeaPositionLogMgr::DesktopInfo::SaveCustomPrecisions(MeaPositionLogMgr& mgr
 
 
 MeaPositionLogMgr::Position::Position() :
-    m_mgr(NULL),
+    m_mgr(nullptr),
     m_fieldMask(0),
     m_width(0.0),
     m_height(0.0),
@@ -977,11 +968,11 @@ MeaPositionLogMgr::Position::Position(MeaPositionLogMgr* mgr,
     m_angle(0.0),
     m_desktopInfoId(desktopInfoId),
     m_toolName(MeaToolMgr::Instance().GetToolName()),
-    m_timestamp(MeaMakeTimeStamp(time(NULL)))
+    m_timestamp(MeaMakeTimeStamp(time(nullptr)))
 {
     MeaToolMgr::Instance().GetPosition(*this);
 
-    if (m_mgr != NULL) {
+    if (m_mgr != nullptr) {
         m_mgr->AddDesktopRef(m_desktopInfoId);
     }
 }
@@ -1000,13 +991,13 @@ MeaPositionLogMgr::Position::Position(MeaPositionLogMgr* mgr, const CString& des
         m_toolName(toolName),
         m_timestamp(timestamp)
 {
-    if (m_mgr != NULL) {
+    if (m_mgr != nullptr) {
         m_mgr->AddDesktopRef(m_desktopInfoId);
     }
 }
 
 
-MeaPositionLogMgr::Position::Position(const Position& position) : m_mgr(NULL),
+MeaPositionLogMgr::Position::Position(const Position& position) : m_mgr(nullptr),
     m_fieldMask(0)
 {
     Copy(position);
@@ -1016,7 +1007,7 @@ MeaPositionLogMgr::Position::Position(const Position& position) : m_mgr(NULL),
 MeaPositionLogMgr::Position::~Position()
 {
     try {
-        if (m_mgr != NULL) {
+        if (m_mgr != nullptr) {
             m_mgr->ReleaseDesktopRef(m_desktopInfoId);
         }
     }
@@ -1029,7 +1020,7 @@ MeaPositionLogMgr::Position::~Position()
 MeaPositionLogMgr::Position& MeaPositionLogMgr::Position::Copy(const Position& position)
 {
     if (&position != this) {
-        if (m_mgr != NULL) {
+        if (m_mgr != nullptr) {
             m_mgr->ReleaseDesktopRef(m_desktopInfoId);
         }
 
@@ -1047,7 +1038,7 @@ MeaPositionLogMgr::Position& MeaPositionLogMgr::Position::Copy(const Position& p
         m_area          = position.m_area;
         m_angle         = position.m_angle;
 
-        if (m_mgr != NULL) {
+        if (m_mgr != nullptr) {
             m_mgr->AddDesktopRef(m_desktopInfoId);
         }
     }
@@ -1197,11 +1188,10 @@ void MeaPositionLogMgr::Position::Show() const
 
     // Show the points.
     //
-    PointMap::const_iterator iter;
     MeaRadioTool::PointMap toolPoints;
 
-    for (iter = m_points.begin(); iter != m_points.end(); ++iter) {
-        toolPoints[(*iter).first] = unitsMgr.UnconvertCoord((*iter).second);
+    for (const auto& pointEntry : m_points) {
+        toolPoints[pointEntry.first] = unitsMgr.UnconvertCoord(pointEntry.second);
     }
 
     toolMgr.SetPosition(toolPoints);
@@ -1263,9 +1253,8 @@ void MeaPositionLogMgr::Position::Load(const MeaXMLNode* positionNode)
 
 
 void MeaPositionLogMgr::Position::Save(int indent) const
-        throw(CFileException)
 {
-    if (m_mgr == NULL) {
+    if (m_mgr == nullptr) {
         return;
     }
 
@@ -1280,13 +1269,11 @@ void MeaPositionLogMgr::Position::Save(int indent) const
 
         m_mgr->Write(indent, _T("<points>\n"));
         indent++;
-            PointMap::const_iterator iter;
-
-            for (iter = m_points.begin(); iter != m_points.end(); ++iter) {
+            for (const auto& pointEntry : m_points) {
                 m_mgr->Write(indent, _T("<point name=\"%s\" x=\"%s\" y=\"%s\"/>\n"),
-                    static_cast<LPCTSTR>((*iter).first),
-                    static_cast<LPCTSTR>(MeaUtils::DblToStr((*iter).second.x)),
-                    static_cast<LPCTSTR>(MeaUtils::DblToStr((*iter).second.y)));
+                    static_cast<LPCTSTR>(pointEntry.first),
+                    static_cast<LPCTSTR>(MeaUtils::DblToStr(pointEntry.second.x)),
+                    static_cast<LPCTSTR>(MeaUtils::DblToStr(pointEntry.second.y)));
             }
         indent--;
         m_mgr->Write(indent, _T("</points>\n"));
@@ -1350,7 +1337,6 @@ void MeaPositionLogMgr::Positions::Add(Position* position)
 
 
 void MeaPositionLogMgr::Positions::Set(int posIndex, Position* position)
-    throw(std::out_of_range)
 {
     PositionMap::iterator iter = m_posMap.find(posIndex);
     if (iter == m_posMap.end()) {
@@ -1363,7 +1349,6 @@ void MeaPositionLogMgr::Positions::Set(int posIndex, Position* position)
 
 
 MeaPositionLogMgr::Position& MeaPositionLogMgr::Positions::Get(int posIndex)
-    throw(std::out_of_range)
 {
     PositionMap::const_iterator iter = m_posMap.find(posIndex);
     if (iter == m_posMap.end()) {
@@ -1374,7 +1359,7 @@ MeaPositionLogMgr::Position& MeaPositionLogMgr::Positions::Get(int posIndex)
 }
 
 
-void MeaPositionLogMgr::Positions::Delete(int posIndex) throw(std::out_of_range)
+void MeaPositionLogMgr::Positions::Delete(int posIndex)
 {
     // Find the position entry corresponding to the specified
     // position index.
@@ -1403,20 +1388,17 @@ void MeaPositionLogMgr::Positions::Delete(int posIndex) throw(std::out_of_range)
 
 void MeaPositionLogMgr::Positions::DeleteAll()
 {
-    PositionMap::const_iterator iter;
-
-    for (iter = m_posMap.begin(); iter != m_posMap.end(); ++iter) {
-        delete (*iter).second;
+    for (const auto& posEntry : m_posMap) {
+        delete posEntry.second;
     }
     m_posMap.clear();
 }
 
 
-void MeaPositionLogMgr::Positions::Save(int indent) const throw(CFileException)
+void MeaPositionLogMgr::Positions::Save(int indent) const
 {
-    PositionMap::const_iterator iter;
-    for (iter = m_posMap.begin(); iter != m_posMap.end(); ++iter) {
-        (*iter).second->Save(indent);
+    for (const auto& posEntry : m_posMap) {
+        posEntry.second->Save(indent);
     }
 }
 

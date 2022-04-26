@@ -61,7 +61,7 @@ public:
     /// @return Always <b>true</b> indicating that this class
     ///         and its derived classes are Radio tools.
     ///
-    virtual bool IsRadioTool();
+    virtual bool IsRadioTool() override;
 
 
     /// Returns a resource ID for the string used to label this

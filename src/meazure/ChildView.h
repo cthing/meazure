@@ -36,11 +36,11 @@
 class CChildView : public CWnd
 {
 public:
-    static const bool   kDefToolbarVisible;     ///< Indicates if the toolbar is visible by default.
-    static const bool   kDefStatusbarVisible;   ///< Indicates if the status bar is visible by default.
-    static const bool   kDefToolInfoVisible;    ///< Indicates if the measurement information section is visible by default.
-    static const bool   kDefScreenInfoVisible;  ///< Indicates if the screen information section is visible by default.
-    static const bool   kDefMagnifierVisible;   ///< Indicates if the magnifier is visible by default.
+    static constexpr bool   kDefToolbarVisible { true };     ///< Indicates if the toolbar is visible by default.
+    static constexpr bool   kDefStatusbarVisible { true };   ///< Indicates if the status bar is visible by default.
+    static constexpr bool   kDefToolInfoVisible { true };    ///< Indicates if the measurement information section is visible by default.
+    static constexpr bool   kDefScreenInfoVisible { true };  ///< Indicates if the screen information section is visible by default.
+    static constexpr bool   kDefMagnifierVisible { true };   ///< Indicates if the magnifier is visible by default.
 
 
     /// Constructs the view.
@@ -109,12 +109,9 @@ public:
     ///
     void    InitView();
 
-    // ClassWizard generated virtual function overrides
-    //{{AFX_VIRTUAL(CChildView)
-    virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-    //}}AFX_VIRTUAL
-
-    virtual BOOL PreTranslateMessage(MSG* pMsg);
+    virtual BOOL PreCreateWindow(CREATESTRUCT& cs) override;
+    
+    virtual BOOL PreTranslateMessage(MSG* pMsg) override;
 
 protected:
     /// Called when new units are selected from the Units menu.
@@ -166,7 +163,6 @@ protected:
     /// @return Always returns 0.
     afx_msg LRESULT OnHPTimer(WPARAM wParam, LPARAM lParam);
 
-    //{{AFX_MSG(CChildView)
     afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
     afx_msg void OnUpdateUnits(CCmdUI* pCmdUI);
     afx_msg void OnUpdateAngles(CCmdUI* pCmdUI);
@@ -229,7 +225,6 @@ protected:
     afx_msg void OnSetPosition1ToCursor();
     afx_msg void OnSetPosition2ToCursor();
     afx_msg void OnSetPosition3ToCursor();
-    //}}AFX_MSG
 
     DECLARE_MESSAGE_MAP()
 
@@ -560,7 +555,3 @@ private:
     bool            m_expandScreenInfo;         ///< Indicates if the screen information section is displayed.
     bool            m_expandToolInfo;           ///< Indicates if the tool measurement section is displayed.
 };
-
-
-//{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ will insert additional declarations immediately before the previous line.

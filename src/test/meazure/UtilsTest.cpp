@@ -276,9 +276,9 @@ namespace
 
 test_suite* init_unit_test_suite(int argc, char* argv[])
 {
-    if (!AfxWinInit(::GetModuleHandle(NULL), NULL, ::GetCommandLine(), 0)) {
+    if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
         cerr << "Fatal Error: MFC initialization failed\n";
-        return NULL;
+        return nullptr;
     }
     
     test_suite* fsizeTestSuite = BOOST_TEST_SUITE("FSIZE Tests");
@@ -303,5 +303,5 @@ test_suite* init_unit_test_suite(int argc, char* argv[])
     utilsTestSuite->add(BOOST_TEST_CASE(&TestCRLFtoLF));
     framework::master_test_suite().add(utilsTestSuite);
     
-    return NULL;
+    return nullptr;
 }

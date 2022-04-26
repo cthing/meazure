@@ -32,9 +32,6 @@ IMPLEMENT_DYNAMIC(MeaPositionSaveDlg, CFileDialog)
 
 
 BEGIN_MESSAGE_MAP(MeaPositionSaveDlg, CFileDialog)
-    //{{AFX_MSG_MAP(MeaPositionSaveDlg)
-        // NOTE - the ClassWizard will add and remove mapping macros here.
-    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 
@@ -45,15 +42,11 @@ MeaPositionSaveDlg::MeaPositionSaveDlg(LPCTSTR lpszDefExt,
                                        lpszDefExt, lpszFileName,
                                        OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT |
                                        OFN_ENABLETEMPLATE | OFN_EXPLORER,
-                                       lpszFilter, pParentWnd)
+                                       lpszFilter, pParentWnd),
+    m_desc(_T("")), m_title(_T(""))
 {
     m_ofn.hInstance = AfxGetInstanceHandle();
     m_ofn.lpTemplateName = MAKEINTRESOURCE(IDD_POSITION_SAVE);
-
-    //{{AFX_DATA_INIT(MeaPositionSaveDlg)
-    m_desc = _T("");
-    m_title = _T("");
-    //}}AFX_DATA_INIT
 }
 
 
@@ -66,8 +59,6 @@ void MeaPositionSaveDlg::DoDataExchange(CDataExchange* pDX)
 {
     CFileDialog::DoDataExchange(pDX);
 
-    //{{AFX_DATA_MAP(MeaPositionSaveDlg)
     DDX_Text(pDX, IDC_LOG_DESC, m_desc);
     DDX_Text(pDX, IDC_LOG_TITLE, m_title);
-    //}}AFX_DATA_MAP
 }

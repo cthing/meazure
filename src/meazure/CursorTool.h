@@ -51,18 +51,18 @@ public:
     /// Enables the Cursor tool's data window. If the Create() method has
     /// not been previously called, it will be called by Enable.
     ///
-    virtual void Enable();
+    virtual void Enable() override;
 
     /// Disables the Cursor tool's data window.
     ///
-    virtual void Disable();
+    virtual void Disable() override;
 
     
     /// Requests that the tool update the display of its position data.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
-    virtual void Update(MeaUpdateReason reason);
+    virtual void Update(MeaUpdateReason reason) override;
 
 
     /// Indicates whether the tool has crosshairs.
@@ -70,20 +70,20 @@ public:
     /// @return Always <b>false</b> because this tool only consists
     ///         of a data window attached to the mouse pointer.
     ///
-    virtual bool HasCrosshairs() const;
+    virtual bool HasCrosshairs() const override;
 
     /// Visually strobes the tool. The tool's data window is cycled between
     /// hidden and visible. Strobing the tool is done to visually confirm
     /// position recording.
     ///
-    virtual void Strobe();
+    virtual void Strobe() override;
 
 
     /// Returns the position of the mouse pointer.
     ///
     /// @return Position of the mouse pointer.
     ///
-    virtual const POINT&    GetPosition() const;
+    virtual const POINT&    GetPosition() const override;
 
     /// Records the position of the mouse pointer. This method is called
     /// by the position log manager to record a position.
@@ -91,7 +91,7 @@ public:
     /// @param position     [in] The position of the mouse pointer is recorded
     ///                     into the position log manager's position object.
     ///
-    virtual void    GetPosition(MeaPositionLogMgr::Position& position) const;
+    virtual void    GetPosition(MeaPositionLogMgr::Position& position) const override;
 
 
     /// Returns the name of the tool. Each tool has a unique name
@@ -100,20 +100,20 @@ public:
     ///
     /// @return Name of the tool ("CursorTool").
     ///
-    virtual CString GetToolName() const;
+    virtual CString GetToolName() const override;
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.
     ///
     /// @return Resource ID for the label.
     ///
-    virtual UINT    GetLabelId() const;
+    virtual UINT    GetLabelId() const override;
 
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The data window opacity is updated.
     ///
-    virtual void ColorsChanged();
+    virtual void ColorsChanged() override;
 
 
     /// Called by the OS when the mouse pointer is moved.
@@ -121,7 +121,7 @@ public:
     /// @param wParam   [in] OS Message ID
     /// @param lParam   [in] MOUSEHOOKSTRUCT
     ///
-    virtual void OnMouseHook(WPARAM wParam, LPARAM lParam);
+    virtual void OnMouseHook(WPARAM wParam, LPARAM lParam) override;
 
 private:
     /// Creates the tool's data window. The Enable() method must

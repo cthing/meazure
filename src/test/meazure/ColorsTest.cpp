@@ -183,9 +183,9 @@ namespace
 
 test_suite* init_unit_test_suite(int argc, char* argv[])
 {
-    if (!AfxWinInit(::GetModuleHandle(NULL), NULL, ::GetCommandLine(), 0)) {
-        cerr << "Fatail Error: MFC initialization failed\n";
-        return NULL;
+    if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
+        cerr << "Fatal Error: MFC initialization failed\n";
+        return nullptr;
     }
     
     test_suite* suite = BOOST_TEST_SUITE("Colors Tests");

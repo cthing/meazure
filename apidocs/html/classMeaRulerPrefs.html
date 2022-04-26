@@ -102,9 +102,9 @@ COLORREF&#160;</td><td class="memItemRight" valign="bottom"><b>m_borderColor</b>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ab64aa61ec81b4602ea5044dbf1f17c11"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRulerPrefs.html#ab64aa61ec81b4602ea5044dbf1f17c11">DoDataExchange</a> (CDataExchange *pDX)</td></tr>
-<tr class="memdesc:ab64aa61ec81b4602ea5044dbf1f17c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs Dynamic Data Exchange (DDX) for the page.  <a href="classMeaRulerPrefs.html#ab64aa61ec81b4602ea5044dbf1f17c11">More...</a><br /></td></tr>
-<tr class="separator:ab64aa61ec81b4602ea5044dbf1f17c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9af3cddc460b54931ea19c0b1e3e0be"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRulerPrefs.html#ad9af3cddc460b54931ea19c0b1e3e0be">DoDataExchange</a> (CDataExchange *pDX) override</td></tr>
+<tr class="memdesc:ad9af3cddc460b54931ea19c0b1e3e0be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs Dynamic Data Exchange (DDX) for the page.  <a href="classMeaRulerPrefs.html#ad9af3cddc460b54931ea19c0b1e3e0be">More...</a><br /></td></tr>
+<tr class="separator:ad9af3cddc460b54931ea19c0b1e3e0be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5e8df1ffb91fff84d152825e119123a"><td class="memItemLeft" align="right" valign="top">afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRulerPrefs.html#ad5e8df1ffb91fff84d152825e119123a">OnChangeBkColor</a> ()</td></tr>
 <tr class="memdesc:ad5e8df1ffb91fff84d152825e119123a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the background color button is pressed.  <a href="classMeaRulerPrefs.html#ad5e8df1ffb91fff84d152825e119123a">More...</a><br /></td></tr>
 <tr class="separator:ad5e8df1ffb91fff84d152825e119123a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,8 +144,8 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p >Property page for setting ruler preferences. </p>
 <p >The ruler preferences include the ruler background and border colors and the ruler opacity (Windows 2000 and up). The property page provides a vertical and a horizontal ruler sample to preview the properties before they are applied. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab64aa61ec81b4602ea5044dbf1f17c11" name="ab64aa61ec81b4602ea5044dbf1f17c11"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab64aa61ec81b4602ea5044dbf1f17c11">&#9670;&nbsp;</a></span>DoDataExchange()</h2>
+<a id="ad9af3cddc460b54931ea19c0b1e3e0be" name="ad9af3cddc460b54931ea19c0b1e3e0be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9af3cddc460b54931ea19c0b1e3e0be">&#9670;&nbsp;</a></span>DoDataExchange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,7 +163,7 @@ Private Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -206,7 +206,7 @@ Private Attributes</h2></td></tr>
 <p>Called when the background color button is pressed. </p>
 <p >This method displays the color picker dialog and calls the <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc" title="Sets the background and border color on the sample rulers and sets the modified flag.">ColorsChanged()</a> method if a new background color is chosen. </p>
 
-<p class="reference">References <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc">ColorsChanged()</a>, <a class="el" href="classMeaColorDialog.html#ad71771995c15ccdec3d5ea8b276638b6">MeaColorDialog::DoModal()</a>, and <a class="el" href="classMeaRulerPrefs.html#a46c94e241d566150d27edcbf0a68e133">m_backColor</a>.</p>
+<p class="reference">References <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc">ColorsChanged()</a>, <a class="el" href="classMeaColorDialog.html#a9f66d10f2b943bf2ba435cadf8339622">MeaColorDialog::DoModal()</a>, and <a class="el" href="classMeaRulerPrefs.html#a46c94e241d566150d27edcbf0a68e133">m_backColor</a>.</p>
 
 </div>
 </div>
@@ -236,7 +236,7 @@ Private Attributes</h2></td></tr>
 <p>Called when the border color button is pressed. </p>
 <p >This method displays the color picker dialog and calls the <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc" title="Sets the background and border color on the sample rulers and sets the modified flag.">ColorsChanged()</a> method if a new border color is chosen. </p>
 
-<p class="reference">References <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc">ColorsChanged()</a>, <a class="el" href="classMeaColorDialog.html#ad71771995c15ccdec3d5ea8b276638b6">MeaColorDialog::DoModal()</a>, and <a class="el" href="classMeaRulerPrefs.html#a167b67850c049109ce634bbba80fc8ef">m_borderColor</a>.</p>
+<p class="reference">References <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc">ColorsChanged()</a>, <a class="el" href="classMeaColorDialog.html#a9f66d10f2b943bf2ba435cadf8339622">MeaColorDialog::DoModal()</a>, and <a class="el" href="classMeaRulerPrefs.html#a167b67850c049109ce634bbba80fc8ef">m_borderColor</a>.</p>
 
 </div>
 </div>
@@ -327,7 +327,7 @@ Private Attributes</h2></td></tr>
 <p >This method Creates the sample rulers and initializes the opacity slider.</p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE, indicating that the input focus should be set to the first control on the page. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaRuler.html#a764641e4a9d3ead42743e4da9f08c075">MeaRuler::Create()</a>, <a class="el" href="LayeredWindows_8h.html#a73f24e22c5ab220d8030bb996d3bcff8">HaveLayeredWindows()</a>, <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a7ef3bc4b1fa9e4cf0329fae9ad18fe04">MeaRuler::Horizontal</a>, <a class="el" href="classMeaRulerPrefs.html#a46c94e241d566150d27edcbf0a68e133">m_backColor</a>, <a class="el" href="classMeaRulerPrefs.html#a167b67850c049109ce634bbba80fc8ef">m_borderColor</a>, <a class="el" href="classMeaRulerPrefs.html#a47718474867085e7a507f948b500ca4e">m_hRuler</a>, <a class="el" href="classMeaRulerPrefs.html#a31a0098f6545e54d7a57b6e8f9a262d8">m_opacity</a>, <a class="el" href="classMeaRulerPrefs.html#a4f2bcdec7dbae1e6f1c26a3c6931c78b">m_vRuler</a>, <a class="el" href="classMeaRuler.html#a3bd50fc7657cf0c550906b9093d255bc">MeaRuler::SetOpacity()</a>, <a class="el" href="classMeaRuler.html#ad73c050aac276c8df756843522965957">MeaRuler::SetPosition()</a>, <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">MeaGraphic::Show()</a>, and <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a506f225ec5c35a9e0e6c0a1118571795">MeaRuler::Vertical</a>.</p>
+<p class="reference">References <a class="el" href="classMeaRuler.html#a673f1ac35b78a04d9b1f76590aa08e98">MeaRuler::Create()</a>, <a class="el" href="LayeredWindows_8h.html#a73f24e22c5ab220d8030bb996d3bcff8">HaveLayeredWindows()</a>, <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a7ef3bc4b1fa9e4cf0329fae9ad18fe04">MeaRuler::Horizontal</a>, <a class="el" href="classMeaRulerPrefs.html#a46c94e241d566150d27edcbf0a68e133">m_backColor</a>, <a class="el" href="classMeaRulerPrefs.html#a167b67850c049109ce634bbba80fc8ef">m_borderColor</a>, <a class="el" href="classMeaRulerPrefs.html#a47718474867085e7a507f948b500ca4e">m_hRuler</a>, <a class="el" href="classMeaRulerPrefs.html#a31a0098f6545e54d7a57b6e8f9a262d8">m_opacity</a>, <a class="el" href="classMeaRulerPrefs.html#a4f2bcdec7dbae1e6f1c26a3c6931c78b">m_vRuler</a>, <a class="el" href="classMeaRuler.html#a3bd50fc7657cf0c550906b9093d255bc">MeaRuler::SetOpacity()</a>, <a class="el" href="classMeaRuler.html#ad73c050aac276c8df756843522965957">MeaRuler::SetPosition()</a>, <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">MeaGraphic::Show()</a>, and <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a506f225ec5c35a9e0e6c0a1118571795">MeaRuler::Vertical</a>.</p>
 
 </div>
 </div>

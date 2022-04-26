@@ -76,7 +76,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6e2a4ca5bf41ee1ed4bca239ef4da3fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a6e2a4ca5bf41ee1ed4bca239ef4da3fe">Load</a> (const <a class="el" href="classMeaXMLNode.html">MeaXMLNode</a> *screenNode)</td></tr>
 <tr class="memdesc:a6e2a4ca5bf41ee1ed4bca239ef4da3fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads screen elements of the log file.  <a href="classMeaPositionLogMgr_1_1Screen.html#a6e2a4ca5bf41ee1ed4bca239ef4da3fe">More...</a><br /></td></tr>
 <tr class="separator:a6e2a4ca5bf41ee1ed4bca239ef4da3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cc83ec81d4fb32b2a232c740fd06516"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a1cc83ec81d4fb32b2a232c740fd06516">Save</a> (<a class="el" href="classMeaPositionLogMgr.html">MeaPositionLogMgr</a> &amp;mgr, int indent) const  throw (CFileException)</td></tr>
+<tr class="memitem:a1cc83ec81d4fb32b2a232c740fd06516"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a1cc83ec81d4fb32b2a232c740fd06516">Save</a> (<a class="el" href="classMeaPositionLogMgr.html">MeaPositionLogMgr</a> &amp;mgr, int indent) const</td></tr>
 <tr class="memdesc:a1cc83ec81d4fb32b2a232c740fd06516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Saves the screen information.  <a href="classMeaPositionLogMgr_1_1Screen.html#a1cc83ec81d4fb32b2a232c740fd06516">More...</a><br /></td></tr>
 <tr class="separator:a1cc83ec81d4fb32b2a232c740fd06516"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeda37e4dadbb1afb3d3ba65314a8b82c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaPositionLogMgr_1_1Screen.html">Screen</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr_1_1Screen.html#aeda37e4dadbb1afb3d3ba65314a8b82c">operator=</a> (const <a class="el" href="classMeaPositionLogMgr_1_1Screen.html">Screen</a> &amp;screen)</td></tr>
@@ -441,12 +441,6 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_desc</b></td></t
           <td>)</td>
           <td></td><td> const</td>
         </tr>
-        <tr>
-          <td align="right">throw </td><td>(</td><td colspan="2">CFileException</td>
-        </tr>
-        <tr>
-          <td align="right"></td><td>)</td><td></td><td></td>
-        </tr>
       </table>
 </div><div class="memdoc">
 
@@ -458,8 +452,14 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_desc</b></td></t
   </table>
   </dd>
 </dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">CFileException</td><td>if there was a problem saving the file </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="reference">References <a class="el" href="classMeaUtils.html#abbfadc87cd7ae877af4088917fb73dce">MeaUtils::DblToStr()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a5eb87729e0cad3a7022a98c59c046400">MeaPositionLogMgr::m_desc</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUtils.html#abbfadc87cd7ae877af4088917fb73dce">MeaUtils::DblToStr()</a>, <a class="el" href="classMeaPositionLogMgr.html#a5eb87729e0cad3a7022a98c59c046400">MeaPositionLogMgr::m_desc</a>, and <a class="el" href="classMeaPositionLogMgr.html#afa4531c582388ae6cf28d648da9bbefb">MeaPositionLogMgr::Write()</a>.</p>
 
 </div>
 </div>

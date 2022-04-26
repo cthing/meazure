@@ -122,7 +122,7 @@ public:
         if (str.IsEmpty()) {
             return false;
         }
-        value = _tcstod(str, NULL);
+        value = _tcstod(str, nullptr);
         return true;
     }
 
@@ -144,7 +144,7 @@ public:
     ///
     /// @return TRUE if UP/DOWN and FALSE otherwise.
     ///
-    virtual BOOL PreTranslateMessage(MSG* msg);
+    virtual BOOL PreTranslateMessage(MSG* msg) override;
 
 protected:
     DECLARE_MESSAGE_MAP()

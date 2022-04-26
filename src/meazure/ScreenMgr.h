@@ -74,10 +74,10 @@ private:
         /// @param useManualRes     [in] Specifies whether the manually calibrated
         ///                         resolution should be used (true) or the operating
         ///                         system resolution (false).
-        /// @param manualRes        [in] If non-NULL, specifies the manually calibrated
+        /// @param manualRes        [in] If non-nullptr, specifies the manually calibrated
         ///                         resolution.
         ///
-        void            SetScreenRes(bool useManualRes, const FSIZE *manualRes = NULL);
+        void            SetScreenRes(bool useManualRes, const FSIZE *manualRes = nullptr);
 
         /// Obtains the currently set manual screen resolution, if set.
         ///
@@ -185,8 +185,8 @@ public:
     };
 
     
-    static const bool kDefUseManualRes;     ///< Use manual resolution by default.
-    static const bool kDefCalInInches;      ///< Calibrate in inches by default.
+    static constexpr bool kDefUseManualRes { false };   ///< Use manual resolution by default.
+    static constexpr bool kDefCalInInches { true };     ///< Calibrate in inches by default.
 
 
     /// Persists the state of the manager to the specified profile object.
@@ -333,8 +333,8 @@ public:
     /// @return <b>true</b> if there are any screens requiring manual calibration.
     ///
     bool            AnyOSRes() const {
-                        for (ScreenIter iter = m_screens.begin(); iter != m_screens.end(); ++iter) {
-                            if (!(*iter).second->IsManualRes()) {
+                        for (const auto& screenEntry : m_screens) {
+                            if (!screenEntry.second->IsManualRes()) {
                                 return true;
                             }
                         }
@@ -348,7 +348,7 @@ public:
     /// @param useManualRes     [in] <b>true</b> if the resolution is manually calibrated.
     /// @param manualRes        [in] Manually calibrated screen resolution, in pixels.
     ///
-    void            SetScreenRes(const ScreenIter& iter, bool useManualRes, const FSIZE *manualRes = NULL) const {
+    void            SetScreenRes(const ScreenIter& iter, bool useManualRes, const FSIZE *manualRes = nullptr) const {
                         (*iter).second->SetScreenRes(useManualRes, manualRes);
     }
 
@@ -449,7 +449,7 @@ private:
     ///
     /// @param point        [in] Point whose screen is desired.
     ///
-    /// @return Screen containing the specified point or NULL if
+    /// @return Screen containing the specified point or nullptr if
     ///         the point is not contained by any screen.
     ///
     Screen*     GetScreen(const POINT& point) const;

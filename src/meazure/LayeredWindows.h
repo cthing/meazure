@@ -49,29 +49,29 @@
 // Implement API stubs.
 //
 
-BOOL (WINAPI* g_pfnSetLayeredWindowAttributes)(HWND, COLORREF, BYTE, DWORD) = NULL;
-BOOL (WINAPI* g_pfnUpdateLayeredWindow)(HWND, HDC, POINT*, SIZE*, HDC, POINT*, COLORREF, BLENDFUNCTION*, DWORD) = NULL;
-BOOL g_fLayeredWindowInitDone = FALSE;
-BOOL g_enableLayeredWindows = TRUE;
+BOOL(WINAPI* g_pfnSetLayeredWindowAttributes)(HWND, COLORREF, BYTE, DWORD) { nullptr };
+BOOL(WINAPI* g_pfnUpdateLayeredWindow)(HWND, HDC, POINT*, SIZE*, HDC, POINT*, COLORREF, BLENDFUNCTION*, DWORD) { nullptr };
+BOOL g_fLayeredWindowInitDone { FALSE };
+BOOL g_enableLayeredWindows { TRUE };
 
 BOOL InitLayeredWindowStubs(void)
 {
     HMODULE hUser32;
 
     if (g_fLayeredWindowInitDone)
-        return g_pfnSetLayeredWindowAttributes != NULL;
+        return g_pfnSetLayeredWindowAttributes != nullptr;
 
     hUser32 = GetModuleHandle(TEXT("USER32"));
     
-    if ((hUser32 != NULL) && g_enableLayeredWindows &&
-        (*(FARPROC*)&g_pfnSetLayeredWindowAttributes = GetProcAddress(hUser32, "SetLayeredWindowAttributes")) != NULL &&
-        (*(FARPROC*)&g_pfnUpdateLayeredWindow        = GetProcAddress(hUser32, "UpdateLayeredWindow")) != NULL
+    if ((hUser32 != nullptr) && g_enableLayeredWindows &&
+        (*(FARPROC*)&g_pfnSetLayeredWindowAttributes = GetProcAddress(hUser32, "SetLayeredWindowAttributes")) != nullptr &&
+        (*(FARPROC*)&g_pfnUpdateLayeredWindow        = GetProcAddress(hUser32, "UpdateLayeredWindow")) != nullptr
        ) {
         g_fLayeredWindowInitDone = TRUE;
         return TRUE;
     } else {
-        g_pfnSetLayeredWindowAttributes = NULL;
-        g_pfnUpdateLayeredWindow = NULL;
+        g_pfnSetLayeredWindowAttributes = nullptr;
+        g_pfnUpdateLayeredWindow = nullptr;
         g_fLayeredWindowInitDone = TRUE;
         return FALSE;
     }

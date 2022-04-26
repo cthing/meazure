@@ -27,14 +27,11 @@
 #include "LayeredWindows.h"
 
 
-const int MeaCrossHair::kFlashCount     = 9;
-const int MeaCrossHair::kStrobeCount    = 1;
-
-SIZE    MeaCrossHair::m_size;
-SIZE    MeaCrossHair::m_halfSize;
-SIZE    MeaCrossHair::m_spread;
-UINT    MeaCrossHair::m_flashInterval = 100;
-int     *MeaCrossHair::m_numCoords = NULL;
+SIZE MeaCrossHair::m_size;
+SIZE MeaCrossHair::m_halfSize;
+SIZE MeaCrossHair::m_spread;
+UINT MeaCrossHair::m_flashInterval { 100 };
+int* MeaCrossHair::m_numCoords { nullptr };
 
 
 BEGIN_MESSAGE_MAP(MeaCrossHair, MeaGraphic)
@@ -71,29 +68,29 @@ void MeaCrossHairCallback::OnCHLeave(const CHInfo* /* info */)
 
 MeaCrossHair::MeaCrossHair() :
     MeaGraphic(),
-    m_callback(NULL),
+    m_callback(nullptr),
     m_mouseCaptured(false),
     m_mouseOver(false),
-    m_backBrush(NULL),
-    m_borderBrush(NULL),
-    m_hiliteBrush(NULL),
+    m_backBrush(nullptr),
+    m_borderBrush(nullptr),
+    m_hiliteBrush(nullptr),
     m_drawState(Normal),
     m_flashCount(0),
     m_opacity(255),
-    m_origCHBitmap(NULL),
-    m_origBackBitmap(NULL)
+    m_origCHBitmap(nullptr),
+    m_origBackBitmap(nullptr)
 {
 }
 
 
 MeaCrossHair::~MeaCrossHair()
 {
-    m_callback          = NULL;
-    m_backBrush         = NULL;
-    m_borderBrush       = NULL;
-    m_hiliteBrush       = NULL;
-    m_origCHBitmap      = NULL;
-    m_origBackBitmap    = NULL;
+    m_callback = nullptr;
+    m_backBrush = nullptr;
+    m_borderBrush = nullptr;
+    m_hiliteBrush = nullptr;
+    m_origCHBitmap = nullptr;
+    m_origBackBitmap = nullptr;
 }
 
 
@@ -126,15 +123,15 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
         m_spread.cy += (m_spread.cy % 2);
     }
 
-    MeaAssert(m_backBrush != NULL);
+    MeaAssert(m_backBrush != nullptr);
     CString wndClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW,
-        LoadCursor(NULL, IDC_ARROW));
+        LoadCursor(nullptr, IDC_ARROW));
 
     if (!MeaGraphic::Create(wndClass, m_size, parent, id)) {
         return false;
     }
 
-    if (HaveLayeredWindows() && (parent == NULL)) {
+    if (HaveLayeredWindows() && (parent == nullptr)) {
         ModifyStyleEx(0, WS_EX_LAYERED);
         SetOpacity(opacity);
     }
@@ -145,7 +142,7 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
     // and the crosshair is being used as a child window, create
     // the bitmaps used to show crosshair opacity.
     //
-    if (HaveLayeredWindows() && (m_parent != NULL)) {
+    if (HaveLayeredWindows() && (m_parent != nullptr)) {
         CRect rect;
 
         CDC *dc = GetDC();
@@ -165,7 +162,7 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
 
     if (toolTipId != 0xffff) {
         m_toolTip.Create(this, TTS_ALWAYSTIP);
-        m_toolTip.AddTool(this, toolTipId, NULL, 0);
+        m_toolTip.AddTool(this, toolTipId, nullptr, 0);
     }
 
     return true;
@@ -178,16 +175,16 @@ void MeaCrossHair::OnDestroy()
 
     DestroyColors();
 
-    if (m_origCHBitmap != NULL) {
+    if (m_origCHBitmap != nullptr) {
         m_chDC.SelectObject(m_origCHBitmap);
         m_chBitmap.DeleteObject();
         m_chDC.DeleteDC();
-        m_origCHBitmap = NULL;
+        m_origCHBitmap = nullptr;
 
         m_backDC.SelectObject(m_origBackBitmap);
         m_backBitmap.DeleteObject();
         m_backDC.DeleteDC();
-        m_origBackBitmap = NULL;
+        m_origBackBitmap = nullptr;
     }
 }
 
@@ -197,7 +194,7 @@ BOOL MeaCrossHair::PreTranslateMessage(MSG *pMsg)
     // Need to intercept messages to support tooltips
     // on the crosshair.
     //
-    if (m_toolTip.m_hWnd != NULL) {
+    if (m_toolTip.m_hWnd != nullptr) {
         m_toolTip.RelayEvent(pMsg);
     }
     return MeaGraphic::PreTranslateMessage(pMsg);
@@ -212,7 +209,7 @@ void MeaCrossHair::SetColors(COLORREF borderColor, COLORREF backColor,
     m_backBrush     = new CBrush(backColor);
     m_hiliteBrush   = new CBrush(hiliteColor);
 
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         Invalidate(FALSE);
         UpdateWindow();
     }
@@ -223,8 +220,8 @@ void MeaCrossHair::SetOpacity(BYTE opacity)
 {
     m_opacity = opacity;
 
-    if (m_hWnd != NULL) {
-        if (m_parent == NULL) {
+    if (m_hWnd != nullptr) {
+        if (m_parent == nullptr) {
             SetLayeredWindowAttributes(*this, 0, opacity, LWA_ALPHA);
         } else {
             Invalidate(FALSE);
@@ -236,17 +233,17 @@ void MeaCrossHair::SetOpacity(BYTE opacity)
 
 void MeaCrossHair::DestroyColors()
 {
-    if (m_backBrush != NULL) {
+    if (m_backBrush != nullptr) {
         delete m_backBrush;
-        m_backBrush = NULL;
+        m_backBrush = nullptr;
     }
-    if (m_borderBrush != NULL) {
+    if (m_borderBrush != nullptr) {
         delete m_borderBrush;
-        m_borderBrush = NULL;
+        m_borderBrush = nullptr;
     }
-    if (m_hiliteBrush != NULL) {
+    if (m_hiliteBrush != nullptr) {
         delete m_hiliteBrush;
-        m_hiliteBrush = NULL;
+        m_hiliteBrush = nullptr;
     }
 }
 
@@ -265,7 +262,7 @@ void MeaCrossHair::SetRegion()
     int thky = m_halfSize.cy / numLayers;
     POINT *coords = new POINT[4 * totalLayers];
 
-    if (m_numCoords == NULL) {
+    if (m_numCoords == nullptr) {
         m_numCoords = new int[totalLayers];
         for (int i = 0; i < totalLayers; i++) {
             m_numCoords[i] = 4;
@@ -354,19 +351,19 @@ void MeaCrossHair::SetRegion()
 void MeaCrossHair::SetPosition(const POINT& center)
 {
     POINT leftTop = GetLeftTop(center);
-    SetWindowPos(NULL, leftTop.x, leftTop.y, 0, 0,
+    SetWindowPos(nullptr, leftTop.x, leftTop.y, 0, 0,
         SWP_NOZORDER | SWP_NOSIZE | SWP_NOACTIVATE | SWP_NOSENDCHANGING);
 }
 
 
 void MeaCrossHair::Flash(int flashCount)
 {
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         m_flashCount = flashCount;
         m_drawState = Inverted;
         Invalidate(FALSE);
         UpdateWindow();
-        SetTimer(ID_MEA_CROSSHAIR_TIMER, m_flashInterval, NULL);
+        SetTimer(ID_MEA_CROSSHAIR_TIMER, m_flashInterval, nullptr);
     }
 }
 
@@ -378,7 +375,7 @@ void MeaCrossHair::OnTimer(UINT_PTR timerId)
     Invalidate(FALSE);
     UpdateWindow();
     if (--m_flashCount > 0) {
-        SetTimer(timerId, m_flashInterval, NULL);
+        SetTimer(timerId, m_flashInterval, nullptr);
     }
 }
 
@@ -390,7 +387,7 @@ void MeaCrossHair::OnPaint()
     // If the crosshair is a popup, simply draw it normally. If it
     // is a child window, alpha blend it onto its background.
     //
-    if (m_origCHBitmap == NULL) {
+    if (m_origCHBitmap == nullptr) {
         DrawCrossHair(dc);
     } else {
         DrawCrossHair(m_chDC);
@@ -443,7 +440,7 @@ void MeaCrossHair::OnLButtonDown(UINT flags, CPoint point)
     MeaCrossHairCallback::CHInfo chs;
     FillInfo(chs, flags, point);
 
-    if (m_callback != NULL) {
+    if (m_callback != nullptr) {
         m_callback->OnCHSelect(&chs);
     }
 }
@@ -457,7 +454,7 @@ void MeaCrossHair::OnLButtonUp(UINT flags, CPoint point)
     MeaCrossHairCallback::CHInfo chs;
     FillInfo(chs, flags, point);
 
-    if (m_callback != NULL) {
+    if (m_callback != nullptr) {
         m_callback->OnCHDeselect(&chs);
     }
 }
@@ -472,7 +469,7 @@ void MeaCrossHair::OnMouseMove(UINT flags, CPoint point)
         MeaCrossHairCallback::CHInfo chs;
         FillInfo(chs, flags, point);
 
-        if (m_callback != NULL) {
+        if (m_callback != nullptr) {
             m_callback->OnCHMove(&chs);
         }
     }
@@ -487,7 +484,7 @@ void MeaCrossHair::OnMouseMove(UINT flags, CPoint point)
         MeaCrossHairCallback::CHInfo chs;
         FillInfo(chs, flags, point);
 
-        if (m_callback != NULL) {
+        if (m_callback != nullptr) {
             m_callback->OnCHEnter(&chs);
         }
 
@@ -511,7 +508,7 @@ LRESULT MeaCrossHair::OnMouseLeave(WPARAM /* wParam */, LPARAM /* lParam */)
     MeaCrossHairCallback::CHInfo chs;
     FillInfo(chs, 0, point);
 
-    if (m_callback != NULL) {
+    if (m_callback != nullptr) {
         m_callback->OnCHLeave(&chs);
     }
 

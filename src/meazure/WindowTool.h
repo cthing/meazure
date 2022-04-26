@@ -56,18 +56,18 @@ public:
     /// Displays the Window tool. If the Create() method has not been
     /// previously called, it will be called by Enable.
     ///
-    virtual void Enable();
+    virtual void Enable() override;
 
     /// Hides the Window tool.
     ///
-    virtual void Disable();
+    virtual void Disable() override;
 
 
     /// Requests that the tool update the display of the window data.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
-    virtual void Update(MeaUpdateReason reason);
+    virtual void Update(MeaUpdateReason reason) override;
 
 
     /// Indicates whether the tool uses crosshairs. The Window tool
@@ -75,7 +75,7 @@ public:
     ///
     /// @return For this class this method always returns <b>false</b>.
     ///
-    virtual bool HasCrosshairs() const;
+    virtual bool HasCrosshairs() const override;
 
 
     /// Visually strobes the tool. The tool data window attached to the
@@ -83,7 +83,7 @@ public:
     /// the tool is done to visually confirm region capture and position
     /// recording.
     ///
-    virtual void Strobe();
+    virtual void Strobe() override;
 
 
     /// Indicates whether the tool can define a rectangular region that
@@ -92,14 +92,14 @@ public:
     ///
     /// @return <b>true</b> if the tool defines a non-empty rectangular region.
     ///
-    virtual bool HasRegion();
+    virtual bool HasRegion() override;
 
     /// Returns the rectangle defined by the tool. This rectangle can then
     /// be read for a screen capture.
     ///
     /// @return The rectangle formed by the tool.
     ///
-    virtual RECT GetRegion();
+    virtual RECT GetRegion() override;
 
 
     /// Called by the OS when the mouse pointer is moved. Via this method
@@ -108,14 +108,14 @@ public:
     /// @param wParam   [in] OS Message ID
     /// @param lParam   [in] MOUSEHOOKSTRUCT
     ///
-    virtual void OnMouseHook(WPARAM wParam, LPARAM lParam);
+    virtual void OnMouseHook(WPARAM wParam, LPARAM lParam) override;
 
 
     /// Returns the position of the mouse pointer.
     ///
     /// @return Position of the mouse pointer.
     ///
-    virtual const POINT&    GetPosition() const;
+    virtual const POINT&    GetPosition() const override;
 
     /// Records the position of the window rectangle. This method is called
     /// by the position log manager to record a position.
@@ -123,7 +123,7 @@ public:
     /// @param position     [in] The position of the window rectangle is recorded
     ///                     into the position log manager's position object.
     ///
-    virtual void    GetPosition(MeaPositionLogMgr::Position& position) const;
+    virtual void    GetPosition(MeaPositionLogMgr::Position& position) const override;
 
 
     /// Returns the name of the tool. Each tool has a unique name
@@ -132,21 +132,21 @@ public:
     ///
     /// @return Name of the tool ("WindowTool").
     ///
-    virtual CString GetToolName() const;
+    virtual CString GetToolName() const override;
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.
     ///
     /// @return Resource ID for the label.
     ///
-    virtual UINT    GetLabelId() const;
+    virtual UINT    GetLabelId() const override;
 
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The window rectangle color and the data window
     /// opacity are updated.
     ///
-    virtual void ColorsChanged();
+    virtual void ColorsChanged() override;
 
 private:
     /// Called by the win32 EnumChildWindows function when it enumerates

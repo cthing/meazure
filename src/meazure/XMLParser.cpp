@@ -34,14 +34,14 @@ MeaXMLAttributes::MeaXMLAttributes()
 
 MeaXMLAttributes::MeaXMLAttributes(const XML_Char **atts, int numSpecified)
 {
-    MeaAssert(atts != NULL);
+    MeaAssert(atts != nullptr);
 
     // Run through the atts and insert them in the map. Also mark
     // which attributes are set by default versus  having been
     // explicitly specified.
     //
     numSpecified *= 2;
-    for (int i = 0; atts[i] != NULL; i += 2) {
+    for (int i = 0; atts[i] != nullptr; i += 2) {
         AttributeValue v;
 
         v.value = MeaXMLParser::FromUTF8(atts[i+1]);
@@ -93,7 +93,7 @@ bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value,
     
     iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
-        value = _tcstod((*iter).second.value, NULL);
+        value = _tcstod((*iter).second.value, nullptr);
         isDefault = (*iter).second.isDefault;
         return true;
     }
@@ -129,7 +129,7 @@ MeaXMLAttributes& MeaXMLAttributes::Assign(const MeaXMLAttributes& attrs)
 //*************************************************************************
 
 
-MeaXMLNode::MeaXMLNode() : m_type(Type::Unknown), m_parent(NULL)
+MeaXMLNode::MeaXMLNode() : m_type(Type::Unknown), m_parent(nullptr)
 {
 }
 
@@ -137,13 +137,13 @@ MeaXMLNode::MeaXMLNode() : m_type(Type::Unknown), m_parent(NULL)
 MeaXMLNode::MeaXMLNode(const CString& elementName,
                        const MeaXMLAttributes& attrs) : m_type(Type::Element),
                        m_data(elementName), m_attributes(attrs),
-                       m_parent(NULL)
+                       m_parent(nullptr)
 {
 }
 
 
 MeaXMLNode::MeaXMLNode(const CString& data) : m_type(Type::Data), m_data(data),
-    m_parent(NULL)
+    m_parent(nullptr)
 {
 }
 
@@ -151,10 +151,8 @@ MeaXMLNode::MeaXMLNode(const CString& data) : m_type(Type::Data), m_data(data),
 MeaXMLNode::~MeaXMLNode()
 {
     try {
-        NodeList::const_iterator iter;
-
-        for (iter = m_children.begin(); iter != m_children.end(); ++iter) {
-            delete (*iter);
+        for (auto child : m_children) {
+            delete child;
         }
         m_children.clear();
     }
@@ -197,9 +195,9 @@ void MeaXMLNode::Dump() const
         break;
     }
 
-    for (NodeIter_c iter = GetChildIter(); !AtEnd(iter); ++iter) {
+    for (auto child : m_children) {
         indent += 4;
-        (*iter)->Dump();
+        child->Dump();
         indent -= 4;
     }
 }
@@ -257,9 +255,9 @@ MeaXMLParser::MeaXMLParser(MeaXMLParserHandler *handler, bool buildDOM) :
     m_isSubParser(false),
     m_handler(handler),
     m_haveDTD(false),
-    m_context(NULL),
+    m_context(nullptr),
     m_buildDOM(buildDOM),
-    m_dom(NULL)
+    m_dom(nullptr)
 {
     // Create the XML parser and set its handlers.
     //
@@ -267,8 +265,8 @@ MeaXMLParser::MeaXMLParser(MeaXMLParserHandler *handler, bool buildDOM) :
     m_elementStack  = new ElementStack;
     m_nodeStack     = new NodeStack;
     
-    m_parser = XML_ParserCreate(NULL);
-    MeaAssert(m_parser != NULL);
+    m_parser = XML_ParserCreate(nullptr);
+    MeaAssert(m_parser != nullptr);
 
     XML_SetUserData(m_parser, this);
     XML_SetExternalEntityRefHandlerArg(m_parser, this);
@@ -302,8 +300,8 @@ MeaXMLParser::MeaXMLParser(const MeaXMLParser& parentParser) :
     m_nodeStack(parentParser.m_nodeStack)
 {
     m_parser = XML_ExternalEntityParserCreate(parentParser.m_parser,
-                                                m_context, NULL);
-    MeaAssert(m_parser != NULL);
+                                                m_context, nullptr);
+    MeaAssert(m_parser != nullptr);
 
     XML_SetUserData(m_parser, this);
     XML_SetExternalEntityRefHandlerArg(m_parser, this);
@@ -363,7 +361,7 @@ void MeaXMLParser::StartElementHandler(void *userData, const XML_Char *elementNa
     if (ps->m_buildDOM) {
         MeaXMLNode* node = new MeaXMLNode(name, attributes);
         if (ps->m_nodeStack->empty()) {
-            MeaAssert(ps->m_dom == NULL);
+            MeaAssert(ps->m_dom == nullptr);
             ps->m_dom = node;
         }
         else {
@@ -424,7 +422,7 @@ int MeaXMLParser::ExternalEntityRefHandler(XML_Parser parser,
                                         const XML_Char* systemId,
                                         const XML_Char* /*publicId*/)
 {
-    if (systemId != NULL) {
+    if (systemId != nullptr) {
         MeaXMLParser *ps = reinterpret_cast<MeaXMLParser*>(parser);
         CString sysId(FromUTF8(systemId));
 
@@ -437,8 +435,8 @@ int MeaXMLParser::ExternalEntityRefHandler(XML_Parser parser,
 
         if (homeURLPos == 0) {
             TCHAR pathname[_MAX_PATH], drive[_MAX_DRIVE], dir[_MAX_DIR];
-            GetModuleFileName(NULL, pathname, _MAX_PATH);
-            _tsplitpath_s(pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, NULL, 0, NULL, 0);
+            GetModuleFileName(nullptr, pathname, _MAX_PATH);
+            _tsplitpath_s(pathname, drive, _MAX_DRIVE, dir, _MAX_DIR, nullptr, 0, nullptr, 0);
 
             sysId = CString(drive) + CString(dir) + sysId.Mid(homeURLLen);
             sysId.Replace(_T('/'), _T('\\'));
@@ -447,7 +445,7 @@ int MeaXMLParser::ExternalEntityRefHandler(XML_Parser parser,
 
             ps->m_context = context;
             ps->m_handler->ParseEntity(*ps, sysId);
-            ps->m_context = NULL;
+            ps->m_context = nullptr;
 
             ps->m_pathnameStack->pop();
         }
@@ -659,7 +657,7 @@ CString MeaXMLParser::FromUTF8(const XML_Char* str)
 #ifdef XML_UNICODE
     return str;
 #else
-    int numChars = MultiByteToWideChar(CP_UTF8, 0, str, -1, NULL, 0);
+    int numChars = MultiByteToWideChar(CP_UTF8, 0, str, -1, nullptr, 0);
     wchar_t* buf = new wchar_t[numChars];
     MultiByteToWideChar(CP_UTF8, 0, str, -1, buf, numChars);
     CString buffer(buf);
@@ -674,14 +672,14 @@ CString MeaXMLParser::ToUTF8(const CString& str)
 #ifdef _UNICODE
     return str;
 #else
-    int numWChars = MultiByteToWideChar(CP_ACP, 0, str, -1, NULL, 0);
+    int numWChars = MultiByteToWideChar(CP_ACP, 0, str, -1, nullptr, 0);
     wchar_t* wbuf = new wchar_t[numWChars];
     MultiByteToWideChar(CP_ACP, 0, str, -1, wbuf, numWChars);
 
     CString buffer;
 
-    int numMBChars = WideCharToMultiByte(CP_UTF8, 0, wbuf, numWChars, NULL, 0, NULL, NULL);
-    WideCharToMultiByte(CP_UTF8, 0, wbuf, numWChars, buffer.GetBufferSetLength(numMBChars), numMBChars, NULL, NULL);
+    int numMBChars = WideCharToMultiByte(CP_UTF8, 0, wbuf, numWChars, nullptr, 0, nullptr, nullptr);
+    WideCharToMultiByte(CP_UTF8, 0, wbuf, numWChars, buffer.GetBufferSetLength(numMBChars), numMBChars, nullptr, nullptr);
     buffer.ReleaseBuffer();
 
     delete [] wbuf;

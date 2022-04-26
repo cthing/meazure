@@ -62,7 +62,6 @@ public:
     ///
     void SetScaleFactor(MeaCustomUnits::ScaleBasis scaleBasis, double scaleFactor);
 
-    //{{AFX_DATA(MeaCustomUnitsPrefs)
     enum { IDD = IDD_PREF_CUSTOM };
     CString m_abbrev;
     CString m_name;
@@ -70,7 +69,6 @@ public:
     double  m_pxScaleFactor;
     double  m_inScaleFactor;
     double  m_cmScaleFactor;
-    //}}AFX_DATA
 
     /// @var m_abbrev
     /// Abbreviation for the custom units.
@@ -91,15 +89,13 @@ public:
     /// Scale factor if the custom units are based on centimeters.
 
 
-    //{{AFX_VIRTUAL(MeaCustomUnitsPrefs)
-    public:
-    virtual BOOL OnInitDialog();
-    virtual BOOL OnKillActive();
-    virtual BOOL OnSetActive();
-    virtual BOOL OnApply();
-    protected:
-    virtual void DoDataExchange(CDataExchange* pDX);
-    //}}AFX_VIRTUAL
+    virtual BOOL OnInitDialog() override;
+    virtual BOOL OnKillActive() override;
+    virtual BOOL OnSetActive() override;
+    virtual BOOL OnApply() override;
+
+protected:
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
     /// @fn OnInitDialog()
     /// Called when the property page is created. This method
@@ -139,8 +135,6 @@ public:
     /// @param pDX  [in] DDX object for exchanging data between the page UI
     ///             and the member variables.
 
-protected:
-    //{{AFX_MSG(MeaCustomUnitsPrefs)
     afx_msg void OnClear();
     afx_msg void OnChange();
     afx_msg void OnPixelChange();
@@ -152,7 +146,6 @@ protected:
     afx_msg void OnCentimeterBasis();
     afx_msg void OnInchBasis();
     afx_msg void OnPixelBasis();
-    //}}AFX_MSG
 
     DECLARE_MESSAGE_MAP()
     
@@ -239,6 +232,3 @@ private:
     CWnd        *m_inAbbrev;            ///< Inch-based scale factor abbreviation label.
     CWnd        *m_cmAbbrev;            ///< Centimeter-based scale factor abbreviation label.
 };
-
-
-//{{AFX_INSERT_LOCATION}}

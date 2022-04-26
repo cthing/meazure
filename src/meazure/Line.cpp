@@ -23,11 +23,12 @@
 #include "Layout.h"
 #include "Colors.h"
 #include "ScreenMgr.h"
+#include <cstdlib>
 
 
 const CSize MeaLine::kMargin(5, 5);
 
-int*    MeaLine::m_varr = NULL;
+int*    MeaLine::m_varr = nullptr;
 
 
 BEGIN_MESSAGE_MAP(MeaLine, MeaGraphic)
@@ -42,7 +43,7 @@ MeaLine::MeaLine() :
     m_wasAngled(true),
     m_foreBrush(new CBrush(MeaColors::Get(MeaColors::LineFore))),
     m_orientation(Vertical),
-    m_arr(NULL), m_count(0), m_shrink(0)
+    m_arr(nullptr), m_count(0), m_shrink(0)
 {
 }
 
@@ -52,11 +53,11 @@ MeaLine::~MeaLine()
     try {
         m_timer.Stop();
 
-        if (m_varr != NULL) {
+        if (m_varr != nullptr) {
             delete [] m_varr;
-            m_varr = NULL;
+            m_varr = nullptr;
         }
-        if (m_arr != NULL) {
+        if (m_arr != nullptr) {
             delete [] m_arr;
         }
 
@@ -75,19 +76,19 @@ bool MeaLine::Create(int shrink, const CWnd *parent)
                                                             static_cast<double>(vscreen.Height())));
     m_shrink = shrink;
 
-    if (m_varr == NULL) {
+    if (m_varr == nullptr) {
         m_varr = new int[size];
         for (UINT i = 0; i < size; i++) {
             m_varr[i] = 4;
         }
     }
-    if (m_arr == NULL) {
+    if (m_arr == nullptr) {
         m_arr = new POINT[4 * size];
     }
 
     m_timer.Create(this);
 
-    CString wndClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW, NULL, *m_foreBrush);
+    CString wndClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW, nullptr, *m_foreBrush);
 
     return MeaGraphic::Create(wndClass, CSize(0, 0), parent);
 }
@@ -103,7 +104,7 @@ void MeaLine::Hide()
 void MeaLine::SetColor(COLORREF color)
 {
     CBrush *brush = new CBrush(color);
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         ::SetClassLongPtr(m_hWnd, GCLP_HBRBACKGROUND,
                         reinterpret_cast<LONG_PTR>(static_cast<HBRUSH>(*brush)));
     }
@@ -111,7 +112,7 @@ void MeaLine::SetColor(COLORREF color)
     delete m_foreBrush;
     m_foreBrush = brush;
 
-    if (m_hWnd != NULL) {
+    if (m_hWnd != nullptr) {
         Invalidate();
         UpdateWindow();
     }
@@ -142,11 +143,11 @@ void MeaLine::PlotLine()
     int dx = endPoint.x - startPoint.x;
     int dy = endPoint.y - startPoint.y;
 
-    int ax = 2 * MEA_ABS(dx);
-    int ay = 2 * MEA_ABS(dy);
+    int ax = 2 * abs(dx);
+    int ay = 2 * abs(dy);
 
-    int sx = MEA_SGN(dx);
-    int sy = MEA_SGN(dy);
+    int sx = (dx < 0) ? -1 : 1;
+    int sy = (dy < 0) ? -1 : 1;
 
     int x = startPoint.x;
     int y = startPoint.y;
@@ -232,7 +233,7 @@ LRESULT MeaLine::OnHPTimer(WPARAM, LPARAM)
         rect.InflateRect(kMargin);
         PlotLine();
 
-        MeaAssert(m_arr != NULL);
+        MeaAssert(m_arr != nullptr);
         HRGN region = ::CreatePolyPolygonRgn(&m_arr[4 * m_shrink], m_varr,
             m_count - (2 * m_shrink), ALTERNATE);
         ::OffsetRgn(region, -rect.left, -rect.top);
@@ -249,12 +250,12 @@ LRESULT MeaLine::OnHPTimer(WPARAM, LPARAM)
         }
 
         if (m_wasAngled) {
-            SetWindowRgn(NULL, TRUE);
+            SetWindowRgn(nullptr, TRUE);
             m_wasAngled = false;
         }
     }
     
-    SetWindowPos(NULL, rect.left, rect.top, rect.Width(), rect.Height(),
+    SetWindowPos(nullptr, rect.left, rect.top, rect.Width(), rect.Height(),
             SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSENDCHANGING);
     if (m_visible) {
         Show();

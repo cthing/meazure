@@ -69,9 +69,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~Screen</b> ()</td
 <tr class="memitem:a11a961d389ab188bd4a740b94f5fa169"><td class="memItemLeft" align="right" valign="top">const CPoint &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr_1_1Screen.html#a11a961d389ab188bd4a740b94f5fa169">GetCenter</a> () const</td></tr>
 <tr class="memdesc:a11a961d389ab188bd4a740b94f5fa169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the center of the screen.  <a href="classMeaScreenMgr_1_1Screen.html#a11a961d389ab188bd4a740b94f5fa169">More...</a><br /></td></tr>
 <tr class="separator:a11a961d389ab188bd4a740b94f5fa169"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16537ee730df50ccb119443ca4fd3446"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr_1_1Screen.html#a16537ee730df50ccb119443ca4fd3446">SetScreenRes</a> (bool useManualRes, const <a class="el" href="structFSIZE.html">FSIZE</a> *manualRes=NULL)</td></tr>
-<tr class="memdesc:a16537ee730df50ccb119443ca4fd3446"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the resolution of the screen, in pixels per inch.  <a href="classMeaScreenMgr_1_1Screen.html#a16537ee730df50ccb119443ca4fd3446">More...</a><br /></td></tr>
-<tr class="separator:a16537ee730df50ccb119443ca4fd3446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bfe6c516c9bb0c4b17c5cf4fa1b702d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr_1_1Screen.html#a2bfe6c516c9bb0c4b17c5cf4fa1b702d">SetScreenRes</a> (bool useManualRes, const <a class="el" href="structFSIZE.html">FSIZE</a> *manualRes=nullptr)</td></tr>
+<tr class="memdesc:a2bfe6c516c9bb0c4b17c5cf4fa1b702d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the resolution of the screen, in pixels per inch.  <a href="classMeaScreenMgr_1_1Screen.html#a2bfe6c516c9bb0c4b17c5cf4fa1b702d">More...</a><br /></td></tr>
+<tr class="separator:a2bfe6c516c9bb0c4b17c5cf4fa1b702d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad642e413087c355a43795c365efe534b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr_1_1Screen.html#ad642e413087c355a43795c365efe534b">GetScreenRes</a> (bool &amp;useManualRes, <a class="el" href="structFSIZE.html">FSIZE</a> &amp;manualRes) const</td></tr>
 <tr class="memdesc:ad642e413087c355a43795c365efe534b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the currently set manual screen resolution, if set.  <a href="classMeaScreenMgr_1_1Screen.html#ad642e413087c355a43795c365efe534b">More...</a><br /></td></tr>
 <tr class="separator:ad642e413087c355a43795c365efe534b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -556,8 +556,8 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_name</b></td></t
 
 </div>
 </div>
-<a id="a16537ee730df50ccb119443ca4fd3446" name="a16537ee730df50ccb119443ca4fd3446"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a16537ee730df50ccb119443ca4fd3446">&#9670;&nbsp;</a></span>SetScreenRes()</h2>
+<a id="a2bfe6c516c9bb0c4b17c5cf4fa1b702d" name="a2bfe6c516c9bb0c4b17c5cf4fa1b702d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bfe6c516c9bb0c4b17c5cf4fa1b702d">&#9670;&nbsp;</a></span>SetScreenRes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -572,7 +572,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_name</b></td></t
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> *&#160;</td>
-          <td class="paramname"><em>manualRes</em> = <code>NULL</code>&#160;</td>
+          <td class="paramname"><em>manualRes</em> = <code>nullptr</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -586,7 +586,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_name</b></td></t
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">useManualRes</td><td>[in] Specifies whether the manually calibrated resolution should be used (true) or the operating system resolution (false). </td></tr>
-    <tr><td class="paramname">manualRes</td><td>[in] If non-NULL, specifies the manually calibrated resolution. </td></tr>
+    <tr><td class="paramname">manualRes</td><td>[in] If non-nullptr, specifies the manually calibrated resolution. </td></tr>
   </table>
   </dd>
 </dl>

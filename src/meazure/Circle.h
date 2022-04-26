@@ -50,7 +50,7 @@ public:
     /// before the circle can be displayed and before any operation that
     /// attempts to manipulate the circle's window.
     ///
-    /// @param parent       [in] Parent window or <b>NULL</b> if the circle does
+    /// @param parent       [in] Parent window or <b>nullptr</b> if the circle does
     ///                     not have an immediate parent. If a parent window is
     ///                     specified, the circle is created as a child window
     ///                     (<b>WS_CHILD</b>). Otherwise the circle is created
@@ -59,13 +59,13 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(const CWnd *parent = NULL);
+    bool    Create(const CWnd *parent = nullptr);
 
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.
     ///
-    virtual void Hide();
+    virtual void Hide() override;
 
 
     /// Sets the position and size of the circle.
@@ -171,7 +171,7 @@ private:
             // Determine where in the coordinate array
             // we will start adding the rectangle coordinates.
             //
-            register POINT *arr = &m_arr[m_count << 2];
+            POINT *arr = &m_arr[m_count << 2];
 
             // (x,y)   (x+1, y)
             //    ---------

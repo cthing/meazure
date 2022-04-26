@@ -52,11 +52,11 @@ public:
 
     /// Makes the window visible.
     ///
-    void    Show() { if (m_hWnd != NULL) ShowWindow(SW_SHOW); }
+    void    Show() { if (m_hWnd != nullptr) ShowWindow(SW_SHOW); }
 
     /// Hides the window.
     ///
-    void    Hide() { if (m_hWnd != NULL) ShowWindow(SW_HIDE); }
+    void    Hide() { if (m_hWnd != nullptr) ShowWindow(SW_HIDE); }
 
     /// Sets the color to be displayed by the swatch.
     ///

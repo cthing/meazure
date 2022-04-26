@@ -24,10 +24,7 @@
 #include "ScreenMgr.h"
 
 
-// Defaults
-const bool      MeaOriginTool::kShowMarker = true;
-
-const CString   MeaOriginTool::kToolName(_T("OriginTool"));
+const CString MeaOriginTool::kToolName(_T("OriginTool"));
 
 
 MeaOriginTool::MeaOriginTool(MeaToolMgr* mgr) : MeaTool(mgr)

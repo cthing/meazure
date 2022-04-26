@@ -69,10 +69,10 @@ public:
     };
 
 
-    static const int        kDefZoomIndex;  ///< Default index for the zoom factor.
-    static const bool       kDefShowGrid;   ///< Indicates whether the grid should be display by default.
-    static const ColorFmt   kDefColorFmt;   ///< Default color display format.
-    static const RunState   kDefRunState;   ///< Default magnifier display mode.
+    static constexpr int kDefZoomIndex { 1 };                   ///< Default index for the zoom factor.
+    static constexpr bool kDefShowGrid { true };                ///< Indicates whether the grid should be display by default.
+    static constexpr ColorFmt kDefColorFmt { RGBFmt };          ///< Default color display format.
+    static constexpr RunState   kDefRunState { RunState::Run }; ///< Default magnifier display mode.
 
 
     /// Constructs a magnifier. To use the magnifier the Create
@@ -230,13 +230,13 @@ public:
 
 
     /// Returns a pointer to the pixel color display text field if it
-    /// has the keyboard focus, and NULL if it does not.
+    /// has the keyboard focus, and nullptr if it does not.
     ///
     /// @return Pointer to the color display text field if it has the
-    ///         focus, and NULL if it does not.
+    ///         focus, and nullptr if it does not.
     ///
     MeaNumberField* GetFieldFocus() {
-        return (GetFocus() == &m_swatchField) ? &m_swatchField : NULL;
+        return (GetFocus() == &m_swatchField) ? &m_swatchField : nullptr;
     }
 
 protected:
@@ -271,14 +271,14 @@ protected:
     afx_msg LRESULT OnHelpHitTest(WPARAM, LPARAM lparam);
 
 private:
-    static const int    kUpdateRate;        ///< Magnifier refresh rate, in milliseconds.
-    static const int    kZoomHeight;        ///< Height of the zoom factor slider, in pixels.
-    static const SIZE   kMargin;            ///< Margin around the magnifier window.
-    static const int    kSwatchWidth;       ///< Width of the pixel color swatch, in pixels.
-    static const int    kMaxZoomIndex;      ///< Index of the maximum allowable zoom factor.
-    static const int    kMinZoomIndex;      ///< Index of the minimum allowable zoom factor.
-    static const int    kZoomFactorArr[];   ///< Arrays of zoom factors selected by the zoom index.
-    static const int    kMinGridFactor;     ///< Minimum zoom factor below which the grid is not displayed.
+    static constexpr int kUpdateRate { 70 };    ///< Magnifier refresh rate, in milliseconds.
+    static constexpr int kZoomHeight { 22 };    ///< Height of the zoom factor slider, in pixels.
+    static constexpr SIZE kMargin { 5, 5 };     ///< Margin around the magnifier window.
+    static constexpr int kSwatchWidth { 40 };   ///< Width of the pixel color swatch, in pixels.
+    static constexpr int kZoomFactorArr[] { 1, 2, 3, 4, 6, 8, 16, 32 };                 ///< Arrays of zoom factors selected by the zoom index.
+    static constexpr int kMaxZoomIndex { sizeof(kZoomFactorArr) / sizeof(int) - 1 };    ///< Index of the maximum allowable zoom factor.
+    static constexpr int kMinZoomIndex { 0 };   ///< Index of the minimum allowable zoom factor.
+    static constexpr int kMinGridFactor { 6 };  ///< Minimum zoom factor below which the grid is not displayed.
 
 
     /// Reads an appropriately sized region around the cursor and

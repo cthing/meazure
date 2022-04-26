@@ -136,7 +136,7 @@ double MeaFileProfile::ReadDbl(LPCTSTR key, double defaultValue)
 
     iter = m_valueMap.find(key);
     if (iter != m_valueMap.end()) {
-        return _tcstod((*iter).second, NULL);
+        return _tcstod((*iter).second, nullptr);
     }
     return defaultValue;
 }
@@ -177,7 +177,7 @@ void MeaFileProfile::WriteFileStart()
 
     Write(1, _T("<info>\n"));
         Write(2, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(m_title)));
-        Write(2, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(NULL))));
+        Write(2, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(nullptr))));
         Write(2, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
                 static_cast<LPCTSTR>(AfxGetAppName()),
                 static_cast<LPCTSTR>(g_versionInfo.GetProductVersion()),
@@ -203,7 +203,7 @@ void MeaFileProfile::ParseFile()
     //
     TCHAR drive[_MAX_PATH], path[_MAX_DIR];
 
-    _tsplitpath_s(m_stdioFile.GetFilePath(), drive, _MAX_PATH, path, _MAX_DIR, NULL, 0, NULL, 0);
+    _tsplitpath_s(m_stdioFile.GetFilePath(), drive, _MAX_PATH, path, _MAX_DIR, nullptr, 0, nullptr, 0);
     _tcscat_s(drive, _MAX_PATH, path);
     parser.SetBasePath(drive);
 

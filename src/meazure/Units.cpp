@@ -90,13 +90,6 @@ BOOL MeaDimWarnDlg::OnInitDialog()
 MEA_SINGLETON_DEF(MeaUnitsMgr);
 
 
-// Defaults
-const bool      MeaUnitsMgr::kDefHaveWarned     = false;
-const LPCTSTR   MeaUnitsMgr::kDefLinearUnits    = _T("px");
-const LPCTSTR   MeaUnitsMgr::kDefAngularUnits   = _T("deg");
-const bool      MeaUnitsMgr::kDefInvertY        = false;
-
-
 MeaUnitsMgr::MeaUnitsMgr() : MeaSingleton_T<MeaUnitsMgr>(),
     m_currentLinearUnits(&m_pixelUnits),
     m_currentAngularUnits(&m_degreeUnits),
@@ -118,8 +111,8 @@ MeaUnitsMgr::MeaUnitsMgr() : MeaSingleton_T<MeaUnitsMgr>(),
 
 MeaUnitsMgr::~MeaUnitsMgr()
 {
-    m_currentLinearUnits = NULL;
-    m_currentAngularUnits = NULL;
+    m_currentLinearUnits = nullptr;
+    m_currentAngularUnits = nullptr;
 }
 
 
@@ -137,28 +130,24 @@ void MeaUnitsMgr::SaveProfile(MeaProfile& profile)
         profile.WriteBool(_T("HaveWarned"), m_haveWarned);
     }
 
-    LinearUnitsMap::const_iterator liter;
-    for (liter = m_linearUnitsMap.begin(); liter != m_linearUnitsMap.end(); ++liter) {
-        (*liter).second->SaveProfile(profile);
+    for (const auto& unitsEntry : m_linearUnitsMap) {
+        unitsEntry.second->SaveProfile(profile);
     }
 
-    AngularUnitsMap::const_iterator aiter;
-    for (aiter = m_angularUnitsMap.begin(); aiter != m_angularUnitsMap.end(); ++aiter) {
-        (*aiter).second->SaveProfile(profile);
+    for (const auto& unitsEntry : m_angularUnitsMap) {
+        unitsEntry.second->SaveProfile(profile);
     }
 }
 
 
 void MeaUnitsMgr::LoadProfile(MeaProfile& profile)
 {
-    LinearUnitsMap::const_iterator liter;
-    for (liter = m_linearUnitsMap.begin(); liter != m_linearUnitsMap.end(); ++liter) {
-        (*liter).second->LoadProfile(profile);
+    for (const auto& unitsEntry : m_linearUnitsMap) {
+        unitsEntry.second->LoadProfile(profile);
     }
 
-    AngularUnitsMap::const_iterator aiter;
-    for (aiter = m_angularUnitsMap.begin(); aiter != m_angularUnitsMap.end(); ++aiter) {
-        (*aiter).second->LoadProfile(profile);
+    for (const auto& unitsEntry : m_angularUnitsMap) {
+        unitsEntry.second->LoadProfile(profile);
     }
 
     if (!profile.UserInitiated()) {
@@ -192,14 +181,12 @@ void MeaUnitsMgr::MasterReset()
     SetInvertY(kDefInvertY);
     SetOrigin(origin);
 
-    LinearUnitsMap::const_iterator liter;
-    for (liter = m_linearUnitsMap.begin(); liter != m_linearUnitsMap.end(); ++liter) {
-        (*liter).second->MasterReset();
+    for (const auto& unitsEntry : m_linearUnitsMap) {
+        unitsEntry.second->MasterReset();
     }
 
-    AngularUnitsMap::const_iterator aiter;
-    for (aiter = m_angularUnitsMap.begin(); aiter != m_angularUnitsMap.end(); ++aiter) {
-        (*aiter).second->MasterReset();
+    for (const auto& unitsEntry : m_angularUnitsMap) {
+        unitsEntry.second->MasterReset();
     }
 }
 
@@ -212,10 +199,8 @@ void MeaUnitsMgr::SetLinearUnits(MeaLinearUnitsId unitsId)
 
     // Update all units labels to reflect new units.
     //
-    LinearLabelsList::const_iterator iter;
-    
-    for (iter = m_linearLabelsList.begin(); iter != m_linearLabelsList.end(); ++iter) {
-        (*iter)->SetUnits(unitsId);
+    for (auto label : m_linearLabelsList) {
+        label->SetUnits(unitsId);
     }
 
     // Determine whether we need to warn the user
@@ -251,11 +236,9 @@ void MeaUnitsMgr::SetLinearUnits(MeaLinearUnitsId unitsId)
 
 void MeaUnitsMgr::SetLinearUnits(LPCTSTR unitsStr)
 {
-    LinearUnitsMap::const_iterator iter;
-    
-    for (iter = m_linearUnitsMap.begin(); iter != m_linearUnitsMap.end(); ++iter) {
-        if ((*iter).second->GetUnitsStr() == unitsStr) {
-            SetLinearUnits((*iter).first);
+    for (const auto& unitsEntry : m_linearUnitsMap) {
+        if (unitsEntry.second->GetUnitsStr() == unitsStr) {
+            SetLinearUnits(unitsEntry.first);
         }
     }
 }
@@ -269,21 +252,17 @@ void MeaUnitsMgr::SetAngularUnits(MeaAngularUnitsId unitsId)
 
     // Update angle labels to reflect new units.
     //
-    AngularLabelsList::const_iterator iter;
-    
-    for (iter = m_angularLabelsList.begin(); iter != m_angularLabelsList.end(); ++iter) {
-        (*iter)->SetUnits(unitsId);
+    for (auto label : m_angularLabelsList) {
+        label->SetUnits(unitsId);
     }
 }
 
 
 void MeaUnitsMgr::SetAngularUnits(LPCTSTR unitsStr)
 {
-    AngularUnitsMap::const_iterator iter;
-    
-    for (iter = m_angularUnitsMap.begin(); iter != m_angularUnitsMap.end(); ++iter) {
-        if ((*iter).second->GetUnitsStr() == unitsStr) {
-            SetAngularUnits((*iter).first);
+    for (const auto& unitsEntry : m_angularUnitsMap) {
+        if (unitsEntry.second->GetUnitsStr() == unitsStr) {
+            SetAngularUnits(unitsEntry.first);
         }
     }
 }
@@ -355,7 +334,7 @@ MeaResUnitsLabel* MeaUnitsMgr::NewResUnitsLabel()
 
 void MeaUnitsMgr::DeleteUnitsLabel(MeaUnitsLabel *label)
 {
-    MeaAssert(label != NULL);
+    MeaAssert(label != nullptr);
     
     // Cannot tell which list the label is from so attempt
     // to remove it from both. It is a benign op under
@@ -401,21 +380,19 @@ bool MeaUnitsLabel::SetSize()
 {
     if (m_widthRef < 0) {
         CDC *dc = GetDC();
-        if (dc == NULL) {
+        if (dc == nullptr) {
             return false;
         }
 
-        if (dc->SelectStockObject(DEFAULT_GUI_FONT) == NULL) {
+        if (dc->SelectStockObject(DEFAULT_GUI_FONT) == nullptr) {
             ReleaseDC(dc);
             return false;
         }
 
         // Get the bounding box for each label setting the width to the max.
         //
-        LabelMap::const_iterator iter;
-
-        for (iter = m_labelsRef.begin(); iter != m_labelsRef.end(); ++iter) {
-            CSize sz = dc->GetTextExtent(ConstructLabel((*iter).first));
+        for (const auto& labelEntry : m_labelsRef) {
+            CSize sz = dc->GetTextExtent(ConstructLabel(labelEntry.first));
             if (sz.cx > m_widthRef) {
                 m_widthRef = sz.cx;
             }

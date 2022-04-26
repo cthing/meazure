@@ -24,21 +24,8 @@
 #include "Colors.h"
 #include "ScreenMgr.h"
 
-/// Checks the specified spacing value against the minimum and maximum spacing values.
-/// The returned value is clamped to be between the min and max spacing.
-///
-#define MEA_VALIDATE_SPACE(s)   (((s) < kDefMinSpacing) ? kDefMinSpacing : (((s) > kDefMaxSpacing) ? kDefMaxSpacing : (s)))
-
 
 const CString MeaGridTool::kToolName(_T("GridTool"));
-
-// Defaults
-//
-const int   MeaGridTool::kDefMinSpacing     = 10;
-const int   MeaGridTool::kDefMaxSpacing     = 4000;
-const int   MeaGridTool::kDefDefaultSpacing = 100;
-const bool  MeaGridTool::kDefGrid           = false;
-const bool  MeaGridTool::kDefLinked         = true;
 
 
 MeaGridTool::MeaGridTool(MeaToolMgr* mgr) : MeaTool(mgr),
@@ -191,13 +178,17 @@ void MeaGridTool::SetGridSpacing(const SIZE& spacing)
 {
     int v;
 
-    v = MEA_VALIDATE_SPACE(spacing.cx);
+    // Checks the specified spacing value against the minimum and maximum spacing values.
+    // The returned value is clamped to be between the min and max spacing.
+    auto validateSpace = [](LONG s) { return (s < kDefMinSpacing) ? kDefMinSpacing : ((s > kDefMaxSpacing) ? kDefMaxSpacing : s); };
+
+    v = validateSpace(spacing.cx);
     if (m_gridSpacing.cx != v) {
         m_gridSpacing.cx = v;
         UpdateH();
     }
 
-    v = MEA_VALIDATE_SPACE(spacing.cy);
+    v = validateSpace(spacing.cy);
     if (m_gridSpacing.cy != v) {
         m_gridSpacing.cy = v;
         UpdateV();
@@ -207,18 +198,16 @@ void MeaGridTool::SetGridSpacing(const SIZE& spacing)
 
 void MeaGridTool::ColorsChanged()
 {
-    LineList::const_iterator iter;
-
     // Draw the horizontal lines in the new color.
     //
-    for (iter = m_hlineList.begin(); iter != m_hlineList.end(); ++iter) {
-        (*iter)->SetColor(MeaColors::Get(MeaColors::LineFore));
+    for (auto line : m_hlineList) {
+        line->SetColor(MeaColors::Get(MeaColors::LineFore));
     }
 
     // Draw the vertical lines in the new color.
     //
-    for (iter = m_vlineList.begin(); iter != m_vlineList.end(); ++iter) {
-        (*iter)->SetColor(MeaColors::Get(MeaColors::LineFore));
+    for (auto line : m_vlineList) {
+        line->SetColor(MeaColors::Get(MeaColors::LineFore));
     }
 }
 
@@ -286,15 +275,13 @@ void MeaGridTool::SetLines(LineDir dir)
 
 void MeaGridTool::HideLines(LineDir dir) const
 {
-    LineList::const_iterator iter;
-
     if (dir == VDir) {
-        for (iter = m_hlineList.begin(); iter != m_hlineList.end(); ++iter) {
-            (*iter)->Hide();
+        for (auto line : m_hlineList) {
+            line->Hide();
         }
     } else {
-        for (iter = m_vlineList.begin(); iter != m_vlineList.end(); ++iter) {
-            (*iter)->Hide();
+        for (auto line : m_vlineList) {
+            line->Hide();
         }
     }
 }
@@ -323,10 +310,7 @@ void MeaGridTool::ShowLines(LineDir dir)
 
 void MeaGridTool::DeleteLines(LineList& lineList) const
 {
-    LineList::const_iterator iter;
-
-    for (iter = lineList.begin(); iter != lineList.end(); ++iter) {
-        MeaLine *line = (*iter);
+    for (auto line : lineList) {
         line->Hide();
         delete line;
     }
@@ -347,7 +331,7 @@ END_MESSAGE_MAP()
 
 
 MeaGridDialog::MeaGridDialog(MeaGridTool* tool) : CDialog(IDD_GRID_SPACING),
-    m_tool(tool), m_hSpaceSpin(NULL), m_vSpaceSpin(NULL),
+    m_tool(tool), m_hSpaceSpin(nullptr), m_vSpaceSpin(nullptr),
     m_origLinked(tool->GetLinked()), m_linked(tool->GetLinked()),
     m_origSpacing(tool->GetGridSpacing()), m_spacing(tool->GetGridSpacing())
 {
@@ -356,9 +340,9 @@ MeaGridDialog::MeaGridDialog(MeaGridTool* tool) : CDialog(IDD_GRID_SPACING),
 
 MeaGridDialog::~MeaGridDialog()
 {
-    m_tool = NULL;
-    m_hSpaceSpin = NULL;
-    m_vSpaceSpin = NULL;
+    m_tool = nullptr;
+    m_hSpaceSpin = nullptr;
+    m_vSpaceSpin = nullptr;
 }
 
 
@@ -417,7 +401,7 @@ void MeaGridDialog::UpdateDisplay()
         UpdateData(FALSE);      // Load the dialog controls
     }
     m_vSpaceField.SetReadOnly(m_linked);
-    MeaAssert(m_vSpaceSpin != NULL);
+    MeaAssert(m_vSpaceSpin != nullptr);
     m_vSpaceSpin->EnableWindow(!m_linked);
 
     m_tool->SetLinked(m_linked);
@@ -452,7 +436,7 @@ bool MeaGridDialog::GetFieldValue(UINT fieldId, long& value) const
 {
     CWnd* field = GetDlgItem(static_cast<int>(fieldId));
 
-    if (field != NULL) {
+    if (field != nullptr) {
         CString str;
 
         field->GetWindowText(str);

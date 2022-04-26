@@ -54,7 +54,7 @@ public:
     ///                     parameter is in the Line tool. Shrinking the line
     ///                     allows the contents of the end points to be clear
     ///                     for viewing and measuring.
-    /// @param parent       [in] Parent window or <b>NULL</b> if the line does
+    /// @param parent       [in] Parent window or <b>nullptr</b> if the line does
     ///                     not have an immediate parent. If a parent window is
     ///                     specified, the line is created as a child window
     ///                     (<b>WS_CHILD</b>). Otherwise the line is created
@@ -63,13 +63,13 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(int shrink, const CWnd *parent = NULL);
+    bool    Create(int shrink, const CWnd *parent = nullptr);
 
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.
     ///
-    virtual void Hide();
+    virtual void Hide() override;
 
 
     /// Sets the position of the line.
@@ -159,7 +159,7 @@ private:
     ///
     void    AddPoint(int x, int y) {
         POINT p;
-        register POINT *arr = &m_arr[m_count << 2];
+        POINT *arr = &m_arr[m_count << 2];
 
         // Put the coordinates into a point
         //

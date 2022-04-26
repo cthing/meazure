@@ -27,17 +27,14 @@
 
 
 const CString   MeaCircleTool::kToolName(_T("CircleTool"));
-const UINT      MeaCircleTool::kPerimeterId = 1;
-const UINT      MeaCircleTool::kCenterId    = 2;
 
 
 MeaCircleTool::MeaCircleTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
-    MeaCrossHairCallback(), m_curPos(&m_center)
+    MeaCrossHairCallback(), m_curPos(&m_center), m_center(MeaScreenMgr::Instance().GetCenter())
 {
     // Set the default tool positions. The center of the circle
     // is placed at the center of the screen containing the application.
     //
-    m_center = MeaScreenMgr::Instance().GetCenter();
     m_perimeter = m_center;
 
     // The radius is drawn at a 45 degree angle a small distance.
@@ -53,7 +50,7 @@ MeaCircleTool::~MeaCircleTool()
 {
     try {
         Disable();
-        m_curPos = NULL;
+        m_curPos = nullptr;
     }
     catch(...) {
         MeaAssert(false);
@@ -69,14 +66,14 @@ bool MeaCircleTool::Create()
                             MeaColors::Get(MeaColors::CrossHairBack),
                             MeaColors::Get(MeaColors::CrossHairHilite),
                             MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, NULL, IDS_MEA_VERTEX, kCenterId)) {
+                            this, nullptr, IDS_MEA_VERTEX, kCenterId)) {
         return false;
     }
     if (!m_perimeterCH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
                             MeaColors::Get(MeaColors::CrossHairBack),
                             MeaColors::Get(MeaColors::CrossHairHilite),
                             MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, NULL, IDS_MEA_POINT1, kPerimeterId)) {
+                            this, nullptr, IDS_MEA_POINT1, kPerimeterId)) {
         return false;
     }
 

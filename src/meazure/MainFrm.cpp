@@ -37,7 +37,6 @@ IMPLEMENT_DYNAMIC(CMainFrame, CFrameWnd)
 
 
 BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
-    //{{AFX_MSG_MAP(CMainFrame)
     ON_WM_CREATE()
     ON_WM_SETFOCUS()
     ON_COMMAND(ID_MEA_ONTOP, OnAlwaysVisible)
@@ -48,7 +47,6 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
     ON_UPDATE_COMMAND_UI(ID_VIEW_TOOLBAR, OnUpdateViewToolbar)
     ON_COMMAND(ID_VIEW_STATUSBAR, OnViewStatusbar)
     ON_UPDATE_COMMAND_UI(ID_VIEW_STATUSBAR, OnUpdateViewStatusbar)
-    //}}AFX_MSG_MAP
     // Global help commands
     ON_COMMAND(ID_HELP_FINDER, CFrameWnd::OnHelpFinder)
     ON_UPDATE_COMMAND_UI(ID_HELP_FINDER, OnUpdateHelpMenu)
@@ -65,13 +63,7 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWnd)
 END_MESSAGE_MAP()
 
 
-// Defaults
-const bool CMainFrame::kDefAlwaysVisible = true;
-
-
-UINT CMainFrame::m_indicators[] = {
-    ID_SEPARATOR
-};
+UINT CMainFrame::m_indicators[] { ID_SEPARATOR };
 
 
 CMainFrame::CMainFrame() : CFrameWnd(),
@@ -121,8 +113,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
         TRACE0("Failed to create status bar\n");
         return -1;      // fail to create
     }
-    if (!m_wndView.CreateEx(WS_EX_CONTROLPARENT, NULL, NULL, AFX_WS_DEFAULT_VIEW,
-            CRect(0, 0, 0, 0), this, AFX_IDW_PANE_FIRST, NULL)) {
+    if (!m_wndView.CreateEx(WS_EX_CONTROLPARENT, nullptr, nullptr, AFX_WS_DEFAULT_VIEW,
+            CRect(0, 0, 0, 0), this, AFX_IDW_PANE_FIRST, nullptr)) {
         TRACE0("Failed to create view window\n");
         return -1;
     }
@@ -448,12 +440,12 @@ bool CMainFrame::OpenUrl(int urlId)
 {
     CString url;
     url.LoadStringA(urlId);
-    HINSTANCE h = ShellExecute(NULL, _T("open"), url, NULL, NULL, SW_SHOWNORMAL);
+    HINSTANCE h = ShellExecute(nullptr, _T("open"), url, nullptr, nullptr, SW_SHOWNORMAL);
 
     if (reinterpret_cast<INT_PTR>(h) <= 32) {
         CString msg;
         msg.Format(IDS_MEA_NOEXEC, static_cast<LPCTSTR>(url));
-        MessageBox(msg, NULL, MB_OK | MB_ICONERROR);
+        MessageBox(msg, nullptr, MB_OK | MB_ICONERROR);
         return false;
     }
 

@@ -21,7 +21,7 @@
 #include "Utils.h"
 #include <float.h>
 
-#define PRESSED_MASK 0x8000
+static constexpr long PRESSED_MASK { 0x8000 };
 
 
 CString MeaUtils::DblToStr(double value)
@@ -57,7 +57,7 @@ bool MeaUtils::IsNumber(LPCTSTR str, double *valuep)
         return false;
     }
 
-    if (valuep != NULL) {
+    if (valuep != nullptr) {
         *valuep = v;
     }
 
@@ -77,13 +77,13 @@ bool MeaUtils::IsBoolean(LPCTSTR str, bool *valuep)
 
     vstr.MakeLower();
     if (vstr == _T("1") || vstr == _T("true")) {
-        if (valuep != NULL) {
+        if (valuep != nullptr) {
             *valuep = true;
         }
         return true;
     }
     if (vstr == _T("0") || vstr == _T("false")) {
-        if (valuep != NULL) {
+        if (valuep != nullptr) {
             *valuep = false;
         }
         return true;

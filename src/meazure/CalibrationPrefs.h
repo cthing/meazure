@@ -78,7 +78,7 @@ public:
     /// @return TRUE, indicating that the input focus should be
     ///         set to the first control on the page.
     ///
-    virtual BOOL OnInitDialog();
+    virtual BOOL OnInitDialog() override;
 
     /// Called when the page becomes active. This method ensures
     /// the calibration information reflects the screen on which
@@ -86,7 +86,7 @@ public:
     ///
     /// @return TRUE, indicating that the page is active.
     ///
-    virtual BOOL OnSetActive();
+    virtual BOOL OnSetActive() override;
 
     /// Called when the page becomes inactive. The data on the page
     /// is validated.
@@ -95,7 +95,7 @@ public:
     ///         inactive. FALSE if the data is not valid and the page
     ///         must remain active.
     ///
-    virtual BOOL OnKillActive();
+    virtual BOOL OnKillActive() override;
 
     /// Called by the property sheet dialog when it is dragged. This method
     /// updates the UI to reflect the current screen's resolution calibration
@@ -167,7 +167,7 @@ protected:
     /// @param pDX  [in] DDX object for exchanging data between the page UI
     ///             and the member variables.
     ///
-    virtual void DoDataExchange(CDataExchange* pDX);
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
 private:
     /// Sets the resolution calibration mode (i.e. automatic or manual).

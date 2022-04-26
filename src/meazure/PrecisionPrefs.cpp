@@ -32,7 +32,6 @@ IMPLEMENT_DYNCREATE(MeaPrecisionPrefs, CPropertyPage)
 
 
 BEGIN_MESSAGE_MAP(MeaPrecisionPrefs, CPropertyPage)
-    //{{AFX_MSG_MAP(MeaPrecisionPrefs)
     ON_BN_CLICKED(IDC_PREC_CM, OnCm)
     ON_BN_CLICKED(IDC_PREC_CUSTOM, OnCustom)
     ON_BN_CLICKED(IDC_PREC_DEG, OnDeg)
@@ -62,11 +61,7 @@ BEGIN_MESSAGE_MAP(MeaPrecisionPrefs, CPropertyPage)
     ON_EN_CHANGE(IDC_PREC_W_FIELD, OnChange)
     ON_EN_CHANGE(IDC_PREC_X_FIELD, OnChange)
     ON_EN_CHANGE(IDC_PREC_Y_FIELD, OnChange)
-    //}}AFX_MSG_MAP
 END_MESSAGE_MAP()
-
-
-const int MeaPrecisionPrefs::kMaxPlaces = 6;
 
 
 MeaPrecisionPrefs::MeaPrecisionPrefs() : CPropertyPage(MeaPrecisionPrefs::IDD),
@@ -85,23 +80,17 @@ MeaPrecisionPrefs::MeaPrecisionPrefs() : CPropertyPage(MeaPrecisionPrefs::IDD),
     m_linearFields[MeaRy]   = new MeaNumberField();
 
     m_angularFields[MeaA]   = new MeaNumberField();
-
-    //{{AFX_DATA_INIT(MeaPrecisionPrefs)
-        // NOTE: the ClassWizard will add member initialization here
-    //}}AFX_DATA_INIT
 }
 
 
 MeaPrecisionPrefs::~MeaPrecisionPrefs()
 {
     try {
-        Fields::const_iterator iter;
-
-        for (iter = m_linearFields.begin(); iter != m_linearFields.end(); ++iter) {
-            delete (*iter).second;
+        for (const auto& field : m_linearFields) {
+            delete field.second;
         }
-        for (iter = m_angularFields.begin(); iter != m_angularFields.end(); ++iter) {
-            delete (*iter).second;
+        for (const auto& field : m_angularFields) {
+            delete field.second;
         }
 
         m_linearFields.clear();
@@ -116,9 +105,6 @@ MeaPrecisionPrefs::~MeaPrecisionPrefs()
 void MeaPrecisionPrefs::DoDataExchange(CDataExchange* pDX)
 {
     CPropertyPage::DoDataExchange(pDX);
-    //{{AFX_DATA_MAP(MeaPrecisionPrefs)
-        // NOTE: the ClassWizard will add DDX and DDV calls here
-    //}}AFX_DATA_MAP
 }
 
 
@@ -141,13 +127,11 @@ BOOL MeaPrecisionPrefs::OnInitDialog()
 
     // Set the styles on the fields
     //
-    Fields::const_iterator fiter;
-
-    for (fiter = m_linearFields.begin(); fiter != m_linearFields.end(); ++fiter) {
-        (*fiter).second->SetValueType(MeaNumberField::IntValues | MeaNumberField::PosValues);
+    for (const auto& field : m_linearFields) {
+        field.second->SetValueType(MeaNumberField::IntValues | MeaNumberField::PosValues);
     }
-    for (fiter = m_angularFields.begin(); fiter != m_angularFields.end(); ++fiter) {
-        (*fiter).second->SetValueType(MeaNumberField::IntValues | MeaNumberField::PosValues);
+    for (const auto& field : m_angularFields) {
+        field.second->SetValueType(MeaNumberField::IntValues | MeaNumberField::PosValues);
     }
 
     // Replace the CEdit controls with our field control.
@@ -167,11 +151,11 @@ BOOL MeaPrecisionPrefs::OnInitDialog()
     //
     int maxChars = (kMaxPlaces <= 0) ? 1 : (static_cast<int>(log10(static_cast<double>(kMaxPlaces))) + 1);
 
-    for (fiter = m_linearFields.begin(); fiter != m_linearFields.end(); ++fiter) {
-        (*fiter).second->SetLimitText(maxChars);
+    for (const auto& field : m_linearFields) {
+        field.second->SetLimitText(maxChars);
     }
-    for (fiter = m_angularFields.begin(); fiter != m_angularFields.end(); ++fiter) {
-        (*fiter).second->SetLimitText(maxChars);
+    for (const auto& field : m_angularFields) {
+        field.second->SetLimitText(maxChars);
     }
 
     // Obtain the spin controls
@@ -189,13 +173,11 @@ BOOL MeaPrecisionPrefs::OnInitDialog()
 
     // Set the spin control behavior.
     //
-    Spins::const_iterator siter;
-
-    for (siter = m_linearSpins.begin(); siter != m_linearSpins.end(); ++siter) {
-        (*siter).second->SetRange(0, kMaxPlaces);
+    for (const auto& spin : m_linearSpins) {
+        spin.second->SetRange(0, kMaxPlaces);
     }
-    for (siter = m_angularSpins.begin(); siter != m_angularSpins.end(); ++siter) {
-        (*siter).second->SetRange(0, kMaxPlaces);
+    for (const auto& spin : m_angularSpins) {
+        spin.second->SetRange(0, kMaxPlaces);
     }
 
     // Set the initial units to the current units manager linear value.
@@ -308,36 +290,28 @@ void MeaPrecisionPrefs::UpdateAngularDisplay()
 
 void MeaPrecisionPrefs::EnableLinearDisplay(bool enable)
 {
-    Fields::const_iterator fiter;
-    Spins::const_iterator  siter;
-    Labels::const_iterator liter;
-
-    for (liter = m_linearLabels.begin(); liter != m_linearLabels.end(); ++liter) {
-        (*liter).second->EnableWindow(enable);
+    for (const auto& label : m_linearLabels) {
+        label.second->EnableWindow(enable);
     }
-    for (fiter = m_linearFields.begin(); fiter != m_linearFields.end(); ++fiter) {
-        (*fiter).second->EnableWindow(enable);
+    for (const auto& field : m_linearFields) {
+        field.second->EnableWindow(enable);
     }
-    for (siter = m_linearSpins.begin(); siter != m_linearSpins.end(); ++siter) {
-        (*siter).second->EnableWindow(enable);
+    for (const auto& spin : m_linearSpins) {
+        spin.second->EnableWindow(enable);
     }
 }
 
 
 void MeaPrecisionPrefs::EnableAngularDisplay(bool enable)
 {
-    Fields::const_iterator fiter;
-    Spins::const_iterator  siter;
-    Labels::const_iterator liter;
-
-    for (liter = m_angularLabels.begin(); liter != m_angularLabels.end(); ++liter) {
-        (*liter).second->EnableWindow(enable);
+    for (const auto& label : m_angularLabels) {
+        label.second->EnableWindow(enable);
     }
-    for (fiter = m_angularFields.begin(); fiter != m_angularFields.end(); ++fiter) {
-        (*fiter).second->EnableWindow(enable);
+    for (const auto& field : m_angularFields) {
+        field.second->EnableWindow(enable);
     }
-    for (siter = m_angularSpins.begin(); siter != m_angularSpins.end(); ++siter) {
-        (*siter).second->EnableWindow(enable);
+    for (const auto& spin : m_angularSpins) {
+        spin.second->EnableWindow(enable);
     }
 }
 

@@ -58,7 +58,7 @@ public:
     ///                     the Rectangle tool. Shrinking the line allows the
     ///                     contents under the corner points to be clear for
     ///                     viewing and measuring.
-    /// @param parent       [in] Parent window or <b>NULL</b> if the rectangle
+    /// @param parent       [in] Parent window or <b>nullptr</b> if the rectangle
     ///                     does not have an immediate parent. If a parent
     ///                     window is specified, the rectangle is created as
     ///                     a child window (<b>WS_CHILD</b>). Otherwise the
@@ -68,13 +68,13 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(int thk, int shrink, const CWnd *parent = NULL);
+    bool    Create(int thk, int shrink, const CWnd *parent = nullptr);
 
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.
     ///
-    virtual void Hide();
+    virtual void Hide() override;
 
 
     /// Sets the position of the rectangle.

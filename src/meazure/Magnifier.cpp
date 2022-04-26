@@ -35,22 +35,6 @@ BEGIN_MESSAGE_MAP(MeaMagnifier, CWnd)
 END_MESSAGE_MAP()
 
 
-// Defaults
-const int                       MeaMagnifier::kDefZoomIndex = 1;
-const bool                      MeaMagnifier::kDefShowGrid  = true;
-const MeaMagnifier::ColorFmt    MeaMagnifier::kDefColorFmt  = RGBFmt;
-const MeaMagnifier::RunState    MeaMagnifier::kDefRunState  = RunState::Run;
-
-const int   MeaMagnifier::kUpdateRate       = 70;
-const int   MeaMagnifier::kZoomHeight       = 22;
-const int   MeaMagnifier::kSwatchWidth      = 40;
-const SIZE  MeaMagnifier::kMargin           = { 5, 5 };
-const int   MeaMagnifier::kZoomFactorArr[]  = { 1, 2, 3, 4, 6, 8, 16, 32 };
-const int   MeaMagnifier::kMaxZoomIndex     = sizeof(kZoomFactorArr) / sizeof(int) - 1;
-const int   MeaMagnifier::kMinZoomIndex     = 0;
-const int   MeaMagnifier::kMinGridFactor    = 6;
-
-
 MeaMagnifier::MeaMagnifier() : CWnd(),
     m_curPos(0,0),
     m_enabled(true),
@@ -79,7 +63,7 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd)
     CRect frontRect, rearRect, colorRect;
 
     if (!CWnd::CreateEx(WS_EX_CONTROLPARENT,
-            AfxRegisterWndClass(NULL, 0, GetSysColorBrush(COLOR_BTNFACE)), _T(""),
+            AfxRegisterWndClass(0, nullptr, GetSysColorBrush(COLOR_BTNFACE)), _T(""),
             WS_CHILD | WS_VISIBLE, CRect(topLeft, CSize(width, 5)), parentWnd, 0xFFFF)) {
         return false;
     }
@@ -95,7 +79,7 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd)
         return false;
     }
     m_swatchField.GetClientRect(colorRect);
-    if (!m_swatchWin.Create(AfxRegisterWndClass(NULL), _T(""),
+    if (!m_swatchWin.Create(AfxRegisterWndClass(0), _T(""),
            WS_CHILD | WS_VISIBLE | WS_BORDER, CRect(CPoint(0, m_magHeight), CSize(kSwatchWidth, colorRect.Height())),
             this, 0xFFFF)) {
         return false;
@@ -113,7 +97,7 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd)
     m_runStateBtn.GetClientRect(colorRect);
 
     MeaLayout::PlaceAfter(m_swatchWin, m_runStateBtn, 3 * kMargin.cx);
-    MeaLayout::AlignCenter(m_magHeight, &m_swatchLabel, &m_swatchField, &m_swatchWin, &m_runStateBtn, NULL);
+    MeaLayout::AlignCenter(m_magHeight, &m_swatchLabel, &m_swatchField, &m_swatchWin, &m_runStateBtn, nullptr);
     
     //
     // Create the zoom control
@@ -135,7 +119,7 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd)
 
     MeaLayout::PlaceAfter(m_zoomLabel, m_zoomSlider, 0);
     MeaLayout::PlaceAfter(m_zoomSlider, m_factorLabel, 0);
-    MeaLayout::AlignCenter(m_magHeight, &m_zoomLabel, &m_zoomSlider, &m_factorLabel, NULL);
+    MeaLayout::AlignCenter(m_magHeight, &m_zoomLabel, &m_zoomSlider, &m_factorLabel, nullptr);
 
     m_magHeight += kZoomHeight;
 
@@ -186,7 +170,7 @@ void MeaMagnifier::Enable()
     if (!m_enabled) {
         m_enabled = true;
 
-        if (m_hWnd != NULL) {
+        if (m_hWnd != nullptr) {
             ShowWindow(SW_SHOW);
             OnHPTimer(0, 0);
         }
@@ -201,7 +185,7 @@ void MeaMagnifier::Disable()
 
         m_timer.Stop();
 
-        if (m_hWnd != NULL) {
+        if (m_hWnd != nullptr) {
             ShowWindow(SW_HIDE);
         }
     }
@@ -363,10 +347,10 @@ void MeaMagnifier::Draw(HDC hDC)
     // Blt the screen to the magnifier.
     //
     ::SetStretchBltMode(hDC, COLORONCOLOR);
-    HDC screenDC = ::GetDC(NULL);
+    HDC screenDC = ::GetDC(nullptr);
     COLORREF colorValue = ::GetPixel(screenDC, m_curPos.x, m_curPos.y);
     ::StretchBlt(memDC, 0, 0, dstWidth, dstHeight, screenDC, srcRect.left, srcRect.top, srcWidth, srcHeight, SRCCOPY);
-    ::ReleaseDC(NULL, screenDC);
+    ::ReleaseDC(nullptr, screenDC);
 
     ::FrameRect(memDC, dstRect, static_cast<HBRUSH>(GetStockObject(BLACK_BRUSH)));
 
@@ -379,12 +363,12 @@ void MeaMagnifier::Draw(HDC hDC)
 
         for (j = 0; j < srcWidth; j++) {
             xCoord = j * dstWidth / srcWidth;
-            ::MoveToEx(memDC, xCoord, 0, NULL);
+            ::MoveToEx(memDC, xCoord, 0, nullptr);
             ::LineTo(memDC, xCoord, dstHeight);
         }
         for (j = 0; j < srcHeight; j++) {
             yCoord = j * dstHeight / srcHeight;
-            ::MoveToEx(memDC, 0, yCoord, NULL);
+            ::MoveToEx(memDC, 0, yCoord, nullptr);
             ::LineTo(memDC, dstWidth, yCoord);
         }
         ::DeleteObject(::SelectObject(memDC, hOld));

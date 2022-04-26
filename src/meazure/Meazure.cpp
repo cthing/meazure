@@ -348,17 +348,11 @@ BOOL CAboutDlg::OnInitDialog()
     str += bstr;
     buildStr->SetWindowText(str);
 
-    CFont *font = titleStr->GetFont();
-    font->GetLogFont(&lf);
-    lf.lfWeight = FW_BOLD;
-    m_titleFont.CreateFontIndirect(&lf);
-    titleStr->SetFont(&m_titleFont);
-
     //
     // Set the links font
     //
     CStatic *url = static_cast<CStatic*>(GetDlgItem(IDC_HOME_URL));
-    font = url->GetFont();
+    CFont *font = url->GetFont();
     font->GetLogFont(&lf);
     lf.lfUnderline = TRUE;
     m_linkFont.CreateFontIndirect(&lf);

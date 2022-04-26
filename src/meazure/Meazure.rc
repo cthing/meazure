@@ -256,7 +256,7 @@ END
 IDD_ABOUTBOX DIALOGEX 0, 0, 223, 140
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About Meazure"
-FONT 8, "MS Sans Serif", 0, 0, 0x0
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     LTEXT           "Meazure",IDC_PROGRAM_TITLE,40,15,36,8,SS_NOPREFIX
     LTEXT           "Copyright 2001 C Thing Software",IDC_STATIC,18,44,136,8
@@ -272,10 +272,10 @@ BEGIN
     PUSHBUTTON      "Contribute",IDC_CONTRIBUTE,16,95,50,14
 END
 
-IDD_PREF_RULERS DIALOG 0, 0, 216, 127
+IDD_PREF_RULERS DIALOGEX 0, 0, 216, 127
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Rulers"
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     GROUPBOX        "Appearance",IDC_STATIC,7,4,202,117
     GROUPBOX        "",IDC_RULER_SAMPLE,15,19,184,92
@@ -288,10 +288,10 @@ BEGIN
     LTEXT           "Opacity:  20",IDC_RULER_OPACITY_LABEL1,51,95,39,8
 END
 
-IDD_PREF_CALIBRATION DIALOG 0, 0, 216, 127
+IDD_PREF_CALIBRATION DIALOGEX 0, 0, 216, 127
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Calibration"
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     CONTROL         "Use operating system value",IDC_AUTO_RES,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,13,25,103,10
     CONTROL         "Set manually (recommended)",IDC_MANUAL_RES,"Button",BS_AUTORADIOBUTTON,13,35,107,10
@@ -318,7 +318,7 @@ END
 IDD_PREF_TOOLS DIALOGEX 0, 0, 216, 127
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Tools"
-FONT 8, "MS Sans Serif", 0, 0, 0x0
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     GROUPBOX        "Lines",IDC_STATIC,7,7,202,25
     GROUPBOX        "Crosshairs",IDC_STATIC,7,34,202,86
@@ -341,10 +341,10 @@ BEGIN
     CONTROL         "Show origin marker",IDC_MEA_ORIGIN_MARKER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,75,107,76,10
 END
 
-IDD_GRID_SPACING DIALOG 0, 0, 120, 103
+IDD_GRID_SPACING DIALOGEX 0, 0, 120, 103
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Grid Spacing"
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     EDITTEXT        IDC_GRID_HSPACE,43,28,31,14,ES_AUTOHSCROLL
     CONTROL         "Spin2",IDC_GRID_HSPACE_SPIN,"msctls_updown32",UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,103,28,10,14
@@ -360,10 +360,10 @@ BEGIN
     LTEXT           "Enter spacing values between 40 and 1000 pixels.",IDC_STATIC,7,7,106,18
 END
 
-IDD_PREF_ADVANCED DIALOG 0, 0, 216, 127
+IDD_PREF_ADVANCED DIALOGEX 0, 0, 216, 127
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Advanced"
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     GROUPBOX        "Startup Profile",IDC_STATIC,7,7,202,33
     EDITTEXT        IDC_PROFILE_PATHNAME,12,19,140,14,ES_AUTOHSCROLL
@@ -374,33 +374,33 @@ BEGIN
     LTEXT           "The master reset restores all factory default settings. All customizations will be lost, including resolution calibration, custom units settings and color selections. A master reset cannot be undone.",IDC_STATIC,15,59,184,32
 END
 
-IDD_RES_WARNING DIALOG 0, 0, 186, 106
+IDD_RES_WARNING DIALOGEX 0, 0, 186, 106
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Warning - Screen Resolution"
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     DEFPUSHBUTTON   "Calibrate",IDOK,35,85,50,14
     PUSHBUTTON      "Continue",IDCANCEL,101,85,50,14
-    ICON            "",IDC_MEA_WARNING,7,7,21,20
+    ICON            "",IDC_MEA_WARNING,7,7,20,20
     LTEXT           "To accurately display the requested units, Meazure requires the correct screen resolution (pixels/inch).",IDC_STATIC,36,7,143,27
     LTEXT           "Windows can provide a default value for the screen resolution but this value is not accurate. It is highly recommended that you manually measure the resolution using the Calibration preference panel.",IDC_STATIC,36,37,143,43
 END
 
-IDD_DIM_WARNING DIALOG 0, 0, 186, 73
+IDD_DIM_WARNING DIALOGEX 0, 0, 186, 73
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Warning - Screen Resolution"
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     DEFPUSHBUTTON   "Calibrate",IDOK,35,52,50,14
     PUSHBUTTON      "Continue",IDCANCEL,101,52,50,14
-    ICON            "",IDC_MEA_WARNING,7,7,21,20
+    ICON            "",IDC_MEA_WARNING,7,7,20,20
     LTEXT           "The pixel dimensions of the screen have changed since the last time the screen resolution was measured. Please recalibrate the screen resolution using the Calibration preference panel.",IDC_STATIC,36,7,143,42
 END
 
-IDD_POSITION_MGR DIALOG 0, 0, 186, 108
+IDD_POSITION_MGR DIALOGEX 0, 0, 186, 108
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Positions"
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     SCROLLBAR       IDC_MEA_POSITION_SCROLLBAR,7,7,172,11,WS_TABSTOP
     EDITTEXT        IDC_MEA_POSITION_DESC,48,48,131,21,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN
@@ -419,9 +419,9 @@ BEGIN
     PUSHBUTTON      "Save As...",IDC_MEA_SAVE_POSITIONS_AS,95,90,40,11
 END
 
-IDD_POSITION_SAVE DIALOG 0, 0, 216, 46
+IDD_POSITION_SAVE DIALOGEX 0, 0, 216, 46
 STYLE DS_SETFONT | DS_3DLOOK | DS_CONTROL | WS_CHILD | WS_CLIPSIBLINGS
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     EDITTEXT        IDC_LOG_TITLE,54,1,155,12,ES_AUTOHSCROLL
     LTEXT           "Log Title:",IDC_STATIC,6,3,37,8
@@ -429,10 +429,10 @@ BEGIN
     EDITTEXT        IDC_LOG_DESC,54,20,155,21,ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN
 END
 
-IDD_PREF_PRECISION DIALOG 0, 0, 216, 127
+IDD_PREF_PRECISION DIALOGEX 0, 0, 216, 127
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Precision"
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     GROUPBOX        "",IDC_STATIC,7,3,202,28
     LTEXT           "Set the number of decimal places to display for each measurement field in each system of units.",IDC_STATIC,13,11,168,17
@@ -478,10 +478,10 @@ BEGIN
     PUSHBUTTON      "Default",IDC_PREC_DEF,165,101,39,14
 END
 
-IDD_PREF_CUSTOM DIALOG 0, 0, 216, 127
+IDD_PREF_CUSTOM DIALOGEX 0, 0, 216, 127
 STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
 CAPTION "Custom Units"
-FONT 8, "MS Sans Serif"
+FONT 8, "Microsoft Sans Serif", 400, 0, 0x0
 BEGIN
     CONTROL         "",IDC_CUST_PX,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,24,59,9,8
     CONTROL         "",IDC_CUST_IN,"Button",BS_AUTORADIOBUTTON,24,73,9,8
@@ -634,6 +634,56 @@ BEGIN
 END
 
 IDD_PREF_TOOLS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIM_WARNING AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_GRID_SPACING AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_POSITION_MGR AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_POSITION_SAVE AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_PREF_ADVANCED AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_PREF_CALIBRATION AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_PREF_CUSTOM AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_PREF_PRECISION AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_PREF_RULERS AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_RES_WARNING AFX_DIALOG_LAYOUT
 BEGIN
     0
 END

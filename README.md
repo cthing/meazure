@@ -56,6 +56,12 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 ## Changelog
 
+### Changes 3.0.2 to 3.0.3 (unreleased)
+
+- Migrate codesbase to C++17
+
+- Use a more readable font for all dialogs
+
 ### Changes 3.0.1 to 3.0.2
 
 - Fix: Should not be able to paste numbers into readonly data fields.

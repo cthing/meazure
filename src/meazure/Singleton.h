@@ -30,8 +30,8 @@
 /// @param singleton_t  Type of the singleton object.
 ///
 #define MEA_SINGLETON_DEF(singleton_t)                              \
-    singleton_t* MeaSingleton_T<singleton_t>::m_instance = nullptr; \
-    bool MeaSingleton_T<singleton_t>::m_destroyed = false;
+    singleton_t* MeaSingleton_T<singleton_t>::m_instance { nullptr }; \
+    bool MeaSingleton_T<singleton_t>::m_destroyed { false };
 
 /// Declares a Singleton object. This macro must be called from
 /// the class declaration in the header file.

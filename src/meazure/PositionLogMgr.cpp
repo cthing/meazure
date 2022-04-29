@@ -32,7 +32,9 @@
 #include "Utils.h"
 
 
-MEA_SINGLETON_DEF(MeaPositionLogMgr);   ///< Managers are singletons.
+/// @cond SINGLETON
+MEA_SINGLETON_DEF(MeaPositionLogMgr);
+/// @endcond
 
 
 MeaPositionLogMgr::MeaPositionLogMgr() :

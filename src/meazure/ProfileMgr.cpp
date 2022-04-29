@@ -25,7 +25,10 @@
 #include <stdlib.h>
 
 
-MEA_SINGLETON_DEF(MeaProfileMgr);       ///< Managers are singletons.
+/// @cond SINGLETON
+MEA_SINGLETON_DEF(MeaProfileMgr);
+/// @endcond
+
 
 LPCTSTR MeaProfileMgr::m_ext { _T("mea") };
 LPCTSTR MeaProfileMgr::m_filter { _T("Meazure Profiles (*.mea)|*.mea|All Files (*.*)|*.*||") };

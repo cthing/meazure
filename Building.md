@@ -51,13 +51,15 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
 
 10. Download and install MiKTEX from <http://miktex.org/>
 
-11. Open Visual Studio
+11. Download and install Ghostscript from <https://www.ghostscript.com/releases/gsdnld.html>
 
-12. From the `Start` menu, select `Visual Studio 2022 > x64 Native Tools Command Prompt for VS 2022`
+12. Open Visual Studio
 
-13. In the command window change directory to the root of the Meazure source tree
+13. From the `Start` menu, select `Visual Studio 2022 > x64 Native Tools Command Prompt for VS 2022`
 
-14. The Meazure build uses the CMake program to configure the build environment.
+14. In the command window change directory to the root of the Meazure source tree
+
+15. The Meazure build uses the CMake program to configure the build environment.
     CMake can generate Makefiles and Visual Studio project files. To generate
     a command line build using Microsoft's NMake tool run the following commands at the
     root of the source tree:
@@ -74,17 +76,17 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
     cmake -G "Visual Studio 17 2022" -A x64 ..
     ```
 
-15. To build Meazure using the command line, run the following command from the `build-nmake`
+16. To build Meazure using the command line, run the following command from the `build-nmake`
     directory:
     ```
     nmake
     ```
     The results are available in the `build-nmake/Release` directory.
 
-16. To load Meazure into Visual Studio, open the `Meazure.sln` file
+17. To load Meazure into Visual Studio, open the `Meazure.sln` file
     in the `build-vs` directory.
 
-17. To run the unit tests run the following command from the `build-nmake` directory:
+18. To run the unit tests run the following command from the `build-nmake` directory:
     ```
     ctest
     ```
@@ -93,14 +95,14 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
     ctest -V
     ```
 
-18. To create the Meazure installer, run the following command from the `build-nmake` directory:
+19. To create the Meazure installer, run the following command from the `build-nmake` directory:
     ```
     nmake dist
     ```
 
     The results are available in the `dist` top level directory.
 
-19. The Meazure source code is heavily commented using the Doxygen comment
+20. The Meazure source code is heavily commented using the Doxygen comment
     syntax. The documentation corresponding to these comments has been
     generated and checked into source control in the top level `apidocs` directory. To
     regenerate that documentation, change directories into the `build-nmake`

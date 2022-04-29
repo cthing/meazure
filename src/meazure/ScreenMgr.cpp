@@ -26,7 +26,9 @@
 #include "Units.h"
 
 
-MEA_SINGLETON_DEF(MeaScreenMgr);        ///< Managers are singletons.
+/// @cond SINGLETON
+MEA_SINGLETON_DEF(MeaScreenMgr);
+/// @endcond
 
 
 MeaScreenMgr::MeaScreenMgr() :

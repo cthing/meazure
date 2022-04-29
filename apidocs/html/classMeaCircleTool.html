@@ -292,15 +292,15 @@ CPoint&#160;</td><td class="memItemRight" valign="bottom"><b>m_perimeter</b></td
 <tr class="separator:aa5a59a7faaed4b1f6769de76e8a317ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a5e5dfe7e9c78eff539053e2bc7bdea"><td class="memItemLeft" align="right" valign="top"><a id="a9a5e5dfe7e9c78eff539053e2bc7bdea" name="a9a5e5dfe7e9c78eff539053e2bc7bdea"></a>
 CPoint *&#160;</td><td class="memItemRight" valign="bottom"><b>m_curPos</b></td></tr>
-<tr class="memdesc:a9a5e5dfe7e9c78eff539053e2bc7bdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Points to <a class="el" href="classMeaCircleTool.html#acd56c22d1dc0b0707d7a496d06f9fb6c" title="Location of the center of the circle.">m_center</a> or <a class="el" href="classMeaCircleTool.html#aa5a59a7faaed4b1f6769de76e8a317ab" title="A point on the perimeter of the circle.">m_perimeter</a> depending on which point the user is moving. <br /></td></tr>
+<tr class="memdesc:a9a5e5dfe7e9c78eff539053e2bc7bdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Points to <a class="el" href="classMeaCircleTool.html#acd56c22d1dc0b0707d7a496d06f9fb6c" title="Location of the center of the circle.">m_center</a> or <a class="el" href="classMeaCircleTool.html#aa5a59a7faaed4b1f6769de76e8a317ab" title="A point on the perimeter of the circle.">m_perimeter</a> depending on point the user is moving. <br /></td></tr>
 <tr class="separator:a9a5e5dfe7e9c78eff539053e2bc7bdea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a616b3a4a90c0ad7de667d848155362a5"><td class="memItemLeft" align="right" valign="top"><a id="a616b3a4a90c0ad7de667d848155362a5" name="a616b3a4a90c0ad7de667d848155362a5"></a>
 CPoint&#160;</td><td class="memItemRight" valign="bottom"><b>m_anchorCenter</b></td></tr>
-<tr class="memdesc:a616b3a4a90c0ad7de667d848155362a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Location for vertical / horizontal lock when Shift is held while dragging the center crosshair. <br /></td></tr>
+<tr class="memdesc:a616b3a4a90c0ad7de667d848155362a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Location for vertical/horizontal lock when Shift held while dragging center crosshair. <br /></td></tr>
 <tr class="separator:a616b3a4a90c0ad7de667d848155362a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72fdac43ee1a109381c2efe09dc07de2"><td class="memItemLeft" align="right" valign="top"><a id="a72fdac43ee1a109381c2efe09dc07de2" name="a72fdac43ee1a109381c2efe09dc07de2"></a>
 CPoint&#160;</td><td class="memItemRight" valign="bottom"><b>m_anchorPerimeter</b></td></tr>
-<tr class="memdesc:a72fdac43ee1a109381c2efe09dc07de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Location for vertical / horizontal lock when Shift is held while dragging the perimeter crosshair. <br /></td></tr>
+<tr class="memdesc:a72fdac43ee1a109381c2efe09dc07de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Location for vertical/horizontal lock when Shift held while dragging perimeter crosshair. <br /></td></tr>
 <tr class="separator:a72fdac43ee1a109381c2efe09dc07de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5408bac0883bdfbc3c4ea50e7c8e8d1d"><td class="memItemLeft" align="right" valign="top"><a id="a5408bac0883bdfbc3c4ea50e7c8e8d1d" name="a5408bac0883bdfbc3c4ea50e7c8e8d1d"></a>
 <a class="el" href="classMeaCrossHair.html">MeaCrossHair</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_centerCH</b></td></tr>
@@ -354,9 +354,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_enabled</b></td></t
 <tr class="memdesc:a0e2cf43da03346a96e5de4de7511da19 inherit pro_attribs_classMeaTool"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the tool is enabled. <br /></td></tr>
 <tr class="separator:a0e2cf43da03346a96e5de4de7511da19 inherit pro_attribs_classMeaTool"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_static_attribs_classMeaTool"><td colspan="2" onclick="javascript:toggleInherit('pro_static_attribs_classMeaTool')"><img src="closed.png" alt="-"/>&#160;Static Protected Attributes inherited from <a class="el" href="classMeaTool.html">MeaTool</a></td></tr>
-<tr class="memitem:a32f0a61bd7a5b1358ef45ad78da72593 inherit pro_static_attribs_classMeaTool"><td class="memItemLeft" align="right" valign="top"><a id="a32f0a61bd7a5b1358ef45ad78da72593" name="a32f0a61bd7a5b1358ef45ad78da72593"></a>
-static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos</b> { 0, 0 }</td></tr>
-<tr class="memdesc:a32f0a61bd7a5b1358ef45ad78da72593 inherit pro_static_attribs_classMeaTool"><td class="mdescLeft">&#160;</td><td class="mdescRight">A default position used by tools that do not have a defined position. This position is returned by the <a class="el" href="classMeaTool.html#a5b516edb23e4c399701c00c985fc195c" title="Returns the tool&#39;s current position.">GetPosition()</a> method. <br /></td></tr>
+<tr class="memitem:a32f0a61bd7a5b1358ef45ad78da72593 inherit pro_static_attribs_classMeaTool"><td class="memItemLeft" align="right" valign="top">static POINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTool.html#a32f0a61bd7a5b1358ef45ad78da72593">m_defaultPos</a> { 0, 0 }</td></tr>
+<tr class="memdesc:a32f0a61bd7a5b1358ef45ad78da72593 inherit pro_static_attribs_classMeaTool"><td class="mdescLeft">&#160;</td><td class="mdescRight">A default position used by tools that do not have a defined position.  <a href="classMeaTool.html#a32f0a61bd7a5b1358ef45ad78da72593">More...</a><br /></td></tr>
 <tr class="separator:a32f0a61bd7a5b1358ef45ad78da72593 inherit pro_static_attribs_classMeaTool"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -837,8 +836,6 @@ static POINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_defaultPos<
 <p>Implements <a class="el" href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">MeaTool</a>.</p>
 
 <p class="reference">References <a class="el" href="classMeaCircleTool.html#a1a2483a74ba956a9cf269ac41882381e">kToolName</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#aa2e70c6a700f0c116f9c20832959f8f3">MeaToolMgr::MeaToolMgr()</a>.</p>
 
 </div>
 </div>

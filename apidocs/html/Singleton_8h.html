@@ -140,7 +140,7 @@ Macros</h2></td></tr>
 <div class="line">        friend <span class="keyword">class </span><a class="code hl_class" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt;singleton_t&gt;;   \</div>
 <div class="line">        singleton_t();                              \</div>
 <div class="line">        virtual ~singleton_t();</div>
-<div class="ttc" id="aclassMeaSingleton__T_html"><div class="ttname"><a href="classMeaSingleton__T.html">MeaSingleton_T</a></div><div class="ttdoc">Mix-in class implementing the Singleton pattern.</div><div class="ttdef"><b>Definition:</b> Singleton.h:56</div></div>
+<div class="ttc" id="aclassMeaSingleton__T_html"><div class="ttname"><a href="classMeaSingleton__T.html">MeaSingleton_T</a></div><div class="ttdoc">Mix-in class implementing the Singleton pattern.</div><div class="ttdef"><b>Definition:</b> Singleton.h:54</div></div>
 </div><!-- fragment -->
 <p>Declares a Singleton object. </p>
 <p >This macro must be called from the class declaration in the header file.</p>
@@ -168,8 +168,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    singleton_t* <a class="code hl_class" href="classMeaSingleton__T.html">MeaSingleton_T&lt;singleton_t&gt;::m_instance</a> = <span class="keyword">nullptr</span>; \</div>
-<div class="line">    bool <a class="code hl_class" href="classMeaSingleton__T.html">MeaSingleton_T&lt;singleton_t&gt;::m_destroyed</a> = <span class="keyword">false</span>;</div>
+<b>Value:</b><div class="fragment"><div class="line">    singleton_t* <a class="code hl_class" href="classMeaSingleton__T.html">MeaSingleton_T&lt;singleton_t&gt;::m_instance</a> { <span class="keyword">nullptr</span> }; \</div>
+<div class="line">    bool <a class="code hl_class" href="classMeaSingleton__T.html">MeaSingleton_T&lt;singleton_t&gt;::m_destroyed</a> { <span class="keyword">false</span> };</div>
 </div><!-- fragment -->
 <p>Defines a Singleton object. </p>
 <p >This macro must be called from the cpp file.</p>

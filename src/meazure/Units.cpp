@@ -79,7 +79,9 @@ BOOL MeaDimWarnDlg::OnInitDialog() {
 //*************************************************************************
 
 
+/// @cond SINGLETON
 MEA_SINGLETON_DEF(MeaUnitsMgr);
+/// @endcond
 
 
 MeaUnitsMgr::MeaUnitsMgr() :

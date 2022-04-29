@@ -88,6 +88,7 @@ Protected Member Functions</h2></td></tr>
 <tr class="separator:a5097467e7ea181ca161e2307cc7ae42e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34887783e25a73cdb27b7145fedda2a3"><td class="memItemLeft" align="right" valign="top"><a id="a34887783e25a73cdb27b7145fedda2a3" name="a34887783e25a73cdb27b7145fedda2a3"></a>
 afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><b>OnContribute</b> ()</td></tr>
+<tr class="memdesc:a34887783e25a73cdb27b7145fedda2a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the financial contribution button is pressed. <br /></td></tr>
 <tr class="separator:a34887783e25a73cdb27b7145fedda2a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd40204e0ebb6dd026cccb2399ebdaa7"><td class="memItemLeft" align="right" valign="top">afx_msg HBRUSH&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCAboutDlg.html#afd40204e0ebb6dd026cccb2399ebdaa7">OnCtlColor</a> (CDC *pDC, CWnd *pWnd, UINT nCtlColor)</td></tr>
 <tr class="memdesc:afd40204e0ebb6dd026cccb2399ebdaa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a control on the dialog needs to have its color set.  <a href="classCAboutDlg.html#afd40204e0ebb6dd026cccb2399ebdaa7">More...</a><br /></td></tr>
@@ -120,19 +121,19 @@ HCURSOR&#160;</td><td class="memItemRight" valign="bottom"><b>m_linkCursor</b></
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
 <tr class="memitem:a3e7ea65a4747043ef9b7cf22e1c8eeb1"><td class="memItemLeft" align="right" valign="top"><a id="a3e7ea65a4747043ef9b7cf22e1c8eeb1" name="a3e7ea65a4747043ef9b7cf22e1c8eeb1"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_visited</b> = false</td></tr>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_visited</b> { false }</td></tr>
 <tr class="memdesc:a3e7ea65a4747043ef9b7cf22e1c8eeb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the home page has been visited. <br /></td></tr>
 <tr class="separator:a3e7ea65a4747043ef9b7cf22e1c8eeb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b89cac037377f6805f06c9055970530"><td class="memItemLeft" align="right" valign="top"><a id="a8b89cac037377f6805f06c9055970530" name="a8b89cac037377f6805f06c9055970530"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_emailed</b> = false</td></tr>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_emailed</b> { false }</td></tr>
 <tr class="memdesc:a8b89cac037377f6805f06c9055970530"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the email link has been visited. <br /></td></tr>
 <tr class="separator:a8b89cac037377f6805f06c9055970530"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3e93f4faf66e839f54885ca383cf04e"><td class="memItemLeft" align="right" valign="top"><a id="ab3e93f4faf66e839f54885ca383cf04e" name="ab3e93f4faf66e839f54885ca383cf04e"></a>
-static COLORREF&#160;</td><td class="memItemRight" valign="bottom"><b>m_unvisitedColor</b> = RGB( 0, 0, 255)</td></tr>
+static COLORREF&#160;</td><td class="memItemRight" valign="bottom"><b>m_unvisitedColor</b> { RGB(0, 0, 255) }</td></tr>
 <tr class="memdesc:ab3e93f4faf66e839f54885ca383cf04e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Link color before it has been visited. <br /></td></tr>
 <tr class="separator:ab3e93f4faf66e839f54885ca383cf04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3340d8714f23c2d4b8e6776bb4179678"><td class="memItemLeft" align="right" valign="top"><a id="a3340d8714f23c2d4b8e6776bb4179678" name="a3340d8714f23c2d4b8e6776bb4179678"></a>
-static COLORREF&#160;</td><td class="memItemRight" valign="bottom"><b>m_visitedColor</b> = RGB(128, 0, 128)</td></tr>
+static COLORREF&#160;</td><td class="memItemRight" valign="bottom"><b>m_visitedColor</b> { RGB(128, 0, 128) }</td></tr>
 <tr class="memdesc:a3340d8714f23c2d4b8e6776bb4179678"><td class="mdescLeft">&#160;</td><td class="mdescRight">Link color after it has been visited. <br /></td></tr>
 <tr class="separator:a3340d8714f23c2d4b8e6776bb4179678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -397,7 +398,7 @@ static COLORREF&#160;</td><td class="memItemRight" valign="bottom"><b>m_visitedC
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the browser was opened. </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="classCAboutDlg.html#a5097467e7ea181ca161e2307cc7ae42e">OnHomeUrl()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classCAboutDlg.html#a34887783e25a73cdb27b7145fedda2a3">OnContribute()</a>, and <a class="el" href="classCAboutDlg.html#a5097467e7ea181ca161e2307cc7ae42e">OnHomeUrl()</a>.</p>
 
 </div>
 </div>

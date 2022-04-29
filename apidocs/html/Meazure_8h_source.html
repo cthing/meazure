@@ -50,7 +50,7 @@ $(function() {
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright 2001 C Thing Software</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * This file is part of Meazure.</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Meazure is free software: you can redistribute it and/or modify it under</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * the terms of the GNU General Public License as published by the Free</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * Software Foundation, either version 3 of the License, or (at your option)</span></div>
@@ -71,7 +71,7 @@ $(function() {
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#ifndef __AFXWIN_H__</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">    #error include &#39;stdafx.h&#39; before including this file for PCH</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#error include &#39;stdafx.h&#39; before including this file for PCH</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &quot;resource.h&quot;</span></div>
@@ -79,8 +79,8 @@ $(function() {
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"></span> </div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/// The application class. Instantiating this class starts the application.</span></div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">///</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classCMeazureApp.html">   34</a></span><span class="comment"></span><span class="keyword">class </span><a class="code hl_class" href="classCMeazureApp.html">CMeazureApp</a> : <span class="keyword">public</span> CWinApp</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classCMeazureApp.html">   34</a></span><span class="comment"></span><span class="keyword">class </span><a class="code hl_class" href="classCMeazureApp.html">CMeazureApp</a> : <span class="keyword">public</span> CWinApp {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:<span class="comment"></span></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">    /// Starts the application.</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">    ///</span></div>
@@ -101,44 +101,41 @@ $(function() {
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">    /// @param nCmd     [in] Type of help requested.</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">    ///</span></div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classCMeazureApp.html#ad20a01966d2b1cec3fe3fcb57fe82435">WinHelp</a>(DWORD dwData, UINT nCmd);</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">virtual</span> BOOL <a class="code hl_function" href="classCMeazureApp.html#a76af026156ed12ccd4fdffc223595fd1">InitInstance</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classCMeazureApp.html#ae45d43663a0304f2f8d4291e81504149">ExitInstance</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment"></span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">    /// @fn InitInstance()</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">    /// Performs all initialization for the application including</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">    /// processing of the command line arguments, if any.</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">    /// @return TRUE if initialization successful.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment"></span><span class="comment"></span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">    /// @fn ExitInstance()</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    /// Called when the application is terminating. Destroys all</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    /// managers.</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    /// @return Application exit code.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"></span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classCMeazureApp.html#a542375e09dc868df344780bd86cea1f9">OnAppAbout</a>();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"></span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">    /// Performs all initialization for the application including</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">    /// processing of the command line arguments, if any.</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">    /// @return TRUE if initialization successful.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment"></span>    <span class="keyword">virtual</span> BOOL <a class="code hl_function" href="classCMeazureApp.html#af5846fda967818d5d739c4cbd5d1ebd5">InitInstance</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"></span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">    /// Called when the application is terminating. Destroys all</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">    /// managers.</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">    /// @return Application exit code.</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"></span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classCMeazureApp.html#a87d3b0659f54c87a59205befbc6fb803">ExitInstance</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment"></span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    /// Displays the application About dialog.</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classCMeazureApp.html#a699fef0e4ec82951d88a203d648f4f54">OnAppAbout</a>();</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"></span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /// @fn OnAppAbout()</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">    /// Displays the application About dialog.</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"></span><span class="comment"></span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    /// Called by the Mouse Hook DLL to route pointer movement</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">    /// messages to the View.</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /// Called by the Mouse Hook DLL to route pointer movement</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">    /// messages to the View.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    /// @param wParam   [in] Message ID.</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">    /// @param lParam   [in] MOUSEHOOKSTRUCT</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">    /// @param wParam   [in] Message ID.</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">    /// @param lParam   [in] MOUSEHOOKSTRUCT</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classCMeazureApp.html#a82d514d7b836726809b1d352825a023f">OnMouseHook</a>(WPARAM wParam, LPARAM lParam);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    DECLARE_MESSAGE_MAP()</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>};</div>
-<div class="ttc" id="aclassCMeazureApp_html"><div class="ttname"><a href="classCMeazureApp.html">CMeazureApp</a></div><div class="ttdoc">The application class.</div><div class="ttdef"><b>Definition:</b> Meazure.h:35</div></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classCMeazureApp.html#a82d514d7b836726809b1d352825a023f">OnMouseHook</a>(WPARAM wParam, LPARAM lParam);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    DECLARE_MESSAGE_MAP()</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>};</div>
+<div class="ttc" id="aclassCMeazureApp_html"><div class="ttname"><a href="classCMeazureApp.html">CMeazureApp</a></div><div class="ttdoc">The application class.</div><div class="ttdef"><b>Definition:</b> Meazure.h:34</div></div>
 <div class="ttc" id="aclassCMeazureApp_html_a01b32ea4fece5941f86a7493598d3e03"><div class="ttname"><a href="classCMeazureApp.html#a01b32ea4fece5941f86a7493598d3e03">CMeazureApp::CMeazureApp</a></div><div class="ttdeci">CMeazureApp()</div><div class="ttdoc">Starts the application.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:62</div></div>
-<div class="ttc" id="aclassCMeazureApp_html_a542375e09dc868df344780bd86cea1f9"><div class="ttname"><a href="classCMeazureApp.html#a542375e09dc868df344780bd86cea1f9">CMeazureApp::OnAppAbout</a></div><div class="ttdeci">afx_msg void OnAppAbout()</div><div class="ttdoc">Displays the application About dialog.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:425</div></div>
-<div class="ttc" id="aclassCMeazureApp_html_a76af026156ed12ccd4fdffc223595fd1"><div class="ttname"><a href="classCMeazureApp.html#a76af026156ed12ccd4fdffc223595fd1">CMeazureApp::InitInstance</a></div><div class="ttdeci">virtual BOOL InitInstance() override</div><div class="ttdoc">Performs all initialization for the application including processing of the command line arguments,...</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:67</div></div>
-<div class="ttc" id="aclassCMeazureApp_html_a82d514d7b836726809b1d352825a023f"><div class="ttname"><a href="classCMeazureApp.html#a82d514d7b836726809b1d352825a023f">CMeazureApp::OnMouseHook</a></div><div class="ttdeci">afx_msg void OnMouseHook(WPARAM wParam, LPARAM lParam)</div><div class="ttdoc">Called by the Mouse Hook DLL to route pointer movement messages to the View.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:169</div></div>
-<div class="ttc" id="aclassCMeazureApp_html_ad20a01966d2b1cec3fe3fcb57fe82435"><div class="ttname"><a href="classCMeazureApp.html#ad20a01966d2b1cec3fe3fcb57fe82435">CMeazureApp::WinHelp</a></div><div class="ttdeci">virtual void WinHelp(DWORD dwData, UINT nCmd)</div><div class="ttdoc">Central interface to the windows help system.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:181</div></div>
-<div class="ttc" id="aclassCMeazureApp_html_adfaa3a18f5c0994008dced08294116d6"><div class="ttname"><a href="classCMeazureApp.html#adfaa3a18f5c0994008dced08294116d6">CMeazureApp::SaveAllModified</a></div><div class="ttdeci">virtual BOOL SaveAllModified() override</div><div class="ttdoc">Called by the framework to see if each modified doc wants to save before the application goes away.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:175</div></div>
-<div class="ttc" id="aclassCMeazureApp_html_ae45d43663a0304f2f8d4291e81504149"><div class="ttname"><a href="classCMeazureApp.html#ae45d43663a0304f2f8d4291e81504149">CMeazureApp::ExitInstance</a></div><div class="ttdeci">virtual int ExitInstance() override</div><div class="ttdoc">Called when the application is terminating.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:157</div></div>
+<div class="ttc" id="aclassCMeazureApp_html_a699fef0e4ec82951d88a203d648f4f54"><div class="ttname"><a href="classCMeazureApp.html#a699fef0e4ec82951d88a203d648f4f54">CMeazureApp::OnAppAbout</a></div><div class="ttdeci">afx_msg void OnAppAbout()</div><div class="ttdoc">Displays the application About dialog.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:396</div></div>
+<div class="ttc" id="aclassCMeazureApp_html_a82d514d7b836726809b1d352825a023f"><div class="ttname"><a href="classCMeazureApp.html#a82d514d7b836726809b1d352825a023f">CMeazureApp::OnMouseHook</a></div><div class="ttdeci">afx_msg void OnMouseHook(WPARAM wParam, LPARAM lParam)</div><div class="ttdoc">Called by the Mouse Hook DLL to route pointer movement messages to the View.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:163</div></div>
+<div class="ttc" id="aclassCMeazureApp_html_a87d3b0659f54c87a59205befbc6fb803"><div class="ttname"><a href="classCMeazureApp.html#a87d3b0659f54c87a59205befbc6fb803">CMeazureApp::ExitInstance</a></div><div class="ttdeci">virtual int ExitInstance() override</div><div class="ttdoc">Called when the application is terminating.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:153</div></div>
+<div class="ttc" id="aclassCMeazureApp_html_ad20a01966d2b1cec3fe3fcb57fe82435"><div class="ttname"><a href="classCMeazureApp.html#ad20a01966d2b1cec3fe3fcb57fe82435">CMeazureApp::WinHelp</a></div><div class="ttdeci">virtual void WinHelp(DWORD dwData, UINT nCmd)</div><div class="ttdoc">Central interface to the windows help system.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:171</div></div>
+<div class="ttc" id="aclassCMeazureApp_html_adfaa3a18f5c0994008dced08294116d6"><div class="ttname"><a href="classCMeazureApp.html#adfaa3a18f5c0994008dced08294116d6">CMeazureApp::SaveAllModified</a></div><div class="ttdeci">virtual BOOL SaveAllModified() override</div><div class="ttdoc">Called by the framework to see if each modified doc wants to save before the application goes away.</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:167</div></div>
+<div class="ttc" id="aclassCMeazureApp_html_af5846fda967818d5d739c4cbd5d1ebd5"><div class="ttname"><a href="classCMeazureApp.html#af5846fda967818d5d739c4cbd5d1ebd5">CMeazureApp::InitInstance</a></div><div class="ttdeci">virtual BOOL InitInstance() override</div><div class="ttdoc">Performs all initialization for the application including processing of the command line arguments,...</div><div class="ttdef"><b>Definition:</b> Meazure.cpp:64</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1">
 <address style="align: right;"><small>Copyright 2011 C Thing Software</small></address>

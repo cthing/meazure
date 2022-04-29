@@ -50,7 +50,7 @@ $(function() {
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Copyright 2001 C Thing Software</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> * This file is part of Meazure.</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * Meazure is free software: you can redistribute it and/or modify it under</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment"> * the terms of the GNU General Public License as published by the Free</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment"> * Software Foundation, either version 3 of the License, or (at your option)</span></div>
@@ -72,155 +72,141 @@ $(function() {
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="comment"></span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#undef IsThemeActive</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#undef DrawThemeEdge</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment"></span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/// Defines a handle to a section of theme data for class.</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/// HTHEME is already declared if WINVER &gt;= 0x0500 in uxtheme.h</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">/// This is for components built with an older version number.</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">///</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">   36</a></span><span class="comment"></span><span class="keyword">typedef</span> HANDLE <a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#undef IsThemeActive</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#undef DrawThemeEdge</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"></span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/// Defines a handle to a section of theme data for class.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">/// HTHEME is already declared if WINVER &gt;= 0x0500 in uxtheme.h</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">/// This is for components built with an older version number.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">///</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">   35</a></span><span class="comment"></span><span class="keyword">typedef</span> HANDLE <a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifndef BP_PUSHBUTTON</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#include &quot;vssym32.h&quot;</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">// !BP_PUSHBUTTON</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#ifndef BP_PUSHBUTTON</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#include &quot;vssym32.h&quot;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif </span><span class="comment">// !BP_PUSHBUTTON</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// Define COMPILE_THEME_STUBS to compile the stubs;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// otherwise, you get the declarations.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">//</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#ifdef COMPILE_THEME_STUBS</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">// Implement API stubs.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">//</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>BOOL(WINAPI* g_pfnIsThemeActive)(void) { <span class="keyword">nullptr</span> };</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>(WINAPI* g_pfnOpenThemeData)(HWND, LPCWSTR) { <span class="keyword">nullptr</span> };</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>HRESULT(WINAPI* g_pfnCloseThemeData)(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>) { <span class="keyword">nullptr</span> };</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>HRESULT(WINAPI* g_pfnDrawThemeBackground)(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>, HDC, int, int, <span class="keyword">const</span> RECT*, <span class="keyword">const</span> RECT*) { <span class="keyword">nullptr</span> };</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>BOOL(WINAPI* g_pfnDrawThemeEdge)(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>, HDC, int, int, <span class="keyword">const</span> RECT*, UINT, UINT, RECT*) { <span class="keyword">nullptr</span> };</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>BOOL g_fThemeInitDone { FALSE };</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>BOOL InitThemeStubs(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>{</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    HMODULE hUXTheme;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordflow">if</span> (g_fThemeInitDone) {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span> g_pfnIsThemeActive != <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    hUXTheme = GetModuleHandle(TEXT(<span class="stringliteral">&quot;UXTHEME&quot;</span>));</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> ((hUXTheme != <span class="keyword">nullptr</span>) &amp;&amp;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        (*(FARPROC*)&amp;g_pfnIsThemeActive = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;IsThemeActive&quot;</span>)) != <span class="keyword">nullptr</span> &amp;&amp;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        (*(FARPROC*)&amp;g_pfnOpenThemeData = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;OpenThemeData&quot;</span>)) != <span class="keyword">nullptr</span> &amp;&amp;</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        (*(FARPROC*)&amp;g_pfnCloseThemeData = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;CloseThemeData&quot;</span>)) != <span class="keyword">nullptr</span> &amp;&amp;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        (*(FARPROC*)&amp;g_pfnDrawThemeBackground = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;DrawThemeBackground&quot;</span>)) != <span class="keyword">nullptr</span> &amp;&amp;</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        (*(FARPROC*)&amp;g_pfnDrawThemeEdge = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;DrawThemeEdge&quot;</span>)) != <span class="keyword">nullptr</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>       ) {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        g_fThemeInitDone = TRUE;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        g_pfnIsThemeActive = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        g_pfnOpenThemeData = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        g_pfnCloseThemeData = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        g_pfnDrawThemeBackground = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        g_pfnDrawThemeEdge = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        g_fThemeInitDone = TRUE;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>}</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>BOOL WINAPI</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><a class="code hl_function" href="Themes_8h.html#a738ca5f6a721b51b0b01c2981bc5fcef">xIsThemeActive</a>()</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>{</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">return</span> g_pfnIsThemeActive();</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    }</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">return</span> FALSE;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> WINAPI</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><a class="code hl_function" href="Themes_8h.html#ad13976718c4edd0f7e46eed69fd5db41">xOpenThemeData</a>(HWND hwnd, LPCWSTR pszClassList)</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>{</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">return</span> g_pfnOpenThemeData(hwnd, pszClassList);</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    }</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">// Define COMPILE_THEME_STUBS to compile the stubs;</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">// otherwise, you get the declarations.</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">//</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#ifdef COMPILE_THEME_STUBS</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Implement API stubs.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">//</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>BOOL(WINAPI* g_pfnIsThemeActive)(void) { <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>(WINAPI* g_pfnOpenThemeData)(HWND, LPCWSTR) { <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>HRESULT(WINAPI* g_pfnCloseThemeData)(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>) { <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>HRESULT(WINAPI* g_pfnDrawThemeBackground)(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>, HDC, int, int, <span class="keyword">const</span> RECT*, <span class="keyword">const</span> RECT*) { <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>BOOL(WINAPI* g_pfnDrawThemeEdge)(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>, HDC, int, int, <span class="keyword">const</span> RECT*, UINT, UINT, RECT*) { <span class="keyword">nullptr</span> };</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>BOOL g_fThemeInitDone { FALSE };</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>BOOL InitThemeStubs(<span class="keywordtype">void</span>) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    HMODULE hUXTheme;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (g_fThemeInitDone) {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">return</span> g_pfnIsThemeActive != <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    hUXTheme = GetModuleHandle(TEXT(<span class="stringliteral">&quot;UXTHEME&quot;</span>));</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordflow">if</span> ((hUXTheme != <span class="keyword">nullptr</span>) &amp;&amp;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        (*(FARPROC*)&amp;g_pfnIsThemeActive = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;IsThemeActive&quot;</span>)) != <span class="keyword">nullptr</span> &amp;&amp;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        (*(FARPROC*)&amp;g_pfnOpenThemeData = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;OpenThemeData&quot;</span>)) != <span class="keyword">nullptr</span> &amp;&amp;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        (*(FARPROC*)&amp;g_pfnCloseThemeData = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;CloseThemeData&quot;</span>)) != <span class="keyword">nullptr</span> &amp;&amp;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        (*(FARPROC*)&amp;g_pfnDrawThemeBackground = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;DrawThemeBackground&quot;</span>)) != <span class="keyword">nullptr</span> &amp;&amp;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        (*(FARPROC*)&amp;g_pfnDrawThemeEdge = GetProcAddress(hUXTheme, <span class="stringliteral">&quot;DrawThemeEdge&quot;</span>)) != <span class="keyword">nullptr</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>       ) {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        g_fThemeInitDone = TRUE;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        g_pfnIsThemeActive = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        g_pfnOpenThemeData = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        g_pfnCloseThemeData = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        g_pfnDrawThemeBackground = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        g_pfnDrawThemeEdge = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        g_fThemeInitDone = TRUE;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>BOOL WINAPI</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><a class="code hl_function" href="Themes_8h.html#a738ca5f6a721b51b0b01c2981bc5fcef">xIsThemeActive</a>() {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">return</span> g_pfnIsThemeActive();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> WINAPI</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><a class="code hl_function" href="Themes_8h.html#ad13976718c4edd0f7e46eed69fd5db41">xOpenThemeData</a>(HWND hwnd, LPCWSTR pszClassList) {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">return</span> g_pfnOpenThemeData(hwnd, pszClassList);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>}</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>HRESULT WINAPI</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><a class="code hl_function" href="Themes_8h.html#ae66daf320e96ad0526839efe9edc791a">xCloseThemeData</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> hTheme) {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">return</span> g_pfnCloseThemeData(hTheme);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordflow">return</span> S_OK;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>}</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>HRESULT WINAPI</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><a class="code hl_function" href="Themes_8h.html#ae66daf320e96ad0526839efe9edc791a">xCloseThemeData</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> hTheme)</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>{</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">return</span> g_pfnCloseThemeData(hTheme);</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordflow">return</span> S_OK;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>}</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>HRESULT WINAPI</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><a class="code hl_function" href="Themes_8h.html#a55c51fada9952d19e589f2d017a05ecb">xDrawThemeBackground</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> hTheme, HDC hdc, <span class="keywordtype">int</span> iPartId, <span class="keywordtype">int</span> iStateId, <span class="keyword">const</span> RECT *pRect, <span class="keyword">const</span> RECT *pClipRect)</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>{</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">return</span> g_pfnDrawThemeBackground(hTheme, hdc, iPartId, iStateId, pRect, pClipRect);</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    }</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keywordflow">return</span> S_OK;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>}</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>BOOL WINAPI</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><a class="code hl_function" href="Themes_8h.html#a2b5dda8591f4762f7baf54ce08689074">xDrawThemeEdge</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> hTheme, HDC hdc, <span class="keywordtype">int</span> iPartId, <span class="keywordtype">int</span> iStateId, <span class="keyword">const</span> RECT *pDestRect, UINT uEdge, UINT uFlags, RECT *pContentRect)</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>{</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordflow">return</span> g_pfnDrawThemeEdge(hTheme, hdc, iPartId, iStateId, pDestRect, uEdge, uFlags, pContentRect);</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    }</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="preprocessor">#undef COMPILE_THEME_STUBS</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="preprocessor">#else   </span><span class="comment">// COMPILE_THEME_STUBS</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment"></span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">/// Indicates whether a theme is currently active.</span></div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="Themes_8h.html#a738ca5f6a721b51b0b01c2981bc5fcef">  144</a></span><span class="comment"></span><span class="keyword">extern</span> BOOL WINAPI      <a class="code hl_function" href="Themes_8h.html#a738ca5f6a721b51b0b01c2981bc5fcef">xIsThemeActive</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment"></span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">/// Opens a display theme.</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="Themes_8h.html#ad13976718c4edd0f7e46eed69fd5db41">  147</a></span><span class="comment"></span><span class="keyword">extern</span> <a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> WINAPI    <a class="code hl_function" href="Themes_8h.html#ad13976718c4edd0f7e46eed69fd5db41">xOpenThemeData</a>(HWND, LPCWSTR);</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment"></span> </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment">/// Closes the currently open theme.</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="Themes_8h.html#ae66daf320e96ad0526839efe9edc791a">  150</a></span><span class="comment"></span><span class="keyword">extern</span> HRESULT WINAPI   <a class="code hl_function" href="Themes_8h.html#ae66daf320e96ad0526839efe9edc791a">xCloseThemeData</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>);</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment"></span> </div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">/// Draws a background appropriate for the theme.</span></div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="Themes_8h.html#a55c51fada9952d19e589f2d017a05ecb">  153</a></span><span class="comment"></span><span class="keyword">extern</span> HRESULT WINAPI   <a class="code hl_function" href="Themes_8h.html#a55c51fada9952d19e589f2d017a05ecb">xDrawThemeBackground</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>, HDC, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keyword">const</span> RECT*, <span class="keyword">const</span> RECT*);</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment"></span> </div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">/// Draws an edge into the specified DC that is appropriate for the theme.</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="Themes_8h.html#a2b5dda8591f4762f7baf54ce08689074">  156</a></span><span class="comment"></span><span class="keyword">extern</span> BOOL WINAPI      <a class="code hl_function" href="Themes_8h.html#a2b5dda8591f4762f7baf54ce08689074">xDrawThemeEdge</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>, HDC, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keyword">const</span> RECT*, UINT, UINT, RECT*);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="preprocessor">#endif  </span><span class="comment">// COMPILE_THEME_STUBS</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment"></span> </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">/// Indicates whether a theme is active.</span></div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno"><a class="line" href="Themes_8h.html#afb82349256078c15e646ca076afcfad4">  162</a></span><span class="comment"></span><span class="preprocessor">#define IsThemeActive       xIsThemeActive</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment"></span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">/// Opens a display theme.</span></div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="Themes_8h.html#a4a77a6d13bfcaf8bdbe641620b705024">  165</a></span><span class="comment"></span><span class="preprocessor">#define OpenThemeData       xOpenThemeData</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment"></span> </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">/// Closes a theme.</span></div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="Themes_8h.html#a4a1d1eec1cb016af8c745ce8ff9bd94b">  168</a></span><span class="comment"></span><span class="preprocessor">#define CloseThemeData      xCloseThemeData</span></div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment"></span> </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">/// Draws a background appropriate for the display theme.</span></div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="Themes_8h.html#a6f5cca92bbfc7c3ecf1b23e79dd91d5d">  171</a></span><span class="comment"></span><span class="preprocessor">#define DrawThemeBackground xDrawThemeBackground</span></div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment"></span> </div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">/// Draws a control edge appropriate for the display theme.</span></div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno"><a class="line" href="Themes_8h.html#aaa9f1e18e5fd44f8ffc4899aedfdb869">  174</a></span><span class="comment"></span><span class="preprocessor">#define DrawThemeEdge       xDrawThemeEdge</span></div>
-<div class="ttc" id="aThemes_8h_html_a1b51f7d9c83a4107c0e17d2d672aa858"><div class="ttname"><a href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a></div><div class="ttdeci">HANDLE HTHEME</div><div class="ttdoc">Defines a handle to a section of theme data for class.</div><div class="ttdef"><b>Definition:</b> Themes.h:36</div></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><a class="code hl_function" href="Themes_8h.html#a55c51fada9952d19e589f2d017a05ecb">xDrawThemeBackground</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> hTheme, HDC hdc, <span class="keywordtype">int</span> iPartId, <span class="keywordtype">int</span> iStateId, <span class="keyword">const</span> RECT* pRect, <span class="keyword">const</span> RECT* pClipRect) {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> g_pfnDrawThemeBackground(hTheme, hdc, iPartId, iStateId, pRect, pClipRect);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordflow">return</span> S_OK;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>}</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>BOOL WINAPI</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><a class="code hl_function" href="Themes_8h.html#a2b5dda8591f4762f7baf54ce08689074">xDrawThemeEdge</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> hTheme, HDC hdc, <span class="keywordtype">int</span> iPartId, <span class="keywordtype">int</span> iStateId, <span class="keyword">const</span> RECT* pDestRect, UINT uEdge, UINT uFlags, RECT* pContentRect) {</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keywordflow">if</span> (InitThemeStubs()) {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">return</span> g_pfnDrawThemeEdge(hTheme, hdc, iPartId, iStateId, pDestRect, uEdge, uFlags, pContentRect);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>}</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="preprocessor">#undef COMPILE_THEME_STUBS</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="preprocessor">#else   </span><span class="comment">// COMPILE_THEME_STUBS</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment"></span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">/// Indicates whether a theme is currently active.</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno"><a class="line" href="Themes_8h.html#a738ca5f6a721b51b0b01c2981bc5fcef">  130</a></span><span class="comment"></span><span class="keyword">extern</span> BOOL WINAPI      <a class="code hl_function" href="Themes_8h.html#a738ca5f6a721b51b0b01c2981bc5fcef">xIsThemeActive</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment"></span> </div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">/// Opens a display theme.</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="Themes_8h.html#ad13976718c4edd0f7e46eed69fd5db41">  133</a></span><span class="comment"></span><span class="keyword">extern</span> <a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a> WINAPI    <a class="code hl_function" href="Themes_8h.html#ad13976718c4edd0f7e46eed69fd5db41">xOpenThemeData</a>(HWND, LPCWSTR);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment"></span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment">/// Closes the currently open theme.</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="Themes_8h.html#ae66daf320e96ad0526839efe9edc791a">  136</a></span><span class="comment"></span><span class="keyword">extern</span> HRESULT WINAPI   <a class="code hl_function" href="Themes_8h.html#ae66daf320e96ad0526839efe9edc791a">xCloseThemeData</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment"></span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">/// Draws a background appropriate for the theme.</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="Themes_8h.html#a55c51fada9952d19e589f2d017a05ecb">  139</a></span><span class="comment"></span><span class="keyword">extern</span> HRESULT WINAPI   <a class="code hl_function" href="Themes_8h.html#a55c51fada9952d19e589f2d017a05ecb">xDrawThemeBackground</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>, HDC, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keyword">const</span> RECT*, <span class="keyword">const</span> RECT*);</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment"></span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">/// Draws an edge into the specified DC that is appropriate for the theme.</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="Themes_8h.html#a2b5dda8591f4762f7baf54ce08689074">  142</a></span><span class="comment"></span><span class="keyword">extern</span> BOOL WINAPI      <a class="code hl_function" href="Themes_8h.html#a2b5dda8591f4762f7baf54ce08689074">xDrawThemeEdge</a>(<a class="code hl_typedef" href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a>, HDC, <span class="keywordtype">int</span>, <span class="keywordtype">int</span>, <span class="keyword">const</span> RECT*, UINT, UINT, RECT*);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="preprocessor">#endif  </span><span class="comment">// COMPILE_THEME_STUBS</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment"></span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">/// Indicates whether a theme is active.</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="Themes_8h.html#afb82349256078c15e646ca076afcfad4">  148</a></span><span class="comment"></span><span class="preprocessor">#define IsThemeActive       xIsThemeActive</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment"></span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">/// Opens a display theme.</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="Themes_8h.html#a4a77a6d13bfcaf8bdbe641620b705024">  151</a></span><span class="comment"></span><span class="preprocessor">#define OpenThemeData       xOpenThemeData</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment"></span> </div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">/// Closes a theme.</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="Themes_8h.html#a4a1d1eec1cb016af8c745ce8ff9bd94b">  154</a></span><span class="comment"></span><span class="preprocessor">#define CloseThemeData      xCloseThemeData</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment"></span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">/// Draws a background appropriate for the display theme.</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="Themes_8h.html#a6f5cca92bbfc7c3ecf1b23e79dd91d5d">  157</a></span><span class="comment"></span><span class="preprocessor">#define DrawThemeBackground xDrawThemeBackground</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment"></span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">/// Draws a control edge appropriate for the display theme.</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno"><a class="line" href="Themes_8h.html#aaa9f1e18e5fd44f8ffc4899aedfdb869">  160</a></span><span class="comment"></span><span class="preprocessor">#define DrawThemeEdge       xDrawThemeEdge</span></div>
+<div class="ttc" id="aThemes_8h_html_a1b51f7d9c83a4107c0e17d2d672aa858"><div class="ttname"><a href="Themes_8h.html#a1b51f7d9c83a4107c0e17d2d672aa858">HTHEME</a></div><div class="ttdeci">HANDLE HTHEME</div><div class="ttdoc">Defines a handle to a section of theme data for class.</div><div class="ttdef"><b>Definition:</b> Themes.h:35</div></div>
 <div class="ttc" id="aThemes_8h_html_a2b5dda8591f4762f7baf54ce08689074"><div class="ttname"><a href="Themes_8h.html#a2b5dda8591f4762f7baf54ce08689074">xDrawThemeEdge</a></div><div class="ttdeci">BOOL WINAPI xDrawThemeEdge(HTHEME, HDC, int, int, const RECT *, UINT, UINT, RECT *)</div><div class="ttdoc">Draws an edge into the specified DC that is appropriate for the theme.</div></div>
 <div class="ttc" id="aThemes_8h_html_a55c51fada9952d19e589f2d017a05ecb"><div class="ttname"><a href="Themes_8h.html#a55c51fada9952d19e589f2d017a05ecb">xDrawThemeBackground</a></div><div class="ttdeci">HRESULT WINAPI xDrawThemeBackground(HTHEME, HDC, int, int, const RECT *, const RECT *)</div><div class="ttdoc">Draws a background appropriate for the theme.</div></div>
 <div class="ttc" id="aThemes_8h_html_a738ca5f6a721b51b0b01c2981bc5fcef"><div class="ttname"><a href="Themes_8h.html#a738ca5f6a721b51b0b01c2981bc5fcef">xIsThemeActive</a></div><div class="ttdeci">BOOL WINAPI xIsThemeActive(void)</div><div class="ttdoc">Indicates whether a theme is currently active.</div></div>

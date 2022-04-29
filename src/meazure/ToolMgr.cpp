@@ -24,7 +24,9 @@
 #include "ScreenMgr.h"
 
 
-MEA_SINGLETON_DEF(MeaToolMgr);      ///< Managers are singletons.
+/// @cond SINGLETON
+MEA_SINGLETON_DEF(MeaToolMgr);
+/// @endcond
 
 
 MeaToolMgr::MeaToolMgr() :

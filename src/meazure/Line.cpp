@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -28,7 +28,7 @@
 
 const CSize MeaLine::kMargin(5, 5);
 
-int*    MeaLine::m_varr = nullptr;
+int* MeaLine::m_varr = nullptr;
 
 
 BEGIN_MESSAGE_MAP(MeaLine, MeaGraphic)
@@ -43,34 +43,27 @@ MeaLine::MeaLine() :
     m_wasAngled(true),
     m_foreBrush(new CBrush(MeaColors::Get(MeaColors::LineFore))),
     m_orientation(Vertical),
-    m_arr(nullptr), m_count(0), m_shrink(0)
-{
-}
+    m_arr(nullptr), m_count(0), m_shrink(0) {}
 
-
-MeaLine::~MeaLine()
-{
+MeaLine::~MeaLine() {
     try {
         m_timer.Stop();
 
         if (m_varr != nullptr) {
-            delete [] m_varr;
+            delete[] m_varr;
             m_varr = nullptr;
         }
         if (m_arr != nullptr) {
-            delete [] m_arr;
+            delete[] m_arr;
         }
 
         delete m_foreBrush;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaLine::Create(int shrink, const CWnd *parent)
-{
+bool MeaLine::Create(int shrink, const CWnd* parent) {
     const CRect& vscreen = MeaScreenMgr::Instance().GetVirtualRect();
     UINT size = 2 * static_cast<UINT>(MeaLayout::CalcLength(static_cast<double>(vscreen.Width()),
                                                             static_cast<double>(vscreen.Height())));
@@ -93,22 +86,18 @@ bool MeaLine::Create(int shrink, const CWnd *parent)
     return MeaGraphic::Create(wndClass, CSize(0, 0), parent);
 }
 
-
-void MeaLine::Hide()
-{
+void MeaLine::Hide() {
     m_timer.Stop();
     MeaGraphic::Hide();
 }
 
-
-void MeaLine::SetColor(COLORREF color)
-{
-    CBrush *brush = new CBrush(color);
+void MeaLine::SetColor(COLORREF color) {
+    CBrush* brush = new CBrush(color);
     if (m_hWnd != nullptr) {
         ::SetClassLongPtr(m_hWnd, GCLP_HBRBACKGROUND,
                         reinterpret_cast<LONG_PTR>(static_cast<HBRUSH>(*brush)));
     }
-    
+
     delete m_foreBrush;
     m_foreBrush = brush;
 
@@ -118,9 +107,7 @@ void MeaLine::SetColor(COLORREF color)
     }
 }
 
-
-void MeaLine::PlotLine()
-{
+void MeaLine::PlotLine() {
     POINT startPoint;
     POINT endPoint;
 
@@ -128,11 +115,11 @@ void MeaLine::PlotLine()
     // be sensitive to the direction in which the line is drawn.
     //
     if (m_startPoint.y > m_endPoint.y) {
-        startPoint  = m_startPoint;
-        endPoint    = m_endPoint;
+        startPoint = m_startPoint;
+        endPoint = m_endPoint;
     } else {
-        startPoint  = m_endPoint;
-        endPoint    = m_startPoint;
+        startPoint = m_endPoint;
+        endPoint = m_startPoint;
     }
 
     // Bresenham algorithm adapted from "Graphics Gems",
@@ -179,16 +166,14 @@ void MeaLine::PlotLine()
     }
 }
 
-
-void MeaLine::SetPosition(const POINT& startPoint, const POINT& endPoint)
-{
+void MeaLine::SetPosition(const POINT& startPoint, const POINT& endPoint) {
     if (m_startPoint == startPoint && m_endPoint == endPoint) {
         if (m_visible) {
             Show();
         }
         return;
     }
-    
+
     m_startPoint = startPoint;
     m_endPoint = endPoint;
 
@@ -219,9 +204,7 @@ void MeaLine::SetPosition(const POINT& startPoint, const POINT& endPoint)
     }
 }
 
-
-LRESULT MeaLine::OnHPTimer(WPARAM, LPARAM)
-{
+LRESULT MeaLine::OnHPTimer(WPARAM, LPARAM) {
     CRect rect(m_startPoint, m_endPoint);
     rect.NormalizeRect();
 
@@ -237,7 +220,7 @@ LRESULT MeaLine::OnHPTimer(WPARAM, LPARAM)
         HRGN region = ::CreatePolyPolygonRgn(&m_arr[4 * m_shrink], m_varr,
             m_count - (2 * m_shrink), ALTERNATE);
         ::OffsetRgn(region, -rect.left, -rect.top);
-        SetWindowRgn(region, TRUE); 
+        SetWindowRgn(region, TRUE);
     } else {
         if (m_orientation == Vertical) {
             rect.right++;
@@ -254,7 +237,7 @@ LRESULT MeaLine::OnHPTimer(WPARAM, LPARAM)
             m_wasAngled = false;
         }
     }
-    
+
     SetWindowPos(nullptr, rect.left, rect.top, rect.Width(), rect.Height(),
             SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSENDCHANGING);
     if (m_visible) {

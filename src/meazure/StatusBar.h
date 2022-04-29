@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -18,8 +18,7 @@
  */
 
 /// @file
-/// @brief Header file for a status bar that allows the overriding of the
-///     idle message.
+/// @brief Header file for a status bar that allows the overriding of the idle message.
 
 #pragma once
 
@@ -27,18 +26,17 @@
 /// CStatusBar derived class that allows the overriding of the message
 /// displayed when the application is idle.
 ///
-class MeaStatusBar : public CStatusBar
-{
+class MeaStatusBar : public CStatusBar {
+
 public:
     /// Constructs the status bar. To use the status bar, its Create
     /// method must be called.
     ///
     MeaStatusBar();
-    
+
     /// Destroys an instance of the status bar.
     ///
     virtual ~MeaStatusBar();
-
 
     /// Sets the message to be displayed in the status bar when the
     /// application is idle.

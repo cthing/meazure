@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -50,32 +50,24 @@ BEGIN_MESSAGE_MAP(MeaToolsPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaToolsPrefs::MeaToolsPrefs() : CPropertyPage(MeaToolsPrefs::IDD),
+MeaToolsPrefs::MeaToolsPrefs() :
+    CPropertyPage(MeaToolsPrefs::IDD),
     m_lineColor(0), m_backColor(0), m_borderColor(0), m_hiliteColor(0),
-    m_showDataWin(FALSE), m_opacity(0), m_originMarker(FALSE)
-{
-}
+    m_showDataWin(FALSE), m_opacity(0), m_originMarker(FALSE) {}
 
+MeaToolsPrefs::~MeaToolsPrefs() {}
 
-MeaToolsPrefs::~MeaToolsPrefs()
-{
-}
-
-
-void MeaToolsPrefs::DoDataExchange(CDataExchange* pDX)
-{
+void MeaToolsPrefs::DoDataExchange(CDataExchange* pDX) {
     CPropertyPage::DoDataExchange(pDX);
     DDX_Check(pDX, IDC_MEA_DATA_WIN, m_showDataWin);
     DDX_Slider(pDX, IDC_CH_OPACITY, m_opacity);
     DDX_Check(pDX, IDC_MEA_ORIGIN_MARKER, m_originMarker);
 }
 
-
-BOOL MeaToolsPrefs::OnInitDialog()
-{
+BOOL MeaToolsPrefs::OnInitDialog() {
     CPropertyPage::OnInitDialog();
 
-    CStatic *sample;
+    CStatic* sample;
     CRect rect;
     BYTE alpha = static_cast<BYTE>(255 * m_opacity / 100);
 
@@ -136,7 +128,7 @@ BOOL MeaToolsPrefs::OnInitDialog()
 
     // Configure the opacity slider.
     //
-    CSliderCtrl *slider = static_cast<CSliderCtrl*>(GetDlgItem(IDC_CH_OPACITY));
+    CSliderCtrl* slider = static_cast<CSliderCtrl*>(GetDlgItem(IDC_CH_OPACITY));
     slider->SetRange(20, 100, TRUE);
 
     if (!HaveLayeredWindows()) {
@@ -148,14 +140,12 @@ BOOL MeaToolsPrefs::OnInitDialog()
     return TRUE;
 }
 
-
-void MeaToolsPrefs::OnChangeLineColor() 
-{
+void MeaToolsPrefs::OnChangeLineColor() {
     MeaColorDialog dlg(IDS_MEA_LINEDLG_TITLE);
 
     dlg.m_cc.Flags |= CC_RGBINIT;
     dlg.m_cc.rgbResult = m_lineColor;
-    
+
     if (dlg.DoModal() == IDOK) {
         m_lineColor = dlg.GetColor();
         m_line.SetColor(m_lineColor);
@@ -163,14 +153,12 @@ void MeaToolsPrefs::OnChangeLineColor()
     }
 }
 
-
-void MeaToolsPrefs::OnChangeBorderColor() 
-{
+void MeaToolsPrefs::OnChangeBorderColor() {
     MeaColorDialog dlg(IDS_MEA_BORDERDLG_TITLE);
 
     dlg.m_cc.Flags |= CC_RGBINIT;
     dlg.m_cc.rgbResult = m_borderColor;
-    
+
     if (dlg.DoModal() == IDOK) {
         m_borderColor = dlg.GetColor();
         m_normalCH.SetColors(m_borderColor, m_backColor, m_backColor);
@@ -179,73 +167,59 @@ void MeaToolsPrefs::OnChangeBorderColor()
     }
 }
 
-
-void MeaToolsPrefs::OnChangeBackColor() 
-{
+void MeaToolsPrefs::OnChangeBackColor() {
     MeaColorDialog dlg(IDS_MEA_BACKDLG_TITLE);
 
     dlg.m_cc.Flags |= CC_RGBINIT;
     dlg.m_cc.rgbResult = m_backColor;
-    
+
     if (dlg.DoModal() == IDOK) {
         m_backColor = dlg.GetColor();
         m_normalCH.SetColors(m_borderColor, m_backColor, m_backColor);
         SetModified(TRUE);
-    }   
+    }
 }
 
-
-void MeaToolsPrefs::OnChangeHiliteColor() 
-{
+void MeaToolsPrefs::OnChangeHiliteColor() {
     MeaColorDialog dlg(IDS_MEA_HILITEDLG_TITLE);
 
     dlg.m_cc.Flags |= CC_RGBINIT;
     dlg.m_cc.rgbResult = m_hiliteColor;
-    
+
     if (dlg.DoModal() == IDOK) {
         m_hiliteColor = dlg.GetColor();
         m_hiliteCH.SetColors(m_borderColor, m_hiliteColor, m_hiliteColor);
         SetModified(TRUE);
-    }   
+    }
 }
 
-
-void MeaToolsPrefs::OnDefLineColor() 
-{
+void MeaToolsPrefs::OnDefLineColor() {
     m_lineColor = MeaColors::GetDef(MeaColors::LineFore);
     m_line.SetColor(m_lineColor);
     SetModified(TRUE);
 }
 
-
-void MeaToolsPrefs::OnDefBorderColor() 
-{
+void MeaToolsPrefs::OnDefBorderColor() {
     m_borderColor = MeaColors::GetDef(MeaColors::CrossHairBorder);
     m_normalCH.SetColors(m_borderColor, m_backColor, m_backColor);
     m_hiliteCH.SetColors(m_borderColor, m_hiliteColor, m_hiliteColor);
     SetModified(TRUE);
 }
 
-
-void MeaToolsPrefs::OnDefBackColor() 
-{
+void MeaToolsPrefs::OnDefBackColor() {
     m_backColor = MeaColors::GetDef(MeaColors::CrossHairBack);
     m_normalCH.SetColors(m_borderColor, m_backColor, m_backColor);
     SetModified(TRUE);
 }
 
-
-void MeaToolsPrefs::OnDefHiliteColor() 
-{
+void MeaToolsPrefs::OnDefHiliteColor() {
     m_hiliteColor = MeaColors::GetDef(MeaColors::CrossHairHilite);
     m_hiliteCH.SetColors(m_borderColor, m_hiliteColor, m_hiliteColor);
     SetModified(TRUE);
 }
 
-
-void MeaToolsPrefs::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
-{
-    CSliderCtrl *slider = reinterpret_cast<CSliderCtrl*>(pScrollBar);
+void MeaToolsPrefs::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) {
+    CSliderCtrl* slider = reinterpret_cast<CSliderCtrl*>(pScrollBar);
     int pos = slider->GetPos();
 
     BYTE alpha = static_cast<BYTE>(255 * pos / 100);
@@ -256,12 +230,10 @@ void MeaToolsPrefs::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
     if (pos != m_opacity) {
         SetModified(TRUE);
     }
-        
+
     CPropertyPage::OnHScroll(nSBCode, nPos, pScrollBar);
 }
 
-
-void MeaToolsPrefs::OnChange() 
-{
+void MeaToolsPrefs::OnChange() {
     SetModified(TRUE);
 }

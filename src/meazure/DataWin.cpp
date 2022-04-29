@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -37,52 +37,41 @@ SIZE MeaDataWin::m_margin { 3, 1 };
 UINT MeaDataWin::m_flashInterval { 100 };   // Flash interval in milliseconds
 
 
-MeaDataWin::MeaDataWin() : CWnd(),
+MeaDataWin::MeaDataWin() :
+    CWnd(),
     m_parent(nullptr),
     m_textHeight(0),
     m_winHeight(0),
     m_dataOffset(0),
     m_drawState(Normal),
     m_flashCount(0),
-    m_opacity(255)
-{
-}
+    m_opacity(255) {}
 
-
-MeaDataWin::~MeaDataWin()
-{
+MeaDataWin::~MeaDataWin() {
     m_parent = nullptr;
 }
 
-
-void MeaDataWin::SaveProfile(MeaProfile& profile)
-{
+void MeaDataWin::SaveProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         profile.WriteBool(_T("ShowDataWin"), m_armed);
     }
 }
 
-
-void MeaDataWin::LoadProfile(MeaProfile& profile)
-{
+void MeaDataWin::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         m_armed = profile.ReadBool(_T("ShowDataWin"), m_armed);
     }
 }
 
-
-void MeaDataWin::MasterReset()
-{
+void MeaDataWin::MasterReset() {
     m_armed = kDefArmed;
 }
-
 
 bool MeaDataWin::Create(BYTE opacity,
                         UINT xLabelId, UINT yLabelId,
                         UINT wLabelId, UINT hLabelId,
                         UINT dLabelId, UINT aLabelId,
-                        const CWnd *parent)
-{
+                        const CWnd* parent) {
     m_parent = parent;
 
     // Create the window.
@@ -124,14 +113,14 @@ bool MeaDataWin::Create(BYTE opacity,
     m_font.CreateFontIndirect(&ncMetrics.lfStatusFont);
     SetFont(&m_font, FALSE);
 
-    CDC *dc = GetDC();
+    CDC* dc = GetDC();
     if (dc == nullptr) {
         return false;
     }
 
     // Select the new font into the DC
     //
-    CFont *origFont = dc->SelectObject(&m_font);
+    CFont* origFont = dc->SelectObject(&m_font);
 
     // Get the character height for the font.
     //
@@ -192,34 +181,27 @@ bool MeaDataWin::Create(BYTE opacity,
         }
     }
     m_dataOffset += 3;
-    
+
     dc->SelectObject(origFont);
     ReleaseDC(dc);
 
     return ret;
 }
 
-
-void MeaDataWin::OnDestroy()
-{
+void MeaDataWin::OnDestroy() {
     CWnd::OnDestroy();
 
     m_font.DeleteObject();
 }
 
-
-void MeaDataWin::Show()
-{
+void MeaDataWin::Show() {
     if ((m_armed || (m_parent != nullptr)) && (m_hWnd != nullptr)) {
-        SetWindowPos(nullptr, 0, 0, CalcWidth(), m_winHeight,
-            SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
+        SetWindowPos(nullptr, 0, 0, CalcWidth(), m_winHeight, SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
         ShowWindow(SW_SHOWNOACTIVATE);
     }
 }
 
-
-void MeaDataWin::Strobe()
-{
+void MeaDataWin::Strobe() {
     if (m_hWnd && IsWindowVisible()) {
         m_flashCount = 1;
         m_drawState = Inverted;
@@ -229,9 +211,7 @@ void MeaDataWin::Strobe()
     }
 }
 
-
-void MeaDataWin::SetOpacity(BYTE opacity)
-{
+void MeaDataWin::SetOpacity(BYTE opacity) {
     m_opacity = opacity;
 
     if (m_hWnd != nullptr) {
@@ -244,9 +224,7 @@ void MeaDataWin::SetOpacity(BYTE opacity)
     }
 }
 
-
-int MeaDataWin::CalcWidth()
-{
+int MeaDataWin::CalcWidth() {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     const CRect& vscreen = MeaScreenMgr::Instance().GetVirtualRect();
@@ -263,8 +241,8 @@ int MeaDataWin::CalcWidth()
 
     int maxLen = 0;
 
-    CDC *dc = GetDC();
-    CFont *origFont = dc->SelectObject(&m_font);
+    CDC* dc = GetDC();
+    CFont* origFont = dc->SelectObject(&m_font);
     CSize size;
 
     size = dc->GetTextExtent(xStr);
@@ -300,9 +278,7 @@ int MeaDataWin::CalcWidth()
     return m_dataOffset + maxLen + 2 * m_margin.cx;
 }
 
-
-void MeaDataWin::Update(const CRect& rect)
-{
+void MeaDataWin::Update(const CRect& rect) {
     if (IsWindowVisible()) {
         CRect testRect(rect);
         CRect winRect;
@@ -328,9 +304,7 @@ void MeaDataWin::Update(const CRect& rect)
     }
 }
 
-
-void MeaDataWin::OnPaint()
-{
+void MeaDataWin::OnPaint() {
     CPaintDC dc(this);
 
     if (!HaveLayeredWindows() || (m_parent == nullptr)) {
@@ -346,11 +320,11 @@ void MeaDataWin::OnPaint()
 
         backDC.CreateCompatibleDC(&dc);
         backBitmap.CreateCompatibleBitmap(&dc, rect.Width(), rect.Height());
-        CBitmap *origBackBitmap = backDC.SelectObject(&backBitmap);
+        CBitmap* origBackBitmap = backDC.SelectObject(&backBitmap);
 
         dataDC.CreateCompatibleDC(&dc);
         dataBitmap.CreateCompatibleBitmap(&dc, rect.Width(), rect.Height());
-        CBitmap *origDataBitmap = dataDC.SelectObject(&dataBitmap);
+        CBitmap* origDataBitmap = dataDC.SelectObject(&dataBitmap);
 
         MeaLayout::DrawOpacityBackground(*this, backDC);
         DrawWin(dataDC);
@@ -369,13 +343,11 @@ void MeaDataWin::OnPaint()
     }
 }
 
-
-void MeaDataWin::DrawWin(CDC& dc)
-{
+void MeaDataWin::DrawWin(CDC& dc) {
     CRect clientRect;
     bool haveLine = false;
 
-    CFont *origFont = dc.SelectObject(&m_font);
+    CFont* origFont = dc.SelectObject(&m_font);
     dc.SetBkMode(TRANSPARENT);
     dc.SetTextColor(GetSysColor((m_drawState == Normal) ? COLOR_INFOTEXT : COLOR_INFOBK));
 
@@ -383,9 +355,9 @@ void MeaDataWin::DrawWin(CDC& dc)
 
     CBrush backBrush;
     backBrush.CreateSysColorBrush(COLOR_INFOBK);
-    CBrush *origBrush = dc.SelectObject(&backBrush);
+    CBrush* origBrush = dc.SelectObject(&backBrush);
     dc.PatBlt(clientRect.left, clientRect.top, clientRect.Width(), clientRect.Height(), PATCOPY);
-    
+
     int y = m_margin.cy;
     int x = m_margin.cx;
 
@@ -435,9 +407,7 @@ void MeaDataWin::DrawWin(CDC& dc)
     dc.SelectObject(origFont);
 }
 
-
-void MeaDataWin::OnTimer(UINT_PTR timerId)
-{
+void MeaDataWin::OnTimer(UINT_PTR timerId) {
     KillTimer(timerId);
     m_drawState = (m_drawState == Normal) ? Inverted : Normal;
     Invalidate(FALSE);

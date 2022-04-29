@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -32,24 +32,18 @@ const CString MeaCursorTool::kToolName(_T("CursorTool"));
 
 
 MeaCursorTool::MeaCursorTool(MeaToolMgr* mgr) :
-    MeaRadioTool(mgr), m_cursorPos(0, 0), m_xDist(0), m_yDist(0)
-{
-}
+    MeaRadioTool(mgr), m_cursorPos(0, 0), m_xDist(0), m_yDist(0) {}
 
 
-MeaCursorTool::~MeaCursorTool()
-{
+MeaCursorTool::~MeaCursorTool() {
     try {
         Disable();
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-void MeaCursorTool::Create()
-{
+void MeaCursorTool::Create() {
     // The data window is positioned at the cursor position
     // offset by half the size of the cursor.
     //
@@ -61,9 +55,7 @@ void MeaCursorTool::Create()
     m_dataWin.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X1, IDS_MEA_Y1);
 }
 
-
-void MeaCursorTool::Enable()
-{
+void MeaCursorTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -94,9 +86,7 @@ void MeaCursorTool::Enable()
     m_dataWin.Show();
 }
 
-
-void MeaCursorTool::Disable()
-{
+void MeaCursorTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -106,15 +96,13 @@ void MeaCursorTool::Disable()
 #ifdef _DEBUG
     bool ret =
 #endif
-    MeaDisableMouseHook();
+        MeaDisableMouseHook();
     MeaAssert(ret);
 
     MeaTool::Disable();
 }
 
-
-void MeaCursorTool::Update(MeaUpdateReason reason)
-{
+void MeaCursorTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
@@ -156,51 +144,35 @@ void MeaCursorTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-void MeaCursorTool::Strobe()
-{
+void MeaCursorTool::Strobe() {
     m_dataWin.Strobe();
 }
 
-
-void MeaCursorTool::ColorsChanged()
-{
+void MeaCursorTool::ColorsChanged() {
     m_dataWin.SetOpacity(MeaColors::GetA(MeaColors::CrossHairOpacity));
 }
 
-
-bool MeaCursorTool::HasCrosshairs() const
-{
+bool MeaCursorTool::HasCrosshairs() const {
     return false;
 }
 
-
-const POINT& MeaCursorTool::GetPosition() const
-{
+const POINT& MeaCursorTool::GetPosition() const {
     return m_cursorPos;
 }
 
-
-void MeaCursorTool::GetPosition(MeaPositionLogMgr::Position& position) const
-{
+void MeaCursorTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     position.RecordXY1(MeaUnitsMgr::Instance().ConvertCoord(m_cursorPos));
 }
 
-
-CString MeaCursorTool::GetToolName() const
-{
+CString MeaCursorTool::GetToolName() const {
     return kToolName;
 }
 
-
-UINT MeaCursorTool::GetLabelId() const
-{
+UINT MeaCursorTool::GetLabelId() const {
     return IDS_MEA_CURSOR;
 }
 
-
-void MeaCursorTool::OnMouseHook(WPARAM /* wParam */, LPARAM lParam)
-{
+void MeaCursorTool::OnMouseHook(WPARAM /* wParam */, LPARAM lParam) {
     m_cursorPos.x = GET_X_LPARAM(lParam);
     m_cursorPos.y = GET_Y_LPARAM(lParam);
 

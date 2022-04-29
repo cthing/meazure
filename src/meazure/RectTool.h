@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -34,8 +34,8 @@
 /// Each crosshair can be arbitrarily positioned, which results in moving
 /// the rectangle.
 ///
-class MeaRectTool : public MeaRadioTool, public MeaCrossHairCallback
-{
+class MeaRectTool : public MeaRadioTool, public MeaCrossHairCallback {
+
 public:
     static const CString kToolName;     ///< "RectTool"
 
@@ -52,7 +52,6 @@ public:
     //
     virtual ~MeaRectTool();
 
-
     /// Displays the Rectangle tool. If the Create() method has not been
     /// previously called, it will be called by Enable.
     ///
@@ -62,13 +61,11 @@ public:
     ///
     virtual void Disable() override;
 
-
     /// Requests that the tool update the display of its position data.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
     virtual void Update(MeaUpdateReason reason) override;
-
 
     /// Indicates whether the tool can define a rectangular region that
     /// can then be read for a screen capture. The rectangle tool defines
@@ -85,7 +82,6 @@ public:
     ///
     virtual RECT GetRegion() override;
 
-
     /// Persists the state of the tool to the specified profile object.
     ///
     /// @param profile  [in] The destination for the state information.
@@ -101,7 +97,6 @@ public:
     ///
     virtual void LoadProfile(MeaProfile& profile) override;
 
-
     /// Displays the tool's crosshairs. If the Enable() method has not
     /// been previously called, this method has no effect.
     ///
@@ -110,7 +105,6 @@ public:
     /// Hides the tool's crosshairs.
     ///
     virtual void DisableCrosshairs() override;
-
 
     /// Visually flashes the tool. The tool crosshairs are cycled
     /// between a hilite color and their normal color a number of times.
@@ -126,7 +120,6 @@ public:
     ///
     virtual void Strobe() override;
 
-
     /// Sets the position of the tool. This method sets the position
     /// one location component at a time. For example, the x position
     /// of the point 1 crosshair is specified by calling this method
@@ -136,7 +129,7 @@ public:
     /// @param which    [in] Position component
     /// @param pixels   [in] Position to set for the component, in pixels
     ///
-    virtual void    SetPosition(MeaFields which, int pixels) override;
+    virtual void SetPosition(MeaFields which, int pixels) override;
 
     /// Sets the position of the tool. This method is called by the
     /// position log manager to play back a tool's position that was
@@ -144,7 +137,7 @@ public:
     ///
     /// @param points   [in] Map of positions for the tool's crosshairs.
     ///
-    virtual void    SetPosition(const PointMap& points) override;
+    virtual void SetPosition(const PointMap& points) override;
 
     /// Returns the tool's current position. The current position is
     /// the position of the last crosshair entered or moved. The default
@@ -152,7 +145,7 @@ public:
     ///
     /// @return Current position
     ///
-    virtual const POINT&    GetPosition() const override;
+    virtual const POINT& GetPosition() const override;
 
     /// Records the position of the tool. This method is called by the
     /// position log manager to record a position.
@@ -160,20 +153,19 @@ public:
     /// @param position     [in] The tool's current position is recorded into
     ///                     the position log manager's position object.
     ///
-    virtual void    GetPosition(MeaPositionLogMgr::Position& position) const override;
+    virtual void GetPosition(MeaPositionLogMgr::Position& position) const override;
 
     /// Increments the specified position field.
     /// 
     /// @param which Field to increment
     ///
-    virtual void    IncPosition(MeaFields which) override;
+    virtual void IncPosition(MeaFields which) override;
 
     /// Decrements the specified position field.
     /// 
     /// @param which Field to decrement
     ///
-    virtual void    DecPosition(MeaFields which) override;
-
+    virtual void DecPosition(MeaFields which) override;
 
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position
@@ -188,8 +180,7 @@ public:
     ///
     /// @return Resource ID for the label.
     ///
-    virtual UINT    GetLabelId() const override;
-
+    virtual UINT GetLabelId() const override;
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The crosshairs and line colors are updated as
@@ -197,14 +188,13 @@ public:
     ///
     virtual void ColorsChanged() override;
 
-
     /// Called when the pointer enters one of the tool's crosshairs.
     /// The crosshair entered is identified by the MeaCrossHairCallback::CHInfo
     /// structure passed to the method.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHEnter(const CHInfo *info) override;
+    virtual void OnCHEnter(const CHInfo* info) override;
 
     /// Called when the pointer leaves one of the tool's crosshairs.
     /// The crosshair exited is identified by the MeaCrossHairCallback::CHInfo
@@ -212,7 +202,7 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHLeave(const CHInfo *info) override;
+    virtual void OnCHLeave(const CHInfo* info) override;
 
     /// Called when the user attempts to drag one of the tool's
     /// crosshairs. The crosshair to be moved is identified by the
@@ -225,11 +215,11 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHMove(const CHInfo *info) override;
+    virtual void OnCHMove(const CHInfo* info) override;
 
 private:
-    static constexpr UINT   kPoint1Id { 1 };    ///< ID for the point 1 crosshair
-    static constexpr UINT   kPoint2Id { 2 };    ///< ID for the point 2 crosshair
+    static constexpr UINT kPoint1Id { 1 };    ///< ID for the point 1 crosshair
+    static constexpr UINT kPoint2Id { 2 };    ///< ID for the point 2 crosshair
 
 
     /// Creates the tool's graphical components. The components include
@@ -238,21 +228,21 @@ private:
     ///
     /// @return <b>true</b> if the window is successfully created.
     ///
-    bool    Create();
+    bool Create();
 
     /// Sets the position of the tool's crosshairs based on the current
     /// values of #m_point1, and #m_point2.
     ///
-    void    SetPosition();
+    void SetPosition();
 
-    CPoint          m_point1;           ///< Location of one corner of the rectangle diagonally opposed to #m_point2
-    CPoint          m_point2;           ///< Location of one corner of the rectangle diagonally opposed to #m_point1
-    CPoint          *m_curPos;          ///< Points to #m_point1 or #m_point2 depending on which point the user is moving
-    CPoint          m_anchorPoint1;     ///< Location for vertical / horizontal lock when Shift is held while dragging the point 1 crosshair
-    CPoint          m_anchorPoint2;     ///< Location for vertical / horizontal lock when Shift is held while dragging the point 2 crosshair
-    MeaCrossHair    m_point1CH;         ///< Crosshair for one corner of the rectangle diagonally opposed to #m_point2CH
-    MeaCrossHair    m_point2CH;         ///< Crosshair for one corner of the rectangle diagonally opposed to #m_point1CH
-    MeaRectangle    m_rectangle;        ///< Rectangle connecting #m_point1 and #m_point2
-    MeaDataWin      m_dataWin1;         ///< Data window tooltip for point 1
-    MeaDataWin      m_dataWin2;         ///< Data window tooltip for point 2
+    CPoint m_point1;            ///< Location of one corner of the rectangle diagonally opposed to #m_point2
+    CPoint m_point2;            ///< Location of one corner of the rectangle diagonally opposed to #m_point1
+    CPoint* m_curPos;           ///< Points to #m_point1 or #m_point2 depending on which point the user is moving
+    CPoint m_anchorPoint1;      ///< Location for vertical / horizontal lock when Shift is held while dragging the point 1 crosshair
+    CPoint m_anchorPoint2;      ///< Location for vertical / horizontal lock when Shift is held while dragging the point 2 crosshair
+    MeaCrossHair m_point1CH;    ///< Crosshair for one corner of the rectangle diagonally opposed to #m_point2CH
+    MeaCrossHair m_point2CH;    ///< Crosshair for one corner of the rectangle diagonally opposed to #m_point1CH
+    MeaRectangle m_rectangle;   ///< Rectangle connecting #m_point1 and #m_point2
+    MeaDataWin m_dataWin1;      ///< Data window tooltip for point 1
+    MeaDataWin m_dataWin2;      ///< Data window tooltip for point 2
 };

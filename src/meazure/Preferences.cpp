@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -40,8 +40,7 @@ END_MESSAGE_MAP()
 
 
 MeaPreferences::MeaPreferences(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPage)
-    :CPropertySheet(nIDCaption, pParentWnd, iSelectPage)
-{
+    :CPropertySheet(nIDCaption, pParentWnd, iSelectPage) {
     // Remove the help button from the dialog.
     //
     m_psh.dwFlags &= ~(PSH_HASHELP);
@@ -55,11 +54,9 @@ MeaPreferences::MeaPreferences(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPa
     AddPage(&m_customPrefs);
     AddPage(&m_advancedPrefs);
 }
-
 
 MeaPreferences::MeaPreferences(LPCTSTR pszCaption, CWnd* pParentWnd, UINT iSelectPage)
-    :CPropertySheet(pszCaption, pParentWnd, iSelectPage)
-{
+    :CPropertySheet(pszCaption, pParentWnd, iSelectPage) {
     // Remove the help button from the dialog.
     //
     m_psh.dwFlags &= ~(PSH_HASHELP);
@@ -74,14 +71,9 @@ MeaPreferences::MeaPreferences(LPCTSTR pszCaption, CWnd* pParentWnd, UINT iSelec
     AddPage(&m_advancedPrefs);
 }
 
+MeaPreferences::~MeaPreferences() {}
 
-MeaPreferences::~MeaPreferences()
-{
-}
-
-
-void MeaPreferences::OnApply()
-{
+void MeaPreferences::OnApply() {
     if (GetActivePage()->OnKillActive()) {
         GetActivePage()->UpdateData(TRUE);
         GetParent()->SendMessage(MeaPrefsApplyMsg, 0, GetActiveIndex());
@@ -94,34 +86,26 @@ void MeaPreferences::OnApply()
     }
 }
 
-
-void MeaPreferences::ShowCustomPrecision()
-{
+void MeaPreferences::ShowCustomPrecision() {
     SetActivePage(&m_precisionPrefs);
     m_precisionPrefs.SelectCustomUnits();
 }
 
-
-void MeaPreferences::OnMove(int x, int y) 
-{
+void MeaPreferences::OnMove(int x, int y) {
     CPropertySheet::OnMove(x, y);
     m_calibrationPrefs.OnMove(x, y);
 }
 
-
-int MeaPreferences::OnCreate(LPCREATESTRUCT lpCreateStruct) 
-{
+int MeaPreferences::OnCreate(LPCREATESTRUCT lpCreateStruct) {
     EnableStackedTabs(FALSE);
 
     return CPropertySheet::OnCreate(lpCreateStruct);
 }
 
+BOOL MeaPreferences::OnCommand(WPARAM wParam, LPARAM lParam) {
+    UINT const id = LOWORD(wParam);
 
-BOOL MeaPreferences::OnCommand(WPARAM wParam, LPARAM lParam)
-{
-    UINT const id = LOWORD( wParam );
-
-    if (IDOK == id || IDCANCEL ==id) {
+    if (IDOK == id || IDCANCEL == id) {
         // HACK: CPropertySheet::GetActiveIndex() behaves differently depending
         // on whether the window exists [e.g. whether inside DoModal()].
         // If window exists, it actually asks the tab control for the active

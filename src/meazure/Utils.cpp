@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -24,14 +24,13 @@
 static constexpr long PRESSED_MASK { 0x8000 };
 
 
-CString MeaUtils::DblToStr(double value)
-{
+CString MeaUtils::DblToStr(double value) {
     CString numStr;
     numStr.Format(_T("%.*f"), DBL_DIG - 1, value);
 
     int idx = numStr.GetLength();
     while (idx-- > 1) {
-        if ((numStr[idx] != _T('0')) || (numStr[idx-1] == _T('.'))) {
+        if ((numStr[idx] != _T('0')) || (numStr[idx - 1] == _T('.'))) {
             break;
         }
     }
@@ -39,9 +38,7 @@ CString MeaUtils::DblToStr(double value)
     return numStr.Left(idx + 1);
 }
 
-
-bool MeaUtils::IsNumber(LPCTSTR str, double *valuep)
-{
+bool MeaUtils::IsNumber(LPCTSTR str, double* valuep) {
     CString vstr(str);
     LPTSTR endStr;
 
@@ -64,9 +61,7 @@ bool MeaUtils::IsNumber(LPCTSTR str, double *valuep)
     return true;
 }
 
-
-bool MeaUtils::IsBoolean(LPCTSTR str, bool *valuep)
-{
+bool MeaUtils::IsBoolean(LPCTSTR str, bool* valuep) {
     CString vstr(str);
 
     vstr.TrimLeft();
@@ -88,13 +83,11 @@ bool MeaUtils::IsBoolean(LPCTSTR str, bool *valuep)
         }
         return true;
     }
-    
+
     return false;
 }
 
-
-CString MeaUtils::LFtoCRLF(CString str)
-{
+CString MeaUtils::LFtoCRLF(CString str) {
     CString conv(str);
     int pos = 0;
 
@@ -114,16 +107,12 @@ CString MeaUtils::LFtoCRLF(CString str)
     return conv;
 }
 
-
-CString MeaUtils::CRLFtoLF(CString str)
-{
+CString MeaUtils::CRLFtoLF(CString str) {
     CString conv(str);
     conv.Replace(_T("\r\n"), _T("\n"));
     return conv;
 }
 
-
-bool MeaUtils::IsKeyPressed(int keyCode)
-{
+bool MeaUtils::IsKeyPressed(int keyCode) {
     return (GetKeyState(keyCode) & PRESSED_MASK) == PRESSED_MASK;
 }

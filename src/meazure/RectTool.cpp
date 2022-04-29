@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -29,9 +29,8 @@
 const CString MeaRectTool::kToolName(_T("RectTool"));
 
 
-MeaRectTool::MeaRectTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
-    MeaCrossHairCallback(), m_curPos(&m_point1)
-{
+MeaRectTool::MeaRectTool(MeaToolMgr* mgr) :
+    MeaRadioTool(mgr), MeaCrossHairCallback(), m_curPos(&m_point1) {
     // Set the default tool positions. The rectangle initially
     // is placed at the center of the screen containing the app.
     //
@@ -47,38 +46,33 @@ MeaRectTool::MeaRectTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
     m_anchorPoint2 = m_point2;
 }
 
-
-MeaRectTool::~MeaRectTool()
-{
+MeaRectTool::~MeaRectTool() {
     try {
         Disable();
         m_curPos = nullptr;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaRectTool::Create()
-{
+bool MeaRectTool::Create() {
     // Create the crosshairs.
     //
     if (!m_point1CH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite),
-                            MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, nullptr, IDS_MEA_POINT1, kPoint1Id)) {
+                           MeaColors::Get(MeaColors::CrossHairBack),
+                           MeaColors::Get(MeaColors::CrossHairHilite),
+                           MeaColors::GetA(MeaColors::CrossHairOpacity),
+                           this, nullptr, IDS_MEA_POINT1, kPoint1Id)) {
         return false;
     }
     if (!m_point2CH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite),
-                            MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, nullptr, IDS_MEA_POINT2, kPoint2Id)) {
+                           MeaColors::Get(MeaColors::CrossHairBack),
+                           MeaColors::Get(MeaColors::CrossHairHilite),
+                           MeaColors::GetA(MeaColors::CrossHairOpacity),
+                           this, nullptr, IDS_MEA_POINT2, kPoint2Id)) {
         return false;
     }
-    
+
     // Create the rectangle.
     //
     if (!m_rectangle.Create(1, 12)) {
@@ -103,9 +97,7 @@ bool MeaRectTool::Create()
     return true;
 }
 
-
-void MeaRectTool::SaveProfile(MeaProfile& profile)
-{
+void MeaRectTool::SaveProfile(MeaProfile& profile) {
     FPOINT pt;
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
@@ -119,9 +111,7 @@ void MeaRectTool::SaveProfile(MeaProfile& profile)
     profile.WriteStr(_T("RectY2"), MeaUtils::DblToStr(pt.y));
 }
 
-
-void MeaRectTool::LoadProfile(MeaProfile& profile)
-{
+void MeaRectTool::LoadProfile(MeaProfile& profile) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     // Use the current positions as the default values
@@ -147,43 +137,33 @@ void MeaRectTool::LoadProfile(MeaProfile& profile)
     SetPosition();
 }
 
-
-void MeaRectTool::EnableCrosshairs()
-{
+void MeaRectTool::EnableCrosshairs() {
     if (m_mgr->CrosshairsEnabled() && IsWindow(m_point1CH)) {
         m_point1CH.Show();
         m_point2CH.Show();
     }
 }
 
-
-void MeaRectTool::DisableCrosshairs()
-{
+void MeaRectTool::DisableCrosshairs() {
     if (IsWindow(m_point1CH)) {
         m_point1CH.Hide();
         m_point2CH.Hide();
     }
 }
 
-
-void MeaRectTool::Flash()
-{
+void MeaRectTool::Flash() {
     m_point1CH.Flash();
     m_point2CH.Flash();
 }
 
-
-void MeaRectTool::Strobe()
-{
+void MeaRectTool::Strobe() {
     m_point1CH.Flash(MeaCrossHair::kStrobeCount);
     m_point2CH.Flash(MeaCrossHair::kStrobeCount);
     m_dataWin1.Strobe();
     m_dataWin2.Strobe();
 }
 
-
-void MeaRectTool::Enable()
-{
+void MeaRectTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -218,9 +198,7 @@ void MeaRectTool::Enable()
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaRectTool::Disable()
-{
+void MeaRectTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -234,14 +212,12 @@ void MeaRectTool::Disable()
     m_dataWin2.Hide();
 }
 
-
-void MeaRectTool::Update(MeaUpdateReason reason)
-{
+void MeaRectTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
         MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-        
+
         // Convert the pixel locations to the current units.
         //
         FPOINT p1 = units.ConvertCoord(m_point1);
@@ -277,16 +253,12 @@ void MeaRectTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-bool MeaRectTool::HasRegion()
-{
+bool MeaRectTool::HasRegion() {
     CRect rect = GetRegion();
     return (rect.Height() != 0) && (rect.Width() != 0);
 }
 
-
-RECT MeaRectTool::GetRegion()
-{
+RECT MeaRectTool::GetRegion() {
     CRect rect(m_point1, m_point2);
     rect.NormalizeRect();
     rect.InflateRect(0, 0, 1, 1);
@@ -294,9 +266,7 @@ RECT MeaRectTool::GetRegion()
     return rect;
 }
 
-
-void MeaRectTool::SetPosition(MeaFields which, int pixels)
-{
+void MeaRectTool::SetPosition(MeaFields which, int pixels) {
     // Set the specified position component.
     //
     switch (which) {
@@ -335,11 +305,9 @@ void MeaRectTool::SetPosition(MeaFields which, int pixels)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaRectTool::SetPosition(const PointMap& points)
-{
+void MeaRectTool::SetPosition(const PointMap& points) {
     PointMap::const_iterator iter;
-    
+
     // Read the position information from the points
     // map, and set the corresponding point.
     //
@@ -351,16 +319,14 @@ void MeaRectTool::SetPosition(const PointMap& points)
     if (iter != points.end()) {
         m_point2 = (*iter).second;
     }
-        
+
     // Reposition the tool and update the data display.
     //
     SetPosition();
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaRectTool::SetPosition()
-{
+void MeaRectTool::SetPosition() {
     // Ensure that the positions fall within the
     // limits of the screen containing the point.
     //
@@ -376,17 +342,13 @@ void MeaRectTool::SetPosition()
     }
 }
 
-
-const POINT& MeaRectTool::GetPosition() const
-{
+const POINT& MeaRectTool::GetPosition() const {
     return *m_curPos;
 }
 
-
-void MeaRectTool::GetPosition(MeaPositionLogMgr::Position& position) const
-{
+void MeaRectTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-        
+
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = units.ConvertCoord(m_point1);
@@ -403,9 +365,7 @@ void MeaRectTool::GetPosition(MeaPositionLogMgr::Position& position) const
     position.RecordRectArea(wh);
 }
 
-
-void MeaRectTool::IncPosition(MeaFields which)
-{
+void MeaRectTool::IncPosition(MeaFields which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x + 1);
@@ -424,9 +384,7 @@ void MeaRectTool::IncPosition(MeaFields which)
     }
 }
 
-
-void MeaRectTool::DecPosition(MeaFields which)
-{
+void MeaRectTool::DecPosition(MeaFields which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x - 1);
@@ -445,17 +403,15 @@ void MeaRectTool::DecPosition(MeaFields which)
     }
 }
 
-
-void MeaRectTool::ColorsChanged()
-{
+void MeaRectTool::ColorsChanged() {
     // Redraw the crosshairs in the new colors.
     //
     m_point1CH.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite));
+                         MeaColors::Get(MeaColors::CrossHairBack),
+                         MeaColors::Get(MeaColors::CrossHairHilite));
     m_point2CH.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite));
+                         MeaColors::Get(MeaColors::CrossHairBack),
+                         MeaColors::Get(MeaColors::CrossHairHilite));
 
     // Set the crosshair and data window opacities.
     //
@@ -470,21 +426,15 @@ void MeaRectTool::ColorsChanged()
     m_rectangle.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-
-CString MeaRectTool::GetToolName() const
-{
+CString MeaRectTool::GetToolName() const {
     return kToolName;
 }
 
-
-UINT MeaRectTool::GetLabelId() const
-{
+UINT MeaRectTool::GetLabelId() const {
     return IDS_MEA_RECTANGLE;
 }
 
-
-void MeaRectTool::OnCHEnter(const CHInfo *info)
-{
+void MeaRectTool::OnCHEnter(const CHInfo* info) {
     // Show the data window corresponding to
     // the crosshair that the pointer has entered.
     //
@@ -496,9 +446,7 @@ void MeaRectTool::OnCHEnter(const CHInfo *info)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaRectTool::OnCHLeave(const CHInfo *info)
-{
+void MeaRectTool::OnCHLeave(const CHInfo* info) {
     // Hide the data window corresponding to
     // the crosshair that the pointer has just
     // left.
@@ -510,9 +458,7 @@ void MeaRectTool::OnCHLeave(const CHInfo *info)
     }
 }
 
-
-void MeaRectTool::OnCHMove(const CHInfo *info)
-{
+void MeaRectTool::OnCHMove(const CHInfo* info) {
     // Ctrl + drag moves the all the crosshairs
     // as a single unit.
     //

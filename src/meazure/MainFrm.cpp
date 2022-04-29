@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -66,32 +66,26 @@ END_MESSAGE_MAP()
 UINT CMainFrame::m_indicators[] { ID_SEPARATOR };
 
 
-CMainFrame::CMainFrame() : CFrameWnd(),
-        m_alwaysVisible(kDefAlwaysVisible),
-        m_profileToolbarVisible(CChildView::kDefToolbarVisible),
-        m_profileStatusbarVisible(CChildView::kDefStatusbarVisible), 
-        m_toolbarVisible(CChildView::kDefToolbarVisible),
-        m_statusbarVisible(CChildView::kDefStatusbarVisible),
-        m_newInstall(true), m_toolbarHeight(0),
-        m_statusbarHeight(0), m_appWidth(0)
-{
-}
+CMainFrame::CMainFrame() :
+    CFrameWnd(),
+    m_alwaysVisible(kDefAlwaysVisible),
+    m_profileToolbarVisible(CChildView::kDefToolbarVisible),
+    m_profileStatusbarVisible(CChildView::kDefStatusbarVisible),
+    m_toolbarVisible(CChildView::kDefToolbarVisible),
+    m_statusbarVisible(CChildView::kDefStatusbarVisible),
+    m_newInstall(true), m_toolbarHeight(0),
+    m_statusbarHeight(0), m_appWidth(0) {}
 
+CMainFrame::~CMainFrame() {}
 
-CMainFrame::~CMainFrame()
-{
-}
-
-
-int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
-{
+int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
     if (CFrameWnd::OnCreate(lpCreateStruct) == -1) {
         return -1;
     }
 
-    if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP | CBRS_TOP
-            | CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_FIXED) ||
-            !m_wndToolBar.LoadToolBar(IDR_MAINFRAME)) {
+    if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP | CBRS_TOP |
+                               CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_FIXED) ||
+        !m_wndToolBar.LoadToolBar(IDR_MAINFRAME)) {
         TRACE0("Failed to create toolbar\n");
         return -1;      // fail to create
     }
@@ -109,12 +103,12 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
     if (!m_wndStatusBar.Create(this) ||
             !m_wndStatusBar.SetIndicators(m_indicators,
-            sizeof(m_indicators)/sizeof(UINT))) {
+                                          sizeof(m_indicators) / sizeof(UINT))) {
         TRACE0("Failed to create status bar\n");
         return -1;      // fail to create
     }
     if (!m_wndView.CreateEx(WS_EX_CONTROLPARENT, nullptr, nullptr, AFX_WS_DEFAULT_VIEW,
-            CRect(0, 0, 0, 0), this, AFX_IDW_PANE_FIRST, nullptr)) {
+                            CRect(0, 0, 0, 0), this, AFX_IDW_PANE_FIRST, nullptr)) {
         TRACE0("Failed to create view window\n");
         return -1;
     }
@@ -156,10 +150,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
     return 0;
 }
 
-
-BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
-{
-    if(!CFrameWnd::PreCreateWindow(cs)) {
+BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs) {
+    if (!CFrameWnd::PreCreateWindow(cs)) {
         return FALSE;
     }
 
@@ -168,30 +160,26 @@ BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
     return TRUE;
 }
 
-
-void CMainFrame::SaveProfile(MeaProfile& profile)
-{
+void CMainFrame::SaveProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         WINDOWPLACEMENT wp;
         wp.length = sizeof(WINDOWPLACEMENT);
         GetWindowPlacement(&wp);
 
-        profile.WriteInt(_T("WindowFlags"),     wp.flags);
-        profile.WriteInt(_T("WindowShowCmd"),   wp.showCmd);
-        profile.WriteInt(_T("WindowLeft"),      wp.rcNormalPosition.left);
-        profile.WriteInt(_T("WindowTop"),       wp.rcNormalPosition.top);
-        profile.WriteBool(_T("AlwaysVisible"),  m_alwaysVisible);
-        profile.WriteBool(_T("ToolBar"),        m_toolbarVisible);
-        profile.WriteBool(_T("StatusBar"),      m_statusbarVisible);
-        profile.WriteBool(_T("NewInstall"),     false);
+        profile.WriteInt(_T("WindowFlags"), wp.flags);
+        profile.WriteInt(_T("WindowShowCmd"), wp.showCmd);
+        profile.WriteInt(_T("WindowLeft"), wp.rcNormalPosition.left);
+        profile.WriteInt(_T("WindowTop"), wp.rcNormalPosition.top);
+        profile.WriteBool(_T("AlwaysVisible"), m_alwaysVisible);
+        profile.WriteBool(_T("ToolBar"), m_toolbarVisible);
+        profile.WriteBool(_T("StatusBar"), m_statusbarVisible);
+        profile.WriteBool(_T("NewInstall"), false);
     }
 
     GetView()->SaveProfile(profile);
 }
 
-
-void CMainFrame::LoadProfile(MeaProfile& profile)
-{
+void CMainFrame::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         WINDOWPLACEMENT wp;
         int flags;
@@ -215,7 +203,7 @@ void CMainFrame::LoadProfile(MeaProfile& profile)
             wp.rcNormalPosition.top = y;
             wp.rcNormalPosition.bottom = wp.rcNormalPosition.top + appRect.Height() - 1;
         }
-        
+
         m_profileToolbarVisible = profile.ReadBool(_T("ToolBar"), m_toolbarVisible);
         m_profileStatusbarVisible = profile.ReadBool(_T("StatusBar"), m_statusbarVisible);
 
@@ -234,9 +222,7 @@ void CMainFrame::LoadProfile(MeaProfile& profile)
     GetView()->LoadProfile(profile);
 }
 
-
-LRESULT CMainFrame::OnMasterReset(WPARAM, LPARAM)
-{
+LRESULT CMainFrame::OnMasterReset(WPARAM, LPARAM) {
     m_alwaysVisible = kDefAlwaysVisible;
     UpdateVisibility();
 
@@ -248,9 +234,7 @@ LRESULT CMainFrame::OnMasterReset(WPARAM, LPARAM)
     return TRUE;
 }
 
-
-void CMainFrame::InitView()
-{
+void CMainFrame::InitView() {
     if (!m_profileToolbarVisible) {
         OnViewToolbar();
     }
@@ -259,24 +243,19 @@ void CMainFrame::InitView()
     }
 }
 
-
 #ifdef _DEBUG
-void CMainFrame::AssertValid() const
-{
+void CMainFrame::AssertValid() const {
     CFrameWnd::AssertValid();
 }
 
-void CMainFrame::Dump(CDumpContext& dc) const
-{
+void CMainFrame::Dump(CDumpContext& dc) const {
     CFrameWnd::Dump(dc);
 }
 
 #endif //_DEBUG
 
-
-LRESULT CMainFrame::OnCopyData(WPARAM /*wParam*/, LPARAM lParam)
-{
-    COPYDATASTRUCT *cds = reinterpret_cast<COPYDATASTRUCT*>(lParam);
+LRESULT CMainFrame::OnCopyData(WPARAM /*wParam*/, LPARAM lParam) {
+    COPYDATASTRUCT* cds = reinterpret_cast<COPYDATASTRUCT*>(lParam);
 
     if (cds->cbData != ID_MEA_COPYDATA) {
         return FALSE;
@@ -288,16 +267,12 @@ LRESULT CMainFrame::OnCopyData(WPARAM /*wParam*/, LPARAM lParam)
     return TRUE;
 }
 
-
-void CMainFrame::OnSetFocus(CWnd* /* pOldWnd */)
-{
+void CMainFrame::OnSetFocus(CWnd* /* pOldWnd */) {
     // forward focus to the view window
     m_wndView.SetFocus();
 }
 
-
-BOOL CMainFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo)
-{
+BOOL CMainFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo) {
     // let the view have first crack at the command
     if (m_wndView.OnCmdMsg(nID, nCode, pExtra, pHandlerInfo)) {
         return TRUE;
@@ -307,61 +282,43 @@ BOOL CMainFrame::OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO*
     return CFrameWnd::OnCmdMsg(nID, nCode, pExtra, pHandlerInfo);
 }
 
-
-void CMainFrame::OnAlwaysVisible() 
-{
+void CMainFrame::OnAlwaysVisible() {
     m_alwaysVisible = !m_alwaysVisible;
     UpdateVisibility();
 }
 
-
-void CMainFrame::OnUpdateAlwaysVisible(CCmdUI* pCmdUI) 
-{
+void CMainFrame::OnUpdateAlwaysVisible(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(m_alwaysVisible);
 }
 
-
-void CMainFrame::UpdateVisibility()
-{
+void CMainFrame::UpdateVisibility() {
     SetWindowPos(m_alwaysVisible ? &wndTopMost : &wndNoTopMost,
         0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE);
 }
 
-
-LRESULT CMainFrame::OnPrefsApply(WPARAM wParam, LPARAM lParam)
-{
+LRESULT CMainFrame::OnPrefsApply(WPARAM wParam, LPARAM lParam) {
     GetView()->SendMessage(MeaPrefsApplyMsg, wParam, lParam);
     return 0;
 }
 
-
-LRESULT CMainFrame::OnShowCalPrefs(WPARAM wParam, LPARAM lParam)
-{
+LRESULT CMainFrame::OnShowCalPrefs(WPARAM wParam, LPARAM lParam) {
     GetView()->PostMessage(MeaShowCalPrefsMsg, wParam, lParam);
     return 0;
 }
 
-
-void CMainFrame::OnUpdateHelpMenu(CCmdUI* pCmdUI)
-{
+void CMainFrame::OnUpdateHelpMenu(CCmdUI* pCmdUI) {
     pCmdUI->Enable(GetFileAttributes(AfxGetApp()->m_pszHelpFilePath) != 0xffffffff);
 }
 
-
-void CMainFrame::OnMeazureReleases()
-{
+void CMainFrame::OnMeazureReleases() {
     OpenUrl(IDS_MEA_RELEASES_URL);
 }
 
-
-void CMainFrame::OnReportIssue()
-{
+void CMainFrame::OnReportIssue() {
     OpenUrl(IDS_MEA_ISSUE_URL);
 }
 
-
-void CMainFrame::OnEndSession(BOOL bEnding) 
-{
+void CMainFrame::OnEndSession(BOOL bEnding) {
     if (bEnding) {
         MeaRegistryProfile profile;
         SaveProfile(profile);
@@ -370,18 +327,14 @@ void CMainFrame::OnEndSession(BOOL bEnding)
     CFrameWnd::OnEndSession(bEnding);
 }
 
-
-void CMainFrame::OnClose() 
-{
+void CMainFrame::OnClose() {
     MeaRegistryProfile profile;
     SaveProfile(profile);
-    
+
     CFrameWnd::OnClose();
 }
 
-
-void CMainFrame::ViewToolbar(bool enable) 
-{
+void CMainFrame::ViewToolbar(bool enable) {
     if ((m_toolbarVisible && !enable) || (!m_toolbarVisible && enable)) {
         m_toolbarVisible = enable;
 
@@ -395,21 +348,15 @@ void CMainFrame::ViewToolbar(bool enable)
     }
 }
 
-
-void CMainFrame::OnViewToolbar() 
-{
+void CMainFrame::OnViewToolbar() {
     ViewToolbar(!m_toolbarVisible);
 }
 
-
-void CMainFrame::OnUpdateViewToolbar(CCmdUI* pCmdUI) 
-{
+void CMainFrame::OnUpdateViewToolbar(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(m_toolbarVisible);
 }
 
-
-void CMainFrame::ViewStatusbar(bool enable) 
-{
+void CMainFrame::ViewStatusbar(bool enable) {
     if ((m_statusbarVisible && !enable) || (!m_statusbarVisible && enable)) {
         m_statusbarVisible = enable;
 
@@ -423,21 +370,15 @@ void CMainFrame::ViewStatusbar(bool enable)
     }
 }
 
-
-void CMainFrame::OnViewStatusbar() 
-{
+void CMainFrame::OnViewStatusbar() {
     ViewStatusbar(!m_statusbarVisible);
 }
 
-
-void CMainFrame::OnUpdateViewStatusbar(CCmdUI* pCmdUI) 
-{
+void CMainFrame::OnUpdateViewStatusbar(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(m_statusbarVisible);
 }
 
-
-bool CMainFrame::OpenUrl(int urlId)
-{
+bool CMainFrame::OpenUrl(int urlId) {
     CString url;
     url.LoadStringA(urlId);
     HINSTANCE h = ShellExecute(nullptr, _T("open"), url, nullptr, nullptr, SW_SHOWNORMAL);

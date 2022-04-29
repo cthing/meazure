@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -21,17 +21,14 @@
 #include "GUID.h"
 
 
-MeaGUID::MeaGUID()
-{
+MeaGUID::MeaGUID() {
     HRESULT hr = CoCreateGuid(&m_guid);
     if (FAILED(hr)) {
         AfxThrowOleException(hr);
     }
 }
 
-
-MeaGUID& MeaGUID::Assign(LPCTSTR guidStr)
-{
+MeaGUID& MeaGUID::Assign(LPCTSTR guidStr) {
     if (guidStr == nullptr) {
         AfxThrowOleException(E_POINTER);
     }
@@ -53,19 +50,16 @@ MeaGUID& MeaGUID::Assign(LPCTSTR guidStr)
     m_guid.Data2 = static_cast<unsigned short>(field[1]);
     m_guid.Data3 = static_cast<unsigned short>(field[2]);
     for (int i = 0; i < 8; i++) {
-        m_guid.Data4[i] = static_cast<unsigned char>(field[i+3]);
+        m_guid.Data4[i] = static_cast<unsigned char>(field[i + 3]);
     }
 
     return *this;
 }
 
-
-CString MeaGUID::ToString() const
-{
-    m_buffer.Format(
-                _T("%08lX-%04hX-%04hX-%02hhX%02hhX-%02hhX%02hhX%02hhX%02hhX%02hhX%02hhX"),
-                m_guid.Data1, m_guid.Data2, m_guid.Data3,
-                m_guid.Data4[0], m_guid.Data4[1], m_guid.Data4[2], m_guid.Data4[3],
-                m_guid.Data4[4], m_guid.Data4[5], m_guid.Data4[6], m_guid.Data4[7]);
+CString MeaGUID::ToString() const {
+    m_buffer.Format(_T("%08lX-%04hX-%04hX-%02hhX%02hhX-%02hhX%02hhX%02hhX%02hhX%02hhX%02hhX"),
+                    m_guid.Data1, m_guid.Data2, m_guid.Data3,
+                    m_guid.Data4[0], m_guid.Data4[1], m_guid.Data4[2], m_guid.Data4[3],
+                    m_guid.Data4[4], m_guid.Data4[5], m_guid.Data4[6], m_guid.Data4[7]);
     return m_buffer;
 }

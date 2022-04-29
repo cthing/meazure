@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -34,8 +34,8 @@
 /// measurements appropriate to the tool. The user can set a preference
 /// to not display the data windows.
 ///
-class MeaDataWin: public CWnd
-{
+class MeaDataWin : public CWnd {
+
 public:
     static constexpr bool kDefArmed { true };       ///< Indicates whether to display data windows by default.
     static constexpr int kNoLabelId { 0xffff };     ///< Indicates a data window label has not been specified.
@@ -49,7 +49,6 @@ public:
     /// Destroys a data window.
     ///
     virtual ~MeaDataWin();
-
 
     /// Creates the window for the data display. This method must be called
     /// prior to calling the Show method. A data item is displayed in the
@@ -69,11 +68,10 @@ public:
     ///
     /// @return <b>true</b> if the window is successfully created.
     ///
-    bool    Create(BYTE opacity, UINT xLabelId = kNoLabelId, UINT yLabelId = kNoLabelId,
-                    UINT wLabelId = kNoLabelId, UINT hLabelId = kNoLabelId,
-                    UINT dLabelId = kNoLabelId, UINT aLabelId = kNoLabelId,
-                    const CWnd* parent = nullptr);
-
+    bool Create(BYTE opacity, UINT xLabelId = kNoLabelId, UINT yLabelId = kNoLabelId,
+                UINT wLabelId = kNoLabelId, UINT hLabelId = kNoLabelId,
+                UINT dLabelId = kNoLabelId, UINT aLabelId = kNoLabelId,
+                const CWnd* parent = nullptr);
 
     /// Displays the specified x and y coordinates. For the values
     /// to be displayed, a string resource ID value must be specified
@@ -81,7 +79,7 @@ public:
     ///
     /// @param point    [in] Coordinates to display.
     ///
-    void    ShowXY(const FPOINT& point) {
+    void ShowXY(const FPOINT& point) {
         m_xData = MeaUnitsMgr::Instance().Format(MeaX, point.x);
         m_yData = MeaUnitsMgr::Instance().Format(MeaY, point.y);
     }
@@ -92,7 +90,7 @@ public:
     ///
     /// @param size     [in] Dimensions to display.
     ///
-    void    ShowWH(const FSIZE& size) {
+    void ShowWH(const FSIZE& size) {
         m_wData = MeaUnitsMgr::Instance().Format(MeaW, size.cx);
         m_hData = MeaUnitsMgr::Instance().Format(MeaH, size.cy);
     }
@@ -103,7 +101,7 @@ public:
     ///
     /// @param dist     [in] Dimensions used to calculate the distance.
     ///
-    void    ShowDistance(const FSIZE& dist) {
+    void ShowDistance(const FSIZE& dist) {
         m_dData = MeaUnitsMgr::Instance().Format(MeaD, MeaLayout::CalcLength(dist.cx, dist.cy));
     }
 
@@ -113,7 +111,7 @@ public:
     ///
     /// @param dist     [in] Distance to display.
     ///
-    void    ShowDistance(double dist) {
+    void ShowDistance(double dist) {
         m_dData = MeaUnitsMgr::Instance().Format(MeaD, dist);
     }
 
@@ -123,17 +121,16 @@ public:
     ///
     /// @param angle    [in] Angle to display.
     ///
-    void    ShowAngle(double angle) {
+    void ShowAngle(double angle) {
         m_aData = MeaUnitsMgr::Instance().FormatConvertAngle(angle);
     }
-
 
     /// Displays the currently set data in the window.
     ///
     /// @param centerWin    [in] The data window is displayed
     ///                     adjacent to a corner of this window.
     ///
-    void    Update(const CWnd& centerWin) {
+    void Update(const CWnd& centerWin) {
         CRect rect;
         centerWin.GetWindowRect(rect);
         Update(rect);
@@ -144,23 +141,22 @@ public:
     /// @param rect     [in] The data window is displayed
     ///                 adjacent to the corner of this rectangle.
     ///
-    void    Update(const CRect& rect);
-
+    void Update(const CRect& rect);
 
     /// Shows the data window, if the window is armed. If the
     /// window is not armed, calling Show does not display the
     /// window.
     ///
-    void    Show();
-    
+    void Show();
+
     /// Hides the data window.
     ///
-    void    Hide() { if (m_hWnd != nullptr) ShowWindow(SW_HIDE); }
+    void Hide() { if (m_hWnd != nullptr) ShowWindow(SW_HIDE); }
 
     /// Flashes the text in the data window once. Typically used
     /// to indicate that a tool position has been recorded.
     ///
-    void    Strobe();
+    void Strobe();
 
     /// Sets the opacity of the data window.
     ///
@@ -168,8 +164,7 @@ public:
     ///                     where 0 is transparent and 255 is
     ///                     opaque.
     ///
-    void    SetOpacity(BYTE opacity);
-
+    void SetOpacity(BYTE opacity);
 
     /// Arms the data window so that it can be displayed when the
     /// Show method is called.
@@ -177,14 +172,14 @@ public:
     /// @param armed        [in] Specifies whether the data window
     ///                     is allowed to be displayed.
     ///
-    static  void    Arm(bool armed) { m_armed = armed; }
-    
+    static void Arm(bool armed) { m_armed = armed; }
+
     /// Indicates whether the data window can be displayed.
     ///
     /// @return <b>true</b> if the data window is allowed to be displayed
     ///         using the Show method.
     ///
-    static  bool    IsArmed() { return m_armed; }
+    static bool IsArmed() { return m_armed; }
 
 
     /// Persists the display settings of the data window to the
@@ -193,7 +188,7 @@ public:
     /// @param profile      [in] Profile object into which the
     ///                     data window state is persisted.
     ///
-    static void     SaveProfile(MeaProfile& profile);
+    static void SaveProfile(MeaProfile& profile);
 
     /// Restores the display settings of the data window from the
     /// specified profile object.
@@ -201,12 +196,12 @@ public:
     /// @param profile      [in] Profile object from which the
     ///                     data window state is restored.
     ///
-    static void     LoadProfile(MeaProfile& profile);
+    static void LoadProfile(MeaProfile& profile);
 
     /// Called when the master reset is activated. Causes the
     /// data window to load its default settings.
     ///
-    static void     MasterReset();
+    static void MasterReset();
 
 protected:
     DECLARE_MESSAGE_MAP()
@@ -214,11 +209,11 @@ protected:
     /// Performs cleanup of objects created in the Create method.
     ///
     afx_msg void OnDestroy();
-    
+
     /// Draws the data window.
     ///
     afx_msg void OnPaint();
-    
+
     /// Called in response to the flash timer so that the data
     /// window can be strobed.
     ///
@@ -236,9 +231,9 @@ private:
     };
 
 
-    static bool     m_armed;            ///< Indicates if the data window is allowed to be displayed.
-    static SIZE     m_margin;           ///< Margin between the data text and the window border, in pixels.
-    static UINT     m_flashInterval;    ///< Window flash interval, in milliseconds.
+    static bool m_armed;            ///< Indicates if the data window is allowed to be displayed.
+    static SIZE m_margin;           ///< Margin between the data text and the window border, in pixels.
+    static UINT m_flashInterval;    ///< Window flash interval, in milliseconds.
 
 
     /// Calculates the width for the data window based on the width
@@ -247,14 +242,14 @@ private:
     ///
     /// @return Width of the data window, in pixels.
     ///
-    int     CalcWidth();
+    int CalcWidth();
 
     /// Draws the data window into the specified device context.
     ///
     /// @param dc   [in] Device context into which the data window
     ///             is drawn.
     ///
-    void    DrawWin(CDC& dc);
+    void DrawWin(CDC& dc);
 
 
     CString m_xLabel;       ///< Label for the x coordinate data.
@@ -263,20 +258,18 @@ private:
     CString m_hLabel;       ///< Label for the height data.
     CString m_dLabel;       ///< Label for the distance data.
     CString m_aLabel;       ///< Label for the angle data.
-
     CString m_xData;        ///< X coordinate data converted to a string.
     CString m_yData;        ///< Y coordinate data converted to a string.
     CString m_wData;        ///< Width data converted to a string.
     CString m_hData;        ///< Height data converted to a string.
     CString m_dData;        ///< Distance data converted to a string.
     CString m_aData;        ///< Angle data converted to a string.
-
-    const CWnd  *m_parent;      ///< Parent window or nullptr if data window is floating.
-    CFont       m_font;         ///< Font for the data display.
-    LONG        m_textHeight;   ///< Height of the text, in pixels.
-    LONG        m_winHeight;    ///< Height of the data window, in pixels.
-    int         m_dataOffset;   ///< Position for the data strings, in pixels.
-    DrawState   m_drawState;    ///< Indicates how the data window should be drawn.
-    int         m_flashCount;   ///< Window flash interval, in milliseconds.
-    BYTE        m_opacity;      ///< Data window opacity, 0 (transparent) to 255 (opaque).
+    const CWnd* m_parent;   ///< Parent window or nullptr if data window is floating.
+    CFont m_font;           ///< Font for the data display.
+    LONG m_textHeight;      ///< Height of the text, in pixels.
+    LONG m_winHeight;       ///< Height of the data window, in pixels.
+    int m_dataOffset;       ///< Position for the data strings, in pixels.
+    DrawState m_drawState;  ///< Indicates how the data window should be drawn.
+    int m_flashCount;       ///< Window flash interval, in milliseconds.
+    BYTE m_opacity;         ///< Data window opacity, 0 (transparent) to 255 (opaque).
 };

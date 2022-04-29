@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -26,27 +26,20 @@
 const CString MeaScreenTool::kToolName(_T("ScreenTool"));
 
 
-MeaScreenTool::MeaScreenTool(MeaToolMgr* mgr) :
-    MeaTool(mgr), m_rect(0, 0, 0, 0), m_anyOSRes(true)
-{
+MeaScreenTool::MeaScreenTool(MeaToolMgr* mgr) : MeaTool(mgr), m_rect(0, 0, 0, 0), m_anyOSRes(true) {
     m_res.cx = 0.0;
     m_res.cy = 0.0;
 }
 
-
-MeaScreenTool::~MeaScreenTool()
-{
+MeaScreenTool::~MeaScreenTool() {
     try {
         Disable();
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-void MeaScreenTool::LoadProfile(MeaProfile& /*profile*/)
-{
+void MeaScreenTool::LoadProfile(MeaProfile& /*profile*/) {
     // The LoadProfile method is called early in the application
     // startup process. By calling SetPosition from here we can
     // point the tool at the screen on which the application is
@@ -57,9 +50,7 @@ void MeaScreenTool::LoadProfile(MeaProfile& /*profile*/)
     SetPosition(pos);
 }
 
-
-void MeaScreenTool::Enable()
-{
+void MeaScreenTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -68,16 +59,11 @@ void MeaScreenTool::Enable()
 
     // Tell the manager which display fields we are using.
     //
-    m_mgr->EnableScreenFields(MeaScreenWidthField |
-                                    MeaScreenHeightField |
-                                    MeaResXField |
-                                    MeaResYField, 0);
+    m_mgr->EnableScreenFields(MeaScreenWidthField | MeaScreenHeightField | MeaResXField | MeaResYField, 0);
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaScreenTool::Disable()
-{
+void MeaScreenTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -85,12 +71,10 @@ void MeaScreenTool::Disable()
     MeaTool::Disable();
 }
 
-
-void MeaScreenTool::Update(MeaUpdateReason reason)
-{
+void MeaScreenTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
-    
+
         CPoint topLeft(m_rect.TopLeft());
         CPoint bottomRight(m_rect.BottomRight());
         bottomRight.Offset(-1, -1);
@@ -104,15 +88,11 @@ void MeaScreenTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-CString MeaScreenTool::GetToolName() const
-{
+CString MeaScreenTool::GetToolName() const {
     return kToolName;
 }
 
-
-void MeaScreenTool::SetPosition(const POINT& pos)
-{
+void MeaScreenTool::SetPosition(const POINT& pos) {
     // Get the information for the screen which contains
     // the specified position.
     //
@@ -137,8 +117,6 @@ void MeaScreenTool::SetPosition(const POINT& pos)
     }
 }
 
-
-const POINT& MeaScreenTool::GetPosition() const
-{
+const POINT& MeaScreenTool::GetPosition() const {
     return m_defaultPos;
 }

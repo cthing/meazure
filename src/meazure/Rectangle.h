@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -33,8 +33,8 @@
 /// out a smaller rectangle from the window's interior. The remaining
 /// region forms the line of the rectangle. 
 ///
-class MeaRectangle : public MeaGraphic
-{
+class MeaRectangle : public MeaGraphic {
+
 public:
     /// Constructs a rectangle. Prior to displaying the rectangle with
     /// the Show() method, the Create() method must be called to create
@@ -45,7 +45,6 @@ public:
     /// Destroys the rectangle.
     ///
     virtual ~MeaRectangle();
-
 
     /// Creates the window for the rectangle. This method must be called
     /// before the rectangle can be displayed and before any operation that
@@ -68,14 +67,12 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(int thk, int shrink, const CWnd *parent = nullptr);
-
+    bool    Create(int thk, int shrink, const CWnd* parent = nullptr);
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.
     ///
     virtual void Hide() override;
-
 
     /// Sets the position of the rectangle.
     ///
@@ -130,10 +127,11 @@ private:
     ///
     void    SetRegion();
 
-    CPoint      m_point1;           ///< Location of the top left corner of the rectangle, in pixels.
-    CPoint      m_point2;           ///< Location of the bottom right corner of the rectangle, in pixels.
-    CBrush      *m_foreBrush;       ///< Brush to paint the rectangle's line.
-    MeaTimer    m_timer;            ///< Timer for delayed drawing of the rectangle to reduce visual artifacts.
-    int         m_thk;              ///< Thickness of the rectangle's line, in pixels.
-    int         m_shrink;           ///< Number pixels to hang back from the top left and bottom right corners of the rectangle.
+
+    CPoint m_point1;        ///< Location of the top left corner of the rectangle, in pixels.
+    CPoint m_point2;        ///< Location of the bottom right corner of the rectangle, in pixels.
+    CBrush* m_foreBrush;    ///< Brush to paint the rectangle's line.
+    MeaTimer m_timer;       ///< Timer for delayed drawing of the rectangle to reduce visual artifacts.
+    int m_thk;              ///< Thickness of the rectangle's line, in pixels.
+    int m_shrink;           ///< Number pixels to hang back from the top left and bottom right corners of the rectangle.
 };

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -22,19 +22,11 @@
 #include "Layout.h"
 
 
-MeaLabel::MeaLabel() : CStatic()
-{
-}
+MeaLabel::MeaLabel() : CStatic() {}
 
+MeaLabel::~MeaLabel() {}
 
-MeaLabel::~MeaLabel()
-{
-}
-
-
-bool MeaLabel::Create(UINT labelID, DWORD style, const POINT& topLeft,
-                      CWnd* parentWnd, UINT id)
-{
+bool MeaLabel::Create(UINT labelID, DWORD style, const POINT& topLeft, CWnd* parentWnd, UINT id) {
     CString label;
 
     if (!label.LoadString(labelID)) {
@@ -43,10 +35,8 @@ bool MeaLabel::Create(UINT labelID, DWORD style, const POINT& topLeft,
     return Create(label, style, topLeft, parentWnd, id) ? true : false;
 }
 
-
 bool MeaLabel::Create(LPCTSTR label, DWORD style, const POINT& topLeft,
-                      CWnd* parentWnd, UINT id)
-{
+                      CWnd* parentWnd, UINT id) {
     // Have the parent create the window
     //
     if (!CStatic::Create(label, style, CRect(topLeft, CSize(5, 5)), parentWnd, id)) {
@@ -56,10 +46,10 @@ bool MeaLabel::Create(LPCTSTR label, DWORD style, const POINT& topLeft,
     // Resize the window based on the label. First set
     // a more appropriate font.
     //
-    CFont *defaultFont = CFont::FromHandle(static_cast<HFONT>(GetStockObject(DEFAULT_GUI_FONT)));
+    CFont* defaultFont = CFont::FromHandle(static_cast<HFONT>(GetStockObject(DEFAULT_GUI_FONT)));
     SetFont(defaultFont, FALSE);
 
-    CDC *dc = GetDC();
+    CDC* dc = GetDC();
     if (dc == nullptr) {
         return false;
     }

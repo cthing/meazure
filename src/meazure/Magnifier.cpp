@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -36,35 +36,29 @@ END_MESSAGE_MAP()
 
 
 MeaMagnifier::MeaMagnifier() : CWnd(),
-    m_curPos(0,0),
-    m_enabled(true),
-    m_runState(kDefRunState),
-    m_colorFmt(kDefColorFmt),
-    m_zoomIndex(kDefZoomIndex),
-    m_showGrid(kDefShowGrid),
-    m_magHeight(0)
-{
-}
+m_curPos(0, 0),
+m_enabled(true),
+m_runState(kDefRunState),
+m_colorFmt(kDefColorFmt),
+m_zoomIndex(kDefZoomIndex),
+m_showGrid(kDefShowGrid),
+m_magHeight(0) {}
 
 
-MeaMagnifier::~MeaMagnifier()
-{
+MeaMagnifier::~MeaMagnifier() {
     try {
         Disable();
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd)
-{
+bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd) {
     CRect frontRect, rearRect, colorRect;
 
     if (!CWnd::CreateEx(WS_EX_CONTROLPARENT,
-            AfxRegisterWndClass(0, nullptr, GetSysColorBrush(COLOR_BTNFACE)), _T(""),
-            WS_CHILD | WS_VISIBLE, CRect(topLeft, CSize(width, 5)), parentWnd, 0xFFFF)) {
+                        AfxRegisterWndClass(0, nullptr, GetSysColorBrush(COLOR_BTNFACE)), _T(""),
+                        WS_CHILD | WS_VISIBLE, CRect(topLeft, CSize(width, 5)), parentWnd, 0xFFFF)) {
         return false;
     }
 
@@ -75,13 +69,12 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd)
     if (!m_swatchLabel.Create(IDS_MEA_COLOR, SS_RIGHT | WS_VISIBLE | WS_CHILD, CPoint(0, m_magHeight), this)) {
         return false;
     }
-    if (!m_swatchField.Create(WS_CHILD | WS_TABSTOP| WS_VISIBLE | ES_READONLY, CPoint(0, m_magHeight), 12, this)) {
+    if (!m_swatchField.Create(WS_CHILD | WS_TABSTOP | WS_VISIBLE | ES_READONLY, CPoint(0, m_magHeight), 12, this)) {
         return false;
     }
     m_swatchField.GetClientRect(colorRect);
-    if (!m_swatchWin.Create(AfxRegisterWndClass(0), _T(""),
-           WS_CHILD | WS_VISIBLE | WS_BORDER, CRect(CPoint(0, m_magHeight), CSize(kSwatchWidth, colorRect.Height())),
-            this, 0xFFFF)) {
+    if (!m_swatchWin.Create(AfxRegisterWndClass(0), _T(""), WS_CHILD | WS_VISIBLE | WS_BORDER,
+                            CRect(CPoint(0, m_magHeight), CSize(kSwatchWidth, colorRect.Height())), this, 0xFFFF)) {
         return false;
     }
 
@@ -98,7 +91,7 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd)
 
     MeaLayout::PlaceAfter(m_swatchWin, m_runStateBtn, 3 * kMargin.cx);
     MeaLayout::AlignCenter(m_magHeight, &m_swatchLabel, &m_swatchField, &m_swatchWin, &m_runStateBtn, nullptr);
-    
+
     //
     // Create the zoom control
     //
@@ -113,7 +106,8 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd)
     m_zoomLabel.GetClientRect(frontRect);
     m_factorLabel.GetClientRect(rearRect);
     if (!m_zoomSlider.Create(TBS_HORZ | TBS_NOTICKS | WS_VISIBLE,
-            CRect(frontRect.right, m_magHeight, width - rearRect.Width() - 2, m_magHeight + kZoomHeight), this, 0xFFFF)) {
+                             CRect(frontRect.right, m_magHeight, width - rearRect.Width() - 2, m_magHeight + kZoomHeight),
+                             this, 0xFFFF)) {
         return false;
     }
 
@@ -134,9 +128,7 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd)
     return true;
 }
 
-
-void MeaMagnifier::SaveProfile(MeaProfile& profile)
-{
+void MeaMagnifier::SaveProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         profile.WriteInt(_T("ZoomIndex"), m_zoomIndex);
         profile.WriteBool(_T("MagGrid"), m_showGrid);
@@ -144,29 +136,22 @@ void MeaMagnifier::SaveProfile(MeaProfile& profile)
     }
 }
 
-
-void MeaMagnifier::LoadProfile(MeaProfile& profile)
-{
+void MeaMagnifier::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         SetZoomIndex(profile.ReadInt(_T("ZoomIndex"), m_zoomIndex));
         SetShowGrid(profile.ReadBool(_T("MagGrid"), m_showGrid));
-        SetColorFmt(static_cast<MeaMagnifier::ColorFmt>(profile.ReadInt(_T("ColorFmt"),
-            m_colorFmt)));
+        SetColorFmt(static_cast<MeaMagnifier::ColorFmt>(profile.ReadInt(_T("ColorFmt"), m_colorFmt)));
     }
 }
 
-
-void MeaMagnifier::MasterReset()
-{
+void MeaMagnifier::MasterReset() {
     SetZoomIndex(kDefZoomIndex);
     SetShowGrid(kDefShowGrid);
     SetColorFmt(kDefColorFmt);
     SetRunState(kDefRunState);
 }
 
-
-void MeaMagnifier::Enable()
-{
+void MeaMagnifier::Enable() {
     if (!m_enabled) {
         m_enabled = true;
 
@@ -177,9 +162,7 @@ void MeaMagnifier::Enable()
     }
 }
 
-
-void MeaMagnifier::Disable()
-{
+void MeaMagnifier::Disable() {
     if (m_enabled) {
         m_enabled = false;
 
@@ -191,24 +174,18 @@ void MeaMagnifier::Disable()
     }
 }
 
-
-void MeaMagnifier::SetRunState(RunState runState)
-{
+void MeaMagnifier::SetRunState(RunState runState) {
     if (m_runState != runState) {
         m_runStateBtn.SetState(runState == RunState::Freeze);
         ChangeRunState(runState);
     }
 }
 
-
-void MeaMagnifier::OnRunState()
-{
+void MeaMagnifier::OnRunState() {
     ChangeRunState((GetRunState() == RunState::Run) ? RunState::Freeze : RunState::Run);
 }
 
-
-void MeaMagnifier::ChangeRunState(RunState runState)
-{
+void MeaMagnifier::ChangeRunState(RunState runState) {
     if (m_runState != runState) {
         m_runState = runState;
 
@@ -222,9 +199,7 @@ void MeaMagnifier::ChangeRunState(RunState runState)
     }
 }
 
-
-void MeaMagnifier::Update()
-{
+void MeaMagnifier::Update() {
     if (IsEnabled()) {
         CRect rect;
         CString str;
@@ -240,23 +215,17 @@ void MeaMagnifier::Update()
     }
 }
 
-
-LRESULT MeaMagnifier::OnHelpHitTest(WPARAM, LPARAM)
-{
+LRESULT MeaMagnifier::OnHelpHitTest(WPARAM, LPARAM) {
     return HID_BASE_COMMAND + ID_MEA_MAGNIFIER;
 }
 
-
 void MeaMagnifier::OnHScroll(UINT /* nSBCode */, UINT /* nPos */,
-                             CScrollBar* pScrollBar)
-{
+                             CScrollBar* pScrollBar) {
     m_zoomIndex = reinterpret_cast<CSliderCtrl*>(pScrollBar)->GetPos();
     Update();
 }
 
-
-LRESULT MeaMagnifier::OnHPTimer(WPARAM, LPARAM)
-{
+LRESULT MeaMagnifier::OnHPTimer(WPARAM, LPARAM) {
     Update();
 
     m_timer.Start(kUpdateRate);
@@ -264,16 +233,12 @@ LRESULT MeaMagnifier::OnHPTimer(WPARAM, LPARAM)
     return 0;
 }
 
-
-void MeaMagnifier::OnPaint()
-{
+void MeaMagnifier::OnPaint() {
     CPaintDC dc(this);
     Draw(dc);
 }
 
-
-void MeaMagnifier::Draw(HDC hDC)
-{
+void MeaMagnifier::Draw(HDC hDC) {
     int srcLen, j;
     int xCoord, yCoord;
 
@@ -291,7 +256,7 @@ void MeaMagnifier::Draw(HDC hDC)
     GetClientRect(rect);
 
     CRect dstRect(0, 0, rect.Width(), rect.Width());
-    int dstWidth  = dstRect.Width();
+    int dstWidth = dstRect.Width();
     int dstHeight = dstRect.Height();
 
     //
@@ -310,7 +275,7 @@ void MeaMagnifier::Draw(HDC hDC)
     }
     CRect srcRect((m_curPos.x - srcLen) + 1, (m_curPos.y - srcLen) + 1,
                     m_curPos.x + srcLen, m_curPos.y + srcLen);
-    int srcWidth  = srcRect.Width();
+    int srcWidth = srcRect.Width();
     int srcHeight = srcRect.Height();
 
     // Get the screen corresponding to the current position.
@@ -326,15 +291,15 @@ void MeaMagnifier::Draw(HDC hDC)
             srcRect.top < screenRect.top || srcRect.bottom > screenRect.bottom) {
         RECT clipRect;
 
-        clipRect.left   = (srcRect.left   < screenRect.left)   ? screenRect.left   : srcRect.left;
-        clipRect.top    = (srcRect.top    < screenRect.top)    ? screenRect.top    : srcRect.top;
-        clipRect.right  = (srcRect.right  > screenRect.right)  ? screenRect.right  : srcRect.right;
+        clipRect.left = (srcRect.left < screenRect.left) ? screenRect.left : srcRect.left;
+        clipRect.top = (srcRect.top < screenRect.top) ? screenRect.top : srcRect.top;
+        clipRect.right = (srcRect.right > screenRect.right) ? screenRect.right : srcRect.right;
         clipRect.bottom = (srcRect.bottom > screenRect.bottom) ? screenRect.bottom : srcRect.bottom;
 
-        clipRect.left   = (clipRect.left   - srcRect.left) * dstWidth  / srcWidth;
-        clipRect.right  = (clipRect.right  - srcRect.left) * dstWidth  / srcWidth;
-        clipRect.top    = (clipRect.top    - srcRect.top)  * dstHeight / srcHeight;
-        clipRect.bottom = (clipRect.bottom - srcRect.top)  * dstHeight / srcHeight;
+        clipRect.left = (clipRect.left - srcRect.left) * dstWidth / srcWidth;
+        clipRect.right = (clipRect.right - srcRect.left) * dstWidth / srcWidth;
+        clipRect.top = (clipRect.top - srcRect.top) * dstHeight / srcHeight;
+        clipRect.bottom = (clipRect.bottom - srcRect.top) * dstHeight / srcHeight;
 
         ::BitBlt(memDC, dstRect.left, dstRect.top, dstRect.right, dstRect.bottom, 0, 0, 0, BLACKNESS);
 
@@ -402,7 +367,7 @@ void MeaMagnifier::Draw(HDC hDC)
     //
     // Report the color information
     //
-    TCHAR *colorLbl = _T("");
+    TCHAR* colorLbl = _T("");
     CString colorStr;
 
     switch (m_colorFmt) {
@@ -422,50 +387,50 @@ void MeaMagnifier::Draw(HDC hDC)
             255 - GetGValue(colorValue), 255 - GetBValue(colorValue));
         break;
     case CMYKFmt:
-        {
-            int c = 255 - GetRValue(colorValue);
-            int m = 255 - GetGValue(colorValue);
-            int y = 255 - GetBValue(colorValue);
-            int k = min(c, min(m, y));
-            colorLbl = _T("CMYK:");
-            colorStr.Format(_T("%03d %03d %03d %03d"), c - k, m - k, y - k, k);
-        }
-        break;
+    {
+        int c = 255 - GetRValue(colorValue);
+        int m = 255 - GetGValue(colorValue);
+        int y = 255 - GetBValue(colorValue);
+        int k = min(c, min(m, y));
+        colorLbl = _T("CMYK:");
+        colorStr.Format(_T("%03d %03d %03d %03d"), c - k, m - k, y - k, k);
+    }
+    break;
     case HSLFmt:
-        {
-            HSL hsl;
-            MeaColors::RGBtoHSL(colorValue, hsl);
-            colorLbl = _T("HSL:");
-            colorStr.Format(_T("%03.0f %03.0f %03.0f"),
-                240.0 * hsl.hue,
-                240.0 * hsl.saturation,
-                240.0 * hsl.lightness);
-        }
-        break;
+    {
+        HSL hsl;
+        MeaColors::RGBtoHSL(colorValue, hsl);
+        colorLbl = _T("HSL:");
+        colorStr.Format(_T("%03.0f %03.0f %03.0f"),
+            240.0 * hsl.hue,
+            240.0 * hsl.saturation,
+            240.0 * hsl.lightness);
+    }
+    break;
     case YCbCrFmt:
-        {
-            double r = GetRValue(colorValue);
-            double g = GetGValue(colorValue);
-            double b = GetBValue(colorValue);
-            double y  =  0.257 * r + 0.504 * g + 0.098 * b + 16.0;
-            double cb = -0.148 * r - 0.291 * g + 0.439 * b + 128.0;
-            double cr =  0.439 * r - 0.368 * g - 0.071 * b + 128.0;
-            colorLbl = _T("YCbCr:");
-            colorStr.Format(_T("%03.0f %03.0f %03.0f"), y, cb, cr);
-        }
-        break;
+    {
+        double r = GetRValue(colorValue);
+        double g = GetGValue(colorValue);
+        double b = GetBValue(colorValue);
+        double y = 0.257 * r + 0.504 * g + 0.098 * b + 16.0;
+        double cb = -0.148 * r - 0.291 * g + 0.439 * b + 128.0;
+        double cr = 0.439 * r - 0.368 * g - 0.071 * b + 128.0;
+        colorLbl = _T("YCbCr:");
+        colorStr.Format(_T("%03.0f %03.0f %03.0f"), y, cb, cr);
+    }
+    break;
     case YIQFmt:
-        {
-            double r = GetRValue(colorValue);
-            double g = GetGValue(colorValue);
-            double b = GetBValue(colorValue);
-            double y =  0.299 * r + 0.587 * g + 0.114 * b;
-            double i =  0.596 * r - 0.275 * g - 0.321 * b;
-            double q =  0.212 * r - 0.523 * g + 0.311 * b;
-            colorLbl = _T("YIQ:");
-            colorStr.Format(_T("%03.0f %03.0f %03.0f"), y, (i < 0.0) ? 0.0 : i, (q < 0.0) ? 0.0 : q);
-        }
-        break;
+    {
+        double r = GetRValue(colorValue);
+        double g = GetGValue(colorValue);
+        double b = GetBValue(colorValue);
+        double y = 0.299 * r + 0.587 * g + 0.114 * b;
+        double i = 0.596 * r - 0.275 * g - 0.321 * b;
+        double q = 0.212 * r - 0.523 * g + 0.311 * b;
+        colorLbl = _T("YIQ:");
+        colorStr.Format(_T("%03.0f %03.0f %03.0f"), y, (i < 0.0) ? 0.0 : i, (q < 0.0) ? 0.0 : q);
+    }
+    break;
     default:
         MeaAssert(false);
         break;
@@ -480,7 +445,7 @@ void MeaMagnifier::Draw(HDC hDC)
 
     RECT colorRect;
     m_swatchWin.GetClientRect(&colorRect);
-    CDC *dc = m_swatchWin.GetDC();
+    CDC* dc = m_swatchWin.GetDC();
     dc->FillSolidRect(&colorRect, colorValue);
     m_swatchWin.ReleaseDC(dc);
 }

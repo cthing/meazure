@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -31,8 +31,8 @@
 /// intersection of the lines indicates the origin and the direction of the
 /// lines from the origin indicates the positive direction along the axis.
 ///
-class MeaOriginTool : public MeaTool
-{
+class MeaOriginTool : public MeaTool {
+
 public:
     // Defaults
     static constexpr bool kShowMarker { true }; ///< Indicates whether to show the origin marker by default
@@ -53,7 +53,6 @@ public:
     //
     virtual ~MeaOriginTool();
 
-
     /// Displays the Origin tool. If the Create() method has not been
     /// previously called, it will be called by Enable.
     ///
@@ -63,14 +62,12 @@ public:
     ///
     virtual void Disable() override;
 
-
     /// Requests that the tool update its position based on the current
     /// origin location.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
     virtual void Update(MeaUpdateReason reason) override;
-
 
     /// Persists the state of the tool to the specified profile object.
     ///
@@ -87,11 +84,9 @@ public:
     ///
     virtual void LoadProfile(MeaProfile& profile) override;
 
-
     /// Resets the tool to its default state.
     ///
     virtual void MasterReset() override;
-
 
     /// Returns the tool's current position which, for the Origin tool,
     /// is location of the origin.
@@ -100,7 +95,6 @@ public:
     ///
     virtual const POINT& GetPosition() const override;
 
-
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position
     /// logs.
@@ -108,7 +102,6 @@ public:
     /// @return Name of the tool ("OriginTool").
     ///
     virtual CString GetToolName() const override;
-
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The origin lines are redrawn in their new colors.
@@ -124,6 +117,7 @@ private:
     ///
     bool Create();
 
-    MeaLine         m_xAxis;        ///< Line to depict the x-axis
-    MeaLine         m_yAxis;        ///< Line to depict the y-axis
+
+    MeaLine m_xAxis;    ///< Line to depict the x-axis
+    MeaLine m_yAxis;    ///< Line to depict the y-axis
 };

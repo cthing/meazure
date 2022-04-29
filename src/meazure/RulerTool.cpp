@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -27,9 +27,8 @@
 const CString   MeaRulerTool::kToolName(_T("RulerTool"));
 
 
-MeaRulerTool::MeaRulerTool(MeaToolMgr* mgr) : MeaTool(mgr),
-    MeaRulerCallback()
-{
+MeaRulerTool::MeaRulerTool(MeaToolMgr* mgr) :
+    MeaTool(mgr), MeaRulerCallback() {
     // Position each indicator completely off any screen.
     //
     int i;
@@ -48,24 +47,19 @@ MeaRulerTool::MeaRulerTool(MeaToolMgr* mgr) : MeaTool(mgr),
     }
 }
 
-
-MeaRulerTool::~MeaRulerTool()
-{
+MeaRulerTool::~MeaRulerTool() {
     try {
         Disable();
 
         for (unsigned int i = 0; i < m_rulers.size(); i++) {
             delete m_rulers[i];
         }
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-void MeaRulerTool::SaveProfile(MeaProfile& profile)
-{   
+void MeaRulerTool::SaveProfile(MeaProfile& profile) {
     profile.WriteBool(_T("Rulers"), IsEnabled());
 
     unsigned int i;
@@ -86,9 +80,7 @@ void MeaRulerTool::SaveProfile(MeaProfile& profile)
     }
 }
 
-
-void MeaRulerTool::LoadProfile(MeaProfile& profile)
-{
+void MeaRulerTool::LoadProfile(MeaProfile& profile) {
     MeaScreenMgr& mgr = MeaScreenMgr::Instance();
     MeaScreenMgr::ScreenIter iter;
     unsigned int i;
@@ -97,7 +89,7 @@ void MeaRulerTool::LoadProfile(MeaProfile& profile)
     //
     for (i = 0, iter = mgr.GetScreenIter(); !mgr.AtEnd(iter); ++iter, i++) {
         CString tag;
-        
+
         const CRect& rect = mgr.GetScreenRect(iter);
 
         tag.Format(_T("RulerSet%d-"), i);
@@ -112,9 +104,7 @@ void MeaRulerTool::LoadProfile(MeaProfile& profile)
     }
 }
 
-
-void MeaRulerTool::MasterReset()
-{
+void MeaRulerTool::MasterReset() {
 #pragma warning(disable: 4127)
     if (kShowRulers) {
         Enable();
@@ -124,9 +114,7 @@ void MeaRulerTool::MasterReset()
 #pragma warning(default: 4127)
 }
 
-
-void MeaRulerTool::Enable()
-{
+void MeaRulerTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -145,15 +133,13 @@ void MeaRulerTool::Enable()
             const CRect& rect = mgr.GetScreenRect(iter);
 
             m_rulers[i]->m_vRuler.Create(MeaColors::Get(MeaColors::RulerBorder),
-                            MeaColors::Get(MeaColors::RulerBack),
-                            MeaColors::GetA(MeaColors::RulerOpacity),
-                            MeaRuler::Vertical,
-                            rect, this, nullptr, i);
+                                         MeaColors::Get(MeaColors::RulerBack),
+                                         MeaColors::GetA(MeaColors::RulerOpacity),
+                                         MeaRuler::Vertical, rect, this, nullptr, i);
             m_rulers[i]->m_hRuler.Create(MeaColors::Get(MeaColors::RulerBorder),
-                            MeaColors::Get(MeaColors::RulerBack),
-                            MeaColors::GetA(MeaColors::RulerOpacity),
-                            MeaRuler::Horizontal,
-                            rect, this, nullptr, i);
+                                         MeaColors::Get(MeaColors::RulerBack),
+                                         MeaColors::GetA(MeaColors::RulerOpacity),
+                                         MeaRuler::Horizontal, rect, this, nullptr, i);
 
             PositionRulers(i);
             for (int j = 0; j < MeaRuler::NumIndicators; j++) {
@@ -166,9 +152,7 @@ void MeaRulerTool::Enable()
     }
 }
 
-
-void MeaRulerTool::Disable()
-{
+void MeaRulerTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -181,9 +165,7 @@ void MeaRulerTool::Disable()
     }
 }
 
-
-void MeaRulerTool::Update(MeaUpdateReason reason)
-{
+void MeaRulerTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
@@ -196,38 +178,30 @@ void MeaRulerTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-CString MeaRulerTool::GetToolName() const
-{
+CString MeaRulerTool::GetToolName() const {
     return kToolName;
 }
 
-
-const POINT& MeaRulerTool::GetPosition() const
-{
+const POINT& MeaRulerTool::GetPosition() const {
     return m_defaultPos;
 }
 
-
 void MeaRulerTool::SetIndicator(MeaRuler::IndicatorId indId,
-                                const POINT &indicatorPos)
-{
+                                const POINT& indicatorPos) {
     m_indicatorPos[indId] = indicatorPos;
     for (int i = 0; i < static_cast<int>(m_rulers.size()); i++) {
         PositionIndicators(i, indId);
     }
 }
 
-
-void MeaRulerTool::ColorsChanged()
-{
+void MeaRulerTool::ColorsChanged() {
     for (unsigned int i = 0; i < m_rulers.size(); i++) {
         // Redraw the rulers in the new colors.
         //
         m_rulers[i]->m_vRuler.SetColors(MeaColors::Get(MeaColors::RulerBorder),
-                        MeaColors::Get(MeaColors::RulerBack));
+                                        MeaColors::Get(MeaColors::RulerBack));
         m_rulers[i]->m_hRuler.SetColors(MeaColors::Get(MeaColors::RulerBorder),
-                        MeaColors::Get(MeaColors::RulerBack));
+                                        MeaColors::Get(MeaColors::RulerBack));
 
         // Set the opacities of the rulers.
         //
@@ -236,32 +210,24 @@ void MeaRulerTool::ColorsChanged()
     }
 }
 
-
-void MeaRulerTool::PositionRulers(int rulerIdx)
-{
+void MeaRulerTool::PositionRulers(int rulerIdx) {
     m_rulers[rulerIdx]->m_hRuler.SetPosition(m_rulers[rulerIdx]->m_yPos);
     m_rulers[rulerIdx]->m_vRuler.SetPosition(m_rulers[rulerIdx]->m_xPos);
 }
 
-
-void MeaRulerTool::UpdateRulers(int rulerIdx)
-{
+void MeaRulerTool::UpdateRulers(int rulerIdx) {
     m_rulers[rulerIdx]->m_hRuler.Update();
     m_rulers[rulerIdx]->m_vRuler.Update();
 }
 
-
-void MeaRulerTool::PositionIndicators(int rulerIdx, MeaRuler::IndicatorId indId)
-{
+void MeaRulerTool::PositionIndicators(int rulerIdx, MeaRuler::IndicatorId indId) {
     if (IsEnabled()) {
         m_rulers[rulerIdx]->m_hRuler.SetIndicator(indId, m_indicatorPos[indId].x);
         m_rulers[rulerIdx]->m_vRuler.SetIndicator(indId, m_indicatorPos[indId].y);
     }
 }
 
-
-void MeaRulerTool::OnRulerMove(const RulerInfo *info)
-{
+void MeaRulerTool::OnRulerMove(const RulerInfo* info) {
     MeaAssert(info != nullptr);
 
     RulerSet* rulerSet = m_rulers[info->id];

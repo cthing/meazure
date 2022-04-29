@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -23,7 +23,7 @@
 #pragma once
 
 #ifndef __AFXWIN_H__
-    #error include 'stdafx.h' before including this file for PCH
+#error include 'stdafx.h' before including this file for PCH
 #endif
 
 #include "resource.h"
@@ -31,8 +31,8 @@
 
 /// The application class. Instantiating this class starts the application.
 ///
-class CMeazureApp : public CWinApp
-{
+class CMeazureApp : public CWinApp {
+
 public:
     /// Starts the application.
     ///
@@ -54,24 +54,21 @@ public:
     ///
     virtual void WinHelp(DWORD dwData, UINT nCmd);
 
-    public:
-    virtual BOOL InitInstance() override;
-    virtual int ExitInstance() override;
-
-    /// @fn InitInstance()
     /// Performs all initialization for the application including
     /// processing of the command line arguments, if any.
     /// @return TRUE if initialization successful.
+    /// 
+    virtual BOOL InitInstance() override;
 
-    /// @fn ExitInstance()
     /// Called when the application is terminating. Destroys all
     /// managers.
     /// @return Application exit code.
+    /// 
+    virtual int ExitInstance() override;
 
-    afx_msg void OnAppAbout();
-
-    /// @fn OnAppAbout()
     /// Displays the application About dialog.
+    /// 
+    afx_msg void OnAppAbout();
 
     /// Called by the Mouse Hook DLL to route pointer movement
     /// messages to the View.

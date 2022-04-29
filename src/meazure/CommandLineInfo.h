@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -27,13 +27,13 @@
 ///
 /// nl - Disable layered windows
 ///
-class MeaCommandLineInfo : public CCommandLineInfo
-{
+class MeaCommandLineInfo : public CCommandLineInfo {
+
 public:
     /// Constructs the command-line parser.
     ///
     MeaCommandLineInfo();
-    
+
     /// Destroys the command-line parser.
     ///
     virtual ~MeaCommandLineInfo();

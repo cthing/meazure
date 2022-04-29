@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -21,18 +21,20 @@
 #include "Timer.h"
 
 
-MeaTimer::MeaTimer() : m_timerThread(nullptr), m_stopEvent(FALSE, TRUE),
-    m_exitEvent(FALSE, TRUE), m_elapse(0), m_parent(nullptr), m_userData(0)
-{
+MeaTimer::MeaTimer() :
+    m_timerThread(nullptr),
+    m_stopEvent(FALSE, TRUE),
+    m_exitEvent(FALSE, TRUE),
+    m_elapse(0),
+    m_parent(nullptr),
+    m_userData(0) {
     // The m_exitEvent indicates whether we are in the timer procedure. Since
     // we are just starting, we are not in the timer thread.
     //
     m_exitEvent.SetEvent();
 }
 
-
-MeaTimer::~MeaTimer()
-{
+MeaTimer::~MeaTimer() {
     try {
         // Don't leave the timer thread running or we will pull the object
         // instance out from under it.
@@ -41,15 +43,12 @@ MeaTimer::~MeaTimer()
 
         m_timerThread = nullptr;
         m_parent = nullptr;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-void MeaTimer::Start(int elapse)
-{
+void MeaTimer::Start(int elapse) {
     // The timer needs a parent object to send the timer expire event.
     //
     MeaAssert(m_parent != nullptr);
@@ -67,25 +66,21 @@ void MeaTimer::Start(int elapse)
     if (m_timerThread == nullptr) {
         m_timerThread = AfxBeginThread(MeaTimer::TimerProc, this);
     }
-    
+
     m_critSect.Unlock();
 }
 
-
-void MeaTimer::Stop()
-{
+void MeaTimer::Stop() {
     // Stop the timer thread.
     //
     m_stopEvent.PulseEvent();
-    
+
     // Wait for the signal that the timer thread is done.
     //
     ::WaitForSingleObject(m_exitEvent, INFINITE);
 }
 
-
-UINT MeaTimer::TimerProc()
-{
+UINT MeaTimer::TimerProc() {
     // Indicate that the timer thread has begun.
     //
     m_exitEvent.ResetEvent();

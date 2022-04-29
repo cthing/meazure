@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -36,8 +36,8 @@ class MeaGridTool;
 /// set the grid spacing. The grid spacing can be set independently
 /// in the vertical and horizontal directions.
 ///
-class MeaGridDialog : public CDialog
-{
+class MeaGridDialog : public CDialog {
+
 public:
     /// Constructs a new instance of the Grid tool dialog. To display
     /// the dialog call its DoModal method.
@@ -99,7 +99,7 @@ private:
     /// Updates the dialog's controls to reflect the member variable
     /// values.
     ///
-    void    UpdateDisplay();
+    void UpdateDisplay();
 
     /// Reads the content of the specified text field and attempts
     /// to convert it to a numerical value. In order to succeed, the
@@ -115,20 +115,20 @@ private:
     ///         and the value was within the allowable range. The value parameter
     ///         is changed only if the method returns <b>true</b>.
     ///
-    bool    GetFieldValue(UINT fieldId, long& value) const;
+    bool GetFieldValue(UINT fieldId, long& value) const;
 
-    MeaGridTool*        m_tool;         ///< Grid tool being configured by the dialog
+    MeaGridTool* m_tool;            ///< Grid tool being configured by the dialog
 
-    MeaNumberField      m_hSpaceField;  ///< Horizontal grid spacing text field
-    MeaNumberField      m_vSpaceField;  ///< Vertical grid spacing text field
+    MeaNumberField m_hSpaceField;   ///< Horizontal grid spacing text field
+    MeaNumberField m_vSpaceField;   ///< Vertical grid spacing text field
 
-    CSpinButtonCtrl*    m_hSpaceSpin;   ///< Horizontal spacing increment / decrement control
-    CSpinButtonCtrl*    m_vSpaceSpin;   ///< Vertical spacing increment / decrement spacing
+    CSpinButtonCtrl* m_hSpaceSpin;  ///< Horizontal spacing increment / decrement control
+    CSpinButtonCtrl* m_vSpaceSpin;  ///< Vertical spacing increment / decrement spacing
 
-    bool    m_origLinked;               ///< State of the lock checkbox before the dialog was displayed
-    bool    m_linked;                   ///< Current state of the lock checkbox
-    SIZE    m_origSpacing;              ///< Grid spacing before the dialog was displayed
-    SIZE    m_spacing;                  ///< Current grid spacing
+    bool m_origLinked;              ///< State of the lock checkbox before the dialog was displayed
+    bool m_linked;                  ///< Current state of the lock checkbox
+    SIZE m_origSpacing;             ///< Grid spacing before the dialog was displayed
+    SIZE m_spacing;                 ///< Current grid spacing
 };
 
 
@@ -137,8 +137,8 @@ private:
 /// continuously across all monitors. The grid spacing can be changed
 /// using the MeaGridDialog.
 ///
-class MeaGridTool : public MeaTool
-{
+class MeaGridTool : public MeaTool {
+
 public:
     // Defaults
     //
@@ -148,7 +148,7 @@ public:
     static constexpr bool kDefGrid { false };           ///< Default grid display state
     static constexpr bool kDefLinked { true };          ///< Default spacing link state
 
-    static const CString    kToolName;              ///< "GridTool"
+    static const CString kToolName;                     ///< "GridTool"
 
     /// Constructs a new instance of the Grid overlay tool. To use
     /// a newly constructed Grid tool, the Enable() method must be called.
@@ -161,15 +161,13 @@ public:
     ///
     virtual ~MeaGridTool();
 
-
     /// Displays the Grid tool.
     ///
-    virtual void    Enable() override;
+    virtual void Enable() override;
 
     /// Hides the Grid tool.
     ///
-    virtual void    Disable() override;
-
+    virtual void Disable() override;
 
     /// Persists the state of the tool to the specified profile object.
     ///
@@ -177,36 +175,33 @@ public:
     ///                 Typically an MeaFileProfile or MeaRegistryProfile
     ///                 object.
     ///
-    virtual void    SaveProfile(MeaProfile& profile) override;
+    virtual void SaveProfile(MeaProfile& profile) override;
 
     /// Restores the state of the tool from the specified profile object.
     ///
     /// @param profile  [in] The source for the state information. Typically
     ///                 an MeaFileProfile or MeaRegistryProfile object.
     ///
-    virtual void    LoadProfile(MeaProfile& profile) override;
-
+    virtual void LoadProfile(MeaProfile& profile) override;
 
     /// Resets the tool to its default state.
     ///
-    virtual void    MasterReset() override;
-
+    virtual void MasterReset() override;
 
     /// Draws the horizontal and vertical grid lines, if the tool
     /// is enabled.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
-    virtual void    Update(MeaUpdateReason reason) override;
+    virtual void Update(MeaUpdateReason reason) override;
 
     /// Draws the horizontal grid lines.
     ///
-    void            UpdateH();
+    void UpdateH();
 
     /// Draws the vertical grid lines.
     ///
-    void            UpdateV();
-
+    void UpdateV();
 
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position
@@ -216,7 +211,6 @@ public:
     ///
     virtual CString GetToolName() const override;
 
-
     /// Returns the tool's current position which, for the Grid tool,
     /// is always the position (0, 0).
     ///
@@ -224,18 +218,16 @@ public:
     ///
     virtual const POINT& GetPosition() const override;
 
-
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The grid lines are redrawn in their new colors.
     ///
     virtual void ColorsChanged() override;
 
-
     /// Sets the horizontal and vertical grid spacing.
     ///
     /// @param spacing      [in] Horizontal and vertical grid spacing, in pixels
     ///
-    void    SetGridSpacing(const SIZE& spacing);
+    void SetGridSpacing(const SIZE& spacing);
 
     /// Gets the horizontal and vertical grid spacing.
     ///
@@ -243,20 +235,19 @@ public:
     ///
     const SIZE& GetGridSpacing() const { return m_gridSpacing; }
 
-
     /// Indicates if the grid spacing is linked so that the
     /// horizontal and vertical grid spacing is the same.
     ///
     /// @return <b>true</b> if the horizontal and vertical
     ///         grid spacing are linked.
     ///
-    bool    GetLinked() const { return m_linked; }
+    bool GetLinked() const { return m_linked; }
 
     /// Sets the grid spacing link state.
     ///
     /// @param linked       [in] <b>true</b> to link the spacing
     ///
-    void    SetLinked(bool linked) { m_linked = linked; }
+    void SetLinked(bool linked) { m_linked = linked; }
 
 private:
     typedef std::list<MeaLine*> LineList;       ///< List of grid lines
@@ -278,19 +269,19 @@ private:
     ///
     /// @param dir      [in] Direction of the lines to create
     ///
-    void    SetLines(LineDir dir);
+    void SetLines(LineDir dir);
 
     /// Displays the vertical or horizontal grid lines.
     ///
     /// @param dir      [in] Direction of the lines to display
     ///
-    void    ShowLines(LineDir dir);
+    void ShowLines(LineDir dir);
 
     /// Hides the vertical or horizontal grid lines
     ///
     /// @param dir      [in] Direction of the lines to display
     ///
-    void    HideLines(LineDir dir) const;
+    void HideLines(LineDir dir) const;
 
     /// Hides and then destroys the lines in the specified line list.
     /// The line list is then cleared.
@@ -299,10 +290,11 @@ private:
     ///                 destroyed. The list is empty following the
     ///                 call to this method.
     ///
-    void    DeleteLines(LineList& list) const;
+    void DeleteLines(LineList& list) const;
+    
 
-    CSize       m_gridSpacing;      ///< Vertical and horizontal grid spacing, in pixels
-    bool        m_linked;           ///< <b>true</b> if the vertical and horizontal grid spacings are linked (i.e. kept equal)
-    LineList    m_hlineList;        ///< List of horizontal grid lines
-    LineList    m_vlineList;        ///< List of vertical grid lines
+    CSize m_gridSpacing;    ///< Vertical and horizontal grid spacing, in pixels
+    bool m_linked;          ///< <b>true</b> if the vertical and horizontal grid spacings are linked (i.e. kept equal)
+    LineList m_hlineList;   ///< List of horizontal grid lines
+    LineList m_vlineList;   ///< List of vertical grid lines
 };

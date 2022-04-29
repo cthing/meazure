@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -29,9 +29,8 @@
 const CString   MeaLineTool::kToolName(_T("LineTool"));
 
 
-MeaLineTool::MeaLineTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
-    MeaCrossHairCallback(), m_curPos(&m_point1)
-{
+MeaLineTool::MeaLineTool(MeaToolMgr* mgr) :
+    MeaRadioTool(mgr), MeaCrossHairCallback(), m_curPos(&m_point1) {
     // Set the default tool positions. The line is initially
     // placed at the center of the screen containing the application.
     //
@@ -44,35 +43,30 @@ MeaLineTool::MeaLineTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
     m_point2.Offset(30, 30);
 }
 
-
-MeaLineTool::~MeaLineTool()
-{
+MeaLineTool::~MeaLineTool() {
     try {
         Disable();
         m_curPos = nullptr;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaLineTool::Create()
-{
+bool MeaLineTool::Create() {
     // Create the crosshairs.
     //
     if (!m_point1CH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite),
-                            MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, nullptr, IDS_MEA_POINT1, kPoint1Id)) {
+                           MeaColors::Get(MeaColors::CrossHairBack),
+                           MeaColors::Get(MeaColors::CrossHairHilite),
+                           MeaColors::GetA(MeaColors::CrossHairOpacity),
+                           this, nullptr, IDS_MEA_POINT1, kPoint1Id)) {
         return false;
     }
     if (!m_point2CH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite),
-                            MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, nullptr, IDS_MEA_POINT2, kPoint2Id)) {
+                           MeaColors::Get(MeaColors::CrossHairBack),
+                           MeaColors::Get(MeaColors::CrossHairHilite),
+                           MeaColors::GetA(MeaColors::CrossHairOpacity),
+                           this, nullptr, IDS_MEA_POINT2, kPoint2Id)) {
         return false;
     }
 
@@ -89,8 +83,10 @@ bool MeaLineTool::Create()
 
     // Create the data windows attached to each crosshair.
     //
-    m_dataWin1.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X1, IDS_MEA_Y1, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_LENGTH);
-    m_dataWin2.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X2, IDS_MEA_Y2, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_LENGTH);
+    m_dataWin1.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X1, IDS_MEA_Y1, MeaDataWin::kNoLabelId,
+                      MeaDataWin::kNoLabelId, IDS_MEA_LENGTH);
+    m_dataWin2.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X2, IDS_MEA_Y2, MeaDataWin::kNoLabelId,
+                      MeaDataWin::kNoLabelId, IDS_MEA_LENGTH);
 
     // Position the crosshairs and line based
     // on the values of the points.
@@ -100,9 +96,7 @@ bool MeaLineTool::Create()
     return true;
 }
 
-
-void MeaLineTool::SaveProfile(MeaProfile& profile)
-{   
+void MeaLineTool::SaveProfile(MeaProfile& profile) {
     FPOINT pt;
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
@@ -116,9 +110,7 @@ void MeaLineTool::SaveProfile(MeaProfile& profile)
     profile.WriteStr(_T("LineY2"), MeaUtils::DblToStr(pt.y));
 }
 
-
-void MeaLineTool::LoadProfile(MeaProfile& profile)
-{
+void MeaLineTool::LoadProfile(MeaProfile& profile) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     // Use the current positions as the default values
@@ -141,43 +133,33 @@ void MeaLineTool::LoadProfile(MeaProfile& profile)
     SetPosition();
 }
 
-
-void MeaLineTool::EnableCrosshairs()
-{
+void MeaLineTool::EnableCrosshairs() {
     if (m_mgr->CrosshairsEnabled() && IsWindow(m_point1CH)) {
         m_point1CH.Show();
         m_point2CH.Show();
     }
 }
 
-
-void MeaLineTool::DisableCrosshairs()
-{
+void MeaLineTool::DisableCrosshairs() {
     if (IsWindow(m_point1CH)) {
         m_point1CH.Hide();
         m_point2CH.Hide();
     }
 }
 
-
-void MeaLineTool::Flash()
-{
+void MeaLineTool::Flash() {
     m_point1CH.Flash();
     m_point2CH.Flash();
 }
 
-
-void MeaLineTool::Strobe()
-{
+void MeaLineTool::Strobe() {
     m_point1CH.Flash(MeaCrossHair::kStrobeCount);
     m_point2CH.Flash(MeaCrossHair::kStrobeCount);
     m_dataWin1.Strobe();
     m_dataWin2.Strobe();
 }
 
-
-void MeaLineTool::Enable()
-{
+void MeaLineTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -188,12 +170,12 @@ void MeaLineTool::Enable()
     // we will be using.
     //
     m_mgr->EnableRegionFields(MeaX1Field | MeaY1Field |
-                                MeaX2Field | MeaY2Field |
-                                MeaWidthField | MeaHeightField |
-                                MeaDistanceField | MeaAngleField |
-                                MeaAspectField | MeaAreaField,
-                                MeaX1Field | MeaY1Field |
-                                MeaX2Field | MeaY2Field);
+                              MeaX2Field | MeaY2Field |
+                              MeaWidthField | MeaHeightField |
+                              MeaDistanceField | MeaAngleField |
+                              MeaAspectField | MeaAreaField,
+                              MeaX1Field | MeaY1Field |
+                              MeaX2Field | MeaY2Field);
 
     if (!IsWindow(m_line)) {
         Create();
@@ -212,9 +194,7 @@ void MeaLineTool::Enable()
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaLineTool::Disable()
-{
+void MeaLineTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -225,14 +205,12 @@ void MeaLineTool::Disable()
     DisableCrosshairs();
 }
 
-
-void MeaLineTool::Update(MeaUpdateReason reason)
-{
+void MeaLineTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
-        
+
         MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-        
+
         // Convert the pixel locations to the current units.
         //
         FPOINT p1 = units.ConvertCoord(m_point1);
@@ -268,9 +246,7 @@ void MeaLineTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-void MeaLineTool::SetPosition(MeaFields which, int pixels)
-{
+void MeaLineTool::SetPosition(MeaFields which, int pixels) {
     // Set the specified position component.
     //
     switch (which) {
@@ -308,11 +284,9 @@ void MeaLineTool::SetPosition(MeaFields which, int pixels)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaLineTool::SetPosition(const PointMap& points)
-{
+void MeaLineTool::SetPosition(const PointMap& points) {
     PointMap::const_iterator iter;
-    
+
     // Read the position information from the points
     // map, and set the corresponding point.
     //
@@ -323,7 +297,7 @@ void MeaLineTool::SetPosition(const PointMap& points)
     iter = points.find(_T("2"));
     if (iter != points.end()) {
         m_point2 = (*iter).second;
-    }      
+    }
 
     // Reposition the tool and update the data display.
     //
@@ -331,9 +305,7 @@ void MeaLineTool::SetPosition(const PointMap& points)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaLineTool::SetPosition()
-{
+void MeaLineTool::SetPosition() {
     // Ensure that the positions fall within the
     // limits of the screen containing the point.
     //
@@ -349,17 +321,13 @@ void MeaLineTool::SetPosition()
     }
 }
 
-
-const POINT& MeaLineTool::GetPosition() const
-{
+const POINT& MeaLineTool::GetPosition() const {
     return *m_curPos;
 }
 
-
-void MeaLineTool::GetPosition(MeaPositionLogMgr::Position& position) const
-{
+void MeaLineTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-        
+
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = units.ConvertCoord(m_point1);
@@ -376,9 +344,7 @@ void MeaLineTool::GetPosition(MeaPositionLogMgr::Position& position) const
     position.RecordRectArea(wh);
 }
 
-
-void MeaLineTool::IncPosition(MeaFields which)
-{
+void MeaLineTool::IncPosition(MeaFields which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x + 1);
@@ -397,9 +363,7 @@ void MeaLineTool::IncPosition(MeaFields which)
     }
 }
 
-
-void MeaLineTool::DecPosition(MeaFields which)
-{
+void MeaLineTool::DecPosition(MeaFields which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x - 1);
@@ -418,17 +382,15 @@ void MeaLineTool::DecPosition(MeaFields which)
     }
 }
 
-
-void MeaLineTool::ColorsChanged()
-{
+void MeaLineTool::ColorsChanged() {
     // Set the crosshair colors.
     //
     m_point1CH.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite));
+                         MeaColors::Get(MeaColors::CrossHairBack),
+                         MeaColors::Get(MeaColors::CrossHairHilite));
     m_point2CH.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite));
+                         MeaColors::Get(MeaColors::CrossHairBack),
+                         MeaColors::Get(MeaColors::CrossHairHilite));
 
     // Set the opacity of the crosshairs.
     //
@@ -445,21 +407,15 @@ void MeaLineTool::ColorsChanged()
     m_line.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-
-CString MeaLineTool::GetToolName() const
-{
+CString MeaLineTool::GetToolName() const {
     return kToolName;
 }
 
-
-UINT MeaLineTool::GetLabelId() const
-{
+UINT MeaLineTool::GetLabelId() const {
     return IDS_MEA_LINE;
 }
 
-
-void MeaLineTool::OnCHEnter(const CHInfo *info)
-{
+void MeaLineTool::OnCHEnter(const CHInfo* info) {
     // Show the data window corresponding to
     // the crosshair that the pointer has entered.
     //
@@ -471,9 +427,7 @@ void MeaLineTool::OnCHEnter(const CHInfo *info)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaLineTool::OnCHLeave(const CHInfo *info)
-{
+void MeaLineTool::OnCHLeave(const CHInfo* info) {
     // Hide the data window corresponding to
     // the crosshair that the pointer has just
     // left.
@@ -485,9 +439,7 @@ void MeaLineTool::OnCHLeave(const CHInfo *info)
     }
 }
 
-
-void MeaLineTool::OnCHMove(const CHInfo *info)
-{
+void MeaLineTool::OnCHMove(const CHInfo* info) {
     // Ctrl + drag moves the all the crosshairs
     // as a single unit.
     //
@@ -514,7 +466,7 @@ void MeaLineTool::OnCHMove(const CHInfo *info)
     //
     else {
         CPoint& movingPoint = (info->id == kPoint1Id) ? m_point1 : m_point2;
-        CPoint& fixedPoint  = (info->id != kPoint1Id) ? m_point1 : m_point2;
+        CPoint& fixedPoint = (info->id != kPoint1Id) ? m_point1 : m_point2;
 
         movingPoint = info->centerPoint;
 

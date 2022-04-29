@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -45,7 +45,7 @@ static constexpr int CHAR_2 { 50 };
 static constexpr int CHAR_3 { 51 };
 
 
-BEGIN_MESSAGE_MAP(CChildView,CWnd )
+BEGIN_MESSAGE_MAP(CChildView, CWnd)
     ON_COMMAND_RANGE(ID_MEA_UNITS_PIXELS, ID_MEA_UNITS_PICAS, OnUnits)
     ON_COMMAND_RANGE(ID_MEA_DEGREES, ID_MEA_RADIANS, OnAngles)
     ON_COMMAND_RANGE(ID_MEA_CURSOR, ID_MEA_WINDOW, OnRadioTool)
@@ -140,8 +140,8 @@ BEGIN_MESSAGE_MAP(CChildView,CWnd )
 END_MESSAGE_MAP()
 
 
-CChildView::CChildView() : CWnd(),
-    m_margin(5,5),
+CChildView::CChildView() :
+    CWnd(), m_margin(5, 5),
     m_enabled(true),
     m_profileMagnifierEnabled(kDefMagnifierVisible),
     m_profileScreenEnabled(kDefScreenInfoVisible),
@@ -152,25 +152,19 @@ CChildView::CChildView() : CWnd(),
     m_expandStatusbar(kDefStatusbarVisible),
     m_expandMagnifier(kDefMagnifierVisible),
     m_expandScreenInfo(kDefScreenInfoVisible),
-    m_expandToolInfo(kDefToolInfoVisible)
-{
+    m_expandToolInfo(kDefToolInfoVisible) {
     MeaToolMgr::Instance().SetDataDisplay(&m_dataDisplay);
 }
 
-
-CChildView::~CChildView()
-{
+CChildView::~CChildView() {
     try {
         MeaToolMgr::Instance().SetDataDisplay(nullptr);
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-void CChildView::SaveProfile(MeaProfile& profile)
-{
+void CChildView::SaveProfile(MeaProfile& profile) {
     MeaScreenMgr::Instance().SaveProfile(profile);
     MeaUnitsMgr::Instance().SaveProfile(profile);
     MeaColors::SaveProfile(profile);
@@ -186,21 +180,19 @@ void CChildView::SaveProfile(MeaProfile& profile)
 
         profile.WriteBool(_T("Magnifier"), m_magnifier.IsEnabled());
 
-        profile.WriteBool(_T("ExpandToolbar"),      m_expandToolbar);
-        profile.WriteBool(_T("ExpandStatusbar"),    m_expandStatusbar);
-        profile.WriteBool(_T("ExpandMagnifier"),    m_expandMagnifier);
-        profile.WriteBool(_T("ExpandScreenInfo"),   m_expandScreenInfo);
-        profile.WriteBool(_T("ExpandToolInfo"),     m_expandToolInfo);
-    
+        profile.WriteBool(_T("ExpandToolbar"), m_expandToolbar);
+        profile.WriteBool(_T("ExpandStatusbar"), m_expandStatusbar);
+        profile.WriteBool(_T("ExpandMagnifier"), m_expandMagnifier);
+        profile.WriteBool(_T("ExpandScreenInfo"), m_expandScreenInfo);
+        profile.WriteBool(_T("ExpandToolInfo"), m_expandToolInfo);
+
         profile.WriteStr(_T("StartupProfile"), m_startupProfile);
     }
 
     MeaToolMgr::Instance().SaveProfile(profile);
 }
 
-
-void CChildView::LoadProfile(MeaProfile& profile)
-{
+void CChildView::LoadProfile(MeaProfile& profile) {
     MeaToolMgr& toolMgr = MeaToolMgr::Instance();
 
     MeaScreenMgr::Instance().LoadProfile(profile);
@@ -208,12 +200,12 @@ void CChildView::LoadProfile(MeaProfile& profile)
 
     MeaColorDialog::LoadProfile(profile);
     MeaColors::LoadProfile(profile);
-    
+
     MeaDataWin::LoadProfile(profile);
-    
+
     MeaProfileMgr::Instance().LoadProfile(profile);
     MeaPositionLogMgr::Instance().LoadProfile(profile);
-    
+
     m_magnifier.LoadProfile(profile);
 
     if (!profile.UserInitiated()) {
@@ -223,13 +215,13 @@ void CChildView::LoadProfile(MeaProfile& profile)
         m_profileScreenEnabled = profile.ReadBool(_T("ScreenInfo"), m_dataDisplay.IsEnabled(MeaScreenSection));
         m_profileMagnifierEnabled = profile.ReadBool(_T("Magnifier"), m_magnifier.IsEnabled());
 
-        m_expandToolbar     = profile.ReadBool(_T("ExpandToolbar"),     m_expandToolbar);
-        m_expandStatusbar   = profile.ReadBool(_T("ExpandStatusbar"),   m_expandStatusbar);
-        m_expandMagnifier   = profile.ReadBool(_T("ExpandMagnifier"),   m_expandMagnifier);
-        m_expandScreenInfo  = profile.ReadBool(_T("ExpandScreenInfo"),  m_expandScreenInfo);
-        m_expandToolInfo    = profile.ReadBool(_T("ExpandToolInfo"),    m_expandToolInfo);
+        m_expandToolbar = profile.ReadBool(_T("ExpandToolbar"), m_expandToolbar);
+        m_expandStatusbar = profile.ReadBool(_T("ExpandStatusbar"), m_expandStatusbar);
+        m_expandMagnifier = profile.ReadBool(_T("ExpandMagnifier"), m_expandMagnifier);
+        m_expandScreenInfo = profile.ReadBool(_T("ExpandScreenInfo"), m_expandScreenInfo);
+        m_expandToolInfo = profile.ReadBool(_T("ExpandToolInfo"), m_expandToolInfo);
 
-        m_startupProfile    = profile.ReadStr(_T("StartupProfile"), m_startupProfile);
+        m_startupProfile = profile.ReadStr(_T("StartupProfile"), m_startupProfile);
     }
 
     toolMgr.DisableRadioTools();
@@ -238,9 +230,7 @@ void CChildView::LoadProfile(MeaProfile& profile)
     toolMgr.UpdateTools();
 }
 
-
-void CChildView::MasterReset()
-{
+void CChildView::MasterReset() {
     m_expandToolbar = kDefToolbarVisible;
     m_expandStatusbar = kDefStatusbarVisible;
 
@@ -267,7 +257,7 @@ void CChildView::MasterReset()
     MeaPositionLogMgr::Instance().MasterReset();
 
     m_magnifier.MasterReset();
-    
+
     MeaToolMgr& toolMgr = MeaToolMgr::Instance();
     toolMgr.ColorsChanged();
     toolMgr.DisableRadioTools();
@@ -276,9 +266,7 @@ void CChildView::MasterReset()
     toolMgr.UpdateTools(MeaUpdateReason::AllChanged);
 }
 
-
-void CChildView::LoadStartupFile(const CString& cmdLineFile) const
-{
+void CChildView::LoadStartupFile(const CString& cmdLineFile) const {
     // Load any profile files.
     //
     if (!cmdLineFile.IsEmpty() && MeaProfileMgr::IsProfileFile(cmdLineFile))
@@ -295,24 +283,20 @@ void CChildView::LoadStartupFile(const CString& cmdLineFile) const
     }
 }
 
-
-BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs) 
-{
+BOOL CChildView::PreCreateWindow(CREATESTRUCT& cs) {
     if (!CWnd::PreCreateWindow(cs)) {
         return FALSE;
     }
 
     cs.dwExStyle |= WS_EX_CLIENTEDGE;
     cs.style &= ~WS_BORDER;
-    cs.lpszClass = AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW|CS_DBLCLKS, 
+    cs.lpszClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS,
         ::LoadCursor(nullptr, IDC_ARROW), GetSysColorBrush(COLOR_BTNFACE), nullptr);
 
     return TRUE;
 }
 
-
-int CChildView::OnCreate(LPCREATESTRUCT lpCreateStruct) 
-{
+int CChildView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
     if (CWnd::OnCreate(lpCreateStruct) == -1) {
         return -1;
     }
@@ -326,7 +310,7 @@ int CChildView::OnCreate(LPCREATESTRUCT lpCreateStruct)
     m_dataDisplay.GetWindowRect(&rect);
 
     if (!m_magnifier.Create(CPoint(m_margin.cx,
-            rect.Height() + 2 * m_margin.cy), rect.Width(), this)) {
+                                   rect.Height() + 2 * m_margin.cy), rect.Width(), this)) {
         return -1;
     }
     m_magnifier.GetWindowRect(magRect);
@@ -341,8 +325,8 @@ int CChildView::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
     m_adjustHeight = rect.Height() - m_adjustHeight;
 
-    CFrameWnd *frame = GetParentFrame();
-    
+    CFrameWnd* frame = GetParentFrame();
+
     style = frame->GetStyle();
     exstyle = frame->GetExStyle();
     ::AdjustWindowRectEx(&rect, style, TRUE, exstyle);
@@ -376,15 +360,13 @@ int CChildView::OnCreate(LPCREATESTRUCT lpCreateStruct)
     // Enable the currently selected radio tool
     //
     toolMgr.ChangeRadioToolEnable();
-    
+
     return 0;
 }
 
-
-int CChildView::GetMenuWidth()
-{
+int CChildView::GetMenuWidth() {
     int width = 0;
-    CMenu *menu = GetParentFrame()->GetMenu();
+    CMenu* menu = GetParentFrame()->GetMenu();
     int numItems = menu->GetMenuItemCount();
 
     for (int i = 0; i < numItems; i++) {
@@ -397,9 +379,7 @@ int CChildView::GetMenuWidth()
     return width + GetSystemMetrics(SM_CXVSCROLL) + 1;
 }
 
-
-void CChildView::InitView()
-{
+void CChildView::InitView() {
     if (!m_profileRegionEnabled) {
         OnToolInfo();
     }
@@ -413,16 +393,14 @@ void CChildView::InitView()
     }
 }
 
-
-void CChildView::CheckMargins()
-{
+void CChildView::CheckMargins() {
     bool sectionsEnabled = m_dataDisplay.IsEnabled(MeaScreenSection) ||
-                           m_dataDisplay.IsEnabled(MeaRegionSection) ||
-                           m_magnifier.IsEnabled();
-    CFrameWnd *frame = GetParentFrame();
+        m_dataDisplay.IsEnabled(MeaRegionSection) ||
+        m_magnifier.IsEnabled();
+    CFrameWnd* frame = GetParentFrame();
     int frameHeight = MeaLayout::GetWindowHeight(*frame);
     int marginHeight = 2 * m_margin.cy + m_adjustHeight;
-    
+
     if (sectionsEnabled) {
         if (!m_enabled) {
             MeaLayout::SetWindowHeight(*frame, frameHeight + marginHeight);
@@ -436,21 +414,15 @@ void CChildView::CheckMargins()
     }
 }
 
-
-void CChildView::OnSaveProfile() 
-{
+void CChildView::OnSaveProfile() {
     MeaProfileMgr::Instance().Save();
 }
 
-
-void CChildView::OnLoadProfile() 
-{
+void CChildView::OnLoadProfile() {
     MeaProfileMgr::Instance().Load();
 }
 
-
-BOOL CChildView::PreTranslateMessage(MSG* pMsg)
-{
+BOOL CChildView::PreTranslateMessage(MSG* pMsg) {
     bool pressed = false;
 
     if (pMsg->message == WM_KEYDOWN) {
@@ -505,28 +477,22 @@ BOOL CChildView::PreTranslateMessage(MSG* pMsg)
     return pressed ? TRUE : CWnd::PreTranslateMessage(pMsg);
 }
 
-
-void CChildView::OnMouseHook(WPARAM wParam, LPARAM lParam)
-{
+void CChildView::OnMouseHook(WPARAM wParam, LPARAM lParam) {
     MeaToolMgr::Instance().OnMouseHook(wParam, lParam);
 }
 
-
-LRESULT CChildView::OnGetPosition(WPARAM /* wParam */, LPARAM lParam)
-{
-    POINT *curPos = reinterpret_cast<POINT*>(lParam);
+LRESULT CChildView::OnGetPosition(WPARAM /* wParam */, LPARAM lParam) {
+    POINT* curPos = reinterpret_cast<POINT*>(lParam);
 
     *curPos = MeaToolMgr::Instance().GetPosition();
     return TRUE;
 }
 
-
-void CChildView::OnUpdateUnits(CCmdUI* pCmdUI)
-{
+void CChildView::OnUpdateUnits(CCmdUI* pCmdUI) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     pCmdUI->Enable();
-    
+
     switch (pCmdUI->m_nID) {
     case ID_MEA_UNITS_PIXELS:
         pCmdUI->SetRadio(unitsMgr.GetLinearUnitsId() == MeaPixelsId);
@@ -555,9 +521,7 @@ void CChildView::OnUpdateUnits(CCmdUI* pCmdUI)
     }
 }
 
-
-void CChildView::OnUnits(UINT nID) 
-{
+void CChildView::OnUnits(UINT nID) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     switch (nID) {
@@ -590,13 +554,11 @@ void CChildView::OnUnits(UINT nID)
     MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
 }
 
-
-void CChildView::OnUpdateAngles(CCmdUI* pCmdUI)
-{
+void CChildView::OnUpdateAngles(CCmdUI* pCmdUI) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     pCmdUI->Enable();
-    
+
     switch (pCmdUI->m_nID) {
     case ID_MEA_DEGREES:
         pCmdUI->SetRadio(unitsMgr.GetAngularUnitsId() == MeaDegreesId);
@@ -610,9 +572,7 @@ void CChildView::OnUpdateAngles(CCmdUI* pCmdUI)
     }
 }
 
-
-void CChildView::OnAngles(UINT nID) 
-{
+void CChildView::OnAngles(UINT nID) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     switch (nID) {
@@ -630,14 +590,12 @@ void CChildView::OnAngles(UINT nID)
     MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
 }
 
-
-void CChildView::OnUpdateCustomUnits(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateCustomUnits(CCmdUI* pCmdUI) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
     MeaCustomUnits* customUnits = unitsMgr.GetCustomUnits();
 
     pCmdUI->SetRadio(unitsMgr.GetLinearUnitsId() == MeaCustomId);
-    
+
     if (customUnits->HaveCustomUnits()) {
         pCmdUI->SetText(customUnits->GetName());
         pCmdUI->Enable(TRUE);
@@ -648,43 +606,31 @@ void CChildView::OnUpdateCustomUnits(CCmdUI* pCmdUI)
     }
 }
 
-
-void CChildView::OnCustomUnits() 
-{
+void CChildView::OnCustomUnits() {
     MeaUnitsMgr::Instance().SetLinearUnits(MeaCustomId);
     MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
 }
 
-
-void CChildView::OnDefineCustomUnits() 
-{
+void CChildView::OnDefineCustomUnits() {
     m_prefs.SetActivePage(&m_prefs.m_customPrefs);
     OnPreferences();
 }
 
-
-void CChildView::OnSetPosition1ToCursor()
-{
+void CChildView::OnSetPosition1ToCursor() {
     MeaToolMgr::Instance().SetPositionToCursor(MeaX1Field, MeaY1Field);
 }
 
-
-void CChildView::OnSetPosition2ToCursor()
-{
+void CChildView::OnSetPosition2ToCursor() {
     MeaToolMgr::Instance().SetPositionToCursor(MeaX2Field, MeaY2Field);
 }
 
-
-void CChildView::OnSetPosition3ToCursor()
-{
+void CChildView::OnSetPosition3ToCursor() {
     MeaToolMgr::Instance().SetPositionToCursor(MeaXVField, MeaYVField);
 }
 
-
-void CChildView::OnUpdateColorFmt(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateColorFmt(CCmdUI* pCmdUI) {
     pCmdUI->Enable();
-    
+
     switch (pCmdUI->m_nID) {
     case ID_MEA_RGBFMT:
         pCmdUI->SetRadio(m_magnifier.GetColorFmt() == MeaMagnifier::RGBFmt);
@@ -713,9 +659,7 @@ void CChildView::OnUpdateColorFmt(CCmdUI* pCmdUI)
     }
 }
 
-
-void CChildView::OnColorFmt(UINT nID)
-{
+void CChildView::OnColorFmt(UINT nID) {
     switch (nID) {
     case ID_MEA_RGBFMT:
         m_magnifier.SetColorFmt(MeaMagnifier::RGBFmt);
@@ -744,87 +688,61 @@ void CChildView::OnColorFmt(UINT nID)
     }
 }
 
-
-void CChildView::OnInvertY() 
-{
+void CChildView::OnInvertY() {
     MeaUnitsMgr::Instance().SetInvertY(!MeaUnitsMgr::Instance().GetInvertY());
     MeaToolMgr::Instance().UpdateTools();
 }
 
-
-void CChildView::OnUpdateInvertY(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateInvertY(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(MeaUnitsMgr::Instance().GetInvertY());
 }
 
-
-void CChildView::OnOrigin() 
-{
+void CChildView::OnOrigin() {
     MeaUnitsMgr::Instance().SetOrigin(MeaToolMgr::Instance().GetPosition());
     MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::OriginChanged);
 }
 
-
-void CChildView::OnResetOrigin() 
-{
+void CChildView::OnResetOrigin() {
     CPoint point(0, 0);
     MeaUnitsMgr::Instance().SetOrigin(point);
     MeaToolMgr::Instance().UpdateTools();
 }
 
-
-void CChildView::OnRecordPosition() 
-{
+void CChildView::OnRecordPosition() {
     MeaPositionLogMgr::Instance().RecordPosition();
 }
 
-
-void CChildView::OnManagePositions() 
-{
+void CChildView::OnManagePositions() {
     MeaPositionLogMgr::Instance().ManagePositions();
 }
 
-
-void CChildView::OnUpdateDeletePositions(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateDeletePositions(CCmdUI* pCmdUI) {
     pCmdUI->Enable(MeaPositionLogMgr::Instance().HavePositions());
 }
 
-
-void CChildView::OnDeletePositions() 
-{
+void CChildView::OnDeletePositions() {
     MeaPositionLogMgr::Instance().DeletePositions();
 }
 
-
-void CChildView::OnLoadPositions() 
-{
+void CChildView::OnLoadPositions() {
     if (MeaPositionLogMgr::Instance().Load()) {
         MeaPositionLogMgr::Instance().ManagePositions();
     }
 }
 
-
-void CChildView::OnSavePositions() 
-{
+void CChildView::OnSavePositions() {
     MeaPositionLogMgr::Instance().Save(false);
 }
 
-
-void CChildView::OnSavePositionsAs() 
-{
+void CChildView::OnSavePositionsAs() {
     MeaPositionLogMgr::Instance().Save(true);
 }
 
-
-void CChildView::OnUpdateSavePositions(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateSavePositions(CCmdUI* pCmdUI) {
     pCmdUI->Enable(MeaPositionLogMgr::Instance().HavePositions());
 }
 
-
-void CChildView::OnUpdateRadioTool(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateRadioTool(CCmdUI* pCmdUI) {
     switch (pCmdUI->m_nID) {
     case ID_MEA_CURSOR:
         pCmdUI->SetRadio(MeaToolMgr::Instance().GetToolName() == MeaCursorTool::kToolName);
@@ -853,9 +771,7 @@ void CChildView::OnUpdateRadioTool(CCmdUI* pCmdUI)
     }
 }
 
-
-void CChildView::OnRadioTool(UINT nID) 
-{
+void CChildView::OnRadioTool(UINT nID) {
     switch (nID) {
     case ID_MEA_CURSOR:
         MeaToolMgr::Instance().SetRadioTool(MeaCursorTool::kToolName);
@@ -884,25 +800,19 @@ void CChildView::OnRadioTool(UINT nID)
     }
 }
 
-
-void CChildView::OnRuler() 
-{
+void CChildView::OnRuler() {
     MeaToolMgr::Instance().ToggleEnableTool(MeaRulerTool::kToolName);
 }
 
-
-void CChildView::OnUpdateRuler(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateRuler(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(MeaToolMgr::Instance().IsToolEnabled(MeaRulerTool::kToolName));
 }
 
-
-void CChildView::ViewMagnifier(bool enable) 
-{
-    CFrameWnd *frame = GetParentFrame();
+void CChildView::ViewMagnifier(bool enable) {
+    CFrameWnd* frame = GetParentFrame();
 
     int frameHeight = MeaLayout::GetWindowHeight(*frame);
-    int magHeight   = m_magnifier.GetHeight() + m_margin.cy;
+    int magHeight = m_magnifier.GetHeight() + m_margin.cy;
 
     if (enable && !m_magnifier.IsEnabled()) {
         m_magnifier.Enable();
@@ -915,21 +825,15 @@ void CChildView::ViewMagnifier(bool enable)
     }
 }
 
-
-void CChildView::OnMagnifier() 
-{
+void CChildView::OnMagnifier() {
     ViewMagnifier(!m_magnifier.IsEnabled());
 }
 
-
-void CChildView::OnUpdateMagnifier(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateMagnifier(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(m_magnifier.IsEnabled());
 }
 
-
-void CChildView::OnRunState() 
-{
+void CChildView::OnRunState() {
     if (m_magnifier.GetRunState() == MeaMagnifier::RunState::Run) {
         m_magnifier.SetRunState(MeaMagnifier::RunState::Freeze);
     } else {
@@ -937,63 +841,43 @@ void CChildView::OnRunState()
     }
 }
 
-
-void CChildView::OnUpdateRunState(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateRunState(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(m_magnifier.GetRunState() == MeaMagnifier::RunState::Freeze);
 }
 
-
-void CChildView::OnZoomIn() 
-{
+void CChildView::OnZoomIn() {
     m_magnifier.ZoomIn();
 }
 
-
-void CChildView::OnUpdateZoomIn(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateZoomIn(CCmdUI* pCmdUI) {
     pCmdUI->Enable(m_magnifier.CanZoomIn());
 }
 
-
-void CChildView::OnZoomOut() 
-{
+void CChildView::OnZoomOut() {
     m_magnifier.ZoomOut();
 }
 
-
-void CChildView::OnUpdateZoomOut(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateZoomOut(CCmdUI* pCmdUI) {
     pCmdUI->Enable(m_magnifier.CanZoomOut());
 }
 
-
-void CChildView::OnShowMagGrid() 
-{
+void CChildView::OnShowMagGrid() {
     m_magnifier.SetShowGrid(!m_magnifier.GetShowGrid());
 }
 
-
-void CChildView::OnUpdateShowMagGrid(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateShowMagGrid(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(m_magnifier.GetShowGrid());
 }
 
-
-void CChildView::OnScreenGrid() 
-{
+void CChildView::OnScreenGrid() {
     MeaToolMgr::Instance().ToggleEnableTool(MeaGridTool::kToolName);
 }
 
-
-void CChildView::OnUpdateScreenGrid(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateScreenGrid(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(MeaToolMgr::Instance().IsToolEnabled(MeaGridTool::kToolName));
 }
 
-
-void CChildView::OnScreenGridSpacing() 
-{
+void CChildView::OnScreenGridSpacing() {
     MeaToolMgr& toolMgr = MeaToolMgr::Instance();
 
     bool wasEnabled = toolMgr.IsToolEnabled(MeaGridTool::kToolName);
@@ -1009,9 +893,7 @@ void CChildView::OnScreenGridSpacing()
     }
 }
 
-
-void CChildView::OnHideCrosshairs() 
-{
+void CChildView::OnHideCrosshairs() {
     MeaToolMgr& mgr = MeaToolMgr::Instance();
 
     if (mgr.CrosshairsEnabled()) {
@@ -1021,55 +903,45 @@ void CChildView::OnHideCrosshairs()
     }
 }
 
-
-void CChildView::OnUpdateHideCrosshairs(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateHideCrosshairs(CCmdUI* pCmdUI) {
     MeaToolMgr& mgr = MeaToolMgr::Instance();
 
     pCmdUI->SetCheck(!mgr.CrosshairsEnabled());
     pCmdUI->Enable(mgr.HasCrosshairs());
 }
 
-
-void CChildView::OnFindCrosshair() 
-{
+void CChildView::OnFindCrosshair() {
     MeaToolMgr::Instance().FlashTool();
 }
 
-
-void CChildView::OnUpdateFindCrosshair(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateFindCrosshair(CCmdUI* pCmdUI) {
     MeaToolMgr& mgr = MeaToolMgr::Instance();
 
     pCmdUI->Enable(mgr.HasCrosshairs() && mgr.CrosshairsEnabled());
 }
 
-
-bool CChildView::IsCollapsed() const
-{
+bool CChildView::IsCollapsed() const {
     return (!IsToolbarVisible() && !IsStatusbarVisible() &&
-        !m_magnifier.IsEnabled() && 
-        !m_dataDisplay.IsEnabled(MeaScreenSection) && 
+        !m_magnifier.IsEnabled() &&
+        !m_dataDisplay.IsEnabled(MeaScreenSection) &&
         !m_dataDisplay.IsEnabled(MeaRegionSection));
 }
 
-
-void CChildView::OnCollapse() 
-{
+void CChildView::OnCollapse() {
     if (!IsCollapsed()) {
         m_expandToolbar = IsToolbarVisible();
         m_expandStatusbar = IsStatusbarVisible();
-        m_expandMagnifier = m_magnifier.IsEnabled();    
+        m_expandMagnifier = m_magnifier.IsEnabled();
         m_expandScreenInfo = m_dataDisplay.IsEnabled(MeaScreenSection);
         m_expandToolInfo = m_dataDisplay.IsEnabled(MeaRegionSection);
     }
 
     if (m_expandToolbar) {
-        CFrameWnd *frame = GetParentFrame();
+        CFrameWnd* frame = GetParentFrame();
         frame->PostMessage(WM_COMMAND, ID_VIEW_TOOLBAR);
     }
     if (m_expandStatusbar) {
-        CFrameWnd *frame = GetParentFrame();
+        CFrameWnd* frame = GetParentFrame();
         frame->PostMessage(WM_COMMAND, ID_VIEW_STATUSBAR);
     }
     if (m_expandMagnifier) {
@@ -1083,9 +955,7 @@ void CChildView::OnCollapse()
     }
 }
 
-
-void CChildView::OnUpdateCollapse(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateCollapse(CCmdUI* pCmdUI) {
     CString label;
 
     if (IsCollapsed()) {
@@ -1097,14 +967,12 @@ void CChildView::OnUpdateCollapse(CCmdUI* pCmdUI)
     pCmdUI->SetText(label);
 }
 
-
-void CChildView::ViewToolInfo(bool enable) 
-{
-    CFrameWnd *frame = GetParentFrame();
+void CChildView::ViewToolInfo(bool enable) {
+    CFrameWnd* frame = GetParentFrame();
 
     int frameHeight = MeaLayout::GetWindowHeight(*frame);
     int dispHeight = m_dataDisplay.GetHeight(MeaRegionSection);
-    
+
     if (enable && !m_dataDisplay.IsEnabled(MeaRegionSection)) {
         m_dataDisplay.Enable(MeaRegionSection);
         MeaLayout::MoveWindowHeight(m_magnifier, dispHeight);
@@ -1118,26 +986,20 @@ void CChildView::ViewToolInfo(bool enable)
     }
 }
 
-
-void CChildView::OnToolInfo() 
-{
+void CChildView::OnToolInfo() {
     ViewToolInfo(!m_dataDisplay.IsEnabled(MeaRegionSection));
 }
 
-
-void CChildView::OnUpdateToolInfo(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateToolInfo(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(m_dataDisplay.IsEnabled(MeaRegionSection));
 }
 
-
-void CChildView::ViewScreenInfo(bool enable)
-{
-    CFrameWnd *frame = GetParentFrame();
+void CChildView::ViewScreenInfo(bool enable) {
+    CFrameWnd* frame = GetParentFrame();
 
     int frameHeight = MeaLayout::GetWindowHeight(*frame);
     int dispHeight = m_dataDisplay.GetHeight(MeaScreenSection);
-    
+
     if (enable && !m_dataDisplay.IsEnabled(MeaScreenSection)) {
         m_dataDisplay.Enable(MeaScreenSection);
         MeaLayout::MoveWindowHeight(m_magnifier, dispHeight);
@@ -1152,44 +1014,32 @@ void CChildView::ViewScreenInfo(bool enable)
 
 }
 
-
-void CChildView::OnScreenInfo() 
-{
+void CChildView::OnScreenInfo() {
     ViewScreenInfo(!m_dataDisplay.IsEnabled(MeaScreenSection));
 }
 
-
-void CChildView::OnUpdateScreenInfo(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateScreenInfo(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(m_dataDisplay.IsEnabled(MeaScreenSection));
 }
 
-
-LRESULT CChildView::OnDataChange(WPARAM wParam, LPARAM lParam)
-{
+LRESULT CChildView::OnDataChange(WPARAM wParam, LPARAM lParam) {
     MeaToolMgr::Instance().SetPosition(static_cast<MeaFields>(lParam), static_cast<int>(wParam));
     return 0;
 }
 
-
-void CChildView::OnDestroy() 
-{
+void CChildView::OnDestroy() {
     MeaToolMgr::Instance().DisableRadioTools();
     m_magnifier.Disable();
     CWnd::OnDestroy();
 }
 
-
-LRESULT CChildView::OnShowCalPrefs(WPARAM /* wParam */, LPARAM /* lParam */)
-{
+LRESULT CChildView::OnShowCalPrefs(WPARAM /* wParam */, LPARAM /* lParam */) {
     m_prefs.SetActivePage(&m_prefs.m_calibrationPrefs);
     OnPreferences();
     return 0;
 }
 
-
-void CChildView::OnPreferences() 
-{
+void CChildView::OnPreferences() {
     // If the preferences dialog is already displayed, leave it alone.
     //
     if (m_prefs.GetSafeHwnd() != nullptr) {
@@ -1200,40 +1050,40 @@ void CChildView::OnPreferences()
 
     // Tool preferences
     //
-    m_prefs.m_toolsPrefs.m_backColor    = MeaColors::Get(MeaColors::CrossHairBack);
-    m_prefs.m_toolsPrefs.m_borderColor  = MeaColors::Get(MeaColors::CrossHairBorder);
-    m_prefs.m_toolsPrefs.m_hiliteColor  = MeaColors::Get(MeaColors::CrossHairHilite);
-    m_prefs.m_toolsPrefs.m_lineColor    = MeaColors::Get(MeaColors::LineFore);
-    m_prefs.m_toolsPrefs.m_opacity      = 100 * MeaColors::GetA(MeaColors::CrossHairOpacity) / 255;
-    m_prefs.m_toolsPrefs.m_showDataWin  = MeaDataWin::IsArmed();
+    m_prefs.m_toolsPrefs.m_backColor = MeaColors::Get(MeaColors::CrossHairBack);
+    m_prefs.m_toolsPrefs.m_borderColor = MeaColors::Get(MeaColors::CrossHairBorder);
+    m_prefs.m_toolsPrefs.m_hiliteColor = MeaColors::Get(MeaColors::CrossHairHilite);
+    m_prefs.m_toolsPrefs.m_lineColor = MeaColors::Get(MeaColors::LineFore);
+    m_prefs.m_toolsPrefs.m_opacity = 100 * MeaColors::GetA(MeaColors::CrossHairOpacity) / 255;
+    m_prefs.m_toolsPrefs.m_showDataWin = MeaDataWin::IsArmed();
     m_prefs.m_toolsPrefs.m_originMarker = MeaToolMgr::Instance().IsToolEnabled(MeaOriginTool::kToolName);
 
     // Precision preferences
     //
-    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaPixelsId,      unitsMgr.GetLinearDisplayPrecisions(MeaPixelsId));
-    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaPointsId,      unitsMgr.GetLinearDisplayPrecisions(MeaPointsId));
-    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaTwipsId,       unitsMgr.GetLinearDisplayPrecisions(MeaTwipsId));
-    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaInchesId,      unitsMgr.GetLinearDisplayPrecisions(MeaInchesId));
+    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaPixelsId, unitsMgr.GetLinearDisplayPrecisions(MeaPixelsId));
+    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaPointsId, unitsMgr.GetLinearDisplayPrecisions(MeaPointsId));
+    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaTwipsId, unitsMgr.GetLinearDisplayPrecisions(MeaTwipsId));
+    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaInchesId, unitsMgr.GetLinearDisplayPrecisions(MeaInchesId));
     m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaCentimetersId, unitsMgr.GetLinearDisplayPrecisions(MeaCentimetersId));
     m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaMillimetersId, unitsMgr.GetLinearDisplayPrecisions(MeaMillimetersId));
-    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaPicasId,       unitsMgr.GetLinearDisplayPrecisions(MeaPicasId));
-    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaCustomId,      unitsMgr.GetLinearDisplayPrecisions(MeaCustomId));
+    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaPicasId, unitsMgr.GetLinearDisplayPrecisions(MeaPicasId));
+    m_prefs.m_precisionPrefs.SetLinearPrecisions(MeaCustomId, unitsMgr.GetLinearDisplayPrecisions(MeaCustomId));
 
-    m_prefs.m_precisionPrefs.SetAngularPrecisions(MeaDegreesId,    unitsMgr.GetAngularDisplayPrecisions(MeaDegreesId));
-    m_prefs.m_precisionPrefs.SetAngularPrecisions(MeaRadiansId,    unitsMgr.GetAngularDisplayPrecisions(MeaRadiansId));
+    m_prefs.m_precisionPrefs.SetAngularPrecisions(MeaDegreesId, unitsMgr.GetAngularDisplayPrecisions(MeaDegreesId));
+    m_prefs.m_precisionPrefs.SetAngularPrecisions(MeaRadiansId, unitsMgr.GetAngularDisplayPrecisions(MeaRadiansId));
 
     // Custom units preferences
     //
     MeaCustomUnits* customUnits = unitsMgr.GetCustomUnits();
-    m_prefs.m_customPrefs.m_name   = customUnits->GetName();
+    m_prefs.m_customPrefs.m_name = customUnits->GetName();
     m_prefs.m_customPrefs.m_abbrev = customUnits->GetAbbrev();
     m_prefs.m_customPrefs.SetScaleFactor(customUnits->GetScaleBasis(), customUnits->GetScaleFactor());
 
     // Ruler preferences
     //
-    m_prefs.m_rulerPrefs.m_backColor    = MeaColors::Get(MeaColors::RulerBack);
-    m_prefs.m_rulerPrefs.m_borderColor  = MeaColors::Get(MeaColors::RulerBorder);
-    m_prefs.m_rulerPrefs.m_opacity      = 100 * MeaColors::GetA(MeaColors::RulerOpacity) / 255;
+    m_prefs.m_rulerPrefs.m_backColor = MeaColors::Get(MeaColors::RulerBack);
+    m_prefs.m_rulerPrefs.m_borderColor = MeaColors::Get(MeaColors::RulerBorder);
+    m_prefs.m_rulerPrefs.m_opacity = 100 * MeaColors::GetA(MeaColors::RulerOpacity) / 255;
 
     // Calibration preferences
     //
@@ -1267,24 +1117,20 @@ void CChildView::OnPreferences()
     }
 }
 
-
-LRESULT CChildView::OnPrefsApply(WPARAM /* wParam */, LPARAM lParam)
-{
+LRESULT CChildView::OnPrefsApply(WPARAM /* wParam */, LPARAM lParam) {
     ApplyPreferences(static_cast<int>(lParam));
     return 0;
 }
 
-
-void CChildView::ApplyPreferences(int prefsPage)
-{
+void CChildView::ApplyPreferences(int prefsPage) {
     // Tool preferences
     //
     if (prefsPage == MeaPreferences::kAllPages || prefsPage == MeaPreferences::kToolsPage) {
-        MeaColors::Set(MeaColors::LineFore,             m_prefs.m_toolsPrefs.m_lineColor);
-        MeaColors::Set(MeaColors::CrossHairBack,        m_prefs.m_toolsPrefs.m_backColor);
-        MeaColors::Set(MeaColors::CrossHairBorder,      m_prefs.m_toolsPrefs.m_borderColor);
-        MeaColors::Set(MeaColors::CrossHairHilite,      m_prefs.m_toolsPrefs.m_hiliteColor);
-        MeaColors::SetA(MeaColors::CrossHairOpacity,    static_cast<BYTE>(255 * m_prefs.m_toolsPrefs.m_opacity / 100));
+        MeaColors::Set(MeaColors::LineFore, m_prefs.m_toolsPrefs.m_lineColor);
+        MeaColors::Set(MeaColors::CrossHairBack, m_prefs.m_toolsPrefs.m_backColor);
+        MeaColors::Set(MeaColors::CrossHairBorder, m_prefs.m_toolsPrefs.m_borderColor);
+        MeaColors::Set(MeaColors::CrossHairHilite, m_prefs.m_toolsPrefs.m_hiliteColor);
+        MeaColors::SetA(MeaColors::CrossHairOpacity, static_cast<BYTE>(255 * m_prefs.m_toolsPrefs.m_opacity / 100));
 
         MeaDataWin::Arm(m_prefs.m_toolsPrefs.m_showDataWin == TRUE);
 
@@ -1301,17 +1147,17 @@ void CChildView::ApplyPreferences(int prefsPage)
     if (prefsPage == MeaPreferences::kAllPages || prefsPage == MeaPreferences::kPrecisionPage) {
         MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
-        unitsMgr.SetLinearDisplayPrecisions(MeaPixelsId,      m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaPixelsId));
-        unitsMgr.SetLinearDisplayPrecisions(MeaPointsId,      m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaPointsId));
-        unitsMgr.SetLinearDisplayPrecisions(MeaTwipsId,       m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaTwipsId));
-        unitsMgr.SetLinearDisplayPrecisions(MeaInchesId,      m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaInchesId));
+        unitsMgr.SetLinearDisplayPrecisions(MeaPixelsId, m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaPixelsId));
+        unitsMgr.SetLinearDisplayPrecisions(MeaPointsId, m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaPointsId));
+        unitsMgr.SetLinearDisplayPrecisions(MeaTwipsId, m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaTwipsId));
+        unitsMgr.SetLinearDisplayPrecisions(MeaInchesId, m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaInchesId));
         unitsMgr.SetLinearDisplayPrecisions(MeaCentimetersId, m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaCentimetersId));
         unitsMgr.SetLinearDisplayPrecisions(MeaMillimetersId, m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaMillimetersId));
-        unitsMgr.SetLinearDisplayPrecisions(MeaPicasId,       m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaPicasId));
-        unitsMgr.SetLinearDisplayPrecisions(MeaCustomId,      m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaCustomId));
+        unitsMgr.SetLinearDisplayPrecisions(MeaPicasId, m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaPicasId));
+        unitsMgr.SetLinearDisplayPrecisions(MeaCustomId, m_prefs.m_precisionPrefs.GetLinearPrecisions(MeaCustomId));
 
-        unitsMgr.SetAngularDisplayPrecisions(MeaDegreesId,    m_prefs.m_precisionPrefs.GetAngularPrecisions(MeaDegreesId));
-        unitsMgr.SetAngularDisplayPrecisions(MeaRadiansId,    m_prefs.m_precisionPrefs.GetAngularPrecisions(MeaRadiansId));
+        unitsMgr.SetAngularDisplayPrecisions(MeaDegreesId, m_prefs.m_precisionPrefs.GetAngularPrecisions(MeaDegreesId));
+        unitsMgr.SetAngularDisplayPrecisions(MeaRadiansId, m_prefs.m_precisionPrefs.GetAngularPrecisions(MeaRadiansId));
 
         MeaToolMgr::Instance().UpdateTools(MeaUpdateReason::UnitsChanged);
     }
@@ -1351,9 +1197,9 @@ void CChildView::ApplyPreferences(int prefsPage)
     // Ruler preferences
     //
     if (prefsPage == MeaPreferences::kAllPages || prefsPage == MeaPreferences::kRulerPage) {
-        MeaColors::Set(MeaColors::RulerBack,        m_prefs.m_rulerPrefs.m_backColor);
-        MeaColors::Set(MeaColors::RulerBorder,      m_prefs.m_rulerPrefs.m_borderColor);
-        MeaColors::SetA(MeaColors::RulerOpacity,    static_cast<BYTE>(255 * m_prefs.m_rulerPrefs.m_opacity / 100));
+        MeaColors::Set(MeaColors::RulerBack, m_prefs.m_rulerPrefs.m_backColor);
+        MeaColors::Set(MeaColors::RulerBorder, m_prefs.m_rulerPrefs.m_borderColor);
+        MeaColors::SetA(MeaColors::RulerOpacity, static_cast<BYTE>(255 * m_prefs.m_rulerPrefs.m_opacity / 100));
     }
 
     if (prefsPage == MeaPreferences::kAllPages || prefsPage == MeaPreferences::kRulerPage || prefsPage == MeaPreferences::kToolsPage) {
@@ -1388,9 +1234,7 @@ void CChildView::ApplyPreferences(int prefsPage)
     }
 }
 
-
-void CChildView::OnCopyRegion() 
-{
+void CChildView::OnCopyRegion() {
     MeaToolMgr& mgr = MeaToolMgr::Instance();
 
     if (mgr.HasRegion() && ::OpenClipboard(m_hWnd) != 0) {
@@ -1404,9 +1248,7 @@ void CChildView::OnCopyRegion()
     }
 }
 
-
-LRESULT CChildView::OnHPTimer(WPARAM, LPARAM)
-{
+LRESULT CChildView::OnHPTimer(WPARAM, LPARAM) {
     // Get the screen region to copy.
     //
     CRect rect(MeaToolMgr::Instance().GetRegion());
@@ -1439,17 +1281,13 @@ LRESULT CChildView::OnHPTimer(WPARAM, LPARAM)
     return 0;
 }
 
-
-void CChildView::OnUpdateCopyRegion(CCmdUI* pCmdUI) 
-{
+void CChildView::OnUpdateCopyRegion(CCmdUI* pCmdUI) {
     pCmdUI->Enable(MeaToolMgr::Instance().HasRegion());
 }
 
-
-void CChildView::OnEditCopy() 
-{
-    MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
-    MeaNumberField *colorField = m_magnifier.GetFieldFocus();
+void CChildView::OnEditCopy() {
+    MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
+    MeaNumberField* colorField = m_magnifier.GetFieldFocus();
 
     if (dataField != nullptr) {
         dataField->Copy();
@@ -1458,66 +1296,52 @@ void CChildView::OnEditCopy()
     }
 }
 
-
-void CChildView::OnEditCut() 
-{
-    MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
+void CChildView::OnEditCut() {
+    MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
 
     if (dataField != nullptr) {
         dataField->Cut();
     }
 }
 
-
-void CChildView::OnEditPaste() 
-{
-    MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
+void CChildView::OnEditPaste() {
+    MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
 
     if (dataField != nullptr) {
         dataField->Paste();
     }
 }
 
-
-void CChildView::OnEditClear() 
-{
-    MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
+void CChildView::OnEditClear() {
+    MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
 
     if (dataField != nullptr) {
         dataField->Clear();
     }
 }
 
-
-void CChildView::OnUpdateEditCopy(CCmdUI* pCmdUI) 
-{
-    MeaNumberField *dataField  = m_dataDisplay.GetFieldFocus();
-    MeaNumberField *colorField = m_magnifier.GetFieldFocus();
+void CChildView::OnUpdateEditCopy(CCmdUI* pCmdUI) {
+    MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
+    MeaNumberField* colorField = m_magnifier.GetFieldFocus();
 
     pCmdUI->Enable(((dataField != nullptr) && dataField->IsTextSelected()) ||
                    ((colorField != nullptr) && colorField->IsTextSelected()));
 }
 
-
-void CChildView::OnUpdateEditCut(CCmdUI* pCmdUI) 
-{
-    MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
+void CChildView::OnUpdateEditCut(CCmdUI* pCmdUI) {
+    MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
 
     pCmdUI->Enable((dataField != nullptr) && dataField->IsTextSelected());
 }
 
-
-void CChildView::OnUpdateEditPaste(CCmdUI* pCmdUI) 
-{
-    MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
+void CChildView::OnUpdateEditPaste(CCmdUI* pCmdUI) {
+    MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
 
     pCmdUI->Enable(::IsClipboardFormatAvailable(CF_TEXT) && (dataField != nullptr));
 }
 
-
-void CChildView::OnUpdateEditClear(CCmdUI* pCmdUI) 
-{
-    MeaNumberField *dataField = m_dataDisplay.GetFieldFocus();
+void CChildView::OnUpdateEditClear(CCmdUI* pCmdUI) {
+    MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
 
     pCmdUI->Enable((dataField != nullptr) && dataField->IsTextSelected());
 }

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -34,32 +34,23 @@ const CString MeaWindowTool::kToolName(_T("WindowTool"));
 MeaWindowTool::MeaWindowTool(MeaToolMgr* mgr) :
     MeaRadioTool(mgr), m_pointerPos(0, 0),
     m_point1(-1, -1), m_point2(-1, -1),
-    m_currentWnd(nullptr), m_hiliteWnd(nullptr)
-{
-}
+    m_currentWnd(nullptr), m_hiliteWnd(nullptr) {}
 
-
-MeaWindowTool::~MeaWindowTool()
-{
+MeaWindowTool::~MeaWindowTool() {
     try {
         Disable();
         m_currentWnd = nullptr;
         m_hiliteWnd = nullptr;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-void MeaWindowTool::Create()
-{
+void MeaWindowTool::Create() {
     m_dataWin.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), 0xffff, 0xffff, IDS_MEA_WIDTH, IDS_MEA_HEIGHT);
 }
 
-
-void MeaWindowTool::Enable()
-{
+void MeaWindowTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -103,9 +94,7 @@ void MeaWindowTool::Enable()
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaWindowTool::Disable()
-{
+void MeaWindowTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -113,7 +102,7 @@ void MeaWindowTool::Disable()
 #ifdef _DEBUG
     BOOL ret =
 #endif
-    MeaDisableMouseHook();
+        MeaDisableMouseHook();
     MeaAssert(ret);
 
     m_dataWin.Hide();
@@ -122,13 +111,12 @@ void MeaWindowTool::Disable()
     MeaTool::Disable();
 }
 
-
-void MeaWindowTool::Update(MeaUpdateReason reason)
-{
+void MeaWindowTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
-        if ((reason == MeaUpdateReason::UnitsChanged) || (reason == MeaUpdateReason::OriginChanged) || (reason == MeaUpdateReason::AllChanged)) {
+        if ((reason == MeaUpdateReason::UnitsChanged) || (reason == MeaUpdateReason::OriginChanged) ||
+            (reason == MeaUpdateReason::AllChanged)) {
             m_dataWin.Hide();
             m_dataWin.Show();
         }
@@ -141,13 +129,13 @@ void MeaWindowTool::Update(MeaUpdateReason reason)
         }
 
         MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-        
+
         // Convert the window dimensions to the current units.
         //
         FPOINT p1 = units.ConvertCoord(m_point1);
         FPOINT p2 = units.ConvertCoord(m_point2);
         FSIZE wh = units.GetWidthHeight(m_point1, m_point2);
-        
+
         // Display the measurement information.
         //
         m_mgr->ShowXY1(m_point1, p1);
@@ -173,28 +161,20 @@ void MeaWindowTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-void MeaWindowTool::Strobe()
-{
+void MeaWindowTool::Strobe() {
     m_dataWin.Strobe();
 }
 
-
-bool MeaWindowTool::HasCrosshairs() const
-{
+bool MeaWindowTool::HasCrosshairs() const {
     return false;
 }
 
-
-bool MeaWindowTool::HasRegion()
-{
+bool MeaWindowTool::HasRegion() {
     CRect rect = GetRegion();
     return (rect.Height() != 0) && (rect.Width() != 0);
 }
 
-
-RECT MeaWindowTool::GetRegion()
-{
+RECT MeaWindowTool::GetRegion() {
     CRect rect(m_point1, m_point2);
     rect.NormalizeRect();
     rect.InflateRect(0, 0, 1, 1);
@@ -202,17 +182,13 @@ RECT MeaWindowTool::GetRegion()
     return rect;
 }
 
-
-const POINT& MeaWindowTool::GetPosition() const
-{
+const POINT& MeaWindowTool::GetPosition() const {
     return m_pointerPos;
 }
 
-
-void MeaWindowTool::GetPosition(MeaPositionLogMgr::Position& position) const
-{
+void MeaWindowTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-    
+
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = units.ConvertCoord(m_point1);
@@ -229,28 +205,20 @@ void MeaWindowTool::GetPosition(MeaPositionLogMgr::Position& position) const
     position.RecordRectArea(wh);
 }
 
-
-CString MeaWindowTool::GetToolName() const
-{
+CString MeaWindowTool::GetToolName() const {
     return kToolName;
 }
 
-
-UINT MeaWindowTool::GetLabelId() const
-{
+UINT MeaWindowTool::GetLabelId() const {
     return IDS_MEA_WINDOW;
 }
 
-    
-void MeaWindowTool::ColorsChanged()
-{
+void MeaWindowTool::ColorsChanged() {
     m_rectangle.SetColor(MeaColors::Get(MeaColors::LineFore));
     m_dataWin.SetOpacity(MeaColors::GetA(MeaColors::CrossHairOpacity));
 }
 
-
-void MeaWindowTool::OnMouseHook(WPARAM /* wParam */, LPARAM lParam)
-{
+void MeaWindowTool::OnMouseHook(WPARAM /* wParam */, LPARAM lParam) {
     // Cache the pointer position.
     //
     m_pointerPos.x = GET_X_LPARAM(lParam);
@@ -265,9 +233,7 @@ void MeaWindowTool::OnMouseHook(WPARAM /* wParam */, LPARAM lParam)
     }
 }
 
-
-bool MeaWindowTool::FindWindow()
-{
+bool MeaWindowTool::FindWindow() {
     CPoint pos(m_pointerPos);
 
     // Look in the window hierarchy for a window under the pointer.
@@ -301,17 +267,15 @@ bool MeaWindowTool::FindWindow()
             m_point2.x = 0;
             m_point2.y = 0;
         }
-        
+
         m_currentWnd = m_hiliteWnd;
     }
 
     return ret;
 }
 
-
-BOOL CALLBACK MeaWindowTool::EnumChildProc(HWND hwnd, LPARAM lParam)
-{
-    MeaWindowTool *tool = reinterpret_cast<MeaWindowTool*>(lParam);
+BOOL CALLBACK MeaWindowTool::EnumChildProc(HWND hwnd, LPARAM lParam) {
+    MeaWindowTool* tool = reinterpret_cast<MeaWindowTool*>(lParam);
 
     CRect rect;
     POINT pt;
@@ -325,9 +289,3 @@ BOOL CALLBACK MeaWindowTool::EnumChildProc(HWND hwnd, LPARAM lParam)
     }
     return TRUE;
 }
-
-
-
-
-
-

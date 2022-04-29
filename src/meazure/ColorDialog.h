@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -29,6 +29,7 @@
 /// custom colors and simplifies using the dialog.
 ///
 class MeaColorDialog : public CColorDialog {
+
 public:
     /// Constructs the color dialog.
     ///
@@ -37,8 +38,7 @@ public:
     /// @param dwFlags      [in] Dialog display flags defined by CColorDialog.
     /// @param pParentWnd   [in] Parent window for the dialog.
     ///
-    explicit MeaColorDialog(UINT titleId = 0xFFFF, COLORREF clrInit = 0,
-        DWORD dwFlags = 0, CWnd* pParentWnd = nullptr);
+    explicit MeaColorDialog(UINT titleId = 0xFFFF, COLORREF clrInit = 0, DWORD dwFlags = 0, CWnd* pParentWnd = nullptr);
 
     /// Destroys a color dialog.
     ///
@@ -49,7 +49,7 @@ public:
     /// @return IDOK or IDCANCEL.
     ///
     virtual INT_PTR DoModal() override;
-    
+
     /// Called when the dialog window has been created but before
     /// it is visible. This method customizes the dialog for this
     /// class.
@@ -58,7 +58,6 @@ public:
     ///
     virtual BOOL OnInitDialog() override;
 
-
     /// Persists the state of the dialog (e.g. the custom colors)
     /// to the specified profile object.
     ///
@@ -66,7 +65,7 @@ public:
     ///                     is persisted.
     ///
     static void SaveProfile(MeaProfile& profile);
-    
+
     /// Restores the state of the dialog from the specified profile object.
     ///
     /// @param profile      [in] Profile object from which the state
@@ -74,17 +73,15 @@ public:
     ///
     static void LoadProfile(MeaProfile& profile);
 
-
     /// Resets the color dialog to its default state.
     ///
     static void MasterReset();
 
 private:
-    static constexpr int kNumCustomColors { 16 };      ///< Number of available custom colors.
+    static constexpr int kNumCustomColors { 16 };   ///< Number of available custom colors.
 
-
-    static COLORREF m_defColors[];          ///< Default colors.
-    static COLORREF m_customColors[];       ///< User definable custom colors.
+    static COLORREF m_defColors[];      ///< Default colors.
+    static COLORREF m_customColors[];   ///< User definable custom colors.
 
     CString m_title;        ///< Title for the dialog.
 };

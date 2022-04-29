@@ -2,7 +2,7 @@
  * Copyright 2011 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -34,10 +34,8 @@ using namespace boost::unit_test;
 using boost::unit_test_framework::test_suite;
 
 
-namespace
-{
-    void validateGUID(const MeaGUID& guid)
-    {
+namespace {
+    void validateGUID(const MeaGUID& guid) {
         GUID value = guid;
         BOOST_CHECK((value.Data1 > (DWORD)0) ||
                     (value.Data2 > (WORD)0) ||
@@ -51,9 +49,8 @@ namespace
                     (value.Data4[6] > (BYTE)0) ||
                     (value.Data4[7] > (BYTE)0));
     }
-    
-    void validateEqual(const GUID& guid1, const GUID& guid2)
-    {
+
+    void validateEqual(const GUID& guid1, const GUID& guid2) {
         BOOST_CHECK_EQUAL(guid1.Data1, guid2.Data1);
         BOOST_CHECK_EQUAL(guid1.Data2, guid2.Data2);
         BOOST_CHECK_EQUAL(guid1.Data3, guid2.Data3);
@@ -66,15 +63,13 @@ namespace
         BOOST_CHECK_EQUAL(guid1.Data4[6], guid2.Data4[6]);
         BOOST_CHECK_EQUAL(guid1.Data4[7], guid2.Data4[7]);
     }
-    
-    void TestDefaultCtor()
-    {
+
+    void TestDefaultCtor() {
         MeaGUID guid;
         validateGUID(guid);
     }
-    
-    void TestGUIDCtor()
-    {
+
+    void TestGUIDCtor() {
         GUID guid1;
         HRESULT hr = CoCreateGuid(&guid1);
         if (FAILED(hr)) {
@@ -83,16 +78,14 @@ namespace
         MeaGUID guid2(guid1);
         validateEqual(guid1, guid2);
     }
-    
-    void TestCopyCtor()
-    {
+
+    void TestCopyCtor() {
         MeaGUID guid1;
         MeaGUID guid2(guid1);
         validateEqual(guid1, guid2);
     }
-    
-    void TestStringCtor()
-    {
+
+    void TestStringCtor() {
         LPCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
         GUID guid1;
         guid1.Data1 = 0x6B29FC40;
@@ -106,34 +99,33 @@ namespace
         guid1.Data4[5] = 0x06;
         guid1.Data4[6] = 0x62;
         guid1.Data4[7] = 0xDA;
-        
+
         MeaGUID guid2(guid1Str);
         validateEqual(guid1, guid2);
-        
+
         try {
             MeaGUID guid3(_T(""));
             BOOST_FAIL("MeaGUID did not throw");
-        } catch(COleException* e) {
+        } catch (COleException* e) {
             delete e;
         }
-        
+
         try {
             MeaGUID guid3(_T("FOO"));
             BOOST_FAIL("MeaGUID did not throw");
-        } catch(COleException* e) {
+        } catch (COleException* e) {
             delete e;
         }
-        
+
         try {
             MeaGUID guid3(_T("6B29FC40-CA47-1067-B31D-00DD010662D"));
             BOOST_FAIL("MeaGUID did not throw");
-        } catch(COleException* e) {
+        } catch (COleException* e) {
             delete e;
         }
     }
-    
-    void TestAssignOperatorGUID()
-    {
+
+    void TestAssignOperatorGUID() {
         GUID guid1;
         HRESULT hr = CoCreateGuid(&guid1);
         if (FAILED(hr)) {
@@ -143,17 +135,15 @@ namespace
         guid2 = guid1;
         validateEqual(guid1, guid2);
     }
-    
-    void TestAssignOperatorMeaGUID()
-    {
+
+    void TestAssignOperatorMeaGUID() {
         MeaGUID guid1;
         MeaGUID guid2;
         guid2 = guid1;
         validateEqual(guid1, guid2);
     }
-    
-    void TestAssignOperatorString()
-    {
+
+    void TestAssignOperatorString() {
         LPCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
         GUID guid1;
         guid1.Data1 = 0x6B29FC40;
@@ -167,14 +157,13 @@ namespace
         guid1.Data4[5] = 0x06;
         guid1.Data4[6] = 0x62;
         guid1.Data4[7] = 0xDA;
-        
+
         MeaGUID guid2;
         guid2 = guid1Str;
-        validateEqual(guid1, guid2);    
+        validateEqual(guid1, guid2);
     }
-    
-    void TestAssignGUID()
-    {
+
+    void TestAssignGUID() {
         GUID guid1;
         HRESULT hr = CoCreateGuid(&guid1);
         if (FAILED(hr)) {
@@ -185,18 +174,16 @@ namespace
         validateEqual(guid1, guid2);
         validateEqual(guid1, guid3);
     }
-    
-    void TestAssignMeaGUID()
-    {
+
+    void TestAssignMeaGUID() {
         MeaGUID guid1;
         MeaGUID guid2;
         MeaGUID guid3(guid2.Assign(guid1));
         validateEqual(guid1, guid2);
         validateEqual(guid1, guid3);
     }
-    
-    void TestAssignString()
-    {
+
+    void TestAssignString() {
         LPCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
         GUID guid1;
         guid1.Data1 = 0x6B29FC40;
@@ -210,15 +197,14 @@ namespace
         guid1.Data4[5] = 0x06;
         guid1.Data4[6] = 0x62;
         guid1.Data4[7] = 0xDA;
-        
+
         MeaGUID guid2;
         MeaGUID guid3(guid2.Assign(guid1Str));
         validateEqual(guid1, guid2);
-        validateEqual(guid1, guid3);    
+        validateEqual(guid1, guid3);
     }
-    
-    void TestEqualityGUID()
-    {
+
+    void TestEqualityGUID() {
         GUID guid1;
         HRESULT hr = CoCreateGuid(&guid1);
         if (FAILED(hr)) {
@@ -229,58 +215,54 @@ namespace
         if (FAILED(hr)) {
             AfxThrowOleException(hr);
         }
-        
+
         MeaGUID guid3(guid1);
         BOOST_CHECK(guid3 == guid1);
         BOOST_CHECK(guid3.IsEqual(guid1));
         BOOST_CHECK(guid3 != guid2);
         BOOST_CHECK(!guid3.IsEqual(guid2));
     }
-    
-    void TestEqualityMeaGUID()
-    {
+
+    void TestEqualityMeaGUID() {
         MeaGUID guid1;
         MeaGUID guid2;
-        
+
         MeaGUID guid3(guid1);
         BOOST_CHECK(guid3 == guid1);
         BOOST_CHECK(guid3.IsEqual(guid1));
         BOOST_CHECK(guid3 != guid2);
         BOOST_CHECK(!guid3.IsEqual(guid2));
     }
-    
-    void TestCast()
-    {
+
+    void TestCast() {
         MeaGUID guid1;
-        
+
         GUID guid2 = guid1;
         validateEqual(guid1, guid2);
-        
+
         LPCTSTR guid3Str = guid1;
         MeaGUID guid3(guid3Str);
         validateEqual(guid1, guid3);
     }
-    
-    void TestToString()
-    {
+
+    void TestToString() {
         MeaGUID guid1;
         CString guid2Str(guid1.ToString());
         MeaGUID guid2(guid2Str);
         validateEqual(guid1, guid2);
     }
-    
-    void TestLess()
-    {
+
+    void TestLess() {
         std::set<MeaGUID, MeaGUID::less> guidSet;
         std::set<MeaGUID, MeaGUID::less>::iterator iter;
         MeaGUID guid1;
         MeaGUID guid2;
         MeaGUID guid3;
-        
+
         guidSet.insert(guid1);
         guidSet.insert(guid2);
         guidSet.insert(guid3);
-        
+
         iter = guidSet.find(guid2);
         BOOST_CHECK_EQUAL(guid2, *iter);
         iter = guidSet.find(guid1);
@@ -290,14 +272,12 @@ namespace
     }
 }
 
-
-test_suite* init_unit_test_suite(int argc, char* argv[])
-{
+test_suite* init_unit_test_suite(int argc, char* argv[]) {
     if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
         cerr << "Fatal Error: MFC initialization failed\n";
         return nullptr;
     }
-    
+
     test_suite* suite = BOOST_TEST_SUITE("GUID Tests");
     suite->add(BOOST_TEST_CASE(&TestDefaultCtor));
     suite->add(BOOST_TEST_CASE(&TestGUIDCtor));

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -23,10 +23,9 @@
 #include <stdarg.h>
 
 
-void MeaLayout::AlignLeft(int leftX, ...)
-{
+void MeaLayout::AlignLeft(int leftX, ...) {
     va_list args;
-    CWnd *wnd;
+    CWnd* wnd;
     RECT rect;
 
     va_start(args, leftX);
@@ -38,11 +37,9 @@ void MeaLayout::AlignLeft(int leftX, ...)
     va_end(args);
 }
 
-
-void MeaLayout::AlignRight(int leftX, ...)
-{
+void MeaLayout::AlignRight(int leftX, ...) {
     va_list args;
-    CWnd *wnd;
+    CWnd* wnd;
     CRect rect;
     int maxWidth = 0;
 
@@ -64,11 +61,9 @@ void MeaLayout::AlignRight(int leftX, ...)
     va_end(args);
 }
 
-
-void MeaLayout::AlignRightTo(const CWnd *baseWnd, ...)
-{
+void MeaLayout::AlignRightTo(const CWnd* baseWnd, ...) {
     va_list args;
-    CWnd *wnd;
+    CWnd* wnd;
     CRect rect;
 
     baseWnd->GetWindowRect(&rect);
@@ -84,11 +79,9 @@ void MeaLayout::AlignRightTo(const CWnd *baseWnd, ...)
     va_end(args);
 }
 
-
-void MeaLayout::AlignCenter(int topY, ...)
-{
+void MeaLayout::AlignCenter(int topY, ...) {
     va_list args;
-    CWnd *wnd;
+    CWnd* wnd;
     CRect rect;
     int maxHeight = 0;
 
@@ -110,10 +103,7 @@ void MeaLayout::AlignCenter(int topY, ...)
     va_end(args);
 }
 
-
-void MeaLayout::PlaceAfter(const CWnd& frontWnd, const CWnd& backWnd,
-                           int spacing)
-{
+void MeaLayout::PlaceAfter(const CWnd& frontWnd, const CWnd& backWnd, int spacing) {
     RECT rect;
 
     frontWnd.GetWindowRect(&rect);
@@ -121,24 +111,20 @@ void MeaLayout::PlaceAfter(const CWnd& frontWnd, const CWnd& backWnd,
     SetWindowPos(backWnd, rect.right + spacing, rect.top);
 }
 
-
-void MeaLayout::GetBoundingSize(SIZE *sizep, const CWnd* parentWnd)
-{
+void MeaLayout::GetBoundingSize(SIZE* sizep, const CWnd* parentWnd) {
     RECT rect;
     CRect boundingRect(0, 0, 0, 0);
 
-    for (CWnd *child = parentWnd->GetWindow(GW_CHILD); child != nullptr; child = child->GetNextWindow()) {
+    for (CWnd* child = parentWnd->GetWindow(GW_CHILD); child != nullptr; child = child->GetNextWindow()) {
         child->GetWindowRect(&rect);
         boundingRect.UnionRect(boundingRect, &rect);
     }
-    
+
     sizep->cx = boundingRect.Width();
     sizep->cy = boundingRect.Height();
 }
 
-
-void MeaLayout::AlphaBlend(CDC& dstDC, const CDC& srcDC, int width, int height, BYTE alpha)
-{
+void MeaLayout::AlphaBlend(CDC& dstDC, const CDC& srcDC, int width, int height, BYTE alpha) {
     int x, y;
     double a = alpha / 255.0;
     double a1 = (1 - a);
@@ -157,9 +143,7 @@ void MeaLayout::AlphaBlend(CDC& dstDC, const CDC& srcDC, int width, int height, 
     }
 }
 
-
-void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc)
-{
+void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc) {
     CRect clientRect;
     CRect winRect;
     ;
@@ -176,7 +160,7 @@ void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc)
     MeaScreenMgr& smgr = MeaScreenMgr::Instance();
     MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
     FSIZE res = smgr.GetScreenRes(smgr.GetScreenIter(winRect));
-    
+
     SIZE forePixels = umgr.ConvertToPixels(MeaInchesId, res, 0.02, 3);
     sepPixels.cx = 3 * forePixels.cx;
     sepPixels.cy = 3 * forePixels.cy;

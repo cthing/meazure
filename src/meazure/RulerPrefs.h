@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -31,29 +31,19 @@
 /// a horizontal ruler sample to preview the properties before they are
 /// applied. 
 ///
-class MeaRulerPrefs : public CPropertyPage
-{
+class MeaRulerPrefs : public CPropertyPage {
     DECLARE_DYNCREATE(MeaRulerPrefs)
 
 public:
     /// Constructs an instance of the ruler property page.
     ///
     MeaRulerPrefs();
-    
+
     /// Destroys an instance of the ruler property page.
     ///
     ~MeaRulerPrefs();
 
     enum { IDD = IDD_PREF_RULERS };
-    int     m_opacity;
-
-    /// @var m_opacity
-    /// Opacity of the ruler where 0 is transparent and 255 is opaque.
-
-    
-    COLORREF    m_backColor;        ///< Ruler background color.
-    COLORREF    m_borderColor;      ///< Color for the ruler border and tick marks.
-
 
     /// Called when the property page is created. This method
     /// Creates the sample rulers and initializes the opacity
@@ -64,43 +54,44 @@ public:
     ///
     virtual BOOL OnInitDialog();
 
-    protected:
-    virtual void DoDataExchange(CDataExchange* pDX) override;
+    int m_opacity;              ///< Opacity of the ruler where 0 is transparent and 255 is opaque.
+    COLORREF m_backColor;       ///< Ruler background color.
+    COLORREF m_borderColor;     ///< Color for the ruler border and tick marks.
 
-    /// @fn DoDataExchange(CDataExchange* pDX)
+protected:
     /// Performs Dynamic Data Exchange (DDX) for the page.
     ///
     /// @param pDX  [in] DDX object for exchanging data between the page UI
     ///             and the member variables.
+    /// 
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
-protected:
-    afx_msg void OnChangeBkColor();
-    afx_msg void OnChangeBorderColor();
-    afx_msg void OnDefBkColor();
-    afx_msg void OnDefBorderColor();
-    afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-
-    /// @fn OnChangeBkColor()
     /// Called when the background color button is pressed. This method
     /// displays the color picker dialog and calls the ColorsChanged()
     /// method if a new background color is chosen.
+    /// 
+    afx_msg void OnChangeBkColor();
 
-    /// @fn OnChangeBorderColor()
     /// Called when the border color button is pressed. This method
     /// displays the color picker dialog and calls the ColorsChanged()
     /// method if a new border color is chosen.
+    /// 
+    afx_msg void OnChangeBorderColor();
 
-    /// @fn OnDefBkColor()
     /// Called when the default background color button is pressed. This
     /// method restores the default background color.
+    /// 
+    afx_msg void OnDefBkColor();
 
-    /// @fn OnDefBorderColor()
     /// Called when the default border color button is pressed. This
     /// method restores the default border color.
-    
-    /// @fn OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
+    /// 
+    afx_msg void OnDefBorderColor();
+
     /// Called when the ruler opacity slider is moved to change the
     /// ruler opacity.
+    /// 
+    afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 
     DECLARE_MESSAGE_MAP()
 
@@ -108,8 +99,8 @@ private:
     /// Sets the background and border color on the sample rulers and
     /// sets the modified flag.
     ///
-    void    ColorsChanged();
+    void ColorsChanged();
 
-    MeaRuler        m_vRuler;       ///< Vertical sample ruler.
-    MeaRuler        m_hRuler;       ///< Horizontal sample ruler.
+    MeaRuler m_vRuler;       ///< Vertical sample ruler.
+    MeaRuler m_hRuler;       ///< Horizontal sample ruler.
 };

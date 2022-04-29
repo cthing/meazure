@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -17,8 +17,8 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// @file
-/// @brief Line graphic header file.
+ /// @file
+ /// @brief Line graphic header file.
 
 #pragma once
 
@@ -31,8 +31,8 @@
 /// of its two end points. The line is formed by arranging adjacent
 /// single pixel rectangular regions. 
 ///
-class MeaLine : public MeaGraphic
-{
+class MeaLine : public MeaGraphic {
+
 public:
     /// Constructs a line. Prior to displaying the line with the
     /// Show() method, the Create() method must be called to create
@@ -43,7 +43,6 @@ public:
     /// Destroys the line.
     ///
     virtual ~MeaLine();
-
 
     /// Creates the window for the line. This method must be called
     /// before the line can be displayed and before any operation that
@@ -63,37 +62,35 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(int shrink, const CWnd *parent = nullptr);
-
+    bool Create(int shrink, const CWnd* parent = nullptr);
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.
     ///
     virtual void Hide() override;
 
-
     /// Sets the position of the line.
     ///
     /// @param startPoint   [in] Location of the start of the line, in pixels
     /// @param endPoint     [in] Location of the end of the line, in pixels
     ///
-    void    SetPosition(const POINT& startPoint, const POINT& endPoint);
+    void SetPosition(const POINT& startPoint, const POINT& endPoint);
 
     /// Obtains the position of the line.
     ///
     /// @param startPoint   [out] Location of the start of the line, in pixels
     /// @param endPoint     [out] Location of the end of the line, in pixels
     ///
-    void    GetPosition(POINT& startPoint, POINT& endPoint) {
-        startPoint  = m_startPoint;
-        endPoint    = m_endPoint;
+    void GetPosition(POINT& startPoint, POINT& endPoint) {
+        startPoint = m_startPoint;
+        endPoint = m_endPoint;
     }
 
     /// Sets the color of the line.
     ///
     /// @param color    [in] Color value defined by the Windows GDI RGB macro.
     ///
-    void    SetColor(COLORREF color);
+    void SetColor(COLORREF color);
 
 protected:
     DECLARE_MESSAGE_MAP()
@@ -146,7 +143,7 @@ private:
     /// to be created in this brute force way because relying on the polygon
     /// region method produces a horrible looking line.
     ///
-    void    PlotLine();
+    void PlotLine();
 
     /// The window is composed of a series of single pixel rectangles
     /// arranged in a line. At each point on the line the coordinates of
@@ -157,9 +154,9 @@ private:
     /// @param x    [in] X coordinate of the point on the line
     /// @param y    [in] Y coordinate of the point on the line
     ///
-    void    AddPoint(int x, int y) {
+    void AddPoint(int x, int y) {
         POINT p;
-        POINT *arr = &m_arr[m_count << 2];
+        POINT* arr = &m_arr[m_count << 2];
 
         // Put the coordinates into a point
         //
@@ -177,7 +174,7 @@ private:
 
         // (x,y)
         //
-        *arr++ = p;
+        * arr++ = p;
 
         // (x+1,y)
         //
@@ -199,15 +196,15 @@ private:
         m_count++;
     }
 
-    CPoint          m_startPoint;       ///< Location of the start point of the line, in pixels
-    CPoint          m_endPoint;         ///< Location of the end point of the line, in pixels
-    bool            m_wasAngled;        ///< Indicates if the line was angled the last time it was drawn
-    CBrush          *m_foreBrush;       ///< Brush used to draw the line
-    MeaTimer        m_timer;            ///< Timer for delayed drawing of line to reduce visual artifacts
-    Orientation     m_orientation;      ///< Current orientation of the line
 
-    POINT           *m_arr;             ///< Array of coordinates for each rectangle making up the window region
-    unsigned int    m_count;            ///< Number of rectangles in the window region
-    int             m_shrink;           ///< Number of pixels to shrink the length of the line
-    static int      *m_varr;            ///< Number of coordinates comprising each polygon making up the window region (always 4 in our case)
+    CPoint m_startPoint;        ///< Location of the start point of the line, in pixels
+    CPoint m_endPoint;          ///< Location of the end point of the line, in pixels
+    bool m_wasAngled;           ///< Indicates if the line was angled the last time it was drawn
+    CBrush* m_foreBrush;        ///< Brush used to draw the line
+    MeaTimer m_timer;           ///< Timer for delayed drawing of line to reduce visual artifacts
+    Orientation m_orientation;  ///< Current orientation of the line
+    POINT* m_arr;               ///< Array of coordinates for each rectangle making up the window region
+    unsigned int m_count;       ///< Number of rectangles in the window region
+    int m_shrink;               ///< Number of pixels to shrink the length of the line
+    static int* m_varr;         ///< Number of coordinates comprising each polygon making up the window region (always 4 in our case)
 };

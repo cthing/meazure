@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -17,8 +17,8 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// @file
-/// @brief Header file for a class representing a globally unique identifier.
+ /// @file
+ /// @brief Header file for a class representing a globally unique identifier.
 
 #pragma once
 
@@ -26,8 +26,8 @@
 /// Represents a globally unique identifier (GUID) and common operations
 /// on a GUID.
 ///
-class MeaGUID
-{
+class MeaGUID {
+
 public:
     /// Constructs a GUID with a newly generated GUID using CoCreateGuid.
     ///
@@ -38,7 +38,7 @@ public:
     /// @param guid     [in] Operating system defined GUID structure.
     ///
     explicit MeaGUID(const GUID& guid) { Assign(guid); }
-    
+
     /// Creates a GUID object initialized with by the string representing
     /// a GUID (e.g. "00000000-0000-0000-0000-000000000000")
     ///
@@ -54,8 +54,7 @@ public:
 
     /// Destroys a GUID object.
     ///
-    ~MeaGUID() { }
-
+    ~MeaGUID() {}
 
     /// Assignment operator.
     /// @param guid     [in] Operating system defined GUID structure.
@@ -72,7 +71,6 @@ public:
     /// @return This object.
     MeaGUID& operator=(const MeaGUID& guid) { return Assign(guid); }
 
-
     /// Tests for equality between two MeaGUID objects.
     /// @param guid     [in] MeaGUID object to test against this object.
     /// @return <b>true</b> if the specified object equals this object.
@@ -83,7 +81,6 @@ public:
     /// @return <b>true</b> if the specified object does not equal this object.
     bool operator!=(const MeaGUID& guid) const { return !IsEqual(guid); }
 
-
     /// Tests for equality between two this object and a GUID structure.
     /// @param guid     [in] Operating system defined GUID structure to test against this object.
     /// @return <b>true</b> if the specified GUID equals this object.
@@ -93,7 +90,6 @@ public:
     /// @param guid     [in] Operating system defined GUID structure to test against this object.
     /// @return <b>true</b> if the specified GUID does not equal this object.
     bool operator!=(const GUID& guid) const { return !IsEqual(guid); }
-
 
     /// Casts to an operating system defined GUID structure.
     /// @return Operating system defined GUID structure.
@@ -114,8 +110,7 @@ public:
         ///
         /// @return <b>true</b> if lhs < rhs lexically.
         ///
-        bool operator()(const MeaGUID& lhs, const MeaGUID& rhs) const
-        {
+        bool operator()(const MeaGUID& lhs, const MeaGUID& rhs) const {
             return lhs.ToString() < rhs.ToString();
         }
     };
@@ -124,7 +119,7 @@ public:
     /// Assign the specified GUID structure to this.
     /// @param guid     [in] Operating system defined GUID structure.
     /// @return This object.
-    MeaGUID&    Assign(const GUID& guid) {
+    MeaGUID& Assign(const GUID& guid) {
         m_guid = guid;
         return *this;
     }
@@ -132,18 +127,17 @@ public:
     /// Assign the specified GUID string to this.
     /// @param guidStr  [in] String representing a GUID.
     /// @return This object.
-    MeaGUID&    Assign(LPCTSTR guidStr);
+    MeaGUID& Assign(LPCTSTR guidStr);
 
     /// Assign the specified MeaGUID object to this.
     /// @param guid     [in] MeaGUID object to assign.
     /// @return This object.
-    MeaGUID&    Assign(const MeaGUID& guid) {
+    MeaGUID& Assign(const MeaGUID& guid) {
         if (this != &guid) {
             Assign(guid.m_guid);
         }
         return *this;
     }
-
 
     /// Tests the specified MeaGUID object for equality with this.
     /// @param guid     [in] MeaGUID object to test.
@@ -167,7 +161,6 @@ public:
                 (m_guid.Data4[7] == guid.Data4[7]));
     }
 
-
     /// Returns a string representation of the GUID. Note that the
     /// string returned is not preserved across calls to this method.
     /// Copy the returned string to preserve it.
@@ -177,7 +170,6 @@ public:
     CString ToString() const;
 
 private:
-    GUID    m_guid;             ///< Underlying GUID for the object.
-
+    GUID m_guid;                ///< Underlying GUID for the object.
     mutable CString m_buffer;   ///< Buffer holding the string representation of the GUID.
 };

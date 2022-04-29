@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -41,16 +41,14 @@
 #include "Singleton.h"
 
 
-/// Manages the measurement tools including selection,
-/// enabling, disabling, and communicating various messages
+/// Manages the measurement tools including selection, enabling, disabling, and communicating various messages
 /// to the tools.
 ///
-/// The term "radio tool" refers to those measurement tools
-/// that are mutually exclusive (i.e. only one radio tool can
+/// The term "radio tool" refers to those measurement tools that are mutually exclusive (i.e. only one radio tool can
 /// be used at a time).
 ///
-class MeaToolMgr : public MeaSingleton_T<MeaToolMgr>
-{
+class MeaToolMgr : public MeaSingleton_T<MeaToolMgr> {
+
 public:
     static constexpr bool kDefCrosshairsEnabled { true };   ///< Crosshairs are enabled by default.
 
@@ -69,11 +67,9 @@ public:
     ///
     void LoadProfile(MeaProfile& profile);
 
-
     /// Resets the screen manager to its default state.
     ///
     void MasterReset();
-
 
     /// Sets the measurement data display object for use by each
     /// measurement tool.
@@ -83,7 +79,6 @@ public:
     void SetDataDisplay(MeaDataDisplay* dataDisplay) {
         m_dataDisplay = dataDisplay;
     }
-
 
     /// Makes the specified radio tool the current measurement tool.
     ///
@@ -103,7 +98,7 @@ public:
         if (m_dataDisplay != nullptr)
             m_dataDisplay->ClearRegionData();
         for (const auto& toolEntry : m_tools) {
-            MeaTool *tool = toolEntry.second;
+            MeaTool* tool = toolEntry.second;
             if (tool->IsRadioTool() && tool->IsEnabled()) {
                 tool->Disable();
             }
@@ -135,7 +130,7 @@ public:
     ///
     /// @return ID of the currently set radio tool.
     ///
-    UINT    GetLabelId() const {
+    UINT GetLabelId() const {
         return m_currentRadioTool->GetLabelId();
     }
 
@@ -185,7 +180,7 @@ public:
             m_dataDisplay->SetRegionLabel(GetLabelId());
         }
     }
-    
+
     /// If the specified tool is enabled, this method
     /// disables it, and vice versa.
     ///
@@ -254,13 +249,12 @@ public:
     /// between their normal visual state and a highlighted state.
     ///
     void FlashTool() const { m_currentRadioTool->Flash(); }
-    
+
     /// Causes the current radio tool to strobe. Typically strobing
     /// a tool causes its crosshairs to cycle once between their
     /// normal visual state and a highlighted state.
     ///
     void StrobeTool() const { m_currentRadioTool->Strobe(); }
-
 
     /// Called by the OS when the mouse pointer is moved.
     ///
@@ -271,22 +265,21 @@ public:
         m_currentRadioTool->OnMouseHook(wParam, lParam);
     }
 
-
     /// Sets the position of the current radio tool. The
     /// position of a specific part of the tool is set.
     ///
     /// @param which        [in] Specifies the component of the tools position to set.
     /// @param pixels       [in] Position value for the component.
     ///
-    void    SetPosition(MeaFields which, int pixels) {
+    void SetPosition(MeaFields which, int pixels) {
         static_cast<MeaTool*>(m_currentRadioTool)->SetPosition(which, pixels);
     }
-    
+
     /// Sets the position of the current radio tool.
     ///
     /// @param points   [in] Complete set of points for the tool.
     ///
-    void    SetPosition(const MeaRadioTool::PointMap& points) {
+    void SetPosition(const MeaRadioTool::PointMap& points) {
         m_currentRadioTool->SetPosition(points);
     }
 
@@ -295,14 +288,14 @@ public:
     /// @param xfield  [in] X position to set
     /// @param yfield  [in] Y position to set
     /// 
-    void    SetPositionToCursor(MeaFields xfield, MeaFields yfield);
+    void SetPositionToCursor(MeaFields xfield, MeaFields yfield);
 
     /// Returns a representative position from the current radio tool.
     ///
     /// @return The current radio tool returns a point that represents
     ///         its current position.
     ///
-    const POINT&    GetPosition() const {
+    const POINT& GetPosition() const {
         return static_cast<MeaTool*>(m_currentRadioTool)->GetPosition();
     }
 
@@ -313,7 +306,7 @@ public:
     /// @param position     [out] Position representing the location of
     ///                     the current radio tool.
     ///
-    void    GetPosition(MeaPositionLogMgr::Position& position) const {
+    void GetPosition(MeaPositionLogMgr::Position& position) const {
         m_currentRadioTool->GetPosition(position);
     }
 
@@ -321,7 +314,7 @@ public:
     /// 
     /// @param which Position field to increment
     ///
-    void    IncPosition(MeaFields which) {
+    void IncPosition(MeaFields which) {
         m_currentRadioTool->IncPosition(which);
     }
 
@@ -329,7 +322,7 @@ public:
     /// 
     /// @param which Position field to decrement
     ///
-    void    DecPosition(MeaFields which) {
+    void DecPosition(MeaFields which) {
         m_currentRadioTool->DecPosition(which);
     }
 
@@ -340,13 +333,12 @@ public:
     ///         region that can be captured.
     ///
     bool HasRegion() const { return m_currentRadioTool->HasRegion(); }
-    
+
     /// Obtains the current radio tools rectangular region.
     ///
     /// @return The current radio tools rectangular region.
     ///
     RECT GetRegion() const { return m_currentRadioTool->GetRegion(); }
-
 
     /// Sets the text in the status bar using the specified
     /// string resource ID.
@@ -354,7 +346,6 @@ public:
     /// @param id       [in] String resource ID.
     ///
     void SetStatus(int id) const;
-
 
     /// Supervises enabling the appropriate fields in the
     /// measurement region portion of the UI.
@@ -376,7 +367,6 @@ public:
     ///
     void EnableScreenFields(UINT enableFields, UINT editableFields);
 
-
     /// Updates the display of the screen size and resolution based
     /// on the screen containing the specified point. In the case
     /// where there are multiple monitors attached to the system, the
@@ -390,7 +380,6 @@ public:
             m_screenTool->SetPosition(pos);
         }
     }
-
 
     /// Displays the specified point in the X1/Y1 fields
     /// of the data display and on the rulers, if they
@@ -568,21 +557,21 @@ private:
 
     /// Purposely undefined.
     MeaToolMgr& operator=(const MeaToolMgr&);
-    
-    MeaDataDisplay  *m_dataDisplay;         ///< Data display object.
-    bool            m_crosshairsEnabled;    ///< Are crosshairs enabled.
-    ToolsMap        m_tools;                ///< All measurement tools.
-    MeaRadioTool    *m_currentRadioTool;    ///< Currently selected radio tool.
 
-    MeaScreenTool   *m_screenTool;          ///< Screen information tool.
-    MeaCursorTool   *m_cursorTool;          ///< Cursor position tool.
-    MeaPointTool    *m_pointTool;           ///< Point position tool.
-    MeaLineTool     *m_lineTool;            ///< Line measurement tool.
-    MeaRectTool     *m_rectTool;            ///< Rectangle tool.
-    MeaCircleTool   *m_circleTool;          ///< Circle measurement tool.
-    MeaAngleTool    *m_angleTool;           ///< Angle measurement tool.
-    MeaWindowTool   *m_windowTool;          ///< Window hierarchy measurement tool.
-    MeaRulerTool    *m_rulerTool;           ///< Screen rulers.
-    MeaGridTool     *m_gridTool;            ///< Screen grid.
-    MeaOriginTool   *m_originTool;          ///< Origin marker.
+
+    MeaDataDisplay* m_dataDisplay;      ///< Data display object.
+    bool m_crosshairsEnabled;           ///< Are crosshairs enabled.
+    ToolsMap m_tools;                   ///< All measurement tools.
+    MeaRadioTool* m_currentRadioTool;   ///< Currently selected radio tool.
+    MeaScreenTool* m_screenTool;        ///< Screen information tool.
+    MeaCursorTool* m_cursorTool;        ///< Cursor position tool.
+    MeaPointTool* m_pointTool;          ///< Point position tool.
+    MeaLineTool* m_lineTool;            ///< Line measurement tool.
+    MeaRectTool* m_rectTool;            ///< Rectangle tool.
+    MeaCircleTool* m_circleTool;        ///< Circle measurement tool.
+    MeaAngleTool* m_angleTool;          ///< Angle measurement tool.
+    MeaWindowTool* m_windowTool;        ///< Window hierarchy measurement tool.
+    MeaRulerTool* m_rulerTool;          ///< Screen rulers.
+    MeaGridTool* m_gridTool;            ///< Screen grid.
+    MeaOriginTool* m_originTool;        ///< Origin marker.
 };

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -37,22 +37,22 @@
 /// mask and as such, must be consecutive powers of 2.
 ///
 enum MeaFields {
-    MeaX1Field              = 0x0001,       ///< X1 coordinate data field.
-    MeaY1Field              = 0x0002,       ///< Y1 coordinate data field.
-    MeaX2Field              = 0x0004,       ///< X2 coordinate data field.
-    MeaY2Field              = 0x0008,       ///< Y2 coordinate data field.
-    MeaXVField              = 0x0010,       ///< Vertex or center X coordinate data field.
-    MeaYVField              = 0x0020,       ///< Vertex or center Y coordinate data field.
-    MeaWidthField           = 0x0040,       ///< Width data field.
-    MeaHeightField          = 0x0080,       ///< Height data field.
-    MeaDistanceField        = 0x0100,       ///< Distance data field.
-    MeaAngleField           = 0x0200,       ///< Angle data field.
-    MeaAreaField            = 0x0400,       ///< Area data field.
-    MeaScreenWidthField     = 0x0800,       ///< Screen width data field.
-    MeaScreenHeightField    = 0x1000,       ///< Screen height data field.
-    MeaResXField            = 0x2000,       ///< Data field for the screen resolution in the X dimension.
-    MeaResYField            = 0x4000,       ///< Data field for the screen resolution in the Y dimension.
-    MeaAspectField          = 0x8000        ///< Aspect ratio field.
+    MeaX1Field = 0x0001,            ///< X1 coordinate data field.
+    MeaY1Field = 0x0002,            ///< Y1 coordinate data field.
+    MeaX2Field = 0x0004,            ///< X2 coordinate data field.
+    MeaY2Field = 0x0008,            ///< Y2 coordinate data field.
+    MeaXVField = 0x0010,            ///< Vertex or center X coordinate data field.
+    MeaYVField = 0x0020,            ///< Vertex or center Y coordinate data field.
+    MeaWidthField = 0x0040,         ///< Width data field.
+    MeaHeightField = 0x0080,        ///< Height data field.
+    MeaDistanceField = 0x0100,      ///< Distance data field.
+    MeaAngleField = 0x0200,         ///< Angle data field.
+    MeaAreaField = 0x0400,          ///< Area data field.
+    MeaScreenWidthField = 0x0800,   ///< Screen width data field.
+    MeaScreenHeightField = 0x1000,  ///< Screen height data field.
+    MeaResXField = 0x2000,          ///< Data field for the screen resolution in the X dimension.
+    MeaResYField = 0x4000,          ///< Data field for the screen resolution in the Y dimension.
+    MeaAspectField = 0x8000         ///< Aspect ratio field.
 };
 
 /// The data display is divided into two major sections: Region and Screen.
@@ -74,6 +74,7 @@ enum MeaSection {
 /// This class is used to represent each section.
 ///
 class MeaDataSection : public CButton {
+
 protected:
     /// Called when the Enter key is pressed on one of the text fields.
     ///
@@ -84,8 +85,6 @@ protected:
     ///
     afx_msg LRESULT OnFieldEntry(WPARAM wParam, LPARAM id);
 
-    DECLARE_MESSAGE_MAP()
-
     /// Called when spin control UDN_DELTAPOS messages are sent.
     ///
     /// @param wParam       [in] Control ID
@@ -95,12 +94,14 @@ protected:
     ///
     /// @return Always returns TRUE indicating that the message has been handled.
     ///
-    afx_msg BOOL    OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
-    
+    afx_msg BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
+
     /// Called when the calibration warning button is pressed.
     /// The calibration preference panel is displayed.
     ///
-    afx_msg void    OnCalButton();
+    afx_msg void OnCalButton();
+
+    DECLARE_MESSAGE_MAP()
 };
 
 
@@ -117,18 +118,17 @@ protected:
 /// editable and offer up/down spin controls for fine adjustment of tool crosshair
 /// positions.
 ///
-class MeaDataDisplay : public CWnd
-{
+class MeaDataDisplay : public CWnd {
+
 public:
     /// Constructs the data display component. To complete the construction
     /// of the component, the Create method must be called.
     ///
     MeaDataDisplay();
-    
+
     /// Destroys the data display component.
     ///
     virtual ~MeaDataDisplay();
-
 
     /// Creates the window for the data display.
     ///
@@ -168,7 +168,6 @@ public:
         }
     }
 
-
     /// This method specifies which Region section text field should be enabled
     /// and, in addition, which fields should be editable. The fields are specified
     /// as an OR'd set of MeaFields identifiers. Fields that are not specified are
@@ -197,7 +196,6 @@ public:
     ///
     void ClearRegionData();
 
-
     /// Enables the specified data display section.
     ///
     /// @param section      [in] Data display section to enable.
@@ -209,7 +207,7 @@ public:
     /// @param section      [in] Data display section to enable.
     ///
     void Disable(MeaSection section);
-    
+
     /// Indicates whether the specified data display section is enabled.
     ///
     /// @return <b>true</b> if the specified data display section is enabled.
@@ -218,76 +216,86 @@ public:
         return ((section == MeaRegionSection) ? m_regionSectionEnabled : m_screenSectionEnabled);
     }
 
-
     /// Returns the height of the specified data display section.
     ///
     /// @param section      [in] Data display section whose height is desired.
     ///
     /// @return Height of the specified data display section, in pixels.
     ///
-    int  GetHeight(MeaSection section) const {
-        return ((section == MeaRegionSection) ? 
+    int GetHeight(MeaSection section) const {
+        return ((section == MeaRegionSection) ?
             m_regionSectionRect.Height() : m_screenSectionRect.Height() + kSectionSpacing);
     }
-
 
     /// Displays the specified X1, Y1 coordinates.
     /// @param point    [in] Coordinates, in pixels.
     /// @param cpoint   [in] Coordinates, in current units.
+    /// 
     void ShowXY1(const POINT& point, const FPOINT& cpoint);
 
     /// Displays the specified X2, Y2 coordinates.
     /// @param point    [in] Coordinates, in pixels.
     /// @param cpoint   [in] Coordinates, in current units.
+    /// 
     void ShowXY2(const POINT& point, const FPOINT& cpoint);
 
     /// Displays the specified vertex or center X, Y coordinates.
     /// @param point    [in] Coordinates, in pixels.
     /// @param cpoint   [in] Coordinates, in current units.
+    /// 
     void ShowXYV(const POINT& point, const FPOINT& cpoint);
 
     /// Displays the specified width and height.
     /// @param size     [in] Width and height, in current units.
+    /// 
     void ShowWH(const FSIZE& size);
 
     /// Displays a diagonal distance calculated from the specified width and height.
     /// @param size     [in] Width and height, in current units.
+    /// 
     void ShowDistance(const FSIZE& size);
 
     /// Displays the specified distance.
     /// @param dist     [in] Distance, in current units.
+    /// 
     void ShowDistance(double dist);
 
     /// Displays the specified angle.
     /// @param angle    [in] Angle, in current angular units.
+    /// 
     void ShowAngle(double angle);
 
     /// Displays the aspect ratio of the specified width and height (i.e. width/height).
     /// @param size    [in] Width and height, in current units.
+    /// 
     void ShowAspect(const FSIZE& size);
 
     /// Displays the rectangular area calculated from the specified width and height.
     /// @param size     [in] Width and height, in current units.
+    /// 
     void ShowRectArea(const FSIZE& size);
 
     /// Displays the circular area calculated from the specified radius.
     /// @param radius   [in] Radius, in current units.
+    /// 
     void ShowCircleArea(double radius);
 
     /// Displays the specified string as the name for the current monitor.
     /// This helps identify the screen information in multiple monitor
     /// environments.
     /// @param name     [in] Name for the current monitor.
+    /// 
     void ShowScreenName(const CString& name);
 
     /// Displays the specified screen width and height.
     /// @param size     [in] Screen width and height, in the current units.
+    /// 
     void ShowScreenWH(const FSIZE& size);
 
     /// Displays the specified screen resolution.
     /// @param res      [in] Screen resolution in the X and Y dimensions, in the current units.
+    /// 
     void ShowScreenRes(const FSIZE& res);
-
 
     ///If one of the enabled text fields has the focus, a pointer
     /// to that window is returned.
@@ -327,7 +335,7 @@ protected:
     /// @return TRUE if the message has been processed or FALSE if the
     ///         spin control needs to process the message.
     ///
-    afx_msg BOOL    OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
+    afx_msg BOOL OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult);
 
     DECLARE_MESSAGE_MAP()
 
@@ -339,11 +347,12 @@ private:
     /// display class.
     ///
     class DataItem {
+
     public:
         /// Constructs a data item. To complete the data item for use, the
         /// appropriate set of Create* methods must be called.
         ///
-        DataItem() : m_spin(nullptr), m_unitsLabel(nullptr) { }
+        DataItem() : m_spin(nullptr), m_unitsLabel(nullptr) {}
 
         /// Destroys a data item.
         ///
@@ -355,12 +364,10 @@ private:
                 if (m_spin != nullptr) {
                     delete m_spin;
                 }
-            }
-            catch(...) {
+            } catch (...) {
                 MeaAssert(false);
             }
         }
-
 
         /// Creates a labeled text entry field optionally with
         /// a spin button control and units label.
@@ -373,8 +380,7 @@ private:
         ///
         /// @return <b>true</b> if creation succeeds.
         ///
-        bool    CreateField(UINT labelId, int numChars, CWnd *parentWnd,
-                            MeaFields fieldId, int spinId = 0xFFFF);
+        bool CreateField(UINT labelId, int numChars, CWnd* parentWnd, MeaFields fieldId, int spinId = 0xFFFF);
 
         /// Creates a spin button control associated with the text field.
         ///
@@ -383,7 +389,7 @@ private:
         ///
         /// @return <b>true</b> if creation succeeded.
         ///
-        bool    CreateSpinButton(CWnd *parentWnd, MeaFields id);
+        bool CreateSpinButton(CWnd* parentWnd, MeaFields id);
 
         /// Creates a linear units label.
         ///
@@ -392,7 +398,7 @@ private:
         ///
         /// @return <b>true</b> if creation succeeded.
         ///
-        bool    CreateLengthUnits(const MeaLinearUnits* units, CWnd *parentWnd) {
+        bool CreateLengthUnits(const MeaLinearUnits* units, CWnd* parentWnd) {
             m_unitsLabel = MeaUnitsMgr::Instance().NewLengthUnitsLabel();
             return m_unitsLabel->Create(units->GetUnitsId(), WS_CHILD | WS_VISIBLE,
                                         CPoint(0, 0), parentWnd) ? true : false;
@@ -405,7 +411,7 @@ private:
         ///
         /// @return <b>true</b> if creation succeeded.
         ///
-        bool    CreateAngleUnits(const MeaAngularUnits* units, CWnd *parentWnd) {
+        bool CreateAngleUnits(const MeaAngularUnits* units, CWnd* parentWnd) {
             m_unitsLabel = MeaUnitsMgr::Instance().NewAngleUnitsLabel();
             return m_unitsLabel->Create(units->GetUnitsId(), WS_CHILD | WS_VISIBLE,
                                         CPoint(0, 0), parentWnd) ? true : false;
@@ -418,7 +424,7 @@ private:
         ///
         /// @return <b>true</b> if creation succeeded.
         ///
-        bool    CreateAreaUnits(const MeaLinearUnits* units, CWnd *parentWnd) {
+        bool CreateAreaUnits(const MeaLinearUnits* units, CWnd* parentWnd) {
             m_unitsLabel = MeaUnitsMgr::Instance().NewAreaUnitsLabel();
             return m_unitsLabel->Create(units->GetUnitsId(), WS_CHILD | WS_VISIBLE,
                                         CPoint(0, 0), parentWnd) ? true : false;
@@ -431,7 +437,7 @@ private:
         ///
         /// @return <b>true</b> if creation succeeded.
         ///
-        bool    CreateResUnits(const MeaLinearUnits* units, CWnd *parentWnd) {
+        bool CreateResUnits(const MeaLinearUnits* units, CWnd* parentWnd) {
             m_unitsLabel = MeaUnitsMgr::Instance().NewResUnitsLabel();
             return m_unitsLabel->Create(units->GetUnitsId(), WS_CHILD | WS_VISIBLE,
                                         CPoint(0, 0), parentWnd) ? true : false;
@@ -442,13 +448,13 @@ private:
         ///
         /// @param enable   [in] Indicates whether the data item should be enabled or disabled.
         ///
-        void    Enable(bool enable);
+        void Enable(bool enable);
 
         /// Controls whether the data item text field is editable or read-only.
         ///
         /// @param readonly     [in] <b>true</b> if the text field should be read-only.
         ///
-        void    SetReadOnly(bool readonly) {
+        void SetReadOnly(bool readonly) {
             m_field.SetReadOnly(readonly);
             m_field.ModifyStyle(readonly ? (WS_GROUP | WS_TABSTOP) : 0, readonly ? 0 : (WS_GROUP | WS_TABSTOP));
             if (m_spin != nullptr) {
@@ -460,7 +466,7 @@ private:
         ///
         /// @param text     [in] Text to display.
         ///
-        void    SetText(LPCTSTR text) {
+        void SetText(LPCTSTR text) {
             m_field.SetWindowText(text);
         }
 
@@ -470,7 +476,7 @@ private:
         /// @return Contents of the text field converted to a double precision
         ///         floating point value.
         ///
-        double  GetValue() const {
+        double GetValue() const {
             double value = 0;
             m_field.GetValue(value);
             return value;
@@ -482,7 +488,7 @@ private:
         /// @param numChars     [in] Maximum number of characters allowed in
         ///                     the text field.
         ///
-        void    SetLimitText(UINT numChars) {
+        void SetLimitText(UINT numChars) {
             m_field.SetLimitText(numChars);
         }
 
@@ -493,7 +499,7 @@ private:
         /// @param lower    [in] Minimum spin control value, inclusive.
         /// @param upper    [in] Upper spin control value, inclusive.
         ///
-        void    SetSpinRange(int lower, int upper) {
+        void SetSpinRange(int lower, int upper) {
             if (m_spin != nullptr) {
                 m_spin->SetRange32(lower, upper);
             }
@@ -504,7 +510,7 @@ private:
         ///
         /// @param pos      [in] Value for the spin control.
         ///
-        void    SetSpinPos(int pos) {
+        void SetSpinPos(int pos) {
             if (m_spin != nullptr && m_spin->IsWindowEnabled()) {
                 m_spin->SetPos(pos);
             }
@@ -516,19 +522,19 @@ private:
         ///
         /// @return Label object.
         ///
-        const MeaLabel&     GetTitleLabel() const   { return m_titleLabel; }
-        
+        const MeaLabel& GetTitleLabel() const { return m_titleLabel; }
+
         /// Returns the text field object for the data item.
         ///
         /// @return Text field object.
         ///
-        MeaNumberField&     GetField()      { return m_field; }
-        
+        MeaNumberField& GetField() { return m_field; }
+
         /// Returns the spin control associated with the text field.
         ///
         /// @return Spin control.
         ///
-        CSpinButtonCtrl&    GetSpin()       {
+        CSpinButtonCtrl& GetSpin() {
             MeaAssert(m_spin != nullptr);
             return *m_spin;
         }
@@ -538,25 +544,23 @@ private:
         ///
         /// @return Units label object.
         ///
-        MeaUnitsLabel&      GetUnitsLabel() {
+        MeaUnitsLabel& GetUnitsLabel() {
             MeaAssert(m_unitsLabel != nullptr);
             return *m_unitsLabel;
         }
 
     private:
         static constexpr int kSpinWidth { 17 };     ///< Width for the spin control, in pixels.
-        
-        MeaLabel        m_titleLabel;       ///< Left side label for the data item.
-        MeaNumberField  m_field;            ///< Data item's text field.
-        CSpinButtonCtrl *m_spin;            ///< Spin control associated with the text field
-                                            ///< or nullptr if no spin control for this data item.
-        MeaUnitsLabel   *m_unitsLabel;      ///< Units label or nullptr if no units label for this
-                                            ///< data item.
+
+        MeaLabel m_titleLabel;          ///< Left side label for the data item.
+        MeaNumberField m_field;         ///< Data item's text field.
+        CSpinButtonCtrl* m_spin;        ///< Spin control associated with the text field or nullptr if no spin
+                                        ///< control for this data item.
+        MeaUnitsLabel* m_unitsLabel;    ///< Units label or nullptr if no units label for this data item.
     };
 
-    
-    typedef std::set<MeaNumberField*>   Fields;     ///< A set of numerical text fields.
 
+    typedef std::set<MeaNumberField*>   Fields;     ///< A set of numerical text fields.
 
     static constexpr RECT kMargin { 7, 17, 7, 7 };          ///< Margins for the sections, in pixels.
     static constexpr SIZE kControlSpacing { 7, 5 };         ///< Horizontal and vertical spacing for the controls in a data item, in pixels.
@@ -583,39 +587,32 @@ private:
     bool CreateScreenSection();
 
 
-    MeaDataSection  m_regionSection;        ///< Measurement tool display section.
-    MeaDataSection  m_screenSection;        ///< Screen information display section.
-
-    bool    m_regionSectionProfileEnabled;  ///< Indicates if the measurement tool display
-                                            ///< section is shown based on the user preferences.
-    bool    m_screenSectionProfileEnabled;  ///< Indicates if the screen information display
-                                            ///< section is shown based on the user preferences.
-
-    bool    m_regionSectionEnabled;         ///< Indicates if the measurement tool display is shown.
-    bool    m_screenSectionEnabled;         ///< Indicates if the screen information section is shown.
-
-    CRect   m_regionSectionRect;            ///< Rectangle containing the measurement tool display section.
-    CRect   m_screenSectionRect;            ///< Rectangle containing the screen information section.
-
-    DataItem    m_x1;               ///< X1 coordinate data item.
-    DataItem    m_y1;               ///< Y1 coordinate data item.
-    DataItem    m_x2;               ///< X2 coordinate data item.
-    DataItem    m_y2;               ///< Y2 coordinate data item.
-    DataItem    m_xv;               ///< Vertex or center X coordinate data item.
-    DataItem    m_yv;               ///< Vertex or center Y coordinate data item.
-
-    DataItem    m_width;            ///< Width data item.
-    DataItem    m_height;           ///< Height data item.
-    DataItem    m_length;           ///< Distance data item.
-    DataItem    m_angle;            ///< Angle data item.
-    DataItem    m_aspect;           ///< Aspect ratio.
-    DataItem    m_area;             ///< Area data item.
-
-    DataItem    m_screenWidth;      ///< Screen width data item.
-    DataItem    m_screenHeight;     ///< Screen height data item.
-    DataItem    m_screenResX;       ///< Screen X resolution data item.
-    DataItem    m_screenResY;       ///< Screen Y resolution data item.
-
-    MeaImageButton  m_calBtn;       ///< Calibration warning button.
-    Fields      m_fields;           ///< Set of all text fields.
+    MeaDataSection m_regionSection;     ///< Measurement tool display section.
+    MeaDataSection m_screenSection;     ///< Screen information display section.
+    bool m_regionSectionProfileEnabled; ///< Indicates if the measurement tool display
+                                        ///< section is shown based on the user preferences.
+    bool m_screenSectionProfileEnabled; ///< Indicates if the screen information display
+                                        ///< section is shown based on the user preferences.
+    bool m_regionSectionEnabled;        ///< Indicates if the measurement tool display is shown.
+    bool m_screenSectionEnabled;        ///< Indicates if the screen information section is shown.
+    CRect m_regionSectionRect;          ///< Rectangle containing the measurement tool display section.
+    CRect m_screenSectionRect;          ///< Rectangle containing the screen information section.
+    DataItem m_x1;                      ///< X1 coordinate data item.
+    DataItem m_y1;                      ///< Y1 coordinate data item.
+    DataItem m_x2;                      ///< X2 coordinate data item.
+    DataItem m_y2;                      ///< Y2 coordinate data item.
+    DataItem m_xv;                      ///< Vertex or center X coordinate data item.
+    DataItem m_yv;                      ///< Vertex or center Y coordinate data item.
+    DataItem m_width;                   ///< Width data item.
+    DataItem m_height;                  ///< Height data item.
+    DataItem m_length;                  ///< Distance data item.
+    DataItem m_angle;                   ///< Angle data item.
+    DataItem m_aspect;                  ///< Aspect ratio.
+    DataItem m_area;                    ///< Area data item.
+    DataItem m_screenWidth;             ///< Screen width data item.
+    DataItem m_screenHeight;            ///< Screen height data item.
+    DataItem m_screenResX;              ///< Screen X resolution data item.
+    DataItem m_screenResY;              ///< Screen Y resolution data item.
+    MeaImageButton m_calBtn;            ///< Calibration warning button.
+    Fields m_fields;                    ///< Set of all text fields.
 };

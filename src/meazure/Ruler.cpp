@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -35,9 +35,7 @@ BEGIN_MESSAGE_MAP(MeaRuler, MeaGraphic)
 END_MESSAGE_MAP()
 
 
-void MeaRulerCallback::OnRulerMove(const RulerInfo* /* info */)
-{
-}
+void MeaRulerCallback::OnRulerMove(const RulerInfo* /* info */) {}
 
 
 MeaRuler::MeaRuler() :
@@ -53,8 +51,7 @@ MeaRuler::MeaRuler() :
     m_mouseCaptured(false),
     m_opacity(255),
     m_origRulerBitmap(nullptr),
-    m_origBackBitmap(nullptr)
-{
+    m_origBackBitmap(nullptr) {
     // Initially hide all position indicators.
     //
     for (int i = 0; i < NumIndicators; i++) {
@@ -62,29 +59,24 @@ MeaRuler::MeaRuler() :
     }
 }
 
-
-MeaRuler::~MeaRuler()
-{
-}
-
+MeaRuler::~MeaRuler() {}
 
 bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
                       Orientation orientation, const CRect& targetRect,
-                      MeaRulerCallback *callback, const CWnd *parent,
-                      UINT id)
-{
+                      MeaRulerCallback* callback, const CWnd* parent,
+                      UINT id) {
     HCURSOR cursor;
 
-    m_callback      = callback;
-    m_orientation   = orientation;
-    m_targetRect    = targetRect;
+    m_callback = callback;
+    m_orientation = orientation;
+    m_targetRect = targetRect;
 
     SetColors(borderColor, backColor);
 
     MeaScreenMgr& smgr = MeaScreenMgr::Instance();
     MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
     FSIZE res = smgr.GetScreenRes(smgr.GetScreenIter(targetRect));
-    
+
     // To ensure the proper sizing of the ruler tick marks and margins,
     // the dimensions are stated in inches and converted to pixels at
     // runtime. This allows the resolution of the screen on which the
@@ -128,7 +120,7 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
     //
     TEXTMETRIC metrics;
     LOGFONT lf;
-    CDC *dc = GetDC();
+    CDC* dc = GetDC();
 
     memset(&lf, 0, sizeof(LOGFONT));
     lf.lfHeight = 80;
@@ -137,7 +129,7 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
     lf.lfEscapement = 900;
     m_vFont.CreatePointFontIndirect(&lf, dc);
 
-    CFont *origFont = static_cast<CFont*>(dc->SelectObject(&m_hFont));
+    CFont* origFont = static_cast<CFont*>(dc->SelectObject(&m_hFont));
     dc->GetTextMetrics(&metrics);
     m_fontHeight = metrics.tmHeight;
 
@@ -156,7 +148,7 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
         SetWindowPos(nullptr, 0, 0, m_thk, targetRect.Height(),
                      SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE);
     }
-    
+
     // If layered windows are available and the ruler is a child window,
     // this means that we need to simulate opacity. This scenario occurs
     // when the ruler is used as a sample on the preference page for
@@ -177,19 +169,17 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
 
         MeaLayout::DrawOpacityBackground(*this, m_backDC);
     }
-    
+
     ReleaseDC(dc);
 
     // Set an initial position for the ruler based on its orientation.
     //
     SetPosition((orientation == Horizontal) ? m_targetRect.top : m_targetRect.left);
-    
+
     return true;
 }
 
-
-void MeaRuler::OnDestroy()
-{
+void MeaRuler::OnDestroy() {
     MeaGraphic::OnDestroy();
 
     m_hFont.DeleteObject();
@@ -208,18 +198,14 @@ void MeaRuler::OnDestroy()
     }
 }
 
-
-void MeaRuler::SetColors(COLORREF borderColor, COLORREF backColor)
-{
-    m_borderColor   = borderColor;
-    m_backColor     = backColor;
+void MeaRuler::SetColors(COLORREF borderColor, COLORREF backColor) {
+    m_borderColor = borderColor;
+    m_backColor = backColor;
 
     Update();
 }
 
-
-void MeaRuler::SetOpacity(BYTE opacity)
-{
+void MeaRuler::SetOpacity(BYTE opacity) {
     m_opacity = opacity;
 
     if (m_hWnd != nullptr) {
@@ -231,9 +217,7 @@ void MeaRuler::SetOpacity(BYTE opacity)
     }
 }
 
-
-void MeaRuler::SetPosition(int position)
-{
+void MeaRuler::SetPosition(int position) {
     CPoint targetCenter(m_targetRect.CenterPoint());
 
     m_position = position;
@@ -279,9 +263,7 @@ void MeaRuler::SetPosition(int position)
     }
 }
 
-
-void MeaRuler::SetIndicator(IndicatorId indId, int pixel)
-{
+void MeaRuler::SetIndicator(IndicatorId indId, int pixel) {
     if (GetSafeHwnd() != nullptr) {
         CClientDC dc(this);
         DrawIndicator(indId, dc);
@@ -292,9 +274,7 @@ void MeaRuler::SetIndicator(IndicatorId indId, int pixel)
     }
 }
 
-
-void MeaRuler::ClearIndicator(IndicatorId indId)
-{
+void MeaRuler::ClearIndicator(IndicatorId indId) {
     // The indicators are hidden by moving them to a position
     // that is guaranteed to be off any screen.
     //
@@ -302,14 +282,12 @@ void MeaRuler::ClearIndicator(IndicatorId indId)
     m_indicatorLoc[indId] = min(offScreen.x, offScreen.y);
 }
 
-
-void MeaRuler::DrawIndicator(IndicatorId indId, CDC& dc)
-{
+void MeaRuler::DrawIndicator(IndicatorId indId, CDC& dc) {
     // A position indicator is a line that is XOR'd onto
     // the ruler window.
     //
     CPen pen(PS_DOT, 1, m_borderColor);
-    CPen *origPen = static_cast<CPen*>(dc.SelectObject(&pen));
+    CPen* origPen = static_cast<CPen*>(dc.SelectObject(&pen));
     int origROP = dc.SetROP2(R2_XORPEN);
 
     CRect clientRect;
@@ -333,9 +311,7 @@ void MeaRuler::DrawIndicator(IndicatorId indId, CDC& dc)
     dc.SelectObject(origPen);
 }
 
-
-void MeaRuler::DrawRuler(CDC& dc)
-{
+void MeaRuler::DrawRuler(CDC& dc) {
     // One of the major challenges in drawing the ruler is drawing the tick
     // marks in the correct location and with the appropriate appearance. This
     // is because the position of a tick mark might not necessarily land on an
@@ -366,7 +342,7 @@ void MeaRuler::DrawRuler(CDC& dc)
     // Draw tick marks and labels
     // 
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
-    MeaLinearUnits *units = unitsMgr.GetLinearUnits();
+    MeaLinearUnits* units = unitsMgr.GetLinearUnits();
     int majorTickCount = units->GetMajorTickCount();
     double p;
     bool isMajorTick, isExact;
@@ -377,8 +353,8 @@ void MeaRuler::DrawRuler(CDC& dc)
 
     // Determine the blending colors for non-pixel aligned hash mark placement.
     //
-    COLORREF hash1  = MeaColors::InterpolateColor(m_borderColor, m_backColor, 40);
-    COLORREF hash2  = MeaColors::InterpolateColor(m_borderColor, m_backColor, 70);
+    COLORREF hash1 = MeaColors::InterpolateColor(m_borderColor, m_backColor, 40);
+    COLORREF hash2 = MeaColors::InterpolateColor(m_borderColor, m_backColor, 70);
 
     CPen pen(PS_SOLID, 1, m_borderColor);
     CPen pen1(PS_SOLID, 1, hash1);
@@ -389,7 +365,7 @@ void MeaRuler::DrawRuler(CDC& dc)
     dc.SetTextAlign(TA_CENTER);
 
     if (m_labelPosition == Left || m_labelPosition == Right) {
-        CFont *oldFont = dc.SelectObject(&m_vFont);
+        CFont* oldFont = dc.SelectObject(&m_vFont);
 
         do {
             for (p = 0.0, tick = 0, y = static_cast<int>(units->UnconvertCoord(MeaConvertY, this, p));
@@ -405,7 +381,7 @@ void MeaRuler::DrawRuler(CDC& dc)
                     MeaLayout::ScreenToClientY(*this, ya);
                     MeaLayout::ScreenToClientY(*this, yb);
 
-                    CPen *oldPen = dc.SelectObject(isExact ? &pen : &pen1);
+                    CPen* oldPen = dc.SelectObject(isExact ? &pen : &pen1);
 
                     if (m_labelPosition == Left) {
                         dc.MoveTo(clientRect.right, ya);
@@ -439,7 +415,7 @@ void MeaRuler::DrawRuler(CDC& dc)
 
         dc.SelectObject(oldFont);
     } else {
-        CFont *oldFont = dc.SelectObject(&m_hFont);
+        CFont* oldFont = dc.SelectObject(&m_hFont);
 
         do {
             for (p = 0.0, tick = 0, x = static_cast<int>(units->UnconvertCoord(MeaConvertX, this, p));
@@ -455,7 +431,7 @@ void MeaRuler::DrawRuler(CDC& dc)
                     MeaLayout::ScreenToClientX(*this, xa);
                     MeaLayout::ScreenToClientX(*this, xb);
 
-                    CPen *oldPen = dc.SelectObject(isExact ? &pen : &pen1);
+                    CPen* oldPen = dc.SelectObject(isExact ? &pen : &pen1);
 
                     if (m_labelPosition == Top) {
                         dc.MoveTo(xa, clientRect.bottom);
@@ -496,9 +472,7 @@ void MeaRuler::DrawRuler(CDC& dc)
     dc.FrameRect(clientRect, &borderBrush);
 }
 
-
-void MeaRuler::OnPaint()
-{
+void MeaRuler::OnPaint() {
     CPaintDC dc(this);
 
     // If the ruler is a popup, just draw it. Otherwise it is a child
@@ -518,39 +492,30 @@ void MeaRuler::OnPaint()
     }
 }
 
-
-void MeaRuler::FillInfo(MeaRulerCallback::RulerInfo& rulerInfo, UINT flags,
-                            const CPoint& point)
-{
+void MeaRuler::FillInfo(MeaRulerCallback::RulerInfo& rulerInfo, UINT flags, const CPoint& point) {
     CPoint pt(point - m_pointerOffset);
     ClientToScreen(&pt);
     pt = MeaScreenMgr::Instance().LimitPosition(pt);
     rulerInfo.position = (m_orientation == Vertical) ? pt.x : pt.y;
 
-    rulerInfo.ruler     = this;
-    rulerInfo.id        = m_id;
-    rulerInfo.flags     = flags;
+    rulerInfo.ruler = this;
+    rulerInfo.id = m_id;
+    rulerInfo.flags = flags;
 }
 
-
-void MeaRuler::OnLButtonDown(UINT /* flags */, CPoint point)
-{
+void MeaRuler::OnLButtonDown(UINT /* flags */, CPoint point) {
     m_pointerOffset = point;
 
     SetCapture();
     m_mouseCaptured = true;
 }
 
-
-void MeaRuler::OnLButtonUp(UINT /* flags */, CPoint /* point */)
-{
+void MeaRuler::OnLButtonUp(UINT /* flags */, CPoint /* point */) {
     m_mouseCaptured = false;
     ::ReleaseCapture();
 }
 
-
-void MeaRuler::OnMouseMove(UINT flags, CPoint point)
-{
+void MeaRuler::OnMouseMove(UINT flags, CPoint point) {
     // If the left mouse button is being pressed during the
     // pointer move, send the ruler callback.
     //

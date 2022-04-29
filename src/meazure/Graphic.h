@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -17,17 +17,17 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// @file
-/// @brief Graphic element base class header file.
+ /// @file
+ /// @brief Graphic element base class header file.
 
 #pragma once
 
- 
+
 /// Base class for all graphic elements. Classes derived from this base
 /// class are used by the measurement tools to perform their function.
 ///
-class MeaGraphic: public CWnd
-{
+class MeaGraphic : public CWnd {
+
 public:
     /// Base class constructor. Prior to displaying the graphic with
     /// the Show() method, the Create() method must be called to create
@@ -38,7 +38,6 @@ public:
     /// Base class destructor
     ///
     virtual ~MeaGraphic();
-
 
     /// Creates the window for the graphic. This method must be called
     /// before the graphic can be displayed and before any operation that
@@ -59,19 +58,17 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(LPCTSTR classname, const SIZE& size, const CWnd *parent, UINT id = 0xFFFF);
-
+    bool Create(LPCTSTR classname, const SIZE& size, const CWnd* parent, UINT id = 0xFFFF);
 
     /// Displays the graphic. Call the Create() method prior
     /// to calling this method for the first time.
     ///
-    virtual void    Show();
+    virtual void Show();
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.
     ///
-    virtual void    Hide();
-
+    virtual void Hide();
 
     /// Changes the z-order of the graphic window so that it
     /// if above the specified window. Call the Create() method
@@ -79,12 +76,13 @@ public:
     ///
     /// @param  winBelow    [in] Window to place below this class's window
     ///
-    void    SetAbove(const CWnd *winBelow) { SetWindowPos(winBelow, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE); }
+    void SetAbove(const CWnd* winBelow) { SetWindowPos(winBelow, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE); }
 
 protected:
     static constexpr int kInitCoord { -1000 };  ///< An arbitrary initial coordinate for placing new graphics
 
-    UINT        m_id;               ///< ID for the graphic
-    bool        m_visible;          ///< Indicates whether the graphic is shown or hidden
-    const CWnd  *m_parent;          ///< Graphic's parent window or nullptr if graphic is a popup window
+
+    UINT m_id;              ///< ID for the graphic
+    bool m_visible;         ///< Indicates whether the graphic is shown or hidden
+    const CWnd* m_parent;   ///< Graphic's parent window or nullptr if graphic is a popup window
 };

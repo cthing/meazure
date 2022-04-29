@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -59,13 +59,9 @@ BEGIN_MESSAGE_MAP(CMeazureApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-CMeazureApp::CMeazureApp() : CWinApp()
-{
-}
+CMeazureApp::CMeazureApp() : CWinApp() {}
 
-
-BOOL CMeazureApp::InitInstance()
-{
+BOOL CMeazureApp::InitInstance() {
     // Parse the command line to see if we are being started with
     // a profile.
     //
@@ -74,7 +70,8 @@ BOOL CMeazureApp::InitInstance()
 
     // Ensure that only one instance of the application is running.
     //
-    if (InterlockedExchange64(reinterpret_cast<LONG64*>(const_cast<HWND*>(&g_meaMainWnd)), reinterpret_cast<LONG64>(g_meaMainWnd)) != 0) {
+    if (InterlockedExchange64(reinterpret_cast<LONG64*>(const_cast<HWND*>(&g_meaMainWnd)),
+                              reinterpret_cast<LONG64>(g_meaMainWnd)) != 0) {
 
         // Bring the window forward if obscured.
 
@@ -117,7 +114,7 @@ BOOL CMeazureApp::InitInstance()
     // Enable HTML Help
     //
     EnableHtmlHelp();
-    
+
     // Set the base key for saving/restoring state in the registry
     //
     SetRegistryKey(_T("C Thing Software"));
@@ -142,7 +139,7 @@ BOOL CMeazureApp::InitInstance()
 
     // Set the help file pathname by replacing the old WinHelp
     // .hlp with the new HTML Help .chm.
-    TCHAR *cptr = const_cast<TCHAR*>(_tcsstr(m_pszHelpFilePath, _T(".hlp")));
+    TCHAR* cptr = const_cast<TCHAR*>(_tcsstr(m_pszHelpFilePath, _T(".hlp")));
     if (cptr == nullptr) {
         cptr = const_cast<TCHAR*>(_tcsstr(m_pszHelpFilePath, _T(".HLP")));
     }
@@ -153,33 +150,25 @@ BOOL CMeazureApp::InitInstance()
     return TRUE;
 }
 
-
-int CMeazureApp::ExitInstance() 
-{
+int CMeazureApp::ExitInstance() {
     MeaPositionLogMgr::DestroyInstance();
     MeaProfileMgr::DestroyInstance();
     MeaToolMgr::DestroyInstance();
     MeaUnitsMgr::DestroyInstance();
     MeaScreenMgr::DestroyInstance();
-    
+
     return CWinApp::ExitInstance();
 }
 
-
-void CMeazureApp::OnMouseHook(WPARAM wParam, LPARAM lParam)
-{
+void CMeazureApp::OnMouseHook(WPARAM wParam, LPARAM lParam) {
     static_cast<CMainFrame*>(m_pMainWnd)->GetView()->OnMouseHook(wParam, lParam);
 }
 
-
-BOOL CMeazureApp::SaveAllModified()
-{
+BOOL CMeazureApp::SaveAllModified() {
     return MeaPositionLogMgr::Instance().SaveIfModified();
 }
 
-
-void CMeazureApp::WinHelp(DWORD dwData, UINT nCmd)
-{
+void CMeazureApp::WinHelp(DWORD dwData, UINT nCmd) {
     switch (nCmd) {
     case HELP_CONTEXT:
         TRACE("Context: %s, 0x%X\n", m_pszHelpFilePath, dwData);
@@ -190,21 +179,21 @@ void CMeazureApp::WinHelp(DWORD dwData, UINT nCmd)
         ::HtmlHelp(*AfxGetMainWnd(), m_pszHelpFilePath, HH_DISPLAY_INDEX, dwData);
         break;
     case HELP_COMMAND:      // Using this for Search
-        {
-            HH_FTS_QUERY q;     // A blank query is required
+    {
+        HH_FTS_QUERY q;     // A blank query is required
 
-            q.cbStruct          = sizeof(q);    // Sizeof structure in bytes.
-            q.fUniCodeStrings   = FALSE;        // TRUE if all strings are Unicode.
-            q.pszSearchQuery    = nullptr;      // String containing the search query.
-            q.iProximity        = HH_FTS_DEFAULT_PROXIMITY; // Word proximity - only one option
-            q.fStemmedSearch    = FALSE;        // TRUE for StemmedSearch only.
-            q.fTitleOnly        = FALSE;        // TRUE for Title search only.
-            q.fExecute          = FALSE;        // TRUE to initiate the search.
-            q.pszWindow         = nullptr;      // Window to display in
-            TRACE("Search: %s, 0x%X\n", m_pszHelpFilePath, dwData);
-            ::HtmlHelp(*AfxGetMainWnd(), m_pszHelpFilePath, HH_DISPLAY_SEARCH, reinterpret_cast<DWORD_PTR>(&q));
-        }
-        break;
+        q.cbStruct = sizeof(q);    // Sizeof structure in bytes.
+        q.fUniCodeStrings = FALSE;        // TRUE if all strings are Unicode.
+        q.pszSearchQuery = nullptr;      // String containing the search query.
+        q.iProximity = HH_FTS_DEFAULT_PROXIMITY; // Word proximity - only one option
+        q.fStemmedSearch = FALSE;        // TRUE for StemmedSearch only.
+        q.fTitleOnly = FALSE;        // TRUE for Title search only.
+        q.fExecute = FALSE;        // TRUE to initiate the search.
+        q.pszWindow = nullptr;      // Window to display in
+        TRACE("Search: %s, 0x%X\n", m_pszHelpFilePath, dwData);
+        ::HtmlHelp(*AfxGetMainWnd(), m_pszHelpFilePath, HH_DISPLAY_SEARCH, reinterpret_cast<DWORD_PTR>(&q));
+    }
+    break;
     case HELP_FINDER:
     default:
         TRACE("Contents: %s, 0x%X\n", m_pszHelpFilePath, dwData);
@@ -221,14 +210,13 @@ void CMeazureApp::WinHelp(DWORD dwData, UINT nCmd)
 
 /// Application About dialog.
 ///
-class CAboutDlg : public CDialog
-{
+class CAboutDlg : public CDialog {
+
 public:
     /// Constructs the About dialog. To display the dialog, call the
     /// DoModal method.
     ///
     CAboutDlg();
-
 
     /// Called when the dialog is about to be displayed.
     ///
@@ -238,37 +226,37 @@ public:
 
     enum { IDD = IDD_ABOUTBOX };
 
-    protected:
-    virtual void DoDataExchange(CDataExchange* pDX) override;
-
-    /// @fn DoDataExchange(CDataExchange* pDX)
+protected:
     /// Called to perform Dynamic Data Exchange (DDX) for the dialog.
     /// @param pDX  [in] DDX operation object.
+    /// 
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
-protected:
-    afx_msg void OnHomeUrl();
-    afx_msg void OnContribute();
-    afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
-    afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
-
-    /// @fn OnHomeUrl()
     /// Called when the home page URL text link is clicked. Brings up
     /// a browser pointed at the home page.
+    /// 
+    afx_msg void OnHomeUrl();
 
-    /// @fn OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+    /// Called when the financial contribution button is pressed.
+    ///
+    afx_msg void OnContribute();
+
     /// Called when a control on the dialog needs to have its color set.
     /// This method sets the appropriate colors for the links.
     /// @param pDC          [in] DC for the control.
     /// @param pWnd         [in] Window for the control.
     /// @param nCtlColor    [in] Control type.
     /// @return Brush with which to draw the control.
+    /// 
+    afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 
-    /// @fn OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
     /// Called to set the cursor on the dialog.
     /// @param pWnd     [in] Window on which to set the cursor.
     /// @param nHitTest [in] What are we testing.
     /// @param message  [in] Message for cursor.
     /// @return 0 to continue processing.
+    /// 
+    afx_msg BOOL OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message);
 
     DECLARE_MESSAGE_MAP()
 
@@ -277,23 +265,23 @@ private:
     /// 
     /// @param urlId  String resource ID for the URL 
     /// @return true if the browser was opened.
-    bool    OpenUrl(int urlId);
+    bool OpenUrl(int urlId);
 
-    static bool     m_visited;          ///< Indicates if the home page has been visited.
-    static bool     m_emailed;          ///< Indicates if the email link has been visited.
+    static bool m_visited;              ///< Indicates if the home page has been visited.
+    static bool m_emailed;              ///< Indicates if the email link has been visited.
     static COLORREF m_unvisitedColor;   ///< Link color before it has been visited.
     static COLORREF m_visitedColor;     ///< Link color after it has been visited.
 
-    CFont           m_titleFont;        ///< Font used for the dialog title.
-    CFont           m_linkFont;         ///< Font used for the link text.
-    HCURSOR         m_linkCursor;       ///< Hand cursor to indicate a link.
+    CFont m_titleFont;                  ///< Font used for the dialog title.
+    CFont m_linkFont;                   ///< Font used for the link text.
+    HCURSOR m_linkCursor;               ///< Hand cursor to indicate a link.
 };
 
 
-bool CAboutDlg::m_visited = false;
-bool CAboutDlg::m_emailed = false;
-COLORREF CAboutDlg::m_unvisitedColor    = RGB(  0, 0, 255); // Blue
-COLORREF CAboutDlg::m_visitedColor      = RGB(128, 0, 128); // Purple
+bool CAboutDlg::m_visited { false };
+bool CAboutDlg::m_emailed { false };
+COLORREF CAboutDlg::m_unvisitedColor { RGB(0, 0, 255) }; // Blue
+COLORREF CAboutDlg::m_visitedColor { RGB(128, 0, 128) }; // Purple
 
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
@@ -304,13 +292,9 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-CAboutDlg::CAboutDlg() : CDialog(CAboutDlg::IDD), m_linkCursor(nullptr)
-{
-}
+CAboutDlg::CAboutDlg() : CDialog(CAboutDlg::IDD), m_linkCursor(nullptr) {}
 
-
-BOOL CAboutDlg::OnInitDialog()
-{
+BOOL CAboutDlg::OnInitDialog() {
     CDialog::OnInitDialog();
 
     //
@@ -319,8 +303,8 @@ BOOL CAboutDlg::OnInitDialog()
     LOGFONT lf;
     CString str;
 
-    CStatic *versionStr = static_cast<CStatic*>(GetDlgItem(IDC_PROGRAM_VERSION));
-    CStatic *buildStr   = static_cast<CStatic*>(GetDlgItem(IDC_PROGRAM_BUILD));
+    CStatic* versionStr = static_cast<CStatic*>(GetDlgItem(IDC_PROGRAM_VERSION));
+    CStatic* buildStr = static_cast<CStatic*>(GetDlgItem(IDC_PROGRAM_BUILD));
 
     versionStr->GetWindowText(str);
     str += g_versionInfo.GetProductVersion();
@@ -335,8 +319,8 @@ BOOL CAboutDlg::OnInitDialog()
     //
     // Set the links font
     //
-    CStatic *url = static_cast<CStatic*>(GetDlgItem(IDC_HOME_URL));
-    CFont *font = url->GetFont();
+    CStatic* url = static_cast<CStatic*>(GetDlgItem(IDC_HOME_URL));
+    CFont* font = url->GetFont();
     font->GetLogFont(&lf);
     lf.lfUnderline = TRUE;
     m_linkFont.CreateFontIndirect(&lf);
@@ -347,15 +331,11 @@ BOOL CAboutDlg::OnInitDialog()
     return TRUE;
 }
 
-
-void CAboutDlg::DoDataExchange(CDataExchange* pDX)
-{
+void CAboutDlg::DoDataExchange(CDataExchange* pDX) {
     CDialog::DoDataExchange(pDX);
 }
 
-
-HBRUSH CAboutDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) 
-{
+HBRUSH CAboutDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor) {
     HBRUSH hbr = CDialog::OnCtlColor(pDC, pWnd, nCtlColor);
 
     if (pWnd->GetDlgCtrlID() == IDC_HOME_URL) {
@@ -366,9 +346,7 @@ HBRUSH CAboutDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
     return hbr;
 }
 
-
-BOOL CAboutDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) 
-{
+BOOL CAboutDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message) {
     CPoint point;
     CRect  rect;
 
@@ -383,13 +361,11 @@ BOOL CAboutDlg::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
             return(TRUE);
         }
     }
-    
+
     return CDialog::OnSetCursor(pWnd, nHitTest, message);
 }
 
-
-void CAboutDlg::OnHomeUrl() 
-{
+void CAboutDlg::OnHomeUrl() {
     if (OpenUrl(IDS_MEA_CTHING_URL)) {
         m_visited = true;
 
@@ -398,15 +374,11 @@ void CAboutDlg::OnHomeUrl()
     }
 }
 
-
-void CAboutDlg::OnContribute()
-{
+void CAboutDlg::OnContribute() {
     OpenUrl(IDS_MEA_CONTRIBUTE_URL);
 }
 
-
-bool CAboutDlg::OpenUrl(int urlId)
-{
+bool CAboutDlg::OpenUrl(int urlId) {
     CString url;
     url.LoadString(urlId);
     HINSTANCE h = ShellExecute(nullptr, _T("open"), url, nullptr, nullptr, SW_SHOWNORMAL);
@@ -421,9 +393,7 @@ bool CAboutDlg::OpenUrl(int urlId)
     return true;
 }
 
-
-void CMeazureApp::OnAppAbout()
-{
+void CMeazureApp::OnAppAbout() {
     CAboutDlg aboutDlg;
     aboutDlg.DoModal();
 }

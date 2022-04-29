@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -43,33 +43,25 @@ BEGIN_MESSAGE_MAP(MeaRulerPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaRulerPrefs::MeaRulerPrefs() : CPropertyPage(MeaRulerPrefs::IDD),
-    m_backColor(0), m_borderColor(0), m_opacity(0)
-{
+MeaRulerPrefs::MeaRulerPrefs() :
+    CPropertyPage(MeaRulerPrefs::IDD), m_backColor(0), m_borderColor(0), m_opacity(0) {
     m_psp.dwFlags &= ~(PSP_HASHELP);
 }
 
+MeaRulerPrefs::~MeaRulerPrefs() {}
 
-MeaRulerPrefs::~MeaRulerPrefs()
-{
-}
-
-
-void MeaRulerPrefs::DoDataExchange(CDataExchange* pDX)
-{
+void MeaRulerPrefs::DoDataExchange(CDataExchange* pDX) {
     CPropertyPage::DoDataExchange(pDX);
     DDX_Slider(pDX, IDC_RULER_OPACITY, m_opacity);
 }
 
-
-BOOL MeaRulerPrefs::OnInitDialog()
-{
+BOOL MeaRulerPrefs::OnInitDialog() {
     CPropertyPage::OnInitDialog();
 
     // Set the static control to serve as a ruler sample window
     // and create the ruler.
     //
-    CStatic *rulerSample = static_cast<CStatic*>(GetDlgItem(IDC_RULER_SAMPLE));
+    CStatic* rulerSample = static_cast<CStatic*>(GetDlgItem(IDC_RULER_SAMPLE));
     ::SetWindowLong(rulerSample->m_hWnd, GWL_STYLE, SS_SIMPLE);
 
     CRect sampleRect;
@@ -99,7 +91,7 @@ BOOL MeaRulerPrefs::OnInitDialog()
 
     // Configure the opacity slider.
     //
-    CSliderCtrl *slider = static_cast<CSliderCtrl*>(GetDlgItem(IDC_RULER_OPACITY));
+    CSliderCtrl* slider = static_cast<CSliderCtrl*>(GetDlgItem(IDC_RULER_OPACITY));
     slider->SetRange(20, 100, TRUE);
 
     if (!HaveLayeredWindows()) {
@@ -111,23 +103,19 @@ BOOL MeaRulerPrefs::OnInitDialog()
     return TRUE;
 }
 
-
-void MeaRulerPrefs::OnChangeBkColor() 
-{
+void MeaRulerPrefs::OnChangeBkColor() {
     MeaColorDialog dlg(IDS_MEA_BACKDLG_TITLE);
 
     dlg.m_cc.Flags |= CC_RGBINIT;
     dlg.m_cc.rgbResult = m_backColor;
-    
+
     if (dlg.DoModal() == IDOK) {
         m_backColor = dlg.GetColor();
         ColorsChanged();
     }
 }
 
-
-void MeaRulerPrefs::OnChangeBorderColor() 
-{
+void MeaRulerPrefs::OnChangeBorderColor() {
     MeaColorDialog dlg(IDS_MEA_BORDERDLG_TITLE);
 
     dlg.m_cc.Flags |= CC_RGBINIT;
@@ -139,32 +127,24 @@ void MeaRulerPrefs::OnChangeBorderColor()
     }
 }
 
-
-void MeaRulerPrefs::OnDefBkColor() 
-{
+void MeaRulerPrefs::OnDefBkColor() {
     m_backColor = MeaColors::GetDef(MeaColors::RulerBack);
     ColorsChanged();
 }
 
-
-void MeaRulerPrefs::OnDefBorderColor() 
-{
+void MeaRulerPrefs::OnDefBorderColor() {
     m_borderColor = MeaColors::GetDef(MeaColors::RulerBorder);
     ColorsChanged();
 }
 
-
-void MeaRulerPrefs::ColorsChanged()
-{
+void MeaRulerPrefs::ColorsChanged() {
     m_vRuler.SetColors(m_borderColor, m_backColor);
     m_hRuler.SetColors(m_borderColor, m_backColor);
     SetModified(TRUE);
 }
 
-
-void MeaRulerPrefs::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
-{
-    CSliderCtrl *slider = reinterpret_cast<CSliderCtrl*>(pScrollBar);
+void MeaRulerPrefs::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) {
+    CSliderCtrl* slider = reinterpret_cast<CSliderCtrl*>(pScrollBar);
     int pos = slider->GetPos();
 
     BYTE alpha = static_cast<BYTE>(255 * pos / 100);
@@ -174,6 +154,6 @@ void MeaRulerPrefs::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
     if (pos != m_opacity) {
         SetModified(TRUE);
     }
-    
+
     CPropertyPage::OnHScroll(nSBCode, nPos, pScrollBar);
 }

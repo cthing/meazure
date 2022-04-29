@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -26,13 +26,13 @@
 /// Convenience class for obtaining version number information for the
 /// applications.
 ///
-class MeaVersionInfo
-{
+class MeaVersionInfo {
+
 public:
     /// Constructs an instance of the version number information class.
     ///
     MeaVersionInfo();
-    
+
     /// Destroys an instance of the class.
     ///
     virtual ~MeaVersionInfo();
@@ -42,31 +42,30 @@ public:
     ///         major.minor or major.minor.fix (if fix > 0).
     CString GetProductVersion() const;
 
-
     /// Returns the product major version number.
     /// @return Major version number.
-    int     GetProductMajor() const { return HIWORD(m_info->dwProductVersionMS); }
+    int GetProductMajor() const { return HIWORD(m_info->dwProductVersionMS); }
 
     /// Returns the product minor version number.
     /// @return Minor version number.
-    int     GetProductMinor() const { return LOWORD(m_info->dwProductVersionMS); }
+    int GetProductMinor() const { return LOWORD(m_info->dwProductVersionMS); }
 
     /// Returns the product fix number.
     /// @return Fix number.
-    int     GetProductFix() const   { return HIWORD(m_info->dwProductVersionLS); }
+    int GetProductFix() const { return HIWORD(m_info->dwProductVersionLS); }
 
     /// Returns the product build number.
     /// @return Build number.
-    int     GetProductBuild() const { return LOWORD(m_info->dwProductVersionLS); }
+    int GetProductBuild() const { return LOWORD(m_info->dwProductVersionLS); }
 
 
     /// Returns the version number of the profile file format.
     /// @return Version number of the profile file format.
-    int     GetProfileFileMajor() const { return 2; }
+    int GetProfileFileMajor() const { return 2; }
 
     /// Returns the version number of the position log file format.
     /// @return Version number of the position log file format.
-    int     GetLogFileMajor() const { return 1; }
+    int GetLogFileMajor() const { return 1; }
 
 private:
     /// The class does not have copy semantics so this method is
@@ -77,8 +76,8 @@ private:
     /// purposely undefined.
     MeaVersionInfo& operator=(const MeaVersionInfo&);
 
-    void                *m_data;        ///< Version information buffer.
-    VS_FIXEDFILEINFO    *m_info;        ///< Version information.
+    void* m_data;               ///< Version information buffer.
+    VS_FIXEDFILEINFO* m_info;   ///< Version information.
 };
 
 

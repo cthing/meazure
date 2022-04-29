@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -29,9 +29,8 @@
 const CString   MeaAngleTool::kToolName(_T("AngleTool"));
 
 
-MeaAngleTool::MeaAngleTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
-    MeaCrossHairCallback(), m_curPos(&m_point1), m_vertex(MeaScreenMgr::Instance().GetCenter())
-{
+MeaAngleTool::MeaAngleTool(MeaToolMgr* mgr) :
+    MeaRadioTool(mgr), MeaCrossHairCallback(), m_curPos(&m_point1), m_vertex(MeaScreenMgr::Instance().GetCenter()) {
     // Set the default tool positions. The vertex is placed
     // at the center of the screen containing the application.
     //
@@ -47,42 +46,37 @@ MeaAngleTool::MeaAngleTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
     m_vertexAnchor = m_vertex;
 }
 
-
-MeaAngleTool::~MeaAngleTool()
-{
+MeaAngleTool::~MeaAngleTool() {
     try {
         Disable();
         m_curPos = nullptr;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaAngleTool::Create()
-{
+bool MeaAngleTool::Create() {
     // Create the crosshairs.
     //
     if (!m_point1CH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite),
-                            MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, nullptr, IDS_MEA_POINT1, kPoint1Id)) {
+                           MeaColors::Get(MeaColors::CrossHairBack),
+                           MeaColors::Get(MeaColors::CrossHairHilite),
+                           MeaColors::GetA(MeaColors::CrossHairOpacity),
+                           this, nullptr, IDS_MEA_POINT1, kPoint1Id)) {
         return false;
     }
     if (!m_point2CH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite),
-                            MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, nullptr, IDS_MEA_POINT2, kPoint2Id)) {
+                           MeaColors::Get(MeaColors::CrossHairBack),
+                           MeaColors::Get(MeaColors::CrossHairHilite),
+                           MeaColors::GetA(MeaColors::CrossHairOpacity),
+                           this, nullptr, IDS_MEA_POINT2, kPoint2Id)) {
         return false;
     }
     if (!m_vertexCH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite),
-                            MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, nullptr, IDS_MEA_VERTEX, kVertexId)) {
+                           MeaColors::Get(MeaColors::CrossHairBack),
+                           MeaColors::Get(MeaColors::CrossHairHilite),
+                           MeaColors::GetA(MeaColors::CrossHairOpacity),
+                           this, nullptr, IDS_MEA_VERTEX, kVertexId)) {
         return false;
     }
 
@@ -114,9 +108,12 @@ bool MeaAngleTool::Create()
 
     // Create the data windows attached to each crosshair.
     //
-    m_dataWin1.Create(MeaColors::GetA(MeaColors::CrossHairOpacity),IDS_MEA_X1, IDS_MEA_Y1, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_ANGLE);
-    m_dataWin2.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X2, IDS_MEA_Y2, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_ANGLE);
-    m_dataWinV.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_XV, IDS_MEA_YV, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_ANGLE);
+    m_dataWin1.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X1, IDS_MEA_Y1, MeaDataWin::kNoLabelId,
+                      MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_ANGLE);
+    m_dataWin2.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X2, IDS_MEA_Y2, MeaDataWin::kNoLabelId,
+                      MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_ANGLE);
+    m_dataWinV.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_XV, IDS_MEA_YV, MeaDataWin::kNoLabelId,
+                      MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_ANGLE);
 
     // Position the crosshairs and lines based on the values
     // of point 1, 2 and vertex.
@@ -126,9 +123,7 @@ bool MeaAngleTool::Create()
     return true;
 }
 
-
-void MeaAngleTool::SaveProfile(MeaProfile& profile)
-{   
+void MeaAngleTool::SaveProfile(MeaProfile& profile) {
     FPOINT pt;
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
@@ -145,9 +140,7 @@ void MeaAngleTool::SaveProfile(MeaProfile& profile)
     profile.WriteStr(_T("AngleYV"), MeaUtils::DblToStr(pt.y));
 }
 
-
-void MeaAngleTool::LoadProfile(MeaProfile& profile)
-{
+void MeaAngleTool::LoadProfile(MeaProfile& profile) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     // Use the current positions as the default values
@@ -176,9 +169,7 @@ void MeaAngleTool::LoadProfile(MeaProfile& profile)
     SetPosition();
 }
 
-
-void MeaAngleTool::EnableCrosshairs()
-{
+void MeaAngleTool::EnableCrosshairs() {
     if (m_mgr->CrosshairsEnabled() && IsWindow(m_point1CH)) {
         m_point1CH.Show();
         m_point2CH.Show();
@@ -186,9 +177,7 @@ void MeaAngleTool::EnableCrosshairs()
     }
 }
 
-
-void MeaAngleTool::DisableCrosshairs()
-{
+void MeaAngleTool::DisableCrosshairs() {
     if (IsWindow(m_point1CH)) {
         m_point1CH.Hide();
         m_point2CH.Hide();
@@ -196,17 +185,13 @@ void MeaAngleTool::DisableCrosshairs()
     }
 }
 
-
-void MeaAngleTool::Flash()
-{
+void MeaAngleTool::Flash() {
     m_point1CH.Flash();
     m_point2CH.Flash();
     m_vertexCH.Flash();
 }
 
-
-void MeaAngleTool::Strobe()
-{
+void MeaAngleTool::Strobe() {
     m_point1CH.Flash(MeaCrossHair::kStrobeCount);
     m_point2CH.Flash(MeaCrossHair::kStrobeCount);
     m_vertexCH.Flash(MeaCrossHair::kStrobeCount);
@@ -215,9 +200,7 @@ void MeaAngleTool::Strobe()
     m_dataWinV.Strobe();
 }
 
-
-void MeaAngleTool::Enable()
-{
+void MeaAngleTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -228,12 +211,12 @@ void MeaAngleTool::Enable()
     // we will be using.
     //
     m_mgr->EnableRegionFields(MeaX1Field | MeaY1Field |
-                                MeaX2Field | MeaY2Field |
-                                MeaXVField | MeaYVField |
-                                MeaAngleField,
-                                MeaX1Field | MeaY1Field |
-                                MeaX2Field | MeaY2Field |
-                                MeaXVField | MeaYVField);
+                              MeaX2Field | MeaY2Field |
+                              MeaXVField | MeaYVField |
+                              MeaAngleField,
+                              MeaX1Field | MeaY1Field |
+                              MeaX2Field | MeaY2Field |
+                              MeaXVField | MeaYVField);
 
     if (!IsWindow(m_line1)) {
         Create();
@@ -254,9 +237,7 @@ void MeaAngleTool::Enable()
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaAngleTool::Disable()
-{
+void MeaAngleTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -269,16 +250,14 @@ void MeaAngleTool::Disable()
     DisableCrosshairs();
 }
 
-
-void MeaAngleTool::Update(MeaUpdateReason reason)
-{
+void MeaAngleTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
         UpdateBisector();
 
         MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-        
+
         // Convert the pixel locations to the current
         // units.
         //
@@ -290,7 +269,7 @@ void MeaAngleTool::Update(MeaUpdateReason reason)
         // of the crosshairs in the current units.
         //
         double angle = MeaLayout::GetAngle(v, p1, p2);
-        
+
         // Display the results of the measurement in
         // the data display fields.
         //
@@ -321,9 +300,7 @@ void MeaAngleTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-void MeaAngleTool::SetPosition(MeaFields which, int pixels)
-{
+void MeaAngleTool::SetPosition(MeaFields which, int pixels) {
     // Set the specified position component.
     //
     switch (which) {
@@ -374,11 +351,9 @@ void MeaAngleTool::SetPosition(MeaFields which, int pixels)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaAngleTool::SetPosition(const PointMap& points)
-{
+void MeaAngleTool::SetPosition(const PointMap& points) {
     PointMap::const_iterator iter;
-    
+
     // Read the position information from the points
     // map, and set the corresponding point.
     //
@@ -394,16 +369,14 @@ void MeaAngleTool::SetPosition(const PointMap& points)
     if (iter != points.end()) {
         m_vertex = (*iter).second;
     }
-    
+
     // Reposition the tool and update the data display.
     //
     SetPosition();
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaAngleTool::SetPosition()
-{
+void MeaAngleTool::SetPosition() {
     MeaScreenMgr& mgr = MeaScreenMgr::Instance();
 
     // Ensure that the positions fall within the
@@ -424,17 +397,13 @@ void MeaAngleTool::SetPosition()
     }
 }
 
-
-const POINT& MeaAngleTool::GetPosition() const
-{
+const POINT& MeaAngleTool::GetPosition() const {
     return *m_curPos;
 }
 
-
-void MeaAngleTool::GetPosition(MeaPositionLogMgr::Position& position) const
-{
+void MeaAngleTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-    
+
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = units.ConvertCoord(m_point1);
@@ -454,9 +423,7 @@ void MeaAngleTool::GetPosition(MeaPositionLogMgr::Position& position) const
     position.RecordAngle(angle);
 }
 
-
-void MeaAngleTool::IncPosition(MeaFields which)
-{
+void MeaAngleTool::IncPosition(MeaFields which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x + 1);
@@ -481,9 +448,7 @@ void MeaAngleTool::IncPosition(MeaFields which)
     }
 }
 
-
-void MeaAngleTool::DecPosition(MeaFields which)
-{
+void MeaAngleTool::DecPosition(MeaFields which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x - 1);
@@ -508,20 +473,18 @@ void MeaAngleTool::DecPosition(MeaFields which)
     }
 }
 
-
-void MeaAngleTool::ColorsChanged()
-{
+void MeaAngleTool::ColorsChanged() {
     // Set the crosshair colors.
     //
     m_point1CH.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite));
+                         MeaColors::Get(MeaColors::CrossHairBack),
+                         MeaColors::Get(MeaColors::CrossHairHilite));
     m_point2CH.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite));
+                         MeaColors::Get(MeaColors::CrossHairBack),
+                         MeaColors::Get(MeaColors::CrossHairHilite));
     m_vertexCH.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite));
+                         MeaColors::Get(MeaColors::CrossHairBack),
+                         MeaColors::Get(MeaColors::CrossHairHilite));
 
     // Set the opacity of the crosshairs.
     //
@@ -542,21 +505,15 @@ void MeaAngleTool::ColorsChanged()
     m_lineB.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-
-CString MeaAngleTool::GetToolName() const
-{
+CString MeaAngleTool::GetToolName() const {
     return kToolName;
 }
 
-
-UINT MeaAngleTool::GetLabelId() const
-{
+UINT MeaAngleTool::GetLabelId() const {
     return IDS_MEA_ANGLE_LBL;
 }
 
-
-void MeaAngleTool::OnCHEnter(const CHInfo *info)
-{
+void MeaAngleTool::OnCHEnter(const CHInfo* info) {
     // Show the data window corresponding to
     // the crosshair that the pointer has entered.
     //
@@ -578,9 +535,7 @@ void MeaAngleTool::OnCHEnter(const CHInfo *info)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaAngleTool::OnCHLeave(const CHInfo *info)
-{
+void MeaAngleTool::OnCHLeave(const CHInfo* info) {
     // Hide the data window corresponding to
     // the crosshair that the pointer has just
     // left.
@@ -601,9 +556,7 @@ void MeaAngleTool::OnCHLeave(const CHInfo *info)
     }
 }
 
-
-void MeaAngleTool::OnCHMove(const CHInfo *info)
-{
+void MeaAngleTool::OnCHMove(const CHInfo* info) {
     // Ctrl + drag moves the all the crosshairs
     // as a single unit.
     //
@@ -734,9 +687,7 @@ void MeaAngleTool::OnCHMove(const CHInfo *info)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaAngleTool::UpdateBisector()
-{   
+void MeaAngleTool::UpdateBisector() {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
 
     // Angles are calculated based on the converted
@@ -764,7 +715,7 @@ void MeaAngleTool::UpdateBisector()
                   m_vertex.y + static_cast<LONG>(kLengthB * sin(alphaB)));
     FPOINT pB = units.ConvertCoord(pointB);
 
-    bool angleSign    = MeaLayout::GetAngle(v, p1, p2) >= 0.0;
+    bool angleSign = MeaLayout::GetAngle(v, p1, p2) >= 0.0;
     bool bisectorSign = MeaLayout::GetAngle(v, p1, pB) >= 0.0;
 
     // If we need to flip the bisector, add 180 degrees and recalculate

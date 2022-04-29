@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -29,6 +29,7 @@
 /// Utility methods for performing various window layout tasks.
 ///
 class MeaLayout {
+
 public:
     /// Aligns the specified windows such that their left edges all begin
     /// at the specified x location.
@@ -60,7 +61,7 @@ public:
     /// @param baseWnd      [in] Align windows relative to this base window.
     /// @param ...          [in] CWnd pointers terminated by nullptr.
     ///
-    static void AlignRightTo(const CWnd *baseWnd, ...);
+    static void AlignRightTo(const CWnd* baseWnd, ...);
 
     /// Places the back window after the specified front window and separates
     /// them by the specified spacing.
@@ -131,9 +132,10 @@ public:
     static bool MoveWindowHeight(const CWnd& wnd, int cy) {
         CRect rect;
         wnd.GetWindowRect(rect);
-        CWnd *parentWnd = wnd.GetParent();
+        CWnd* parentWnd = wnd.GetParent();
         parentWnd->ScreenToClient(rect);
-        return ::SetWindowPos(wnd.m_hWnd, nullptr, rect.left, rect.top + cy, 0, 0, SWP_NOSIZE | SWP_NOZORDER) ? true : false;
+        return ::SetWindowPos(wnd.m_hWnd, nullptr, rect.left, rect.top + cy, 0, 0,
+                              SWP_NOSIZE | SWP_NOZORDER) ? true : false;
     }
 
     /// Calculates the bounding dimensions for all the children of
@@ -142,7 +144,7 @@ public:
     /// @param sizep        [out] Bounding dimensions encompassing all child windows.
     /// @param parentWnd    [in] All child windows of this window form the bounding dimensions.
     ///
-    static void GetBoundingSize(SIZE *sizep, const CWnd* parentWnd);
+    static void GetBoundingSize(SIZE* sizep, const CWnd* parentWnd);
 
     /// Calculates the length corresponding to the specified x and y distances
     /// using the formula:
@@ -201,6 +203,7 @@ public:
         if (deltax == 0 && deltay == 0) {
             return 0;
         }
+        // Note: 45 degrees == 0.78539... radians
         return static_cast<int>(atan2(static_cast<double>(deltay), static_cast<double>(deltax)) / 0.785398163);
     }
 
@@ -231,7 +234,6 @@ public:
         return atan2(deltay, deltax);
     }
 
-
     /// Returns the angle, in radians, between the line from the vertex
     /// to point p1 and the line from the vertex to point p2. Using the
     /// default coordinate system (i.e. positive y-axis pointed down from
@@ -260,7 +262,6 @@ public:
         }
         return atan2(numer, denom);
     }
-
 
     /// Converts the x position in screen coordinates to
     /// an x position in the specified window's coordinate
@@ -295,7 +296,6 @@ public:
         y = pt.y;
         return ret;
     }
-
 
     /// Performs and alpha blend on the two specified device contexts.
     /// The resulting blend is stored in the destination device context.

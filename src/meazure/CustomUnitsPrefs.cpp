@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -47,7 +47,8 @@ BEGIN_MESSAGE_MAP(MeaCustomUnitsPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaCustomUnitsPrefs::MeaCustomUnitsPrefs() : CPropertyPage(MeaCustomUnitsPrefs::IDD),
+MeaCustomUnitsPrefs::MeaCustomUnitsPrefs() :
+    CPropertyPage(MeaCustomUnitsPrefs::IDD),
     m_lockout(false),
     m_nameField(nullptr),
     m_abbrevField(nullptr),
@@ -67,13 +68,9 @@ MeaCustomUnitsPrefs::MeaCustomUnitsPrefs() : CPropertyPage(MeaCustomUnitsPrefs::
     m_scaleBasis(MeaCustomUnits::PixelBasis),
     m_pxScaleFactor(1.0),
     m_inScaleFactor(1.0),
-    m_cmScaleFactor(1.0)
-{
-}
+    m_cmScaleFactor(1.0) {}
 
-
-MeaCustomUnitsPrefs::~MeaCustomUnitsPrefs()
-{
+MeaCustomUnitsPrefs::~MeaCustomUnitsPrefs() {
     m_nameField = nullptr;
     m_abbrevField = nullptr;
     m_precisionButton = nullptr;
@@ -92,9 +89,7 @@ MeaCustomUnitsPrefs::~MeaCustomUnitsPrefs()
     m_cmAbbrev = nullptr;
 }
 
-
-void MeaCustomUnitsPrefs::DoDataExchange(CDataExchange* pDX)
-{
+void MeaCustomUnitsPrefs::DoDataExchange(CDataExchange* pDX) {
     CPropertyPage::DoDataExchange(pDX);
     DDX_Text(pDX, IDC_CUST_ABBREV_FIELD, m_abbrev);
     DDV_MaxChars(pDX, m_abbrev, 2);
@@ -106,9 +101,7 @@ void MeaCustomUnitsPrefs::DoDataExchange(CDataExchange* pDX)
     DDX_Text(pDX, IDC_CUST_CM_FIELD, m_cmScaleFactor);
 }
 
-
-BOOL MeaCustomUnitsPrefs::OnInitDialog() 
-{
+BOOL MeaCustomUnitsPrefs::OnInitDialog() {
     CPropertyPage::OnInitDialog();
 
     // Replace the CEdit controls with our numeric field controls.
@@ -120,10 +113,10 @@ BOOL MeaCustomUnitsPrefs::OnInitDialog()
     m_pxScaleField.SetValueType(MeaNumberField::PosValues);
     m_inScaleField.SetValueType(MeaNumberField::PosValues);
     m_cmScaleField.SetValueType(MeaNumberField::PosValues);
-    
+
     // Get the name and abbreviation field
     //
-    m_nameField   = GetDlgItem(IDC_CUST_NAME_FIELD);
+    m_nameField = GetDlgItem(IDC_CUST_NAME_FIELD);
     m_abbrevField = GetDlgItem(IDC_CUST_ABBREV_FIELD);
 
     // Get the buttons
@@ -132,7 +125,7 @@ BOOL MeaCustomUnitsPrefs::OnInitDialog()
     m_pxButton = static_cast<CButton*>(GetDlgItem(IDC_CUST_PX));
     m_inButton = static_cast<CButton*>(GetDlgItem(IDC_CUST_IN));
     m_cmButton = static_cast<CButton*>(GetDlgItem(IDC_CUST_CM));
-    
+
     // Get the labels
     //
     m_basisLabel = GetDlgItem(IDC_CUST_BASIS_LABEL);
@@ -146,13 +139,12 @@ BOOL MeaCustomUnitsPrefs::OnInitDialog()
     m_cmAbbrev = GetDlgItem(IDC_CUST_CM_ABBREV);
 
     EnableScaleFactor();
-    
+
     return TRUE;
 }
 
 
-void MeaCustomUnitsPrefs::SetCheck(UINT buttonId)
-{
+void MeaCustomUnitsPrefs::SetCheck(UINT buttonId) {
     MeaAssert(m_pxButton != nullptr);
     m_pxButton->SetCheck((buttonId == IDC_CUST_PX) ? 1 : 0);
     MeaAssert(m_inButton != nullptr);
@@ -162,18 +154,16 @@ void MeaCustomUnitsPrefs::SetCheck(UINT buttonId)
 }
 
 
-BOOL MeaCustomUnitsPrefs::OnKillActive() 
-{
+BOOL MeaCustomUnitsPrefs::OnKillActive() {
     if (!Validate()) {
         return FALSE;
     }
-    
+
     return CPropertyPage::OnKillActive();
 }
 
 
-BOOL MeaCustomUnitsPrefs::OnSetActive() 
-{
+BOOL MeaCustomUnitsPrefs::OnSetActive() {
     if (m_abbrevField != nullptr) {
         m_lockout = true;
         OnAbbrevChange();
@@ -184,18 +174,16 @@ BOOL MeaCustomUnitsPrefs::OnSetActive()
 }
 
 
-BOOL MeaCustomUnitsPrefs::OnApply() 
-{
+BOOL MeaCustomUnitsPrefs::OnApply() {
     if (!Validate()) {
         return FALSE;
     }
-        
+
     return CPropertyPage::OnApply();
 }
 
 
-bool MeaCustomUnitsPrefs::Validate()
-{
+bool MeaCustomUnitsPrefs::Validate() {
     CString name;
     CString abbrev;
 
@@ -213,7 +201,7 @@ bool MeaCustomUnitsPrefs::Validate()
     }
 
     double pxScale = 0, inScale = 0, cmScale = 0;
-    
+
     m_pxScaleField.GetValue(pxScale);
     m_inScaleField.GetValue(inScale);
     m_cmScaleField.GetValue(cmScale);
@@ -238,11 +226,10 @@ bool MeaCustomUnitsPrefs::Validate()
 }
 
 
-void MeaCustomUnitsPrefs::GetScaleFactor(MeaCustomUnits::ScaleBasis& scaleBasis, double& scaleFactor) const
-{
+void MeaCustomUnitsPrefs::GetScaleFactor(MeaCustomUnits::ScaleBasis& scaleBasis, double& scaleFactor) const {
     scaleBasis = static_cast<MeaCustomUnits::ScaleBasis>(m_scaleBasis);
 
-    switch(m_scaleBasis) {
+    switch (m_scaleBasis) {
     case MeaCustomUnits::PixelBasis:
         scaleFactor = m_pxScaleFactor;
         break;
@@ -259,15 +246,14 @@ void MeaCustomUnitsPrefs::GetScaleFactor(MeaCustomUnits::ScaleBasis& scaleBasis,
 }
 
 
-void MeaCustomUnitsPrefs::SetScaleFactor(MeaCustomUnits::ScaleBasis scaleBasis, double scaleFactor)
-{
+void MeaCustomUnitsPrefs::SetScaleFactor(MeaCustomUnits::ScaleBasis scaleBasis, double scaleFactor) {
     m_scaleBasis = scaleBasis;
 
     m_pxScaleFactor = 1.0;
     m_inScaleFactor = 1.0;
     m_cmScaleFactor = 1.0;
 
-    switch(m_scaleBasis) {
+    switch (m_scaleBasis) {
     case MeaCustomUnits::PixelBasis:
         m_pxScaleFactor = scaleFactor;
         break;
@@ -284,16 +270,15 @@ void MeaCustomUnitsPrefs::SetScaleFactor(MeaCustomUnits::ScaleBasis scaleBasis, 
 }
 
 
-void MeaCustomUnitsPrefs::EnableScaleFactor()
-{
+void MeaCustomUnitsPrefs::EnableScaleFactor() {
     CString name;
     CString abbrev;
-    
+
     MeaAssert(m_nameField != nullptr);
     m_nameField->GetWindowText(name);
     name.TrimLeft();
     name.TrimRight();
-    
+
     MeaAssert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(abbrev);
     abbrev.TrimLeft();
@@ -331,16 +316,14 @@ void MeaCustomUnitsPrefs::EnableScaleFactor()
 }
 
 
-void MeaCustomUnitsPrefs::OnChange() 
-{
+void MeaCustomUnitsPrefs::OnChange() {
     if (!m_lockout) {
         SetModified(TRUE);
     }
 }
 
 
-void MeaCustomUnitsPrefs::OnPixelChange() 
-{
+void MeaCustomUnitsPrefs::OnPixelChange() {
     if (!m_lockout) {
         SetCheck(IDC_CUST_PX);
     }
@@ -348,8 +331,7 @@ void MeaCustomUnitsPrefs::OnPixelChange()
 }
 
 
-void MeaCustomUnitsPrefs::OnInchChange() 
-{
+void MeaCustomUnitsPrefs::OnInchChange() {
     if (!m_lockout) {
         SetCheck(IDC_CUST_IN);
     }
@@ -357,8 +339,7 @@ void MeaCustomUnitsPrefs::OnInchChange()
 }
 
 
-void MeaCustomUnitsPrefs::OnCentimeterChange() 
-{
+void MeaCustomUnitsPrefs::OnCentimeterChange() {
     if (!m_lockout) {
         SetCheck(IDC_CUST_CM);
     }
@@ -366,17 +347,15 @@ void MeaCustomUnitsPrefs::OnCentimeterChange()
 }
 
 
-void MeaCustomUnitsPrefs::OnNameChange()
-{
+void MeaCustomUnitsPrefs::OnNameChange() {
     EnableScaleFactor();
     OnChange();
 }
 
 
-void MeaCustomUnitsPrefs::OnAbbrevChange()
-{
+void MeaCustomUnitsPrefs::OnAbbrevChange() {
     CString label;
-    
+
     MeaAssert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(label);
     label.TrimLeft();
@@ -399,8 +378,7 @@ void MeaCustomUnitsPrefs::OnAbbrevChange()
 }
 
 
-void MeaCustomUnitsPrefs::OnClear() 
-{
+void MeaCustomUnitsPrefs::OnClear() {
     CString name;
     CString abbrev;
 
@@ -419,28 +397,24 @@ void MeaCustomUnitsPrefs::OnClear()
 }
 
 
-void MeaCustomUnitsPrefs::OnPrecision() 
-{
+void MeaCustomUnitsPrefs::OnPrecision() {
     MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());
     MeaAssert(sheet != nullptr);
-    
+
     sheet->ShowCustomPrecision();
 }
 
 
-void MeaCustomUnitsPrefs::OnPixelBasis() 
-{
+void MeaCustomUnitsPrefs::OnPixelBasis() {
     OnChange();
 }
 
 
-void MeaCustomUnitsPrefs::OnInchBasis() 
-{
+void MeaCustomUnitsPrefs::OnInchBasis() {
     OnChange();
 }
 
 
-void MeaCustomUnitsPrefs::OnCentimeterBasis() 
-{
+void MeaCustomUnitsPrefs::OnCentimeterBasis() {
     OnChange();
 }

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -42,19 +42,11 @@ BEGIN_MESSAGE_MAP(MeaCalibrationPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaCalibrationPrefs::MeaCalibrationPrefs() : CPropertyPage(IDD_PREF_CALIBRATION),
-    m_lockoutId(0), m_inDDX(false)
-{
-}
+MeaCalibrationPrefs::MeaCalibrationPrefs() : CPropertyPage(IDD_PREF_CALIBRATION), m_lockoutId(0), m_inDDX(false) {}
 
+MeaCalibrationPrefs::~MeaCalibrationPrefs() {}
 
-MeaCalibrationPrefs::~MeaCalibrationPrefs()
-{
-}
-
-
-void MeaCalibrationPrefs::DoDataExchange(CDataExchange* pDX)
-{
+void MeaCalibrationPrefs::DoDataExchange(CDataExchange* pDX) {
     m_inDDX = true;
 
     CPropertyPage::DoDataExchange(pDX);
@@ -86,9 +78,7 @@ void MeaCalibrationPrefs::DoDataExchange(CDataExchange* pDX)
     m_inDDX = false;
 }
 
-
-bool MeaCalibrationPrefs::LockedUpdateData(UINT lockoutId, bool bSaveAndValidate)
-{
+bool MeaCalibrationPrefs::LockedUpdateData(UINT lockoutId, bool bSaveAndValidate) {
     m_lockoutId = lockoutId;
     bool ret = UpdateData(bSaveAndValidate) ? true : false;
     m_lockoutId = 0;
@@ -96,9 +86,7 @@ bool MeaCalibrationPrefs::LockedUpdateData(UINT lockoutId, bool bSaveAndValidate
     return ret;
 }
 
-
-BOOL MeaCalibrationPrefs::OnInitDialog()
-{
+BOOL MeaCalibrationPrefs::OnInitDialog() {
     CPropertyPage::OnInitDialog();
 
     // Set the styles on the fields
@@ -123,9 +111,7 @@ BOOL MeaCalibrationPrefs::OnInitDialog()
     return TRUE;
 }
 
-
-BOOL MeaCalibrationPrefs::OnSetActive()
-{
+BOOL MeaCalibrationPrefs::OnSetActive() {
     CPropertyPage::OnSetActive();
 
     UpdateCurrentScreen();
@@ -134,15 +120,11 @@ BOOL MeaCalibrationPrefs::OnSetActive()
     return TRUE;
 }
 
-
-BOOL MeaCalibrationPrefs::OnKillActive()
-{
+BOOL MeaCalibrationPrefs::OnKillActive() {
     return Validate() ? CPropertyPage::OnKillActive() : FALSE;
 }
 
-
-void MeaCalibrationPrefs::DDX_ResText(CDataExchange* pDX, int nIDC, double& resValue)
-{
+void MeaCalibrationPrefs::DDX_ResText(CDataExchange* pDX, int nIDC, double& resValue) {
     if (pDX->m_bSaveAndValidate) {
         double value;
         DDX_Text(pDX, nIDC, value);
@@ -153,9 +135,7 @@ void MeaCalibrationPrefs::DDX_ResText(CDataExchange* pDX, int nIDC, double& resV
     }
 }
 
-    
-void MeaCalibrationPrefs::DDX_DimText(CDataExchange* pDX, int nIDC, double& dimValue)
-{
+void MeaCalibrationPrefs::DDX_DimText(CDataExchange* pDX, int nIDC, double& dimValue) {
     if (pDX->m_bSaveAndValidate) {
         double value;
         DDX_Text(pDX, nIDC, value);
@@ -166,9 +146,7 @@ void MeaCalibrationPrefs::DDX_DimText(CDataExchange* pDX, int nIDC, double& dimV
     }
 }
 
-
-bool MeaCalibrationPrefs::Validate()
-{
+bool MeaCalibrationPrefs::Validate() {
     MeaScreenMgr& screenMgr = MeaScreenMgr::Instance();
     const CRect& screenRect = screenMgr.GetScreenRect(m_currentIter);
     Screen& screen = GetScreen();
@@ -176,7 +154,7 @@ bool MeaCalibrationPrefs::Validate()
     FSIZE r;
 
     screenMgr.GetScreenRes(m_currentIter, mr, r);
-    
+
     if (screen.m_resMode == AutoRes) {
         if (!ValidateField(IDC_CAL_RX_FIELD)) {
             screen.m_res.cx = r.cx;
@@ -205,9 +183,7 @@ bool MeaCalibrationPrefs::Validate()
     return true;
 }
 
-
-bool MeaCalibrationPrefs::ValidateField(UINT id)
-{
+bool MeaCalibrationPrefs::ValidateField(UINT id) {
     double v = 0.0;
 
     if (GetFieldValue(id, v)) {
@@ -216,7 +192,7 @@ bool MeaCalibrationPrefs::ValidateField(UINT id)
 
     if (GetScreen().m_resMode == ManualRes) {
         AfxMessageBox(IDS_MEA_FIELD_VALUE, MB_OK | MB_ICONSTOP);
-        CEdit *edit = static_cast<CEdit*>(GetDlgItem(id));
+        CEdit* edit = static_cast<CEdit*>(GetDlgItem(id));
         edit->SetFocus();
         edit->SetSel(0, -1);
     }
@@ -224,14 +200,12 @@ bool MeaCalibrationPrefs::ValidateField(UINT id)
     return false;
 }
 
-
-void MeaCalibrationPrefs::SetResMode(ResolutionMode resMode)
-{
+void MeaCalibrationPrefs::SetResMode(ResolutionMode resMode) {
     Screen& screen = GetScreen();
 
     screen.m_resMode = resMode;
     bool enable = (screen.m_resMode == ManualRes);
-    
+
     GetDlgItem(IDC_CAL_INSTR)->EnableWindow(enable);
     GetDlgItem(IDC_CAL_INSTR2)->EnableWindow(enable);
 
@@ -253,9 +227,7 @@ void MeaCalibrationPrefs::SetResMode(ResolutionMode resMode)
     GetDlgItem(IDC_CAL_RY_SLIDER)->EnableWindow(enable);
 }
 
-
-void MeaCalibrationPrefs::SetResUnits(ResolutionUnits resUnits)
-{
+void MeaCalibrationPrefs::SetResUnits(ResolutionUnits resUnits) {
     Screen& screen = GetScreen();
 
     screen.m_resUnits = resUnits;
@@ -277,65 +249,51 @@ void MeaCalibrationPrefs::SetResUnits(ResolutionUnits resUnits)
     GetDlgItem(IDC_CAL_INSTR2)->SetWindowText(instrLabel);
 }
 
-
-void MeaCalibrationPrefs::UpdateSliders()
-{
+void MeaCalibrationPrefs::UpdateSliders() {
     Screen& screen = GetScreen();
 
     UpdateSlider(IDC_CAL_RX_SLIDER, screen.m_res.cx);
     UpdateSlider(IDC_CAL_RY_SLIDER, screen.m_res.cy);
 }
 
-
-void MeaCalibrationPrefs::UpdateSlider(UINT sliderId, double res)
-{
-    MeaRulerSlider *slider = static_cast<MeaRulerSlider*>(GetDlgItem(sliderId));
+void MeaCalibrationPrefs::UpdateSlider(UINT sliderId, double res) {
+    MeaRulerSlider* slider = static_cast<MeaRulerSlider*>(GetDlgItem(sliderId));
     if (slider != nullptr) {
         int resValue = static_cast<int>(IsMetric() ? 2.0 * res / 2.54 : res);
         slider->SetSliderPos(resValue);
     }
 }
 
-
-void MeaCalibrationPrefs::OnAutoRes() 
-{
+void MeaCalibrationPrefs::OnAutoRes() {
     OnChange();
     SetResMode(AutoRes);
 }
 
-
-void MeaCalibrationPrefs::OnManRes() 
-{
+void MeaCalibrationPrefs::OnManRes() {
     OnChange();
     SetResMode(ManualRes);
 }
 
-
-void MeaCalibrationPrefs::OnCalInches()
-{
+void MeaCalibrationPrefs::OnCalInches() {
     SetResUnits(UseInches);
 
     UpdateData(FALSE);
     UpdateSliders();
 }
 
-
-void MeaCalibrationPrefs::OnCalCm()
-{
+void MeaCalibrationPrefs::OnCalCm() {
     SetResUnits(UseCentimeters);
 
     UpdateData(FALSE);
     UpdateSliders();
 }
 
-
-void MeaCalibrationPrefs::OnRxFieldChange() 
-{
+void MeaCalibrationPrefs::OnRxFieldChange() {
     Screen& screen = GetScreen();
 
     if (GetFieldValue(IDC_CAL_RX_FIELD, screen.m_res.cx)) {
         const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
-        
+
         OnChange();
         UpdateSlider(IDC_CAL_RX_SLIDER, screen.m_res.cx);
         screen.m_size.cx = screenRect.Width() / screen.m_res.cx;
@@ -343,14 +301,12 @@ void MeaCalibrationPrefs::OnRxFieldChange()
     }
 }
 
-
-void MeaCalibrationPrefs::OnRyFieldChange() 
-{
+void MeaCalibrationPrefs::OnRyFieldChange() {
     Screen& screen = GetScreen();
 
     if (GetFieldValue(IDC_CAL_RY_FIELD, screen.m_res.cy)) {
         const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
-        
+
         OnChange();
         UpdateSlider(IDC_CAL_RY_SLIDER, screen.m_res.cy);
         screen.m_size.cy = screenRect.Height() / screen.m_res.cy;
@@ -358,14 +314,12 @@ void MeaCalibrationPrefs::OnRyFieldChange()
     }
 }
 
-
-void MeaCalibrationPrefs::OnWFieldChange() 
-{
+void MeaCalibrationPrefs::OnWFieldChange() {
     Screen& screen = GetScreen();
 
     if (GetFieldValue(IDC_CAL_W_FIELD, screen.m_size.cx)) {
         const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
-        
+
         OnChange();
         screen.m_res.cx = screenRect.Width() / screen.m_size.cx;
         UpdateSlider(IDC_CAL_RX_SLIDER, screen.m_res.cx);
@@ -373,14 +327,12 @@ void MeaCalibrationPrefs::OnWFieldChange()
     }
 }
 
-
-void MeaCalibrationPrefs::OnHFieldChange() 
-{
+void MeaCalibrationPrefs::OnHFieldChange() {
     Screen& screen = GetScreen();
 
     if (GetFieldValue(IDC_CAL_H_FIELD, screen.m_size.cy)) {
         const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
-        
+
         OnChange();
         screen.m_res.cy = screenRect.Height() / screen.m_size.cy;
         UpdateSlider(IDC_CAL_RY_SLIDER, screen.m_res.cy);
@@ -388,9 +340,7 @@ void MeaCalibrationPrefs::OnHFieldChange()
     }
 }
 
-
-bool MeaCalibrationPrefs::GetFieldValue(UINT fieldId, double& value)
-{
+bool MeaCalibrationPrefs::GetFieldValue(UINT fieldId, double& value) {
     CWnd* field = GetDlgItem(fieldId);
 
     if (field != nullptr) {
@@ -416,22 +366,18 @@ bool MeaCalibrationPrefs::GetFieldValue(UINT fieldId, double& value)
     return false;
 }
 
-
-void MeaCalibrationPrefs::OnChange() 
-{
+void MeaCalibrationPrefs::OnChange() {
     SetModified(TRUE);
 }
 
-
-LRESULT MeaCalibrationPrefs::OnCaliperChange(WPARAM pos, LPARAM id)
-{
+LRESULT MeaCalibrationPrefs::OnCaliperChange(WPARAM pos, LPARAM id) {
     Screen& screen = GetScreen();
     const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
     double resValue;
 
     OnChange();
 
-    resValue = IsMetric() ? pos * 2.54 / 2.0: pos;
+    resValue = IsMetric() ? pos * 2.54 / 2.0 : pos;
     if (id == IDC_CAL_RX_SLIDER) {
         screen.m_res.cx = resValue;
         screen.m_size.cx = screenRect.Width() / screen.m_res.cx;
@@ -439,21 +385,17 @@ LRESULT MeaCalibrationPrefs::OnCaliperChange(WPARAM pos, LPARAM id)
         screen.m_res.cy = resValue;
         screen.m_size.cy = screenRect.Height() / screen.m_res.cy;
     }
-    
+
     UpdateData(FALSE);
 
     return TRUE;
 }
 
-
-void MeaCalibrationPrefs::OnMove(int /*x*/, int /*y*/)
-{
+void MeaCalibrationPrefs::OnMove(int /*x*/, int /*y*/) {
     UpdateCurrentScreen();
 }
 
-
-void MeaCalibrationPrefs::UpdateView()
-{
+void MeaCalibrationPrefs::UpdateView() {
     Screen& screen = GetScreen();
 
     SetResMode(static_cast<ResolutionMode>(screen.m_resMode));
@@ -468,9 +410,7 @@ void MeaCalibrationPrefs::UpdateView()
     UpdateSliders();
 }
 
-
-void MeaCalibrationPrefs::UpdateCurrentScreen()
-{
+void MeaCalibrationPrefs::UpdateCurrentScreen() {
     if (GetSafeHwnd() == nullptr) {
         return;
     }
@@ -478,9 +418,9 @@ void MeaCalibrationPrefs::UpdateCurrentScreen()
     MeaScreenMgr& mgr = MeaScreenMgr::Instance();
     RECT winRect;
     GetWindowRect(&winRect);
-    
+
     m_currentIter = mgr.GetScreenIter(winRect);
-    
+
     CWnd* frame = GetDlgItem(IDC_CALRES_TITLE);
     if (frame != nullptr) {
         CString title;
@@ -496,8 +436,6 @@ void MeaCalibrationPrefs::UpdateCurrentScreen()
     }
 }
 
-
-BOOL MeaCalibrationPrefs::UpdateData(BOOL bSaveAndValidate)
-{
+BOOL MeaCalibrationPrefs::UpdateData(BOOL bSaveAndValidate) {
     return m_inDDX ? TRUE : CPropertyPage::UpdateData(bSaveAndValidate);
 }

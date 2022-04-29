@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -31,8 +31,8 @@
 /// being used. Thus, the Line and Point tools are mutually exclusive and
 /// derive from MeaRadioTool.
 ///
-class MeaRadioTool: public MeaTool
-{
+class MeaRadioTool : public MeaTool {
+
 public:
     /// Map of points used to set the position of a tool.
     /// Typically the position log manager will fill a point
@@ -47,12 +47,11 @@ public:
     ///
     /// @param mgr  [in] Tool manager parent of the tool.
     ///
-    explicit MeaRadioTool(MeaToolMgr *mgr);
+    explicit MeaRadioTool(MeaToolMgr* mgr);
 
     /// Destroys the tool.
     ///
     virtual ~MeaRadioTool();
-
 
     /// Indicates that the derived tool is a Radio tool and
     /// cannot be enabled until any other enabled Radio tool
@@ -62,7 +61,6 @@ public:
     ///         and its derived classes are Radio tools.
     ///
     virtual bool IsRadioTool() override;
-
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.
@@ -78,7 +76,6 @@ public:
     ///
     virtual bool HasCrosshairs() const;
 
-
     /// Displays the tool's crosshairs. If the Enable() method has not
     /// been previously called, this method has no effect. This base
     /// class implementation does nothing.
@@ -89,7 +86,6 @@ public:
     /// does nothing.
     ///
     virtual void DisableCrosshairs();
-
 
     /// Visually flashes the tool. Typically, if a tool uses crosshairs,
     /// they are cycled between a hilite color and their normal color a
@@ -106,7 +102,6 @@ public:
     /// class implementation does nothing.
     ///
     virtual void Strobe();
-
 
     /// Indicates whether the tool can define a rectangular region that
     /// can then be read for a screen capture.
@@ -125,7 +120,6 @@ public:
     ///
     virtual RECT GetRegion();
 
-
     /// Sets the position of the tool. This method is called by the
     /// position log manager to play back a tool's position that was
     /// previously recorded using the GetPosition method. This base
@@ -143,7 +137,6 @@ public:
     ///
     virtual void GetPosition(MeaPositionLogMgr::Position& position) const = 0;
 
-
     /// Called by the OS when the mouse pointer is moved. This base class
     /// implementation does nothing.
     ///
@@ -152,4 +145,3 @@ public:
     ///
     virtual void OnMouseHook(WPARAM wParam, LPARAM lParam);
 };
-

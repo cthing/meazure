@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -35,7 +35,7 @@ BEGIN_MESSAGE_MAP(MeaPositionSaveDlg, CFileDialog)
 END_MESSAGE_MAP()
 
 
-MeaPositionSaveDlg::MeaPositionSaveDlg(LPCTSTR lpszDefExt, 
+MeaPositionSaveDlg::MeaPositionSaveDlg(LPCTSTR lpszDefExt,
                                        LPCTSTR lpszFileName,
                                        LPCTSTR lpszFilter,
                                        CWnd* pParentWnd) : CFileDialog(FALSE,
@@ -43,20 +43,14 @@ MeaPositionSaveDlg::MeaPositionSaveDlg(LPCTSTR lpszDefExt,
                                        OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT |
                                        OFN_ENABLETEMPLATE | OFN_EXPLORER,
                                        lpszFilter, pParentWnd),
-    m_desc(_T("")), m_title(_T(""))
-{
+    m_desc(_T("")), m_title(_T("")) {
     m_ofn.hInstance = AfxGetInstanceHandle();
     m_ofn.lpTemplateName = MAKEINTRESOURCE(IDD_POSITION_SAVE);
 }
 
+MeaPositionSaveDlg::~MeaPositionSaveDlg() {}
 
-MeaPositionSaveDlg::~MeaPositionSaveDlg()
-{
-}
-
-
-void MeaPositionSaveDlg::DoDataExchange(CDataExchange* pDX)
-{
+void MeaPositionSaveDlg::DoDataExchange(CDataExchange* pDX) {
     CFileDialog::DoDataExchange(pDX);
 
     DDX_Text(pDX, IDC_LOG_DESC, m_desc);

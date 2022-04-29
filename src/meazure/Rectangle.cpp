@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -32,26 +32,19 @@ MeaRectangle::MeaRectangle() :
     m_point1(kInitCoord, kInitCoord),
     m_point2(kInitCoord, kInitCoord),
     m_foreBrush(new CBrush(MeaColors::Get(MeaColors::LineFore))),
-    m_thk(0), m_shrink(0)
-{
-}
+    m_thk(0), m_shrink(0) {}
 
-
-MeaRectangle::~MeaRectangle()
-{
+MeaRectangle::~MeaRectangle() {
     try {
         m_timer.Stop();
 
         delete m_foreBrush;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaRectangle::Create(int thk, int shrink, const CWnd *parent)
-{
+bool MeaRectangle::Create(int thk, int shrink, const CWnd* parent) {
     m_thk = thk;
     m_shrink = shrink;
 
@@ -69,20 +62,16 @@ bool MeaRectangle::Create(int thk, int shrink, const CWnd *parent)
     return true;
 }
 
-
-void MeaRectangle::Hide()
-{
+void MeaRectangle::Hide() {
     m_timer.Stop();
     MeaGraphic::Hide();
 }
 
-
-void MeaRectangle::SetPosition(const POINT& point1, const POINT& point2)
-{
+void MeaRectangle::SetPosition(const POINT& point1, const POINT& point2) {
     if (m_point1 == point1 && m_point2 == point2) {
         return;
     }
-    
+
     m_point1 = point1;
     m_point2 = point2;
 
@@ -90,15 +79,13 @@ void MeaRectangle::SetPosition(const POINT& point1, const POINT& point2)
     m_timer.Start(5);
 }
 
-
-void MeaRectangle::SetColor(COLORREF color)
-{
-    CBrush *brush   = new CBrush(color);
+void MeaRectangle::SetColor(COLORREF color) {
+    CBrush* brush = new CBrush(color);
     if (m_hWnd != nullptr) {
         ::SetClassLongPtr(m_hWnd, GCLP_HBRBACKGROUND,
                         reinterpret_cast<LONG_PTR>(static_cast<HBRUSH>(*brush)));
     }
-    
+
     delete m_foreBrush;
     m_foreBrush = brush;
 
@@ -108,9 +95,7 @@ void MeaRectangle::SetColor(COLORREF color)
     }
 }
 
-
-LRESULT MeaRectangle::OnHPTimer(WPARAM, LPARAM)
-{
+LRESULT MeaRectangle::OnHPTimer(WPARAM, LPARAM) {
     if (!m_visible) {
         return 0;
     }
@@ -122,15 +107,13 @@ LRESULT MeaRectangle::OnHPTimer(WPARAM, LPARAM)
     SetWindowPos(nullptr, rect.left, rect.top, rect.Width(), rect.Height(),
             SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSENDCHANGING);
     SetRegion();
-    
+
     Show();
 
     return 0;
 }
 
-
-void MeaRectangle::SetRegion()
-{
+void MeaRectangle::SetRegion() {
     CRect rect;
 
     GetClientRect(rect);
@@ -147,10 +130,10 @@ void MeaRectangle::SetRegion()
 
         // Punch a rectangular hole in the top left corner.
         //
-        cornerRect.top      = m_point1.y - m_shrink;
-        cornerRect.bottom   = m_point1.y + m_shrink;
-        cornerRect.left     = m_point1.x - m_shrink;
-        cornerRect.right    = m_point1.x + m_shrink;
+        cornerRect.top = m_point1.y - m_shrink;
+        cornerRect.bottom = m_point1.y + m_shrink;
+        cornerRect.left = m_point1.x - m_shrink;
+        cornerRect.right = m_point1.x + m_shrink;
         ScreenToClient(&cornerRect);
         HRGN cornerRegion = ::CreateRectRgnIndirect(&cornerRect);
         ::CombineRgn(outerRegion, outerRegion, cornerRegion, RGN_DIFF);
@@ -158,10 +141,10 @@ void MeaRectangle::SetRegion()
 
         // Punch a rectangular hole in the bottom right corner.
         //
-        cornerRect.top      = m_point2.y - m_shrink;
-        cornerRect.bottom   = m_point2.y + m_shrink;
-        cornerRect.left     = m_point2.x - m_shrink;
-        cornerRect.right    = m_point2.x + m_shrink;
+        cornerRect.top = m_point2.y - m_shrink;
+        cornerRect.bottom = m_point2.y + m_shrink;
+        cornerRect.left = m_point2.x - m_shrink;
+        cornerRect.right = m_point2.x + m_shrink;
         ScreenToClient(&cornerRect);
         cornerRegion = ::CreateRectRgnIndirect(&cornerRect);
         ::CombineRgn(outerRegion, outerRegion, cornerRegion, RGN_DIFF);

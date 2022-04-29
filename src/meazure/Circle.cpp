@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -24,8 +24,7 @@
 #include "ScreenMgr.h"
 
 
-// Padding around circle
-
+ // Padding around circle
 const CSize MeaCircle::kMargin(1, 1);
 
 int* MeaCircle::m_varr { nullptr };
@@ -36,38 +35,33 @@ BEGIN_MESSAGE_MAP(MeaCircle, MeaGraphic)
 END_MESSAGE_MAP()
 
 
-MeaCircle::MeaCircle() : MeaGraphic(),
+MeaCircle::MeaCircle() :
+    MeaGraphic(),
     m_center(kInitCoord, kInitCoord),
     m_perimeter(kInitCoord, kInitCoord),
     m_foreBrush(new CBrush(MeaColors::Get(MeaColors::LineFore))),
-    m_arr(nullptr), m_count(0)
-{
-}
+    m_arr(nullptr),
+    m_count(0) {}
 
-
-MeaCircle::~MeaCircle()
-{
+MeaCircle::~MeaCircle() {
     try {
         m_timer.Stop();
 
         if (m_varr != nullptr) {
-            delete [] m_varr;
+            delete[] m_varr;
             m_varr = nullptr;
         }
         if (m_arr != nullptr) {
-            delete [] m_arr;
+            delete[] m_arr;
         }
 
         delete m_foreBrush;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaCircle::Create(const CWnd *parent)
-{
+bool MeaCircle::Create(const CWnd* parent) {
     // Determine the size for the region array. A good estimate is two times
     // the circumference of the largest circle one can drawn on the screen. The
     // largest possible circle is defined by the virtual screen rectangle, which
@@ -104,28 +98,24 @@ bool MeaCircle::Create(const CWnd *parent)
     return MeaGraphic::Create(wndClass, CSize(0, 0), parent);
 }
 
-
-void MeaCircle::Hide()
-{
+void MeaCircle::Hide() {
     // No drawing when the window is hidden, so stop the timer.
     //
     m_timer.Stop();
     MeaGraphic::Hide();
 }
 
-
-void MeaCircle::SetColor(COLORREF color)
-{
+void MeaCircle::SetColor(COLORREF color) {
     // Change the window's background brush. This will
     // draw the circle in the new color. Recall, the window
     // is formed in a circle, so it is the window's background
     // that defines the color of the circle.
     //
-    CBrush *brush   = new CBrush(color);
+    CBrush* brush = new CBrush(color);
     if (m_hWnd != nullptr) {
         ::SetClassLongPtr(m_hWnd, GCLP_HBRBACKGROUND, reinterpret_cast<LONG_PTR>(static_cast<HBRUSH>(*brush)));
     }
-    
+
     delete m_foreBrush;
     m_foreBrush = brush;
 
@@ -135,9 +125,7 @@ void MeaCircle::SetColor(COLORREF color)
     }
 }
 
-
-void MeaCircle::PlotCircle(int radius)
-{
+void MeaCircle::PlotCircle(int radius) {
     int x = radius;
     int y = 0;
     int xc = m_center.x;
@@ -157,7 +145,7 @@ void MeaCircle::PlotCircle(int radius)
         AddPoint(xc - y, yc + x);       // Octant 3
         AddPoint(xc - y, yc - x);       // Octant 6
         AddPoint(xc + y, yc - x);       // Octant 7
-        
+
         y++;
         radiusError += deltay;
         deltay += 2;
@@ -170,9 +158,7 @@ void MeaCircle::PlotCircle(int radius)
     }
 }
 
-
-void MeaCircle::SetPosition(const POINT& center, const POINT& perimeter)
-{
+void MeaCircle::SetPosition(const POINT& center, const POINT& perimeter) {
     // If the circle has not moved, just make sure it is visible.
     //
     if (m_center == center && m_perimeter == perimeter) {
@@ -181,7 +167,7 @@ void MeaCircle::SetPosition(const POINT& center, const POINT& perimeter)
         }
         return;
     }
-    
+
     m_center = center;
     m_perimeter = perimeter;
 
@@ -197,9 +183,7 @@ void MeaCircle::SetPosition(const POINT& center, const POINT& perimeter)
     m_timer.Start(50);
 }
 
-
-LRESULT MeaCircle::OnHPTimer(WPARAM, LPARAM)
-{
+LRESULT MeaCircle::OnHPTimer(WPARAM, LPARAM) {
     int radius = GetRadius();
 
     // Determine the overall size of the circle's window.
@@ -220,10 +204,10 @@ LRESULT MeaCircle::OnHPTimer(WPARAM, LPARAM)
     MeaAssert(m_arr != nullptr);
     HRGN region = ::CreatePolyPolygonRgn(m_arr, m_varr, static_cast<int>(m_count), ALTERNATE);
     ::OffsetRgn(region, -rect.left, -rect.top);
-    SetWindowRgn(region, TRUE); 
-    
+    SetWindowRgn(region, TRUE);
+
     SetWindowPos(nullptr, rect.left, rect.top, rect.Width(), rect.Height(),
-            SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSENDCHANGING);
+                 SWP_NOACTIVATE | SWP_NOZORDER | SWP_NOSENDCHANGING);
     if (m_visible) {
         Show();
     }

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -22,18 +22,11 @@
 #include "LayeredWindows.h"
 
 
-MeaCommandLineInfo::MeaCommandLineInfo() : CCommandLineInfo()
-{
-}
+MeaCommandLineInfo::MeaCommandLineInfo() : CCommandLineInfo() {}
 
+MeaCommandLineInfo::~MeaCommandLineInfo() {}
 
-MeaCommandLineInfo::~MeaCommandLineInfo()
-{
-}
-
-
-void MeaCommandLineInfo::ParseParam(LPCTSTR param, BOOL flag, BOOL last)
-{
+void MeaCommandLineInfo::ParseParam(LPCTSTR param, BOOL flag, BOOL last) {
     if (flag && (_tcscmp(param, _T("nl")) == 0)) {
         g_enableLayeredWindows = FALSE;
     }

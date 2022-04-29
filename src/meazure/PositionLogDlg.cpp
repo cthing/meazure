@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -44,25 +44,18 @@ BEGIN_MESSAGE_MAP(MeaPositionLogDlg, CDialog)
 END_MESSAGE_MAP()
 
 
-MeaPositionLogDlg::MeaPositionLogDlg() : CDialog(), MeaPositionLogObserver()
-{
-}
+MeaPositionLogDlg::MeaPositionLogDlg() : CDialog(), MeaPositionLogObserver() {}
 
+MeaPositionLogDlg::~MeaPositionLogDlg() {}
 
-MeaPositionLogDlg::~MeaPositionLogDlg()
-{
-}
-
-
-BOOL MeaPositionLogDlg::OnInitDialog()
-{
+BOOL MeaPositionLogDlg::OnInitDialog() {
     CDialog::OnInitDialog();
     MeaPositionLogMgr& mgr = MeaPositionLogMgr::Instance();
-    
+
     mgr.SetObserver(this);
 
     SetDlgTitle();
-    
+
     SetScrollRange();
     SetScrollPos(0);
 
@@ -74,9 +67,7 @@ BOOL MeaPositionLogDlg::OnInitDialog()
     return TRUE;
 }
 
-
-void MeaPositionLogDlg::SetDlgTitle()
-{
+void MeaPositionLogDlg::SetDlgTitle() {
     CString pathname = MeaPositionLogMgr::Instance().GetFilePathname();
 
     if (pathname.IsEmpty()) {
@@ -91,38 +82,29 @@ void MeaPositionLogDlg::SetDlgTitle()
 
     CString title;
     title.Format(IDS_MEA_POSDLG_TITLE, static_cast<LPCTSTR>(pathname));
-    
+
     SetWindowText(title);
 }
 
-
-void MeaPositionLogDlg::OnLoadPositions() 
-{
+void MeaPositionLogDlg::OnLoadPositions() {
     MeaPositionLogMgr::Instance().Load();
 }
 
-
-void MeaPositionLogDlg::OnSavePositions() 
-{
+void MeaPositionLogDlg::OnSavePositions() {
     MeaPositionLogMgr::Instance().Save(false);
 }
 
-void MeaPositionLogDlg::OnSavePositionsAs() 
-{
+void MeaPositionLogDlg::OnSavePositionsAs() {
     MeaPositionLogMgr::Instance().Save(true);
 }
 
-
-void MeaPositionLogDlg::OnCancel()
-{
+void MeaPositionLogDlg::OnCancel() {
     DestroyWindow();
 }
 
-
-void MeaPositionLogDlg::PostNcDestroy()
-{
+void MeaPositionLogDlg::PostNcDestroy() {
     CDialog::PostNcDestroy();
-    
+
     if (!MeaPositionLogMgr::IsDestroyed()) {
         MeaPositionLogMgr::Instance().SetObserver(nullptr);
         MeaPositionLogMgr::Instance().ManageDlgDestroyed();
@@ -131,21 +113,15 @@ void MeaPositionLogDlg::PostNcDestroy()
     delete this;
 }
 
-
-void MeaPositionLogDlg::SetScrollPos(int pos) const
-{
+void MeaPositionLogDlg::SetScrollPos(int pos) const {
     static_cast<CScrollBar*>(GetDlgItem(IDC_MEA_POSITION_SCROLLBAR))->SetScrollPos(pos);
 }
 
-
-int MeaPositionLogDlg::GetScrollPos() const
-{
+int MeaPositionLogDlg::GetScrollPos() const {
     return static_cast<CScrollBar*>(GetDlgItem(IDC_MEA_POSITION_SCROLLBAR))->GetScrollPos();
 }
 
-
-void MeaPositionLogDlg::SetScrollRange() const
-{
+void MeaPositionLogDlg::SetScrollRange() const {
     MeaPositionLogMgr& mgr = MeaPositionLogMgr::Instance();
 
     SCROLLINFO info;
@@ -158,29 +134,23 @@ void MeaPositionLogDlg::SetScrollRange() const
     static_cast<CScrollBar*>(GetDlgItem(IDC_MEA_POSITION_SCROLLBAR))->SetScrollInfo(&info);
 }
 
-
-void MeaPositionLogDlg::LogLoaded()
-{
+void MeaPositionLogDlg::LogLoaded() {
     SetDlgTitle();
 
     SetScrollRange();
     SetScrollPos(0);
-    
+
     MeaPositionLogMgr::Instance().ShowPosition(0);
 
     UpdatePositionInfo();
     UpdateEnable();
 }
 
-
-void MeaPositionLogDlg::LogSaved()
-{
+void MeaPositionLogDlg::LogSaved() {
     SetDlgTitle();
 }
 
-
-void MeaPositionLogDlg::PositionAdded(int /* posIndex */)
-{
+void MeaPositionLogDlg::PositionAdded(int /* posIndex */) {
     SetScrollRange();
     SetScrollPos(MeaPositionLogMgr::Instance().NumPositions() - 1);
 
@@ -188,35 +158,27 @@ void MeaPositionLogDlg::PositionAdded(int /* posIndex */)
     UpdateEnable();
 }
 
-
-void MeaPositionLogDlg::PositionReplaced(int /* posIndex */)
-{
+void MeaPositionLogDlg::PositionReplaced(int /* posIndex */) {
     UpdatePositionInfo();
 }
 
-
-void MeaPositionLogDlg::PositionDeleted(int /* posIndex */)
-{
+void MeaPositionLogDlg::PositionDeleted(int /* posIndex */) {
     SetScrollRange();
 
     UpdatePositionInfo();
     UpdateEnable();
 }
 
-
-void MeaPositionLogDlg::PositionsDeleted()
-{
+void MeaPositionLogDlg::PositionsDeleted() {
     SetScrollRange();
-    
+
     UpdateEnable();
 }
 
-
-void MeaPositionLogDlg::UpdatePositionInfo(int posIndex) const
-{
-    CStatic* numField       = static_cast<CStatic*>(GetDlgItem(IDC_MEA_POSITION_NUM));
-    CStatic* recordedField  = static_cast<CStatic*>(GetDlgItem(IDC_MEA_POSITION_DATE));
-    CEdit* descField        = static_cast<CEdit*>(GetDlgItem(IDC_MEA_POSITION_DESC));
+void MeaPositionLogDlg::UpdatePositionInfo(int posIndex) const {
+    CStatic* numField = static_cast<CStatic*>(GetDlgItem(IDC_MEA_POSITION_NUM));
+    CStatic* recordedField = static_cast<CStatic*>(GetDlgItem(IDC_MEA_POSITION_DATE));
+    CEdit* descField = static_cast<CEdit*>(GetDlgItem(IDC_MEA_POSITION_DESC));
 
     MeaPositionLogMgr& mgr = MeaPositionLogMgr::Instance();
 
@@ -232,33 +194,31 @@ void MeaPositionLogDlg::UpdatePositionInfo(int posIndex) const
         numField->SetWindowText(str);
 
         const MeaPositionLogMgr::Position& position = mgr.GetPosition(posIndex);
-        
+
         CTime ts(MeaParseTimeStamp(position.GetTimeStamp()));
         recordedField->SetWindowText(ts.Format(_T("%c")));
-        
+
         descField->SetWindowText(position.GetDesc());
     }
 }
 
+void MeaPositionLogDlg::UpdateEnable() const {
+    CWnd* replaceButton = GetDlgItem(IDC_MEA_REPLACE_POSITION);
+    CWnd* deleteButton = GetDlgItem(IDC_MEA_DELETE_POSITION);
+    CWnd* deleteAllButton = GetDlgItem(IDC_MEA_DELETE_ALL_POSITIONS);
+    CWnd* saveButton = GetDlgItem(IDC_MEA_SAVE_POSITIONS);
+    CWnd* saveAsButton = GetDlgItem(IDC_MEA_SAVE_POSITIONS_AS);
 
-void MeaPositionLogDlg::UpdateEnable() const
-{
-    CWnd* replaceButton     = GetDlgItem(IDC_MEA_REPLACE_POSITION);
-    CWnd* deleteButton      = GetDlgItem(IDC_MEA_DELETE_POSITION);
-    CWnd* deleteAllButton   = GetDlgItem(IDC_MEA_DELETE_ALL_POSITIONS);
-    CWnd* saveButton        = GetDlgItem(IDC_MEA_SAVE_POSITIONS);
-    CWnd* saveAsButton      = GetDlgItem(IDC_MEA_SAVE_POSITIONS_AS);
+    CWnd* descLabel = GetDlgItem(IDC_MEA_POSITION_DESC_LBL);
+    CWnd* descField = GetDlgItem(IDC_MEA_POSITION_DESC);
 
-    CWnd* descLabel         = GetDlgItem(IDC_MEA_POSITION_DESC_LBL);
-    CWnd* descField         = GetDlgItem(IDC_MEA_POSITION_DESC);
+    CWnd* recordedLabel = GetDlgItem(IDC_MEA_POSITION_DATE_LBL);
+    CWnd* recordedField = GetDlgItem(IDC_MEA_POSITION_DATE);
 
-    CWnd* recordedLabel     = GetDlgItem(IDC_MEA_POSITION_DATE_LBL);
-    CWnd* recordedField     = GetDlgItem(IDC_MEA_POSITION_DATE);
+    CWnd* numLabel = GetDlgItem(IDC_MEA_POSITION_NUM_LBL);
+    CWnd* numField = GetDlgItem(IDC_MEA_POSITION_NUM);
 
-    CWnd* numLabel          = GetDlgItem(IDC_MEA_POSITION_NUM_LBL);
-    CWnd* numField          = GetDlgItem(IDC_MEA_POSITION_NUM);
-
-    CWnd* scrollbar         = GetDlgItem(IDC_MEA_POSITION_SCROLLBAR);
+    CWnd* scrollbar = GetDlgItem(IDC_MEA_POSITION_SCROLLBAR);
 
     bool havePositions = MeaPositionLogMgr::Instance().HavePositions();
 
@@ -280,38 +240,28 @@ void MeaPositionLogDlg::UpdateEnable() const
     scrollbar->EnableWindow(havePositions);
 }
 
-
-void MeaPositionLogDlg::OnAddPosition() 
-{
+void MeaPositionLogDlg::OnAddPosition() {
     MeaPositionLogMgr::Instance().RecordPosition();
 }
 
-
-void MeaPositionLogDlg::OnReplacePosition() 
-{
+void MeaPositionLogDlg::OnReplacePosition() {
     MeaPositionLogMgr::Instance().ReplacePosition(GetScrollPos());
 }
 
-
-void MeaPositionLogDlg::OnDeletePosition() 
-{
-    MeaPositionLogMgr::Instance().DeletePosition(GetScrollPos());   
+void MeaPositionLogDlg::OnDeletePosition() {
+    MeaPositionLogMgr::Instance().DeletePosition(GetScrollPos());
 }
 
-
-void MeaPositionLogDlg::OnDeletePositions() 
-{
+void MeaPositionLogDlg::OnDeletePositions() {
     MeaPositionLogMgr::Instance().DeletePositions();
 }
 
-
-void MeaPositionLogDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
-{
+void MeaPositionLogDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) {
     // Get the minimum and maximum scroll-bar positions.
     //
     int minpos;
     int maxpos;
-    pScrollBar->GetScrollRange(&minpos, &maxpos); 
+    pScrollBar->GetScrollRange(&minpos, &maxpos);
     maxpos = pScrollBar->GetScrollLimit();
 
     // Get the current position of scroll box.
@@ -320,8 +270,7 @@ void MeaPositionLogDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBa
 
     // Determine the new position of scroll box.
     //
-    switch (nSBCode)
-    {
+    switch (nSBCode) {
     case SB_LEFT:           // Scroll to far left.
         curpos = minpos;
         break;
@@ -341,29 +290,29 @@ void MeaPositionLogDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBa
         }
         break;
     case SB_PAGELEFT:       // Scroll one page left.
-        {
-            // Get the page size.
-            //
-            SCROLLINFO info;
-            pScrollBar->GetScrollInfo(&info, SIF_PAGE);
-   
-            if (curpos > minpos) {
-                curpos = max(minpos, curpos - static_cast<int>(info.nPage));
-            }
-        }
-        break;
-    case SB_PAGERIGHT:      // Scroll one page right.
-        {
-            // Get the page size.
-            //
-            SCROLLINFO info;
-            pScrollBar->GetScrollInfo(&info, SIF_PAGE);
+    {
+        // Get the page size.
+        //
+        SCROLLINFO info;
+        pScrollBar->GetScrollInfo(&info, SIF_PAGE);
 
-            if (curpos < maxpos) {
-                curpos = min(maxpos, curpos + static_cast<int>(info.nPage));
-            }
+        if (curpos > minpos) {
+            curpos = max(minpos, curpos - static_cast<int>(info.nPage));
         }
-        break;
+    }
+    break;
+    case SB_PAGERIGHT:      // Scroll one page right.
+    {
+        // Get the page size.
+        //
+        SCROLLINFO info;
+        pScrollBar->GetScrollInfo(&info, SIF_PAGE);
+
+        if (curpos < maxpos) {
+            curpos = min(maxpos, curpos + static_cast<int>(info.nPage));
+        }
+    }
+    break;
     case SB_THUMBPOSITION:  // Scroll to absolute position. nPos is the position
         curpos = nPos;      // of the scroll box at the end of the drag operation.
         break;
@@ -387,9 +336,7 @@ void MeaPositionLogDlg::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBa
     CDialog::OnHScroll(nSBCode, nPos, pScrollBar);
 }
 
-
-void MeaPositionLogDlg::OnKillfocusPositionDesc() 
-{
+void MeaPositionLogDlg::OnKillfocusPositionDesc() {
     MeaPositionLogMgr& mgr = MeaPositionLogMgr::Instance();
 
     if (mgr.HavePositions()) {
@@ -405,5 +352,5 @@ void MeaPositionLogDlg::OnKillfocusPositionDesc()
         if (origStr != newStr) {
             position.SetDesc(newStr);
         }
-    }   
+    }
 }

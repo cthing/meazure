@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -38,8 +38,8 @@
 /// double precision values.
 ///
 struct FSIZE {
-    double  cx;     ///< Length in the x dimension.
-    double  cy;     ///< Length in the y dimension.
+    double cx;     ///< Length in the x dimension.
+    double cy;     ///< Length in the y dimension.
 
 
     /// Adds this and the specified object and returns
@@ -97,7 +97,6 @@ struct FSIZE {
         f.cy = cy + val;
         return f;
     }
-
 
     /// Multiplies this and the specified object and returns
     /// a new size object.
@@ -175,7 +174,6 @@ struct FSIZE {
         f.cy = cy * mult;
         return f;
     }
-
 
     /// Adds the specified size object to this.
     /// \f[
@@ -278,7 +276,6 @@ inline FSIZE log10(const FSIZE& fsize) {
     return f;
 }
 
-
 /// Calculates the floor on each dimension of the specified
 /// size object and returns the results in a new size object.
 /// \f[
@@ -361,8 +358,8 @@ struct FPOINT {
 };
 
 
-class MeaUtils
-{
+class MeaUtils {
+
 public:
     /// Converts the specified double to a string with the
     /// minimum number of decimal places.
@@ -372,7 +369,6 @@ public:
     /// @return String corresponding to the double value.
     ///
     static CString DblToStr(double value);
-
 
     /// Tests whether the specified string is a number. For the
     /// purposes of this method, a number is a base 10 double
@@ -385,7 +381,7 @@ public:
     ///
     /// @return <b>true</b> if string represents a number.
     ///
-    static bool IsNumber(LPCTSTR str, double *valuep = nullptr);
+    static bool IsNumber(LPCTSTR str, double* valuep = nullptr);
 
     /// Tests whether the specified string is a boolean value. For
     /// the purpose of this method, the strings "1", "TRUE", "true"
@@ -399,8 +395,7 @@ public:
     ///
     /// @return <b>true</b> if string represents a boolean value.
     ///
-    static bool IsBoolean(LPCTSTR str, bool *valuep = nullptr);
-
+    static bool IsBoolean(LPCTSTR str, bool* valuep = nullptr);
 
     /// Converts standalone LF characters into a CR+LF pair.
     /// Existing CR+LF pairs in the string are not effected.
@@ -419,7 +414,6 @@ public:
     ///
     static CString CRLFtoLF(CString str);
 
-
     /// Indicates whether the specified key is being pressed.
     ///
     /// @param keyCode  ASCII character code or VK_* for a virtual key.
@@ -430,11 +424,11 @@ private:
     /// All members of this class are static. No instances
     /// of this class are ever created.
     ///
-    MeaUtils() { }
+    MeaUtils() {}
 
     /// All members of this class are static. No instances
     /// of this class are ever created.
     ///
-    ~MeaUtils() { }
+    ~MeaUtils() {}
 };
 

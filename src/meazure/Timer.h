@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -32,12 +32,13 @@
 /// than the standard windows timer that issues WM_TIMER messages.
 ///
 class MeaTimer {
+
 public:
     /// Instantiates a timer. To use the timer, the Create method
     /// must be called.
     ///
     MeaTimer();
-    
+
     /// Destroys a timer.
     ///
     virtual ~MeaTimer();
@@ -49,7 +50,7 @@ public:
     /// @param parent   [in] Parent window to receive the MeaHPTimerMsg message.
     /// @param userData [in] Caller defined data.
     ///
-    void    Create(CWnd *parent, WPARAM userData = 0) {
+    void Create(CWnd* parent, WPARAM userData = 0) {
         MeaAssert(parent != nullptr);
         m_parent = parent;
         m_userData = userData;
@@ -59,11 +60,11 @@ public:
     ///
     /// @param elapse   [in] Time interval in milliseconds.
     ///
-    void    Start(int elapse);
-    
+    void Start(int elapse);
+
     /// Cancels the current timer if it is set.
     ///
-    void    Stop();
+    void Stop();
 
 private:
     /// Called when the timer expires. Simply calls the instance
@@ -82,13 +83,14 @@ private:
     ///
     /// @return Zero indicating success.
     ///
-    UINT    TimerProc();
+    UINT TimerProc();
 
-    CWinThread          *m_timerThread;     ///< Thread in which the timer runs.
-    CCriticalSection    m_critSect;         ///< Critical section guard.
-    CEvent              m_stopEvent;        ///< Used internally to indicate the timer has been stopped.
-    CEvent              m_exitEvent;        ///< Used internally to indicate the timer has completed all processing.
-    int                 m_elapse;           ///< Timer period, in milliseconds.
-    CWnd                *m_parent;          ///< Window to receive the timer expire message.
-    WPARAM              m_userData;         ///< Caller defined data.
+
+    CWinThread* m_timerThread;      ///< Thread in which the timer runs.
+    CCriticalSection m_critSect;    ///< Critical section guard.
+    CEvent m_stopEvent;             ///< Used internally to indicate the timer has been stopped.
+    CEvent m_exitEvent;             ///< Used internally to indicate the timer has completed all processing.
+    int m_elapse;                   ///< Timer period, in milliseconds.
+    CWnd* m_parent;                 ///< Window to receive the timer expire message.
+    WPARAM m_userData;              ///< Caller defined data.
 };

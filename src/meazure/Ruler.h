@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -32,30 +32,28 @@ class MeaRuler;
 /// OnRulerMove method is called. The inheriting class overrides the
 /// OnRulerMove method and actually moves the ruler to the new position. 
 ///
-class MeaRulerCallback
-{
+class MeaRulerCallback {
+
 public:
     /// Callback information structure. A callback information structure
     /// is initialized and passed as the parameter in the callback method.
     ///
     struct RulerInfo {
-        MeaRuler    *ruler;     ///< Pointer to ruler object that initiated the callback.
-        LONG        position;   ///< Location of the ruler, in pixels. If the ruler
-                                ///< orientation is vertical, the x position is reported.
-                                ///< If the ruler is horizontal, the y position is
-                                ///< reported.
-        UINT        id;         ///< User defined ID for the ruler.
-        UINT        flags;      ///< Virtual key flags including modifier keys (e.g. MK_CONTROL, MK_SHIFT).
+        MeaRuler* ruler;    ///< Pointer to ruler object that initiated the callback.
+        LONG position;      ///< Location of the ruler, in pixels. If the ruler orientation is vertical, the x
+                            ///< position is reported. If the ruler is horizontal, the y position is reported.
+        UINT id;            ///< User defined ID for the ruler.
+        UINT flags;         ///< Virtual key flags including modifier keys (e.g. MK_CONTROL, MK_SHIFT).
     };
 
 
     /// Constructs a callback object.
     ///
-    MeaRulerCallback() { }
+    MeaRulerCallback() {}
 
     /// Destroys a callback object.
     ///
-    virtual ~MeaRulerCallback() { }
+    virtual ~MeaRulerCallback() {}
 
     /// Called when the user presses the left mouse button and
     /// then moves the mouse pointer while over the ruler
@@ -66,7 +64,7 @@ public:
     ///
     /// @param info     [in] Ruler information structure
     ///
-    virtual void OnRulerMove(const RulerInfo *info);
+    virtual void OnRulerMove(const RulerInfo* info);
 };
 
 
@@ -86,8 +84,8 @@ public:
 /// The MeaRulerTool uses one vertical and one horizontal ruler
 /// per monitor.
 ///
-class MeaRuler : public MeaGraphic
-{
+class MeaRuler : public MeaGraphic {
+
 public:
     /// A ruler can display up to three position indicators. An
     /// indicator is a line that can be moved along the ruler to
@@ -95,9 +93,9 @@ public:
     /// by an identifier.
     ///
     enum IndicatorId {
-        Ind1    = 0,    ///< Identifier for indicator 1
-        Ind2    = 1,    ///< Identifier for indicator 2
-        Ind3    = 2     ///< Identifier for indicator 3
+        Ind1 = 0,    ///< Identifier for indicator 1
+        Ind2 = 1,    ///< Identifier for indicator 2
+        Ind3 = 2     ///< Identifier for indicator 3
     };
 
     /// A ruler can be oriented vertically to measure along the
@@ -117,11 +115,10 @@ public:
     /// Constructs a ruler.
     ///
     MeaRuler();
-    
+
     /// Destroys a ruler.
     ///
     virtual ~MeaRuler();
-
 
     /// Creates the window for the ruler. This method must be called
     /// before the ruler can be displayed and before any operation that
@@ -149,14 +146,9 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(COLORREF borderColor, COLORREF backColor,
-                   BYTE opacity,
-                   Orientation orientation,
-                   const CRect& targetRect,
-                   MeaRulerCallback *callback = nullptr,
-                   const CWnd *parent = nullptr,
-                   UINT id = 0xffff);
-
+    bool Create(COLORREF borderColor, COLORREF backColor, BYTE opacity, Orientation orientation, 
+                const CRect& targetRect, MeaRulerCallback* callback = nullptr, const CWnd* parent = nullptr,
+                UINT id = 0xffff);
 
     /// Sets the position of the ruler.
     ///
@@ -166,7 +158,7 @@ public:
     ///                     horizontal, the position parameter specified the location
     ///                     of the top of the ruler.
     ///
-    void    SetPosition(int position);
+    void SetPosition(int position);
 
     /// Obtains the position of the ruler.
     ///
@@ -175,15 +167,13 @@ public:
     ///             returned. If the ruler is horizontal, the location of the top
     ///             of the ruler is returned.
     ///
-    int     GetPosition() const { return m_position; }
-
+    int GetPosition() const { return m_position; }
 
     /// Obtains the orientation of the ruler.
     ///
     /// @return     The ruler is either vertically or horizontally oriented.
     ///
     Orientation GetOrientation() const { return m_orientation; }
-
 
     /// Sets the position of the specified ruler indicator. Up to three position
     /// indicators can be displayed on the face of the ruler. These indicators
@@ -194,34 +184,31 @@ public:
     /// @param indId    [in] Identifier of the indicator whose position is to be set.
     /// @param pixel    [in] Position for the indicator, in pixels.
     ///
-    void    SetIndicator(IndicatorId indId, int pixel);
+    void SetIndicator(IndicatorId indId, int pixel);
 
     /// Hides the specified position indicator.
     ///
     /// @param indId    [in] Identifier of the indicator to be hidden.
     ///
-    void    ClearIndicator(IndicatorId indId);
-
+    void ClearIndicator(IndicatorId indId);
 
     /// Sets the colors for the ruler.
     ///
     /// @param borderColor  [in] Color for the ruler border and tick lines
     /// @param backColor    [in] Background color for the ruler
     ///
-    void    SetColors(COLORREF borderColor, COLORREF backColor);
-
+    void SetColors(COLORREF borderColor, COLORREF backColor);
 
     /// Sets the opacity for the ruler.
     ///
     /// @param opacity      [in] Opacity value between 0 (transparent)
     ///                     and 255 (opaque) inclusive
     ///
-    void    SetOpacity(BYTE opacity);
-
+    void SetOpacity(BYTE opacity);
 
     /// Redraws the ruler.
     ///
-    void    Update() {
+    void Update() {
         if (m_hWnd != nullptr) {
             Invalidate(FALSE);
             UpdateWindow();
@@ -271,10 +258,8 @@ protected:
 private:
     static constexpr int kMinMajorTickHeight { 8 };     ///< Minimum height of the major tick marks, in pixels.
     static constexpr double kMajorTickHeight { 0.08 };  ///< Height of the major tick marks, in inches.
-
     static constexpr int kMinMinorTickHeight { 5 };     ///< Minimum height of the minor tick marks, in pixels.
     static constexpr double kMinorTickHeight { 0.05 };  ///< Height of the minor tick marks, in inches.
-
     static constexpr int kMinMargin { 1 };              ///< Minimum label height margin, in pixels.
     static constexpr double kMargin { 0.01 };           ///< Label height margin, in inches.
 
@@ -304,14 +289,14 @@ private:
     /// @param dc       [in] Specifies the device context to use
     ///                 to draw the indicator.
     ///
-    void    DrawIndicator(IndicatorId indId, CDC& dc);
+    void DrawIndicator(IndicatorId indId, CDC& dc);
 
     /// Draws the ruler tick marks and number labels.
     ///
     /// @param dc       [in] Specifies the device context to use
     ///                 to draw the ruler.
     ///
-    void    DrawRuler(CDC& dc);
+    void DrawRuler(CDC& dc);
 
     /// Fills the ruler information structure so that it can be
     /// passed to the callback method.
@@ -320,34 +305,31 @@ private:
     /// @param flags        [in] Virtual key flags including modifier keys (e.g. MK_CONTROL, MK_SHIFT).
     /// @param point        [in] Location of the mouse pointer, in pixels.
     ///
-    void    FillInfo(MeaRulerCallback::RulerInfo& rulerInfo, UINT flags, const CPoint& point);
+    void FillInfo(MeaRulerCallback::RulerInfo& rulerInfo, UINT flags, const CPoint& point);
 
-    COLORREF    m_borderColor;      ///< Color for the ruler border and tick marks.
-    COLORREF    m_backColor;        ///< Color for the ruler background.
-
-    SIZE    m_majorTickHeight;      ///< Height of the major tick marks, in pixels.
-    SIZE    m_minorTickHeight;      ///< Height of the minor tick marks, in pixels.
-    SIZE    m_margin;               ///< Height spacing between tick marks, number label and border, in pixels.
-
-    MeaRulerCallback    *m_callback;        ///< Object to be called on ruler drag
-    Orientation         m_orientation;      ///< Orientation of the rule (i.e. horizontal or vertical)
-    int                 m_position;         ///< Position of the ruler, in pixels
-    CRect               m_targetRect;       ///< Containment rectangle for the ruler. The ruler's longest
-                                            ///< dimension will be sized to fit within this rectangle.
-    LabelPosition       m_labelPosition;    ///< Current location of the number labels.
-    CFont               m_hFont;            ///< Font for horizontal ruler labels.
-    CFont               m_vFont;            ///< Font for vertical ruler labels.
-    int                 m_fontHeight;       ///< Height of the current font, in pixels.
-    int                 m_thk;              ///< Thickness of the ruler (i.e. its minor dimension), in pixels.
-    int                 m_indicatorLoc[NumIndicators];  ///< Location of each position indicator, in pixels.
-    bool                m_mouseCaptured;    ///< Indicates whether the mouse is currently captured by the ruler window.
-    CSize               m_pointerOffset;    ///< Offset between pointer position and ruler edge.
-    BYTE                m_opacity;          ///< Current ruler opacity setting (0 - 255).
-
-    CDC         m_rulerDC;                  ///< Ruler device context
-    CDC         m_backDC;                   ///< Background device context for alpha blending when the ruler is a child window
-    CBitmap     m_rulerBitmap;              ///< Bitmap into which to draw the ruler when it is a child window
-    CBitmap     *m_origRulerBitmap;         ///< Original bitmap for the ruler
-    CBitmap     m_backBitmap;               ///< Bitmap for the background when alpha blending when the ruler is a child window
-    CBitmap     *m_origBackBitmap;          ///< Original background bitmap 
+    COLORREF m_borderColor;             ///< Color for the ruler border and tick marks.
+    COLORREF m_backColor;               ///< Color for the ruler background.
+    SIZE m_majorTickHeight;             ///< Height of the major tick marks, in pixels.
+    SIZE m_minorTickHeight;             ///< Height of the minor tick marks, in pixels.
+    SIZE m_margin;                      ///< Height spacing between tick marks, number label and border, in pixels.
+    MeaRulerCallback* m_callback;       ///< Object to be called on ruler drag
+    Orientation m_orientation;          ///< Orientation of the rule (i.e. horizontal or vertical)
+    int m_position;                     ///< Position of the ruler, in pixels
+    CRect m_targetRect;                 ///< Containment rectangle for the ruler. The ruler's longest
+                                        ///< dimension will be sized to fit within this rectangle.
+    LabelPosition m_labelPosition;      ///< Current location of the number labels.
+    CFont m_hFont;                      ///< Font for horizontal ruler labels.
+    CFont m_vFont;                      ///< Font for vertical ruler labels.
+    int m_fontHeight;                   ///< Height of the current font, in pixels.
+    int m_thk;                          ///< Thickness of the ruler (i.e. its minor dimension), in pixels.
+    int m_indicatorLoc[NumIndicators];  ///< Location of each position indicator, in pixels.
+    bool m_mouseCaptured;               ///< Indicates whether the mouse is currently captured by the ruler window.
+    CSize m_pointerOffset;              ///< Offset between pointer position and ruler edge.
+    BYTE m_opacity;                     ///< Current ruler opacity setting (0 - 255).
+    CDC m_rulerDC;                      ///< Ruler device context
+    CDC m_backDC;                       ///< Background device context for alpha blending when the ruler is a child window
+    CBitmap m_rulerBitmap;              ///< Bitmap into which to draw the ruler when it is a child window
+    CBitmap* m_origRulerBitmap;         ///< Original bitmap for the ruler
+    CBitmap m_backBitmap;               ///< Bitmap for the background when alpha blending when the ruler is a child window
+    CBitmap* m_origBackBitmap;          ///< Original background bitmap 
 };

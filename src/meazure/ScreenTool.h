@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -17,8 +17,8 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// @file
-/// @brief Screen information tool header file.
+ /// @file
+ /// @brief Screen information tool header file.
 
 #pragma once
 
@@ -28,11 +28,11 @@
 /// Screen information tool. This tool provides size and resolution
 /// information for each display screen attached to the system.
 ///
-class MeaScreenTool : public MeaTool
-{
+class MeaScreenTool : public MeaTool {
+
 public:
     static const CString kToolName;     ///< "ScreenTool"
-    
+
     /// Constructs a new instance of the Screen information tool. To use
     /// a newly constructed Screen info tool, the Enable() method must be called.
     ///
@@ -67,7 +67,6 @@ public:
     ///
     virtual void Update(MeaUpdateReason reason) override;
 
-
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position
     /// logs.
@@ -75,7 +74,6 @@ public:
     /// @return Name of the tool ("GridTool").
     ///
     virtual CString GetToolName() const override;
-
 
     /// Provides the tool a position so that it can determine which
     /// display screen's information to provide.
@@ -92,8 +90,8 @@ public:
     virtual const POINT& GetPosition() const override;
 
 private:
-    CRect   m_rect;         ///< Rectangle representing the current display screen
-    FSIZE   m_res;          ///< Resolution of the current display screen
-    bool    m_anyOSRes;     ///< Indicates if any of the screen resolutions are not calibrated (i.e. the OS reported resolution is used)
-    CString m_name;         ///< Name of the display screen
+    CRect m_rect;       ///< Rectangle representing the current display screen
+    FSIZE m_res;        ///< Resolution of the current display screen
+    bool m_anyOSRes;    ///< Indicates if any of the screen resolutions are not calibrated (i.e. the OS reported resolution is used)
+    CString m_name;     ///< Name of the display screen
 };

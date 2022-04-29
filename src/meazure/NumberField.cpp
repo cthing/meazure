@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -34,37 +34,31 @@ BEGIN_MESSAGE_MAP(MeaNumberField, CEdit)
 END_MESSAGE_MAP()
 
 
-MeaNumberField::MeaNumberField() : CEdit(),
-    m_valueType(AllValues)
-{
+MeaNumberField::MeaNumberField() :
+    CEdit(), m_valueType(AllValues) {
     if (m_edgeHeight < 0) {
         m_edgeHeight = GetSystemMetrics(SM_CYEDGE);
     }
 }
 
-
-MeaNumberField::~MeaNumberField()
-{
-}
-
+MeaNumberField::~MeaNumberField() {}
 
 bool MeaNumberField::Create(DWORD style, const POINT& topLeft,
-                      int numChars, CWnd* parentWnd, UINT id)
-{
+                      int numChars, CWnd* parentWnd, UINT id) {
     // Have the parent create the window
     //
     if (!CEdit::CreateEx(WS_EX_CLIENTEDGE, _T("EDIT"), "", style,
-            CRect(topLeft, CSize(5, 5)), parentWnd, id)) {
+                         CRect(topLeft, CSize(5, 5)), parentWnd, id)) {
         return false;
     }
 
     // Resize the window based on the label. First set
     // a more appropriate font.
     //
-    CFont *defaultFont = CFont::FromHandle(static_cast<HFONT>(GetStockObject(DEFAULT_GUI_FONT)));
+    CFont* defaultFont = CFont::FromHandle(static_cast<HFONT>(GetStockObject(DEFAULT_GUI_FONT)));
     SetFont(defaultFont, FALSE);
 
-    CDC *dc = GetDC();
+    CDC* dc = GetDC();
     if (dc == nullptr) {
         return false;
     }
@@ -93,11 +87,9 @@ bool MeaNumberField::Create(DWORD style, const POINT& topLeft,
         metrics.tmHeight + 2 * m_edgeHeight);
 }
 
-
-BOOL MeaNumberField::PreTranslateMessage(MSG* msg)
-{
+BOOL MeaNumberField::PreTranslateMessage(MSG* msg) {
     if (msg->message == WM_KEYDOWN) {
-        CWnd *parent = GetParent();
+        CWnd* parent = GetParent();
         if (parent != nullptr) {
             if (msg->wParam == VK_UP) {
                 parent->SendMessage(MeaFieldArrowMsg, 1, GetDlgCtrlID());
@@ -115,20 +107,16 @@ BOOL MeaNumberField::PreTranslateMessage(MSG* msg)
     return FALSE;
 }
 
-
-void MeaNumberField::OnKillFocus(CWnd *win)
-{
+void MeaNumberField::OnKillFocus(CWnd* win) {
     CEdit::OnKillFocus(win);
 
-    CWnd *parent = GetParent();
+    CWnd* parent = GetParent();
     if (parent != nullptr) {
         parent->SendMessage(MeaFieldFocusMsg, 0, GetDlgCtrlID());
     }
 }
 
-
-void MeaNumberField::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
-{
+void MeaNumberField::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags) {
     if (IsValid(reinterpret_cast<TCHAR*>(&nChar), 1)) {
         CEdit::OnChar(nChar, nRepCnt, nFlags);
     } else {
@@ -136,9 +124,7 @@ void MeaNumberField::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags)
     }
 }
 
-
-LRESULT MeaNumberField::OnPaste(WPARAM, LPARAM) 
-{
+LRESULT MeaNumberField::OnPaste(WPARAM, LPARAM) {
     COleDataObject obj;
 
     bool editable = (GetStyle() & ES_READONLY) != ES_READONLY;
@@ -167,9 +153,7 @@ LRESULT MeaNumberField::OnPaste(WPARAM, LPARAM)
     return TRUE;
 }
 
-
-bool MeaNumberField::IsValid(LPCTSTR str, int len) const
-{
+bool MeaNumberField::IsValid(LPCTSTR str, int len) const {
     TCHAR ch;
     int i, j;
 
@@ -198,8 +182,8 @@ bool MeaNumberField::IsValid(LPCTSTR str, int len) const
         // '-' or '.'. Selected text will be replaced so we don't
         // care what it contains.
         //
-        bool signTyped      = false;
-        bool periodTyped    = false;
+        bool signTyped = false;
+        bool periodTyped = false;
         TCHAR fieldCh;
 
         // most of the work done in here..

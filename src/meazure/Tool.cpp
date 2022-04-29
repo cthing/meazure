@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -27,72 +27,39 @@ POINT MeaTool::m_defaultPos { 0, 0 };
 
 
 MeaTool::MeaTool(MeaToolMgr* mgr) :
-    m_mgr(mgr), m_enabled(false)
-{
-}
+    m_mgr(mgr), m_enabled(false) {}
 
-
-MeaTool::~MeaTool()
-{
+MeaTool::~MeaTool() {
     m_mgr = nullptr;
 }
 
+void MeaTool::SaveProfile(MeaProfile& /* profile */) {}
 
-void MeaTool::SaveProfile(MeaProfile& /* profile */)
-{
-}
+void MeaTool::LoadProfile(MeaProfile& /* profile */) {}
 
+void MeaTool::MasterReset() {}
 
-void MeaTool::LoadProfile(MeaProfile& /* profile */)
-{
-}
-
-
-void MeaTool::MasterReset()
-{
-}
-
-
-void MeaTool::Enable()
-{
+void MeaTool::Enable() {
     MeaAssert(!m_enabled);
     m_enabled = true;
 }
 
-
-void MeaTool::Disable()
-{
+void MeaTool::Disable() {
     m_enabled = false;
 }
 
-
-void MeaTool::Update(MeaUpdateReason /* reason */)
-{
+void MeaTool::Update(MeaUpdateReason /* reason */) {
     MeaAssert(m_enabled);
 }
 
-
-bool MeaTool::IsRadioTool()
-{
+bool MeaTool::IsRadioTool() {
     return false;
 }
 
+void MeaTool::SetPosition(MeaFields, int) {}
 
-void MeaTool::SetPosition(MeaFields, int)
-{
-}
+void MeaTool::IncPosition(MeaFields which) {}
 
+void MeaTool::DecPosition(MeaFields which) {}
 
-void MeaTool::IncPosition(MeaFields which)
-{
-}
-
-
-void MeaTool::DecPosition(MeaFields which)
-{
-}
-
-
-void MeaTool::ColorsChanged()
-{
-}
+void MeaTool::ColorsChanged() {}

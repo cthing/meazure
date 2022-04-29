@@ -31,9 +31,9 @@
 #ifdef HAVE_WINSDKVER_H
 #include <WinSDKVer.h>
 #endif
-#define  _WIN32_WINNT   0x0501          // Support for WinXP and newer
+#define _WIN32_WINNT _WIN32_WINNT_WIN10     // Support for WinXP and newer
 
 #include <SDKDDKVer.h>
 
-#define WIN32_LEAN_AND_MEAN             // Exclude rarely-used stuff from Windows headers
+#define WIN32_LEAN_AND_MEAN                 // Exclude rarely-used stuff from Windows headers
 #include <windows.h>

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -27,8 +27,8 @@
 /// a startup profile to be specified and provides the master reset for all
 /// application settings.
 ///
-class MeaAdvancedPrefs : public CPropertyPage
-{
+class MeaAdvancedPrefs : public CPropertyPage {
+
     DECLARE_DYNCREATE(MeaAdvancedPrefs)
 
 public:
@@ -42,44 +42,36 @@ public:
 
     enum { IDD = IDD_PREF_ADVANCED };
 
-    CString m_startupProfile;
+    CString m_startupProfile;           ///< Profile file to load on application startup.
+    CFileDialog* m_startupProfileDlg;   ///< File dialog for selecting the startup profile file.
 
-    /// @var m_startupProfile
-    /// Profile file to load on application startup.
-
-    
-    CFileDialog *m_startupProfileDlg;       ///< File dialog for selecting the startup profile file.
-
-    protected:
-    virtual void DoDataExchange(CDataExchange* pDX) override;
-
-    /// @fn DoDataExchange(CDataExchange* pDX)
+protected: 
     /// Performs Dynamic Data Exchange (DDX) for the page.
     ///
     /// @param pDX  [in] DDX object for exchanging data between the page UI
     ///             and the member variables.
+    ///
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
-protected:
-    afx_msg void OnProfileBtn();
-    afx_msg void OnChangeProfilePathname();
-    afx_msg void OnClearProfile();
-    afx_msg void OnMasterReset();
-
-    /// @fn OnProfileBtn()
     /// When the browse button is pressed, this method is called to
     /// display the profile file selection dialog.
-
-    /// @fn OnChangeProfilePathname()
+    /// 
+    afx_msg void OnProfileBtn();
+    
     /// Called when the profile file pathname is changed so that
     /// the modified flag can be set.
-
-    /// @fn OnClearProfile()
+    /// 
+    afx_msg void OnChangeProfilePathname();
+    
     /// Clears the text in the startup profile edit field.
-
-    /// @fn OnMasterReset()
+    ///
+    afx_msg void OnClearProfile();
+    
     /// Called when the mast reset button is pressed. A reset confirmation
     /// dialog is displayed and upon an affirmative response, the master
     /// reset is performed.
+    /// 
+    afx_msg void OnMasterReset();
 
     DECLARE_MESSAGE_MAP()
 };

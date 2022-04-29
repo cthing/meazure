@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -26,13 +26,13 @@
 #include "ScreenMgr.h"
 
 
-//*************************************************************************
-// MeaResWarnDlg
-//*************************************************************************
+ //*************************************************************************
+ // MeaResWarnDlg
+ //*************************************************************************
 
 
-class MeaResWarnDlg : public CDialog
-{
+class MeaResWarnDlg : public CDialog {
+
 public:
     MeaResWarnDlg();
 
@@ -40,14 +40,10 @@ public:
 };
 
 
-MeaResWarnDlg::MeaResWarnDlg() : CDialog(IDD_RES_WARNING)
-{
-}
+MeaResWarnDlg::MeaResWarnDlg() : CDialog(IDD_RES_WARNING) {}
 
-
-BOOL MeaResWarnDlg::OnInitDialog()
-{
-    CStatic *wnd = static_cast<CStatic*>(GetDlgItem(IDC_MEA_WARNING));
+BOOL MeaResWarnDlg::OnInitDialog() {
+    CStatic* wnd = static_cast<CStatic*>(GetDlgItem(IDC_MEA_WARNING));
     wnd->SetIcon(AfxGetApp()->LoadStandardIcon(IDI_EXCLAMATION));
 
     return TRUE;
@@ -59,8 +55,8 @@ BOOL MeaResWarnDlg::OnInitDialog()
 //*************************************************************************
 
 
-class MeaDimWarnDlg : public CDialog
-{
+class MeaDimWarnDlg : public CDialog {
+
 public:
     MeaDimWarnDlg();
 
@@ -68,20 +64,16 @@ public:
 };
 
 
-MeaDimWarnDlg::MeaDimWarnDlg() : CDialog(IDD_DIM_WARNING)
-{
-}
+MeaDimWarnDlg::MeaDimWarnDlg() : CDialog(IDD_DIM_WARNING) {}
 
-
-BOOL MeaDimWarnDlg::OnInitDialog()
-{
-    CStatic *wnd = static_cast<CStatic*>(GetDlgItem(IDC_MEA_WARNING));
+BOOL MeaDimWarnDlg::OnInitDialog() {
+    CStatic* wnd = static_cast<CStatic*>(GetDlgItem(IDC_MEA_WARNING));
     wnd->SetIcon(AfxGetApp()->LoadStandardIcon(IDI_EXCLAMATION));
 
     return TRUE;
 }
 
- 
+
 //*************************************************************************
 // MeaUnitsMgr
 //*************************************************************************
@@ -90,34 +82,30 @@ BOOL MeaDimWarnDlg::OnInitDialog()
 MEA_SINGLETON_DEF(MeaUnitsMgr);
 
 
-MeaUnitsMgr::MeaUnitsMgr() : MeaSingleton_T<MeaUnitsMgr>(),
+MeaUnitsMgr::MeaUnitsMgr() :
+    MeaSingleton_T<MeaUnitsMgr>(),
     m_currentLinearUnits(&m_pixelUnits),
     m_currentAngularUnits(&m_degreeUnits),
-    m_haveWarned(kDefHaveWarned)
-{
-    m_linearUnitsMap[m_pixelUnits.GetUnitsId()]     = &m_pixelUnits;
-    m_linearUnitsMap[m_pointUnits.GetUnitsId()]     = &m_pointUnits;
-    m_linearUnitsMap[m_twipUnits.GetUnitsId()]      = &m_twipUnits;
-    m_linearUnitsMap[m_inchUnits.GetUnitsId()]      = &m_inchUnits;
-    m_linearUnitsMap[m_cmUnits.GetUnitsId()]        = &m_cmUnits;
-    m_linearUnitsMap[m_mmUnits.GetUnitsId()]        = &m_mmUnits;
-    m_linearUnitsMap[m_picaUnits.GetUnitsId()]      = &m_picaUnits;
-    m_linearUnitsMap[m_customUnits.GetUnitsId()]    = &m_customUnits;
+    m_haveWarned(kDefHaveWarned) {
+    m_linearUnitsMap[m_pixelUnits.GetUnitsId()] = &m_pixelUnits;
+    m_linearUnitsMap[m_pointUnits.GetUnitsId()] = &m_pointUnits;
+    m_linearUnitsMap[m_twipUnits.GetUnitsId()] = &m_twipUnits;
+    m_linearUnitsMap[m_inchUnits.GetUnitsId()] = &m_inchUnits;
+    m_linearUnitsMap[m_cmUnits.GetUnitsId()] = &m_cmUnits;
+    m_linearUnitsMap[m_mmUnits.GetUnitsId()] = &m_mmUnits;
+    m_linearUnitsMap[m_picaUnits.GetUnitsId()] = &m_picaUnits;
+    m_linearUnitsMap[m_customUnits.GetUnitsId()] = &m_customUnits;
 
     m_angularUnitsMap[m_degreeUnits.GetUnitsId()] = &m_degreeUnits;
     m_angularUnitsMap[m_radianUnits.GetUnitsId()] = &m_radianUnits;
 }
 
-
-MeaUnitsMgr::~MeaUnitsMgr()
-{
+MeaUnitsMgr::~MeaUnitsMgr() {
     m_currentLinearUnits = nullptr;
     m_currentAngularUnits = nullptr;
 }
 
-
-void MeaUnitsMgr::SaveProfile(MeaProfile& profile)
-{
+void MeaUnitsMgr::SaveProfile(MeaProfile& profile) {
     profile.WriteStr(_T("LinearUnits"), GetLinearUnitsStr());
     profile.WriteStr(_T("AngularUnits"), GetAngularUnitsStr());
     profile.WriteBool(_T("InvertY"), GetInvertY());
@@ -139,9 +127,7 @@ void MeaUnitsMgr::SaveProfile(MeaProfile& profile)
     }
 }
 
-
-void MeaUnitsMgr::LoadProfile(MeaProfile& profile)
-{
+void MeaUnitsMgr::LoadProfile(MeaProfile& profile) {
     for (const auto& unitsEntry : m_linearUnitsMap) {
         unitsEntry.second->LoadProfile(profile);
     }
@@ -168,11 +154,9 @@ void MeaUnitsMgr::LoadProfile(MeaProfile& profile)
     SetOrigin(UnconvertPos(pt));
 }
 
-
-void MeaUnitsMgr::MasterReset()
-{
+void MeaUnitsMgr::MasterReset() {
     m_haveWarned = kDefHaveWarned;
-    
+
     SetLinearUnits(kDefLinearUnits);
     SetAngularUnits(kDefAngularUnits);
 
@@ -190,9 +174,7 @@ void MeaUnitsMgr::MasterReset()
     }
 }
 
-
-void MeaUnitsMgr::SetLinearUnits(MeaLinearUnitsId unitsId)
-{
+void MeaUnitsMgr::SetLinearUnits(MeaLinearUnitsId unitsId) {
     // Set the new units.
     //
     m_currentLinearUnits = (*m_linearUnitsMap.find(unitsId)).second;
@@ -233,9 +215,7 @@ void MeaUnitsMgr::SetLinearUnits(MeaLinearUnitsId unitsId)
     }
 }
 
-
-void MeaUnitsMgr::SetLinearUnits(LPCTSTR unitsStr)
-{
+void MeaUnitsMgr::SetLinearUnits(LPCTSTR unitsStr) {
     for (const auto& unitsEntry : m_linearUnitsMap) {
         if (unitsEntry.second->GetUnitsStr() == unitsStr) {
             SetLinearUnits(unitsEntry.first);
@@ -243,9 +223,7 @@ void MeaUnitsMgr::SetLinearUnits(LPCTSTR unitsStr)
     }
 }
 
-
-void MeaUnitsMgr::SetAngularUnits(MeaAngularUnitsId unitsId)
-{
+void MeaUnitsMgr::SetAngularUnits(MeaAngularUnitsId unitsId) {
     // Set the new units.
     //
     m_currentAngularUnits = (*m_angularUnitsMap.find(unitsId)).second;
@@ -257,9 +235,7 @@ void MeaUnitsMgr::SetAngularUnits(MeaAngularUnitsId unitsId)
     }
 }
 
-
-void MeaUnitsMgr::SetAngularUnits(LPCTSTR unitsStr)
-{
+void MeaUnitsMgr::SetAngularUnits(LPCTSTR unitsStr) {
     for (const auto& unitsEntry : m_angularUnitsMap) {
         if (unitsEntry.second->GetUnitsStr() == unitsStr) {
             SetAngularUnits(unitsEntry.first);
@@ -267,15 +243,13 @@ void MeaUnitsMgr::SetAngularUnits(LPCTSTR unitsStr)
     }
 }
 
-
-FSIZE MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const
-{
+FSIZE MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const {
     FSIZE wh;
     POINT np1, np2;
 
     np1 = p1;
     np2 = p2;
-    
+
     if (np1.x < np2.x) {
         np2.x++;
     } else {
@@ -289,7 +263,7 @@ FSIZE MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const
     }
 
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-    
+
     FPOINT cp1 = units.ConvertCoord(np1);
     FPOINT cp2 = units.ConvertCoord(np2);
 
@@ -299,43 +273,33 @@ FSIZE MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const
     return wh;
 }
 
-
-MeaLengthUnitsLabel* MeaUnitsMgr::NewLengthUnitsLabel()
-{
+MeaLengthUnitsLabel* MeaUnitsMgr::NewLengthUnitsLabel() {
     MeaLengthUnitsLabel* label = new MeaLengthUnitsLabel();
     m_linearLabelsList.push_back(label);
     return label;
 }
 
-    
-MeaAngularUnitsLabel* MeaUnitsMgr::NewAngleUnitsLabel()
-{
+MeaAngularUnitsLabel* MeaUnitsMgr::NewAngleUnitsLabel() {
     MeaAngularUnitsLabel* label = new MeaAngularUnitsLabel();
     m_angularLabelsList.push_back(label);
     return label;
 }
-    
-    
-MeaAreaUnitsLabel* MeaUnitsMgr::NewAreaUnitsLabel()
-{
+
+MeaAreaUnitsLabel* MeaUnitsMgr::NewAreaUnitsLabel() {
     MeaAreaUnitsLabel* label = new MeaAreaUnitsLabel();
     m_linearLabelsList.push_back(label);
     return label;
 }
-    
-    
-MeaResUnitsLabel* MeaUnitsMgr::NewResUnitsLabel()
-{
+
+MeaResUnitsLabel* MeaUnitsMgr::NewResUnitsLabel() {
     MeaResUnitsLabel* label = new MeaResUnitsLabel();
     m_linearLabelsList.push_back(label);
     return label;
 }
 
-
-void MeaUnitsMgr::DeleteUnitsLabel(MeaUnitsLabel *label)
-{
+void MeaUnitsMgr::DeleteUnitsLabel(MeaUnitsLabel* label) {
     MeaAssert(label != nullptr);
-    
+
     // Cannot tell which list the label is from so attempt
     // to remove it from both. It is a benign op under
     // these circumstances as far as the list is concerned.
@@ -355,19 +319,12 @@ MeaUnitsLabel::MeaUnitsLabel(UINT format, LabelMap& labels, int& width) :
     MeaLabel(),
     m_labelsRef(labels),
     m_widthRef(width),
-    m_format(format)
-{
-}
+    m_format(format) {}
 
-
-MeaUnitsLabel::~MeaUnitsLabel()
-{
-}
-
+MeaUnitsLabel::~MeaUnitsLabel() {}
 
 bool MeaUnitsLabel::Create(UINT unitsId, DWORD style, const POINT& topLeft,
-                           CWnd* parentWnd, UINT id)
-{
+                           CWnd* parentWnd, UINT id) {
     if (!MeaLabel::Create(ConstructLabel(unitsId), style, topLeft, parentWnd, id)) {
         return false;
     }
@@ -375,11 +332,9 @@ bool MeaUnitsLabel::Create(UINT unitsId, DWORD style, const POINT& topLeft,
     return SetSize();
 }
 
-    
-bool MeaUnitsLabel::SetSize()
-{
+bool MeaUnitsLabel::SetSize() {
     if (m_widthRef < 0) {
-        CDC *dc = GetDC();
+        CDC* dc = GetDC();
         if (dc == nullptr) {
             return false;
         }
@@ -409,9 +364,7 @@ bool MeaUnitsLabel::SetSize()
     return true;
 }
 
-
-CString MeaUnitsLabel::ConstructLabel(int unitsId) const
-{
+CString MeaUnitsLabel::ConstructLabel(int unitsId) const {
     CString labelStr;
 
     labelStr.Format(m_format, static_cast<LPCTSTR>(m_labelsRef[unitsId]));
@@ -425,10 +378,8 @@ CString MeaUnitsLabel::ConstructLabel(int unitsId) const
 
 MeaUnitsLabel::LabelMap MeaLinearUnitsLabel::m_labels;
 
-
 MeaLinearUnitsLabel::MeaLinearUnitsLabel(UINT format, int& width) :
-    MeaUnitsLabel(format, m_labels, width)
-{
+    MeaUnitsLabel(format, m_labels, width) {
     if (m_labels.empty()) {
         m_labels[MeaPixelsId].LoadString(IDS_MEA_PIXELS);
         m_labels[MeaPointsId].LoadString(IDS_MEA_POINTS);
@@ -441,14 +392,9 @@ MeaLinearUnitsLabel::MeaLinearUnitsLabel(UINT format, int& width) :
     }
 }
 
+MeaLinearUnitsLabel::~MeaLinearUnitsLabel() {}
 
-MeaLinearUnitsLabel::~MeaLinearUnitsLabel()
-{
-}
-
-
-void MeaLinearUnitsLabel::SetUnits(MeaLinearUnitsId unitsId)
-{
+void MeaLinearUnitsLabel::SetUnits(MeaLinearUnitsId unitsId) {
     // For pixels (i.e. resolution independent units), report
     // the resolution not as px/px but as px/in.
     //
@@ -467,24 +413,17 @@ void MeaLinearUnitsLabel::SetUnits(MeaLinearUnitsId unitsId)
 MeaUnitsLabel::LabelMap MeaAngularUnitsLabel::m_labels;
 int                     MeaAngularUnitsLabel::m_labelWidth = -1;
 
-
 MeaAngularUnitsLabel::MeaAngularUnitsLabel() :
-    MeaUnitsLabel(IDS_MEA_DEF_LABEL_FMT, m_labels, m_labelWidth)
-{
+    MeaUnitsLabel(IDS_MEA_DEF_LABEL_FMT, m_labels, m_labelWidth) {
     if (m_labels.empty()) {
         m_labels[MeaDegreesId].LoadString(IDS_MEA_DEGREES);
         m_labels[MeaRadiansId].LoadString(IDS_MEA_RADIANS);
     }
 }
 
+MeaAngularUnitsLabel::~MeaAngularUnitsLabel() {}
 
-MeaAngularUnitsLabel::~MeaAngularUnitsLabel()
-{
-}
-
-
-void MeaAngularUnitsLabel::SetUnits(MeaAngularUnitsId anglesId)
-{
+void MeaAngularUnitsLabel::SetUnits(MeaAngularUnitsId anglesId) {
     SetWindowText(ConstructLabel(anglesId));
 }
 
@@ -496,14 +435,9 @@ void MeaAngularUnitsLabel::SetUnits(MeaAngularUnitsId anglesId)
 int MeaLengthUnitsLabel::m_labelWidth = -1;
 
 MeaLengthUnitsLabel::MeaLengthUnitsLabel() :
-    MeaLinearUnitsLabel(IDS_MEA_DEF_LABEL_FMT, m_labelWidth)
-{
-}
+    MeaLinearUnitsLabel(IDS_MEA_DEF_LABEL_FMT, m_labelWidth) {}
 
-
-MeaLengthUnitsLabel::~MeaLengthUnitsLabel()
-{
-}
+MeaLengthUnitsLabel::~MeaLengthUnitsLabel() {}
 
 
 //*************************************************************************
@@ -514,14 +448,9 @@ int MeaAreaUnitsLabel::m_labelWidth = -1;
 
 
 MeaAreaUnitsLabel::MeaAreaUnitsLabel() :
-    MeaLinearUnitsLabel(IDS_MEA_AREA_LABEL_FMT, m_labelWidth)
-{
-}
+    MeaLinearUnitsLabel(IDS_MEA_AREA_LABEL_FMT, m_labelWidth) {}
 
-
-MeaAreaUnitsLabel::~MeaAreaUnitsLabel()
-{
-}
+MeaAreaUnitsLabel::~MeaAreaUnitsLabel() {}
 
 
 //*************************************************************************
@@ -532,14 +461,9 @@ int MeaResUnitsLabel::m_labelWidth = -1;
 
 
 MeaResUnitsLabel::MeaResUnitsLabel() :
-    MeaLinearUnitsLabel(IDS_MEA_RES_LABEL_FMT, m_labelWidth)
-{
-}
+    MeaLinearUnitsLabel(IDS_MEA_RES_LABEL_FMT, m_labelWidth) {}
 
-
-MeaResUnitsLabel::~MeaResUnitsLabel()
-{
-}
+MeaResUnitsLabel::~MeaResUnitsLabel() {}
 
 
 //*************************************************************************
@@ -550,34 +474,23 @@ MeaResUnitsLabel::~MeaResUnitsLabel()
 const double MeaUnits::kPI = 3.14159265359;
 
 
-MeaUnits::MeaUnits(LPCTSTR unitsStr) : m_unitsStr(unitsStr)
-{
-}
+MeaUnits::MeaUnits(LPCTSTR unitsStr) : m_unitsStr(unitsStr) {}
 
+MeaUnits::~MeaUnits() {}
 
-MeaUnits::~MeaUnits()
-{
-}
-
-
-void MeaUnits::SaveProfile(MeaProfile& profile)
-{
+void MeaUnits::SaveProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         SavePrecision(profile);
     }
 }
 
-
-void MeaUnits::LoadProfile(MeaProfile& profile)
-{
+void MeaUnits::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         LoadPrecision(profile);
     }
 }
 
-
-void MeaUnits::SavePrecision(MeaProfile& profile)
-{
+void MeaUnits::SavePrecision(MeaProfile& profile) {
     unsigned int i;
 
     for (i = 0; i < m_displayPrecisions.size(); i++) {
@@ -590,9 +503,7 @@ void MeaUnits::SavePrecision(MeaProfile& profile)
     }
 }
 
-
-void MeaUnits::LoadPrecision(MeaProfile& profile)
-{
+void MeaUnits::LoadPrecision(MeaProfile& profile) {
     unsigned int i;
 
     for (i = 0; i < m_displayPrecisions.size(); i++) {
@@ -605,9 +516,7 @@ void MeaUnits::LoadPrecision(MeaProfile& profile)
     }
 }
 
-
-void MeaUnits::MasterReset()
-{
+void MeaUnits::MasterReset() {
     RestoreDefaultPrecisions();
 }
 
@@ -617,20 +526,14 @@ void MeaUnits::MasterReset()
 //*************************************************************************
 
 
-MeaAngularUnits::MeaAngularUnits(MeaAngularUnitsId unitsId, LPCTSTR unitsStr):
-    MeaUnits(unitsStr), m_unitsId(unitsId)
-{
+MeaAngularUnits::MeaAngularUnits(MeaAngularUnitsId unitsId, LPCTSTR unitsStr) :
+    MeaUnits(unitsStr), m_unitsId(unitsId) {
     AddPrecisionName(_T("angle"));      // MeaA
 }
 
+MeaAngularUnits::~MeaAngularUnits() {}
 
-MeaAngularUnits::~MeaAngularUnits()
-{
-}
-
-
-CString MeaAngularUnits::Format(MeaAngularMeasurementId id, double value) const
-{
+CString MeaAngularUnits::Format(MeaAngularMeasurementId id, double value) const {
     CString vstr;
     vstr.Format(_T("%0.*f"), GetDisplayPrecisions()[id], value);
     return vstr;
@@ -641,16 +544,11 @@ CString MeaAngularUnits::Format(MeaAngularMeasurementId id, double value) const
 // MeaDegreeUnits
 //*************************************************************************
 
-MeaDegreeUnits::MeaDegreeUnits(): MeaAngularUnits(MeaDegreesId, _T("deg"))
-{
+MeaDegreeUnits::MeaDegreeUnits() : MeaAngularUnits(MeaDegreesId, _T("deg")) {
     AddPrecision(1);        // MeaA
 }
 
-
-MeaDegreeUnits::~MeaDegreeUnits()
-{
-}
-
+MeaDegreeUnits::~MeaDegreeUnits() {}
 
 double MeaDegreeUnits::ConvertAngle(double angle) const {
     return 360.0 * angle / (2.0 * MeaUnits::kPI);
@@ -661,16 +559,11 @@ double MeaDegreeUnits::ConvertAngle(double angle) const {
 // MeaRadianUnits
 //*************************************************************************
 
-MeaRadianUnits::MeaRadianUnits(): MeaAngularUnits(MeaRadiansId, _T("rad"))
-{
+MeaRadianUnits::MeaRadianUnits() : MeaAngularUnits(MeaRadiansId, _T("rad")) {
     AddPrecision(3);        // MeaA
 }
 
-
-MeaRadianUnits::~MeaRadianUnits()
-{
-}
-
+MeaRadianUnits::~MeaRadianUnits() {}
 
 double MeaRadianUnits::ConvertAngle(double angle) const {
     return angle;
@@ -681,18 +574,16 @@ double MeaRadianUnits::ConvertAngle(double angle) const {
 // MeaLinearUnits
 //*************************************************************************
 
-const double    MeaLinearUnits::kTickIncrements[]   = { 10.0, 25.0, 50.0, 75.0, 100.0 };
-const int       MeaLinearUnits::kNumTickIncrements  = sizeof(kTickIncrements) / sizeof(*kTickIncrements);
-const int       MeaLinearUnits::kMinSepPixels       = 5;
-const double    MeaLinearUnits::kMinSepInches       = 0.1;
+const double MeaLinearUnits::kTickIncrements[] = { 10.0, 25.0, 50.0, 75.0, 100.0 };
+const int MeaLinearUnits::kNumTickIncrements = sizeof(kTickIncrements) / sizeof(*kTickIncrements);
+const int MeaLinearUnits::kMinSepPixels = 5;
+const double MeaLinearUnits::kMinSepInches = 0.1;
+bool MeaLinearUnits::m_invertY = MeaUnitsMgr::kDefInvertY;
+POINT MeaLinearUnits::m_originOffset = { 0, 0 };
 
-bool            MeaLinearUnits::m_invertY           = MeaUnitsMgr::kDefInvertY;
-POINT           MeaLinearUnits::m_originOffset      = { 0, 0 };
 
-
-MeaLinearUnits::MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr):
-    MeaUnits(unitsStr), m_unitsId(unitsId), m_majorTickCount(10)
-{
+MeaLinearUnits::MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr) :
+    MeaUnits(unitsStr), m_unitsId(unitsId), m_majorTickCount(10) {
     AddPrecisionName(_T("x"));      // MeaX
     AddPrecisionName(_T("y"));      // MeaY
     AddPrecisionName(_T("w"));      // MeaW
@@ -703,28 +594,19 @@ MeaLinearUnits::MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr):
     AddPrecisionName(_T("ry"));     // MeaRy
 }
 
+MeaLinearUnits::~MeaLinearUnits() {}
 
-MeaLinearUnits::~MeaLinearUnits()
-{
-}
-
-
-bool MeaLinearUnits::RequiresRes() const
-{
+bool MeaLinearUnits::RequiresRes() const {
     return true;
 }
 
-
-CString MeaLinearUnits::Format(MeaLinearMeasurementId id, double value) const
-{
+CString MeaLinearUnits::Format(MeaLinearMeasurementId id, double value) const {
     CString vstr;
     vstr.Format(_T("%0.*f"), GetDisplayPrecisions()[id], value);
     return vstr;
 }
 
-
-FPOINT MeaLinearUnits::ConvertCoord(const POINT& pos) const
-{
+FPOINT MeaLinearUnits::ConvertCoord(const POINT& pos) const {
     FPOINT fpos;
     MeaScreenMgr& smgr = MeaScreenMgr::Instance();
     FSIZE fromPixels = FromPixels(smgr.GetScreenRes(smgr.GetScreenIter(pos)));
@@ -744,9 +626,7 @@ FPOINT MeaLinearUnits::ConvertCoord(const POINT& pos) const
     return fpos;
 }
 
-
-double MeaLinearUnits::ConvertCoord(MeaConvertDir dir, const CWnd* wnd, int pos) const
-{
+double MeaLinearUnits::ConvertCoord(MeaConvertDir dir, const CWnd* wnd, int pos) const {
     MeaScreenMgr& smgr = MeaScreenMgr::Instance();
     FSIZE fromPixels = FromPixels(smgr.GetScreenRes(smgr.GetScreenIter(wnd)));
 
@@ -763,9 +643,7 @@ double MeaLinearUnits::ConvertCoord(MeaConvertDir dir, const CWnd* wnd, int pos)
     return fromPixels.cy * (pos - m_originOffset.y);
 }
 
-
-double MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos) const
-{
+double MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos) const {
     MeaScreenMgr& smgr = MeaScreenMgr::Instance();
     FSIZE fromPixels = FromPixels(smgr.GetScreenRes(smgr.GetScreenIter(wnd)));
 
@@ -782,9 +660,7 @@ double MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double
     return pos / fromPixels.cy + m_originOffset.y;
 }
 
-
-POINT MeaLinearUnits::UnconvertCoord(const FPOINT& pos) const
-{
+POINT MeaLinearUnits::UnconvertCoord(const FPOINT& pos) const {
     POINT point;
     FSIZE fromPixels = FromPixels(FindResFromCoord(pos));
 
@@ -803,9 +679,7 @@ POINT MeaLinearUnits::UnconvertCoord(const FPOINT& pos) const
     return point;
 }
 
-
-bool MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos, int& c1, int& c2) const
-{
+bool MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos, int& c1, int& c2) const {
     int p1 = static_cast<int>(UnconvertCoord(dir, wnd, pos));
     int p2 = p1 - 1;
     int p3 = p1 + 1;
@@ -844,9 +718,7 @@ bool MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double p
     return (Format(MeaX, pos) == Format(MeaX, la));
 }
 
-
-FPOINT MeaLinearUnits::ConvertPos(const POINT& pos) const
-{
+FPOINT MeaLinearUnits::ConvertPos(const POINT& pos) const {
     MeaScreenMgr& mgr = MeaScreenMgr::Instance();
     FSIZE fromPixels = FromPixels(mgr.GetScreenRes(mgr.GetScreenIter(pos)));
     FPOINT pt;
@@ -855,9 +727,7 @@ FPOINT MeaLinearUnits::ConvertPos(const POINT& pos) const
     return pt;
 }
 
-
-POINT MeaLinearUnits::UnconvertPos(const FPOINT& pos) const
-{
+POINT MeaLinearUnits::UnconvertPos(const FPOINT& pos) const {
     FSIZE fromPixels = FromPixels(FindResFromPos(pos));
     POINT pt;
     pt.x = static_cast<long>(pos.x / fromPixels.cx);
@@ -865,24 +735,18 @@ POINT MeaLinearUnits::UnconvertPos(const FPOINT& pos) const
     return pt;
 }
 
-
-FSIZE MeaLinearUnits::ConvertRes(const FSIZE& res) const
-{
+FSIZE MeaLinearUnits::ConvertRes(const FSIZE& res) const {
     FSIZE pt;
     pt.cx = 1.0 / GetResFromPixels(res).cx;
     pt.cy = 1.0 / GetResFromPixels(res).cy;
     return pt;
 }
 
-
-FSIZE MeaLinearUnits::GetResFromPixels(const FSIZE& res) const
-{
+FSIZE MeaLinearUnits::GetResFromPixels(const FSIZE& res) const {
     return FromPixels(res);
 }
 
-
-const FSIZE& MeaLinearUnits::FindResFromCoord(const FPOINT& pos) const
-{
+const FSIZE& MeaLinearUnits::FindResFromCoord(const FPOINT& pos) const {
     MeaScreenMgr& smgr = MeaScreenMgr::Instance();
 
     if (smgr.GetNumScreens() != 1) {
@@ -902,9 +766,7 @@ const FSIZE& MeaLinearUnits::FindResFromCoord(const FPOINT& pos) const
     return smgr.GetScreenRes(smgr.GetScreenIter());
 }
 
-
-const FSIZE& MeaLinearUnits::FindResFromPos(const FPOINT& pos) const
-{
+const FSIZE& MeaLinearUnits::FindResFromPos(const FPOINT& pos) const {
     MeaScreenMgr& smgr = MeaScreenMgr::Instance();
 
     if (smgr.GetNumScreens() != 1) {
@@ -924,9 +786,7 @@ const FSIZE& MeaLinearUnits::FindResFromPos(const FPOINT& pos) const
     return smgr.GetScreenRes(smgr.GetScreenIter());
 }
 
-
-FSIZE MeaLinearUnits::GetMinorIncr(const RECT& rect) const
-{
+FSIZE MeaLinearUnits::GetMinorIncr(const RECT& rect) const {
     MeaScreenMgr& smgr = MeaScreenMgr::Instance();
     MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
 
@@ -969,13 +829,11 @@ FSIZE MeaLinearUnits::GetMinorIncr(const RECT& rect) const
     return increment;
 }
 
-
-SIZE MeaLinearUnits::ConvertToPixels(const FSIZE& res, double value, int minPixels) const
-{
+SIZE MeaLinearUnits::ConvertToPixels(const FSIZE& res, double value, int minPixels) const {
     SIZE pixels;
 
     FSIZE fromPixels = FromPixels(res);
-    
+
     pixels.cx = static_cast<int>(value / fromPixels.cx);
     pixels.cy = static_cast<int>(value / fromPixels.cy);
 
@@ -997,8 +855,7 @@ SIZE MeaLinearUnits::ConvertToPixels(const FSIZE& res, double value, int minPixe
 // MeaPixelUnits
 //*************************************************************************
 
-MeaPixelUnits::MeaPixelUnits(): MeaLinearUnits(MeaPixelsId, _T("px"))
-{
+MeaPixelUnits::MeaPixelUnits() : MeaLinearUnits(MeaPixelsId, _T("px")) {
     AddPrecision(0);        // MeaX
     AddPrecision(0);        // MeaY
     AddPrecision(0);        // MeaW
@@ -1009,29 +866,20 @@ MeaPixelUnits::MeaPixelUnits(): MeaLinearUnits(MeaPixelsId, _T("px"))
     AddPrecision(1);        // MeaRy
 }
 
+MeaPixelUnits::~MeaPixelUnits() {}
 
-MeaPixelUnits::~MeaPixelUnits()
-{
-}
-
-
-bool MeaPixelUnits::RequiresRes() const
-{
+bool MeaPixelUnits::RequiresRes() const {
     return false;
 }
 
-
-FSIZE MeaPixelUnits::GetResFromPixels(const FSIZE& res) const
-{
+FSIZE MeaPixelUnits::GetResFromPixels(const FSIZE& res) const {
     FSIZE resFactor;
     resFactor.cx = 1.0 / res.cx;
     resFactor.cy = 1.0 / res.cy;
     return resFactor;
 }
 
-
-FSIZE MeaPixelUnits::FromPixels(const FSIZE& /*res*/) const
-{
+FSIZE MeaPixelUnits::FromPixels(const FSIZE& /*res*/) const {
     FSIZE fromPixels;
     fromPixels.cx = 1.0;
     fromPixels.cy = 1.0;
@@ -1043,8 +891,7 @@ FSIZE MeaPixelUnits::FromPixels(const FSIZE& /*res*/) const
 // MeaPointUnits
 //*************************************************************************
 
-MeaPointUnits::MeaPointUnits(): MeaLinearUnits(MeaPointsId, _T("pt"))
-{
+MeaPointUnits::MeaPointUnits() : MeaLinearUnits(MeaPointsId, _T("pt")) {
     AddPrecision(1);        // MeaX
     AddPrecision(1);        // MeaY
     AddPrecision(1);        // MeaW
@@ -1055,14 +902,9 @@ MeaPointUnits::MeaPointUnits(): MeaLinearUnits(MeaPointsId, _T("pt"))
     AddPrecision(2);        // MeaRy
 }
 
+MeaPointUnits::~MeaPointUnits() {}
 
-MeaPointUnits::~MeaPointUnits()
-{
-}
-
-
-FSIZE MeaPointUnits::FromPixels(const FSIZE& res) const
-{
+FSIZE MeaPointUnits::FromPixels(const FSIZE& res) const {
     FSIZE fromPixels;
     fromPixels.cx = 72.0 / res.cx;
     fromPixels.cy = 72.0 / res.cy;
@@ -1074,8 +916,7 @@ FSIZE MeaPointUnits::FromPixels(const FSIZE& res) const
 // MeaPicaUnits
 //*************************************************************************
 
-MeaPicaUnits::MeaPicaUnits(): MeaLinearUnits(MeaPicasId, _T("pc"))
-{
+MeaPicaUnits::MeaPicaUnits() : MeaLinearUnits(MeaPicasId, _T("pc")) {
     AddPrecision(2);        // MeaX
     AddPrecision(2);        // MeaY
     AddPrecision(2);        // MeaW
@@ -1086,14 +927,9 @@ MeaPicaUnits::MeaPicaUnits(): MeaLinearUnits(MeaPicasId, _T("pc"))
     AddPrecision(1);        // MeaRy
 }
 
+MeaPicaUnits::~MeaPicaUnits() {}
 
-MeaPicaUnits::~MeaPicaUnits()
-{
-}
-
-
-FSIZE MeaPicaUnits::FromPixels(const FSIZE& res) const
-{
+FSIZE MeaPicaUnits::FromPixels(const FSIZE& res) const {
     FSIZE fromPixels;
     fromPixels.cx = 6.0 / res.cx;
     fromPixels.cy = 6.0 / res.cy;
@@ -1105,8 +941,7 @@ FSIZE MeaPicaUnits::FromPixels(const FSIZE& res) const
 // MeaTwipUnits
 //*************************************************************************
 
-MeaTwipUnits::MeaTwipUnits(): MeaLinearUnits(MeaTwipsId, _T("tp"))
-{
+MeaTwipUnits::MeaTwipUnits() : MeaLinearUnits(MeaTwipsId, _T("tp")) {
     AddPrecision(0);        // MeaX
     AddPrecision(0);        // MeaY
     AddPrecision(0);        // MeaW
@@ -1117,14 +952,9 @@ MeaTwipUnits::MeaTwipUnits(): MeaLinearUnits(MeaTwipsId, _T("tp"))
     AddPrecision(4);        // MeaRy
 }
 
+MeaTwipUnits::~MeaTwipUnits() {}
 
-MeaTwipUnits::~MeaTwipUnits()
-{
-}
-
-
-FSIZE MeaTwipUnits::FromPixels(const FSIZE& res) const
-{
+FSIZE MeaTwipUnits::FromPixels(const FSIZE& res) const {
     FSIZE fromPixels;
     fromPixels.cx = 1440.0 / res.cx;
     fromPixels.cy = 1440.0 / res.cy;
@@ -1136,8 +966,7 @@ FSIZE MeaTwipUnits::FromPixels(const FSIZE& res) const
 // MeaInchUnits
 //*************************************************************************
 
-MeaInchUnits::MeaInchUnits(): MeaLinearUnits(MeaInchesId, _T("in"))
-{
+MeaInchUnits::MeaInchUnits() : MeaLinearUnits(MeaInchesId, _T("in")) {
     AddPrecision(3);        // MeaX
     AddPrecision(3);        // MeaY
     AddPrecision(3);        // MeaW
@@ -1148,14 +977,9 @@ MeaInchUnits::MeaInchUnits(): MeaLinearUnits(MeaInchesId, _T("in"))
     AddPrecision(1);        // MeaRy
 }
 
+MeaInchUnits::~MeaInchUnits() {}
 
-MeaInchUnits::~MeaInchUnits()
-{
-}
-
-
-FSIZE MeaInchUnits::FromPixels(const FSIZE& res) const
-{
+FSIZE MeaInchUnits::FromPixels(const FSIZE& res) const {
     FSIZE fromPixels;
     fromPixels.cx = 1.0 / res.cx;
     fromPixels.cy = 1.0 / res.cy;
@@ -1167,8 +991,7 @@ FSIZE MeaInchUnits::FromPixels(const FSIZE& res) const
 // MeaCentimeterUnits
 //*************************************************************************
 
-MeaCentimeterUnits::MeaCentimeterUnits(): MeaLinearUnits(MeaCentimetersId, _T("cm"))
-{
+MeaCentimeterUnits::MeaCentimeterUnits() : MeaLinearUnits(MeaCentimetersId, _T("cm")) {
     AddPrecision(2);        // MeaX
     AddPrecision(2);        // MeaY
     AddPrecision(2);        // MeaW
@@ -1179,14 +1002,9 @@ MeaCentimeterUnits::MeaCentimeterUnits(): MeaLinearUnits(MeaCentimetersId, _T("c
     AddPrecision(1);        // MeaRy
 }
 
+MeaCentimeterUnits::~MeaCentimeterUnits() {}
 
-MeaCentimeterUnits::~MeaCentimeterUnits()
-{
-}
-
-
-FSIZE MeaCentimeterUnits::FromPixels(const FSIZE& res) const
-{
+FSIZE MeaCentimeterUnits::FromPixels(const FSIZE& res) const {
     FSIZE fromPixels;
     fromPixels.cx = 2.54 / res.cx;
     fromPixels.cy = 2.54 / res.cy;
@@ -1198,8 +1016,7 @@ FSIZE MeaCentimeterUnits::FromPixels(const FSIZE& res) const
 // MeaMillimeterUnits
 //*************************************************************************
 
-MeaMillimeterUnits::MeaMillimeterUnits(): MeaLinearUnits(MeaMillimetersId, _T("mm"))
-{
+MeaMillimeterUnits::MeaMillimeterUnits() : MeaLinearUnits(MeaMillimetersId, _T("mm")) {
     AddPrecision(1);        // MeaX
     AddPrecision(1);        // MeaY
     AddPrecision(1);        // MeaW
@@ -1210,14 +1027,9 @@ MeaMillimeterUnits::MeaMillimeterUnits(): MeaLinearUnits(MeaMillimetersId, _T("m
     AddPrecision(2);        // MeaRy
 }
 
+MeaMillimeterUnits::~MeaMillimeterUnits() {}
 
-MeaMillimeterUnits::~MeaMillimeterUnits()
-{
-}
-
-
-FSIZE MeaMillimeterUnits::FromPixels(const FSIZE& res) const
-{
+FSIZE MeaMillimeterUnits::FromPixels(const FSIZE& res) const {
     FSIZE fromPixels;
     fromPixels.cx = 25.4 / res.cx;
     fromPixels.cy = 25.4 / res.cy;
@@ -1233,9 +1045,8 @@ const double MeaCustomUnits::kDefScaleFactor = 1.0;
 const MeaCustomUnits::ScaleBasis MeaCustomUnits::kDefScaleBasis = MeaCustomUnits::PixelBasis;
 
 
-MeaCustomUnits::MeaCustomUnits(): MeaLinearUnits(MeaCustomId, _T("custom")),
-    m_scaleBasis(kDefScaleBasis), m_scaleFactor(kDefScaleFactor)
-{
+MeaCustomUnits::MeaCustomUnits() :
+    MeaLinearUnits(MeaCustomId, _T("custom")), m_scaleBasis(kDefScaleBasis), m_scaleFactor(kDefScaleFactor) {
     AddPrecision(0);        // MeaX
     AddPrecision(0);        // MeaY
     AddPrecision(0);        // MeaW
@@ -1246,14 +1057,9 @@ MeaCustomUnits::MeaCustomUnits(): MeaLinearUnits(MeaCustomId, _T("custom")),
     AddPrecision(1);        // MeaRy
 }
 
+MeaCustomUnits::~MeaCustomUnits() {}
 
-MeaCustomUnits::~MeaCustomUnits()
-{
-}
-
-
-void MeaCustomUnits::SaveProfile(MeaProfile& profile)
-{
+void MeaCustomUnits::SaveProfile(MeaProfile& profile) {
     profile.WriteStr(_T("CustomName"), m_name);
     profile.WriteStr(_T("CustomAbbrev"), m_abbrev);
 
@@ -1263,9 +1069,7 @@ void MeaCustomUnits::SaveProfile(MeaProfile& profile)
     SavePrecision(profile);
 }
 
-
-void MeaCustomUnits::LoadProfile(MeaProfile& profile)
-{
+void MeaCustomUnits::LoadProfile(MeaProfile& profile) {
     SetName(profile.ReadStr(_T("CustomName"), m_name));
     SetAbbrev(profile.ReadStr(_T("CustomAbbrev"), m_abbrev));
 
@@ -1275,9 +1079,7 @@ void MeaCustomUnits::LoadProfile(MeaProfile& profile)
     LoadPrecision(profile);
 }
 
-
-void MeaCustomUnits::MasterReset()
-{
+void MeaCustomUnits::MasterReset() {
     MeaLinearUnits::MasterReset();
 
     SetName(_T(""));
@@ -1286,15 +1088,11 @@ void MeaCustomUnits::MasterReset()
     SetScaleBasis(kDefScaleBasis);
 }
 
-
-bool MeaCustomUnits::RequiresRes() const
-{
+bool MeaCustomUnits::RequiresRes() const {
     return (m_scaleBasis != PixelBasis);
 }
 
-
-FSIZE MeaCustomUnits::FromPixels(const FSIZE& res) const
-{
+FSIZE MeaCustomUnits::FromPixels(const FSIZE& res) const {
     FSIZE fromPixels;
 
     switch (m_scaleBasis) {
@@ -1316,17 +1114,13 @@ FSIZE MeaCustomUnits::FromPixels(const FSIZE& res) const
     return fromPixels;
 }
 
-
-void MeaCustomUnits::SetName(const CString& name)
-{
+void MeaCustomUnits::SetName(const CString& name) {
     m_name = name;
     m_name.TrimLeft();
     m_name.TrimRight();
 }
 
-
-void MeaCustomUnits::SetAbbrev(const CString& abbrev)
-{
+void MeaCustomUnits::SetAbbrev(const CString& abbrev) {
     m_abbrev = abbrev;
     m_abbrev.TrimLeft();
     m_abbrev.TrimRight();
@@ -1334,9 +1128,7 @@ void MeaCustomUnits::SetAbbrev(const CString& abbrev)
     MeaLinearUnitsLabel::ChangeLabel(MeaCustomId, m_abbrev);
 }
 
-
-CString MeaCustomUnits::GetScaleBasisStr() const
-{
+CString MeaCustomUnits::GetScaleBasisStr() const {
     switch (m_scaleBasis) {
     case PixelBasis:
         return _T("px");
@@ -1349,9 +1141,7 @@ CString MeaCustomUnits::GetScaleBasisStr() const
     return _T("");
 }
 
-
-void MeaCustomUnits::SetScaleBasis(CString scaleBasisStr)
-{
+void MeaCustomUnits::SetScaleBasis(CString scaleBasisStr) {
     if (scaleBasisStr == _T("px")) {
         SetScaleBasis(PixelBasis);
     } else if (scaleBasisStr == _T("in")) {

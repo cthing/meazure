@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -25,8 +25,7 @@
 #include "MeaAssert.h"
 
 
-/// Defines a Singleton object. This macro must be called from the
-/// cpp file.
+/// Defines a Singleton object. This macro must be called from the cpp file.
 ///
 /// @param singleton_t  Type of the singleton object.
 ///
@@ -52,16 +51,15 @@
 /// time. The object is destroy when DestroyInstance() is called.
 ///
 template <typename singleton_t>
-class MeaSingleton_T
-{
+class MeaSingleton_T {
+
 public:
     /// Destructor for the Singleton. This method is called
     /// indirectly by the DestroyInstance() method. The delete
     /// operator is never directly applied to a Singleton object
     /// by the user of this class.
     ///
-    virtual ~MeaSingleton_T() { }
-
+    virtual ~MeaSingleton_T() {}
 
     /// The first time this method is called, a instance of the
     /// Singleton object is created and returned. Subsequent calls
@@ -104,7 +102,7 @@ protected:
     /// time the Instance() method is called. Subsequent calls to
     /// Instance() return the same object instance.
     ///
-    MeaSingleton_T() { }
+    MeaSingleton_T() {}
 
 private:
     /// Singletons have no copy semantics. Therefore, this method is
@@ -121,5 +119,5 @@ private:
 
 
     static singleton_t* m_instance;     ///< Instance of the Singleton object.
-    static bool         m_destroyed;    ///< Has the Singleton object been destroyed.
+    static bool m_destroyed;            ///< Has the Singleton object been destroyed.
 };

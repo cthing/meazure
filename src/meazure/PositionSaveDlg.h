@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -27,8 +27,7 @@
 /// CFileDialog with the addition of a text field for specifying the
 /// Log file title and a text field for specifying the Log file description.
 ///
-class MeaPositionSaveDlg : public CFileDialog
-{
+class MeaPositionSaveDlg : public CFileDialog {
     DECLARE_DYNAMIC(MeaPositionSaveDlg)
 
 public:
@@ -42,24 +41,22 @@ public:
     /// @param pParentWnd       [in] A pointer to the file dialog-box object’s
     ///                         parent or owner window.
     ///
-    explicit MeaPositionSaveDlg(LPCTSTR lpszDefExt = nullptr,
-        LPCTSTR lpszFileName = nullptr,
-        LPCTSTR lpszFilter = nullptr,
-        CWnd* pParentWnd = nullptr);
+    explicit MeaPositionSaveDlg(LPCTSTR lpszDefExt = nullptr, LPCTSTR lpszFileName = nullptr,
+                                LPCTSTR lpszFilter = nullptr, CWnd* pParentWnd = nullptr);
 
     /// Destroys a position log file dialog.
     ///
     virtual ~MeaPositionSaveDlg();
 
     enum { IDD = IDD_POSITION_SAVE };
-    CString m_desc;
-    CString m_title;
 
-    /// @var m_desc
     /// Position Log file description.
+    /// 
+    CString m_desc;
 
-    /// @var m_title
     /// Title for the dialog.
+    ///
+    CString m_title;
 
 protected:
     DECLARE_MESSAGE_MAP()

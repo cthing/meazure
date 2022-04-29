@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -36,7 +36,7 @@
 /// @return String containing the timestamp in 8601 format corresponding
 ///         to the specified time.
 ///
-extern CString  MeaMakeTimeStamp(time_t t);
+extern CString MeaMakeTimeStamp(time_t t);
 
 /// Parses an ISO 8601 compliant time stamp and returns the
 /// corresponding time value. The format of the timestamp must be:
@@ -48,4 +48,4 @@ extern CString  MeaMakeTimeStamp(time_t t);
 /// @return Number of seconds since the Epoch as defined by the
 ///         system time() function.
 ///
-extern time_t   MeaParseTimeStamp(const CString& timeStr);
+extern time_t MeaParseTimeStamp(const CString& timeStr);

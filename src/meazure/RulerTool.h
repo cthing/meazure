@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -31,13 +31,12 @@
 /// horizontal rulers on each screen. The rulers can be dragged
 /// to any position on the screen.
 ///
-class MeaRulerTool : public MeaTool, public MeaRulerCallback
-{
+class MeaRulerTool : public MeaTool, public MeaRulerCallback {
+
 public:
     // Defaults
     //
     static constexpr bool kShowRulers { false };    ///< Indicates if the rulers are shown by default
-
     static const CString kToolName;                 ///< "RulerTool"
 
     /// Constructs a new instance of the Ruler tool. To use a
@@ -52,7 +51,6 @@ public:
     ///
     virtual ~MeaRulerTool();
 
-
     /// Displays the Ruler tool.
     ///
     virtual void Enable() override;
@@ -61,13 +59,11 @@ public:
     ///
     virtual void Disable() override;
 
-    
     /// Positions and draws the rulers.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
     virtual void Update(MeaUpdateReason reason) override;
-
 
     /// Persists the state of the tool to the specified profile object.
     ///
@@ -89,7 +85,6 @@ public:
     ///
     virtual void MasterReset() override;
 
-
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position
     /// logs.
@@ -98,20 +93,17 @@ public:
     ///
     virtual CString GetToolName() const override;
 
-
     /// Returns the tool's current position which, for the Ruler tool,
     /// is always the position (0, 0).
     ///
     /// @return The position (0, 0)
     ///
-    virtual const POINT&    GetPosition() const override;
-
+    virtual const POINT& GetPosition() const override;
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The rulers are redrawn in their new colors.
     ///
-    virtual void    ColorsChanged() override;
-
+    virtual void ColorsChanged() override;
 
     /// Sets the position of the specified ruler indicator. The ruler
     /// indicator shows the position of a crosshair, pointer or some
@@ -120,8 +112,7 @@ public:
     /// @param indId            [in] Specifies the indicator to position
     /// @param indicatorPos     [in] Position for the indicator, in pixels
     ///
-    void    SetIndicator(MeaRuler::IndicatorId indId, const POINT& indicatorPos);
-
+    void SetIndicator(MeaRuler::IndicatorId indId, const POINT& indicatorPos);
 
     /// Called when the user drags a ruler to a new position. This method
     /// is responsible for actually repositioning the specified ruler to
@@ -129,21 +120,22 @@ public:
     ///
     /// @param info     [in] Ruler information structure
     ///
-    virtual void OnRulerMove(const RulerInfo *info) override;
+    virtual void OnRulerMove(const RulerInfo* info) override;
 
 private:
     /// Class representing a single screen's set of rulers. A ruler
     /// set consists of a vertical and a horizontal ruler.
     ///
     class RulerSet {
-    public:
-        RulerSet() : m_xPos(0), m_yPos(0) { }
-        ~RulerSet() { }
 
-        MeaRuler    m_vRuler;   ///< Vertical ruler
-        MeaRuler    m_hRuler;   ///< Horizontal ruler
-        int         m_xPos;     ///< Vertical ruler's position on the screen, in pixels
-        int         m_yPos;     ///< Horizontal ruler's position on the screen, in pixels
+    public:
+        RulerSet() : m_xPos(0), m_yPos(0) {}
+        ~RulerSet() {}
+
+        MeaRuler m_vRuler;  ///< Vertical ruler
+        MeaRuler m_hRuler;  ///< Horizontal ruler
+        int m_xPos;         ///< Vertical ruler's position on the screen, in pixels
+        int m_yPos;         ///< Horizontal ruler's position on the screen, in pixels
     };
 
 
@@ -157,19 +149,18 @@ private:
     ///
     MeaRulerTool& operator=(const MeaRulerTool&);
 
-
     /// Repositions the specified ruler to the location specified in
     /// the corresponding member variable.
     ///
     /// @param rulerIdx     [in] Index specifying the ruler to reposition
     ///
-    void    PositionRulers(int rulerIdx);
+    void PositionRulers(int rulerIdx);
 
     /// Updates the visual state of the specified ruler.
     ///
     /// @param rulerIdx     [in] Index specifying the ruler to update
     ///
-    void    UpdateRulers(int rulerIdx);
+    void UpdateRulers(int rulerIdx);
 
     /// Repositions the specified ruler's indicators to the location
     /// specified in the corresponding member variable.
@@ -178,8 +169,9 @@ private:
     ///                     to be repositioned
     /// @param indId        [in] ID of the indicator to reposition
     ///
-    void    PositionIndicators(int rulerIdx, MeaRuler::IndicatorId indId);
+    void PositionIndicators(int rulerIdx, MeaRuler::IndicatorId indId);
 
-    CPoint      m_indicatorPos[MeaRuler::NumIndicators];    ///< Position of each ruler indicator, in pixels
-    Rulers      m_rulers;                                   ///< Collection of all rulers on all screens
+
+    CPoint m_indicatorPos[MeaRuler::NumIndicators];    ///< Position of each ruler indicator, in pixels
+    Rulers m_rulers;                                   ///< Collection of all rulers on all screens
 };

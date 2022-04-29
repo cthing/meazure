@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -23,17 +23,14 @@
 #include <mbstring.h>
 
 
-//*************************************************************************
-// MeaXMLAttributes
-//*************************************************************************
+ //*************************************************************************
+ // MeaXMLAttributes
+ //*************************************************************************
 
 
-MeaXMLAttributes::MeaXMLAttributes()
-{
-}
+MeaXMLAttributes::MeaXMLAttributes() {}
 
-MeaXMLAttributes::MeaXMLAttributes(const XML_Char **atts, int numSpecified)
-{
+MeaXMLAttributes::MeaXMLAttributes(const XML_Char** atts, int numSpecified) {
     MeaAssert(atts != nullptr);
 
     // Run through the atts and insert them in the map. Also mark
@@ -44,23 +41,18 @@ MeaXMLAttributes::MeaXMLAttributes(const XML_Char **atts, int numSpecified)
     for (int i = 0; atts[i] != nullptr; i += 2) {
         AttributeValue v;
 
-        v.value = MeaXMLParser::FromUTF8(atts[i+1]);
+        v.value = MeaXMLParser::FromUTF8(atts[i + 1]);
         v.isDefault = (i >= numSpecified);
         m_attributeMap[MeaXMLParser::FromUTF8(atts[i])] = v;
     }
 }
 
-
-MeaXMLAttributes::~MeaXMLAttributes()
-{
-}
-
+MeaXMLAttributes::~MeaXMLAttributes() {}
 
 bool MeaXMLAttributes::GetValueStr(LPCTSTR name, CString& value,
-                                   bool& isDefault) const
-{
+                                   bool& isDefault) const {
     std::map<CString, AttributeValue>::const_iterator iter;
-    
+
     iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
         value = (*iter).second.value;
@@ -70,12 +62,10 @@ bool MeaXMLAttributes::GetValueStr(LPCTSTR name, CString& value,
     return false;
 }
 
-
 bool MeaXMLAttributes::GetValueInt(LPCTSTR name, int& value,
-                                   bool& isDefault) const
-{
+                                   bool& isDefault) const {
     std::map<CString, AttributeValue>::const_iterator iter;
-    
+
     iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
         value = _ttoi((*iter).second.value);
@@ -85,12 +75,10 @@ bool MeaXMLAttributes::GetValueInt(LPCTSTR name, int& value,
     return false;
 }
 
-
 bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value,
-                                   bool& isDefault) const
-{
+                                   bool& isDefault) const {
     std::map<CString, AttributeValue>::const_iterator iter;
-    
+
     iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
         value = _tcstod((*iter).second.value, nullptr);
@@ -100,12 +88,10 @@ bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value,
     return false;
 }
 
-
 bool MeaXMLAttributes::GetValueBool(LPCTSTR name, bool& value,
-                                    bool& isDefault) const
-{
+                                    bool& isDefault) const {
     std::map<CString, AttributeValue>::const_iterator iter;
-    
+
     iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
         CString vstr = (*iter).second.value;
@@ -116,9 +102,7 @@ bool MeaXMLAttributes::GetValueBool(LPCTSTR name, bool& value,
     return false;
 }
 
-
-MeaXMLAttributes& MeaXMLAttributes::Assign(const MeaXMLAttributes& attrs)
-{
+MeaXMLAttributes& MeaXMLAttributes::Assign(const MeaXMLAttributes& attrs) {
     m_attributeMap = attrs.m_attributeMap;
     return *this;
 }
@@ -129,55 +113,40 @@ MeaXMLAttributes& MeaXMLAttributes::Assign(const MeaXMLAttributes& attrs)
 //*************************************************************************
 
 
-MeaXMLNode::MeaXMLNode() : m_type(Type::Unknown), m_parent(nullptr)
-{
-}
-
+MeaXMLNode::MeaXMLNode() : m_type(Type::Unknown), m_parent(nullptr) {}
 
 MeaXMLNode::MeaXMLNode(const CString& elementName,
                        const MeaXMLAttributes& attrs) : m_type(Type::Element),
-                       m_data(elementName), m_attributes(attrs),
-                       m_parent(nullptr)
-{
-}
-
+    m_data(elementName), m_attributes(attrs),
+    m_parent(nullptr) {}
 
 MeaXMLNode::MeaXMLNode(const CString& data) : m_type(Type::Data), m_data(data),
-    m_parent(nullptr)
-{
-}
+m_parent(nullptr) {}
 
-
-MeaXMLNode::~MeaXMLNode()
-{
+MeaXMLNode::~MeaXMLNode() {
     try {
         for (auto child : m_children) {
             delete child;
         }
         m_children.clear();
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-MeaXMLNode& MeaXMLNode::Assign(const MeaXMLNode& node)
-{
-    m_type          = node.m_type;
-    m_data          = node.m_data;
-    m_attributes    = node.m_attributes;
-    m_children      = node.m_children;
-    m_parent        = node.m_parent;
+MeaXMLNode& MeaXMLNode::Assign(const MeaXMLNode& node) {
+    m_type = node.m_type;
+    m_data = node.m_data;
+    m_attributes = node.m_attributes;
+    m_children = node.m_children;
+    m_parent = node.m_parent;
 
     return *this;
 }
 
-
 #ifdef MEA_XMLNODE_DEBUG
 
-void MeaXMLNode::Dump() const
-{
+void MeaXMLNode::Dump() const {
     static int indent = 0;
 
     CString indentStr(_T(' '), indent);
@@ -212,31 +181,18 @@ void MeaXMLNode::Dump() const
 
 void MeaXMLParserHandler::StartElementHandler(const CString& /* container */,
                                               const CString& /* elementName */,
-                                              const MeaXMLAttributes& /* attrs */)
-{
-}
-
+                                              const MeaXMLAttributes& /* attrs */) {}
 
 void MeaXMLParserHandler::EndElementHandler(const CString& /* container */,
-                                            const CString& /* elementName */)
-{
-}
-
+                                            const CString& /* elementName */) {}
 
 void MeaXMLParserHandler::CharacterDataHandler(const CString& /* container */,
-                                               const CString& /* data */)
-{
-}
-
+                                               const CString& /* data */) {}
 
 void MeaXMLParserHandler::ParseEntity(MeaXMLParser& /*parser*/,
-                                      const CString& /*pathname*/)
-{
-}
+                                      const CString& /*pathname*/) {}
 
-
-CString MeaXMLParserHandler::GetFilePathname()
-{
+CString MeaXMLParserHandler::GetFilePathname() {
     return _T("");
 }
 
@@ -250,21 +206,20 @@ CString MeaXMLParser::m_homeURL1(_T("https://www.cthing.com/"));
 CString MeaXMLParser::m_homeURL2(_T("http://www.cthing.com/"));
 
 
-MeaXMLParser::MeaXMLParser(MeaXMLParserHandler *handler, bool buildDOM) :
+MeaXMLParser::MeaXMLParser(MeaXMLParserHandler* handler, bool buildDOM) :
     IValidationHandler(),
     m_isSubParser(false),
     m_handler(handler),
     m_haveDTD(false),
     m_context(nullptr),
     m_buildDOM(buildDOM),
-    m_dom(nullptr)
-{
+    m_dom(nullptr) {
     // Create the XML parser and set its handlers.
     //
     m_pathnameStack = new PathnameStack;
-    m_elementStack  = new ElementStack;
-    m_nodeStack     = new NodeStack;
-    
+    m_elementStack = new ElementStack;
+    m_nodeStack = new NodeStack;
+
     m_parser = XML_ParserCreate(nullptr);
     MeaAssert(m_parser != nullptr);
 
@@ -285,7 +240,6 @@ MeaXMLParser::MeaXMLParser(MeaXMLParserHandler *handler, bool buildDOM) :
     m_validator = new ev::Validator(this);
 }
 
-
 MeaXMLParser::MeaXMLParser(const MeaXMLParser& parentParser) :
     IValidationHandler(),
     m_isSubParser(true),
@@ -297,8 +251,7 @@ MeaXMLParser::MeaXMLParser(const MeaXMLParser& parentParser) :
     m_context(parentParser.m_context),
     m_buildDOM(parentParser.m_buildDOM),
     m_dom(parentParser.m_dom),
-    m_nodeStack(parentParser.m_nodeStack)
-{
+    m_nodeStack(parentParser.m_nodeStack) {
     m_parser = XML_ExternalEntityParserCreate(parentParser.m_parser,
                                                 m_context, nullptr);
     MeaAssert(m_parser != nullptr);
@@ -307,9 +260,7 @@ MeaXMLParser::MeaXMLParser(const MeaXMLParser& parentParser) :
     XML_SetExternalEntityRefHandlerArg(m_parser, this);
 }
 
-
-MeaXMLParser::~MeaXMLParser()
-{
+MeaXMLParser::~MeaXMLParser() {
     try {
         XML_ParserFree(m_parser);
         if (!m_isSubParser) {
@@ -319,33 +270,26 @@ MeaXMLParser::~MeaXMLParser()
             delete m_nodeStack;
             delete m_dom;
         }
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-void MeaXMLParser::SetBasePath(const CString& path)
-{
+void MeaXMLParser::SetBasePath(const CString& path) {
     XML_SetBase(m_parser, ToUTF8(path));
 }
 
-
-void MeaXMLParser::ParseBuffer(int len, bool isFinal)
-{
+void MeaXMLParser::ParseBuffer(int len, bool isFinal) {
     if (XML_ParseBuffer(m_parser, len, isFinal) == 0) {
         HandleParserError();
         throw MeaXMLParserException();
     }
 }
 
+void MeaXMLParser::StartElementHandler(void* userData, const XML_Char* elementName,
+                                        const XML_Char** attrs) {
+    MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
 
-void MeaXMLParser::StartElementHandler(void *userData, const XML_Char *elementName,
-                                        const XML_Char **attrs)
-{
-    MeaXMLParser *ps = static_cast<MeaXMLParser*>(userData);
-    
     if (ps->m_haveDTD) {
         ps->m_validator->StartElement(ps->m_parser, elementName, attrs);
     }
@@ -363,18 +307,15 @@ void MeaXMLParser::StartElementHandler(void *userData, const XML_Char *elementNa
         if (ps->m_nodeStack->empty()) {
             MeaAssert(ps->m_dom == nullptr);
             ps->m_dom = node;
-        }
-        else {
+        } else {
             ps->m_nodeStack->top()->AddChild(node);
         }
         ps->m_nodeStack->push(node);
     }
 }
 
-
-void MeaXMLParser::EndElementHandler(void *userData, const XML_Char *elementName)
-{
-    MeaXMLParser *ps = static_cast<MeaXMLParser*>(userData);
+void MeaXMLParser::EndElementHandler(void* userData, const XML_Char* elementName) {
+    MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
 
     if (ps->m_haveDTD)
         ps->m_validator->EndElement(ps->m_parser);
@@ -393,14 +334,12 @@ void MeaXMLParser::EndElementHandler(void *userData, const XML_Char *elementName
     }
 }
 
-
-void MeaXMLParser::CharacterDataHandler(void *userData, const XML_Char *s, int len)
-{
-    MeaXMLParser *ps = static_cast<MeaXMLParser*>(userData);
+void MeaXMLParser::CharacterDataHandler(void* userData, const XML_Char* s, int len) {
+    MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
     if (ps->m_haveDTD) {
         ps->m_validator->CharacterData(ps->m_parser, s, len);
     }
-    
+
     CString container;
     if (!ps->m_elementStack->empty()) {
         container = ps->m_elementStack->top();
@@ -415,15 +354,13 @@ void MeaXMLParser::CharacterDataHandler(void *userData, const XML_Char *s, int l
     }
 }
 
-
 int MeaXMLParser::ExternalEntityRefHandler(XML_Parser parser,
                                         const XML_Char* context,
                                         const XML_Char* /*base*/,
                                         const XML_Char* systemId,
-                                        const XML_Char* /*publicId*/)
-{
+                                        const XML_Char* /*publicId*/) {
     if (systemId != nullptr) {
-        MeaXMLParser *ps = reinterpret_cast<MeaXMLParser*>(parser);
+        MeaXMLParser* ps = reinterpret_cast<MeaXMLParser*>(parser);
         CString sysId(FromUTF8(systemId));
 
         int homeURLPos = sysId.Find(MeaXMLParser::m_homeURL1);
@@ -454,45 +391,37 @@ int MeaXMLParser::ExternalEntityRefHandler(XML_Parser parser,
     return 1;
 }
 
-
-void MeaXMLParser::DoctypeDeclHandler(void *userData,
+void MeaXMLParser::DoctypeDeclHandler(void* userData,
                                         const XML_Char* doctypeName,
                                         const XML_Char* /*sysid*/,
                                         const XML_Char* /*pubid*/,
-                                        int /*has_internal_subset*/)
-{
-    MeaXMLParser *ps = static_cast<MeaXMLParser*>(userData);
+                                        int /*has_internal_subset*/) {
+    MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
 
     ps->m_haveDTD = true;
     ps->m_validator->SetDocumentElement(doctypeName);
 }
 
-
-void MeaXMLParser::ElementDeclHandler(void *userData,
-                                        const XML_Char *name,
-                                        XML_Content *model)
-{
-    MeaXMLParser *ps = static_cast<MeaXMLParser*>(userData);
+void MeaXMLParser::ElementDeclHandler(void* userData,
+                                        const XML_Char* name,
+                                        XML_Content* model) {
+    MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
     ps->m_validator->AddElementDecl(name, model);
     XML_FreeContentModel(ps->m_parser, model);
 }
 
-
-void MeaXMLParser::AttributeDeclHandler(void *userData,
-                                     const XML_Char *elname,
-                                     const XML_Char *attname,
-                                     const XML_Char *att_type,
-                                     const XML_Char *dflt,
-                                     int isrequired)
-{
-    MeaXMLParser *ps = static_cast<MeaXMLParser*>(userData);
+void MeaXMLParser::AttributeDeclHandler(void* userData,
+                                     const XML_Char* elname,
+                                     const XML_Char* attname,
+                                     const XML_Char* att_type,
+                                     const XML_Char* dflt,
+                                     int isrequired) {
+    MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
     ps->m_validator->AddAttributeDecl(elname, attname,
                                      att_type, dflt, isrequired);
 }
 
-
-void MeaXMLParser::HandleParserError()
-{
+void MeaXMLParser::HandleParserError() {
     CString title(reinterpret_cast<LPCSTR>(IDS_MEA_PARSER_TITLE));
     CString msg, errorMsg;
     CString pathname(m_pathnameStack->empty() ?
@@ -586,12 +515,10 @@ void MeaXMLParser::HandleParserError()
     MessageBox(*AfxGetMainWnd(), msg + errorMsg, title, MB_OK | MB_ICONERROR);
 }
 
-
-void MeaXMLParser::HandleValidationError(const ev::ValidationError& error)
-{
+void MeaXMLParser::HandleValidationError(const ev::ValidationError& error) {
     CString title(reinterpret_cast<LPCSTR>(IDS_MEA_VALIDATION_TITLE));
     CString msg, errorMsg;
-    
+
     msg.Format(IDS_MEA_VALIDATION_MSG, static_cast<LPCTSTR>(m_handler->GetFilePathname()),
                 error.GetLineNumber(), error.GetCharacterPosition() + 1);
 
@@ -651,9 +578,7 @@ void MeaXMLParser::HandleValidationError(const ev::ValidationError& error)
     throw MeaXMLParserException();
 }
 
-
-CString MeaXMLParser::FromUTF8(const XML_Char* str)
-{
+CString MeaXMLParser::FromUTF8(const XML_Char* str) {
 #ifdef XML_UNICODE
     return str;
 #else
@@ -661,14 +586,12 @@ CString MeaXMLParser::FromUTF8(const XML_Char* str)
     wchar_t* buf = new wchar_t[numChars];
     MultiByteToWideChar(CP_UTF8, 0, str, -1, buf, numChars);
     CString buffer(buf);
-    delete [] buf;
+    delete[] buf;
     return buffer;
 #endif /* XML_UNICODE */
 }
 
-
-CString MeaXMLParser::ToUTF8(const CString& str)
-{
+CString MeaXMLParser::ToUTF8(const CString& str) {
 #ifdef _UNICODE
     return str;
 #else
@@ -682,21 +605,19 @@ CString MeaXMLParser::ToUTF8(const CString& str)
     WideCharToMultiByte(CP_UTF8, 0, wbuf, numWChars, buffer.GetBufferSetLength(numMBChars), numMBChars, nullptr, nullptr);
     buffer.ReleaseBuffer();
 
-    delete [] wbuf;
+    delete[] wbuf;
 
     return buffer;
 #endif
 }
 
-
-CString MeaXMLParser::Encode(const CString& src)
-{
+CString MeaXMLParser::Encode(const CString& src) {
     CString encStr;
 
 #ifdef _UNICODE
     for (int i = 0; i < src.GetLength(); i++) {
         TCHAR ch = src.GetAt(i);
-        switch(ch) {
+        switch (ch) {
         case _T('&'):
             encStr += _T("&amp;");
             break;
@@ -718,13 +639,13 @@ CString MeaXMLParser::Encode(const CString& src)
         }
     }
 #else
-    const unsigned char *str = reinterpret_cast<const unsigned char*>(static_cast<LPCTSTR>(src));
-    const unsigned char *sptr;
+    const unsigned char* str = reinterpret_cast<const unsigned char*>(static_cast<LPCTSTR>(src));
+    const unsigned char* sptr;
     const size_t len = _mbslen(str);
     size_t i;
 
     for (i = 0, sptr = str; i < len; i++, sptr = _mbsinc(sptr)) {
-        switch(*sptr) {
+        switch (*sptr) {
         case _T('&'):
             encStr += _T("&amp;");
             break;
@@ -749,4 +670,3 @@ CString MeaXMLParser::Encode(const CString& src)
 
     return encStr;
 }
-

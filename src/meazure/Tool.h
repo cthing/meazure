@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -46,18 +46,18 @@ class MeaToolMgr;
 /// measurement tools inherit from this base class.
 ///
 class MeaTool {
+
 public:
     /// Base class constructor. Typically, to use a newly constructed tool,
     /// the Enable() method must be called.
     ///
     /// @param mgr  [in] Tool manager parent of the tool.
     ///
-    explicit MeaTool(MeaToolMgr *mgr);
+    explicit MeaTool(MeaToolMgr* mgr);
 
     /// Destroys the tool.
     ///
     virtual ~MeaTool();
-
 
     /// Typically used by derived classes to show the tool. In addition,
     /// the first time this method is called, it typically creates the
@@ -69,13 +69,11 @@ public:
     ///
     virtual void Disable();
 
-
     /// Used by derived classes to update the display of their data.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
     virtual void Update(MeaUpdateReason reason);
-
 
     /// Indicates whether the derived tool is a radio tool and
     /// cannot be enabled until any other enabled Radio tool
@@ -87,15 +85,14 @@ public:
     ///
     virtual bool IsRadioTool();
 
-
     /// Sets the position of the tool. This method sets the position
     /// one location component at a time.
     ///
     /// @param which    [in] Position component
     /// @param pixels   [in] Position to set for the component, in pixels
     ///
-    virtual void         SetPosition(MeaFields which, int pixels);
-    
+    virtual void SetPosition(MeaFields which, int pixels);
+
     /// Returns the tool's current position. The current position is
     /// the position of the last crosshair entered or moved. The default
     /// position is the location of point 1.
@@ -108,14 +105,13 @@ public:
     /// 
     /// @param which Position field to increment
     ///
-    virtual void         IncPosition(MeaFields which);
+    virtual void IncPosition(MeaFields which);
 
     /// Decrements the specified position field. 
     /// 
     /// @param which Position field to decrement
     ///
-    virtual void         DecPosition(MeaFields which);
-
+    virtual void DecPosition(MeaFields which);
 
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position
@@ -124,7 +120,6 @@ public:
     /// @return Name of the tool
     ///
     virtual CString GetToolName() const = 0;
-
 
     /// Persists the state of the tool to the specified profile object.
     /// This base class implementation does nothing.
@@ -143,7 +138,6 @@ public:
     ///
     virtual void LoadProfile(MeaProfile& profile);
 
-
     /// Resets the tool to its default state.
     ///
     virtual void MasterReset();
@@ -160,11 +154,12 @@ public:
     ///
     /// @return <b>true</b> if the tool is enabled.
     ///
-    bool    IsEnabled() const { return m_enabled; }
+    bool IsEnabled() const { return m_enabled; }
 
 protected:
-    static POINT    m_defaultPos;       ///< A default position used by tools that do not have a defined position. This position is returned by the GetPosition() method
+    static POINT m_defaultPos;  ///< A default position used by tools that do not have a defined position. This
+                                ///< position is returned by the GetPosition() method
 
-    MeaToolMgr      *m_mgr;             ///< Tool manager
-    bool            m_enabled;          ///< Indicates whether the tool is enabled
+    MeaToolMgr* m_mgr;          ///< Tool manager
+    bool m_enabled;             ///< Indicates whether the tool is enabled
 };

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -17,8 +17,8 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// @file
-/// @brief Header file for a bitmap-based button.
+ /// @file
+ /// @brief Header file for a bitmap-based button.
 
 #pragma once
 
@@ -28,8 +28,8 @@
 ///
 /// http://www.codeproject.com/buttonctrl/betterbmpbutton.asp
 ///
-class MeaImageButton : public CButton
-{
+class MeaImageButton : public CButton {
+
 public:
     /// Constructs a image button using the specified image(s).
     ///
@@ -43,12 +43,11 @@ public:
     /// method must be called.
     ///
     MeaImageButton() : CButton(), m_theme(nullptr), m_up(0), m_down(0),
-        m_disabled(0), m_depressed(false), m_toggle(false) { }
-    
+        m_disabled(0), m_depressed(false), m_toggle(false) {}
+
     /// Destroys a image button object.
     ///
     virtual ~MeaImageButton();
-
 
     /// Convenience version of the button create method. Using
     /// this method allows the button to size itself to the bitmap.
@@ -75,7 +74,6 @@ public:
     /// @param toggle   [in] <b>true</b> if the button should have toggle behavior.
     ///
     void SetToggleType(bool toggle) { m_toggle = toggle; }
-    
 
     /// Loads the button's bitmaps.
     ///
@@ -85,18 +83,19 @@ public:
     /// @param disabled [in] Resource ID of image to use for disabled appearance.
     ///                 If 0, the up image is half-toned gray
     ///
-    void LoadBitmaps(UINT up, UINT down, UINT disabled = 0)
-          { m_up = up; m_down = down; m_disabled = disabled; } 
-    
+    void LoadBitmaps(UINT up, UINT down, UINT disabled = 0) {
+        m_up = up; m_down = down; m_disabled = disabled;
+    }
+
     /// Returns the bitmaps associated with the button image.
     ///
     /// @param up       [out] Resource ID of image to use for up appearance when enabled.
     /// @param down     [out] Resource ID of image to use for down appearance when enabled.
     /// @param disabled [out] Resource ID of image to use for disabled appearance.
     ///
-    void GetBitmaps(UINT &up, UINT &down, UINT &disabled) const
-          { up = m_up; down = m_down; disabled = m_disabled; }
-
+    void GetBitmaps(UINT& up, UINT& down, UINT& disabled) const {
+        up = m_up; down = m_down; disabled = m_disabled;
+    }
 
     /// Sets the button state: up or down.
     ///
@@ -109,30 +108,31 @@ public:
     }
 
 protected:
-    HTHEME          m_theme;        ///< Windows rendering theme for buttons
-    UINT            m_up;           ///< ID of bitmap for button up appearance.
-    UINT            m_down;         ///< ID of bitmap for button down appearance.
-    UINT            m_disabled;     ///< ID of bitmap for button disabled appearance.
-    bool            m_depressed;    ///< Indicates if the button is depressed.
-    bool            m_toggle;       ///< Indicates if this is a toggle button.
-    CToolTipCtrl    m_toolTip;      ///< Tool tip control for the button.
-
     DECLARE_MESSAGE_MAP()
 
     /// Performs cleanup of objects created in the Create method.
     ///
     afx_msg void OnDestroy();
-    
+
     /// Called to render the button.
     ///
     /// @param lpDrawItemStruct     [in] Button item information structure.
     ///
     afx_msg void DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct);
-    
+
     /// Called when the left mouse button is pressed down.
     ///
     /// @param nFlags       [in] Flags present when button pressed.
     /// @param point        [in] Location of the mouse when the button was pressed.
     ///
     afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+
+
+    HTHEME m_theme;             ///< Windows rendering theme for buttons
+    UINT m_up;                  ///< ID of bitmap for button up appearance.
+    UINT m_down;                ///< ID of bitmap for button down appearance.
+    UINT m_disabled;            ///< ID of bitmap for button disabled appearance.
+    bool m_depressed;           ///< Indicates if the button is depressed.
+    bool m_toggle;              ///< Indicates if this is a toggle button.
+    CToolTipCtrl m_toolTip;     ///< Tool tip control for the button.
 };

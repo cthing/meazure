@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -54,18 +54,17 @@ BOOL(WINAPI* g_pfnUpdateLayeredWindow)(HWND, HDC, POINT*, SIZE*, HDC, POINT*, CO
 BOOL g_fLayeredWindowInitDone { FALSE };
 BOOL g_enableLayeredWindows { TRUE };
 
-BOOL InitLayeredWindowStubs(void)
-{
+BOOL InitLayeredWindowStubs(void) {
     HMODULE hUser32;
 
     if (g_fLayeredWindowInitDone)
         return g_pfnSetLayeredWindowAttributes != nullptr;
 
     hUser32 = GetModuleHandle(TEXT("USER32"));
-    
+
     if ((hUser32 != nullptr) && g_enableLayeredWindows &&
         (*(FARPROC*)&g_pfnSetLayeredWindowAttributes = GetProcAddress(hUser32, "SetLayeredWindowAttributes")) != nullptr &&
-        (*(FARPROC*)&g_pfnUpdateLayeredWindow        = GetProcAddress(hUser32, "UpdateLayeredWindow")) != nullptr
+        (*(FARPROC*)&g_pfnUpdateLayeredWindow = GetProcAddress(hUser32, "UpdateLayeredWindow")) != nullptr
        ) {
         g_fLayeredWindowInitDone = TRUE;
         return TRUE;
@@ -77,26 +76,21 @@ BOOL InitLayeredWindowStubs(void)
     }
 }
 
-
-BOOL HaveLayeredWindows(void)
-{
+BOOL HaveLayeredWindows(void) {
     return InitLayeredWindowStubs();
 }
 
-
 BOOL WINAPI
-xSetLayeredWindowAttributes(HWND hwnd, COLORREF crKey, BYTE bAlpha, DWORD dwFlags)
-{
+xSetLayeredWindowAttributes(HWND hwnd, COLORREF crKey, BYTE bAlpha, DWORD dwFlags) {
     if (InitLayeredWindowStubs()) {
         return g_pfnSetLayeredWindowAttributes(hwnd, crKey, bAlpha, dwFlags);
     }
     return TRUE;
 }
 
-
 BOOL WINAPI
-xUpdateLayeredWindow(HWND hwnd, HDC hdcDst, POINT *pptDst, SIZE *psize, HDC hdcSrc, POINT *pptSrc, COLORREF crKey, BLENDFUNCTION *pblend, DWORD dwFlags)
-{
+xUpdateLayeredWindow(HWND hwnd, HDC hdcDst, POINT* pptDst, SIZE* psize, HDC hdcSrc, POINT* pptSrc, COLORREF crKey,
+                     BLENDFUNCTION* pblend, DWORD dwFlags) {
     if (InitLayeredWindowStubs()) {
         return g_pfnUpdateLayeredWindow(hwnd, hdcDst, pptDst, psize, hdcSrc, pptSrc, crKey, pblend, dwFlags);
     }
@@ -109,27 +103,27 @@ xUpdateLayeredWindow(HWND hwnd, HDC hdcDst, POINT *pptDst, SIZE *psize, HDC hdcS
 #else   // COMPILE_LAYERED_WINDOW_STUBS
 
 /// Flag to use layered windows if they are present.
-extern BOOL         g_enableLayeredWindows;
+extern BOOL g_enableLayeredWindows;
 
 /// Indicates that layered windows are available.
 /// @return TRUE if layered windows are available.
-extern BOOL         HaveLayeredWindows(void);
+extern BOOL HaveLayeredWindows(void);
 
 /// Sets layered windows attributes. The parameters
 /// are the same as those for the Windows API function
 /// SetLayeredWindowAttributes.
-extern BOOL WINAPI  xSetLayeredWindowAttributes(HWND, COLORREF, BYTE, DWORD);
+extern BOOL WINAPI xSetLayeredWindowAttributes(HWND, COLORREF, BYTE, DWORD);
 
 /// Updates a layered window from a memory bitmap. The
 /// parameters are the same as those for the Windows API
 /// function UpdateLayeredWindow.
-extern BOOL WINAPI  xUpdateLayeredWindow(HWND, HDC, POINT*, SIZE*, HDC, POINT*, COLORREF, BLENDFUNCTION*, DWORD);
+extern BOOL WINAPI xUpdateLayeredWindow(HWND, HDC, POINT*, SIZE*, HDC, POINT*, COLORREF, BLENDFUNCTION*, DWORD);
 
 #endif  // COMPILE_LAYERED_WINDOW_STUBS
 
 
 /// Replace the Windows API function with our function.
-#define SetLayeredWindowAttributes  xSetLayeredWindowAttributes
+#define SetLayeredWindowAttributes xSetLayeredWindowAttributes
 
 /// Replace the Windows API function with our function.
-#define UpdateLayeredWindow         xUpdateLayeredWindow
+#define UpdateLayeredWindow xUpdateLayeredWindow

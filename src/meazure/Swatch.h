@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -25,18 +25,17 @@
 
 /// Rectangular color swatch window.
 ///
-class MeaSwatch : public CWnd
-{
+class MeaSwatch : public CWnd {
+
 public:
     /// Constructs a color swatch window. Before the window can
     /// be displayed, the Create method must be called.
     ///
     MeaSwatch();
-    
+
     /// Destroys an instance of a color swatch window.
     ///
     virtual ~MeaSwatch();
-
 
     /// Creates the window for the color swatch and sets its
     /// background to the specified color.
@@ -47,22 +46,21 @@ public:
     ///
     /// @return <b>true</b> if creation was successful.
     ///
-    bool    Create(COLORREF color, const RECT &rect, CWnd *parent);
-
+    bool Create(COLORREF color, const RECT& rect, CWnd* parent);
 
     /// Makes the window visible.
     ///
-    void    Show() { if (m_hWnd != nullptr) ShowWindow(SW_SHOW); }
+    void Show() { if (m_hWnd != nullptr) ShowWindow(SW_SHOW); }
 
     /// Hides the window.
     ///
-    void    Hide() { if (m_hWnd != nullptr) ShowWindow(SW_HIDE); }
+    void Hide() { if (m_hWnd != nullptr) ShowWindow(SW_HIDE); }
 
     /// Sets the color to be displayed by the swatch.
     ///
     /// @param color    [in] Color to be displayed.
     ///
-    void    SetColor(COLORREF color);
+    void SetColor(COLORREF color);
 
 protected:
     DECLARE_MESSAGE_MAP()
@@ -78,7 +76,8 @@ private:
     ///
     void DestroyColors();
 
-    CBrush  *m_backBrush;   ///< Brush used for painting the color swatch.
+
+    CBrush* m_backBrush;   ///< Brush used for painting the color swatch.
 };
 
 

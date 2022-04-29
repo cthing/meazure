@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -41,50 +41,36 @@ BEGIN_MESSAGE_MAP(MeaAdvancedPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaAdvancedPrefs::MeaAdvancedPrefs() : CPropertyPage(MeaAdvancedPrefs::IDD),
-    m_startupProfileDlg(nullptr), m_startupProfile(_T(""))
-{
-}
+MeaAdvancedPrefs::MeaAdvancedPrefs() :
+    CPropertyPage(MeaAdvancedPrefs::IDD), m_startupProfileDlg(nullptr), m_startupProfile(_T("")) {}
 
-
-MeaAdvancedPrefs::~MeaAdvancedPrefs()
-{
+MeaAdvancedPrefs::~MeaAdvancedPrefs() {
     m_startupProfileDlg = nullptr;
 }
 
-
-void MeaAdvancedPrefs::DoDataExchange(CDataExchange* pDX)
-{
+void MeaAdvancedPrefs::DoDataExchange(CDataExchange* pDX) {
     CPropertyPage::DoDataExchange(pDX);
     DDX_Text(pDX, IDC_PROFILE_PATHNAME, m_startupProfile);
 }
 
-
-void MeaAdvancedPrefs::OnProfileBtn() 
-{
+void MeaAdvancedPrefs::OnProfileBtn() {
     MeaAssert(m_startupProfileDlg != nullptr);
     if (m_startupProfileDlg->DoModal() == IDOK) {
-        CEdit *edit = static_cast<CEdit*>(GetDlgItem(IDC_PROFILE_PATHNAME));
+        CEdit* edit = static_cast<CEdit*>(GetDlgItem(IDC_PROFILE_PATHNAME));
         edit->SetWindowText(m_startupProfileDlg->GetPathName());
     }
 }
 
-
-void MeaAdvancedPrefs::OnClearProfile()
-{
-    CEdit *edit = static_cast<CEdit*>(GetDlgItem(IDC_PROFILE_PATHNAME));
+void MeaAdvancedPrefs::OnClearProfile() {
+    CEdit* edit = static_cast<CEdit*>(GetDlgItem(IDC_PROFILE_PATHNAME));
     edit->SetWindowText("");
 }
 
-
-void MeaAdvancedPrefs::OnChangeProfilePathname()
-{
+void MeaAdvancedPrefs::OnChangeProfilePathname() {
     SetModified(TRUE);
 }
 
-
-void MeaAdvancedPrefs::OnMasterReset()
-{
+void MeaAdvancedPrefs::OnMasterReset() {
     if (AfxMessageBox(IDS_MEA_MASTER_RESET, MB_YESNO | MB_ICONWARNING) == IDYES) {
         MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());
         MeaAssert(sheet != nullptr);

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -28,17 +28,13 @@
 #pragma warning(default: 4244 4127 4701)
 
 
-CString MeaMakeTimeStamp(time_t t)
-{
+CString MeaMakeTimeStamp(time_t t) {
     CTime ts(t);
 
     return ts.FormatGmt(_T("%Y-%m-%dT%H:%M:%SZ"));
 }
 
-
-
-time_t MeaParseTimeStamp(const CString& timeStr)
-{
+time_t MeaParseTimeStamp(const CString& timeStr) {
     using namespace boost::posix_time;
     using namespace boost::gregorian;
 
@@ -74,13 +70,13 @@ time_t MeaParseTimeStamp(const CString& timeStr)
     date tdate = tlocal.date();
     time_duration tdur = tlocal.time_of_day();
 
-    tstruct.tm_hour  = static_cast<int>(tdur.hours());
-    tstruct.tm_min   = static_cast<int>(tdur.minutes());
-    tstruct.tm_sec   = static_cast<int>(tdur.seconds());
+    tstruct.tm_hour = static_cast<int>(tdur.hours());
+    tstruct.tm_min = static_cast<int>(tdur.minutes());
+    tstruct.tm_sec = static_cast<int>(tdur.seconds());
 
-    tstruct.tm_year  = tdate.year() - 1900;
-    tstruct.tm_mon   = tdate.month() - 1;
-    tstruct.tm_mday  = tdate.day();
+    tstruct.tm_year = tdate.year() - 1900;
+    tstruct.tm_mon = tdate.month() - 1;
+    tstruct.tm_mday = tdate.day();
     tstruct.tm_isdst = -1;
 
     // Normalize the time struct, filling in the missing fields

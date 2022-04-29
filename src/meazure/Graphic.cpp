@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -21,39 +21,28 @@
 #include "Graphic.h"
 
 
-MeaGraphic::MeaGraphic() : CWnd(),
-    m_id(0xFFFF), m_visible(false), m_parent(nullptr)
-{
-}
+MeaGraphic::MeaGraphic() : CWnd(), m_id(0xFFFF), m_visible(false), m_parent(nullptr) {}
 
-
-MeaGraphic::~MeaGraphic()
-{
+MeaGraphic::~MeaGraphic() {
     m_parent = nullptr;
 }
 
-
-bool MeaGraphic::Create(LPCTSTR classname, const SIZE& size, const CWnd *parent, UINT id)
-{
+bool MeaGraphic::Create(LPCTSTR classname, const SIZE& size, const CWnd* parent, UINT id) {
     m_id = id;
     m_parent = parent;
 
-    return CreateEx(0, classname, "", ((parent == nullptr) ? WS_POPUP : WS_CHILD),
-        0, 0, size.cx, size.cy, ((parent == nullptr) ? *AfxGetMainWnd() : *parent), 0) ? true : false;
+    return CreateEx(0, classname, "", ((parent == nullptr) ? WS_POPUP : WS_CHILD), 0, 0, size.cx, size.cy,
+                    ((parent == nullptr) ? *AfxGetMainWnd() : *parent), 0) ? true : false;
 }
 
-
-void MeaGraphic::Show()
-{
+void MeaGraphic::Show() {
     if (m_hWnd != nullptr) {
         ShowWindow(SW_SHOWNOACTIVATE);
         m_visible = true;
     }
 }
 
-
-void MeaGraphic::Hide()
-{
+void MeaGraphic::Hide() {
     if (m_hWnd != nullptr) {
         m_visible = false;
         ShowWindow(SW_HIDE);

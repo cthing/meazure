@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -30,6 +30,7 @@
 /// Persists the application state to an XML file.
 ///
 class MeaFileProfile : public MeaProfile, public MeaXMLParserHandler {
+
 public:
     /// File access mode.
     enum Mode {
@@ -47,58 +48,56 @@ public:
     /// @param mode         [in] Opening mode for the profile file (i.e. read or write).
     ///
     MeaFileProfile(LPCTSTR pathname, Mode mode);
-    
+
     /// Closes the profile file and destroys the object instance.
     ///
     virtual ~MeaFileProfile();
-
 
     /// Writes a boolean value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Boolean value for the key
     ///
-    virtual bool    WriteBool(LPCTSTR key, bool value) override;
+    virtual bool WriteBool(LPCTSTR key, bool value) override;
 
     /// Writes an integer value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Integer value for the key
     ///
-    virtual bool    WriteInt(LPCTSTR key, int value) override;
+    virtual bool WriteInt(LPCTSTR key, int value) override;
 
     /// Writes a double value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Double value for the key
     ///
-    virtual bool    WriteDbl(LPCTSTR key, double value) override;
+    virtual bool WriteDbl(LPCTSTR key, double value) override;
 
     /// Writes a string value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] String value for the key
     ///
-    virtual bool    WriteStr(LPCTSTR key, LPCTSTR value) override;
-
+    virtual bool WriteStr(LPCTSTR key, LPCTSTR value) override;
 
     /// Reads a boolean value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual bool    ReadBool(LPCTSTR key, bool defaultValue) override;
+    virtual bool ReadBool(LPCTSTR key, bool defaultValue) override;
 
     /// Reads an unsigned integer value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual UINT    ReadInt(LPCTSTR key, int defaultValue) override;
+    virtual UINT ReadInt(LPCTSTR key, int defaultValue) override;
 
     /// Reads a double value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual double  ReadDbl(LPCTSTR key, double defaultValue) override;
+    virtual double ReadDbl(LPCTSTR key, double defaultValue) override;
 
     /// Reads a string value from the specified key.
     ///
@@ -106,21 +105,19 @@ public:
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
     virtual CString ReadStr(LPCTSTR key, LPCTSTR defaultValue) override;
 
-    
     /// Indicates whether the profile is being written at
     /// the user's request (i.e. a file profile).
     ///
     /// @return Always <b>true</b> because a file profile
     ///         is only written at the user's request.
     ///
-    virtual bool    UserInitiated() override;
-    
+    virtual bool UserInitiated() override;
+
     /// Returns the profile format version number.
     ///
     /// @return Profile format version number.
     ///
-    virtual int     GetVersion() override;
-
+    virtual int GetVersion() override;
 
     /// Called when the XML parser encounters the start of an element.
     ///
@@ -128,25 +125,22 @@ public:
     /// @param elementName  [in] Name of the element.
     /// @param attrs        [in] Attributes for the element.
     ///
-    virtual void    StartElementHandler(const CString& container,
-                                        const CString& elementName,
-                                        const MeaXMLAttributes& attrs) override;
+    virtual void StartElementHandler(const CString& container, const CString& elementName, 
+                                     const MeaXMLAttributes& attrs) override;
 
     /// Called when the XML parser encounters character data.
     ///
     /// @param container    [in] Name of the element containing the character data.
     /// @param data         [in] Character data.
     ///
-    virtual void    CharacterDataHandler(const CString& container,
-                                         const CString& data) override;
+    virtual void CharacterDataHandler(const CString& container, const CString& data) override;
 
     /// Called when the XML parser needs to parse an external entity.
     ///
     /// @param parser   [in] XML parser.
     /// @param pathname [in] Pathname of the external entity to open and parse.
     ///
-    virtual void    ParseEntity(MeaXMLParser& parser,
-                                const CString& pathname) override;
+    virtual void ParseEntity(MeaXMLParser& parser, const CString& pathname) override;
 
     /// Obtains the pathname of the profile file represented by an instance
     /// of this class.
@@ -163,24 +157,24 @@ private:
     /// @param format           [in] Printf-style format string for the output.
     /// @param ...              [in] Items to write to the file.
     ///
-    void    Write(int indentLevel, LPCTSTR format, ...);
+    void Write(int indentLevel, LPCTSTR format, ...);
 
     /// Writes the XML boilerplate at the start of the XML profile file.
     ///
-    void    WriteFileStart();
-    
+    void WriteFileStart();
+
     /// Write the XML boilerplate at the end of the XML profile file.
     ///
-    void    WriteFileEnd();
+    void WriteFileEnd();
 
     /// Supervises the parsing of the XML profile file.
     ///
-    void    ParseFile();
+    void ParseFile();
 
-    CStdioFile  m_stdioFile;        ///< File object representing the profile.
-    Mode        m_mode;             ///< Opening mode for the profile file.
-    int         m_readVersion;      ///< Profile format version number read from the profile file.
-    CString     m_title;            ///< Title for the profile file.
 
+    CStdioFile m_stdioFile;     ///< File object representing the profile.
+    Mode m_mode;                ///< Opening mode for the profile file.
+    int m_readVersion;          ///< Profile format version number read from the profile file.
+    CString m_title;            ///< Title for the profile file.
     std::map<CString, CString>  m_valueMap;     ///< Maps profile keys to values.
 };

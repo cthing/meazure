@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -38,29 +38,22 @@ END_MESSAGE_MAP()
 
 MeaImageButton::MeaImageButton(UINT up, UINT down, UINT disabled) :
     CButton(), m_theme(nullptr), m_up(up), m_down(down), m_disabled(disabled),
-    m_depressed(false), m_toggle(false)
-{
-}
+    m_depressed(false), m_toggle(false) {}
 
-
-MeaImageButton::~MeaImageButton()
-{
+MeaImageButton::~MeaImageButton() {
     m_theme = nullptr;
 }
 
-
-bool MeaImageButton::Create(DWORD dwStyle, CWnd* pParentWnd, UINT nID,
-                            UINT toolTipID)
-{
+bool MeaImageButton::Create(DWORD dwStyle, CWnd* pParentWnd, UINT nID, UINT toolTipID) {
     CRect brect(0, 0, 5, 5);
 
     if (m_up != 0) {
         BITMAP bmpval;
         HBITMAP bitmap = static_cast<HBITMAP>(::LoadImage(AfxGetInstanceHandle(),
-                                        MAKEINTRESOURCE(m_up),
-                                        IMAGE_BITMAP,
-                                        0, 0,
-                                        LR_LOADMAP3DCOLORS));
+                                                          MAKEINTRESOURCE(m_up),
+                                                          IMAGE_BITMAP,
+                                                          0, 0,
+                                                          LR_LOADMAP3DCOLORS));
         ::GetObject(bitmap, sizeof(BITMAP), &bmpval);
 
         brect.right = bmpval.bmWidth;
@@ -73,10 +66,10 @@ bool MeaImageButton::Create(DWORD dwStyle, CWnd* pParentWnd, UINT nID,
     }
 
     if (!CButton::Create(nullptr, dwStyle | WS_CHILD | BS_OWNERDRAW,
-                        brect, pParentWnd, nID)) {
+                         brect, pParentWnd, nID)) {
         return false;
     }
-    
+
     // XP Theme support, if available
     //
     m_theme = IsThemeActive() ? OpenThemeData(*this, L"BUTTON") : nullptr;
@@ -89,9 +82,7 @@ bool MeaImageButton::Create(DWORD dwStyle, CWnd* pParentWnd, UINT nID,
     return true;
 }
 
-
-void MeaImageButton::OnDestroy()
-{
+void MeaImageButton::OnDestroy() {
     CButton::OnDestroy();
 
     if (m_theme != nullptr) {
@@ -100,19 +91,15 @@ void MeaImageButton::OnDestroy()
     }
 }
 
-
-BOOL MeaImageButton::PreTranslateMessage(MSG *pMsg)
-{
+BOOL MeaImageButton::PreTranslateMessage(MSG* pMsg) {
     if (m_toolTip.m_hWnd != nullptr) {
         m_toolTip.RelayEvent(pMsg);
     }
     return CButton::PreTranslateMessage(pMsg);
 }
 
-
-void MeaImageButton::DrawItem(LPDRAWITEMSTRUCT dis) 
-{
-    CDC *dc = CDC::FromHandle(dis->hDC);    // Get a CDC we can use
+void MeaImageButton::DrawItem(LPDRAWITEMSTRUCT dis) {
+    CDC* dc = CDC::FromHandle(dis->hDC);    // Get a CDC we can use
     CRect r(dis->rcItem);                   // Copy the button rectangle
     HBITMAP bitmap;                         // Handle to the bitmap we are drawing
     BITMAP bmpval;                          // Parameters of the bitmap
@@ -157,10 +144,10 @@ void MeaImageButton::DrawItem(LPDRAWITEMSTRUCT dis)
     }
 
     bitmap = static_cast<HBITMAP>(::LoadImage(AfxGetInstanceHandle(),
-                                    MAKEINTRESOURCE(id),
-                                    IMAGE_BITMAP,
-                                    0, 0,
-                                    LR_LOADMAP3DCOLORS));
+                                              MAKEINTRESOURCE(id),
+                                              IMAGE_BITMAP,
+                                              0, 0,
+                                              LR_LOADMAP3DCOLORS));
 
     //
     // Get the bitmap parameters, because we will need width and height
@@ -172,14 +159,16 @@ void MeaImageButton::DrawItem(LPDRAWITEMSTRUCT dis)
     //
     if (m_theme != nullptr) {
         if (isDown) {
-            DrawThemeEdge(m_theme, dis->hDC, BP_PUSHBUTTON, PBS_PRESSED, &dis->rcItem, EDGE_SUNKEN, BF_RECT | BF_MIDDLE | BF_SOFT, nullptr);
+            DrawThemeEdge(m_theme, dis->hDC, BP_PUSHBUTTON, PBS_PRESSED, &dis->rcItem, EDGE_SUNKEN,
+                          BF_RECT | BF_MIDDLE | BF_SOFT, nullptr);
         } else {
-            DrawThemeEdge(m_theme, dis->hDC, BP_PUSHBUTTON, PBS_NORMAL, &dis->rcItem, EDGE_RAISED, BF_RECT | BF_MIDDLE | BF_SOFT, nullptr);
+            DrawThemeEdge(m_theme, dis->hDC, BP_PUSHBUTTON, PBS_NORMAL, &dis->rcItem, EDGE_RAISED,
+                          BF_RECT | BF_MIDDLE | BF_SOFT, nullptr);
         }
     } else {
         if (isDown) {
             dc->DrawEdge(&dis->rcItem, EDGE_SUNKEN, BF_RECT | BF_MIDDLE | BF_SOFT);
-        } else {                                // up
+        } else {    // up
             dc->DrawEdge(&dis->rcItem, EDGE_RAISED, BF_RECT | BF_MIDDLE | BF_SOFT);
         }
     }
@@ -198,28 +187,22 @@ void MeaImageButton::DrawItem(LPDRAWITEMSTRUCT dis)
     //
     if (grayout) {      // gray out
         COLORREF gray = ::GetSysColor(COLOR_3DFACE);
-        for(int x = 0; x < bmpval.bmWidth; x+=2) {
-            for(int y = 0; y < bmpval.bmHeight; y++) {
+        for (int x = 0; x < bmpval.bmWidth; x += 2) {
+            for (int y = 0; y < bmpval.bmHeight; y++) {
                 memDC.SetPixelV(x + (y & 1), y, gray);
             }
         }
     }
 
-    dc->BitBlt((r.Width() - bmpval.bmWidth) / 2,
-               (r.Height() - bmpval.bmHeight) / 2,
-                bmpval.bmWidth,
-                bmpval.bmHeight,
-                &memDC,
-                0, 0,
-                SRCCOPY);
+    dc->BitBlt((r.Width() - bmpval.bmWidth) / 2, (r.Height() - bmpval.bmHeight) / 2,
+                bmpval.bmWidth, bmpval.bmHeight,
+                &memDC, 0, 0, SRCCOPY);
 
     dc->RestoreDC(saved);
     ::DeleteObject(bitmap);
 }
 
-
-void MeaImageButton::OnLButtonDown(UINT nFlags, CPoint point) 
-{
+void MeaImageButton::OnLButtonDown(UINT nFlags, CPoint point) {
     m_depressed = !m_depressed;
     InvalidateRect(nullptr);
     CButton::OnLButtonDown(nFlags, point);

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -29,9 +29,8 @@
 const CString   MeaCircleTool::kToolName(_T("CircleTool"));
 
 
-MeaCircleTool::MeaCircleTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
-    MeaCrossHairCallback(), m_curPos(&m_center), m_center(MeaScreenMgr::Instance().GetCenter())
-{
+MeaCircleTool::MeaCircleTool(MeaToolMgr* mgr) :
+    MeaRadioTool(mgr), MeaCrossHairCallback(), m_curPos(&m_center), m_center(MeaScreenMgr::Instance().GetCenter()) {
     // Set the default tool positions. The center of the circle
     // is placed at the center of the screen containing the application.
     //
@@ -45,35 +44,30 @@ MeaCircleTool::MeaCircleTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
     m_anchorPerimeter = m_perimeter;
 }
 
-
-MeaCircleTool::~MeaCircleTool()
-{
+MeaCircleTool::~MeaCircleTool() {
     try {
         Disable();
         m_curPos = nullptr;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaCircleTool::Create()
-{
+bool MeaCircleTool::Create() {
     // Create the crosshairs.
     //
     if (!m_centerCH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite),
-                            MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, nullptr, IDS_MEA_VERTEX, kCenterId)) {
+                           MeaColors::Get(MeaColors::CrossHairBack),
+                           MeaColors::Get(MeaColors::CrossHairHilite),
+                           MeaColors::GetA(MeaColors::CrossHairOpacity),
+                           this, nullptr, IDS_MEA_VERTEX, kCenterId)) {
         return false;
     }
     if (!m_perimeterCH.Create(MeaColors::Get(MeaColors::CrossHairBorder),
-                            MeaColors::Get(MeaColors::CrossHairBack),
-                            MeaColors::Get(MeaColors::CrossHairHilite),
-                            MeaColors::GetA(MeaColors::CrossHairOpacity),
-                            this, nullptr, IDS_MEA_POINT1, kPerimeterId)) {
+                              MeaColors::Get(MeaColors::CrossHairBack),
+                              MeaColors::Get(MeaColors::CrossHairHilite),
+                              MeaColors::GetA(MeaColors::CrossHairOpacity),
+                              this, nullptr, IDS_MEA_POINT1, kPerimeterId)) {
         return false;
     }
 
@@ -95,8 +89,10 @@ bool MeaCircleTool::Create()
 
     // Create the data windows attached to each crosshair.
     //
-    m_dataWinCenter.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_XV, IDS_MEA_YV, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_LENGTH);
-    m_dataWinPerimeter.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X1, IDS_MEA_Y1, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_LENGTH);
+    m_dataWinCenter.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_XV, IDS_MEA_YV,
+                           MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_LENGTH);
+    m_dataWinPerimeter.Create(MeaColors::GetA(MeaColors::CrossHairOpacity), IDS_MEA_X1, IDS_MEA_Y1,
+                              MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_LENGTH);
 
     // Position the crosshairs and circle and line based
     // on the values of the center and perimeter points.
@@ -106,9 +102,7 @@ bool MeaCircleTool::Create()
     return true;
 }
 
-
-void MeaCircleTool::SaveProfile(MeaProfile& profile)
-{
+void MeaCircleTool::SaveProfile(MeaProfile& profile) {
     FPOINT pt;
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
@@ -117,14 +111,13 @@ void MeaCircleTool::SaveProfile(MeaProfile& profile)
     pt = unitsMgr.ConvertPos(m_center);
     profile.WriteStr(_T("CircleXV"), MeaUtils::DblToStr(pt.x));
     profile.WriteStr(_T("CircleYV"), MeaUtils::DblToStr(pt.y));
+
     pt = unitsMgr.ConvertPos(m_perimeter);
     profile.WriteStr(_T("CircleX1"), MeaUtils::DblToStr(pt.x));
     profile.WriteStr(_T("CircleY1"), MeaUtils::DblToStr(pt.y));
 }
 
-
-void MeaCircleTool::LoadProfile(MeaProfile& profile)
-{
+void MeaCircleTool::LoadProfile(MeaProfile& profile) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     // Use the current positions as the default values
@@ -138,6 +131,7 @@ void MeaCircleTool::LoadProfile(MeaProfile& profile)
     pt.x = profile.ReadDbl(_T("CircleXV"), defC.x);
     pt.y = profile.ReadDbl(_T("CircleYV"), defC.y);
     m_center = unitsMgr.UnconvertPos(pt);
+    
     pt.x = profile.ReadDbl(_T("CircleX1"), defP.x);
     pt.y = profile.ReadDbl(_T("CircleY1"), defP.y);
     m_perimeter = unitsMgr.UnconvertPos(pt);
@@ -148,43 +142,33 @@ void MeaCircleTool::LoadProfile(MeaProfile& profile)
     SetPosition();
 }
 
-
-void MeaCircleTool::EnableCrosshairs()
-{
+void MeaCircleTool::EnableCrosshairs() {
     if (m_mgr->CrosshairsEnabled() && IsWindow(m_centerCH)) {
         m_centerCH.Show();
         m_perimeterCH.Show();
     }
 }
 
-
-void MeaCircleTool::DisableCrosshairs()
-{
+void MeaCircleTool::DisableCrosshairs() {
     if (IsWindow(m_centerCH)) {
         m_centerCH.Hide();
         m_perimeterCH.Hide();
     }
 }
 
-
-void MeaCircleTool::Flash()
-{
+void MeaCircleTool::Flash() {
     m_centerCH.Flash();
     m_perimeterCH.Flash();
 }
 
-
-void MeaCircleTool::Strobe()
-{
+void MeaCircleTool::Strobe() {
     m_centerCH.Flash(MeaCrossHair::kStrobeCount);
     m_perimeterCH.Flash(MeaCrossHair::kStrobeCount);
     m_dataWinCenter.Strobe();
     m_dataWinPerimeter.Strobe();
 }
 
-
-void MeaCircleTool::Enable()
-{
+void MeaCircleTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -195,12 +179,12 @@ void MeaCircleTool::Enable()
     // we will be using.
     //
     m_mgr->EnableRegionFields(MeaX1Field | MeaY1Field |
-                            MeaXVField | MeaYVField |
-                            MeaWidthField | MeaHeightField |
-                            MeaDistanceField | MeaAngleField |
-                            MeaAreaField,
-                            MeaX1Field | MeaY1Field |
-                            MeaXVField | MeaYVField);
+                              MeaXVField | MeaYVField |
+                              MeaWidthField | MeaHeightField |
+                              MeaDistanceField | MeaAngleField |
+                              MeaAreaField,
+                              MeaX1Field | MeaY1Field |
+                              MeaXVField | MeaYVField);
 
     if (!IsWindow(m_circle)) {
         Create();
@@ -220,9 +204,7 @@ void MeaCircleTool::Enable()
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaCircleTool::Disable()
-{
+void MeaCircleTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -237,14 +219,12 @@ void MeaCircleTool::Disable()
     m_dataWinPerimeter.Hide();
 }
 
-
-void MeaCircleTool::Update(MeaUpdateReason reason)
-{
+void MeaCircleTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
         MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-        
+
         // Convert the pixel locations to the current
         // units.
         //
@@ -291,9 +271,7 @@ void MeaCircleTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-bool MeaCircleTool::HasRegion()
-{
+bool MeaCircleTool::HasRegion() {
     // There is always a rectangular region unless
     // the center and perimeter are coincident.
     //
@@ -301,9 +279,7 @@ bool MeaCircleTool::HasRegion()
     return (rect.Height() != 0) && (rect.Width() != 0);
 }
 
-
-RECT MeaCircleTool::GetRegion()
-{
+RECT MeaCircleTool::GetRegion() {
     int radius = m_circle.GetRadius();
 
     CPoint topLeft(m_center.x - radius, m_center.y - radius);
@@ -315,9 +291,7 @@ RECT MeaCircleTool::GetRegion()
     return rect;
 }
 
-
-void MeaCircleTool::SetPosition(MeaFields which, int pixels)
-{
+void MeaCircleTool::SetPosition(MeaFields which, int pixels) {
     // Set the specified position component.
     //
     switch (which) {
@@ -357,11 +331,9 @@ void MeaCircleTool::SetPosition(MeaFields which, int pixels)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaCircleTool::SetPosition(const PointMap& points)
-{
+void MeaCircleTool::SetPosition(const PointMap& points) {
     PointMap::const_iterator iter;
-    
+
     // Read the position information from the points
     // map, and set the corresponding point.
     //
@@ -373,16 +345,14 @@ void MeaCircleTool::SetPosition(const PointMap& points)
     if (iter != points.end()) {
         m_perimeter = (*iter).second;
     }
-    
+
     // Reposition the tool and update the data display.
     //
     SetPosition();
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaCircleTool::SetPosition()
-{
+void MeaCircleTool::SetPosition() {
     // Ensure that the positions fall within the
     // limits of the screen containing the point.
     //
@@ -399,17 +369,13 @@ void MeaCircleTool::SetPosition()
     }
 }
 
-
-const POINT& MeaCircleTool::GetPosition() const
-{
+const POINT& MeaCircleTool::GetPosition() const {
     return *m_curPos;
 }
 
-
-void MeaCircleTool::GetPosition(MeaPositionLogMgr::Position& position) const
-{
+void MeaCircleTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-    
+
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = units.ConvertCoord(m_center);
@@ -432,9 +398,7 @@ void MeaCircleTool::GetPosition(MeaPositionLogMgr::Position& position) const
     position.RecordCircleArea(r);
 }
 
-
-void MeaCircleTool::IncPosition(MeaFields which)
-{
+void MeaCircleTool::IncPosition(MeaFields which) {
     switch (which) {
     case MeaXVField:
         SetPosition(which, m_center.x + 1);
@@ -453,9 +417,7 @@ void MeaCircleTool::IncPosition(MeaFields which)
     }
 }
 
-
-void MeaCircleTool::DecPosition(MeaFields which)
-{
+void MeaCircleTool::DecPosition(MeaFields which) {
     switch (which) {
     case MeaXVField:
         SetPosition(which, m_center.x - 1);
@@ -474,9 +436,7 @@ void MeaCircleTool::DecPosition(MeaFields which)
     }
 }
 
-
-void MeaCircleTool::ColorsChanged()
-{
+void MeaCircleTool::ColorsChanged() {
     // Set the crosshair colors.
     //
     m_centerCH.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
@@ -485,7 +445,7 @@ void MeaCircleTool::ColorsChanged()
     m_perimeterCH.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
                             MeaColors::Get(MeaColors::CrossHairBack),
                             MeaColors::Get(MeaColors::CrossHairHilite));
-    
+
     // Set the opacity of the crosshairs.
     //
     m_centerCH.SetOpacity(MeaColors::GetA(MeaColors::CrossHairOpacity));
@@ -502,21 +462,15 @@ void MeaCircleTool::ColorsChanged()
     m_line.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-
-CString MeaCircleTool::GetToolName() const
-{
+CString MeaCircleTool::GetToolName() const {
     return kToolName;
 }
 
-
-UINT MeaCircleTool::GetLabelId() const
-{
+UINT MeaCircleTool::GetLabelId() const {
     return IDS_MEA_CIRCLE;
 }
 
-
-void MeaCircleTool::OnCHEnter(const CHInfo *info)
-{
+void MeaCircleTool::OnCHEnter(const CHInfo* info) {
     // Show the data window corresponding to
     // the crosshair that the pointer has entered.
     //
@@ -528,9 +482,7 @@ void MeaCircleTool::OnCHEnter(const CHInfo *info)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaCircleTool::OnCHLeave(const CHInfo *info)
-{
+void MeaCircleTool::OnCHLeave(const CHInfo* info) {
     // Hide the data window corresponding to
     // the crosshair that the pointer has just
     // left.
@@ -542,9 +494,7 @@ void MeaCircleTool::OnCHLeave(const CHInfo *info)
     }
 }
 
-
-void MeaCircleTool::OnCHMove(const CHInfo *info)
-{
+void MeaCircleTool::OnCHMove(const CHInfo* info) {
     // Ctrl + drag moves the all the crosshairs
     // as a single unit.
     //
@@ -571,7 +521,7 @@ void MeaCircleTool::OnCHMove(const CHInfo *info)
     //
     else {
         CPoint& movingPoint = (info->id == kCenterId) ? m_center : m_perimeter;
-        CPoint& fixedPoint  = (info->id != kCenterId) ? m_center : m_perimeter;
+        CPoint& fixedPoint = (info->id != kCenterId) ? m_center : m_perimeter;
 
         movingPoint = info->centerPoint;
 

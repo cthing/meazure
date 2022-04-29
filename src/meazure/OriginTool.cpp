@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -27,24 +27,17 @@
 const CString MeaOriginTool::kToolName(_T("OriginTool"));
 
 
-MeaOriginTool::MeaOriginTool(MeaToolMgr* mgr) : MeaTool(mgr)
-{
-}
+MeaOriginTool::MeaOriginTool(MeaToolMgr* mgr) : MeaTool(mgr) {}
 
-
-MeaOriginTool::~MeaOriginTool()
-{
+MeaOriginTool::~MeaOriginTool() {
     try {
         Disable();
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaOriginTool::Create()
-{
+bool MeaOriginTool::Create() {
     // Create the line for each axis.
     //
     if (!m_xAxis.Create(0))
@@ -55,24 +48,18 @@ bool MeaOriginTool::Create()
     return true;
 }
 
-
-void MeaOriginTool::SaveProfile(MeaProfile& profile)
-{   
+void MeaOriginTool::SaveProfile(MeaProfile& profile) {
     profile.WriteBool(_T("OriginMarker"), IsEnabled());
 }
 
-
-void MeaOriginTool::LoadProfile(MeaProfile& profile)
-{
+void MeaOriginTool::LoadProfile(MeaProfile& profile) {
     if (profile.ReadBool(_T("OriginMarker"), kShowMarker))
         Enable();
     else
         Disable();
 }
 
-
-void MeaOriginTool::MasterReset()
-{
+void MeaOriginTool::MasterReset() {
 #pragma warning(disable: 4127)
     if (kShowMarker) {
         Enable();
@@ -82,9 +69,7 @@ void MeaOriginTool::MasterReset()
 #pragma warning(default: 4127)
 }
 
-
-void MeaOriginTool::Enable()
-{
+void MeaOriginTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -101,9 +86,7 @@ void MeaOriginTool::Enable()
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaOriginTool::Disable()
-{
+void MeaOriginTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -114,9 +97,7 @@ void MeaOriginTool::Disable()
     m_yAxis.Hide();
 }
 
-
-void MeaOriginTool::Update(MeaUpdateReason reason)
-{
+void MeaOriginTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
@@ -150,23 +131,17 @@ void MeaOriginTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-void MeaOriginTool::ColorsChanged()
-{
+void MeaOriginTool::ColorsChanged() {
     // Redraw the axes in the new line color.
     //
     m_xAxis.SetColor(MeaColors::Get(MeaColors::LineFore));
     m_yAxis.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-
-CString MeaOriginTool::GetToolName() const
-{
+CString MeaOriginTool::GetToolName() const {
     return kToolName;
 }
 
-
-const POINT& MeaOriginTool::GetPosition() const
-{
+const POINT& MeaOriginTool::GetPosition() const {
     return MeaUnitsMgr::Instance().GetOrigin();
 }

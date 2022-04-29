@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -17,8 +17,8 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/// @file
-/// @brief Header file for position recording, saving and loading manager.
+ /// @file
+ /// @brief Header file for position recording, saving and loading manager.
 
 #pragma once
 
@@ -41,41 +41,41 @@ class MeaPositionLogObserver;
 /// Exception thrown if a problem occurs while reading or writing
 /// the position log file.
 ///
-class MeaLogFileException
-{
+class MeaLogFileException {
+
 public:
     /// Constructor for the exception.
     ///
-    MeaLogFileException() { }
-    
+    MeaLogFileException() {}
+
     /// Destroys the exception.
     ///
-    virtual ~MeaLogFileException() { }
+    virtual ~MeaLogFileException() {}
 };
 
 
 /// Manages the recording, saving and loading of tool positions. The
 /// positions are saved to an XML format file.
 ///
-class MeaPositionLogMgr : public MeaXMLParserHandler, public MeaSingleton_T<MeaPositionLogMgr>
-{
+class MeaPositionLogMgr : public MeaXMLParserHandler, public MeaSingleton_T<MeaPositionLogMgr> {
+
 public:
     /// Represents a single monitor attached to the system.
     /// There is an instance of this class per monitor.
     ///
-    class Screen
-    {
+    class Screen {
+
     public:
         /// Constructs a screen object.
         ///
         Screen() : m_primary(false), m_manualRes(false) {
-            m_rect.left     = 0.0;
-            m_rect.right    = 0.0;
-            m_rect.top      = 0.0;
-            m_rect.bottom   = 0.0;
+            m_rect.left = 0.0;
+            m_rect.right = 0.0;
+            m_rect.top = 0.0;
+            m_rect.bottom = 0.0;
 
-            m_res.cx    = 0.0;
-            m_res.cy    = 0.0;
+            m_res.cx = 0.0;
+            m_res.cy = 0.0;
         }
 
         /// Constructs deep copy screen object from the specified
@@ -85,24 +85,23 @@ public:
         ///                     a copy of the screen.
         ///
         explicit Screen(const MeaScreenMgr::ScreenIter& screenIter);
-        
+
         /// Constructs a deep copy of the specified screen.
         ///
         /// @param screen       [in] Screen object to be copied.
         ///
         Screen(const Screen& screen) { Copy(screen); }
-        
+
         /// Destroys a screen object.
         ///
-        ~Screen() { }
-
+        ~Screen() {}
 
         /// Loads screen elements of the log file.
         ///
         /// @param screenNode   [in] screen node in the DOM.
         ///
         void Load(const MeaXMLNode* screenNode);
-        
+
         /// Saves the screen information
         ///
         /// @param mgr      [in] Parent manager.
@@ -110,7 +109,6 @@ public:
         /// @throw CFileException if there was a problem saving the file
         ///
         void Save(MeaPositionLogMgr& mgr, int indent) const;
-
 
         /// Assignment operator for a screen object. Makes
         /// a deep copy of the object.
@@ -122,7 +120,6 @@ public:
         Screen& operator=(const Screen& screen) {
             return Copy(screen);
         }
-
 
         /// Tests for equality between the specified screen object and this.
         ///
@@ -149,11 +146,11 @@ public:
         ///
         Screen& Copy(const Screen& screen) {
             if (&screen != this) {
-                m_primary   = screen.m_primary;
-                m_rect      = screen.m_rect;
-                m_res       = screen.m_res;
+                m_primary = screen.m_primary;
+                m_rect = screen.m_rect;
+                m_res = screen.m_res;
                 m_manualRes = screen.m_manualRes;
-                m_desc      = screen.m_desc;
+                m_desc = screen.m_desc;
             }
             return *this;
         }
@@ -176,13 +173,14 @@ public:
                     (m_desc == screen.m_desc));
         }
 
-        bool            m_primary;      ///< Is this the primary screen
-        FRECT           m_rect;         ///< Screen rectangle expressed in the units that were
-                                        ///< in effect at the time the screen object was created.
-        FSIZE           m_res;          ///< Screen resolution expressed in the units that were
-                                        ///< in effect at the time the screen object was created.
-        bool            m_manualRes;    ///< Is the resolution calibrated manually.
-        CString         m_desc;         ///< Description for the screen
+
+        bool m_primary;     ///< Is this the primary screen
+        FRECT m_rect;       ///< Screen rectangle expressed in the units that were
+                            ///< in effect at the time the screen object was created.
+        FSIZE m_res;        ///< Screen resolution expressed in the units that were
+                            ///< in effect at the time the screen object was created.
+        bool m_manualRes;   ///< Is the resolution calibrated manually.
+        CString m_desc;     ///< Description for the screen
     };
 
 
@@ -193,13 +191,13 @@ public:
     /// the desktop information in effect when they were recorded. This
     /// means that one desktop information section can serve many positions.
     ///
-    class DesktopInfo
-    {
+    class DesktopInfo {
+
     public:
         /// Constructs a desktop information object.
         ///
         DesktopInfo();
-        
+
         /// Constructs a desktop information object with the specified unique ID.
         ///
         /// @param guidStr      [in] GUID ID for the desktop information object.
@@ -211,11 +209,10 @@ public:
         /// @param desktop      [in] Desktop information object to copy.
         ///
         DesktopInfo(const DesktopInfo& desktop) { Copy(desktop); }
-        
+
         /// Destroys a desktop information object.
         ///
-        ~DesktopInfo() { }
-
+        ~DesktopInfo() {}
 
         /// Assigns the specified desktop information object to this object.
         ///
@@ -227,39 +224,37 @@ public:
             return Copy(desktop);
         }
 
+        /// Returns the linear units in effect when this object was created.
+        /// @return Linear units object in effect when this object was created.
+        MeaLinearUnits* GetLinearUnits() { return m_linearUnits; }
 
         /// Returns the linear units in effect when this object was created.
         /// @return Linear units object in effect when this object was created.
-        MeaLinearUnits*         GetLinearUnits() { return m_linearUnits; }
-
-        /// Returns the linear units in effect when this object was created.
-        /// @return Linear units object in effect when this object was created.
-        const MeaLinearUnits*   GetLinearUnits() const { return m_linearUnits; }
+        const MeaLinearUnits* GetLinearUnits() const { return m_linearUnits; }
 
         /// Returns the angular units in effect when this object was created.
         /// @return Angular units object in effect when this object was created.
-        MeaAngularUnits*        GetAngularUnits() { return m_angularUnits; }
+        MeaAngularUnits* GetAngularUnits() { return m_angularUnits; }
 
         /// Returns the angular units in effect when this object was created.
         /// @return Angular units object in effect when this object was created.
-        const MeaAngularUnits*  GetAngularUnits() const { return m_angularUnits; }
+        const MeaAngularUnits* GetAngularUnits() const { return m_angularUnits; }
 
         /// Indicates whether the y-axis was inverted when this object was created.
         /// @return <b>true</b> if the y-axis was inverted when this object was created.
-        bool            GetInvertY() const { return m_invertY; }
+        bool GetInvertY() const { return m_invertY; }
 
         /// Returns the location of the origin when this object was created.
         /// @return The location of the origin when this object was created.
-        const FPOINT&   GetOrigin() const { return m_origin; }
+        const FPOINT& GetOrigin() const { return m_origin; }
 
         /// Returns the unique ID for this object.
         /// @return GUID ID for this object.
-        const MeaGUID&  GetId() const { return m_id; }
+        const MeaGUID& GetId() const { return m_id; }
 
         /// Sets a unique ID for this object.
         /// @param guidStr      [in] GUID ID to set for this object.
-        void            SetId(LPCTSTR guidStr) { m_id = guidStr; }
-
+        void SetId(LPCTSTR guidStr) { m_id = guidStr; }
 
         /// Returns the name for custom units.
         /// @return Name for custom units.
@@ -275,12 +270,11 @@ public:
 
         /// Returns the conversion factor for custom units.
         /// @return Conversion factor.
-        double  GetCustomFactor() const { return m_customFactor; }
+        double GetCustomFactor() const { return m_customFactor; }
 
         /// Returns the set of display precisions for custom units.
         /// @return Set of custom units display precisions.
         MeaUnits::DisplayPrecisions GetCustomPrecisions() const { return m_customPrecisions; }
-
 
         /// Loads desktop elements of the log file.
         ///
@@ -295,7 +289,6 @@ public:
         /// @throw CFileException is there was a problem saving the information
         ///
         void Save(MeaPositionLogMgr& mgr, int indent) const;
-
 
         /// Compares the specified desktop information object with this to determine equality.
         ///
@@ -325,19 +318,19 @@ public:
         ///
         DesktopInfo& Copy(const DesktopInfo& desktop) {
             if (&desktop != this) {
-                m_id                = desktop.m_id;
-                m_origin            = desktop.m_origin;
-                m_invertY           = desktop.m_invertY;
-                m_size              = desktop.m_size;
-                m_linearUnits       = desktop.m_linearUnits;
-                m_angularUnits      = desktop.m_angularUnits;
-                m_screens           = desktop.m_screens;
+                m_id = desktop.m_id;
+                m_origin = desktop.m_origin;
+                m_invertY = desktop.m_invertY;
+                m_size = desktop.m_size;
+                m_linearUnits = desktop.m_linearUnits;
+                m_angularUnits = desktop.m_angularUnits;
+                m_screens = desktop.m_screens;
 
-                m_customName        = desktop.m_customName;
-                m_customAbbrev      = desktop.m_customAbbrev;
-                m_customBasisStr    = desktop.m_customBasisStr;
-                m_customFactor      = desktop.m_customFactor;
-                m_customPrecisions  = desktop.m_customPrecisions;
+                m_customName = desktop.m_customName;
+                m_customAbbrev = desktop.m_customAbbrev;
+                m_customBasisStr = desktop.m_customBasisStr;
+                m_customFactor = desktop.m_customFactor;
+                m_customPrecisions = desktop.m_customPrecisions;
             }
             return *this;
         }
@@ -358,19 +351,18 @@ public:
         bool IsEqual(const DesktopInfo& desktop) const {
             return (MEA_DBL_EQL(m_origin.x, desktop.m_origin.x) &&
                     MEA_DBL_EQL(m_origin.y, desktop.m_origin.y) &&
-                    (m_invertY          == desktop.m_invertY) &&
+                    (m_invertY == desktop.m_invertY) &&
                     MEA_DBL_EQL(m_size.cx, desktop.m_size.cx) &&
                     MEA_DBL_EQL(m_size.cy, desktop.m_size.cy) &&
-                    (m_linearUnits      == desktop.m_linearUnits) &&
-                    (m_angularUnits     == desktop.m_angularUnits) &&
-                    (m_screens          == desktop.m_screens) &&
-                    (m_customName       == desktop.m_customName) &&
-                    (m_customAbbrev     == desktop.m_customAbbrev) &&
-                    (m_customBasisStr   == desktop.m_customBasisStr) &&
+                    (m_linearUnits == desktop.m_linearUnits) &&
+                    (m_angularUnits == desktop.m_angularUnits) &&
+                    (m_screens == desktop.m_screens) &&
+                    (m_customName == desktop.m_customName) &&
+                    (m_customAbbrev == desktop.m_customAbbrev) &&
+                    (m_customBasisStr == desktop.m_customBasisStr) &&
                     MEA_DBL_EQL(m_customFactor, desktop.m_customFactor) &&
                     (m_customPrecisions == desktop.m_customPrecisions));
         }
-
 
         /// Sets the linear units for the object based on the specified units name.
         ///
@@ -383,7 +375,6 @@ public:
         /// @param unitsStr     [in] Angular units name.
         ///
         void SetAngularUnits(const CString& unitsStr);
-
 
         /// Loads the display precisions values for the custom units.
         ///
@@ -400,18 +391,17 @@ public:
         void SaveCustomPrecisions(MeaPositionLogMgr& mgr, int indent) const;
 
 
-        MeaGUID             m_id;               ///< ID for use by a Position object to reference this object.
-        FPOINT              m_origin;           ///< Origin in the units that were in effect when the desktop object was created.
-        bool                m_invertY;          ///< Is origin inverted.
-        FSIZE               m_size;             ///< Desktop size in units in effect when desktop object created.
-        MeaLinearUnits      *m_linearUnits;     ///< Current linear units.
-        MeaAngularUnits     *m_angularUnits;    ///< Current angle units.
-        ScreenList          m_screens;          ///< List of display screens.
-
-        CString             m_customName;       ///< Custom units name.
-        CString             m_customAbbrev;     ///< Custom units abbreviation.
-        CString             m_customBasisStr;   ///< Custom scale factor basis.
-        double              m_customFactor;     ///< Custom scale factor.
+        MeaGUID m_id;                       ///< ID for use by a Position object to reference this object.
+        FPOINT m_origin;                    ///< Origin in the units that were in effect when the desktop object was created.
+        bool m_invertY;                     ///< Is origin inverted.
+        FSIZE m_size;                       ///< Desktop size in units in effect when desktop object created.
+        MeaLinearUnits* m_linearUnits;      ///< Current linear units.
+        MeaAngularUnits* m_angularUnits;    ///< Current angle units.
+        ScreenList m_screens;               ///< List of display screens.
+        CString m_customName;               ///< Custom units name.
+        CString m_customAbbrev;             ///< Custom units abbreviation.
+        CString m_customBasisStr;           ///< Custom scale factor basis.
+        double m_customFactor;              ///< Custom scale factor.
         MeaUnits::DisplayPrecisions m_customPrecisions; ///< Custom display precisions.
     };
 
@@ -428,8 +418,8 @@ public:
     /// position, whereas the Line tool requires two points, one per endpoint of the line.
     /// Each point is named by the tool (e.g. "v", "1", "2").
     ///
-    class Position
-    {
+    class Position {
+
     public:
         /// Constructs a position object. This constructor is intended for use solely
         /// by STL collections and is not used to construct new position objects in
@@ -457,17 +447,16 @@ public:
         /// @param timestamp        [in] Identifies when this position was recorded.
         ///
         Position(MeaPositionLogMgr* mgr, const CString& desktopInfoIdStr, const CString& toolName, const CString& timestamp);
-        
+
         /// Copy constructor.
         ///
         /// @param position     [in] Position object to be copied into a new position object.
         ///
         Position(const Position& position);
-        
+
         /// Destroys a position object.
         ///
         ~Position();
-
 
         /// Performs assignment of the specified position object to this position object.
         ///
@@ -479,13 +468,12 @@ public:
             return Copy(position);
         }
 
-
         /// Places a description on the position.
         ///
         /// @param desc     [in] Descriptive text for the position.
         ///
-        void    SetDesc(const CString& desc) { m_desc = desc; }
-        
+        void SetDesc(const CString& desc) { m_desc = desc; }
+
         /// Returns the description of the position.
         ///
         /// @return Description of the position or the empty string if
@@ -499,7 +487,6 @@ public:
         ///
         CString GetTimeStamp() const { return m_timestamp; }
 
-
         /// Adds the specified point to the position using the specified name
         /// to identify the point.
         ///
@@ -507,7 +494,6 @@ public:
         /// @param pt       [in] Point to be stored in the position.
         ///
         void AddPoint(LPCTSTR name, const FPOINT& pt) { m_points[name] = pt; }
-
 
         /// Records the specified point as an x1, y1 point.
         /// @param point        [in] Point to record, in the current units.
@@ -557,7 +543,6 @@ public:
         /// @param radius       [in] Radius used to calculate the area, in the current units.
         void RecordCircleArea(double radius);
 
-
         /// Tells the tool manager to display the position using the
         /// appropriate tool.
         ///
@@ -589,26 +574,25 @@ public:
         Position& Copy(const Position& position);
 
 
-        UINT        m_fieldMask;    ///< Data fields defined for this position. Different tools provide different amounts of data.
-        PointMap    m_points;       ///< Location of the current tool, , in the units in effect when the position was recorded.
-        double      m_width;        ///< Width of rectangle or bounding box, in the units in effect when the position was recorded.
-        double      m_height;       ///< Height of rectangle or bounding box, in the units in effect when the position was recorded.
-        double      m_distance;     ///< Length of line or diagonal, in the units in effect when the position was recorded.
-        double      m_area;         ///< Area of rectangle or bounding box, in the units in effect when the position was recorded.
-        double      m_angle;        ///< Angle of diagonal, line, or angle tool, in the units in effect when the position was recorded.
-
-        MeaPositionLogMgr*  m_mgr;              ///< Parent manager.
-        MeaGUID             m_desktopInfoId;    ///< Id of desktop information object referenced by this position.
-        CString             m_toolName;         ///< Name of measurement tool whose position is represented by this object.
-        CString             m_timestamp;        ///< Date and time the position was recorded.
-        CString             m_desc;             ///< Description for position.
+        UINT m_fieldMask;           ///< Data fields defined for this position. Different tools provide different amounts of data.
+        PointMap m_points;          ///< Location of the current tool, , in the units in effect when the position was recorded.
+        double m_width;             ///< Width of rectangle or bounding box, in the units in effect when the position was recorded.
+        double m_height;            ///< Height of rectangle or bounding box, in the units in effect when the position was recorded.
+        double m_distance;          ///< Length of line or diagonal, in the units in effect when the position was recorded.
+        double m_area;              ///< Area of rectangle or bounding box, in the units in effect when the position was recorded.
+        double m_angle;             ///< Angle of diagonal, line, or angle tool, in the units in effect when the position was recorded.
+        MeaPositionLogMgr* m_mgr;   ///< Parent manager.
+        MeaGUID m_desktopInfoId;    ///< Id of desktop information object referenced by this position.
+        CString m_toolName;         ///< Name of measurement tool whose position is represented by this object.
+        CString m_timestamp;        ///< Date and time the position was recorded.
+        CString m_desc;             ///< Description for position.
     };
 
-    
+
     /// Records the position of the current radio tool.
     ///
     void RecordPosition();
-    
+
     /// Replaces the specified position list entry with the
     /// current radio tool position.
     ///
@@ -644,7 +628,6 @@ public:
     ///
     bool IsModified() const { return m_modified; }
 
-
     /// Returns the position object at the specified index.
     ///
     /// @param posIndex     [in] Zero based index of the position to return.
@@ -659,7 +642,6 @@ public:
     /// @param posIndex     [in] Zero based index of the position to display.
     ///
     void ShowPosition(unsigned int posIndex);
-
 
     /// Loads the specified position log file.
     ///
@@ -687,7 +669,6 @@ public:
     ///
     bool SaveIfModified();
 
-
     /// When a change occurs in this manager, the registered observer
     /// object is informed.
     ///
@@ -696,11 +677,9 @@ public:
     ///
     void SetObserver(MeaPositionLogObserver* observer) { m_observer = observer; }
 
-
     /// Displays the position management dialog.
     ///
     void ManagePositions();
-
 
     /// Persists the state of the log manager itself to the
     /// specified profile object.
@@ -718,11 +697,9 @@ public:
     ///
     void    LoadProfile(MeaProfile& profile);
 
-
     /// Resets the position manager to its default state.
     ///
     void    MasterReset();
-
 
     /// Called during the XML parsing of the log file, to parse an
     /// external entity such as a DTD.
@@ -730,8 +707,7 @@ public:
     /// @param parser       [in] XML parser.
     /// @param pathname     [in] Pathname of the external entity.
     ///
-    virtual void    ParseEntity(MeaXMLParser& parser,
-                                const CString& pathname) override;
+    virtual void    ParseEntity(MeaXMLParser& parser, const CString& pathname) override;
 
     /// Returns the pathname of the currently parsed log file.
     ///
@@ -753,24 +729,23 @@ private:
     /// of a collection of positions. In turn, a position consists of
     /// on or more points depending on the measurement tool.
     ///
-    class Positions
-    {
+    class Positions {
+
     public:
         /// Constructs a position collection object.
         ///
         Positions();
-        
+
         /// Destroys a position collection object.
         ///
         ~Positions();
-
 
         /// Indicates if there are any positions stored in the object.
         ///
         /// @return <b>true</b> if there are positions.
         ///
         bool Empty() const { return m_posMap.empty(); }
-        
+
         /// Returns the number of positions stored in the object.
         ///
         /// @return Number of positions.
@@ -782,7 +757,7 @@ private:
         /// @param position     [in] Position to add to the collection.
         ///
         void Add(Position* position);
-        
+
         /// Places the specified position at the specified location in
         /// the collection.
         ///
@@ -802,7 +777,7 @@ private:
         /// @throws std::out_of_range if the specified position is out of bounds
         ///
         Position& Get(int posIndex);
-        
+
         /// Removes the position object from the specified location in the
         /// collection and destroys the object.
         ///
@@ -816,7 +791,6 @@ private:
         /// position objects.
         ///
         void DeleteAll();
-
 
         /// Saves all positions in the collection to the log file.
         ///
@@ -842,7 +816,7 @@ private:
 
     typedef std::map<MeaGUID, DesktopInfo, MeaGUID::less> DesktopInfoMap;   ///< Maps GUID to a desktop information object.
     typedef std::map<MeaGUID, int, MeaGUID::less> RefCountMap;              ///< Maps a GUID to a reference count.
-    
+
 
     static constexpr int kChunkSize { 1024 };       ///< Log file parsing buffer allocation increment.
     static constexpr LPCTSTR kExt { _T("mpl") };    ///< Log file suffix.
@@ -854,34 +828,31 @@ private:
     /// @return Position log file save dialog.
     ///
     MeaPositionSaveDlg* CreateSaveDialog();
-    
+
     /// Constructs a file open dialog tailored to loading position log files.
     ///
     /// @return Position log file option dialog.
     ///
-    CFileDialog*        CreateLoadDialog();
-
+    CFileDialog* CreateLoadDialog();
 
     /// Called when the position management dialog is destroyed.
     ///
-    void    ManageDlgDestroyed() { m_manageDialog = nullptr; }
-
+    void ManageDlgDestroyed() { m_manageDialog = nullptr; }
 
     /// Writes the general information section of the position log file.
     /// @param indent       [in] Output indentation level.
     /// @throws CFileException if there was a problem writing the information
-    void    WriteInfoSection(int indent);
+    void WriteInfoSection(int indent);
 
     /// Writes the desktop information section of the position log file.
     /// @param indent       [in] Output indentation level.
     /// @throws CFileException if there was a problem writing the information
-    void    WriteDesktopsSection(int indent);
+    void WriteDesktopsSection(int indent);
 
     /// Writes the positions section of the position log file.
     /// @param indent       [in] Output indentation level.
     /// @throws CFileException if there was a problem writing the information
-    void    WritePositionsSection(int indent);
-
+    void WritePositionsSection(int indent);
 
     /// Opens the specified position log file either for reading or writing.
     ///
@@ -890,11 +861,11 @@ private:
     ///
     /// @return <b>true</b> if file opened successfully.
     ///
-    bool    Open(const CString& pathname, UINT mode);
+    bool Open(const CString& pathname, UINT mode);
 
     /// Closes the currently open position log file.
     ///
-    void    Close() { m_stdioFile.Close(); m_stdioOpen = false; }
+    void Close() { m_stdioFile.Close(); m_stdioOpen = false; }
 
     /// Printf-like method for writing to a position log file.
     ///
@@ -903,34 +874,33 @@ private:
     /// @param ...              [in] Items to write to the file.
     /// @throws CFileException if there was a problem writing the information
     ///
-    void    Write(int indentLevel, LPCTSTR format, ...);
-
+    void Write(int indentLevel, LPCTSTR format, ...);
 
     /// Handles the top level elements of the log file DOM and
     /// supervises the processing of the lower level elements.
     ///
     /// @param dom          [in] Root node of the DOM.
     ///
-    void    ProcessDOM(const MeaXMLNode* dom);
-    
+    void ProcessDOM(const MeaXMLNode* dom);
+
     /// Handles the info element of the log file.
     ///
     /// @param infoNode     [in] info node in the DOM.
     ///
-    void    ProcessInfoNode(const MeaXMLNode* infoNode);
-    
+    void ProcessInfoNode(const MeaXMLNode* infoNode);
+
     /// Handles the desktop elements of the log file.
     ///
     /// @param desktopNode  [in] desktop node in the DOM.
     ///
-    void    ProcessDesktopNode(const MeaXMLNode* desktopNode);
-    
+    void ProcessDesktopNode(const MeaXMLNode* desktopNode);
+
     /// Handles the position elements of the log file.
     ///
     /// @param positionNode [in] position node in the DOM
     ///
-    void    ProcessPositionNode(const MeaXMLNode* positionNode);
-    
+    void ProcessPositionNode(const MeaXMLNode* positionNode);
+
     /// Concatenates all child data nodes into a single string.
     ///
     /// @param elementNode  [in] Parent node of data nodes
@@ -939,14 +909,13 @@ private:
     ///
     static CString ProcessDataNodes(const MeaXMLNode* elementNode);
 
-
     /// Records the current desktop information if the information
     /// has not already been recorded.
     ///
     /// @return ID of the desktop information object that was either
     ///         created of reused.
     ///
-    MeaGUID     RecordDesktopInfo();
+    MeaGUID RecordDesktopInfo();
 
     /// Returns the desktop information object corresponding to
     /// the specified ID.
@@ -955,7 +924,7 @@ private:
     ///
     /// @return Desktop information object corresponding to the ID.
     ///
-    DesktopInfo&    GetDesktopInfo(const MeaGUID& id);
+    DesktopInfo& GetDesktopInfo(const MeaGUID& id);
 
     /// Increments the reference count for the specified desktop
     /// information object.
@@ -963,7 +932,7 @@ private:
     /// @param id       [in] ID of the desktop info object whose reference
     ///                 count is to be incremented.
     ///
-    void    AddDesktopRef(const MeaGUID& id);
+    void AddDesktopRef(const MeaGUID& id);
 
     /// Decrements the reference count for the specified desktop
     /// information object.
@@ -971,28 +940,29 @@ private:
     /// @param id       [in] ID of the desktop info object whose reference
     ///                 count is to be decremented.
     ///
-    void    ReleaseDesktopRef(const MeaGUID& id);
+    void ReleaseDesktopRef(const MeaGUID& id);
 
     /// Performs the actual work or deleting all positions.
     ///
     void ClearPositions();
-    
-    MeaPositionLogObserver* m_observer;         ///< Position log manager observer.
-    DesktopInfoMap          m_desktopInfoMap;   ///< Desktop information objects
-    RefCountMap             m_refCountMap;      ///< Desktop information object reference count.
-    Positions               m_positions;        ///< Recorded positions.
-    MeaPositionSaveDlg*     m_saveDialog;       ///< Position log file save dialog.
-    CFileDialog*            m_loadDialog;       ///< Position log file open dialog.
-    CString                 m_saveDlgTitle;     ///< Title for the file save dialog.
-    CString                 m_loadDlgTitle;     ///< Title for the file open dialog.
-    CString                 m_initialDir;       ///< Initial directory for the file save and open dialogs.
-    CString                 m_pathname;         ///< Pathname of current position log file.
-    CStdioFile              m_stdioFile;        ///< File pointer for an open position log file.
-    bool                    m_stdioOpen;        ///< Is the position log file open.
-    CString                 m_title;            ///< Title for the positions.
-    CString                 m_desc;             ///< Description of the positions.
-    bool                    m_modified;         ///< Have the positions been modified since last save.
-    MeaPositionLogDlg*      m_manageDialog;     ///< Position management dialog.
+
+
+    MeaPositionLogObserver* m_observer; ///< Position log manager observer.
+    DesktopInfoMap m_desktopInfoMap;    ///< Desktop information objects
+    RefCountMap m_refCountMap;          ///< Desktop information object reference count.
+    Positions m_positions;              ///< Recorded positions.
+    MeaPositionSaveDlg* m_saveDialog;   ///< Position log file save dialog.
+    CFileDialog* m_loadDialog;          ///< Position log file open dialog.
+    CString m_saveDlgTitle;             ///< Title for the file save dialog.
+    CString m_loadDlgTitle;             ///< Title for the file open dialog.
+    CString m_initialDir;               ///< Initial directory for the file save and open dialogs.
+    CString m_pathname;                 ///< Pathname of current position log file.
+    CStdioFile m_stdioFile;             ///< File pointer for an open position log file.
+    bool m_stdioOpen;                   ///< Is the position log file open.
+    CString m_title;                    ///< Title for the positions.
+    CString m_desc;                     ///< Description of the positions.
+    bool m_modified;                    ///< Have the positions been modified since last save.
+    MeaPositionLogDlg* m_manageDialog;  ///< Position management dialog.
 
     friend class Screen;                ///< Represents a display screen.
     friend class DesktopInfo;           ///< Desktop information object.

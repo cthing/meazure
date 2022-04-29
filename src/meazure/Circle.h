@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -32,8 +32,8 @@
 /// is formed by using a series of circularly arranged polygonal regions
 /// to create a thin circular window.
 ///
-class MeaCircle : public MeaGraphic
-{
+class MeaCircle : public MeaGraphic {
+
 public:
     /// Constructs a circle. Prior to displaying the circle with
     /// the Show() method, the Create() method must be called to
@@ -44,7 +44,6 @@ public:
     /// Destroys the circle.
     ///
     virtual ~MeaCircle();
-
 
     /// Creates the window for the circle. This method must be called
     /// before the circle can be displayed and before any operation that
@@ -59,32 +58,29 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(const CWnd *parent = nullptr);
-
+    bool Create(const CWnd* parent = nullptr);
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.
     ///
     virtual void Hide() override;
 
-
     /// Sets the position and size of the circle.
     ///
     /// @param center       [in] Location of the center of the circle, in pixels
     /// @param perimeter    [in] Location of a point on the perimeter of the circle, in pixels
     ///
-    void    SetPosition(const POINT& center, const POINT& perimeter);
+    void SetPosition(const POINT& center, const POINT& perimeter);
 
     /// Obtains the position and size of the circle.
     ///
     /// @param center       [out] Location of the center of the circle, in pixels
     /// @param perimeter    [out] Location of a point on the perimeter of the circle, in pixels
     ///
-    void    GetPosition(POINT& center, POINT& perimeter) {
-        center      = m_center;
-        perimeter   = m_perimeter;
+    void GetPosition(POINT& center, POINT& perimeter) {
+        center = m_center;
+        perimeter = m_perimeter;
     }
-
 
     /// Calculates the radius of the circle based on the center and perimeter
     /// points. The following classic equation is used:
@@ -93,7 +89,7 @@ public:
     /// \f]
     /// @return The length of the circle's radius, in pixels.
     ///
-    int     GetRadius() const {
+    int GetRadius() const {
         return static_cast<int>(MeaLayout::CalcLength(m_center, m_perimeter));
     }
 
@@ -101,7 +97,7 @@ public:
     ///
     /// @param color    [in] Color value defined by the Windows GDI RGB macro.
     ///
-    void    SetColor(COLORREF color);
+    void SetColor(COLORREF color);
 
 protected:
     DECLARE_MESSAGE_MAP()
@@ -145,7 +141,7 @@ private:
     ///
     /// @param radius   [in] radius of the circle, in pixels
     ///
-    void    PlotCircle(int radius);
+    void PlotCircle(int radius);
 
     /// The circular window is composed of a series of single pixel
     /// rectangles arranged in a circle. At each point on the circle
@@ -156,7 +152,7 @@ private:
     /// @param x    [in] X coordinate of the point on the circle
     /// @param y    [in] Y coordinate of the point on the circle
     ///
-    void    AddPoint(int x, int y) {
+    void AddPoint(int x, int y) {
         POINT p;
 
         // Put the coordinates into a point
@@ -171,7 +167,7 @@ private:
             // Determine where in the coordinate array
             // we will start adding the rectangle coordinates.
             //
-            POINT *arr = &m_arr[m_count << 2];
+            POINT* arr = &m_arr[m_count << 2];
 
             // (x,y)   (x+1, y)
             //    ---------
@@ -184,7 +180,7 @@ private:
 
             // (x,y)
             //
-            *arr++ = p;
+            * arr++ = p;
 
             // (x+1,y)
             //
@@ -207,13 +203,14 @@ private:
         }
     }
 
-    CPoint          m_center;           ///< Location of the center of the circle, in pixels
-    CPoint          m_perimeter;        ///< Location of a point on the perimeter of the circle, in pixels
-    CRect           m_clipRect;         ///< Virtual rectangle formed by all display monitors, in pixels
-    CBrush          *m_foreBrush;       ///< Brush for drawing the circle
-    MeaTimer        m_timer;            ///< Timer for delayed drawing of circle to reduce visual artifacts
 
-    POINT           *m_arr;             ///< Array of coordinates for each rectangle making up the circular region
-    unsigned int    m_count;            ///< Number of rectangles in the circular region
-    static int      *m_varr;            ///< Number of coordinates comprising each polygon making up the circular region (always 4 in our case)
+    CPoint m_center;        ///< Location of the center of the circle, in pixels
+    CPoint m_perimeter;     ///< Location of a point on the perimeter of the circle, in pixels
+    CRect m_clipRect;       ///< Virtual rectangle formed by all display monitors, in pixels
+    CBrush* m_foreBrush;    ///< Brush for drawing the circle
+    MeaTimer m_timer;       ///< Timer for delayed drawing of circle to reduce visual artifacts
+    POINT* m_arr;           ///< Array of coordinates for each rectangle making up the circular region
+    unsigned int m_count;   ///< Number of rectangles in the circular region
+    static int* m_varr;     ///< Number of coordinates comprising each polygon making up the circular
+                            ///< region (always 4 in our case)
 };

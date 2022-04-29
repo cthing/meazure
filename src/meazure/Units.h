@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -38,43 +38,43 @@ class MeaUnitsMgr;
 /// Identifiers for linear measurement units.
 ///
 enum MeaLinearUnitsId {
-    MeaPixelsId         = 0,        ///< Pixel units.
-    MeaPointsId         = 1,        ///< Point units (1/72 inch).
-    MeaTwipsId          = 2,        ///< Twip units (1/1440 inch).
-    MeaInchesId         = 3,        ///< Inch units.
-    MeaCentimetersId    = 4,        ///< Centimeter units (1/2.54 inch)
-    MeaMillimetersId    = 5,        ///< Millimeter units (1/25.4 inch)
-    MeaPicasId          = 6,        ///< Pica units (1/6 inch)
-    MeaCustomId         = 7         ///< User defined units
+    MeaPixelsId = 0,        ///< Pixel units.
+    MeaPointsId = 1,        ///< Point units (1/72 inch).
+    MeaTwipsId = 2,         ///< Twip units (1/1440 inch).
+    MeaInchesId = 3,        ///< Inch units.
+    MeaCentimetersId = 4,   ///< Centimeter units (1/2.54 inch)
+    MeaMillimetersId = 5,   ///< Millimeter units (1/25.4 inch)
+    MeaPicasId = 6,         ///< Pica units (1/6 inch)
+    MeaCustomId = 7         ///< User defined units
 };
 
 
 /// Identifiers for angular measurement units.
 ///
 enum MeaAngularUnitsId {
-    MeaDegreesId    = 0,            ///< Angles reported in degrees.
-    MeaRadiansId    = 1             ///< Angles reported in radians.
+    MeaDegreesId = 0,            ///< Angles reported in degrees.
+    MeaRadiansId = 1             ///< Angles reported in radians.
 };
 
 
 /// Types of linear measurements.
 ///
 enum MeaLinearMeasurementId {
-    MeaX    = 0,        ///< X coordinate
-    MeaY    = 1,        ///< Y coordinate
-    MeaW    = 2,        ///< Width
-    MeaH    = 3,        ///< Height
-    MeaD    = 4,        ///< Distance
-    MeaAr   = 5,        ///< Area
-    MeaRx   = 6,        ///< Screen resolution in the X direction
-    MeaRy   = 7         ///< Screen resolution in the Y direction
+    MeaX = 0,        ///< X coordinate
+    MeaY = 1,        ///< Y coordinate
+    MeaW = 2,        ///< Width
+    MeaH = 3,        ///< Height
+    MeaD = 4,        ///< Distance
+    MeaAr = 5,       ///< Area
+    MeaRx = 6,       ///< Screen resolution in the X direction
+    MeaRy = 7        ///< Screen resolution in the Y direction
 };
 
 
 /// Types of angular measurements.
 ///
 enum MeaAngularMeasurementId {
-    MeaA    = 0         ///< Angle
+    MeaA = 0         ///< Angle
 };
 
 
@@ -97,8 +97,8 @@ enum MeaConvertDir {
 ///
 /// This class serves as the base class for all measurement units.
 ///
-class MeaUnits
-{
+class MeaUnits {
+
 public:
     static const double kPI;    ///< The value of pi.
 
@@ -112,7 +112,7 @@ public:
     /// @param profile      [in] Profile object into which to persist
     ///                     the state of the units class.
     ///
-    virtual void    SaveProfile(MeaProfile& profile);
+    virtual void SaveProfile(MeaProfile& profile);
 
     /// Restores the state of a units class instance from the specified
     /// profile object.
@@ -120,28 +120,25 @@ public:
     /// @param profile      [in] Profile object from which to restore
     ///                     the state of the units class.
     ///
-    virtual void    LoadProfile(MeaProfile& profile);
-
+    virtual void LoadProfile(MeaProfile& profile);
 
     /// Persists the measurement precisions to the specified profile object.
     ///
     /// @param profile      [in] Profile object into which to persist
     ///                     the decimal place precisions.
     ///
-    void    SavePrecision(MeaProfile& profile);
+    void SavePrecision(MeaProfile& profile);
 
     /// Restores the measurement precisions from the specified profile object.
     ///
     /// @param profile      [in] Profile object from which to restore
     ///                     the decimal place precisions.
     ///
-    void    LoadPrecision(MeaProfile& profile);
-
+    void LoadPrecision(MeaProfile& profile);
 
     /// Called to restores the units to their default state.
     ///
-    virtual void    MasterReset();
-
+    virtual void MasterReset();
 
     /// Returns a string describing the units.
     ///
@@ -153,7 +150,7 @@ public:
     ///
     /// @param displayPrecisions    [in] Set of precisions for all measurement types.
     ///
-    void    SetDisplayPrecisions(const DisplayPrecisions& displayPrecisions) {
+    void SetDisplayPrecisions(const DisplayPrecisions& displayPrecisions) {
         m_displayPrecisions = displayPrecisions;
     }
 
@@ -175,7 +172,7 @@ public:
 
     /// Sets the default display precisions as the current precisions.
     ///
-    void    RestoreDefaultPrecisions() {
+    void RestoreDefaultPrecisions() {
         m_displayPrecisions = m_defaultPrecisions;
     }
 
@@ -193,7 +190,7 @@ protected:
     /// @param unitsStr     [in] Name for the units.
     ///
     explicit MeaUnits(LPCTSTR unitsStr);
-    
+
     /// Base class destructor.
     ///
     virtual ~MeaUnits();
@@ -203,7 +200,7 @@ protected:
     ///
     /// @param name     [in] Identifying name for the precision.
     ///
-    void    AddPrecisionName(LPCTSTR name) {
+    void AddPrecisionName(LPCTSTR name) {
         m_displayPrecisionNames.push_back(name);
     }
 
@@ -212,16 +209,16 @@ protected:
     ///
     /// @param precision    [in] Number of decimal places to display.
     ///
-    void    AddPrecision(int precision) {
+    void AddPrecision(int precision) {
         m_defaultPrecisions.push_back(precision);
         m_displayPrecisions.push_back(precision);
     }
 
 private:
-    DisplayPrecisions       m_defaultPrecisions;        ///< Default precisions for all measurement types.
-    DisplayPrecisions       m_displayPrecisions;        ///< Current precisions for all measurement types.
-    DisplayPrecisionNames   m_displayPrecisionNames;    ///< Names for all precision values.
-    CString                 m_unitsStr;                 ///< Name for the units.
+    DisplayPrecisions m_defaultPrecisions;          ///< Default precisions for all measurement types.
+    DisplayPrecisions m_displayPrecisions;          ///< Current precisions for all measurement types.
+    DisplayPrecisionNames m_displayPrecisionNames;  ///< Names for all precision values.
+    CString m_unitsStr;                             ///< Name for the units.
 };
 
 
@@ -229,14 +226,14 @@ private:
 /// The angular units cover the angle measurement units. This is
 /// the base class for all angular units.
 ///
-class MeaAngularUnits : public MeaUnits
-{
+class MeaAngularUnits : public MeaUnits {
+
 public:
     /// Returns the identifier for the angular units.
     ///
     /// @return Angular units ID.
     ///
-    MeaAngularUnitsId   GetUnitsId() const { return m_unitsId; }
+    MeaAngularUnitsId GetUnitsId() const { return m_unitsId; }
 
     /// Formats the specified angular measurement value using the
     /// precision for the specified measurement ID.
@@ -266,20 +263,20 @@ protected:
     /// @param unitsStr     [in] Name for the units.
     ///
     MeaAngularUnits(MeaAngularUnitsId unitsId, LPCTSTR unitsStr);
-    
+
     /// Destroys an angular-based unit.
     ///
     virtual ~MeaAngularUnits();
 
 private:
-    MeaAngularUnitsId   m_unitsId;  ///< Identifier for the units.
+    MeaAngularUnitsId m_unitsId;  ///< Identifier for the units.
 };
 
 
 /// Provides angular measurements in degrees.
 ///
-class MeaDegreeUnits : public MeaAngularUnits
-{
+class MeaDegreeUnits : public MeaAngularUnits {
+
 public:
     /// Constructs a degree measurement unit.
     ///
@@ -302,8 +299,8 @@ public:
 
 /// Provides angular measurements in radians.
 ///
-class MeaRadianUnits : public MeaAngularUnits
-{
+class MeaRadianUnits : public MeaAngularUnits {
+
 public:
     /// Constructs a radian measurement unit.
     ///
@@ -329,14 +326,14 @@ public:
 /// (e.g. coordinates, distances, resolutions). This is the base
 /// class for all linear units.
 ///
-class MeaLinearUnits : public MeaUnits
-{
+class MeaLinearUnits : public MeaUnits {
+
 public:
     /// Returns the identifier for the linear units.
     ///
     /// @return Linear units ID.
     ///
-    MeaLinearUnitsId    GetUnitsId() const { return m_unitsId; }
+    MeaLinearUnitsId GetUnitsId() const { return m_unitsId; }
 
 
     /// By default, the Windows coordinate system is inverted from the
@@ -367,7 +364,6 @@ public:
     ///
     static bool GetInvertY() { return m_invertY; }
 
-
     /// Moves the origin of the coordinate system to the specified point. The
     /// orientation of the axes is not effected by this method. To change the
     /// orientation of the y-axis use the SetInvertY method.
@@ -375,14 +371,13 @@ public:
     /// @param origin   [in] New location for the origin of the coordinate system.
     ///                 in pixels.
     ///
-    static void         SetOrigin(const POINT& origin) { m_originOffset = origin; }
+    static void SetOrigin(const POINT& origin) { m_originOffset = origin; }
 
     /// Returns the location of the origin of the coordinate system.
     ///
     /// @return Location of the origin of the coordinate system, in pixels.
     ///
     static const POINT& GetOrigin() { return m_originOffset; }
-    
 
     /// Internally all measurements are in pixels. Measurement units based
     /// solely on pixels do not require the use of the screen resolution for
@@ -397,7 +392,6 @@ public:
     ///
     virtual bool RequiresRes() const;
 
-
     /// Formats the specified linear measurement value using the
     /// precision for the specified measurement ID.
     ///
@@ -409,7 +403,6 @@ public:
     ///         and returned as a string.
     ///
     CString Format(MeaLinearMeasurementId id, double value) const;
-
 
     /// Converts the specified coordinate from pixels to the desired units.
     /// This conversion takes into account the location of the origin and the
@@ -441,8 +434,7 @@ public:
     ///
     /// @return Resolution converted from pixels/inch to the desired units.
     ///
-    FSIZE  ConvertRes(const FSIZE& res) const;
-
+    FSIZE ConvertRes(const FSIZE& res) const;
 
     /// Converts from the current units to pixels. The conversion takes into account
     /// the location of the origin and the orientation of the y-axis. The conversion
@@ -456,7 +448,7 @@ public:
     ///         takes into account the location of the origin and the orientation of
     ///         the y-axis.
     ///
-    double  UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos) const;
+    double UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos) const;
 
     /// Converts from the current units to pixels. The conversion takes into account
     /// the location of the origin and the orientation of the y-axis. The conversion
@@ -475,7 +467,7 @@ public:
     ///
     /// @return <b>true</b> if the  conversion to pixels was exact.
     ///
-    bool    UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos, int& c1, int& c2) const;
+    bool UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos, int& c1, int& c2) const;
 
     /// Converts from the current units to pixels. The conversion takes into account
     /// the location of the origin and the orientation of the y-axis.
@@ -486,7 +478,7 @@ public:
     ///         takes into account the location of the origin and the orientation of
     ///         the y-axis.
     ///
-    POINT   UnconvertCoord(const FPOINT& pos) const;
+    POINT UnconvertCoord(const FPOINT& pos) const;
 
     /// Converts from the current units to pixels. The conversion does not take into
     /// account the location of the origin nor the orientation of the y-axis.
@@ -497,8 +489,7 @@ public:
     ///         does not take into account the location of the origin nor the
     ///         orientation of the y-axis.
     ///
-    POINT   UnconvertPos(const FPOINT& pos) const;
-
+    POINT UnconvertPos(const FPOINT& pos) const;
 
     /// Returns the number of minor ticks to display before a major tick mark is
     /// displayed on the measurement rulers.
@@ -506,7 +497,7 @@ public:
     /// @return Number of minor tick marks to display before displaying a major
     ///         tick mark.
     ///
-    int     GetMajorTickCount() const { return m_majorTickCount; }
+    int GetMajorTickCount() const { return m_majorTickCount; }
 
     /// Returns the increment between minor tick marks on the measurement rulers.
     ///
@@ -515,8 +506,7 @@ public:
     ///
     /// @return Increment for the minor tick marks, in the current units.
     ///
-    FSIZE   GetMinorIncr(const RECT& rect) const;
-
+    FSIZE GetMinorIncr(const RECT& rect) const;
 
     /// Converts the specified value from the current units to pixels. A minimum
     /// pixel value is specified in case the resolution is such that the conversion
@@ -529,7 +519,7 @@ public:
     ///
     /// @return X and Y pixel values.
     ///
-    SIZE    ConvertToPixels(const FSIZE& res, double value, int minPixels) const;
+    SIZE ConvertToPixels(const FSIZE& res, double value, int minPixels) const;
 
 protected:
     /// Constructs the linear units.
@@ -538,11 +528,10 @@ protected:
     /// @param unitsStr     [in] Name for the units.
     ///
     MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr);
-    
+
     /// Destroys the linear units.
     ///
     virtual ~MeaLinearUnits();
-
 
     /// Returns a resolution conversion factor. For most units this is
     /// the same as the values returned by the FromPixels method. However,
@@ -565,7 +554,6 @@ protected:
     /// @return X and Y conversion factors, in units/pixels.
     ///
     virtual FSIZE FromPixels(const FSIZE& res) const = 0;
-
 
     /// Converts from the pixels to the current units. The conversion takes into account
     /// the location of the origin and the orientation of the y-axis. The conversion
@@ -610,32 +598,31 @@ protected:
 private:
     static const double kTickIncrements[];  ///< Ruler tick increments. The order of magnitude of
                                             ///< these values is adjusted based on the units.
-    static const int    kNumTickIncrements; ///< Number of tick mark increments in the
+    static const int kNumTickIncrements;    ///< Number of tick mark increments in the
                                             ///< kTickIncrements array.
-    static const int    kMinSepPixels;      ///< Minimum separation between ruler tick marks, in pixels.
+    static const int kMinSepPixels;         ///< Minimum separation between ruler tick marks, in pixels.
     static const double kMinSepInches;      ///< Minimum separation between ruler tick marks, in inches.
 
-    static POINT        m_originOffset;     ///< Offset of the origin from the system origin, in pixels.
-    static bool         m_invertY;          ///< Indicates if the y-axis direction is inverted.
+    static POINT m_originOffset;    ///< Offset of the origin from the system origin, in pixels.
+    static bool m_invertY;          ///< Indicates if the y-axis direction is inverted.
 
-    MeaLinearUnitsId    m_unitsId;          ///< Linear units identifier.
-    int                 m_majorTickCount;   ///< Number of minor ruler tick marks between major tick marks.
+    MeaLinearUnitsId m_unitsId;     ///< Linear units identifier.
+    int m_majorTickCount;           ///< Number of minor ruler tick marks between major tick marks.
 };
 
 
 /// Provides linear measurements in pixels.
 ///
-class MeaPixelUnits : public MeaLinearUnits
-{
+class MeaPixelUnits : public MeaLinearUnits {
+
 public:
     /// Constructs pixel units.
     ///
     MeaPixelUnits();
-    
+
     /// Destroys pixel units.
     ///
     ~MeaPixelUnits();
-
 
     /// Internally all measurements are in pixels. Measurement units based
     /// solely on pixels do not require the use of the screen resolution for
@@ -675,8 +662,8 @@ protected:
 
 /// Provides linear measurements in points.
 ///
-class MeaPointUnits : public MeaLinearUnits
-{
+class MeaPointUnits : public MeaLinearUnits {
+
 public:
     /// Constructs point units.
     ///
@@ -686,7 +673,7 @@ public:
     ///
     ~MeaPointUnits();
 
-protected:  
+protected:
     /// Returns the X and Y factors to convert from pixels to points.
     /// In other words, multiplying the values returned from this
     /// method by pixels results in a value expressed in points.
@@ -701,8 +688,8 @@ protected:
 
 /// Provides linear measurements in picas.
 ///
-class MeaPicaUnits : public MeaLinearUnits
-{
+class MeaPicaUnits : public MeaLinearUnits {
+
 public:
     /// Constructs pica units.
     ///
@@ -727,8 +714,8 @@ protected:
 
 /// Provides linear measurements in twips.
 ///
-class MeaTwipUnits : public MeaLinearUnits
-{
+class MeaTwipUnits : public MeaLinearUnits {
+
 public:
     /// Constructs twips units.
     ///
@@ -753,8 +740,8 @@ protected:
 
 /// Provides linear measurements in inches.
 ///
-class MeaInchUnits : public MeaLinearUnits
-{
+class MeaInchUnits : public MeaLinearUnits {
+
 public:
     /// Constructs inch units.
     ///
@@ -780,8 +767,8 @@ protected:
 
 /// Provides linear measurements in centimeters.
 ///
-class MeaCentimeterUnits : public MeaLinearUnits
-{
+class MeaCentimeterUnits : public MeaLinearUnits {
+
 public:
     /// Constructs centimeter units.
     ///
@@ -806,8 +793,8 @@ protected:
 
 /// Provides linear measurements in millimeters.
 ///
-class MeaMillimeterUnits : public MeaLinearUnits
-{
+class MeaMillimeterUnits : public MeaLinearUnits {
+
 public:
     /// Constructs millimeter units.
     ///
@@ -832,16 +819,16 @@ protected:
 
 /// Provides linear measurements in user defined units.
 ///
-class MeaCustomUnits : public MeaLinearUnits
-{
+class MeaCustomUnits : public MeaLinearUnits {
+
 public:
     /// User defined units are based on a conversion factor. This factor
     /// converts from a basis set of units to the custom units. The
     /// basis for the conversion is identified by this enumeration.
     ///
     enum ScaleBasis {
-        PixelBasis      = 0,    ///< Custom units = factor * pixels.
-        InchBasis       = 1,    ///< Custom units = factor * inches.
+        PixelBasis = 0,         ///< Custom units = factor * pixels.
+        InchBasis = 1,          ///< Custom units = factor * inches.
         CentimeterBasis = 2     ///< Custom units = factor * centimeters.
     };
 
@@ -853,11 +840,10 @@ public:
     /// Constructs custom units.
     ///
     MeaCustomUnits();
-    
+
     /// Destroys custom units.
     ///
     ~MeaCustomUnits();
-
 
     /// Persists the custom units conversion factor and basis to the
     /// specified profile object.
@@ -887,17 +873,15 @@ public:
     ///
     virtual bool RequiresRes() const;
 
-
     /// Indicates whether custom units have been defined.
     ///
     /// @return <b>true</b> if custom units have been defined. Custom units
     ///         are considered to be defined if they have a name and
     ///         abbreviation.
     ///
-    bool    HaveCustomUnits() const {
+    bool HaveCustomUnits() const {
         return !m_name.IsEmpty() && !m_abbrev.IsEmpty();
     }
-
 
     /// Returns the name of the custom units. The name is used on the
     /// units menu as well as other places.
@@ -911,8 +895,7 @@ public:
     ///
     /// @param name     [in] Name for the units.
     ///
-    void    SetName(const CString& name);
-
+    void SetName(const CString& name);
 
     /// Returns the abbreviation for the custom units. The abbreviation
     /// is used by the data display and in other places.
@@ -926,47 +909,45 @@ public:
     ///
     /// @param abbrev   [in] Abbreviation for the units.
     ///
-    void    SetAbbrev(const CString& abbrev);
-
+    void SetAbbrev(const CString& abbrev);
 
     /// Returns the conversion basis.
     ///
     /// @return Custom units conversion basis.
     ///
-    ScaleBasis  GetScaleBasis() const { return m_scaleBasis; }
+    ScaleBasis GetScaleBasis() const { return m_scaleBasis; }
 
     /// Returns the scale basis as an identifying string (e.g. "px").
     ///
     /// @return Conversion basis as a string.
     ///
-    CString     GetScaleBasisStr() const;
+    CString GetScaleBasisStr() const;
 
     /// Sets the conversion basis.
     ///
     /// @param scaleBasis       [in] Conversion basis.
     ///
-    void        SetScaleBasis(ScaleBasis scaleBasis) { m_scaleBasis = scaleBasis; }
+    void SetScaleBasis(ScaleBasis scaleBasis) { m_scaleBasis = scaleBasis; }
 
     /// Sets the conversion basis using a string identifier.
     ///
     /// @param scaleBasisStr    [in] Conversion basis as an identifying string.
     ///
-    void        SetScaleBasis(CString scaleBasisStr);
-
+    void SetScaleBasis(CString scaleBasisStr);
 
     /// Returns the conversion factor for the custom units.
     ///
     /// @return Conversion factor from the conversion basis to
     ///         the custom units.
     ///
-    double  GetScaleFactor() const { return m_scaleFactor; }
+    double GetScaleFactor() const { return m_scaleFactor; }
 
     /// Sets the conversion factor for the custom units.
     ///
     /// @param scaleFactor  [in] Conversion factor from the conversion
     ///                     basis to the custom units.
     ///
-    void    SetScaleFactor(double scaleFactor) { m_scaleFactor = scaleFactor; }
+    void SetScaleFactor(double scaleFactor) { m_scaleFactor = scaleFactor; }
 
 protected:
     /// Returns the X and Y factors to convert from pixels to the
@@ -981,10 +962,10 @@ protected:
     virtual FSIZE FromPixels(const FSIZE& res) const;
 
 private:
-    CString     m_name;         ///< Name for the custom units.
-    CString     m_abbrev;       ///< Abbreviation for the custom units.
-    ScaleBasis  m_scaleBasis;   ///< Conversion basis for the custom units.
-    double      m_scaleFactor;  ///< Conversion factor for the custom units.
+    CString m_name;             ///< Name for the custom units.
+    CString m_abbrev;           ///< Abbreviation for the custom units.
+    ScaleBasis m_scaleBasis;    ///< Conversion basis for the custom units.
+    double m_scaleFactor;       ///< Conversion factor for the custom units.
 };
 
 
@@ -997,16 +978,14 @@ private:
 /// each type of measurement: angles, lengths, areas and
 /// resolutions.
 ///
-class MeaUnitsLabel : public MeaLabel
-{
+class MeaUnitsLabel : public MeaLabel {
+
 public:
-    typedef std::map<int, CString>  LabelMap;   ///< Maps a units identifier to
-                                                ///< the corresponding label string.
+    typedef std::map<int, CString>  LabelMap;   ///< Maps a units identifier to the corresponding label string.
 
     /// Destroys the base class instance for the label.
     ///
     virtual ~MeaUnitsLabel();
-
 
     /// Creates the underlying label control.
     ///
@@ -1038,14 +1017,14 @@ protected:
     ///
     /// @return Format string identifier.
     ///
-    UINT    GetFormat() const { return m_format; }
+    UINT GetFormat() const { return m_format; }
 
     /// Sets the overall width of the label object to the width
     /// of the widest label string over all the units.
     ///
     /// @return <b>true</b> if the size was set successfully.
     ///
-    bool    SetSize();
+    bool SetSize();
 
     /// Formats the label string corresponding to the specified
     /// units identifier.
@@ -1058,9 +1037,9 @@ protected:
     CString ConstructLabel(int unitsId) const;
 
 private:
-    LabelMap&   m_labelsRef;    ///< Maps units identifiers to label strings.
-    int&        m_widthRef;     ///< Width of the label object, in pixels.
-    UINT        m_format;       ///< Label format string identifier.
+    LabelMap& m_labelsRef;  ///< Maps units identifiers to label strings.
+    int& m_widthRef;        ///< Width of the label object, in pixels.
+    UINT m_format;          ///< Label format string identifier.
 };
 
 
@@ -1068,13 +1047,13 @@ private:
 /// measurements and those for linear measurements. This
 /// class handles angular measurement labels.
 ///
-class MeaAngularUnitsLabel : public MeaUnitsLabel
-{
+class MeaAngularUnitsLabel : public MeaUnitsLabel {
+
 public:
     /// Constructs an angular measurement label.
     ///
     MeaAngularUnitsLabel();
-    
+
     /// Destroys an angular measurement label.
     ///
     virtual ~MeaAngularUnitsLabel();
@@ -1086,9 +1065,8 @@ public:
     virtual void SetUnits(MeaAngularUnitsId anglesId);
 
 private:
-    static LabelMap m_labels;       ///< Maps angular units identifiers to
-                                    ///< their corresponding label strings.
-    static int      m_labelWidth;   ///< Width of the label, in pixels.
+    static LabelMap m_labels;   ///< Maps angular units identifiers to their corresponding label strings.
+    static int m_labelWidth;    ///< Width of the label, in pixels.
 };
 
 
@@ -1096,8 +1074,8 @@ private:
 /// measurements and those for linear measurements. This
 /// class is the base class for linear measurement labels.
 ///
-class MeaLinearUnitsLabel : public MeaUnitsLabel
-{
+class MeaLinearUnitsLabel : public MeaUnitsLabel {
+
 public:
     /// Displays the actual text of the label.
     ///
@@ -1124,69 +1102,68 @@ protected:
     /// @param width    [out] Width of the label, in pixels.
     ///
     MeaLinearUnitsLabel(UINT format, int& width);
-    
+
     /// Destroys a linear units label.
     ///
     virtual ~MeaLinearUnitsLabel();
 
 private:
-    static LabelMap m_labels;   ///< Maps linear units identifiers to
-                                ///< their corresponding label strings.
+    static LabelMap m_labels;   ///< Maps linear units identifiers to their corresponding label strings.
 };
 
 
 /// Label for length measurements. Length measurements
 /// include coordinates, width, heights and distances.
 ///
-class MeaLengthUnitsLabel : public MeaLinearUnitsLabel
-{
+class MeaLengthUnitsLabel : public MeaLinearUnitsLabel {
+
 public:
     /// Constructs a length measurement label.
     ///
     MeaLengthUnitsLabel();
-    
+
     /// Destroys a length measurement label.
     ///
     virtual ~MeaLengthUnitsLabel();
 
 private:
-    static int  m_labelWidth;   ///< Width of the label object, in pixels.
+    static int m_labelWidth;   ///< Width of the label object, in pixels.
 };
 
 
 /// Label for area measurements.
 ///
-class MeaAreaUnitsLabel : public MeaLinearUnitsLabel
-{
+class MeaAreaUnitsLabel : public MeaLinearUnitsLabel {
+
 public:
     /// Constructs an area measurement label.
     ///
     MeaAreaUnitsLabel();
-    
+
     /// Destroys an area measurement label.
     ///
     virtual ~MeaAreaUnitsLabel();
 
 private:
-    static int  m_labelWidth;   ///< Width of the label object, in pixels.
+    static int m_labelWidth;   ///< Width of the label object, in pixels.
 };
 
 
 /// Label for resolution measurements.
 ///
-class MeaResUnitsLabel : public MeaLinearUnitsLabel
-{
+class MeaResUnitsLabel : public MeaLinearUnitsLabel {
+
 public:
     /// Constructs a resolution measurement label.
     ///
     MeaResUnitsLabel();
-    
+
     /// Destroys a resolution measurement label.
     ///
     virtual ~MeaResUnitsLabel();
 
 private:
-    static int  m_labelWidth;   ///< Width of the label object, in pixels.
+    static int m_labelWidth;   ///< Width of the label object, in pixels.
 };
 
 
@@ -1194,8 +1171,8 @@ private:
 /// the units objects and labels, specifying the current units, setting
 /// the measurement origin and setting the y-axis orientation.
 ///
-class MeaUnitsMgr : public MeaSingleton_T<MeaUnitsMgr>
-{
+class MeaUnitsMgr : public MeaSingleton_T<MeaUnitsMgr> {
+
 public:
     static constexpr bool kDefHaveWarned { false };             ///< Indicates whether the user has
                                                                 ///< already been warned about using the
@@ -1211,7 +1188,7 @@ public:
     /// @param profile      [in] Profile object into which the
     ///                     manager state is persisted.
     ///
-    void        SaveProfile(MeaProfile& profile);
+    void SaveProfile(MeaProfile& profile);
 
     /// Restores the state of the units manager from the specified
     /// profile object.
@@ -1219,43 +1196,40 @@ public:
     /// @param profile      [in] Profile object from which the
     ///                     manager state is restored.
     ///
-    void        LoadProfile(MeaProfile& profile);
+    void LoadProfile(MeaProfile& profile);
 
     /// Called when the master application reset is initiated. The
     /// units manager is reset to its default state.
     ///
-    void        MasterReset();
-
+    void MasterReset();
 
     /// Sets the current linear measurement units based on the specified
     /// units identifier.
     ///
     /// @param unitsId      [in] Measurement units identifier.
     ///
-    void        SetLinearUnits(MeaLinearUnitsId unitsId);
+    void SetLinearUnits(MeaLinearUnitsId unitsId);
 
     /// Sets the current linear measurement units based on the specified
     /// units identifier string (e.g. "in").
     ///
     /// @param unitsStr     [in] Measurement units identifier string (e.g. "in").
     ///
-    void        SetLinearUnits(LPCTSTR unitsStr);
-
+    void SetLinearUnits(LPCTSTR unitsStr);
 
     /// Sets the current angular measurement units based on the specified
     /// units identifier.
     ///
     /// @param unitsId      [in] Measurement units identifier.
     ///
-    void        SetAngularUnits(MeaAngularUnitsId unitsId);
+    void SetAngularUnits(MeaAngularUnitsId unitsId);
 
     /// Sets the current angular measurement units based on the specified
     /// units identifier string (e.g. "deg").
     ///
     /// @param unitsStr     [in] Measurement units identifier.
     ///
-    void        SetAngularUnits(LPCTSTR unitsStr);
-
+    void SetAngularUnits(LPCTSTR unitsStr);
 
     /// Returns the current linear measurement units.
     ///
@@ -1271,7 +1245,7 @@ public:
     /// @return Linear measurement units object.
     ///
     MeaLinearUnits* GetLinearUnits(const CString& unitsStr) {
-         for (const auto& unitsEntry : m_linearUnitsMap) {
+        for (const auto& unitsEntry : m_linearUnitsMap) {
             if (unitsEntry.second->GetUnitsStr() == unitsStr) {
                 return unitsEntry.second;
             }
@@ -1283,21 +1257,20 @@ public:
     ///
     /// @return Identifier for the current linear measurement units.
     ///
-    MeaLinearUnitsId    GetLinearUnitsId() const { return m_currentLinearUnits->GetUnitsId(); }
+    MeaLinearUnitsId GetLinearUnitsId() const { return m_currentLinearUnits->GetUnitsId(); }
 
     /// Returns the identifier string for the current linear measurement units
     /// (e.g. "px").
     ///
     /// @return Identifier string for the current linear measurement units.
     ///
-    CString             GetLinearUnitsStr() const { return m_currentLinearUnits->GetUnitsStr(); }
-
+    CString GetLinearUnitsStr() const { return m_currentLinearUnits->GetUnitsStr(); }
 
     /// Returns the current angular measurement units.
     ///
     /// @return Current angular units.
     ///
-    MeaAngularUnits*    GetAngularUnits() { return m_currentAngularUnits; }
+    MeaAngularUnits* GetAngularUnits() { return m_currentAngularUnits; }
 
     /// Returns the angular measurement units object corresponding
     /// to the specified identifier string (e.g. "deg").
@@ -1306,7 +1279,7 @@ public:
     ///
     /// @return Angular measurement units object.
     ///
-    MeaAngularUnits*    GetAngularUnits(const CString& unitsStr) {
+    MeaAngularUnits* GetAngularUnits(const CString& unitsStr) {
         for (const auto& unitsEntry : m_angularUnitsMap) {
             if (unitsEntry.second->GetUnitsStr() == unitsStr) {
                 return unitsEntry.second;
@@ -1319,23 +1292,21 @@ public:
     ///
     /// @return Identifier for the current angular measurement units.
     ///
-    MeaAngularUnitsId   GetAngularUnitsId() const { return m_currentAngularUnits->GetUnitsId(); }
+    MeaAngularUnitsId GetAngularUnitsId() const { return m_currentAngularUnits->GetUnitsId(); }
 
     /// Returns the identifier string for the current angular measurement units
     /// (e.g. "deg").
     ///
     /// @return Identifier string for the current angular measurement units.
     ///
-    CString             GetAngularUnitsStr() const { return m_currentAngularUnits->GetUnitsStr(); }
-
+    CString GetAngularUnitsStr() const { return m_currentAngularUnits->GetUnitsStr(); }
 
     /// Returns the user defined units object. This is not necessarily
     /// the current measurement units object.
     ///
     /// @return User defined measurement units object.
     ///
-    MeaCustomUnits*     GetCustomUnits() { return &m_customUnits; }
-
+    MeaCustomUnits* GetCustomUnits() { return &m_customUnits; }
 
     /// Set the number of decimal places to show on the data display for all types of
     /// linear measurements in the specified units (e.g. coordinates, length, area, etc.).
@@ -1346,7 +1317,7 @@ public:
     void SetLinearDisplayPrecisions(MeaLinearUnitsId unitsId, const MeaUnits::DisplayPrecisions& precisions) {
         m_linearUnitsMap[unitsId]->SetDisplayPrecisions(precisions);
     }
-    
+
     /// Returns the array of decimal places currently set for each linear measurement
     /// type in the specified units.
     ///
@@ -1357,7 +1328,7 @@ public:
     const MeaUnits::DisplayPrecisions& GetLinearDisplayPrecisions(MeaLinearUnitsId unitsId) {
         return m_linearUnitsMap[unitsId]->GetDisplayPrecisions();
     }
-    
+
     /// Returns the array of default decimal places for each linear measurement
     /// type in the specified units.
     ///
@@ -1369,7 +1340,6 @@ public:
         return m_linearUnitsMap[unitsId]->GetDefaultPrecisions();
     }
 
-
     /// Set the number of decimal places to show on the data display for angular
     /// measurements in the specified units.
     ///
@@ -1378,8 +1348,8 @@ public:
     ///
     void SetAngularDisplayPrecisions(MeaAngularUnitsId unitsId, const MeaUnits::DisplayPrecisions& precisions) {
         m_angularUnitsMap[unitsId]->SetDisplayPrecisions(precisions);
-    }                       
-    
+    }
+
     /// Returns the array of decimal places currently set for the specified angular
     /// measurement units.
     ///
@@ -1390,7 +1360,7 @@ public:
     const MeaUnits::DisplayPrecisions& GetAngularDisplayPrecisions(MeaAngularUnitsId unitsId) {
         return m_angularUnitsMap[unitsId]->GetDisplayPrecisions();
     }
-    
+
     /// Returns the array of default decimal places for the specified angular
     /// measurement units.
     ///
@@ -1401,7 +1371,6 @@ public:
     const MeaUnits::DisplayPrecisions& GetAngularDefaultPrecisions(MeaAngularUnitsId unitsId) {
         return m_angularUnitsMap[unitsId]->GetDefaultPrecisions();
     }
-
 
     /// By default, the Windows coordinate system is inverted from the
     /// typical Cartesian coordinate system in that the origin is located
@@ -1417,7 +1386,7 @@ public:
     ///                     display screen and making positive y pointing
     ///                     upward.
     ///
-    void    SetInvertY(bool invertY) const { MeaLinearUnits::SetInvertY(invertY); }
+    void SetInvertY(bool invertY) const { MeaLinearUnits::SetInvertY(invertY); }
 
     /// Returns the orientation of the y-axis.
     ///
@@ -1429,8 +1398,7 @@ public:
     ///         actual location of the origin is determined by the SetOrigin
     ///         method.
     ///
-    bool    GetInvertY() const { return MeaLinearUnits::GetInvertY(); }
-
+    bool GetInvertY() const { return MeaLinearUnits::GetInvertY(); }
 
     /// Moves the origin of the coordinate system to the specified point. The
     /// orientation of the axes is not effected by this method. To change the
@@ -1439,14 +1407,13 @@ public:
     /// @param origin   [in] New location for the origin of the coordinate system.
     ///                 in pixels.
     ///
-    void            SetOrigin(const POINT& origin) const { MeaLinearUnits::SetOrigin(origin); }
+    void SetOrigin(const POINT& origin) const { MeaLinearUnits::SetOrigin(origin); }
 
     /// Returns the location of the origin of the coordinate system.
     ///
     /// @return Location of the origin of the coordinate system, in pixels.
     ///
-    const POINT&    GetOrigin() const { return MeaLinearUnits::GetOrigin(); }
-
+    const POINT& GetOrigin() const { return MeaLinearUnits::GetOrigin(); }
 
     /// Uses the current linear measurement units to convert the two specified
     /// points from pixels to the current units, and then calculates the
@@ -1462,8 +1429,7 @@ public:
     ///         width and height are inclusive (e.g. p1.x = 1, p2.x = 3,
     ///         width = p2.x - p1.x + 1 = 3).
     ///
-    FSIZE   GetWidthHeight(const POINT& p1, const POINT& p2) const;
-
+    FSIZE GetWidthHeight(const POINT& p1, const POINT& p2) const;
 
     /// Creates a new length measurement units label object.
     ///
@@ -1472,7 +1438,7 @@ public:
     ///         destroyed using the DeleteUnitsLabel method
     ///         on the object.
     ///
-    MeaLengthUnitsLabel*    NewLengthUnitsLabel();
+    MeaLengthUnitsLabel* NewLengthUnitsLabel();
 
     /// Creates a new angular measurement units label object.
     ///
@@ -1481,7 +1447,7 @@ public:
     ///         destroyed using the DeleteUnitsLabel method
     ///         on the object.
     ///
-    MeaAngularUnitsLabel*   NewAngleUnitsLabel();
+    MeaAngularUnitsLabel* NewAngleUnitsLabel();
 
     /// Creates a new area measurement units label object.
     ///
@@ -1490,7 +1456,7 @@ public:
     ///         destroyed using the DeleteUnitsLabel method
     ///         on the object.
     ///
-    MeaAreaUnitsLabel*      NewAreaUnitsLabel();
+    MeaAreaUnitsLabel* NewAreaUnitsLabel();
 
     /// Creates a new resolution measurement units label object.
     ///
@@ -1499,14 +1465,13 @@ public:
     ///         destroyed using the DeleteUnitsLabel method
     ///         on the object.
     ///
-    MeaResUnitsLabel*       NewResUnitsLabel();
+    MeaResUnitsLabel* NewResUnitsLabel();
 
     /// Destroys the specified measurement units label.
     ///
     /// @param label    [in] Label object to be deleted.
     ///
-    void    DeleteUnitsLabel(MeaUnitsLabel* label);
-
+    void DeleteUnitsLabel(MeaUnitsLabel* label);
 
     /// Converts the specified angle to the current angular units
     /// and formats the result for display.
@@ -1535,7 +1500,6 @@ public:
     CString Format(MeaAngularMeasurementId id, double value) const {
         return m_currentAngularUnits->Format(id, value);
     }
-
 
     /// Converts the specified coordinate from pixels to the desired units.
     /// This conversion takes into account the location of the origin and the
@@ -1612,7 +1576,6 @@ public:
         return m_currentAngularUnits->ConvertAngle(angle);
     }
 
-
     /// Converts the specified value from the specified units to pixels. A minimum
     /// pixel value is specified in case the resolution is such that the conversion
     /// to pixels results in a value that is too small.
@@ -1632,41 +1595,36 @@ public:
 private:
     MEA_SINGLETON_DECL(MeaUnitsMgr)
 
-    /// Managers do not have copy semantics so this method is
-    /// purposely undefined.
+    typedef std::map<MeaLinearUnitsId, MeaLinearUnits*> LinearUnitsMap;     ///< Maps linear units identifiers to the corresponding linear units objects.
+    typedef std::map<MeaAngularUnitsId, MeaAngularUnits*> AngularUnitsMap;  ///< Maps angular units identifiers to the corresponding angular units objects.
+    typedef std::list<MeaLinearUnitsLabel*> LinearLabelsList;               ///< List of all linear units labels.
+    typedef std::list<MeaAngularUnitsLabel*> AngularLabelsList;             ///< List of all angular units labels.
+
+    /// Managers do not have copy semantics so this method is purposely undefined.
+    /// 
     MeaUnitsMgr(const MeaUnitsMgr&);
 
-    /// Managers do not have assignment semantics so this method
-    /// is purposely undefined.
+    /// Managers do not have assignment semantics so this method is purposely undefined.
+    ///
     MeaUnitsMgr& operator=(const MeaUnitsMgr&);
 
-    MeaPixelUnits       m_pixelUnits;   ///< Pixel units object.
-    MeaPointUnits       m_pointUnits;   ///< Point units object.
-    MeaTwipUnits        m_twipUnits;    ///< Twips units object.
-    MeaInchUnits        m_inchUnits;    ///< Inch units object.
-    MeaCentimeterUnits  m_cmUnits;      ///< Centimeter units object.
-    MeaMillimeterUnits  m_mmUnits;      ///< Millimeter units object.
-    MeaPicaUnits        m_picaUnits;    ///< Pica units object.
-    MeaCustomUnits      m_customUnits;  ///< User defined units object.
 
-    MeaDegreeUnits      m_degreeUnits;  ///< Degree units object.
-    MeaRadianUnits      m_radianUnits;  ///< Radian units object.
-
-    MeaLinearUnits      *m_currentLinearUnits;      ///< Points to the current linear units object.
-    MeaAngularUnits     *m_currentAngularUnits;     ///< Points to the current angular units object.
-
-    bool        m_haveWarned;           ///< Indicates whether the user has
-                                        ///< already been warned about using the
-                                        ///< operating system reported resolution.
-
-    typedef std::map<MeaLinearUnitsId, MeaLinearUnits*>     LinearUnitsMap;     ///< Maps linear units identifiers to the corresponding linear units objects.
-    typedef std::map<MeaAngularUnitsId, MeaAngularUnits*>   AngularUnitsMap;    ///< Maps angular units identifiers to the corresponding angular units objects.
-    typedef std::list<MeaLinearUnitsLabel*>                 LinearLabelsList;   ///< List of all linear units labels.
-    typedef std::list<MeaAngularUnitsLabel*>                AngularLabelsList;  ///< List of all angular units labels.
-
-    LinearUnitsMap      m_linearUnitsMap;       ///< Map of linear units identifiers to units objects.
-    AngularUnitsMap     m_angularUnitsMap;      ///< Map of angular units identifiers to units objects.
-
-    LinearLabelsList    m_linearLabelsList;     ///< List of linear units labels.
-    AngularLabelsList   m_angularLabelsList;    ///< List of angular units labels.
+    MeaPixelUnits m_pixelUnits;                 ///< Pixel units object.
+    MeaPointUnits m_pointUnits;                 ///< Point units object.
+    MeaTwipUnits m_twipUnits;                   ///< Twips units object.
+    MeaInchUnits m_inchUnits;                   ///< Inch units object.
+    MeaCentimeterUnits m_cmUnits;               ///< Centimeter units object.
+    MeaMillimeterUnits m_mmUnits;               ///< Millimeter units object.
+    MeaPicaUnits m_picaUnits;                   ///< Pica units object.
+    MeaCustomUnits m_customUnits;               ///< User defined units object.
+    MeaDegreeUnits m_degreeUnits;               ///< Degree units object.
+    MeaRadianUnits m_radianUnits;               ///< Radian units object.
+    MeaLinearUnits* m_currentLinearUnits;       ///< Points to the current linear units object.
+    MeaAngularUnits* m_currentAngularUnits;     ///< Points to the current angular units object.
+    LinearUnitsMap m_linearUnitsMap;            ///< Map of linear units identifiers to units objects.
+    AngularUnitsMap m_angularUnitsMap;          ///< Map of angular units identifiers to units objects.
+    LinearLabelsList m_linearLabelsList;        ///< List of linear units labels.
+    AngularLabelsList m_angularLabelsList;      ///< List of angular units labels.
+    bool m_haveWarned;                          ///< Indicates whether the user has already been warned about using
+                                                ///< the operating system reported resolution.
 };

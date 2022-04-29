@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -37,40 +37,19 @@
 ///     <li>Display of popup data window</li>
 ///     <li>Display of the origin marker</li>
 /// </ul>
-class MeaToolsPrefs : public CPropertyPage
-{
+class MeaToolsPrefs : public CPropertyPage {
     DECLARE_DYNCREATE(MeaToolsPrefs)
 
 public:
     /// Creates an instance of the tool property page.
     ///
     MeaToolsPrefs();
-    
+
     /// Destroys an instance of the tool property page.
     ///
     ~MeaToolsPrefs();
 
     enum { IDD = IDD_PREF_TOOLS };
-    BOOL    m_showDataWin;
-    int     m_opacity;
-    BOOL    m_originMarker;
-
-    /// @var m_showDataWin
-    /// Preference variable indicating whether the data window popup should be displayed.
-
-    /// @var m_opacity
-    /// Preference variable specifying the crosshair opacity where 0 is transparent and
-    /// 255 is opaque.
-
-    /// @var m_originMarker
-    /// Preference variable indicating whether the origin marker should be displayed.
-
-
-    COLORREF    m_lineColor;        ///< Line color.
-    COLORREF    m_backColor;        ///< Crosshair background color.
-    COLORREF    m_borderColor;      ///< Crosshair border color.
-    COLORREF    m_hiliteColor;      ///< Crosshair highlight color.
-
 
     /// Called when the property page is created. This method
     /// Creates the sample crosshairs, line color swatch, data
@@ -81,79 +60,84 @@ public:
     ///
     virtual BOOL OnInitDialog();
 
-    protected:
-    virtual void DoDataExchange(CDataExchange* pDX) override;
+    BOOL m_showDataWin;     ///< Preference variable indicating whether the data window popup should be displayed.
+    int m_opacity;          ///< Preference variable specifying the crosshair opacity where 0 is transparent and 255 is opaque.
+    BOOL m_originMarker;    ///< Preference variable indicating whether the origin marker should be displayed.
+    COLORREF m_lineColor;   ///< Line color.
+    COLORREF m_backColor;   ///< Crosshair background color.
+    COLORREF m_borderColor; ///< Crosshair border color.
+    COLORREF m_hiliteColor; ///< Crosshair highlight color.
 
-    /// @fn DoDataExchange(CDataExchange* pDX)
+protected:
     /// Performs Dynamic Data Exchange (DDX) for the page.
     ///
     /// @param pDX  [in] DDX object for exchanging data between the page UI
     ///             and the member variables.
+    /// 
+    virtual void DoDataExchange(CDataExchange* pDX) override;
 
-protected:
-    afx_msg void OnChangeLineColor();
-    afx_msg void OnDefLineColor();
-    afx_msg void OnChangeBorderColor();
-    afx_msg void OnDefBorderColor();
-    afx_msg void OnChangeBackColor();
-    afx_msg void OnDefBackColor();
-    afx_msg void OnChangeHiliteColor();
-    afx_msg void OnDefHiliteColor();
-    afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-    afx_msg void OnChange();
-
-    DECLARE_MESSAGE_MAP()
-
-    /// @fn OnChangeLineColor()
     /// Called when the line color button is pressed. Displays a
     /// color picker dialog for selecting a new line color. The
     /// selected color is shown in the line color swatch.
+    /// 
+    afx_msg void OnChangeLineColor();
 
-    /// @fn OnDefLineColor()
     /// Called when the default line color button is pressed. Resets
     /// the line color to its default value.
+    /// 
+    afx_msg void OnDefLineColor();
 
-    /// @fn OnChangeBorderColor()
     /// Called when the crosshair border color button is pressed.
     /// Displays a color picker dialog for selecting a new border
     /// color and displays the selected color on the sample crosshairs.
+    /// 
+    afx_msg void OnChangeBorderColor();
 
-    /// @fn OnDefBorderColor()
     /// Called when the default border color button is pressed. The
     /// default border color is set and displayed on the sample crosshairs.
+    /// 
+    afx_msg void OnDefBorderColor();
 
-    /// @fn OnChangeBackColor()
     /// Called when the crosshair background color button is pressed.
     /// Displays a color picker dialog for selecting a new background
     /// color and displays the selected color in the normal crosshair
     /// sample.
+    /// 
+    afx_msg void OnChangeBackColor();
 
-    /// @fn OnDefBackColor()
     /// Called when the default background color button is pressed.
     /// The default background color is set and displayed on the normal
     /// crosshair sample.
+    /// 
+    afx_msg void OnDefBackColor();
 
-    /// @fn OnChangeHiliteColor()
     /// Called when the highlight color button is pressed. Displays a
     /// color picker for selecting a new highlight color and displays the
     /// selected color in the highlight crosshair sample.
+    /// 
+    afx_msg void OnChangeHiliteColor();
 
-    /// @fn OnDefHiliteColor()
     /// Called when the default highlight color button is pressed. The
     /// default highlight color is set and displayed on the highlight crosshair
     /// sample.
+    /// 
+    afx_msg void OnDefHiliteColor();
 
-    /// @fn OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
     /// Called when the crosshair opacity slider is moved. Sets the new
     /// opacity on the crosshair samples.
+    /// 
+    afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
 
-    /// @fn OnChange()
     /// Called whenever a value is changed on the property page. Sets
     /// the modified flag.
+    /// 
+    afx_msg void OnChange();
+
+    DECLARE_MESSAGE_MAP()
 
 private:
-    MeaSwatch       m_line;         ///< Swatch to display the line color.
-    MeaCrossHair    m_normalCH;     ///< Sample crosshair to preview the normal background color.
-    MeaCrossHair    m_hiliteCH;     ///< Sample crosshair to preview the highlight color.
-    MeaDataWin      m_dataWin;      ///< Sample data popup window.
+    MeaSwatch m_line;           ///< Swatch to display the line color.
+    MeaCrossHair m_normalCH;    ///< Sample crosshair to preview the normal background color.
+    MeaCrossHair m_hiliteCH;    ///< Sample crosshair to preview the highlight color.
+    MeaDataWin m_dataWin;       ///< Sample data popup window.
 };

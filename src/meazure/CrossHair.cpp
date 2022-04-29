@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -45,27 +45,6 @@ BEGIN_MESSAGE_MAP(MeaCrossHair, MeaGraphic)
 END_MESSAGE_MAP()
 
 
-void MeaCrossHairCallback::OnCHSelect(const CHInfo* /* info */)
-{
-}
-
-void MeaCrossHairCallback::OnCHDeselect(const CHInfo* /* info */)
-{
-}
-
-void MeaCrossHairCallback::OnCHMove(const CHInfo* /* info */)
-{
-}
-
-void MeaCrossHairCallback::OnCHEnter(const CHInfo* /* info */)
-{
-}
-
-void MeaCrossHairCallback::OnCHLeave(const CHInfo* /* info */)
-{
-}
-
-
 MeaCrossHair::MeaCrossHair() :
     MeaGraphic(),
     m_callback(nullptr),
@@ -78,13 +57,9 @@ MeaCrossHair::MeaCrossHair() :
     m_flashCount(0),
     m_opacity(255),
     m_origCHBitmap(nullptr),
-    m_origBackBitmap(nullptr)
-{
-}
+    m_origBackBitmap(nullptr) {}
 
-
-MeaCrossHair::~MeaCrossHair()
-{
+MeaCrossHair::~MeaCrossHair() {
     m_callback = nullptr;
     m_backBrush = nullptr;
     m_borderBrush = nullptr;
@@ -93,12 +68,20 @@ MeaCrossHair::~MeaCrossHair()
     m_origBackBitmap = nullptr;
 }
 
+void MeaCrossHairCallback::OnCHSelect(const CHInfo* /* info */) {}
+
+void MeaCrossHairCallback::OnCHDeselect(const CHInfo* /* info */) {}
+
+void MeaCrossHairCallback::OnCHMove(const CHInfo* /* info */) {}
+
+void MeaCrossHairCallback::OnCHEnter(const CHInfo* /* info */) {}
+
+void MeaCrossHairCallback::OnCHLeave(const CHInfo* /* info */) {}
 
 bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
                           COLORREF hiliteColor, BYTE opacity,
-                          MeaCrossHairCallback *callback,
-                          const CWnd *parent, UINT toolTipId, UINT id)
-{
+                          MeaCrossHairCallback* callback,
+                          const CWnd* parent, UINT toolTipId, UINT id) {
     m_callback = callback;
 
     SetColors(borderColor, backColor, hiliteColor);
@@ -110,7 +93,7 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
         MeaScreenMgr& smgr = MeaScreenMgr::Instance();
         MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
         FSIZE res = smgr.GetScreenRes(smgr.GetScreenIter(AfxGetMainWnd()));
-        
+
         m_size = umgr.ConvertToPixels(MeaInchesId, res, 0.25, 25);
         m_size.cx += 1 - (m_size.cx % 2);       // Must be odd
         m_size.cy += 1 - (m_size.cy % 2);
@@ -145,7 +128,7 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
     if (HaveLayeredWindows() && (m_parent != nullptr)) {
         CRect rect;
 
-        CDC *dc = GetDC();
+        CDC* dc = GetDC();
 
         m_backDC.CreateCompatibleDC(dc);
         m_backBitmap.CreateCompatibleBitmap(dc, m_size.cx, m_size.cy);
@@ -168,9 +151,7 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
     return true;
 }
 
-
-void MeaCrossHair::OnDestroy()
-{
+void MeaCrossHair::OnDestroy() {
     MeaGraphic::OnDestroy();
 
     DestroyColors();
@@ -188,9 +169,7 @@ void MeaCrossHair::OnDestroy()
     }
 }
 
-
-BOOL MeaCrossHair::PreTranslateMessage(MSG *pMsg)
-{
+BOOL MeaCrossHair::PreTranslateMessage(MSG* pMsg) {
     // Need to intercept messages to support tooltips
     // on the crosshair.
     //
@@ -200,14 +179,12 @@ BOOL MeaCrossHair::PreTranslateMessage(MSG *pMsg)
     return MeaGraphic::PreTranslateMessage(pMsg);
 }
 
-
 void MeaCrossHair::SetColors(COLORREF borderColor, COLORREF backColor,
-                             COLORREF hiliteColor)
-{
+                             COLORREF hiliteColor) {
     DestroyColors();
-    m_borderBrush   = new CBrush(borderColor);
-    m_backBrush     = new CBrush(backColor);
-    m_hiliteBrush   = new CBrush(hiliteColor);
+    m_borderBrush = new CBrush(borderColor);
+    m_backBrush = new CBrush(backColor);
+    m_hiliteBrush = new CBrush(hiliteColor);
 
     if (m_hWnd != nullptr) {
         Invalidate(FALSE);
@@ -215,9 +192,7 @@ void MeaCrossHair::SetColors(COLORREF borderColor, COLORREF backColor,
     }
 }
 
-
-void MeaCrossHair::SetOpacity(BYTE opacity)
-{
+void MeaCrossHair::SetOpacity(BYTE opacity) {
     m_opacity = opacity;
 
     if (m_hWnd != nullptr) {
@@ -230,9 +205,7 @@ void MeaCrossHair::SetOpacity(BYTE opacity)
     }
 }
 
-
-void MeaCrossHair::DestroyColors()
-{
+void MeaCrossHair::DestroyColors() {
     if (m_backBrush != nullptr) {
         delete m_backBrush;
         m_backBrush = nullptr;
@@ -247,9 +220,7 @@ void MeaCrossHair::DestroyColors()
     }
 }
 
-
-void MeaCrossHair::SetRegion()
-{
+void MeaCrossHair::SetRegion() {
     int xc = m_halfSize.cx;
     int yc = m_halfSize.cy;
     int numLayers = 5;
@@ -260,7 +231,7 @@ void MeaCrossHair::SetRegion()
     int ind = 0;
     int thkx = m_halfSize.cx / numLayers;
     int thky = m_halfSize.cy / numLayers;
-    POINT *coords = new POINT[4 * totalLayers];
+    POINT* coords = new POINT[4 * totalLayers];
 
     if (m_numCoords == nullptr) {
         m_numCoords = new int[totalLayers];
@@ -289,75 +260,71 @@ void MeaCrossHair::SetRegion()
     // Top petal
     //
     for (layer = 0, spread = m_spread.cx, c = 0; layer < numLayers && spread >= 0; layer++, spread--, c += thky) {
-        coords[ind].x       = xc - spread;
-        coords[ind++].y     = c;
-        coords[ind].x       = xc + spread + 1;
-        coords[ind++].y     = c;
-        coords[ind].x       = xc + spread + 1;
-        coords[ind++].y     = c + thky;
-        coords[ind].x       = xc - spread;
-        coords[ind++].y     = c + thky;
+        coords[ind].x = xc - spread;
+        coords[ind++].y = c;
+        coords[ind].x = xc + spread + 1;
+        coords[ind++].y = c;
+        coords[ind].x = xc + spread + 1;
+        coords[ind++].y = c + thky;
+        coords[ind].x = xc - spread;
+        coords[ind++].y = c + thky;
     }
 
     //
     // Left petal
     //
     for (layer = 0, spread = m_spread.cy, c = 0; layer < numLayers && spread >= 0; layer++, spread--, c += thkx) {
-        coords[ind].y       = yc - spread;
-        coords[ind++].x     = c;
-        coords[ind].y       = yc + spread + 1;
-        coords[ind++].x     = c;
-        coords[ind].y       = yc + spread + 1;
-        coords[ind++].x     = c + thkx;
-        coords[ind].y       = yc - spread;
-        coords[ind++].x     = c + thkx;
+        coords[ind].y = yc - spread;
+        coords[ind++].x = c;
+        coords[ind].y = yc + spread + 1;
+        coords[ind++].x = c;
+        coords[ind].y = yc + spread + 1;
+        coords[ind++].x = c + thkx;
+        coords[ind].y = yc - spread;
+        coords[ind++].x = c + thkx;
     }
 
     //
     // Bottom petal
     //
     for (layer = 0, spread = m_spread.cx, c = m_size.cy; layer < numLayers && spread >= 0; layer++, spread--, c -= thky) {
-        coords[ind].x       = xc - spread;
-        coords[ind++].y     = c;
-        coords[ind].x       = xc + spread + 1;
-        coords[ind++].y     = c;
-        coords[ind].x       = xc + spread + 1;
-        coords[ind++].y     = c - thky;
-        coords[ind].x       = xc - spread;
-        coords[ind++].y     = c - thky;
+        coords[ind].x = xc - spread;
+        coords[ind++].y = c;
+        coords[ind].x = xc + spread + 1;
+        coords[ind++].y = c;
+        coords[ind].x = xc + spread + 1;
+        coords[ind++].y = c - thky;
+        coords[ind].x = xc - spread;
+        coords[ind++].y = c - thky;
     }
 
     //
     // Right petal
     //
     for (layer = 0, spread = m_spread.cy, c = m_size.cx; layer < numLayers && spread >= 0; layer++, spread--, c -= thkx) {
-        coords[ind].y       = yc - spread;
-        coords[ind++].x     = c;
-        coords[ind].y       = yc + spread + 1;
-        coords[ind++].x     = c;
-        coords[ind].y       = yc + spread + 1;
-        coords[ind++].x     = c - thkx;
-        coords[ind].y       = yc - spread;
-        coords[ind++].x     = c - thkx;
+        coords[ind].y = yc - spread;
+        coords[ind++].x = c;
+        coords[ind].y = yc + spread + 1;
+        coords[ind++].x = c;
+        coords[ind].y = yc + spread + 1;
+        coords[ind++].x = c - thkx;
+        coords[ind].y = yc - spread;
+        coords[ind++].x = c - thkx;
     }
 
     HRGN region = ::CreatePolyPolygonRgn(coords, m_numCoords, totalLayers, ALTERNATE);
     SetWindowRgn(region, FALSE);
 
-    delete [] coords;
+    delete[] coords;
 }
 
-
-void MeaCrossHair::SetPosition(const POINT& center)
-{
+void MeaCrossHair::SetPosition(const POINT& center) {
     POINT leftTop = GetLeftTop(center);
     SetWindowPos(nullptr, leftTop.x, leftTop.y, 0, 0,
         SWP_NOZORDER | SWP_NOSIZE | SWP_NOACTIVATE | SWP_NOSENDCHANGING);
 }
 
-
-void MeaCrossHair::Flash(int flashCount)
-{
+void MeaCrossHair::Flash(int flashCount) {
     if (m_hWnd != nullptr) {
         m_flashCount = flashCount;
         m_drawState = Inverted;
@@ -367,9 +334,7 @@ void MeaCrossHair::Flash(int flashCount)
     }
 }
 
-
-void MeaCrossHair::OnTimer(UINT_PTR timerId)
-{
+void MeaCrossHair::OnTimer(UINT_PTR timerId) {
     KillTimer(timerId);
     m_drawState = (m_drawState == Normal) ? Inverted : Normal;
     Invalidate(FALSE);
@@ -379,9 +344,7 @@ void MeaCrossHair::OnTimer(UINT_PTR timerId)
     }
 }
 
-
-void MeaCrossHair::OnPaint()
-{
+void MeaCrossHair::OnPaint() {
     CPaintDC dc(this);
 
     // If the crosshair is a popup, simply draw it normally. If it
@@ -396,20 +359,18 @@ void MeaCrossHair::OnPaint()
     }
 }
 
-
-void MeaCrossHair::DrawCrossHair(CDC& dc)
-{
+void MeaCrossHair::DrawCrossHair(CDC& dc) {
     // Fill the crosshair.
     //
     CRect rect;
     GetClientRect(&rect);
 
-    CBrush *pOldBrush = dc.SelectObject(m_mouseOver ? m_hiliteBrush : m_backBrush);
+    CBrush* pOldBrush = dc.SelectObject(m_mouseOver ? m_hiliteBrush : m_backBrush);
     dc.PatBlt(rect.left, rect.top, rect.Width(), rect.Height(), PATCOPY);
     dc.SelectObject(pOldBrush);
 
     CRgn rgn;
-    rgn.CreateRectRgn(0,  0,  1,  1);
+    rgn.CreateRectRgn(0, 0, 1, 1);
     GetWindowRgn(rgn);
 
     // Draw a contrasting outline around the crosshair.
@@ -417,21 +378,17 @@ void MeaCrossHair::DrawCrossHair(CDC& dc)
     dc.FrameRgn(&rgn, (m_drawState == Normal) ? m_borderBrush : m_hiliteBrush, 1, 1);
 }
 
-
 void MeaCrossHair::FillInfo(MeaCrossHairCallback::CHInfo& chs, UINT flags,
-                            const CPoint& point)
-{
-    chs.ch          = this;
+                            const CPoint& point) {
+    chs.ch = this;
     chs.centerPoint = point - (m_pointerOffset - m_halfSize);
     ClientToScreen(&chs.centerPoint);
     chs.centerPoint = MeaScreenMgr::Instance().LimitPosition(chs.centerPoint);
-    chs.id          = m_id;
-    chs.flags       = flags;
+    chs.id = m_id;
+    chs.flags = flags;
 }
 
-
-void MeaCrossHair::OnLButtonDown(UINT flags, CPoint point)
-{
+void MeaCrossHair::OnLButtonDown(UINT flags, CPoint point) {
     m_pointerOffset = point;
 
     SetCapture();
@@ -445,9 +402,7 @@ void MeaCrossHair::OnLButtonDown(UINT flags, CPoint point)
     }
 }
 
-
-void MeaCrossHair::OnLButtonUp(UINT flags, CPoint point)
-{
+void MeaCrossHair::OnLButtonUp(UINT flags, CPoint point) {
     m_mouseCaptured = false;
     ::ReleaseCapture();
 
@@ -459,9 +414,7 @@ void MeaCrossHair::OnLButtonUp(UINT flags, CPoint point)
     }
 }
 
-
-void MeaCrossHair::OnMouseMove(UINT flags, CPoint point)
-{
+void MeaCrossHair::OnMouseMove(UINT flags, CPoint point) {
     //
     // If crosshair has been selected, send callback.
     //
@@ -499,9 +452,7 @@ void MeaCrossHair::OnMouseMove(UINT flags, CPoint point)
     }
 }
 
-
-LRESULT MeaCrossHair::OnMouseLeave(WPARAM /* wParam */, LPARAM /* lParam */)
-{
+LRESULT MeaCrossHair::OnMouseLeave(WPARAM /* wParam */, LPARAM /* lParam */) {
     m_mouseOver = false;
 
     CPoint point(0, 0);

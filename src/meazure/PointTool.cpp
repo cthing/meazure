@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -29,29 +29,23 @@
 const CString MeaPointTool::kToolName(_T("PointTool"));
 
 
-MeaPointTool::MeaPointTool(MeaToolMgr* mgr) : MeaRadioTool(mgr),
-    MeaCrossHairCallback(), m_center(MeaScreenMgr::Instance().GetCenter())
-{
+MeaPointTool::MeaPointTool(MeaToolMgr* mgr) :
+    MeaRadioTool(mgr), MeaCrossHairCallback(), m_center(MeaScreenMgr::Instance().GetCenter()) {
     // Set the default tool position. The crosshair is initially
     // is placed at the center of the screen containing the application.
     //
     m_anchorPoint = m_center;
 }
 
-
-MeaPointTool::~MeaPointTool()
-{
+MeaPointTool::~MeaPointTool() {
     try {
         Disable();
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-bool MeaPointTool::Create()
-{
+bool MeaPointTool::Create() {
     // Create the crosshair.
     //
     if (!m_crossHair.Create(MeaColors::Get(MeaColors::CrossHairBorder),
@@ -73,9 +67,7 @@ bool MeaPointTool::Create()
     return true;
 }
 
-
-void MeaPointTool::SaveProfile(MeaProfile& profile)
-{   
+void MeaPointTool::SaveProfile(MeaProfile& profile) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     // Save the position of the crosshair.
@@ -85,9 +77,7 @@ void MeaPointTool::SaveProfile(MeaProfile& profile)
     profile.WriteStr(_T("PointY1"), MeaUtils::DblToStr(pt.y));
 }
 
-
-void MeaPointTool::LoadProfile(MeaProfile& profile)
-{
+void MeaPointTool::LoadProfile(MeaProfile& profile) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     // Use the current position as the default value
@@ -107,38 +97,28 @@ void MeaPointTool::LoadProfile(MeaProfile& profile)
     SetPosition();
 }
 
-
-void MeaPointTool::EnableCrosshairs()
-{
+void MeaPointTool::EnableCrosshairs() {
     if (m_mgr->CrosshairsEnabled() && IsWindow(m_crossHair)) {
         m_crossHair.Show();
     }
 }
 
-
-void MeaPointTool::DisableCrosshairs()
-{
+void MeaPointTool::DisableCrosshairs() {
     if (IsWindow(m_crossHair)) {
         m_crossHair.Hide();
     }
 }
 
-
-void MeaPointTool::Flash()
-{
+void MeaPointTool::Flash() {
     m_crossHair.Flash();
 }
 
-
-void MeaPointTool::Strobe()
-{
+void MeaPointTool::Strobe() {
     m_crossHair.Flash(MeaCrossHair::kStrobeCount);
     m_dataWin.Strobe();
 }
 
-
-void MeaPointTool::Enable()
-{
+void MeaPointTool::Enable() {
     if (IsEnabled()) {
         return;
     }
@@ -166,9 +146,7 @@ void MeaPointTool::Enable()
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaPointTool::Disable()
-{
+void MeaPointTool::Disable() {
     if (!IsEnabled()) {
         return;
     }
@@ -178,9 +156,7 @@ void MeaPointTool::Disable()
     DisableCrosshairs();
 }
 
-
-void MeaPointTool::Update(MeaUpdateReason reason)
-{
+void MeaPointTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
@@ -206,9 +182,7 @@ void MeaPointTool::Update(MeaUpdateReason reason)
     }
 }
 
-
-void MeaPointTool::SetPosition(MeaFields which, int pixels)
-{
+void MeaPointTool::SetPosition(MeaFields which, int pixels) {
     // Set the specified position component.
     //
     if (which & MeaX1Field) {
@@ -225,9 +199,7 @@ void MeaPointTool::SetPosition(MeaFields which, int pixels)
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaPointTool::SetPosition(const PointMap& points)
-{
+void MeaPointTool::SetPosition(const PointMap& points) {
     // Read the position information from the points
     // map, and set the corresponding point.
     //
@@ -235,16 +207,14 @@ void MeaPointTool::SetPosition(const PointMap& points)
     if (iter != points.end()) {
         m_center = (*iter).second;
     }
-        
+
     // Reposition the tool and update the data display.
     //
     SetPosition();
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaPointTool::SetPosition()
-{
+void MeaPointTool::SetPosition() {
     // Ensure that the positions fall within the
     // limits of the screen containing the point.
     //
@@ -257,24 +227,18 @@ void MeaPointTool::SetPosition()
     }
 }
 
-
-const POINT& MeaPointTool::GetPosition() const
-{
+const POINT& MeaPointTool::GetPosition() const {
     return m_center;
 }
 
-
-void MeaPointTool::GetPosition(MeaPositionLogMgr::Position& position) const
-{
+void MeaPointTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     // Convert the pixel locations to the current units and record
     // the position in the position object.
     //
     position.RecordXY1(MeaUnitsMgr::Instance().ConvertCoord(m_center));
 }
 
-
-void MeaPointTool::IncPosition(MeaFields which)
-{
+void MeaPointTool::IncPosition(MeaFields which) {
     // Increment the specified position component.
     //
     if (which & MeaX1Field) {
@@ -284,9 +248,7 @@ void MeaPointTool::IncPosition(MeaFields which)
     }
 }
 
-
-void MeaPointTool::DecPosition(MeaFields which)
-{
+void MeaPointTool::DecPosition(MeaFields which) {
     // Decrement the specified position component.
     //
     if (which & MeaX1Field) {
@@ -296,9 +258,7 @@ void MeaPointTool::DecPosition(MeaFields which)
     }
 }
 
-
-void MeaPointTool::ColorsChanged()
-{
+void MeaPointTool::ColorsChanged() {
     // Redraw the crosshair in the new colors.
     //
     m_crossHair.SetColors(MeaColors::Get(MeaColors::CrossHairBorder),
@@ -311,38 +271,28 @@ void MeaPointTool::ColorsChanged()
     m_dataWin.SetOpacity(MeaColors::GetA(MeaColors::CrossHairOpacity));
 }
 
-
-CString MeaPointTool::GetToolName() const
-{
+CString MeaPointTool::GetToolName() const {
     return kToolName;
 }
 
-
-UINT MeaPointTool::GetLabelId() const
-{
+UINT MeaPointTool::GetLabelId() const {
     return IDS_MEA_POINT;
 }
 
-
-void MeaPointTool::OnCHEnter(const CHInfo* /* info */)
-{
+void MeaPointTool::OnCHEnter(const CHInfo* /* info */) {
     // Show the crosshair's data window.
     //
     m_dataWin.Show();
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-
-void MeaPointTool::OnCHLeave(const CHInfo* /* info */)
-{
+void MeaPointTool::OnCHLeave(const CHInfo* /* info */) {
     // Hide the crosshair's data window.
     //
     m_dataWin.Hide();
 }
 
-
-void MeaPointTool::OnCHMove(const CHInfo *info)
-{
+void MeaPointTool::OnCHMove(const CHInfo* info) {
     m_center = info->centerPoint;
 
     // Shift + drag locks the movement of the crosshair

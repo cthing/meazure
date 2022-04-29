@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -27,34 +27,24 @@ BEGIN_MESSAGE_MAP(MeaSwatch, CWnd)
 END_MESSAGE_MAP()
 
 
-MeaSwatch::MeaSwatch() : CWnd(),
-    m_backBrush(nullptr)
-{
-}
+MeaSwatch::MeaSwatch() : CWnd(), m_backBrush(nullptr) {}
 
-
-MeaSwatch::~MeaSwatch()
-{
+MeaSwatch::~MeaSwatch() {
     try {
         if (m_backBrush != nullptr) {
             delete m_backBrush;
         }
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-void MeaSwatch::OnDestroy()
-{
+void MeaSwatch::OnDestroy() {
     CWnd::OnDestroy();
     DestroyColors();
 }
 
-
-bool MeaSwatch::Create(COLORREF color, const RECT &rect, CWnd *parent)
-{
+bool MeaSwatch::Create(COLORREF color, const RECT& rect, CWnd* parent) {
     SetColor(color);
 
     MeaAssert(m_backBrush != nullptr);
@@ -64,23 +54,19 @@ bool MeaSwatch::Create(COLORREF color, const RECT &rect, CWnd *parent)
         rect, ((parent == nullptr) ? AfxGetMainWnd() : parent), 0) ? true : false;
 }
 
-
-void MeaSwatch::DestroyColors()
-{
+void MeaSwatch::DestroyColors() {
     if (m_backBrush != nullptr) {
         delete m_backBrush;
         m_backBrush = nullptr;
     }
 }
 
-
-void MeaSwatch::SetColor(COLORREF color)
-{
-    CBrush *brush   = new CBrush(color);
+void MeaSwatch::SetColor(COLORREF color) {
+    CBrush* brush = new CBrush(color);
     if (m_hWnd != nullptr) {
         ::SetClassLongPtr(m_hWnd, GCLP_HBRBACKGROUND, reinterpret_cast<LONG_PTR>(static_cast<HBRUSH>(*brush)));
     }
-    
+
     DestroyColors();
     m_backBrush = brush;
 

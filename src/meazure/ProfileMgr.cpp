@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -31,12 +31,12 @@ LPCTSTR MeaProfileMgr::m_ext { _T("mea") };
 LPCTSTR MeaProfileMgr::m_filter { _T("Meazure Profiles (*.mea)|*.mea|All Files (*.*)|*.*||") };
 
 
-MeaProfileMgr::MeaProfileMgr() : MeaSingleton_T<MeaProfileMgr>(),
+MeaProfileMgr::MeaProfileMgr() :
+    MeaSingleton_T<MeaProfileMgr>(),
     m_saveDialog(nullptr),
     m_loadDialog(nullptr),
     m_saveDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_SAVE_PROFILE_DLG)),
-    m_loadDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_LOAD_PROFILE_DLG))
-{
+    m_loadDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_LOAD_PROFILE_DLG)) {
     //
     // Set the initial directory for the save/load dialogs to the Profiles
     // subfolder in the application's folder. This can be changed based on
@@ -52,43 +52,32 @@ MeaProfileMgr::MeaProfileMgr() : MeaSingleton_T<MeaProfileMgr>(),
     }
 }
 
-
-MeaProfileMgr::~MeaProfileMgr()
-{
+MeaProfileMgr::~MeaProfileMgr() {
     try {
         delete m_saveDialog;
         delete m_loadDialog;
-    }
-    catch(...) {
+    } catch (...) {
         MeaAssert(false);
     }
 }
 
-
-void MeaProfileMgr::SaveProfile(MeaProfile& profile) const
-{
+void MeaProfileMgr::SaveProfile(MeaProfile& profile) const {
     if (!profile.UserInitiated()) {
-        profile.WriteStr(_T("LastProfileDir"),  static_cast<LPCTSTR>(m_initialDir));
+        profile.WriteStr(_T("LastProfileDir"), static_cast<LPCTSTR>(m_initialDir));
     }
 }
 
-
-void MeaProfileMgr::LoadProfile(MeaProfile& profile)
-{
+void MeaProfileMgr::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         m_initialDir = profile.ReadStr(_T("LastProfileDir"), static_cast<LPCTSTR>(m_initialDir));
     }
 }
 
-
-void MeaProfileMgr::MasterReset()
-{
+void MeaProfileMgr::MasterReset() {
     m_initialDir.Empty();
 }
 
-
-CFileDialog* MeaProfileMgr::CreateSaveDialog()
-{
+CFileDialog* MeaProfileMgr::CreateSaveDialog() {
     if (m_saveDialog == nullptr) {
         m_saveDialog = new CFileDialog(FALSE, m_ext, nullptr,
             OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, m_filter);
@@ -98,9 +87,7 @@ CFileDialog* MeaProfileMgr::CreateSaveDialog()
     return m_saveDialog;
 }
 
-
-CFileDialog* MeaProfileMgr::CreateLoadDialog()
-{
+CFileDialog* MeaProfileMgr::CreateLoadDialog() {
     if (m_loadDialog == nullptr) {
         m_loadDialog = new CFileDialog(TRUE, m_ext, nullptr,
             OFN_HIDEREADONLY | OFN_FILEMUSTEXIST, m_filter);
@@ -110,10 +97,8 @@ CFileDialog* MeaProfileMgr::CreateLoadDialog()
     return m_loadDialog;
 }
 
-
-void MeaProfileMgr::Load()
-{
-    CFileDialog *dlg = CreateLoadDialog();
+void MeaProfileMgr::Load() {
+    CFileDialog* dlg = CreateLoadDialog();
 
     if (dlg->DoModal() == IDOK) {
         CString pathname = dlg->GetPathName();
@@ -131,9 +116,7 @@ void MeaProfileMgr::Load()
     }
 }
 
-
-void MeaProfileMgr::Load(LPCTSTR pathname) const
-{
+void MeaProfileMgr::Load(LPCTSTR pathname) const {
     try {
         MeaFileProfile profile(pathname, MeaFileProfile::ProfRead);
 
@@ -153,10 +136,8 @@ void MeaProfileMgr::Load(LPCTSTR pathname) const
     }
 }
 
-
-void MeaProfileMgr::Save()
-{
-    CFileDialog *dlg = CreateSaveDialog();
+void MeaProfileMgr::Save() {
+    CFileDialog* dlg = CreateSaveDialog();
 
     if (dlg->DoModal() == IDOK) {
         CString pathname = dlg->GetPathName();
@@ -188,9 +169,7 @@ void MeaProfileMgr::Save()
     }
 }
 
-
-bool MeaProfileMgr::IsProfileFile(LPCTSTR filename)
-{
+bool MeaProfileMgr::IsProfileFile(LPCTSTR filename) {
     TCHAR ext[_MAX_EXT];
     int i = 0;
 
@@ -200,4 +179,3 @@ bool MeaProfileMgr::IsProfileFile(LPCTSTR filename)
     }
     return (_tcsicmp(&ext[i], m_ext) == 0);
 }
-

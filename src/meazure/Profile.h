@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -27,62 +27,61 @@
 /// either the Registry or a file.
 ///
 class MeaProfile {
+
 public:
     /// Constructs a profile instance.
     ///
     MeaProfile();
-    
+
     /// Destroys a profile instance.
     ///
     virtual ~MeaProfile();
-
 
     /// Writes a boolean value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Boolean value for the key
     ///
-    virtual bool    WriteBool(LPCTSTR key, bool value);
+    virtual bool WriteBool(LPCTSTR key, bool value);
 
     /// Writes an integer value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Integer value for the key
     ///
-    virtual bool    WriteInt(LPCTSTR key, int value);
+    virtual bool WriteInt(LPCTSTR key, int value);
 
     /// Writes a double value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Double value for the key
     ///
-    virtual bool    WriteDbl(LPCTSTR key, double value);
+    virtual bool WriteDbl(LPCTSTR key, double value);
 
     /// Writes a string value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] String value for the key
     ///
-    virtual bool    WriteStr(LPCTSTR key, LPCTSTR value);
-
+    virtual bool WriteStr(LPCTSTR key, LPCTSTR value);
 
     /// Reads a boolean value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual bool    ReadBool(LPCTSTR key, bool defaultValue);
+    virtual bool ReadBool(LPCTSTR key, bool defaultValue);
 
     /// Reads an unsigned integer value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual UINT    ReadInt(LPCTSTR key, int defaultValue);
+    virtual UINT ReadInt(LPCTSTR key, int defaultValue);
 
     /// Reads a double value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual double  ReadDbl(LPCTSTR key, double defaultValue);
+    virtual double ReadDbl(LPCTSTR key, double defaultValue);
 
     /// Reads a string value from the specified key.
     ///
@@ -90,7 +89,6 @@ public:
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
     virtual CString ReadStr(LPCTSTR key, LPCTSTR defaultValue);
 
-    
     /// Indicates whether the profile is being written at
     /// the user's request (i.e. a file profile).
     ///
@@ -98,11 +96,11 @@ public:
     ///         The base class implementation of this method always
     ///         returns <b>false</b>.
     ///
-    virtual bool    UserInitiated();
-    
+    virtual bool UserInitiated();
+
     /// Returns the profile format version number.
     ///
     /// @return Profile format version number.
     ///
-    virtual int     GetVersion();
+    virtual int GetVersion();
 };

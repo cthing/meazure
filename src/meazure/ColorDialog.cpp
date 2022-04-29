@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -59,31 +59,22 @@ COLORREF MeaColorDialog::m_customColors[] {
 };
 
 
-MeaColorDialog::MeaColorDialog(UINT titleId, COLORREF clrInit, DWORD dwFlags,
-                               CWnd* pParentWnd) :
-    CColorDialog(clrInit, dwFlags, pParentWnd)
-{
+MeaColorDialog::MeaColorDialog(UINT titleId, COLORREF clrInit, DWORD dwFlags, CWnd* pParentWnd) :
+    CColorDialog(clrInit, dwFlags, pParentWnd) {
     if (titleId != 0xFFFF) {
         VERIFY(m_title.LoadString(titleId));
     }
 }
 
+MeaColorDialog::~MeaColorDialog() {}
 
-MeaColorDialog::~MeaColorDialog()
-{
-}
-
-
-INT_PTR MeaColorDialog::DoModal()
-{
+INT_PTR MeaColorDialog::DoModal() {
     m_cc.lpCustColors = m_customColors;
 
     return CColorDialog::DoModal();
 }
 
-
-BOOL MeaColorDialog::OnInitDialog()
-{
+BOOL MeaColorDialog::OnInitDialog() {
     CColorDialog::OnInitDialog();
 
     if (!m_title.IsEmpty()) {
@@ -92,9 +83,7 @@ BOOL MeaColorDialog::OnInitDialog()
     return TRUE;
 }
 
-
-void MeaColorDialog::SaveProfile(MeaProfile& profile)
-{
+void MeaColorDialog::SaveProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         for (int i = 0; i < kNumCustomColors; i++) {
             CString str;
@@ -105,9 +94,7 @@ void MeaColorDialog::SaveProfile(MeaProfile& profile)
     }
 }
 
-
-void MeaColorDialog::LoadProfile(MeaProfile& profile)
-{
+void MeaColorDialog::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
         for (int i = 0; i < kNumCustomColors; i++) {
             CString str;
@@ -118,9 +105,7 @@ void MeaColorDialog::LoadProfile(MeaProfile& profile)
     }
 }
 
-
-void MeaColorDialog::MasterReset()
-{
+void MeaColorDialog::MasterReset() {
     for (int i = 0; i < kNumCustomColors; i++) {
         m_customColors[i] = m_defColors[i];
     }

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -23,7 +23,6 @@
 ///     header with the macro COMPILE_THEME_STUBS defined.
 
 #pragma once
-
 
 #undef IsThemeActive
 #undef DrawThemeEdge
@@ -55,9 +54,7 @@ HRESULT(WINAPI* g_pfnDrawThemeBackground)(HTHEME, HDC, int, int, const RECT*, co
 BOOL(WINAPI* g_pfnDrawThemeEdge)(HTHEME, HDC, int, int, const RECT*, UINT, UINT, RECT*) { nullptr };
 BOOL g_fThemeInitDone { FALSE };
 
-
-BOOL InitThemeStubs(void)
-{
+BOOL InitThemeStubs(void) {
     HMODULE hUXTheme;
 
     if (g_fThemeInitDone) {
@@ -85,56 +82,45 @@ BOOL InitThemeStubs(void)
     }
 }
 
-
 BOOL WINAPI
-xIsThemeActive()
-{
+xIsThemeActive() {
     if (InitThemeStubs()) {
         return g_pfnIsThemeActive();
     }
     return FALSE;
 }
 
-
 HTHEME WINAPI
-xOpenThemeData(HWND hwnd, LPCWSTR pszClassList)
-{
+xOpenThemeData(HWND hwnd, LPCWSTR pszClassList) {
     if (InitThemeStubs()) {
         return g_pfnOpenThemeData(hwnd, pszClassList);
     }
     return nullptr;
 }
 
-
 HRESULT WINAPI
-xCloseThemeData(HTHEME hTheme)
-{
+xCloseThemeData(HTHEME hTheme) {
     if (InitThemeStubs()) {
         return g_pfnCloseThemeData(hTheme);
     }
     return S_OK;
 }
 
-
 HRESULT WINAPI
-xDrawThemeBackground(HTHEME hTheme, HDC hdc, int iPartId, int iStateId, const RECT *pRect, const RECT *pClipRect)
-{
+xDrawThemeBackground(HTHEME hTheme, HDC hdc, int iPartId, int iStateId, const RECT* pRect, const RECT* pClipRect) {
     if (InitThemeStubs()) {
         return g_pfnDrawThemeBackground(hTheme, hdc, iPartId, iStateId, pRect, pClipRect);
     }
     return S_OK;
 }
 
-
 BOOL WINAPI
-xDrawThemeEdge(HTHEME hTheme, HDC hdc, int iPartId, int iStateId, const RECT *pDestRect, UINT uEdge, UINT uFlags, RECT *pContentRect)
-{
+xDrawThemeEdge(HTHEME hTheme, HDC hdc, int iPartId, int iStateId, const RECT* pDestRect, UINT uEdge, UINT uFlags, RECT* pContentRect) {
     if (InitThemeStubs()) {
         return g_pfnDrawThemeEdge(hTheme, hdc, iPartId, iStateId, pDestRect, uEdge, uFlags, pContentRect);
     }
     return TRUE;
 }
-
 
 #undef COMPILE_THEME_STUBS
 

@@ -28,7 +28,7 @@
 #endif
 
 // Mouse hook message
-#define MEA_MOUSE_MSG   (WM_USER + 1)
+#define MEA_MOUSE_MSG (WM_USER + 1)
 
 /// Enables mouse position reporting. This function installs the mouse hook
 /// procedure that calls back to processes that are interested in the mouse

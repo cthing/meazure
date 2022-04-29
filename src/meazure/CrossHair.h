@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -32,15 +32,15 @@ class MeaCrossHair;
 /// notification of crosshair events (e.g. movement), can inherit from
 /// this class and override the On* methods of interest.
 ///
-class MeaCrossHairCallback
-{
+class MeaCrossHairCallback {
+
 public:
     /// Callback information structure. A callback information structure
     /// is initialized and passed as the parameter in each callback
     /// method.
     ///
     struct CHInfo {
-        MeaCrossHair    *ch;            ///< Pointer to crosshair object that initiated the callback
+        MeaCrossHair* ch;            ///< Pointer to crosshair object that initiated the callback
         CPoint          centerPoint;    ///< Location of the crosshair center point, in pixels
         UINT            id;             ///< User defined ID for the crosshair
         UINT            flags;          ///< Virtual key flags including modifier keys (e.g. MK_CONTROL, MK_SHIFT)
@@ -49,26 +49,25 @@ public:
 
     /// Constructs a callback object.
     ///
-    MeaCrossHairCallback() { }
+    MeaCrossHairCallback() {}
 
     /// Destroys a callback object.
     ///
-    virtual ~MeaCrossHairCallback() { }
-
+    virtual ~MeaCrossHairCallback() {}
 
     /// Called when the left mouse button is pressed while
     /// the pointer is positioned over the crosshair.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHSelect(const CHInfo *info);
+    virtual void OnCHSelect(const CHInfo* info);
 
     /// Called when the left mouse button is release while
     /// the pointer is positioned over the crosshair.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHDeselect(const CHInfo *info);
+    virtual void OnCHDeselect(const CHInfo* info);
 
     /// Called when the user moves the mouse pointer over
     /// the crosshair while the left mouse button is pressed
@@ -79,19 +78,19 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHMove(const CHInfo *info);
+    virtual void OnCHMove(const CHInfo* info);
 
     /// Called when the pointer enters the crosshair window.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHEnter(const CHInfo *info);
+    virtual void OnCHEnter(const CHInfo* info);
 
     /// Called when the pointer leaves the crosshair window.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHLeave(const CHInfo *info);
+    virtual void OnCHLeave(const CHInfo* info);
 };
 
 
@@ -102,12 +101,12 @@ public:
 /// measurement points and to allow the user to perform measurements
 /// by dragging the crosshairs using the pointer.
 ///
-class MeaCrossHair : public MeaGraphic
-{
+class MeaCrossHair : public MeaGraphic {
+
 public:
     static constexpr int kFlashCount { 9 };       ///< Number of times to flash the crosshair when Flash() is called
     static constexpr int kStrobeCount { 1 };      ///< Number of times to flash the crosshair when Strobe() is called
-    
+
 
     /// Constructs a crosshair. Prior to displaying the crosshair with
     /// the Show() method, the Create() method must be called to
@@ -118,7 +117,6 @@ public:
     /// Destroys the circle.
     ///
     virtual ~MeaCrossHair();
-
 
     /// Creates the window for the crosshair. This method must be called
     /// before the crosshair can be displayed and before any operation that
@@ -152,11 +150,10 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(COLORREF borderColor, COLORREF backColor, COLORREF hiliteColor,
-                    BYTE opacity, MeaCrossHairCallback *callback,
-                    const CWnd *parent = nullptr, UINT toolTipId = 0xffff,
-                    UINT id = 0xffff);
-
+    bool Create(COLORREF borderColor, COLORREF backColor, COLORREF hiliteColor,
+                BYTE opacity, MeaCrossHairCallback* callback,
+                const CWnd* parent = nullptr, UINT toolTipId = 0xffff,
+                UINT id = 0xffff);
 
     /// Visually flashes the crosshair by cycling its background
     /// between normal and hilited the number of times specified.
@@ -164,14 +161,13 @@ public:
     /// @param flashCount   [in] Number of times to cycle the
     ///                     crosshair background.
     ///
-    void    Flash(int flashCount = kFlashCount);
-
+    void Flash(int flashCount = kFlashCount);
 
     /// Sets the position of the crosshair.
     ///
     /// @param center   [in] Position for the center of the crosshair, in pixels.
     ///
-    void    SetPosition(const POINT& center);
+    void SetPosition(const POINT& center);
 
     /// Sets the colors for the crosshair.
     ///
@@ -179,14 +175,14 @@ public:
     /// @param backColor    [in] Normal background color
     /// @param hiliteColor  [in] Highlight background color
     ///
-    void    SetColors(COLORREF borderColor, COLORREF backColor, COLORREF hiliteColor);
+    void SetColors(COLORREF borderColor, COLORREF backColor, COLORREF hiliteColor);
 
     /// Sets the opacity for the crosshair.
     ///
     /// @param opacity      [in] Opacity value between 0 (transparent)
     ///                     and 255 (opaque) inclusive
     ///
-    void    SetOpacity(BYTE opacity);
+    void SetOpacity(BYTE opacity);
 
     /// Relays messages to the crosshair's tooltip.
     ///
@@ -275,21 +271,21 @@ private:
     /// @return Location of the upper left corner of the crosshair window,
     ///         in pixels.
     ///
-    static CPoint   GetLeftTop(const CPoint& center) { return center - m_halfSize; }
+    static CPoint GetLeftTop(const CPoint& center) { return center - m_halfSize; }
 
 
-    static SIZE     m_size;             ///< Width and height of the crosshair, in pixels
-    static SIZE     m_halfSize;         ///< Half the width and height of the crosshair, in pixels
-    static SIZE     m_spread;           ///< Half the length of the base of a triangular section of the crosshair, in pixels
-    static UINT     m_flashInterval;    ///< Number of milliseconds to hold each display state while flashing the crosshair
-    static int      *m_numCoords;       ///< Number of coordinates in each rectangle making up part of the crosshair (4)
+    static SIZE m_size;             ///< Width and height of the crosshair, in pixels
+    static SIZE m_halfSize;         ///< Half the width and height of the crosshair, in pixels
+    static SIZE m_spread;           ///< Half the length of the base of a triangular section of the crosshair, in pixels
+    static UINT m_flashInterval;    ///< Number of milliseconds to hold each display state while flashing the crosshair
+    static int* m_numCoords;        ///< Number of coordinates in each rectangle making up part of the crosshair (4)
 
 
     /// Forms the window into the shape of the crosshair. A series of
     /// rectangular regions are aggregated together to form the four
     /// petals of the crosshair.
     ///
-    void    SetRegion();
+    void SetRegion();
 
     /// Draws the crosshair background and border. Before this method
     /// is called, the shape of the crosshair has already been set by
@@ -300,12 +296,12 @@ private:
     ///
     /// @param dc   [in] Device context into which the crosshair is drawn
     ///
-    void    DrawCrossHair(CDC& dc);
+    void DrawCrossHair(CDC& dc);
 
     /// Deletes the brushes used to draw the crosshair's background and
     /// border.
     ///
-    void    DestroyColors();
+    void DestroyColors();
 
     /// Fills in the crosshair information structure with the current
     /// location of the pointer and the state of the keyboard modifiers.
@@ -314,25 +310,24 @@ private:
     /// @param flags    [in] State of the keyboard modifier keys
     /// @param point    [in] Current location of the pointer, in pixels
     ///
-    void    FillInfo(MeaCrossHairCallback::CHInfo& chs, UINT flags, const CPoint& point);
+    void FillInfo(MeaCrossHairCallback::CHInfo& chs, UINT flags, const CPoint& point);
 
 
-    MeaCrossHairCallback    *m_callback;        ///< Object to call for crosshair events
-    bool                    m_mouseCaptured;    ///< Indicates if the pointer is captured
-    bool                    m_mouseOver;        ///< Indicates if the pointer is over the crosshair
-    CBrush                  *m_backBrush;       ///< Brush to paint the normal crosshair background
-    CBrush                  *m_borderBrush;     ///< Brush to paint the crosshair border
-    CBrush                  *m_hiliteBrush;     ///< Brush to paint the highlighted crosshair background
-    CSize                   m_pointerOffset;    ///< Offset from the pointer location in the window to the center of the crosshair
-    DrawState               m_drawState;        ///< Indicates how the crosshair should be drawn
-    int                     m_flashCount;       ///< Number of times to flash the crosshair
-    CToolTipCtrl            m_toolTip;          ///< Tooltip associated with the crosshair
-    BYTE                    m_opacity;          ///< Opacity of the crosshair (0 - transparent, 255 - opaque)
-
-    CDC         m_chDC;                 ///< Crosshair device context
-    CDC         m_backDC;               ///< Background device context for alpha blending when the crosshair is a child window
-    CBitmap     m_chBitmap;             ///< Bitmap into which to draw the crosshair when it is a child window
-    CBitmap     *m_origCHBitmap;        ///< Original bitmap for the crosshair
-    CBitmap     m_backBitmap;           ///< Bitmap for the background when alpha blending when the crosshair is a child window
-    CBitmap     *m_origBackBitmap;      ///< Original background bitmap 
+    MeaCrossHairCallback* m_callback;   ///< Object to call for crosshair events
+    bool m_mouseCaptured;               ///< Indicates if the pointer is captured
+    bool m_mouseOver;                   ///< Indicates if the pointer is over the crosshair
+    CBrush* m_backBrush;                ///< Brush to paint the normal crosshair background
+    CBrush* m_borderBrush;              ///< Brush to paint the crosshair border
+    CBrush* m_hiliteBrush;              ///< Brush to paint the highlighted crosshair background
+    CSize m_pointerOffset;              ///< Offset from the pointer location in the window to the center of the crosshair
+    DrawState m_drawState;              ///< Indicates how the crosshair should be drawn
+    int m_flashCount;                   ///< Number of times to flash the crosshair
+    CToolTipCtrl m_toolTip;             ///< Tooltip associated with the crosshair
+    BYTE m_opacity;                     ///< Opacity of the crosshair (0 - transparent, 255 - opaque)
+    CDC m_chDC;                         ///< Crosshair device context
+    CDC m_backDC;                       ///< Background device context for alpha blending when the crosshair is a child window
+    CBitmap m_chBitmap;                 ///< Bitmap into which to draw the crosshair when it is a child window
+    CBitmap* m_origCHBitmap;            ///< Original bitmap for the crosshair
+    CBitmap m_backBitmap;               ///< Bitmap for the background when alpha blending when the crosshair is a child window
+    CBitmap* m_origBackBitmap;          ///< Original background bitmap 
 };

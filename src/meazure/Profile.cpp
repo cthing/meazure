@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -21,72 +21,47 @@
 #include "Profile.h"
 
 
-MeaProfile::MeaProfile()
-{
-}
+MeaProfile::MeaProfile() {}
 
+MeaProfile::~MeaProfile() {}
 
-MeaProfile::~MeaProfile()
-{
-}
-
-
-bool MeaProfile::WriteBool(LPCTSTR /* key */, bool /* value */)
-{
+bool MeaProfile::WriteBool(LPCTSTR /* key */, bool /* value */) {
     return true;
 }
 
-
-bool MeaProfile::WriteInt(LPCTSTR /* key */, int /* value */)
-{
+bool MeaProfile::WriteInt(LPCTSTR /* key */, int /* value */) {
     return true;
 }
 
-
-bool MeaProfile::WriteDbl(LPCTSTR /* key */, double /* value */)
-{
+bool MeaProfile::WriteDbl(LPCTSTR /* key */, double /* value */) {
     return true;
 }
 
-
-bool MeaProfile::WriteStr(LPCTSTR /* key */, LPCTSTR /* value */)
-{
+bool MeaProfile::WriteStr(LPCTSTR /* key */, LPCTSTR /* value */) {
     return true;
 }
 
-
-bool MeaProfile::ReadBool(LPCTSTR /* key */, bool defaultValue)
-{
+bool MeaProfile::ReadBool(LPCTSTR /* key */, bool defaultValue) {
     return defaultValue;
 }
 
-
-UINT MeaProfile::ReadInt(LPCTSTR /* key */, int defaultValue)
-{
+UINT MeaProfile::ReadInt(LPCTSTR /* key */, int defaultValue) {
     return defaultValue;
 }
 
-
-double MeaProfile::ReadDbl(LPCTSTR /* key */, double defaultValue)
-{
+double MeaProfile::ReadDbl(LPCTSTR /* key */, double defaultValue) {
     return defaultValue;
 }
 
-
-CString MeaProfile::ReadStr(LPCTSTR /* key */, LPCTSTR defaultValue)
-{
+CString MeaProfile::ReadStr(LPCTSTR /* key */, LPCTSTR defaultValue) {
     CString v(defaultValue);
     return v;
 }
 
-
-bool MeaProfile::UserInitiated()
-{
+bool MeaProfile::UserInitiated() {
     return false;
 }
 
-
-int MeaProfile::GetVersion()
-{
+int MeaProfile::GetVersion() {
     return 1;
 }

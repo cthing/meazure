@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -42,10 +42,12 @@ BEGIN_MESSAGE_MAP(MeaDataSection, CButton)
 END_MESSAGE_MAP()
 
 
-MeaDataDisplay::MeaDataDisplay() : CWnd(),
-        m_regionSectionProfileEnabled(true), m_screenSectionProfileEnabled(true),
-        m_regionSectionEnabled(true), m_screenSectionEnabled(true)
-{
+MeaDataDisplay::MeaDataDisplay() :
+    CWnd(),
+    m_regionSectionProfileEnabled(true),
+    m_screenSectionProfileEnabled(true),
+    m_regionSectionEnabled(true),
+    m_screenSectionEnabled(true) {
     m_fields.insert(&m_x1.GetField());
     m_fields.insert(&m_y1.GetField());
     m_fields.insert(&m_x2.GetField());
@@ -64,14 +66,9 @@ MeaDataDisplay::MeaDataDisplay() : CWnd(),
     m_fields.insert(&m_screenResY.GetField());
 }
 
+MeaDataDisplay::~MeaDataDisplay() {}
 
-MeaDataDisplay::~MeaDataDisplay()
-{
-}
-
-
-bool MeaDataDisplay::Create(const POINT& topLeft, CWnd* parentWnd)
-{
+bool MeaDataDisplay::Create(const POINT& topLeft, CWnd* parentWnd) {
     CRect winRect(topLeft, CSize(5, 5));
     LPCTSTR winClass = AfxRegisterWndClass(0, nullptr, GetSysColorBrush(COLOR_BTNFACE));
 
@@ -119,9 +116,7 @@ bool MeaDataDisplay::Create(const POINT& topLeft, CWnd* parentWnd)
     return true;
 }
 
-
-bool MeaDataDisplay::CreateRegionSection()
-{
+bool MeaDataDisplay::CreateRegionSection() {
     CPoint point(0, 0);
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
     MeaScreenMgr& screenMgr = MeaScreenMgr::Instance();
@@ -129,15 +124,15 @@ bool MeaDataDisplay::CreateRegionSection()
     // Create the region box
     //
     if (!m_regionSection.CreateEx(WS_EX_CONTROLPARENT, _T("BUTTON"), "", WS_CHILD | WS_VISIBLE | BS_GROUPBOX,
-           CRect(0, 0, 5, 5), this, 0xFFFF)){
+                                  CRect(0, 0, 5, 5), this, 0xFFFF)) {
         return false;
     }
-    CFont *defaultFont = CFont::FromHandle(static_cast<HFONT>(GetStockObject(DEFAULT_GUI_FONT)));
+    CFont* defaultFont = CFont::FromHandle(static_cast<HFONT>(GetStockObject(DEFAULT_GUI_FONT)));
     m_regionSection.SetFont(defaultFont, FALSE);
 
     // Create the coordinate controls
     //
-    if (!m_x1.CreateField(IDS_MEA_X1, kLengthChars, &m_regionSection, MeaX1Field, MeaX1Field)){
+    if (!m_x1.CreateField(IDS_MEA_X1, kLengthChars, &m_regionSection, MeaX1Field, MeaX1Field)) {
         return false;
     }
     if (!m_y1.CreateField(IDS_MEA_Y1, kLengthChars, &m_regionSection, MeaY1Field, MeaY1Field)) {
@@ -164,11 +159,11 @@ bool MeaDataDisplay::CreateRegionSection()
     m_yv.SetLimitText(kLengthChars);
 
     m_x1.SetSpinRange(screenMgr.GetVirtualRect().left, screenMgr.GetVirtualRect().right - 1);
-    m_y1.SetSpinRange(screenMgr.GetVirtualRect().top,  screenMgr.GetVirtualRect().bottom - 1);
+    m_y1.SetSpinRange(screenMgr.GetVirtualRect().top, screenMgr.GetVirtualRect().bottom - 1);
     m_x2.SetSpinRange(screenMgr.GetVirtualRect().left, screenMgr.GetVirtualRect().right - 1);
-    m_y2.SetSpinRange(screenMgr.GetVirtualRect().top,  screenMgr.GetVirtualRect().bottom - 1);
+    m_y2.SetSpinRange(screenMgr.GetVirtualRect().top, screenMgr.GetVirtualRect().bottom - 1);
     m_xv.SetSpinRange(screenMgr.GetVirtualRect().left, screenMgr.GetVirtualRect().right - 1);
-    m_yv.SetSpinRange(screenMgr.GetVirtualRect().top,  screenMgr.GetVirtualRect().bottom - 1);
+    m_yv.SetSpinRange(screenMgr.GetVirtualRect().top, screenMgr.GetVirtualRect().bottom - 1);
 
     if (!m_y1.CreateLengthUnits(unitsMgr.GetLinearUnits(), &m_regionSection)) {
         return false;
@@ -232,14 +227,14 @@ bool MeaDataDisplay::CreateRegionSection()
     MeaLayout::AlignRight(point.x, &m_x1.GetTitleLabel(), &m_x2.GetTitleLabel(),
         &m_xv.GetTitleLabel(), &m_width.GetTitleLabel(),
         &m_length.GetTitleLabel(), &m_aspect.GetTitleLabel(),
-        & m_area.GetTitleLabel(), nullptr);
+        &m_area.GetTitleLabel(), nullptr);
 
     MeaLayout::PlaceAfter(m_x1.GetTitleLabel(), m_x1.GetField(), kLabelSpacing);
     MeaLayout::PlaceAfter(m_x1.GetField(), m_x1.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_x1.GetSpin(),  m_y1.GetTitleLabel(), kControlSpacing.cx);
+    MeaLayout::PlaceAfter(m_x1.GetSpin(), m_y1.GetTitleLabel(), kControlSpacing.cx);
     MeaLayout::PlaceAfter(m_y1.GetTitleLabel(), m_y1.GetField(), kLabelSpacing);
     MeaLayout::PlaceAfter(m_y1.GetField(), m_y1.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_y1.GetSpin(),  m_y1.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_y1.GetSpin(), m_y1.GetUnitsLabel(), kLabelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_x1.GetTitleLabel(), &m_x1.GetField(), &m_x1.GetSpin(),
         &m_y1.GetTitleLabel(), &m_y1.GetField(), &m_y1.GetSpin(), &m_y1.GetUnitsLabel(), nullptr);
@@ -248,10 +243,10 @@ bool MeaDataDisplay::CreateRegionSection()
 
     MeaLayout::PlaceAfter(m_x2.GetTitleLabel(), m_x2.GetField(), kLabelSpacing);
     MeaLayout::PlaceAfter(m_x2.GetField(), m_x2.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_x2.GetSpin(),  m_y2.GetTitleLabel(), kControlSpacing.cx);
+    MeaLayout::PlaceAfter(m_x2.GetSpin(), m_y2.GetTitleLabel(), kControlSpacing.cx);
     MeaLayout::PlaceAfter(m_y2.GetTitleLabel(), m_y2.GetField(), kLabelSpacing);
     MeaLayout::PlaceAfter(m_y2.GetField(), m_y2.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_y2.GetSpin(),  m_y2.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_y2.GetSpin(), m_y2.GetUnitsLabel(), kLabelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_x2.GetTitleLabel(), &m_x2.GetField(), &m_x2.GetSpin(),
         &m_y2.GetTitleLabel(), &m_y2.GetField(), &m_y2.GetSpin(), &m_y2.GetUnitsLabel(), nullptr);
@@ -260,10 +255,10 @@ bool MeaDataDisplay::CreateRegionSection()
 
     MeaLayout::PlaceAfter(m_xv.GetTitleLabel(), m_xv.GetField(), kLabelSpacing);
     MeaLayout::PlaceAfter(m_xv.GetField(), m_xv.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_xv.GetSpin(),  m_yv.GetTitleLabel(), kControlSpacing.cx);
+    MeaLayout::PlaceAfter(m_xv.GetSpin(), m_yv.GetTitleLabel(), kControlSpacing.cx);
     MeaLayout::PlaceAfter(m_yv.GetTitleLabel(), m_yv.GetField(), kLabelSpacing);
     MeaLayout::PlaceAfter(m_yv.GetField(), m_yv.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_yv.GetSpin(),  m_yv.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_yv.GetSpin(), m_yv.GetUnitsLabel(), kLabelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_xv.GetTitleLabel(), &m_xv.GetField(), &m_xv.GetSpin(),
         &m_yv.GetTitleLabel(), &m_yv.GetField(), &m_yv.GetSpin(), &m_yv.GetUnitsLabel(), nullptr);
@@ -318,19 +313,17 @@ bool MeaDataDisplay::CreateRegionSection()
     return true;
 }
 
-
-bool MeaDataDisplay::CreateScreenSection()
-{
+bool MeaDataDisplay::CreateScreenSection() {
     CPoint point(0, 0);
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     // Create the region box
     //
     if (!m_screenSection.CreateEx(WS_EX_CONTROLPARENT, _T("BUTTON"), _T(""), WS_CHILD | WS_VISIBLE | BS_GROUPBOX,
-           CRect(0, 0, 5, 5), this, 0xFFFF)) {
+                                  CRect(0, 0, 5, 5), this, 0xFFFF)) {
         return false;
     }
-    CFont *defaultFont = CFont::FromHandle(static_cast<HFONT>(GetStockObject(DEFAULT_GUI_FONT)));
+    CFont* defaultFont = CFont::FromHandle(static_cast<HFONT>(GetStockObject(DEFAULT_GUI_FONT)));
     m_screenSection.SetFont(defaultFont, FALSE);
 
     // Create the controls
@@ -407,9 +400,7 @@ bool MeaDataDisplay::CreateScreenSection()
     return true;
 }
 
-
-void MeaDataDisplay::Enable(MeaSection section)
-{
+void MeaDataDisplay::Enable(MeaSection section) {
     if (section == MeaRegionSection) {
         if (!m_regionSectionEnabled) {
             m_regionSectionEnabled = true;
@@ -424,9 +415,7 @@ void MeaDataDisplay::Enable(MeaSection section)
     }
 }
 
-
-void MeaDataDisplay::Disable(MeaSection section)
-{
+void MeaDataDisplay::Disable(MeaSection section) {
     if (section == MeaRegionSection) {
         if (m_regionSectionEnabled) {
             m_regionSectionEnabled = false;
@@ -441,9 +430,7 @@ void MeaDataDisplay::Disable(MeaSection section)
     }
 }
 
-
-void MeaDataDisplay::ShowXY1(const POINT& point, const FPOINT& cpoint)
-{
+void MeaDataDisplay::ShowXY1(const POINT& point, const FPOINT& cpoint) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     m_x1.SetSpinPos(point.x);
@@ -453,9 +440,7 @@ void MeaDataDisplay::ShowXY1(const POINT& point, const FPOINT& cpoint)
     m_y1.SetText(unitsMgr.Format(MeaY, cpoint.y));
 }
 
-
-void MeaDataDisplay::ShowXY2(const POINT& point, const FPOINT& cpoint)
-{
+void MeaDataDisplay::ShowXY2(const POINT& point, const FPOINT& cpoint) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     m_x2.SetSpinPos(point.x);
@@ -465,9 +450,7 @@ void MeaDataDisplay::ShowXY2(const POINT& point, const FPOINT& cpoint)
     m_y2.SetText(unitsMgr.Format(MeaY, cpoint.y));
 }
 
-
-void MeaDataDisplay::ShowXYV(const POINT& point, const FPOINT& cpoint)
-{
+void MeaDataDisplay::ShowXYV(const POINT& point, const FPOINT& cpoint) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     m_xv.SetSpinPos(point.x);
@@ -477,33 +460,24 @@ void MeaDataDisplay::ShowXYV(const POINT& point, const FPOINT& cpoint)
     m_yv.SetText(unitsMgr.Format(MeaY, cpoint.y));
 }
 
-
-void MeaDataDisplay::ShowWH(const FSIZE& size)
-{
+void MeaDataDisplay::ShowWH(const FSIZE& size) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     m_width.SetText(unitsMgr.Format(MeaW, size.cx));
     m_height.SetText(unitsMgr.Format(MeaH, size.cy));
 }
 
-
-void MeaDataDisplay::ShowDistance(const FSIZE& size)
-{
+void MeaDataDisplay::ShowDistance(const FSIZE& size) {
     m_length.SetText(MeaUnitsMgr::Instance().Format(MeaD, MeaLayout::CalcLength(size.cx, size.cy)));
 }
 
-
-void MeaDataDisplay::ShowDistance(double dist)
-{
+void MeaDataDisplay::ShowDistance(double dist) {
     m_length.SetText(MeaUnitsMgr::Instance().Format(MeaD, dist));
 }
 
-
-void MeaDataDisplay::ShowAngle(double angle)
-{
+void MeaDataDisplay::ShowAngle(double angle) {
     m_angle.SetText(MeaUnitsMgr::Instance().FormatConvertAngle(angle));
 }
-
 
 void MeaDataDisplay::ShowAspect(const FSIZE& size) {
     double aspectRatio = (size.cy == 0) ? 0.0 : ((double)size.cx / (double)size.cy);
@@ -513,45 +487,33 @@ void MeaDataDisplay::ShowAspect(const FSIZE& size) {
     m_aspect.SetText(vstr);
 }
 
-
-void MeaDataDisplay::ShowRectArea(const FSIZE& size)
-{
+void MeaDataDisplay::ShowRectArea(const FSIZE& size) {
     m_area.SetText(MeaUnitsMgr::Instance().Format(MeaAr, size.cx * size.cy));
 }
 
-
-void MeaDataDisplay::ShowCircleArea(double radius)
-{
+void MeaDataDisplay::ShowCircleArea(double radius) {
     m_area.SetText(MeaUnitsMgr::Instance().Format(MeaAr, MeaUnits::kPI * radius * radius));
 }
 
-
-void MeaDataDisplay::ShowScreenName(const CString& name)
-{
+void MeaDataDisplay::ShowScreenName(const CString& name) {
     m_screenSection.SetWindowText(name);
 }
 
-
-void MeaDataDisplay::ShowScreenWH(const FSIZE& size)
-{
+void MeaDataDisplay::ShowScreenWH(const FSIZE& size) {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
 
     m_screenWidth.SetText(units.Format(MeaW, size.cx));
     m_screenHeight.SetText(units.Format(MeaH, size.cy));
 }
 
-
-void MeaDataDisplay::ShowScreenRes(const FSIZE& res)
-{
+void MeaDataDisplay::ShowScreenRes(const FSIZE& res) {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
 
     m_screenResX.SetText(units.Format(MeaRx, res.cx));
     m_screenResY.SetText(units.Format(MeaRy, res.cy));
 }
 
-
-void MeaDataDisplay::EnableRegionFields(UINT enableFields, UINT editableFields)
-{
+void MeaDataDisplay::EnableRegionFields(UINT enableFields, UINT editableFields) {
     m_x1.SetReadOnly(!(editableFields & MeaX1Field));
     m_y1.SetReadOnly(!(editableFields & MeaY1Field));
     m_x2.SetReadOnly(!(editableFields & MeaX2Field));
@@ -581,9 +543,7 @@ void MeaDataDisplay::EnableRegionFields(UINT enableFields, UINT editableFields)
     m_area.Enable((enableFields & MeaAreaField) != 0);
 }
 
-
-void MeaDataDisplay::EnableScreenFields(UINT enableFields, UINT editableFields)
-{
+void MeaDataDisplay::EnableScreenFields(UINT enableFields, UINT editableFields) {
     m_screenWidth.SetReadOnly(!(editableFields & MeaScreenWidthField));
     m_screenHeight.SetReadOnly(!(editableFields & MeaScreenHeightField));
     m_screenResX.SetReadOnly(!(editableFields & MeaResXField));
@@ -595,9 +555,7 @@ void MeaDataDisplay::EnableScreenFields(UINT enableFields, UINT editableFields)
     m_screenResY.Enable((enableFields & MeaResYField) != 0);
 }
 
-
-void MeaDataDisplay::ClearRegionData()
-{
+void MeaDataDisplay::ClearRegionData() {
     m_x1.SetText(_T(""));
     m_y1.SetText(_T(""));
     m_x2.SetText(_T(""));
@@ -612,10 +570,8 @@ void MeaDataDisplay::ClearRegionData()
     m_area.SetText(_T(""));
 }
 
-
-MeaNumberField* MeaDataDisplay::GetFieldFocus() const
-{
-    CWnd *focusWnd = GetFocus();
+MeaNumberField* MeaDataDisplay::GetFieldFocus() const {
+    CWnd* focusWnd = GetFocus();
 
     if (focusWnd == nullptr) {
         return nullptr;
@@ -625,19 +581,15 @@ MeaNumberField* MeaDataDisplay::GetFieldFocus() const
     return (iter == m_fields.end()) ? nullptr : (*iter);
 }
 
-
-LRESULT MeaDataSection::OnFieldEntry(WPARAM wParam, LPARAM id)
-{
+LRESULT MeaDataSection::OnFieldEntry(WPARAM wParam, LPARAM id) {
     GetParent()->SendMessage(MeaFieldEnterMsg, wParam, id);
     return TRUE;
 }
 
-
-LRESULT MeaDataDisplay::OnFieldEntry(WPARAM wParam, LPARAM id)
-{
+LRESULT MeaDataDisplay::OnFieldEntry(WPARAM wParam, LPARAM id) {
     FPOINT pos;
     LONG pixels = 0;
-    const MeaNumberField *field = nullptr;
+    const MeaNumberField* field = nullptr;
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     switch (id) {
@@ -689,9 +641,7 @@ LRESULT MeaDataDisplay::OnFieldEntry(WPARAM wParam, LPARAM id)
     return TRUE;
 }
 
-
-LRESULT MeaDataDisplay::OnHelpHitTest(WPARAM, LPARAM lparam)
-{
+LRESULT MeaDataDisplay::OnHelpHitTest(WPARAM, LPARAM lparam) {
     CPoint point(GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam));
     if (m_regionSectionRect.PtInRect(point)) {
         return HID_BASE_COMMAND + ID_HELP_TOOL_INFO;
@@ -699,28 +649,22 @@ LRESULT MeaDataDisplay::OnHelpHitTest(WPARAM, LPARAM lparam)
     return HID_BASE_COMMAND + ID_HELP_SCREEN_INFO;
 }
 
-
-void MeaDataSection::OnCalButton()
-{
+void MeaDataSection::OnCalButton() {
     AfxGetMainWnd()->PostMessage(MeaShowCalPrefsMsg);
 }
 
-
-BOOL MeaDataSection::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult)
-{
+BOOL MeaDataSection::OnNotify(WPARAM wParam, LPARAM lParam, LRESULT* pResult) {
     GetParent()->SendMessage(WM_NOTIFY, wParam, lParam);
     *pResult = TRUE;
 
     return TRUE;
 }
 
-
-BOOL MeaDataDisplay::OnNotify(WPARAM /* wParam */, LPARAM lParam, LRESULT* pResult)
-{
-    NMHDR *hdr = reinterpret_cast<NMHDR*>(lParam);
+BOOL MeaDataDisplay::OnNotify(WPARAM /* wParam */, LPARAM lParam, LRESULT* pResult) {
+    NMHDR* hdr = reinterpret_cast<NMHDR*>(lParam);
 
     if (hdr->code == UDN_DELTAPOS) {
-        NMUPDOWN *ud = reinterpret_cast<NMUPDOWN*>(lParam);
+        NMUPDOWN* ud = reinterpret_cast<NMUPDOWN*>(lParam);
         int pixelPos = ud->iPos + ud->iDelta;
 
         GetParent()->SendMessage(MeaDataChangeMsg, pixelPos, hdr->idFrom);
@@ -733,16 +677,12 @@ BOOL MeaDataDisplay::OnNotify(WPARAM /* wParam */, LPARAM lParam, LRESULT* pResu
     return static_cast<BOOL>(*pResult);
 }
 
-
-bool MeaDataDisplay::DataItem::CreateField(UINT labelId, int numChars,
-                                           CWnd *parentWnd, MeaFields fieldId,
-                                           int spinId)
-{
+bool MeaDataDisplay::DataItem::CreateField(UINT labelId, int numChars, CWnd* parentWnd, MeaFields fieldId, int spinId) {
     if (!m_titleLabel.Create(labelId, WS_CHILD | WS_VISIBLE, CPoint(0, 0), parentWnd)) {
         return false;
     }
     if (!m_field.Create(WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP | ES_RIGHT | ES_AUTOHSCROLL,
-           CPoint(0, 0), numChars, parentWnd, fieldId)) {
+                        CPoint(0, 0), numChars, parentWnd, fieldId)) {
         return false;
     }
     if (spinId != 0xFFFF) {
@@ -753,9 +693,7 @@ bool MeaDataDisplay::DataItem::CreateField(UINT labelId, int numChars,
     return true;
 }
 
-
-bool MeaDataDisplay::DataItem::CreateSpinButton(CWnd *parentWnd, MeaFields id)
-{
+bool MeaDataDisplay::DataItem::CreateSpinButton(CWnd* parentWnd, MeaFields id) {
     CRect rect;
 
     m_field.GetWindowRect(&rect);
@@ -772,9 +710,7 @@ bool MeaDataDisplay::DataItem::CreateSpinButton(CWnd *parentWnd, MeaFields id)
     return ret;
 }
 
-
-void MeaDataDisplay::DataItem::Enable(bool enable)
-{
+void MeaDataDisplay::DataItem::Enable(bool enable) {
     m_titleLabel.EnableWindow(enable);
     m_field.EnableWindow(enable);
     if (m_spin != nullptr) {
@@ -784,4 +720,3 @@ void MeaDataDisplay::DataItem::Enable(bool enable)
         m_unitsLabel->EnableWindow(enable);
     }
 }
-

@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -29,8 +29,8 @@
 /// Cursor position measurement tool. This tool measures the position of
 /// the mouse pointer.
 ///
-class MeaCursorTool : public MeaRadioTool
-{
+class MeaCursorTool : public MeaRadioTool {
+
 public:
     static const CString kToolName;     ///< "CursorTool"
 
@@ -47,7 +47,6 @@ public:
     ///
     virtual ~MeaCursorTool();
 
-
     /// Enables the Cursor tool's data window. If the Create() method has
     /// not been previously called, it will be called by Enable.
     ///
@@ -57,13 +56,11 @@ public:
     ///
     virtual void Disable() override;
 
-    
     /// Requests that the tool update the display of its position data.
     ///
     /// @param reason   [in] Reason why the update has been requested
     ///
     virtual void Update(MeaUpdateReason reason) override;
-
 
     /// Indicates whether the tool has crosshairs.
     ///
@@ -78,12 +75,11 @@ public:
     ///
     virtual void Strobe() override;
 
-
     /// Returns the position of the mouse pointer.
     ///
     /// @return Position of the mouse pointer.
     ///
-    virtual const POINT&    GetPosition() const override;
+    virtual const POINT& GetPosition() const override;
 
     /// Records the position of the mouse pointer. This method is called
     /// by the position log manager to record a position.
@@ -91,8 +87,7 @@ public:
     /// @param position     [in] The position of the mouse pointer is recorded
     ///                     into the position log manager's position object.
     ///
-    virtual void    GetPosition(MeaPositionLogMgr::Position& position) const override;
-
+    virtual void GetPosition(MeaPositionLogMgr::Position& position) const override;
 
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position
@@ -107,14 +102,12 @@ public:
     ///
     /// @return Resource ID for the label.
     ///
-    virtual UINT    GetLabelId() const override;
-
+    virtual UINT GetLabelId() const override;
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The data window opacity is updated.
     ///
     virtual void ColorsChanged() override;
-
 
     /// Called by the OS when the mouse pointer is moved.
     ///
@@ -127,10 +120,11 @@ private:
     /// Creates the tool's data window. The Enable() method must
     /// be called to make the data window visible.
     ///
-    void    Create();
+    void Create();
 
-    CPoint      m_cursorPos;    ///< Cached position of the mouse pointer
-    MeaDataWin  m_dataWin;      ///< Data window tooltip attached to the mouse pointer
-    int         m_xDist;        ///< Half the width of the cursor
-    int         m_yDist;        ///< Half the height of the cursor
+
+    CPoint m_cursorPos;     ///< Cached position of the mouse pointer
+    MeaDataWin m_dataWin;   ///< Data window tooltip attached to the mouse pointer
+    int m_xDist;            ///< Half the width of the cursor
+    int m_yDist;            ///< Half the height of the cursor
 };

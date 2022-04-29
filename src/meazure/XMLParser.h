@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -33,17 +33,14 @@ class MeaXMLParser;
 
 /// Exception thrown when an error occurs during XML parsing.
 ///
-class MeaXMLParserException
-{
-};
+class MeaXMLParserException {};
 
 
 /// The class contains the attributes associated with an XML start element.
 /// In addition to iterating through the attributes, the class provides
 /// searching and other attribute manipulation capabilities.
 ///
-class MeaXMLAttributes
-{
+class MeaXMLAttributes {
     friend class MeaXMLParser;
 
 protected:
@@ -66,7 +63,7 @@ public:
     /// @param attrs    [in] XML attribute object instance to copy.
     ///
     MeaXMLAttributes(const MeaXMLAttributes& attrs) { Assign(attrs); }
-    
+
     /// Destroys an instance of the XML attributes class.
     ///
     virtual ~MeaXMLAttributes();
@@ -78,7 +75,6 @@ public:
     /// @return this
     ///
     MeaXMLAttributes& operator=(const MeaXMLAttributes& attrs) { return Assign(attrs); }
-
 
     /// Returns the value of the specified attribute as a string.
     /// @param name         [in] Attribute name.
@@ -110,7 +106,6 @@ public:
     /// @return <b>true</b> if the attribute is found.
     bool GetValueBool(LPCTSTR name, bool& value, bool& isDefault) const;
 
-
     /// Performs a deep copy assignment of the specified attribute object
     /// to this.
     ///
@@ -133,9 +128,9 @@ protected:
     ///                     The atts array is organized such that the explicitly
     ///                     specified attributes come first.
     ///
-    MeaXMLAttributes(const XML_Char **atts, int numSpecified);
-    
-    std::map<CString, AttributeValue>   m_attributeMap;     ///< Maps attribute names to their values.
+    MeaXMLAttributes(const XML_Char** atts, int numSpecified);
+
+    std::map<CString, AttributeValue> m_attributeMap;     ///< Maps attribute names to their values.
 };
 
 
@@ -143,8 +138,8 @@ protected:
 /// from the parsed file. This is a very minimal DOM and does not
 /// conform to the W3C DOM spec.
 ///
-class MeaXMLNode
-{
+class MeaXMLNode {
+
 public:
     typedef std::list<MeaXMLNode*>      NodeList;       ///< Represents a list of DOM nodes.
     typedef NodeList::const_iterator    NodeIter_c;     ///< Constant iterator over the DOM nodes.
@@ -161,7 +156,7 @@ public:
     /// Constructs an empty DOM node of unknown type.
     ///
     MeaXMLNode();
-    
+
     /// Constructs a DOM node representing the specified element.
     ///
     /// @param elementName  [in] The node represents this element.
@@ -180,16 +175,15 @@ public:
     /// @param node     [in] Node to copy.
     ///
     MeaXMLNode(const MeaXMLNode& node) { Assign(node); }
-    
+
     /// Destroys a node.
     ///
     virtual ~MeaXMLNode();
 
-
     /// Returns the type of the node.
     /// @return Node type.
     Type            GetType() const { return m_type; }
-    
+
     /// Returns the data for the node. The data returned
     /// depends on the node type:
     ///
@@ -201,19 +195,17 @@ public:
     /// </table>
     /// @return Data appropriate for the node.
     ///
-    const CString&  GetData() const { return m_data; }
+    const CString& GetData() const { return m_data; }
 
     /// Returns the attributes associated with the node if it
     /// is of type Element.
     /// @return Attributes associated with the node.
     const MeaXMLAttributes& GetAttributes() const { return m_attributes; }
 
-
     /// Performs a deep copy assignment of the specified node to this.
     /// @param node     [in] DOM node to assign to this.
     /// @return this
     MeaXMLNode& operator=(const MeaXMLNode& node) { return Assign(node); }
-
 
     /// Adds the specified DOM node as a child of this node.
     ///
@@ -225,19 +217,17 @@ public:
         m_children.push_back(child);
     }
 
-
     /// Performs a deep copy assignment of the specified node to this.
     /// @param node     [in] DOM node to assign to this.
     /// @return this
     MeaXMLNode& Assign(const MeaXMLNode& node);
 
-
     /// Returns a constant iterator over the children of this node.
     ///
     /// @return Constant iterator over the children nodes.
     ///
-    NodeIter_c  GetChildIter() const { return m_children.begin(); }
-    
+    NodeIter_c GetChildIter() const { return m_children.begin(); }
+
     /// Indicates whether the specified iterator has reached the end
     /// of the list of children nodes.
     ///
@@ -246,7 +236,7 @@ public:
     /// @return <b>true</b> if the iterator has reached the end of the
     ///         list of children nodes.
     ///
-    bool        AtEnd(const NodeIter_c& iter) const { return iter == m_children.end(); }
+    bool AtEnd(const NodeIter_c& iter) const { return iter == m_children.end(); }
 
 #ifdef MEA_XMLNODE_DEBUG
     /// Dumps the state of the node to the debug output using TRACE
@@ -263,12 +253,12 @@ private:
     ///
     void SetParent(MeaXMLNode* parent) { m_parent = parent; }
 
-    Type                m_type;         ///< Type for the node.
-    CString             m_data;         ///< Either empty, element name, or character data
-                                        ///< depending on the node type.
-    MeaXMLAttributes    m_attributes;   ///< Attributes associated with an element node.
-    NodeList            m_children;     ///< Children of this node.
-    MeaXMLNode*         m_parent;       ///< Parent of this node.
+
+    Type m_type;                    ///< Type for the node.
+    CString m_data;                 ///< Either empty, element name, or character data depending on the node type.
+    MeaXMLAttributes m_attributes;  ///< Attributes associated with an element node.
+    NodeList m_children;            ///< Children of this node.
+    MeaXMLNode* m_parent;           ///< Parent of this node.
 };
 
 
@@ -280,17 +270,17 @@ private:
 /// events. This is classic SAX parsing behavior. The class contains noop
 /// implementations for the method.
 ///
-class MeaXMLParserHandler
-{
+class MeaXMLParserHandler {
+
 public:
     /// Empty constructor for the handler class. This class should be
     /// thought of more as an interface than as an instantiable class.
     ///
-    MeaXMLParserHandler() { }
-    
+    MeaXMLParserHandler() {}
+
     /// Empty destructor for the handler class.
     ///
-    virtual ~MeaXMLParserHandler() { }
+    virtual ~MeaXMLParserHandler() {}
 
     /// Called when a new element is opened (e.g. &lt;foo&gt; or &lt;foo/&gt;).
     ///
@@ -298,8 +288,7 @@ public:
     /// @param elementName  [in] Name of the element being opened.
     /// @param attrs        [in] Attributes associated with the element.
     ///
-    virtual void StartElementHandler(const CString& container,
-                                     const CString& elementName,
+    virtual void StartElementHandler(const CString& container, const CString& elementName, 
                                      const MeaXMLAttributes& attrs);
 
     /// Called when an element is closed (e.g. &lt;/foo&gt; or &lt;foo/&gt;).
@@ -307,8 +296,7 @@ public:
     /// @param container    [in] Parent element.
     /// @param elementName  [in] Name of the element being closed.
     ///
-    virtual void EndElementHandler(const CString& container,
-                                   const CString& elementName);
+    virtual void EndElementHandler(const CString& container, const CString& elementName);
 
     /// Called for all character data encountered between elements.
     /// Note that this method will be called for all character data
@@ -319,8 +307,7 @@ public:
     ///                     the character data.
     /// @param data         [in] Character data.
     ///
-    virtual void CharacterDataHandler(const CString& container,
-                                      const CString& data);
+    virtual void CharacterDataHandler(const CString& container, const CString& data);
 
     /// Called to parse an external entity.
     ///
@@ -348,16 +335,16 @@ public:
 /// XML parsing events. This is classic SAX parsing behavior. The class can
 /// also build a primitive DOM.
 ///
-class MeaXMLParser: public ev::IValidationHandler
-{
+class MeaXMLParser : public ev::IValidationHandler {
+
 public:
     /// Constructs an XML parser.
     ///
     /// @param handler      [in] Callback object for parsing events.
     /// @param buildDOM     [in] Indicates whether a DOM should be built.
     ///
-    explicit MeaXMLParser(MeaXMLParserHandler *handler, bool buildDOM = false);
-    
+    explicit MeaXMLParser(MeaXMLParserHandler* handler, bool buildDOM = false);
+
     /// Creates an external entity parser. When an external is encountered,
     /// the MeaXMLParserHandler::ParseEntity method is called. This method
     /// should instantiate an XML sub-parser using this constructor and passing
@@ -372,13 +359,11 @@ public:
     ///
     virtual ~MeaXMLParser();
 
-
     /// Sets the base path for resolving relative external entities.
     ///
     /// @param path     [in] Base path.
     ///
-    void    SetBasePath(const CString& path);
-
+    void SetBasePath(const CString& path);
 
     /// Obtains a buffer to load with XML data. This method must
     /// be called prior to each call to ParseBuffer.
@@ -391,7 +376,7 @@ public:
     ///         subsequent call to the ParseBuffer method will parse the
     ///         contents of this buffer.
     ///
-    void*   GetBuffer(int len) { return XML_GetBuffer(m_parser, len); }
+    void* GetBuffer(int len) { return XML_GetBuffer(m_parser, len); }
 
     /// Parses the XML data contained in the buffer obtained by a previous
     /// call to GetBuffer. Each call to this method must be preceded by
@@ -400,15 +385,13 @@ public:
     /// @param len      [in] Actual number of bytes loaded into the buffer.
     /// @param isFinal  [in] Indicates if this is the end of the XML data.
     ///
-    void    ParseBuffer(int len, bool isFinal);
-
+    void ParseBuffer(int len, bool isFinal);
 
     /// If a DOM was constructed, this method returns its root node.
     ///
     /// @return Root node of the DOM or nullptr if none was constructed.
     ///
-    const MeaXMLNode*   GetDOM() const { return m_dom; }
-
+    const MeaXMLNode* GetDOM() const { return m_dom; }
 
     /// Convenience method for converting the specified string from
     /// UTF8 encoding to a string.in ACP encoding.
@@ -428,7 +411,6 @@ public:
     ///
     static CString ToUTF8(const CString& str);
 
-
     /// Replaces all occurrences of '&', '<', '>', '"', and "'"
     /// with the corresponding entities. Attribute values and character
     /// data (i.e. text between start/end elements) must be encoded.
@@ -442,13 +424,12 @@ public:
     static CString Encode(const CString& str);
 
 private:
-    typedef std::stack<CString>     ElementStack;       ///< A stack type for elements.
-    typedef std::stack<MeaXMLNode*> NodeStack;          ///< A stack type for DOM nodes.
-    typedef std::stack<CString>     PathnameStack;      ///< A stack type for entity pathnames.
+    typedef std::stack<CString> ElementStack;       ///< A stack type for elements.
+    typedef std::stack<MeaXMLNode*> NodeStack;      ///< A stack type for DOM nodes.
+    typedef std::stack<CString> PathnameStack;      ///< A stack type for entity pathnames.
 
     /// The parser has not assignment semantics so this method is purposely undefined.
     MeaXMLParser& operator=(const MeaXMLParser&);
-
 
     /// Called by the underlying expat parser when an element is opened.
     ///
@@ -457,15 +438,14 @@ private:
     /// @param attrs        [in] Array of attributes arranged as name followed
     ///                     by value and terminated by a nullptr entry.
     ///
-    static void StartElementHandler(void *userData, const XML_Char *elementName,
-                                    const XML_Char **attrs);
+    static void StartElementHandler(void* userData, const XML_Char* elementName, const XML_Char** attrs);
 
     /// Called by the underlying expat parser when an element is closed.
     ///
     /// @param userData     [in] this
     /// @param elementName  [in] Name of the element being closed.
     ///
-    static void EndElementHandler(void *userData, const XML_Char *elementName);
+    static void EndElementHandler(void* userData, const XML_Char* elementName);
 
     /// Called by the underlying expat parser when any character data is encountered.
     ///
@@ -475,7 +455,7 @@ private:
     ///                     must be used to determine the end of the buffer.
     /// @param len          [in] Number of bytes of data in the buffer, s.
     ///
-    static void CharacterDataHandler(void *userData, const XML_Char *s, int len);
+    static void CharacterDataHandler(void* userData, const XML_Char* s, int len);
 
     /// Called by the underlying expat parser when an external entity reference
     /// is encountered.
@@ -492,11 +472,8 @@ private:
     /// @return The value 1, to indicate that the entity has been successfully
     ///         parsed and parsing of the remainder of the XML file should continue.
     ///
-    static int ExternalEntityRefHandler(XML_Parser parser,
-                                        const XML_Char *context,
-                                        const XML_Char *base,
-                                        const XML_Char *systemId,
-                                        const XML_Char *publicId);
+    static int ExternalEntityRefHandler(XML_Parser parser, const XML_Char* context, const XML_Char* base,
+                                        const XML_Char* systemId, const XML_Char* publicId);
 
     /// Called by the underlying expat parser when a DOCTYPE declaration is
     /// encountered in the XML file.
@@ -508,12 +485,9 @@ private:
     /// @param has_internal_subset  [in] Non-zero if an internal DTD subset has
     ///                     been specified.
     ///
-    static void DoctypeDeclHandler(void *userData,
-                                        const XML_Char *doctypeName,
-                                        const XML_Char *sysid,
-                                        const XML_Char *pubid,
-                                        int has_internal_subset);
-    
+    static void DoctypeDeclHandler(void* userData, const XML_Char* doctypeName, const XML_Char* sysid,
+                                        const XML_Char* pubid, int has_internal_subset);
+
     /// Called by the underlying expat parser when a DTD element declaration is
     /// encountered.
     ///
@@ -521,9 +495,7 @@ private:
     /// @param name         [in] Name of the element being declared.
     /// @param model        [in] Content model for the element.
     ///
-    static void ElementDeclHandler(void *userData,
-                                        const XML_Char *name,
-                                        XML_Content *model);
+    static void ElementDeclHandler(void* userData, const XML_Char* name, XML_Content* model);
 
     /// Called by the underlying expat parser when a DTD attribute declaration is
     /// encountered.
@@ -535,38 +507,33 @@ private:
     /// @param dflt         [in] Default value for the attribute, if any.
     /// @param isrequired   [in] Non-zero if the attribute must be specified.
     ///
-    static void AttributeDeclHandler(void *userData,
-                                     const XML_Char *elname,
-                                     const XML_Char *attname,
-                                     const XML_Char *att_type,
-                                     const XML_Char *dflt,
-                                     int isrequired);
+    static void AttributeDeclHandler(void* userData, const XML_Char* elname, const XML_Char* attname,
+                                     const XML_Char* att_type, const XML_Char* dflt, int isrequired);
 
     /// Called when an XML parsing error occurs. Queries
     /// the parser to determine the error and displays a dialog
     /// with a description of the problem.
     ///
-    void         HandleParserError();
-    
+    void HandleParserError();
+
     /// Called when an XML validation error occurs.
     ///
     /// @param error        [in] Describes the validation error.
     ///
     virtual void HandleValidationError(const ev::ValidationError& error);
 
-    static CString          m_homeURL1;         ///< URL for cthing.com
-    static CString          m_homeURL2;         ///< URL for cthing.com
 
-    XML_Parser              m_parser;           ///< The expat XML parser.
-    bool                    m_isSubParser;      ///< Indicates whether this is an external entity sub-parser.
-    ev::Validator*          m_validator;        ///< XML validator.
-    MeaXMLParserHandler*    m_handler;          ///< XML event callback object.
-    ElementStack*           m_elementStack;     ///< Stack of open elements.
-    PathnameStack*          m_pathnameStack;    ///< Stack of pathnames for the entities being parsed.
-    bool                    m_haveDTD;          ///< Indicates if a DTD is referenced by the XML file being parsed.
-    const XML_Char*         m_context;          ///< Internal expat parser state.
-
-    bool                    m_buildDOM;         ///< Indicates whether a DOM is being built.
-    MeaXMLNode*             m_dom;              ///< Root node of the DOM being built, or nullptr.
-    NodeStack*              m_nodeStack;        ///< Stack of XML DOM nodes.
+    static CString m_homeURL1;          ///< URL for cthing.com
+    static CString m_homeURL2;          ///< URL for cthing.com
+    XML_Parser m_parser;                ///< The expat XML parser.
+    bool m_isSubParser;                 ///< Indicates whether this is an external entity sub-parser.
+    ev::Validator* m_validator;         ///< XML validator.
+    MeaXMLParserHandler* m_handler;     ///< XML event callback object.
+    ElementStack* m_elementStack;       ///< Stack of open elements.
+    PathnameStack* m_pathnameStack;     ///< Stack of pathnames for the entities being parsed.
+    bool m_haveDTD;                     ///< Indicates if a DTD is referenced by the XML file being parsed.
+    const XML_Char* m_context;          ///< Internal expat parser state.
+    bool m_buildDOM;                    ///< Indicates whether a DOM is being built.
+    MeaXMLNode* m_dom;                  ///< Root node of the DOM being built, or nullptr.
+    NodeStack* m_nodeStack;             ///< Stack of XML DOM nodes.
 };

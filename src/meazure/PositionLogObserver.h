@@ -2,7 +2,7 @@
  * Copyright 2001 C Thing Software
  *
  * This file is part of Meazure.
- * 
+ *
  * Meazure is free software: you can redistribute it and/or modify it under
  * the terms of the GNU General Public License as published by the Free
  * Software Foundation, either version 3 of the License, or (at your option)
@@ -28,34 +28,33 @@
 /// position log file inherit from this interface as a mix-in. The class
 /// then implements the methods declared by this interface.
 ///
-class MeaPositionLogObserver
-{
+class MeaPositionLogObserver {
+
 public:
     /// Interface does nothing in a constructor.
     ///
-    MeaPositionLogObserver() { }
-    
+    MeaPositionLogObserver() {}
+
     /// Interface does nothing in a destructor.
     ///
-    virtual ~MeaPositionLogObserver() { }
-
+    virtual ~MeaPositionLogObserver() {}
 
     /// Called when a position log file is loaded.
     ///
     virtual void LogLoaded() = 0;
-    
+
     /// Called when a position log file is saved.
     ///
     virtual void LogSaved() = 0;
-    
+
     /// Called when a new position is recorded.
     /// @param posIndex     [in] Index of the new position.
     virtual void PositionAdded(int posIndex) = 0;
-    
+
     /// Called when an existing position is replaced with a new position.
     /// @param posIndex     [in] Index of the replaced position.
     virtual void PositionReplaced(int posIndex) = 0;
-    
+
     /// Called when a position is deleted.
     /// @param posIndex     [in] Index of the deleted position.
     virtual void PositionDeleted(int posIndex) = 0;
@@ -64,6 +63,3 @@ public:
     ///
     virtual void PositionsDeleted() = 0;
 };
-
-    
-

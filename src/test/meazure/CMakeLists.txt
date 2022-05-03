@@ -5,8 +5,8 @@ set(CMAKE_MFC_FLAG 2)
 set(APP_DIR "${PROJECT_SOURCE_DIR}/src/meazure")
 
 include_directories(
-	"${TEST_DIR}/gtest/include"
-	"${APP_DIR}"
+    "${TEST_DIR}/gtest/include"
+    "${APP_DIR}"
 )
 
 if(CMAKE_CXX_FLAGS MATCHES "/EHs")

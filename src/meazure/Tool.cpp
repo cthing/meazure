@@ -58,8 +58,8 @@ bool MeaTool::IsRadioTool() {
 
 void MeaTool::SetPosition(MeaFields, int) {}
 
-void MeaTool::IncPosition(MeaFields which) {}
+void MeaTool::IncPosition(MeaFields) {}
 
-void MeaTool::DecPosition(MeaFields which) {}
+void MeaTool::DecPosition(MeaFields) {}
 
 void MeaTool::ColorsChanged() {}

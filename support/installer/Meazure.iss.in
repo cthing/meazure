@@ -5,11 +5,11 @@
 [Setup]
 AppId=Meazure
 AppName=Meazure
-AppVerName=Meazure 3.0.2
-AppVersion=3.0.2
+AppVerName=Meazure @Meazure_VERSION_MAJOR@.@Meazure_VERSION_MINOR@.@Meazure_VERSION_PATCH@
+AppVersion=@Meazure_VERSION_MAJOR@.@Meazure_VERSION_MINOR@.@Meazure_VERSION_PATCH@
 AppMutex=MeazureInstallerMutex
-OutputDir=..\..\dist
-OutputBaseFilename=meazr302x64
+OutputDir={#DistDir}
+OutputBaseFilename={#PackageBasename}
 AppPublisher=C Thing Software
 AppPublisherURL=https://www.cthing.com
 AppSupportURL=https://www.cthing.com
@@ -17,7 +17,7 @@ AppUpdatesURL=https://www.cthing.com
 AppCopyright=Copyright 2001 C Thing Software
 DefaultDirName={commonpf}\Meazure
 DefaultGroupName=Meazure
-LicenseFile=..\..\LICENSE
+LicenseFile={#ProjectDir}\LICENSE
 PrivilegesRequired=admin
 UsedUserAreasWarning=no
 ArchitecturesInstallIn64BitMode=x64
@@ -40,33 +40,33 @@ Name: "{app}\Profiles"; Components: core
 
 [Files]
 ; Visual C++ and MFC redistributable system files
-Source: "..\..\build-nmake\Release\mfc*.dll";             DestDir: "{app}"; Components: core; Flags: ignoreversion
-Source: "..\..\build-nmake\Release\msvc*.dll";            DestDir: "{app}"; Components: core; Flags: ignoreversion
-Source: "..\..\build-nmake\Release\vcruntime*.dll";       DestDir: "{app}"; Components: core; Flags: ignoreversion
-Source: "..\..\build-nmake\Release\Microsoft.*.manifest"; DestDir: "{app}"; Components: core; Flags: ignoreversion skipifsourcedoesntexist
+Source: "{#BuildDir}\mfc*.dll";             DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "{#BuildDir}\msvc*.dll";            DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "{#BuildDir}\vcruntime*.dll";       DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "{#BuildDir}\Microsoft.*.manifest"; DestDir: "{app}"; Components: core; Flags: ignoreversion skipifsourcedoesntexist
 ; HTML Help support
-Source: "..\redist\hhupd.exe"; DestDir: "{tmp}"; Components: core; Check: Runhhupd
+Source: "{#SupportDir}\redist\hhupd.exe";   DestDir: "{tmp}"; Components: core; Check: Runhhupd
 ; Core files
-Source: "..\..\build-nmake\Release\Meazure.exe";  DestDir: "{app}"; Components: core; Flags: ignoreversion
-Source: "..\..\build-nmake\Release\Meazure.chm";  DestDir: "{app}"; Components: help; Flags: ignoreversion
-Source: "..\..\build-nmake\Release\Hooks.dll";    DestDir: "{app}"; Components: core; Flags: ignoreversion
-Source: "..\..\build-nmake\Release\libexpat.dll"; DestDir: "{app}"; Components: core; Flags: ignoreversion
-Source: "..\..\LICENSE";                          DestDir: "{app}"; DestName: "LICENSE.txt"; Components: core; Flags: ignoreversion
-Source: "..\..\README.md";                        DestDir: "{app}"; DestName: "README.txt"; Components: core; Flags: ignoreversion
+Source: "{#BuildDir}\Meazure.exe";          DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "{#BuildDir}\Meazure.chm";          DestDir: "{app}"; Components: help; Flags: ignoreversion
+Source: "{#BuildDir}\Hooks.dll";            DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "{#BuildDir}\libexpat.dll";         DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "{#ProjectDir}\LICENSE";            DestDir: "{app}"; DestName: "LICENSE.txt"; Components: core; Flags: ignoreversion
+Source: "{#ProjectDir}\README.md";          DestDir: "{app}"; DestName: "README.txt"; Components: core; Flags: ignoreversion
 ; DTD files
-Source: "..\dtd\PositionLog1.dtd";   DestDir: "{app}\dtd"; Components: core; Flags: ignoreversion
+Source: "{#SupportDir}\dtd\PositionLog1.dtd";   DestDir: "{app}\dtd"; Components: core; Flags: ignoreversion
 ; Sample profiles
-Source: "..\profiles\1920x1080.mea"; DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\1024x768.mea";  DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\1280x1024.mea"; DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\640x480.mea";   DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\800x600.mea";   DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\NTSC.mea";      DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\PAL.mea";       DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\SVGA.mea";      DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\SXGA.mea";      DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\VGA.mea";       DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
-Source: "..\profiles\XGA.mea";       DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\1920x1080.mea"; DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\1024x768.mea";  DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\1280x1024.mea"; DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\640x480.mea";   DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\800x600.mea";   DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\NTSC.mea";      DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\PAL.mea";       DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\SVGA.mea";      DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\SXGA.mea";      DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\VGA.mea";       DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
+Source: "{#SupportDir}\profiles\XGA.mea";       DestDir: "{app}\Profiles"; Components: profiles; Flags: ignoreversion overwritereadonly uninsremovereadonly; Attribs: readonly
 
 [InstallDelete]
 Type: files; Name: "{app}\xmlparse.dll"

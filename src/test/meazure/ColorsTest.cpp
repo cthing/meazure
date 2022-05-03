@@ -174,7 +174,7 @@ namespace {
     }
 }
 
-test_suite* init_unit_test_suite(int argc, char* argv[]) {
+test_suite* init_unit_test_suite(int, char*[]) {
     if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
         cerr << "Fatal Error: MFC initialization failed\n";
         return nullptr;

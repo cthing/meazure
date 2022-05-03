@@ -35,7 +35,7 @@ void MeaStatusBar::SetIdleMessage(LPCTSTR msg) {
     SetPaneText(0, static_cast<LPCTSTR>(msg), TRUE);
 }
 
-LRESULT MeaStatusBar::OnSetText(WPARAM wParam, LPARAM lParam) {
+LRESULT MeaStatusBar::OnSetText(WPARAM, LPARAM) {
     CString idleMessage = MAKEINTRESOURCE(AFX_IDS_IDLEMESSAGE);
     return CStatusBar::OnSetText(idleMessage);
 }

@@ -149,7 +149,7 @@ add_custom_target(apphelp
                   DEPENDS ${DEST_HELP_DIR}/Meazure.chm
                   SOURCES ${HELP_APP} ${TEMPLATES} ${TOPICS} ${IMAGES} ${IMAGE_SRCS})
 add_custom_command(OUTPUT ${DEST_HELP_DIR}/Meazure.chm
-                   COMMAND cmake -DHTML_HELP_COMPILER="${HTML_HELP_COMPILER}" -DHHP_FILE="Meazure.hhp" -P hhc.cmake
+                   COMMAND ${HTML_HELP_COMPILER} Meazure.hhp || exit 0
                    COMMAND move /Y Meazure.chm ${DEST_HELP_DIR}
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                    DEPENDS ${HELP_APP} ${TEMPLATES} ${TOPICS} ${IMAGES} ${CMAKE_CURRENT_SOURCE_DIR}/hid.h)

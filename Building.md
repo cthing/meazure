@@ -15,28 +15,18 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
 2. Install the Markdown Editor extension in Visual Studio
    <https://marketplace.visualstudio.com/items?itemName=MadsKristensen.MarkdownEditor2>
 
-3. Meazure uses the Boost library. It is highly recommended to build Boost from source. To build Boost
-   perform the following steps:
+3. Meazure uses the Boost library. To install Boost perform the following steps:
 
-   a. Download the latest Boost from <http://www.boost.org>
-   b. Create the directory `C:\Program Files\boost`
-   c. Unpack the Boost archive into the directory `C:\Program Files\boost`. This will result in the
-      `C:\Program Files\boost\boot_<version>` being created.
-   d. Set the `Users` persmission on the `C:\Program Files\boost` directory to `Full Control`
-   e. Open a command window
-   f. Build Boost by running the following commands
-      ```
-      cd C:\Program Files\boost\boost_<version>
-      bootstrap.bat
-      b2 --toolset=msvc --build-type=complete stage
-      ```
-   g. Wait a long time while Boost builds...
+   a. Create the directory `C:\Program Files\boost`
+   b. Set the `Users` persmission on the `C:\Program Files\boost` directory to `Full Control`
+   c. Download <https://boostorg.jfrog.io/artifactory/main/release/1.79.0/binaries/boost_1_79_0-msvc-14.3-64.exe>
+   d. Install the package into `C:\Program Files\boost\boost_<version>`
 
 4. Edit Meazure's top level `CMakeLists.txt` file and ensure that the `BOOST_ROOT` variable is set to the
-   Boost root directory. For exmample, if Boost is installed in `C:\Program Files\boost\boost_1_78_0`, the
+   Boost root directory. For exmample, if Boost is installed in `C:\Program Files\boost\boost_1_79_0`, the
    variable should be set to:
    ```
-   set(BOOST_ROOT "C:/Program Files/boost/boost_1_78_0")
+   set(BOOST_ROOT "C:/Program Files/boost/boost_1_79_0")
    ```
 
 5. Download and install Python from <http://www.python.org/download/>

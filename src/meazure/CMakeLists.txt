@@ -1,6 +1,7 @@
 
-add_definitions(-D_AFXDLL)
+add_compile_definitions(_AFXDLL)
 set(CMAKE_MFC_FLAG 2)
+set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} /nologo")
 
 set(top_SRCS
     MeaAssert.h
@@ -174,7 +175,11 @@ set(meazure_SRCS
     ${utility_SRCS}
 )
 
+configure_file(VersionNumbers.h.in VersionNumbers.h @ONLY)
+
 add_executable(Meazure WIN32 ${meazure_SRCS})
 add_dependencies(Meazure apphelp libexpat hooks)
-target_link_libraries(Meazure libexpat hooks Version.lib ${HTML_HELP_LIBRARY})
+target_link_libraries(Meazure PRIVATE libexpat hooks Version.lib ${HTML_HELP_LIBRARY})
+target_include_directories(Meazure PRIVATE ${Boost_INCLUDE_DIRS} "${CMAKE_SOURCE_DIR}/src" "${CMAKE_CURRENT_BINARY_DIR}")
+target_link_directories(Meazure PRIVATE ${Boost_LIBRARY_DIRS})
 set_target_properties(Meazure PROPERTIES LINK_FLAGS "/MANIFEST")

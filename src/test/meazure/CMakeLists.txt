@@ -17,9 +17,11 @@ endif()
 
 macro(add_meazure_test runner)
     add_executable(${runner} WIN32 ${runner}.cpp ${ARGN})
+    target_include_directories(${runner} PRIVATE ${Boost_INCLUDE_DIRS})
+    target_link_directories(${runner} PRIVATE ${Boost_LIBRARY_DIRS})
     set_target_properties(${runner} PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE")
     add_test(${runner} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${runner})    
-endmacro(add_meazure_test)
+endmacro()
 
 add_meazure_test(ColorsTest ${APP_DIR}/Colors.cpp)
 add_meazure_test(GUIDTest ${APP_DIR}/GUID.cpp)

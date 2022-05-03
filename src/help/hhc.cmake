@@ -1,1 +1,0 @@
-execute_process(COMMAND ${HTML_HELP_COMPILER} ${HHP_FILE})

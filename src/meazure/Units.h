@@ -285,7 +285,7 @@ public:
     ///
     /// @return Angle value in degrees.
     ///
-    virtual double ConvertAngle(double angle) const;
+    virtual double ConvertAngle(double angle) const override;
 };
 
 
@@ -309,7 +309,7 @@ public:
     ///
     /// @return Angle value in radians.
     ///
-    virtual double ConvertAngle(double angle) const;
+    virtual double ConvertAngle(double angle) const override;
 };
 
 
@@ -602,7 +602,7 @@ public:
     /// @return Always returns <b>false</b> since the resolution is not used
     ///         when measuring using pixels.
     ///
-    virtual bool RequiresRes() const;
+    virtual bool RequiresRes() const override;
 
     /// Returns the X and Y factors to convert from pixels to the
     /// current units. Since the current units are pixels, the
@@ -612,7 +612,7 @@ public:
     ///
     /// @return 1.0 in both directions.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const;
+    virtual FSIZE FromPixels(const FSIZE& res) const override;
 
 protected:
     /// Returns a resolution conversion factor. Since internally the
@@ -624,7 +624,7 @@ protected:
     ///
     /// @return Resolution conversion factor.
     ///
-    virtual FSIZE GetResFromPixels(const FSIZE& res) const;
+    virtual FSIZE GetResFromPixels(const FSIZE& res) const override;
 };
 
 
@@ -649,7 +649,7 @@ public:
     ///
     /// @return X and Y conversion factors, in points/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const;
+    virtual FSIZE FromPixels(const FSIZE& res) const override;
 };
 
 
@@ -674,7 +674,7 @@ public:
     ///
     /// @return X and Y conversion factors, in picas/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const;
+    virtual FSIZE FromPixels(const FSIZE& res) const override;
 };
 
 
@@ -699,7 +699,7 @@ public:
     ///
     /// @return X and Y conversion factors, in twips/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const;
+    virtual FSIZE FromPixels(const FSIZE& res) const override;
 };
 
 
@@ -725,7 +725,7 @@ public:
     /// @return X and Y conversion factors, in inches/pixels
     ///         (i.e. the inverse of the resolution).
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const;
+    virtual FSIZE FromPixels(const FSIZE& res) const override;
 };
 
 
@@ -750,7 +750,7 @@ public:
     ///
     /// @return X and Y conversion factors, in centimeters/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const;
+    virtual FSIZE FromPixels(const FSIZE& res) const override;
 };
 
 
@@ -775,7 +775,7 @@ public:
     ///
     /// @return X and Y conversion factors, in millimeters/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const;
+    virtual FSIZE FromPixels(const FSIZE& res) const override;
 };
 
 
@@ -813,7 +813,7 @@ public:
     /// @param profile      [in] Profile object into which to persist
     ///                     the custom units.
     ///
-    virtual void SaveProfile(MeaProfile& profile);
+    virtual void SaveProfile(MeaProfile& profile) override;
 
     /// Restores the custom units conversion factor and basis from the
     /// specified profile object.
@@ -821,19 +821,19 @@ public:
     /// @param profile      [in] Profile object from which to restore
     ///                     the custom units.
     ///
-    virtual void LoadProfile(MeaProfile& profile);
+    virtual void LoadProfile(MeaProfile& profile) override;
 
     /// Called when the master reset is initiated. Resets the custom
     /// units to its default state.
     ///
-    virtual void MasterReset();
+    virtual void MasterReset() override;
 
     /// Indicates whether the custom units requires a screen resolution
     /// to perform its conversion from pixels.
     ///
     /// @return <b>true</b> if the conversion basis is not based on pixels.
     ///
-    virtual bool RequiresRes() const;
+    virtual bool RequiresRes() const override;
 
     /// Indicates whether custom units have been defined.
     ///
@@ -920,7 +920,7 @@ public:
     ///
     /// @return X and Y conversion factors, in custom units/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const;
+    virtual FSIZE FromPixels(const FSIZE& res) const override;
 
 private:
     CString m_name;             ///< Name for the custom units.

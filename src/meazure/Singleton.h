@@ -105,17 +105,13 @@ protected:
     MeaSingleton_T() {}
 
 private:
-    /// Singletons have no copy semantics. Therefore, this method is
-    /// purposely left undefined to trigger a compile/link error if an
-    /// attempt is ever made to use it.
+    /// Singletons have no copy semantics.
     ///
-    MeaSingleton_T(const MeaSingleton_T<singleton_t>& src);
+    MeaSingleton_T(const MeaSingleton_T<singleton_t>& src) = delete;
 
-    /// Singletons have no assignment semantics. Therefore, this method
-    /// is purposely left undefined to trigger a compile/link error if
-    /// an attempt is ever made to use it.
+    /// Singletons have no assignment semantics.
     ///
-    MeaSingleton_T<singleton_t>& operator=(const MeaSingleton_T<singleton_t>& src);
+    MeaSingleton_T<singleton_t>& operator=(const MeaSingleton_T<singleton_t>& src) = delete;
 
 
     static singleton_t* m_instance;     ///< Instance of the Singleton object.

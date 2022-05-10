@@ -23,8 +23,8 @@
 #pragma once
 
 #include "Profile.h"
-#include "Units.h"
 #include "Layout.h"
+#include "UnitsMgr.h"
 
 
 /// A popup data display window. A data display window is attached to each

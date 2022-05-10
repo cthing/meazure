@@ -19,9 +19,9 @@
 
 #include "StdAfx.h"
 #include "Ruler.h"
-#include "Units.h"
 #include "Colors.h"
 #include "ScreenMgr.h"
+#include "UnitsMgr.h"
 #include "Layout.h"
 #include "LayeredWindows.h"
 
@@ -343,13 +343,13 @@ void MeaRuler::DrawRuler(CDC& dc) {
     // 
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
     MeaLinearUnits* units = unitsMgr.GetLinearUnits();
-    int majorTickCount = units->GetMajorTickCount();
+    int majorTickCount = unitsMgr.GetMajorTickCount();
     double p;
     bool isMajorTick, isExact;
     int tick, x, xa, xb, y, ya, yb;
     int tickHeight;
 
-    FSIZE minorIncr = units->GetMinorIncr(winRect);
+    FSIZE minorIncr = unitsMgr.GetMinorIncr(winRect);
 
     // Determine the blending colors for non-pixel aligned hash mark placement.
     //

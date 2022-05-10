@@ -33,6 +33,10 @@ set(top_SRCS
     stdafx.h
     Units.cpp
     Units.h
+    UnitsLabels.cpp
+    UnitsLabels.h
+    UnitsMgr.cpp
+    UnitsMgr.h
 )
 source_group(App FILES ${top_SRCS})
 

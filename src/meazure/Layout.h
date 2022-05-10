@@ -24,6 +24,7 @@
 
 #include <math.h>
 #include "Units.h"
+#include "Utils.h"
 
 
 /// Utility methods for performing various window layout tasks.

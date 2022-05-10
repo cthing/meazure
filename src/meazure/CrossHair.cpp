@@ -23,6 +23,7 @@
 #include "Resource.h"
 #include "ScreenMgr.h"
 #include "Layout.h"
+#include "UnitsMgr.h"
 #define COMPILE_LAYERED_WINDOW_STUBS
 #include "LayeredWindows.h"
 

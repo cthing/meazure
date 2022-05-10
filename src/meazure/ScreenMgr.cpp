@@ -23,7 +23,6 @@
  /// Compile the multiple monitor stub functions.
 #define COMPILE_MULTIMON_STUBS 1
 #include "ScreenMgr.h"
-#include "Units.h"
 
 
 /// @cond SINGLETON

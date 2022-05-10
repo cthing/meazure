@@ -20,6 +20,7 @@
 #include "StdAfx.h"
 #include "Layout.h"
 #include "ScreenMgr.h"
+#include "UnitsMgr.h"
 #include <stdarg.h>
 
 

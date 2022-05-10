@@ -20,6 +20,7 @@
 #include "StdAfx.h"
 #include "Resource.h"
 #include "PrecisionPrefs.h"
+#include "UnitsMgr.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

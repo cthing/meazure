@@ -60,12 +60,6 @@ public:
     /// 
     virtual BOOL InitInstance() override;
 
-    /// Called when the application is terminating. Destroys all
-    /// managers.
-    /// @return Application exit code.
-    /// 
-    virtual int ExitInstance() override;
-
     /// Displays the application About dialog.
     /// 
     afx_msg void OnAppAbout();

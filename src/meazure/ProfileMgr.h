@@ -33,6 +33,12 @@
 class MeaProfileMgr : public MeaSingleton_T<MeaProfileMgr> {
 
 public:
+    MeaProfileMgr(token);
+    ~MeaProfileMgr();
+
+    MeaProfileMgr(const MeaProfileMgr&) = delete;
+    MeaProfileMgr& operator=(const MeaProfileMgr&) = delete;
+
     /// Creates the profile file save dialog.
     ///
     /// @return File save dialog.
@@ -88,15 +94,6 @@ public:
     static bool IsProfileFile(LPCTSTR filename);
 
 private:
-    MEA_SINGLETON_DECL(MeaProfileMgr);      ///< Managers are singletons.
-
-    /// Purposely undefined.
-    MeaProfileMgr(const MeaProfileMgr&);
-
-    /// Purposely undefined.
-    MeaProfileMgr& operator=(const MeaProfileMgr&);
-
-
     static LPCTSTR m_ext;       ///< Profile file suffix.
     static LPCTSTR m_filter;    ///< File dialog filter string.
 

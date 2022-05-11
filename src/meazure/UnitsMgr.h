@@ -43,6 +43,12 @@ public:
     static constexpr bool kDefInvertY { false };                ///< Default orientation of the y-axis.
 
 
+    MeaUnitsMgr(token);
+    ~MeaUnitsMgr();
+
+    MeaUnitsMgr(const MeaUnitsMgr&) = delete;
+    MeaUnitsMgr& operator=(const MeaUnitsMgr&) = delete;
+
     /// Persists the state of the units manager to the specified
     /// profile object.
     ///
@@ -478,21 +484,11 @@ private:
     static const int kMinSepPixels;         ///< Minimum separation between ruler tick marks, in pixels.
     static const double kMinSepInches;      ///< Minimum separation between ruler tick marks, in inches.
 
-    MEA_SINGLETON_DECL(MeaUnitsMgr)
-
     typedef std::map<MeaLinearUnitsId, MeaLinearUnits*> LinearUnitsMap;     ///< Maps linear units identifiers to the corresponding linear units objects.
     typedef std::map<MeaAngularUnitsId, MeaAngularUnits*> AngularUnitsMap;  ///< Maps angular units identifiers to the corresponding angular units objects.
     typedef std::list<MeaLinearUnitsLabel*> LinearLabelsList;               ///< List of all linear units labels.
     typedef std::list<MeaAngularUnitsLabel*> AngularLabelsList;             ///< List of all angular units labels.
-
-    /// Managers do not have copy semantics so this method is purposely undefined.
-    /// 
-    MeaUnitsMgr(const MeaUnitsMgr&);
-
-    /// Managers do not have assignment semantics so this method is purposely undefined.
-    ///
-    MeaUnitsMgr& operator=(const MeaUnitsMgr&);
-
+    
 
     MeaPixelUnits m_pixelUnits;                 ///< Pixel units object.
     MeaPointUnits m_pointUnits;                 ///< Point units object.

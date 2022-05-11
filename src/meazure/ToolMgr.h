@@ -53,6 +53,12 @@ public:
     static constexpr bool kDefCrosshairsEnabled { true };   ///< Crosshairs are enabled by default.
 
 
+    MeaToolMgr(token);
+    ~MeaToolMgr();
+
+    MeaToolMgr(const MeaToolMgr&) = delete;
+    MeaToolMgr& operator=(const MeaToolMgr&) = delete;
+
     /// Persists the state of the manager to the specified profile object.
     ///
     /// @param profile      [in] Profile object into which the state is
@@ -549,14 +555,6 @@ public:
 
 private:
     typedef std::map<CString, MeaTool*> ToolsMap;   ///< Maps a tool name to the tool object.
-
-    MEA_SINGLETON_DECL(MeaToolMgr);     ///< Managers are singletons.
-
-    /// Purposely undefined.
-    MeaToolMgr(const MeaToolMgr&);
-
-    /// Purposely undefined.
-    MeaToolMgr& operator=(const MeaToolMgr&);
 
 
     MeaDataDisplay* m_dataDisplay;      ///< Data display object.

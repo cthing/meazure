@@ -150,16 +150,6 @@ BOOL CMeazureApp::InitInstance() {
     return TRUE;
 }
 
-int CMeazureApp::ExitInstance() {
-    MeaPositionLogMgr::DestroyInstance();
-    MeaProfileMgr::DestroyInstance();
-    MeaToolMgr::DestroyInstance();
-    MeaUnitsMgr::DestroyInstance();
-    MeaScreenMgr::DestroyInstance();
-
-    return CWinApp::ExitInstance();
-}
-
 void CMeazureApp::OnMouseHook(WPARAM wParam, LPARAM lParam) {
     static_cast<CMainFrame*>(m_pMainWnd)->GetView()->OnMouseHook(wParam, lParam);
 }

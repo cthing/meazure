@@ -24,12 +24,7 @@
 #include "ScreenMgr.h"
 
 
-/// @cond SINGLETON
-MEA_SINGLETON_DEF(MeaToolMgr);
-/// @endcond
-
-
-MeaToolMgr::MeaToolMgr() :
+MeaToolMgr::MeaToolMgr(token) :
     MeaSingleton_T<MeaToolMgr>(),
     m_dataDisplay(nullptr),
     m_crosshairsEnabled(kDefCrosshairsEnabled) {

@@ -105,10 +105,8 @@ void MeaPositionLogDlg::OnCancel() {
 void MeaPositionLogDlg::PostNcDestroy() {
     CDialog::PostNcDestroy();
 
-    if (!MeaPositionLogMgr::IsDestroyed()) {
-        MeaPositionLogMgr::Instance().SetObserver(nullptr);
-        MeaPositionLogMgr::Instance().ManageDlgDestroyed();
-    }
+    MeaPositionLogMgr::Instance().SetObserver(nullptr);
+    MeaPositionLogMgr::Instance().ManageDlgDestroyed();
 
     delete this;
 }

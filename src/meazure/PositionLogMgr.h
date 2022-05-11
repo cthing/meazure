@@ -588,6 +588,11 @@ public:
         CString m_desc;             ///< Description for position.
     };
 
+    MeaPositionLogMgr(token);
+    ~MeaPositionLogMgr();
+
+    MeaPositionLogMgr(const MeaPositionLogMgr&) = delete;
+    MeaPositionLogMgr& operator=(const MeaPositionLogMgr&) = delete;
 
     /// Records the position of the current radio tool.
     ///
@@ -806,14 +811,6 @@ private:
     };
 
 private:
-    MEA_SINGLETON_DECL(MeaPositionLogMgr);      ///< Managers are singletons.
-
-    /// Purposely undefined.
-    MeaPositionLogMgr(const MeaPositionLogMgr&);
-
-    /// Purposely undefined.
-    MeaPositionLogMgr& operator=(const MeaPositionLogMgr&);
-
     typedef std::map<MeaGUID, DesktopInfo, MeaGUID::less> DesktopInfoMap;   ///< Maps GUID to a desktop information object.
     typedef std::map<MeaGUID, int, MeaGUID::less> RefCountMap;              ///< Maps a GUID to a reference count.
 

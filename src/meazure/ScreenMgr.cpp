@@ -25,12 +25,7 @@
 #include "ScreenMgr.h"
 
 
-/// @cond SINGLETON
-MEA_SINGLETON_DEF(MeaScreenMgr);
-/// @endcond
-
-
-MeaScreenMgr::MeaScreenMgr() :
+MeaScreenMgr::MeaScreenMgr(token) :
     MeaSingleton_T<MeaScreenMgr>(), m_sizeChanged(false) {
     EnumDisplayMonitors(nullptr, nullptr, CreateScreens, reinterpret_cast<LPARAM>(this));
     MeaAssert(m_screens.size() > 0);

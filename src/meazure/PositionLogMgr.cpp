@@ -32,12 +32,7 @@
 #include "Utils.h"
 
 
-/// @cond SINGLETON
-MEA_SINGLETON_DEF(MeaPositionLogMgr);
-/// @endcond
-
-
-MeaPositionLogMgr::MeaPositionLogMgr() :
+MeaPositionLogMgr::MeaPositionLogMgr(token) :
     MeaXMLParserHandler(), MeaSingleton_T<MeaPositionLogMgr>(),
     m_observer(nullptr),
     m_saveDialog(nullptr),

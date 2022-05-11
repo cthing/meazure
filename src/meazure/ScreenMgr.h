@@ -182,6 +182,12 @@ public:
     static constexpr bool kDefCalInInches { true };     ///< Calibrate in inches by default.
 
 
+    MeaScreenMgr(token);
+    ~MeaScreenMgr();
+
+    MeaScreenMgr(const MeaScreenMgr&) = delete;
+    MeaScreenMgr& operator=(const MeaScreenMgr&) = delete;
+
     /// Persists the state of the manager to the specified profile object.
     ///
     /// @param profile  [in] Profile object into which the manager state
@@ -410,14 +416,6 @@ public:
     FSIZE GetOSScreenRes() const;
 
 private:
-    MEA_SINGLETON_DECL(MeaScreenMgr);       ///< Managers are singletons.
-
-    /// Purposely undefined.
-    MeaScreenMgr(const MeaScreenMgr&);
-
-    /// Purposely undefined.
-    MeaScreenMgr& operator=(const MeaScreenMgr&);
-
     /// Called by the constructor via EnumDisplayMonitors.
     /// Instantiates a Screen object for each display monitor
     /// on the system.

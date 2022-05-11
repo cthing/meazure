@@ -31,10 +31,14 @@
 const CString MeaWindowTool::kToolName(_T("WindowTool"));
 
 
-MeaWindowTool::MeaWindowTool(MeaToolMgr* mgr) :
-    MeaRadioTool(mgr), m_pointerPos(0, 0),
-    m_point1(-1, -1), m_point2(-1, -1),
-    m_currentWnd(nullptr), m_hiliteWnd(nullptr) {}
+MeaWindowTool::MeaWindowTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    MeaRadioTool(mgr, screenProvider),
+    m_pointerPos(0, 0),
+    m_point1(-1, -1),
+    m_point2(-1, -1),
+    m_currentWnd(nullptr),
+    m_hiliteWnd(nullptr),
+    m_dataWin(screenProvider) {}
 
 MeaWindowTool::~MeaWindowTool() {
     try {
@@ -61,11 +65,11 @@ void MeaWindowTool::Enable() {
 
     // Tell the tool manager which display fields we are using.
     //
-    m_mgr->EnableRegionFields(MeaX1Field | MeaY1Field |
-                        MeaX2Field | MeaY2Field |
-                        MeaWidthField | MeaHeightField |
-                        MeaDistanceField | MeaAngleField |
-                        MeaAspectField | MeaAreaField, 0);
+    m_mgr.EnableRegionFields(MeaX1Field | MeaY1Field |
+                             MeaX2Field | MeaY2Field |
+                             MeaWidthField | MeaHeightField |
+                             MeaDistanceField | MeaAngleField |
+                             MeaAspectField | MeaAreaField, 0);
 
     // Create the window rectangle
     //
@@ -80,7 +84,7 @@ void MeaWindowTool::Enable() {
 
     // Show a one liner on how to use the tool.
     //
-    m_mgr->SetStatus(IDS_MEA_WIN_STATUS);
+    m_mgr.SetStatus(IDS_MEA_WIN_STATUS);
 
     // Start monitoring the mouse pointer.
     //
@@ -138,18 +142,18 @@ void MeaWindowTool::Update(MeaUpdateReason reason) {
 
         // Display the measurement information.
         //
-        m_mgr->ShowXY1(m_point1, p1);
-        m_mgr->ShowXY2(m_point2, p2);
-        m_mgr->ShowWH(wh);
-        m_mgr->ShowDistance(wh);
-        m_mgr->ShowAngle(MeaLayout::GetAngle(p1, p2));
-        m_mgr->ShowAspect(wh);
-        m_mgr->ShowRectArea(wh);
+        m_mgr.ShowXY1(m_point1, p1);
+        m_mgr.ShowXY2(m_point2, p2);
+        m_mgr.ShowWH(wh);
+        m_mgr.ShowDistance(wh);
+        m_mgr.ShowAngle(MeaLayout::GetAngle(p1, p2));
+        m_mgr.ShowAspect(wh);
+        m_mgr.ShowRectArea(wh);
 
         // Update the screen information based on the
         // mouse pointer's location.
         //
-        m_mgr->UpdateScreenInfo(m_pointerPos);
+        m_mgr.UpdateScreenInfo(m_pointerPos);
 
         // Display the data window information.
         //

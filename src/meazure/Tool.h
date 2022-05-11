@@ -23,9 +23,9 @@
 #pragma once
 
 #include <list>
-
 #include "DataDisplay.h"
 #include "Profile.h"
+#include "ScreenProvider.h"
 
 
 /// Reason hint for the tool Update method.
@@ -51,13 +51,14 @@ public:
     /// Base class constructor. Typically, to use a newly constructed tool,
     /// the Enable() method must be called.
     ///
-    /// @param mgr  [in] Tool manager parent of the tool.
+    /// @param mgr            [in] Tool manager parent of the tool.
+    /// @param screenProvider [in] Screen information provider
     ///
-    explicit MeaTool(MeaToolMgr* mgr);
+    explicit MeaTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
 
     /// Destroys the tool.
     ///
-    virtual ~MeaTool();
+    virtual ~MeaTool() = default;
 
     /// Typically used by derived classes to show the tool. In addition,
     /// the first time this method is called, it typically creates the
@@ -157,9 +158,9 @@ public:
     bool IsEnabled() const { return m_enabled; }
 
 protected:
-    static POINT m_defaultPos;  ///< A default position used by tools that do not have a defined position. This
-                                ///< position is returned by the GetPosition() method
-
-    MeaToolMgr* m_mgr;          ///< Tool manager
-    bool m_enabled;             ///< Indicates whether the tool is enabled
+    static POINT m_defaultPos;                  ///< A default position used by tools that do not have a defined
+                                                ///< position. This position is returned by the GetPosition() method
+    MeaToolMgr& m_mgr;                          ///< Tool manager
+    const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
+    bool m_enabled;                             ///< Indicates whether the tool is enabled
 };

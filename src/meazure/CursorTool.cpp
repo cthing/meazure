@@ -31,8 +31,12 @@
 const CString MeaCursorTool::kToolName(_T("CursorTool"));
 
 
-MeaCursorTool::MeaCursorTool(MeaToolMgr* mgr) :
-    MeaRadioTool(mgr), m_cursorPos(0, 0), m_xDist(0), m_yDist(0) {}
+MeaCursorTool::MeaCursorTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    MeaRadioTool(mgr, screenProvider),
+    m_cursorPos(0, 0),
+    m_xDist(0),
+    m_yDist(0),
+    m_dataWin(screenProvider) {}
 
 
 MeaCursorTool::~MeaCursorTool() {
@@ -65,7 +69,7 @@ void MeaCursorTool::Enable() {
     // Tell the tool manager which data display fields
     // we will be using.
     //
-    m_mgr->EnableRegionFields(MeaX1Field | MeaY1Field, 0);
+    m_mgr.EnableRegionFields(MeaX1Field | MeaY1Field, 0);
 
     if (!IsWindow(m_dataWin)) {
         Create();
@@ -73,7 +77,7 @@ void MeaCursorTool::Enable() {
 
     // Show one liner on how to use the tool.
     //
-    m_mgr->SetStatus(IDS_MEA_CURSOR_STATUS);
+    m_mgr.SetStatus(IDS_MEA_CURSOR_STATUS);
 
     POINT point;            // Ensure position initialized
     GetCursorPos(&point);
@@ -113,11 +117,11 @@ void MeaCursorTool::Update(MeaUpdateReason reason) {
 
         // Display the measurement.
         //
-        m_mgr->ShowXY1(m_cursorPos, cursorPos);
+        m_mgr.ShowXY1(m_cursorPos, cursorPos);
 
         // The screen information depends on the pointer position.
         //
-        m_mgr->UpdateScreenInfo(m_cursorPos);
+        m_mgr.UpdateScreenInfo(m_cursorPos);
 
         // If the units or origin changes, force an update of
         // the data window information.

@@ -20,7 +20,6 @@
 #include "StdAfx.h"
 #include "Ruler.h"
 #include "Colors.h"
-#include "ScreenMgr.h"
 #include "UnitsMgr.h"
 #include "Layout.h"
 #include "LayeredWindows.h"
@@ -38,8 +37,9 @@ END_MESSAGE_MAP()
 void MeaRulerCallback::OnRulerMove(const RulerInfo* /* info */) {}
 
 
-MeaRuler::MeaRuler() :
+MeaRuler::MeaRuler(const MeaScreenProvider& screenProvider) :
     MeaGraphic(),
+    m_screenProvider(screenProvider),
     m_borderColor(0),
     m_backColor(0),
     m_callback(nullptr),
@@ -73,9 +73,8 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
 
     SetColors(borderColor, backColor);
 
-    MeaScreenMgr& smgr = MeaScreenMgr::Instance();
     MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
-    FSIZE res = smgr.GetScreenRes(smgr.GetScreenIter(targetRect));
+    FSIZE res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(targetRect));
 
     // To ensure the proper sizing of the ruler tick marks and margins,
     // the dimensions are stated in inches and converted to pixels at
@@ -278,7 +277,7 @@ void MeaRuler::ClearIndicator(IndicatorId indId) {
     // The indicators are hidden by moving them to a position
     // that is guaranteed to be off any screen.
     //
-    CPoint offScreen = MeaScreenMgr::Instance().GetOffScreen();
+    CPoint offScreen = m_screenProvider.GetOffScreen();
     m_indicatorLoc[indId] = min(offScreen.x, offScreen.y);
 }
 
@@ -323,7 +322,7 @@ void MeaRuler::DrawRuler(CDC& dc) {
     GetClientRect(clientRect);
     GetWindowRect(winRect);
 
-    const CRect& virtRect = MeaScreenMgr::Instance().GetVirtualRect();
+    const CRect& virtRect = m_screenProvider.GetVirtualRect();
 
     // Erase the background
     //
@@ -495,7 +494,7 @@ void MeaRuler::OnPaint() {
 void MeaRuler::FillInfo(MeaRulerCallback::RulerInfo& rulerInfo, UINT flags, const CPoint& point) {
     CPoint pt(point - m_pointerOffset);
     ClientToScreen(&pt);
-    pt = MeaScreenMgr::Instance().LimitPosition(pt);
+    pt = m_screenProvider.LimitPosition(pt);
     rulerInfo.position = (m_orientation == Vertical) ? pt.x : pt.y;
 
     rulerInfo.ruler = this;

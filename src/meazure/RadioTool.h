@@ -45,13 +45,14 @@ public:
     /// Typically, to use a newly constructed tool, the Enable() method
     /// must be called.
     ///
-    /// @param mgr  [in] Tool manager parent of the tool.
+    /// @param mgr              [in] Tool manager parent of the tool.
+    /// @param screenProvider   [in] Screen information provider
     ///
-    explicit MeaRadioTool(MeaToolMgr* mgr);
+    explicit MeaRadioTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
 
     /// Destroys the tool.
     ///
-    virtual ~MeaRadioTool();
+    virtual ~MeaRadioTool() = default;
 
     /// Indicates that the derived tool is a Radio tool and
     /// cannot be enabled until any other enabled Radio tool

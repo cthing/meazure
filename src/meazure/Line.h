@@ -24,6 +24,7 @@
 
 #include "Graphic.h"
 #include "Timer.h"
+#include "ScreenProvider.h"
 
 
 /// A line element. The line is used by many tools including the Line
@@ -48,21 +49,22 @@ public:
     /// before the line can be displayed and before any operation that
     /// attempts to manipulate the line's window.
     ///
-    /// @param shrink       [in] Distance, in pixels, to shrink line from
-    ///                     start and end points. The typical use for this
-    ///                     parameter is in the Line tool. Shrinking the line
-    ///                     allows the contents of the end points to be clear
-    ///                     for viewing and measuring.
-    /// @param parent       [in] Parent window or <b>nullptr</b> if the line does
-    ///                     not have an immediate parent. If a parent window is
-    ///                     specified, the line is created as a child window
-    ///                     (<b>WS_CHILD</b>). Otherwise the line is created
-    ///                     as a popup window (<b>WS_POPUP</b>) and is assigned
-    ///                     the main window as a parent.
+    /// @param shrink           [in] Distance, in pixels, to shrink line from
+    ///                         start and end points. The typical use for this
+    ///                         parameter is in the Line tool. Shrinking the line
+    ///                         allows the contents of the end points to be clear
+    ///                         for viewing and measuring.
+    /// @param screenProvider   [in] Screen information provider
+    /// @param parent           [in] Parent window or <b>nullptr</b> if the line does
+    ///                         not have an immediate parent. If a parent window is
+    ///                         specified, the line is created as a child window
+    ///                         (<b>WS_CHILD</b>). Otherwise the line is created
+    ///                         as a popup window (<b>WS_POPUP</b>) and is assigned
+    ///                         the main window as a parent.
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool Create(int shrink, const CWnd* parent = nullptr);
+    bool Create(int shrink, const MeaScreenProvider& screenProvider, const CWnd* parent = nullptr);
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.

@@ -20,7 +20,6 @@
 #include "StdAfx.h"
 #include "Units.h"
 #include "UnitsLabels.h"
-#include "ScreenMgr.h"
 
 
 //*************************************************************************
@@ -135,8 +134,8 @@ bool MeaLinearUnits::m_invertY = false;
 POINT MeaLinearUnits::m_originOffset = { 0, 0 };
 
 
-MeaLinearUnits::MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr) :
-    MeaUnits(unitsStr), m_unitsId(unitsId), m_majorTickCount(10) {
+MeaLinearUnits::MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr, const MeaScreenProvider& screenProvider) :
+    MeaUnits(unitsStr), m_unitsId(unitsId), m_screenProvider(screenProvider), m_majorTickCount(10) {
     AddPrecisionName(_T("x"));      // MeaX
     AddPrecisionName(_T("y"));      // MeaY
     AddPrecisionName(_T("w"));      // MeaW
@@ -161,14 +160,13 @@ CString MeaLinearUnits::Format(MeaLinearMeasurementId id, double value) const {
 
 FPOINT MeaLinearUnits::ConvertCoord(const POINT& pos) const {
     FPOINT fpos;
-    MeaScreenMgr& smgr = MeaScreenMgr::Instance();
-    FSIZE fromPixels = FromPixels(smgr.GetScreenRes(smgr.GetScreenIter(pos)));
+    FSIZE fromPixels = FromPixels(m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(pos)));
 
     fpos.x = fromPixels.cx * (pos.x - m_originOffset.x);
 
     if (m_invertY) {
         if ((m_originOffset.x == 0) && (m_originOffset.y == 0)) {
-            fpos.y = fromPixels.cy * (smgr.GetVirtualRect().Height() - 1 - pos.y);
+            fpos.y = fromPixels.cy * (m_screenProvider.GetVirtualRect().Height() - 1 - pos.y);
         } else {
             fpos.y = fromPixels.cy * (m_originOffset.y - pos.y);
         }
@@ -180,8 +178,7 @@ FPOINT MeaLinearUnits::ConvertCoord(const POINT& pos) const {
 }
 
 double MeaLinearUnits::ConvertCoord(MeaConvertDir dir, const CWnd* wnd, int pos) const {
-    MeaScreenMgr& smgr = MeaScreenMgr::Instance();
-    FSIZE fromPixels = FromPixels(smgr.GetScreenRes(smgr.GetScreenIter(wnd)));
+    FSIZE fromPixels = FromPixels(m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(wnd)));
 
     if (dir == MeaConvertX) {
         return fromPixels.cx * (pos - m_originOffset.x);
@@ -189,7 +186,7 @@ double MeaLinearUnits::ConvertCoord(MeaConvertDir dir, const CWnd* wnd, int pos)
 
     if (m_invertY) {
         if ((m_originOffset.x == 0) && (m_originOffset.y == 0)) {
-            return fromPixels.cy * (smgr.GetVirtualRect().Height() - 1 - pos);
+            return fromPixels.cy * (m_screenProvider.GetVirtualRect().Height() - 1 - pos);
         }
         return fromPixels.cy * (m_originOffset.y - pos);
     }
@@ -197,8 +194,7 @@ double MeaLinearUnits::ConvertCoord(MeaConvertDir dir, const CWnd* wnd, int pos)
 }
 
 double MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos) const {
-    MeaScreenMgr& smgr = MeaScreenMgr::Instance();
-    FSIZE fromPixels = FromPixels(smgr.GetScreenRes(smgr.GetScreenIter(wnd)));
+    FSIZE fromPixels = FromPixels(m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(wnd)));
 
     if (dir == MeaConvertX) {
         return pos / fromPixels.cx + m_originOffset.x;
@@ -206,7 +202,7 @@ double MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double
 
     if (m_invertY) {
         if ((m_originOffset.x == 0) && (m_originOffset.y == 0)) {
-            return  (smgr.GetVirtualRect().Height() - 1) - pos / fromPixels.cy;
+            return  (m_screenProvider.GetVirtualRect().Height() - 1) - pos / fromPixels.cy;
         }
         return  m_originOffset.y - pos / fromPixels.cy;
     }
@@ -221,7 +217,7 @@ POINT MeaLinearUnits::UnconvertCoord(const FPOINT& pos) const {
 
     if (m_invertY) {
         if ((m_originOffset.x == 0) && (m_originOffset.y == 0)) {
-            point.y = static_cast<long>((MeaScreenMgr::Instance().GetVirtualRect().Height() - 1) - pos.y / fromPixels.cy);
+            point.y = static_cast<long>((m_screenProvider.GetVirtualRect().Height() - 1) - pos.y / fromPixels.cy);
         } else {
             point.y = static_cast<long>(m_originOffset.y - pos.y / fromPixels.cy);
         }
@@ -272,8 +268,7 @@ bool MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double p
 }
 
 FPOINT MeaLinearUnits::ConvertPos(const POINT& pos) const {
-    MeaScreenMgr& mgr = MeaScreenMgr::Instance();
-    FSIZE fromPixels = FromPixels(mgr.GetScreenRes(mgr.GetScreenIter(pos)));
+    FSIZE fromPixels = FromPixels(m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(pos)));
     FPOINT pt;
     pt.x = fromPixels.cx * pos.x;
     pt.y = fromPixels.cy * pos.y;
@@ -300,43 +295,39 @@ FSIZE MeaLinearUnits::GetResFromPixels(const FSIZE& res) const {
 }
 
 const FSIZE& MeaLinearUnits::FindResFromCoord(const FPOINT& pos) const {
-    MeaScreenMgr& smgr = MeaScreenMgr::Instance();
+    if (m_screenProvider.GetNumScreens() != 1) {
+        MeaScreenProvider::ScreenIter iter;
 
-    if (smgr.GetNumScreens() != 1) {
-        MeaScreenMgr::ScreenIter iter;
-
-        for (iter = smgr.GetScreenIter(); !smgr.AtEnd(iter); ++iter) {
-            const CRect& srect = smgr.GetScreenRect(iter);
+        for (iter = m_screenProvider.GetScreenIter(); !m_screenProvider.AtEnd(iter); ++iter) {
+            const CRect& srect = m_screenProvider.GetScreenRect(iter);
             FPOINT tl = ConvertCoord(srect.TopLeft());
             FPOINT br = ConvertCoord(srect.BottomRight());
 
             if ((tl.x <= pos.x) && (br.x > pos.x) && (tl.y <= pos.y) && (br.y > pos.y)) {
-                return smgr.GetScreenRes(iter);
+                return m_screenProvider.GetScreenRes(iter);
             }
         }
     }
 
-    return smgr.GetScreenRes(smgr.GetScreenIter());
+    return m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter());
 }
 
 const FSIZE& MeaLinearUnits::FindResFromPos(const FPOINT& pos) const {
-    MeaScreenMgr& smgr = MeaScreenMgr::Instance();
+    if (m_screenProvider.GetNumScreens() != 1) {
+        MeaScreenProvider::ScreenIter iter;
 
-    if (smgr.GetNumScreens() != 1) {
-        MeaScreenMgr::ScreenIter iter;
-
-        for (iter = smgr.GetScreenIter(); !smgr.AtEnd(iter); ++iter) {
-            const CRect& srect = smgr.GetScreenRect(iter);
+        for (iter = m_screenProvider.GetScreenIter(); !m_screenProvider.AtEnd(iter); ++iter) {
+            const CRect& srect = m_screenProvider.GetScreenRect(iter);
             FPOINT tl = ConvertPos(srect.TopLeft());
             FPOINT br = ConvertPos(srect.BottomRight());
 
             if ((tl.x <= pos.x) && (br.x > pos.x) && (tl.y <= pos.y) && (br.y > pos.y)) {
-                return smgr.GetScreenRes(iter);
+                return m_screenProvider.GetScreenRes(iter);
             }
         }
     }
 
-    return smgr.GetScreenRes(smgr.GetScreenIter());
+    return m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter());
 }
 
 SIZE MeaLinearUnits::ConvertToPixels(const FSIZE& res, double value, int minPixels) const {
@@ -365,7 +356,8 @@ SIZE MeaLinearUnits::ConvertToPixels(const FSIZE& res, double value, int minPixe
 // MeaPixelUnits
 //*************************************************************************
 
-MeaPixelUnits::MeaPixelUnits() : MeaLinearUnits(MeaPixelsId, _T("px")) {
+MeaPixelUnits::MeaPixelUnits(const MeaScreenProvider& screenProvider) :
+    MeaLinearUnits(MeaPixelsId, _T("px"), screenProvider) {
     AddPrecision(0);        // MeaX
     AddPrecision(0);        // MeaY
     AddPrecision(0);        // MeaW
@@ -401,7 +393,8 @@ FSIZE MeaPixelUnits::FromPixels(const FSIZE& /*res*/) const {
 // MeaPointUnits
 //*************************************************************************
 
-MeaPointUnits::MeaPointUnits() : MeaLinearUnits(MeaPointsId, _T("pt")) {
+MeaPointUnits::MeaPointUnits(const MeaScreenProvider& screenProvider) :
+    MeaLinearUnits(MeaPointsId, _T("pt"), screenProvider) {
     AddPrecision(1);        // MeaX
     AddPrecision(1);        // MeaY
     AddPrecision(1);        // MeaW
@@ -426,7 +419,8 @@ FSIZE MeaPointUnits::FromPixels(const FSIZE& res) const {
 // MeaPicaUnits
 //*************************************************************************
 
-MeaPicaUnits::MeaPicaUnits() : MeaLinearUnits(MeaPicasId, _T("pc")) {
+MeaPicaUnits::MeaPicaUnits(const MeaScreenProvider& screenProvider) :
+    MeaLinearUnits(MeaPicasId, _T("pc"), screenProvider) {
     AddPrecision(2);        // MeaX
     AddPrecision(2);        // MeaY
     AddPrecision(2);        // MeaW
@@ -451,7 +445,8 @@ FSIZE MeaPicaUnits::FromPixels(const FSIZE& res) const {
 // MeaTwipUnits
 //*************************************************************************
 
-MeaTwipUnits::MeaTwipUnits() : MeaLinearUnits(MeaTwipsId, _T("tp")) {
+MeaTwipUnits::MeaTwipUnits(const MeaScreenProvider& screenProvider) :
+    MeaLinearUnits(MeaTwipsId, _T("tp"), screenProvider) {
     AddPrecision(0);        // MeaX
     AddPrecision(0);        // MeaY
     AddPrecision(0);        // MeaW
@@ -476,7 +471,8 @@ FSIZE MeaTwipUnits::FromPixels(const FSIZE& res) const {
 // MeaInchUnits
 //*************************************************************************
 
-MeaInchUnits::MeaInchUnits() : MeaLinearUnits(MeaInchesId, _T("in")) {
+MeaInchUnits::MeaInchUnits(const MeaScreenProvider& screenProvider) :
+    MeaLinearUnits(MeaInchesId, _T("in"), screenProvider) {
     AddPrecision(3);        // MeaX
     AddPrecision(3);        // MeaY
     AddPrecision(3);        // MeaW
@@ -501,7 +497,8 @@ FSIZE MeaInchUnits::FromPixels(const FSIZE& res) const {
 // MeaCentimeterUnits
 //*************************************************************************
 
-MeaCentimeterUnits::MeaCentimeterUnits() : MeaLinearUnits(MeaCentimetersId, _T("cm")) {
+MeaCentimeterUnits::MeaCentimeterUnits(const MeaScreenProvider& screenProvider) :
+    MeaLinearUnits(MeaCentimetersId, _T("cm"), screenProvider) {
     AddPrecision(2);        // MeaX
     AddPrecision(2);        // MeaY
     AddPrecision(2);        // MeaW
@@ -526,7 +523,8 @@ FSIZE MeaCentimeterUnits::FromPixels(const FSIZE& res) const {
 // MeaMillimeterUnits
 //*************************************************************************
 
-MeaMillimeterUnits::MeaMillimeterUnits() : MeaLinearUnits(MeaMillimetersId, _T("mm")) {
+MeaMillimeterUnits::MeaMillimeterUnits(const MeaScreenProvider& screenProvider) :
+    MeaLinearUnits(MeaMillimetersId, _T("mm"), screenProvider) {
     AddPrecision(1);        // MeaX
     AddPrecision(1);        // MeaY
     AddPrecision(1);        // MeaW
@@ -555,8 +553,10 @@ const double MeaCustomUnits::kDefScaleFactor = 1.0;
 const MeaCustomUnits::ScaleBasis MeaCustomUnits::kDefScaleBasis = MeaCustomUnits::PixelBasis;
 
 
-MeaCustomUnits::MeaCustomUnits() :
-    MeaLinearUnits(MeaCustomId, _T("custom")), m_scaleBasis(kDefScaleBasis), m_scaleFactor(kDefScaleFactor) {
+MeaCustomUnits::MeaCustomUnits(const MeaScreenProvider& screenProvider) :
+    MeaLinearUnits(MeaCustomId, _T("custom"), screenProvider),
+    m_scaleBasis(kDefScaleBasis),
+    m_scaleFactor(kDefScaleFactor) {
     AddPrecision(0);        // MeaX
     AddPrecision(0);        // MeaY
     AddPrecision(0);        // MeaW

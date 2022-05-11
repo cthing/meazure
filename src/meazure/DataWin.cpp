@@ -21,7 +21,6 @@
 #include "DataWin.h"
 #include "ToolMgr.h"
 #include "Resource.h"
-#include "ScreenMgr.h"
 #include "LayeredWindows.h"
 
 
@@ -37,8 +36,9 @@ SIZE MeaDataWin::m_margin { 3, 1 };
 UINT MeaDataWin::m_flashInterval { 100 };   // Flash interval in milliseconds
 
 
-MeaDataWin::MeaDataWin() :
+MeaDataWin::MeaDataWin(const MeaScreenProvider& screenProvider) :
     CWnd(),
+    m_screenProvider(screenProvider),
     m_parent(nullptr),
     m_textHeight(0),
     m_winHeight(0),
@@ -227,7 +227,7 @@ void MeaDataWin::SetOpacity(BYTE opacity) {
 int MeaDataWin::CalcWidth() {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
-    const CRect& vscreen = MeaScreenMgr::Instance().GetVirtualRect();
+    const CRect& vscreen = m_screenProvider.GetVirtualRect();
     CPoint topLeft(vscreen.TopLeft());
     CPoint bottomRight(vscreen.BottomRight());
     FSIZE wh = unitsMgr.GetWidthHeight(topLeft, bottomRight);
@@ -286,8 +286,7 @@ void MeaDataWin::Update(const CRect& rect) {
         testRect.InflateRect(winRect.Width(), winRect.Height());
 
         int x, y;
-        MeaScreenMgr& mgr = MeaScreenMgr::Instance();
-        const CRect& screenRect = mgr.GetScreenRect(mgr.GetScreenIter(rect));
+        const CRect& screenRect = m_screenProvider.GetScreenRect(m_screenProvider.GetScreenIter(rect));
 
         y = (testRect.bottom >= screenRect.bottom) ? testRect.top : rect.bottom;
         x = (testRect.left <= screenRect.left) ? rect.right : testRect.left;

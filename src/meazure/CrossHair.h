@@ -23,6 +23,7 @@
 #pragma once
 
 #include "Graphic.h"
+#include "ScreenProvider.h"
 
 
 class MeaCrossHair;
@@ -111,8 +112,10 @@ public:
     /// Constructs a crosshair. Prior to displaying the crosshair with
     /// the Show() method, the Create() method must be called to
     /// create the crosshair's window.
+    /// 
+    /// @param screenProvider   [in] Screen information provider
     ///
-    MeaCrossHair();
+    MeaCrossHair(const MeaScreenProvider& screenProvider);
 
     /// Destroys the circle.
     ///
@@ -313,21 +316,25 @@ private:
     void FillInfo(MeaCrossHairCallback::CHInfo& chs, UINT flags, const CPoint& point);
 
 
-    MeaCrossHairCallback* m_callback;   ///< Object to call for crosshair events
-    bool m_mouseCaptured;               ///< Indicates if the pointer is captured
-    bool m_mouseOver;                   ///< Indicates if the pointer is over the crosshair
-    CBrush* m_backBrush;                ///< Brush to paint the normal crosshair background
-    CBrush* m_borderBrush;              ///< Brush to paint the crosshair border
-    CBrush* m_hiliteBrush;              ///< Brush to paint the highlighted crosshair background
-    CSize m_pointerOffset;              ///< Offset from the pointer location in the window to the center of the crosshair
-    DrawState m_drawState;              ///< Indicates how the crosshair should be drawn
-    int m_flashCount;                   ///< Number of times to flash the crosshair
-    CToolTipCtrl m_toolTip;             ///< Tooltip associated with the crosshair
-    BYTE m_opacity;                     ///< Opacity of the crosshair (0 - transparent, 255 - opaque)
-    CDC m_chDC;                         ///< Crosshair device context
-    CDC m_backDC;                       ///< Background device context for alpha blending when the crosshair is a child window
-    CBitmap m_chBitmap;                 ///< Bitmap into which to draw the crosshair when it is a child window
-    CBitmap* m_origCHBitmap;            ///< Original bitmap for the crosshair
-    CBitmap m_backBitmap;               ///< Bitmap for the background when alpha blending when the crosshair is a child window
-    CBitmap* m_origBackBitmap;          ///< Original background bitmap 
+    const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
+    MeaCrossHairCallback* m_callback;           ///< Object to call for crosshair events
+    bool m_mouseCaptured;                       ///< Indicates if the pointer is captured
+    bool m_mouseOver;                           ///< Indicates if the pointer is over the crosshair
+    CBrush* m_backBrush;                        ///< Brush to paint the normal crosshair background
+    CBrush* m_borderBrush;                      ///< Brush to paint the crosshair border
+    CBrush* m_hiliteBrush;                      ///< Brush to paint the highlighted crosshair background
+    CSize m_pointerOffset;                      ///< Offset from the pointer location in the window to the
+                                                ///< center of the crosshair
+    DrawState m_drawState;                      ///< Indicates how the crosshair should be drawn
+    int m_flashCount;                           ///< Number of times to flash the crosshair
+    CToolTipCtrl m_toolTip;                     ///< Tooltip associated with the crosshair
+    BYTE m_opacity;                             ///< Opacity of the crosshair (0 - transparent, 255 - opaque)
+    CDC m_chDC;                                 ///< Crosshair device context
+    CDC m_backDC;                               ///< Background device context for alpha blending when the crosshair
+                                                ///< is a child window
+    CBitmap m_chBitmap;                         ///< Bitmap into which to draw the crosshair when it is a child window
+    CBitmap* m_origCHBitmap;                    ///< Original bitmap for the crosshair
+    CBitmap m_backBitmap;                       ///< Bitmap for the background when alpha blending when the crosshair
+                                                ///< is a child window
+    CBitmap* m_origBackBitmap;                  ///< Original background bitmap 
 };

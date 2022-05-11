@@ -22,7 +22,6 @@
 #include "MeaAssert.h"
 #include "Layout.h"
 #include "Colors.h"
-#include "ScreenMgr.h"
 #include <cstdlib>
 
 
@@ -63,8 +62,8 @@ MeaLine::~MeaLine() {
     }
 }
 
-bool MeaLine::Create(int shrink, const CWnd* parent) {
-    const CRect& vscreen = MeaScreenMgr::Instance().GetVirtualRect();
+bool MeaLine::Create(int shrink, const MeaScreenProvider& screenProvider, const CWnd* parent) {
+    const CRect& vscreen = screenProvider.GetVirtualRect();
     UINT size = 2 * static_cast<UINT>(MeaLayout::CalcLength(static_cast<double>(vscreen.Width()),
                                                             static_cast<double>(vscreen.Height())));
     m_shrink = shrink;

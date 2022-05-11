@@ -85,6 +85,14 @@ const double MeaUnitsMgr::kMinSepInches = 0.1;
 
 MeaUnitsMgr::MeaUnitsMgr(token) :
     MeaSingleton_T<MeaUnitsMgr>(),
+    m_pixelUnits(MeaScreenMgr::Instance()),
+    m_pointUnits(MeaScreenMgr::Instance()),
+    m_twipUnits(MeaScreenMgr::Instance()),
+    m_inchUnits(MeaScreenMgr::Instance()),
+    m_cmUnits(MeaScreenMgr::Instance()),
+    m_mmUnits(MeaScreenMgr::Instance()),
+    m_picaUnits(MeaScreenMgr::Instance()),
+    m_customUnits(MeaScreenMgr::Instance()),
     m_currentLinearUnits(&m_pixelUnits),
     m_currentAngularUnits(&m_degreeUnits),
     m_haveWarned(kDefHaveWarned),

@@ -43,9 +43,10 @@ public:
     /// newly constructed Ruler tool, the Enable() method must be
     /// called.
     ///
-    /// @param mgr  [in] Tool manager parent of the Ruler tool.
+    /// @param mgr              [in] Tool manager parent of the Ruler tool
+    /// @param screenProvider   [in] Screen information provider
     ///
-    explicit MeaRulerTool(MeaToolMgr* mgr);
+    explicit MeaRulerTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
 
     /// Hides and then destroys the Ruler tool.
     ///
@@ -129,7 +130,8 @@ private:
     class RulerSet {
 
     public:
-        RulerSet() : m_xPos(0), m_yPos(0) {}
+        RulerSet(const MeaScreenProvider& screenProvider) :
+            m_vRuler(screenProvider), m_hRuler(screenProvider), m_xPos(0), m_yPos(0) {}
         ~RulerSet() {}
 
         MeaRuler m_vRuler;  ///< Vertical ruler

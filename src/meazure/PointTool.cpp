@@ -23,14 +23,17 @@
 #include "Resource.h"
 #include "Colors.h"
 #include "ToolMgr.h"
-#include "ScreenMgr.h"
 
 
 const CString MeaPointTool::kToolName(_T("PointTool"));
 
 
-MeaPointTool::MeaPointTool(MeaToolMgr* mgr) :
-    MeaRadioTool(mgr), MeaCrossHairCallback(), m_center(MeaScreenMgr::Instance().GetCenter()) {
+MeaPointTool::MeaPointTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    MeaRadioTool(mgr, screenProvider),
+    MeaCrossHairCallback(),
+    m_center(screenProvider.GetCenter()),
+    m_crossHair(screenProvider),
+    m_dataWin(screenProvider) {
     // Set the default tool position. The crosshair is initially
     // is placed at the center of the screen containing the application.
     //
@@ -98,7 +101,7 @@ void MeaPointTool::LoadProfile(MeaProfile& profile) {
 }
 
 void MeaPointTool::EnableCrosshairs() {
-    if (m_mgr->CrosshairsEnabled() && IsWindow(m_crossHair)) {
+    if (m_mgr.CrosshairsEnabled() && IsWindow(m_crossHair)) {
         m_crossHair.Show();
     }
 }
@@ -128,7 +131,7 @@ void MeaPointTool::Enable() {
     // Tell the tool manager which data display fields
     // we will be using.
     //
-    m_mgr->EnableRegionFields(MeaX1Field | MeaY1Field, MeaX1Field | MeaY1Field);
+    m_mgr.EnableRegionFields(MeaX1Field | MeaY1Field, MeaX1Field | MeaY1Field);
 
     if (!IsWindow(m_crossHair)) {
         Create();
@@ -136,7 +139,7 @@ void MeaPointTool::Enable() {
 
     // Show one liner on how to use the tool.
     //
-    m_mgr->SetStatus(IDS_MEA_POINT_STATUS);
+    m_mgr.SetStatus(IDS_MEA_POINT_STATUS);
 
     // Make the crosshair visible, flash it and update
     // the data display.
@@ -167,12 +170,12 @@ void MeaPointTool::Update(MeaUpdateReason reason) {
         // Display the results of the measurement in
         // the data display fields.
         //
-        m_mgr->ShowXY1(m_center, center);
+        m_mgr.ShowXY1(m_center, center);
 
         // The screen information depends on the
         // current position.
         //
-        m_mgr->UpdateScreenInfo(m_center);
+        m_mgr.UpdateScreenInfo(m_center);
 
         // Display the results of the measurement in
         // the crosshair data window.
@@ -218,7 +221,7 @@ void MeaPointTool::SetPosition() {
     // Ensure that the positions fall within the
     // limits of the screen containing the point.
     //
-    m_center = MeaScreenMgr::Instance().LimitPosition(m_center);
+    m_center = m_screenProvider.LimitPosition(m_center);
 
     // Reposition the tool.
     //

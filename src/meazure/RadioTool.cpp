@@ -22,9 +22,7 @@
 #include "RadioTool.h"
 
 
-MeaRadioTool::MeaRadioTool(MeaToolMgr* mgr) : MeaTool(mgr) {}
-
-MeaRadioTool::~MeaRadioTool() {}
+MeaRadioTool::MeaRadioTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) : MeaTool(mgr, screenProvider) {}
 
 bool MeaRadioTool::IsRadioTool() {
     return true;

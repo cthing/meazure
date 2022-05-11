@@ -44,9 +44,10 @@ public:
     /// Enable() will call the Create() method the first time it is called
     /// if Create() has not previously been called.
     ///
-    /// @param mgr  [in] Tool manager parent of the Rectangle tool.
+    /// @param mgr              [in] Tool manager parent of the Rectangle tool
+    /// @param screenProvider   [in] Screen information provider
     ///
-    explicit MeaRectTool(MeaToolMgr* mgr);
+    explicit MeaRectTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
 
     /// Hides and then destroys the Rectangle tool.
     //

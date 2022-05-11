@@ -20,6 +20,7 @@
 #include "StdAfx.h"
 #include "Resource.h"
 #include "Preferences.h"
+#include "ScreenMgr.h"
 
 
 #ifdef _DEBUG
@@ -39,8 +40,12 @@ BEGIN_MESSAGE_MAP(MeaPreferences, CPropertySheet)
 END_MESSAGE_MAP()
 
 
-MeaPreferences::MeaPreferences(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPage)
-    :CPropertySheet(nIDCaption, pParentWnd, iSelectPage) {
+MeaPreferences::MeaPreferences(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPage) :
+    CPropertySheet(nIDCaption, pParentWnd, iSelectPage),
+    m_calibrationPrefs(MeaScreenMgr::Instance()),
+    m_rulerPrefs(MeaScreenMgr::Instance()),
+    m_toolsPrefs(MeaScreenMgr::Instance()) {
+
     // Remove the help button from the dialog.
     //
     m_psh.dwFlags &= ~(PSH_HASHELP);
@@ -56,7 +61,10 @@ MeaPreferences::MeaPreferences(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPa
 }
 
 MeaPreferences::MeaPreferences(LPCTSTR pszCaption, CWnd* pParentWnd, UINT iSelectPage)
-    :CPropertySheet(pszCaption, pParentWnd, iSelectPage) {
+    :CPropertySheet(pszCaption, pParentWnd, iSelectPage),
+    m_calibrationPrefs(MeaScreenMgr::Instance()),
+    m_rulerPrefs(MeaScreenMgr::Instance()),
+    m_toolsPrefs(MeaScreenMgr::Instance()) {
     // Remove the help button from the dialog.
     //
     m_psh.dwFlags &= ~(PSH_HASHELP);

@@ -25,6 +25,7 @@
 #include "Graphic.h"
 #include "Layout.h"
 #include "Timer.h"
+#include "ScreenProvider.h"
 
 
 /// A circle element. The circle is positioned by specifying the center
@@ -49,16 +50,17 @@ public:
     /// before the circle can be displayed and before any operation that
     /// attempts to manipulate the circle's window.
     ///
-    /// @param parent       [in] Parent window or <b>nullptr</b> if the circle does
-    ///                     not have an immediate parent. If a parent window is
-    ///                     specified, the circle is created as a child window
-    ///                     (<b>WS_CHILD</b>). Otherwise the circle is created
-    ///                     as a popup window (<b>WS_POPUP</b>) and is assigned
-    ///                     the main window as a parent.
+    /// @param parent           [in] Parent window or <b>nullptr</b> if the circle does
+    ///                         not have an immediate parent. If a parent window is
+    ///                         specified, the circle is created as a child window
+    ///                         (<b>WS_CHILD</b>). Otherwise the circle is created
+    ///                         as a popup window (<b>WS_POPUP</b>) and is assigned
+    ///                         the main window as a parent.
+    /// @param screenProvider   [in] Screen information provider
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool Create(const CWnd* parent = nullptr);
+    bool Create(const MeaScreenProvider& screenProvider, const CWnd* parent = nullptr);
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.

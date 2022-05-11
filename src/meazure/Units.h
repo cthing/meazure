@@ -23,6 +23,7 @@
 #pragma once
 
 #include <vector>
+#include "ScreenProvider.h"
 #include "Profile.h"
 #include "Utils.h"
 
@@ -510,10 +511,11 @@ public:
 protected:
     /// Constructs the linear units.
     ///
-    /// @param unitsId      [in] Identifier for the linear units.
-    /// @param unitsStr     [in] Name for the units.
+    /// @param unitsId        [in] Identifier for the linear units.
+    /// @param unitsStr       [in] Name for the units.
+    /// @param screenProvider [in] Screen information provider
     ///
-    MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr);
+    MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr, const MeaScreenProvider& screenProvider);
 
     /// Destroys the linear units.
     ///
@@ -570,12 +572,14 @@ protected:
     ///
     const FSIZE& FindResFromPos(const FPOINT& pos) const;
 
-private:
-    static POINT m_originOffset;    ///< Offset of the origin from the system origin, in pixels.
-    static bool m_invertY;          ///< Indicates if the y-axis direction is inverted.
+protected:
+    const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
 
-    MeaLinearUnitsId m_unitsId;     ///< Linear units identifier.
-    int m_majorTickCount;           ///< Number of minor ruler tick marks between major tick marks.
+private:
+    static POINT m_originOffset;                ///< Offset of the origin from the system origin, in pixels.
+    static bool m_invertY;                      ///< Indicates if the y-axis direction is inverted.
+    MeaLinearUnitsId m_unitsId;                 ///< Linear units identifier.
+    int m_majorTickCount;                       ///< Number of minor ruler tick marks between major tick marks.
 };
 
 
@@ -585,8 +589,10 @@ class MeaPixelUnits : public MeaLinearUnits {
 
 public:
     /// Constructs pixel units.
+    /// 
+    /// @param screenProvider [in] Screen information provider
     ///
-    MeaPixelUnits();
+    MeaPixelUnits(const MeaScreenProvider& screenProvider);
 
     /// Destroys pixel units.
     ///
@@ -634,8 +640,10 @@ class MeaPointUnits : public MeaLinearUnits {
 
 public:
     /// Constructs point units.
+    /// 
+    /// @param screenProvider [in] Screen information provider
     ///
-    MeaPointUnits();
+    MeaPointUnits(const MeaScreenProvider& screenProvider);
 
     /// Destroys point units.
     ///
@@ -659,8 +667,10 @@ class MeaPicaUnits : public MeaLinearUnits {
 
 public:
     /// Constructs pica units.
+    /// 
+    /// @param screenProvider [in] Screen information provider
     ///
-    MeaPicaUnits();
+    MeaPicaUnits(const MeaScreenProvider& screenProvider);
 
     /// Destroys pica units.
     ///
@@ -684,8 +694,10 @@ class MeaTwipUnits : public MeaLinearUnits {
 
 public:
     /// Constructs twips units.
+    /// 
+    /// @param screenProvider [in] Screen information provider
     ///
-    MeaTwipUnits();
+    MeaTwipUnits(const MeaScreenProvider& screenProvider);
 
     /// Destroys twips units.
     ///
@@ -709,8 +721,10 @@ class MeaInchUnits : public MeaLinearUnits {
 
 public:
     /// Constructs inch units.
+    /// 
+    /// @param screenProvider [in] Screen information provider
     ///
-    MeaInchUnits();
+    MeaInchUnits(const MeaScreenProvider& screenProvider);
 
     /// Destroys inch units.
     ///
@@ -735,8 +749,10 @@ class MeaCentimeterUnits : public MeaLinearUnits {
 
 public:
     /// Constructs centimeter units.
+    /// 
+    /// @param screenProvider [in] Screen information provider
     ///
-    MeaCentimeterUnits();
+    MeaCentimeterUnits(const MeaScreenProvider& screenProvider);
 
     /// Destroys centimeter units.
     ///
@@ -760,8 +776,10 @@ class MeaMillimeterUnits : public MeaLinearUnits {
 
 public:
     /// Constructs millimeter units.
+    /// 
+    /// @param screenProvider [in] Screen information provider
     ///
-    MeaMillimeterUnits();
+    MeaMillimeterUnits(const MeaScreenProvider& screenProvider);
 
     /// Destroys millimeter units.
     ///
@@ -800,8 +818,10 @@ public:
 
 
     /// Constructs custom units.
+    /// 
+    /// @param screenProvider [in] Screen information provider
     ///
-    MeaCustomUnits();
+    MeaCustomUnits(const MeaScreenProvider& screenProvider);
 
     /// Destroys custom units.
     ///

@@ -25,6 +25,7 @@
 #include "Profile.h"
 #include "Layout.h"
 #include "UnitsMgr.h"
+#include "ScreenProvider.h"
 
 
 /// A popup data display window. A data display window is attached to each
@@ -43,8 +44,10 @@ public:
 
     /// Constructs a data window. To use the data window, its Create method
     /// must be called and the window must be displayed using the Show method.
+    /// 
+    /// @param screenProvider   [in] Screen information provider
     ///
-    MeaDataWin();
+    MeaDataWin(const MeaScreenProvider& screenProvider);
 
     /// Destroys a data window.
     ///
@@ -252,24 +255,25 @@ private:
     void DrawWin(CDC& dc);
 
 
-    CString m_xLabel;       ///< Label for the x coordinate data.
-    CString m_yLabel;       ///< Label for the y coordinate data.
-    CString m_wLabel;       ///< Label for the width data.
-    CString m_hLabel;       ///< Label for the height data.
-    CString m_dLabel;       ///< Label for the distance data.
-    CString m_aLabel;       ///< Label for the angle data.
-    CString m_xData;        ///< X coordinate data converted to a string.
-    CString m_yData;        ///< Y coordinate data converted to a string.
-    CString m_wData;        ///< Width data converted to a string.
-    CString m_hData;        ///< Height data converted to a string.
-    CString m_dData;        ///< Distance data converted to a string.
-    CString m_aData;        ///< Angle data converted to a string.
-    const CWnd* m_parent;   ///< Parent window or nullptr if data window is floating.
-    CFont m_font;           ///< Font for the data display.
-    LONG m_textHeight;      ///< Height of the text, in pixels.
-    LONG m_winHeight;       ///< Height of the data window, in pixels.
-    int m_dataOffset;       ///< Position for the data strings, in pixels.
-    DrawState m_drawState;  ///< Indicates how the data window should be drawn.
-    int m_flashCount;       ///< Window flash interval, in milliseconds.
-    BYTE m_opacity;         ///< Data window opacity, 0 (transparent) to 255 (opaque).
+    const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
+    CString m_xLabel;                           ///< Label for the x coordinate data.
+    CString m_yLabel;                           ///< Label for the y coordinate data.
+    CString m_wLabel;                           ///< Label for the width data.
+    CString m_hLabel;                           ///< Label for the height data.
+    CString m_dLabel;                           ///< Label for the distance data.
+    CString m_aLabel;                           ///< Label for the angle data.
+    CString m_xData;                            ///< X coordinate data converted to a string.
+    CString m_yData;                            ///< Y coordinate data converted to a string.
+    CString m_wData;                            ///< Width data converted to a string.
+    CString m_hData;                            ///< Height data converted to a string.
+    CString m_dData;                            ///< Distance data converted to a string.
+    CString m_aData;                            ///< Angle data converted to a string.
+    const CWnd* m_parent;                       ///< Parent window or nullptr if data window is floating.
+    CFont m_font;                               ///< Font for the data display.
+    LONG m_textHeight;                          ///< Height of the text, in pixels.
+    LONG m_winHeight;                           ///< Height of the data window, in pixels.
+    int m_dataOffset;                           ///< Position for the data strings, in pixels.
+    DrawState m_drawState;                      ///< Indicates how the data window should be drawn.
+    int m_flashCount;                           ///< Window flash interval, in milliseconds.
+    BYTE m_opacity;                             ///< Data window opacity, 0 (transparent) to 255 (opaque).
 };

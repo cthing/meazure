@@ -20,13 +20,13 @@
 #include "StdAfx.h"
 #include "ScreenTool.h"
 #include "ToolMgr.h"
-#include "ScreenMgr.h"
 
 
 const CString MeaScreenTool::kToolName(_T("ScreenTool"));
 
 
-MeaScreenTool::MeaScreenTool(MeaToolMgr* mgr) : MeaTool(mgr), m_rect(0, 0, 0, 0), m_anyOSRes(true) {
+MeaScreenTool::MeaScreenTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    MeaTool(mgr, screenProvider), m_rect(0, 0, 0, 0), m_anyOSRes(true) {
     m_res.cx = 0.0;
     m_res.cy = 0.0;
 }
@@ -59,7 +59,7 @@ void MeaScreenTool::Enable() {
 
     // Tell the manager which display fields we are using.
     //
-    m_mgr->EnableScreenFields(MeaScreenWidthField | MeaScreenHeightField | MeaResXField | MeaResYField, 0);
+    m_mgr.EnableScreenFields(MeaScreenWidthField | MeaScreenHeightField | MeaResXField | MeaResYField, 0);
     Update(MeaUpdateReason::NormalUpdate);
 }
 
@@ -81,10 +81,10 @@ void MeaScreenTool::Update(MeaUpdateReason reason) {
 
         MeaUnitsMgr& units = MeaUnitsMgr::Instance();
 
-        m_mgr->ShowScreenName(m_name);
-        m_mgr->ShowScreenWH(units.GetWidthHeight(topLeft, bottomRight));
-        m_mgr->ShowScreenRes(units.ConvertRes(m_res));
-        m_mgr->ShowCalButton(m_anyOSRes);
+        m_mgr.ShowScreenName(m_name);
+        m_mgr.ShowScreenWH(units.GetWidthHeight(topLeft, bottomRight));
+        m_mgr.ShowScreenRes(units.ConvertRes(m_res));
+        m_mgr.ShowCalButton(m_anyOSRes);
     }
 }
 
@@ -93,15 +93,13 @@ CString MeaScreenTool::GetToolName() const {
 }
 
 void MeaScreenTool::SetPosition(const POINT& pos) {
-    // Get the information for the screen which contains
-    // the specified position.
+    // Get the information for the screen which contains the specified position.
     //
-    MeaScreenMgr& mgr = MeaScreenMgr::Instance();
-    MeaScreenMgr::ScreenIter iter = mgr.GetScreenIter(pos);
+    MeaScreenProvider::ScreenIter iter = m_screenProvider.GetScreenIter(pos);
 
-    const CRect& rect = mgr.GetScreenRect(iter);
-    const FSIZE& res = mgr.GetScreenRes(iter);
-    bool anyOSRes = mgr.AnyOSRes();
+    const CRect& rect = m_screenProvider.GetScreenRect(iter);
+    const FSIZE& res = m_screenProvider.GetScreenRes(iter);
+    bool anyOSRes = m_screenProvider.AnyOSRes();
 
     // Update the cached information, if the information cached in
     // the tool is different from the information for the screen
@@ -110,8 +108,8 @@ void MeaScreenTool::SetPosition(const POINT& pos) {
     if ((m_rect != rect) || !MEA_DBL_EQL(m_res.cx, res.cx) || !MEA_DBL_EQL(m_res.cy, res.cy) || (m_anyOSRes != anyOSRes)) {
         m_rect = rect;
         m_res = res;
-        m_anyOSRes = mgr.AnyOSRes();
-        m_name = mgr.GetScreenName(iter);
+        m_anyOSRes = m_screenProvider.AnyOSRes();
+        m_name = m_screenProvider.GetScreenName(iter);
 
         Update(MeaUpdateReason::NormalUpdate);
     }

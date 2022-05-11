@@ -21,7 +21,6 @@
 #include "MeaAssert.h"
 #include "Circle.h"
 #include "Colors.h"
-#include "ScreenMgr.h"
 
 
  // Padding around circle
@@ -61,13 +60,13 @@ MeaCircle::~MeaCircle() {
     }
 }
 
-bool MeaCircle::Create(const CWnd* parent) {
+bool MeaCircle::Create(const MeaScreenProvider& screenProvider, const CWnd* parent) {
     // Determine the size for the region array. A good estimate is two times
     // the circumference of the largest circle one can drawn on the screen. The
     // largest possible circle is defined by the virtual screen rectangle, which
     // is made up of each screen display.
     //
-    m_clipRect = MeaScreenMgr::Instance().GetVirtualRect();
+    m_clipRect = screenProvider.GetVirtualRect();
     double radius = MeaLayout::CalcLength(static_cast<double>(m_clipRect.Width()),
                                           static_cast<double>(m_clipRect.Height()));
     UINT size = 2 * static_cast<UINT>(MeaLayout::CalcCircumference(radius));

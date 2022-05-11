@@ -25,6 +25,156 @@
 #include "ScreenMgr.h"
 
 
+/// Represents a single display screen.
+///
+class MeaScreenProvider::Screen {
+
+public:
+    /// Constructs a display screen object.
+    ///
+    /// @param mgr      [in] Parent manager.
+    /// @param rect     [in] Rectangle representing the screen, in pixels.
+    ///                 In multiple monitor environments, the screen rectangle
+    ///                 can have negative coordinates.
+    ///
+    Screen(MeaScreenMgr& mgr, LPCRECT rect) :
+        m_mgr(mgr),
+        m_rect(rect),
+        m_useManualRes(MeaScreenMgr::kDefUseManualRes),
+        m_calInInches(MeaScreenMgr::kDefCalInInches),
+        m_primary(false) {
+        m_center = m_rect.CenterPoint();
+
+        m_currentRes.cx = 0.0;
+        m_currentRes.cy = 0.0;
+
+        m_manualRes.cx = 0.0;
+        m_manualRes.cy = 0.0;
+    }
+
+    /// Destroys a display screen object.
+    ///
+    virtual ~Screen() = default;
+
+    /// Returns the screen rectangle. Note that in multiple
+    /// monitor environments, the screen rectangle can have
+    /// negative coordinates.
+    ///
+    /// @return Screen rectangle, in pixels.
+    ///
+    const CRect& GetRect() const { return m_rect; }
+
+    /// Determines the center of the screen.
+    ///
+    /// @return Center point of the screen.
+    ///
+    const CPoint& GetCenter() const { return m_center; }
+
+    /// Sets the resolution of the screen, in pixels per inch.
+    ///
+    /// @param useManualRes     [in] Specifies whether the manually calibrated
+    ///                         resolution should be used (true) or the operating
+    ///                         system resolution (false).
+    /// @param manualRes        [in] If non-nullptr, specifies the manually calibrated
+    ///                         resolution.
+    ///
+    void SetScreenRes(bool useManualRes, const FSIZE* manualRes = nullptr) {
+        m_useManualRes = useManualRes;
+
+        if (manualRes != nullptr) {
+            m_manualRes = *manualRes;
+        }
+
+        if (m_manualRes.cx < DBL_EPSILON || m_manualRes.cy < DBL_EPSILON) {
+            m_manualRes = m_mgr.GetOSScreenRes();
+        }
+
+        m_currentRes = m_useManualRes ? m_manualRes : m_mgr.GetOSScreenRes();
+    }
+
+    /// Obtains the currently set manual screen resolution, if set.
+    ///
+    /// @param useManualRes     [out] Indicates whether the manually calibrated
+    ///                         resolution is used (true) or the operating
+    ///                         system resolution (false).
+    /// @param manualRes        [out] Manually calibrated resolution, in pixels
+    ///                         per inch.
+    ///
+    void GetScreenRes(bool& useManualRes, FSIZE& manualRes) const {
+        useManualRes = m_useManualRes;
+        manualRes = m_manualRes;
+    }
+
+    /// Obtains the current screen resolution. If the resolution has been
+    /// manually calibrated, it is returned. Otherwise the operating system
+    /// reported resolution is returned.
+    ///
+    /// @return Screen resolution, in pixels per inch.
+    ///
+    const FSIZE& GetScreenRes() const { return m_currentRes; }
+
+    /// Indicates if the screen resolution has been manually set.
+    ///
+    /// @return <b>true</b> if the screen resolution has been set manually.
+    ///
+    bool IsManualRes() const { return m_useManualRes; }
+
+    /// In multiple monitor environments, one of the monitors is
+    /// designated as the primary. This method designates the screen
+    /// as the primary.
+    ///
+    /// @param primary      [in] Specify <b>true</b> if this screen
+    ///                     is the primary.
+    ///
+    void SetPrimary(bool primary) { m_primary = primary; }
+
+    /// Indicates if this is the primary screen.
+    ///
+    /// @return <b>true</b> if this is the primary screen.
+    ///
+    bool IsPrimary() const { return m_primary; }
+
+    /// Specifies whether the resolution calibration has been performed
+    /// in inches or centimeters.
+    ///
+    /// @param calInInches  [in] <b>true</b> if the calibration has been
+    ///                     performed in inches.
+    ///
+    void SetCalInInches(bool calInInches) { m_calInInches = calInInches; }
+
+    /// Indicates whether the resolution calibration has been performed
+    /// in inches or centimeters.
+    ///
+    /// @return <b>true</b> if the calibration has been performed in inches.
+    ///
+    bool GetCalInInches() const { return m_calInInches; }
+
+    /// Sets a descriptive name for the screen.
+    ///
+    /// @param name     [in] Name for the screen.
+    ///
+    void SetName(LPCTSTR name) { m_name = name; }
+
+    /// Returns the descriptive name for the screen.
+    ///
+    /// @return Name for the screen or the empty string if
+    ///         there is no name.
+    ///
+    CString GetName() const { return m_name; }
+
+private:
+    MeaScreenMgr& m_mgr;    ///< Parent manager.
+    CRect m_rect;           ///< Screen rectangle.
+    CPoint m_center;        ///< Center point of the screen.
+    FSIZE m_currentRes;     ///< Current screen resolution, pixels per inch.
+    FSIZE m_manualRes;      ///< Manually calibrated resolution, pixels per inch.
+    bool m_useManualRes;    ///< Indicates if manually calibrated resolution is used.
+    bool m_calInInches;     ///< Indicates if calibration in inches or centimeters.
+    bool m_primary;         ///< Indicates if this is the primary screen.
+    CString m_name;         ///< Descriptive name for the screen.
+};
+
+
 MeaScreenMgr::MeaScreenMgr(token) :
     MeaSingleton_T<MeaScreenMgr>(), m_sizeChanged(false) {
     EnumDisplayMonitors(nullptr, nullptr, CreateScreens, reinterpret_cast<LPARAM>(this));
@@ -232,6 +382,26 @@ MeaScreenMgr::ScreenIter MeaScreenMgr::GetScreenIter(const RECT& rect) const {
     return iter;
 }
 
+const CRect& MeaScreenMgr::GetScreenRect(const ScreenIter& iter) const {
+    return (*iter).second->GetRect();
+}
+
+void MeaScreenMgr::GetScreenRes(const ScreenIter& iter, bool& useManualRes, FSIZE& manualRes) const {
+    (*iter).second->GetScreenRes(useManualRes, manualRes);
+}
+
+const FSIZE& MeaScreenMgr::GetScreenRes(const ScreenIter& iter) const {
+    return (*iter).second->GetScreenRes();
+}
+
+void MeaScreenMgr::SetScreenRes(const ScreenIter& iter, bool useManualRes, const FSIZE* manualRes) const {
+    (*iter).second->SetScreenRes(useManualRes, manualRes);
+}
+
+bool MeaScreenMgr::IsManualRes(const ScreenIter& iter) const { 
+    return (*iter).second->IsManualRes();
+}
+
 FSIZE MeaScreenMgr::GetOSScreenRes() const {
     FSIZE res;
 
@@ -241,6 +411,31 @@ FSIZE MeaScreenMgr::GetOSScreenRes() const {
     ::ReleaseDC(nullptr, dc);
 
     return res;
+}
+
+bool MeaScreenMgr::AnyOSRes() const {
+    for (const auto& screenEntry : m_screens) {
+        if (!screenEntry.second->IsManualRes()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool MeaScreenMgr::IsPrimary(const ScreenIter& iter) const {
+    return (*iter).second->IsPrimary();
+}
+
+CString MeaScreenMgr::GetScreenName(const ScreenIter& iter) const {
+    return (*iter).second->GetName();
+}
+
+bool MeaScreenMgr::GetCalInInches(const ScreenIter& iter) const {
+    return (*iter).second->GetCalInInches();
+}
+
+void MeaScreenMgr::SetCalInInches(const ScreenIter& iter, bool calInInches) const {
+    (*iter).second->SetCalInInches(calInInches);
 }
 
 BOOL CALLBACK MeaScreenMgr::CreateScreens(HMONITOR hMonitor, HDC /* hdcMonitor */, LPRECT monitorRect,
@@ -267,41 +462,4 @@ BOOL CALLBACK MeaScreenMgr::CreateScreens(HMONITOR hMonitor, HDC /* hdcMonitor *
     }
 
     return TRUE;
-}
-
-
-//*************************************************************************
-// Screen
-//*************************************************************************
-
-
-MeaScreenMgr::Screen::Screen(MeaScreenMgr& mgr, LPCRECT rect) :
-    m_mgr(mgr),
-    m_rect(rect),
-    m_useManualRes(kDefUseManualRes),
-    m_calInInches(kDefCalInInches),
-    m_primary(false) {
-    m_center = m_rect.CenterPoint();
-
-    m_currentRes.cx = 0.0;
-    m_currentRes.cy = 0.0;
-
-    m_manualRes.cx = 0.0;
-    m_manualRes.cy = 0.0;
-}
-
-MeaScreenMgr::Screen::~Screen() {}
-
-void MeaScreenMgr::Screen::SetScreenRes(bool useManualRes, const FSIZE* manualRes) {
-    m_useManualRes = useManualRes;
-
-    if (manualRes != nullptr) {
-        m_manualRes = *manualRes;
-    }
-
-    if (m_manualRes.cx < DBL_EPSILON || m_manualRes.cy < DBL_EPSILON) {
-        m_manualRes = m_mgr.GetOSScreenRes();
-    }
-
-    m_currentRes = m_useManualRes ? m_manualRes : m_mgr.GetOSScreenRes();
 }

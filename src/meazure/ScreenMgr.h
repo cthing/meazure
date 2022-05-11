@@ -23,7 +23,7 @@
 #pragma once
 
 #include "Singleton.h"
-#include <map>
+#include "ScreenProvider.h"
 #include "Profile.h"
 #include "Utils.h"
 
@@ -32,155 +32,11 @@
 /// jobs of this manager is to properly handle multiple display monitor
 /// environments.
 ///
-class MeaScreenMgr : public MeaSingleton_T<MeaScreenMgr> {
-
-private:
-    /// Represents a single display screen.
-    ///
-    class Screen {
-
-    public:
-        /// Constructs a display screen object.
-        ///
-        /// @param mgr      [in] Parent manager.
-        /// @param rect     [in] Rectangle representing the screen, in pixels.
-        ///                 In multiple monitor environments, the screen rectangle
-        ///                 can have negative coordinates.
-        ///
-        Screen(MeaScreenMgr& mgr, LPCRECT rect);
-
-        /// Destroys a display screen object.
-        ///
-        virtual ~Screen();
-
-        /// Returns the screen rectangle. Note that in multiple
-        /// monitor environments, the screen rectangle can have
-        /// negative coordinates.
-        ///
-        /// @return Screen rectangle, in pixels.
-        ///
-        const CRect& GetRect() const { return m_rect; }
-
-        /// Determines the center of the screen.
-        ///
-        /// @return Center point of the screen.
-        ///
-        const CPoint& GetCenter() const { return m_center; }
-
-        /// Sets the resolution of the screen, in pixels per inch.
-        ///
-        /// @param useManualRes     [in] Specifies whether the manually calibrated
-        ///                         resolution should be used (true) or the operating
-        ///                         system resolution (false).
-        /// @param manualRes        [in] If non-nullptr, specifies the manually calibrated
-        ///                         resolution.
-        ///
-        void SetScreenRes(bool useManualRes, const FSIZE* manualRes = nullptr);
-
-        /// Obtains the currently set manual screen resolution, if set.
-        ///
-        /// @param useManualRes     [out] Indicates whether the manually calibrated
-        ///                         resolution is used (true) or the operating
-        ///                         system resolution (false).
-        /// @param manualRes        [out] Manually calibrated resolution, in pixels
-        ///                         per inch.
-        ///
-        void GetScreenRes(bool& useManualRes, FSIZE& manualRes) const {
-            useManualRes = m_useManualRes;
-            manualRes = m_manualRes;
-        }
-
-        /// Obtains the current screen resolution. If the resolution has been
-        /// manually calibrated, it is returned. Otherwise the operating system
-        /// reported resolution is returned.
-        ///
-        /// @return Screen resolution, in pixels per inch.
-        ///
-        const FSIZE& GetScreenRes() const { return m_currentRes; }
-
-        /// Indicates if the screen resolution has been manually set.
-        ///
-        /// @return <b>true</b> if the screen resolution has been set manually.
-        ///
-        bool IsManualRes() const { return m_useManualRes; }
-
-        /// In multiple monitor environments, one of the monitors is
-        /// designated as the primary. This method designates the screen
-        /// as the primary.
-        ///
-        /// @param primary      [in] Specify <b>true</b> if this screen
-        ///                     is the primary.
-        ///
-        void SetPrimary(bool primary) { m_primary = primary; }
-
-        /// Indicates if this is the primary screen.
-        ///
-        /// @return <b>true</b> if this is the primary screen.
-        ///
-        bool IsPrimary() const { return m_primary; }
-
-        /// Specifies whether the resolution calibration has been performed
-        /// in inches or centimeters.
-        ///
-        /// @param calInInches  [in] <b>true</b> if the calibration has been
-        ///                     performed in inches.
-        ///
-        void SetCalInInches(bool calInInches) { m_calInInches = calInInches; }
-
-        /// Indicates whether the resolution calibration has been performed
-        /// in inches or centimeters.
-        ///
-        /// @return <b>true</b> if the calibration has been performed in inches.
-        ///
-        bool GetCalInInches() const { return m_calInInches; }
-
-        /// Sets a descriptive name for the screen.
-        ///
-        /// @param name     [in] Name for the screen.
-        ///
-        void SetName(LPCTSTR name) { m_name = name; }
-
-        /// Returns the descriptive name for the screen.
-        ///
-        /// @return Name for the screen or the empty string if
-        ///         there is no name.
-        ///
-        CString GetName() const { return m_name; }
-
-    private:
-        MeaScreenMgr& m_mgr;    ///< Parent manager.
-        CRect m_rect;           ///< Screen rectangle.
-        CPoint m_center;        ///< Center point of the screen.
-        FSIZE m_currentRes;     ///< Current screen resolution, pixels per inch.
-        FSIZE m_manualRes;      ///< Manually calibrated resolution, pixels per inch.
-        bool m_useManualRes;    ///< Indicates if manually calibrated resolution is used.
-        bool m_calInInches;     ///< Indicates if calibration in inches or centimeters.
-        bool m_primary;         ///< Indicates if this is the primary screen.
-        CString m_name;         ///< Descriptive name for the screen.
-    };
-
-
-    typedef std::map<HMONITOR, Screen*> Screens;    ///< Maps a monitor handle to a screen object.
+class MeaScreenMgr : public MeaScreenProvider, public MeaSingleton_T<MeaScreenMgr> {
 
 public:
-    typedef Screens::const_iterator ScreenIter;     ///< Constant iterator over the screens.
-
-    /// Used by the STL collections for ordering comparisons.
-    ///
-    struct less {
-        /// Compares two screen iterators.
-        /// @param lhs  [in] Left hand side of the comparison.
-        /// @param rhs  [in] Right hand side of the comparison.
-        /// @return <b>true</b> if lhs < rhs.
-        bool operator()(const ScreenIter& lhs, const ScreenIter& rhs) const {
-            return (*lhs).first < (*rhs).first;
-        }
-    };
-
-
     static constexpr bool kDefUseManualRes { false };   ///< Use manual resolution by default.
     static constexpr bool kDefCalInInches { true };     ///< Calibrate in inches by default.
-
 
     MeaScreenMgr(token);
     ~MeaScreenMgr();
@@ -210,11 +66,11 @@ public:
     ///
     /// @return Number of display screens attached to the system.
     ///
-    int GetNumScreens() const { return static_cast<int>(m_screens.size()); }
+    int GetNumScreens() const override { return static_cast<int>(m_screens.size()); }
 
     /// Obtains an iterator over each screen attached to the system.
     /// @return Constant iterator over all screens.
-    ScreenIter GetScreenIter() const { return m_screens.begin(); }
+    ScreenIter GetScreenIter() const override { return m_screens.begin(); }
 
     /// Obtains an iterator pointed at the screen that contains the
     /// specified window.
@@ -224,7 +80,7 @@ public:
     /// @return Constant iterator pointed at screen containing the
     ///         specified window.
     ///
-    ScreenIter GetScreenIter(const CWnd* wnd) const;
+    ScreenIter GetScreenIter(const CWnd* wnd) const override;
 
     /// Obtains an iterator pointed at the screen that contains the
     /// specified point.
@@ -234,7 +90,7 @@ public:
     /// @return Constant iterator pointed at screen containing the
     ///         specified point.
     ///
-    ScreenIter GetScreenIter(const POINT& point) const;
+    ScreenIter GetScreenIter(const POINT& point) const override;
 
     /// Obtains an iterator pointed at the screen that contains the
     /// specified rectangle.
@@ -244,7 +100,7 @@ public:
     /// @return Constant iterator pointed at screen containing the
     ///         specified rectangle.
     ///
-    ScreenIter GetScreenIter(const RECT& rect) const;
+    ScreenIter GetScreenIter(const RECT& rect) const override;
 
     /// Indicates if the screen iterator is at the end of the
     /// screen collection.
@@ -254,7 +110,7 @@ public:
     /// @return <b>true</b> if the specified iterator is pointed to
     ///         the end of the collection of screens.
     ///
-    bool AtEnd(const ScreenIter& iter) const { return iter == m_screens.end(); }
+    bool AtEnd(const ScreenIter& iter) const override { return iter == m_screens.end(); }
 
     /// Determines the center of the screen that contains the
     /// app's main window.
@@ -262,13 +118,13 @@ public:
     /// @return Center point of the screen containing the app's
     ///         main window.
     ///
-    const CPoint& GetCenter() const;
+    const CPoint& GetCenter() const override;
 
     /// Returns a point guaranteed to be located off any screen.
     ///
     /// @return Point located off any display screen.
     ///
-    CPoint GetOffScreen() const;
+    CPoint GetOffScreen() const override;
 
     /// Returns the virtual screen rectangle. The virtual rectangle
     /// is the rectangle containing all display screen attached to
@@ -277,7 +133,7 @@ public:
     /// @return Rectangle encompassing all display screens attached
     ///         to the system, in pixels.
     ///
-    const CRect& GetVirtualRect() const { return m_virtualRect; }
+    const CRect& GetVirtualRect() const override { return m_virtualRect; }
 
     /// Returns the screen rectangle for the screen pointed to by
     /// the specified iterator.
@@ -287,7 +143,7 @@ public:
     ///
     /// @return Screen rectangle, in pixels.
     ///
-    const CRect& GetScreenRect(const ScreenIter& iter) const { return (*iter).second->GetRect(); }
+    const CRect& GetScreenRect(const ScreenIter& iter) const override;
 
     /// Returns the manually set screen resolution for the screen
     /// pointed to by the specified iterator.
@@ -298,9 +154,7 @@ public:
     ///                     manually.
     /// @param manualRes    [out] Manually set resolution, in pixels per inch.
     ///
-    void GetScreenRes(const ScreenIter& iter, bool& useManualRes, FSIZE& manualRes) const {
-        (*iter).second->GetScreenRes(useManualRes, manualRes);
-    }
+    void GetScreenRes(const ScreenIter& iter, bool& useManualRes, FSIZE& manualRes) const override;
 
     /// Returns the resolution for the screen pointed to by the specified iterator.
     ///
@@ -311,7 +165,7 @@ public:
     ///         set manually, it is returned. Otherwise, the operating system
     ///         reported resolution is returned.
     ///
-    const FSIZE& GetScreenRes(const ScreenIter& iter) const { return (*iter).second->GetScreenRes(); }
+    const FSIZE& GetScreenRes(const ScreenIter& iter) const override;
 
     /// Indicates it the resolution for the specified screen has been set manually.
     ///
@@ -320,21 +174,14 @@ public:
     ///
     /// @return <b>true</b> if the screen's resolution was set manually.
     ///
-    bool IsManualRes(const ScreenIter& iter) const { return (*iter).second->IsManualRes(); }
+    bool IsManualRes(const ScreenIter& iter) const;
 
     /// Indicates whether any screen is using the operating system reported
     /// resolution. In other words, are there any screen that require calibration.
     ///
     /// @return <b>true</b> if there are any screens requiring manual calibration.
     ///
-    bool AnyOSRes() const {
-        for (const auto& screenEntry : m_screens) {
-            if (!screenEntry.second->IsManualRes()) {
-                return true;
-            }
-        }
-        return false;
-    }
+    bool AnyOSRes() const override;
 
     /// Sets the resolution for the screen pointed to by the specified iterator.
     ///
@@ -343,15 +190,13 @@ public:
     /// @param useManualRes     [in] <b>true</b> if the resolution is manually calibrated.
     /// @param manualRes        [in] Manually calibrated screen resolution, in pixels.
     ///
-    void SetScreenRes(const ScreenIter& iter, bool useManualRes, const FSIZE* manualRes = nullptr) const {
-        (*iter).second->SetScreenRes(useManualRes, manualRes);
-    }
+    void SetScreenRes(const ScreenIter& iter, bool useManualRes, const FSIZE* manualRes = nullptr) const;
 
     /// Indicates if the screen pointed to by the specified iterator is the primary.
     ///
     /// @return <b>true</b> if the specified screen is the primary.
     ///
-    bool IsPrimary(const ScreenIter& iter) const { return (*iter).second->IsPrimary(); }
+    bool IsPrimary(const ScreenIter& iter) const;
 
     /// Returns the name for the specified screen.
     ///
@@ -359,7 +204,7 @@ public:
     ///
     /// @return Name of the specified screen.
     ///
-    CString GetScreenName(const ScreenIter& iter) const { return (*iter).second->GetName(); }
+    CString GetScreenName(const ScreenIter& iter) const override;
 
     /// Indicates if the specified screen was calibrated in inches or centimeters.
     ///
@@ -367,16 +212,14 @@ public:
     ///
     /// @return <b>true</b> if the resolution was calibrated in inches.
     ///
-    bool GetCalInInches(const ScreenIter& iter) const { return (*iter).second->GetCalInInches(); }
+    bool GetCalInInches(const ScreenIter& iter) const;
 
     /// Specifies the calibration units for the specified screen.
     ///
     /// @param iter         [in] Points at the screen whose calibration units are to be set.
     /// @param calInInches  [in] <b>true</b> if the resolution is calibrated in inches.
     ///
-    void SetCalInInches(const ScreenIter& iter, bool calInInches) const {
-        (*iter).second->SetCalInInches(calInInches);
-    }
+    void SetCalInInches(const ScreenIter& iter, bool calInInches) const;
 
     /// Indicates whether the virtual screen rectangle has changed
     /// since the last time the application was run. If the virtual screen
@@ -385,7 +228,6 @@ public:
     /// @return <b>true</b> if the virtual screen rectangle has changed.
     ///
     bool SizeChanged() const { return m_sizeChanged; }
-
 
     /// Ensures that the specified window rectangle is visible on
     /// the nearest screen. If the window rectangle is already visible,
@@ -407,7 +249,7 @@ public:
     /// @return New point based on the specified point that is guaranteed
     ///         to be on a screen.
     ///
-    CPoint LimitPosition(const CPoint& pt) const;
+    CPoint LimitPosition(const CPoint& pt) const override;
 
     /// Obtains the screen resolution reported by the operating system.
     ///
@@ -444,4 +286,3 @@ private:
     CRect m_virtualRect;    ///< Bounding box of all screen rectangles.
     bool m_sizeChanged;     ///< Virtual screen rectangle changed since last run.
 };
-

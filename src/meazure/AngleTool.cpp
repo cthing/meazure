@@ -23,14 +23,22 @@
 #include "Resource.h"
 #include "Colors.h"
 #include "ToolMgr.h"
-#include "ScreenMgr.h"
 
 
 const CString   MeaAngleTool::kToolName(_T("AngleTool"));
 
 
-MeaAngleTool::MeaAngleTool(MeaToolMgr* mgr) :
-    MeaRadioTool(mgr), MeaCrossHairCallback(), m_curPos(&m_point1), m_vertex(MeaScreenMgr::Instance().GetCenter()) {
+MeaAngleTool::MeaAngleTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    MeaRadioTool(mgr, screenProvider),
+    MeaCrossHairCallback(),
+    m_curPos(&m_point1),
+    m_vertex(screenProvider.GetCenter()),
+    m_point1CH(screenProvider),
+    m_point2CH(screenProvider),
+    m_vertexCH(screenProvider),
+    m_dataWin1(screenProvider),
+    m_dataWin2(screenProvider),
+    m_dataWinV(screenProvider) {
     // Set the default tool positions. The vertex is placed
     // at the center of the screen containing the application.
     //
@@ -83,13 +91,13 @@ bool MeaAngleTool::Create() {
     // Create the lines connecting the vertex to point 1 and
     // point 2 and also create the angle bisector.
     //
-    if (!m_line1.Create(3)) {
+    if (!m_line1.Create(3, m_screenProvider)) {
         return false;
     }
-    if (!m_line2.Create(3)) {
+    if (!m_line2.Create(3, m_screenProvider)) {
         return false;
     }
-    if (!m_lineB.Create(3)) {
+    if (!m_lineB.Create(3, m_screenProvider)) {
         return false;
     }
 
@@ -170,7 +178,7 @@ void MeaAngleTool::LoadProfile(MeaProfile& profile) {
 }
 
 void MeaAngleTool::EnableCrosshairs() {
-    if (m_mgr->CrosshairsEnabled() && IsWindow(m_point1CH)) {
+    if (m_mgr.CrosshairsEnabled() && IsWindow(m_point1CH)) {
         m_point1CH.Show();
         m_point2CH.Show();
         m_vertexCH.Show();
@@ -210,13 +218,13 @@ void MeaAngleTool::Enable() {
     // Tell the tool manager which data display fields
     // we will be using.
     //
-    m_mgr->EnableRegionFields(MeaX1Field | MeaY1Field |
-                              MeaX2Field | MeaY2Field |
-                              MeaXVField | MeaYVField |
-                              MeaAngleField,
-                              MeaX1Field | MeaY1Field |
-                              MeaX2Field | MeaY2Field |
-                              MeaXVField | MeaYVField);
+    m_mgr.EnableRegionFields(MeaX1Field | MeaY1Field |
+                             MeaX2Field | MeaY2Field |
+                             MeaXVField | MeaYVField |
+                             MeaAngleField,
+                             MeaX1Field | MeaY1Field |
+                             MeaX2Field | MeaY2Field |
+                             MeaXVField | MeaYVField);
 
     if (!IsWindow(m_line1)) {
         Create();
@@ -224,7 +232,7 @@ void MeaAngleTool::Enable() {
 
     // Show one liner on how to use the tool.
     //
-    m_mgr->SetStatus(IDS_MEA_ANGLE_STATUS);
+    m_mgr.SetStatus(IDS_MEA_ANGLE_STATUS);
 
     // Make the lines and crosshairs visible, flash
     // the crosshairs and update the data display.
@@ -273,15 +281,15 @@ void MeaAngleTool::Update(MeaUpdateReason reason) {
         // Display the results of the measurement in
         // the data display fields.
         //
-        m_mgr->ShowXY1(m_point1, p1);
-        m_mgr->ShowXY2(m_point2, p2);
-        m_mgr->ShowXYV(m_vertex, v);
-        m_mgr->ShowAngle(angle);
+        m_mgr.ShowXY1(m_point1, p1);
+        m_mgr.ShowXY2(m_point2, p2);
+        m_mgr.ShowXYV(m_vertex, v);
+        m_mgr.ShowAngle(angle);
 
         // The screen information depends on the
         // current position.
         //
-        m_mgr->UpdateScreenInfo(*m_curPos);
+        m_mgr.UpdateScreenInfo(*m_curPos);
 
         // Display the results of the measurement in
         // the crosshair data windows.
@@ -329,17 +337,17 @@ void MeaAngleTool::SetPosition(MeaFields which, int pixels) {
     // Reposition the tool based on the crosshair locations.
     //
     if (which & MeaX1Field || which & MeaY1Field) {
-        m_point1 = MeaScreenMgr::Instance().LimitPosition(m_point1);
+        m_point1 = m_screenProvider.LimitPosition(m_point1);
         m_point1CH.SetPosition(m_point1);
         m_curPos = &m_point1;
         m_line1.SetPosition(m_vertex, m_point1);
     } else if (which & MeaX2Field || which & MeaY2Field) {
-        m_point2 = MeaScreenMgr::Instance().LimitPosition(m_point2);
+        m_point2 = m_screenProvider.LimitPosition(m_point2);
         m_point2CH.SetPosition(m_point2);
         m_curPos = &m_point2;
         m_line2.SetPosition(m_vertex, m_point2);
     } else {
-        m_vertex = MeaScreenMgr::Instance().LimitPosition(m_vertex);
+        m_vertex = m_screenProvider.LimitPosition(m_vertex);
         m_vertexCH.SetPosition(m_vertex);
         m_curPos = &m_vertex;
         m_line1.SetPosition(m_vertex, m_point1);
@@ -377,14 +385,12 @@ void MeaAngleTool::SetPosition(const PointMap& points) {
 }
 
 void MeaAngleTool::SetPosition() {
-    MeaScreenMgr& mgr = MeaScreenMgr::Instance();
-
     // Ensure that the positions fall within the
     // limits of the screen containing the point.
     //
-    m_point1 = mgr.LimitPosition(m_point1);
-    m_point2 = mgr.LimitPosition(m_point2);
-    m_vertex = mgr.LimitPosition(m_vertex);
+    m_point1 = m_screenProvider.LimitPosition(m_point1);
+    m_point2 = m_screenProvider.LimitPosition(m_point2);
+    m_vertex = m_screenProvider.LimitPosition(m_vertex);
 
     // Reposition the tool.
     //
@@ -579,8 +585,8 @@ void MeaAngleTool::OnCHMove(const CHInfo* info) {
             followingPos2 = m_point2 + movingDelta;
         }
 
-        CSize d1 = followingPos1 - MeaScreenMgr::Instance().LimitPosition(followingPos1);
-        CSize d2 = followingPos2 - MeaScreenMgr::Instance().LimitPosition(followingPos2);
+        CSize d1 = followingPos1 - m_screenProvider.LimitPosition(followingPos1);
+        CSize d2 = followingPos2 - m_screenProvider.LimitPosition(followingPos2);
 
         CSize d;
         d.cx = (abs(d1.cx) < abs(d2.cx)) ? d2.cx : d1.cx;

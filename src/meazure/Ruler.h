@@ -23,6 +23,7 @@
 #pragma once
 
 #include "Graphic.h"
+#include "ScreenProvider.h"
 
 
 class MeaRuler;
@@ -113,8 +114,10 @@ public:
 
 
     /// Constructs a ruler.
+    /// 
+    /// @param screenProvider   [in] Screen information provider
     ///
-    MeaRuler();
+    MeaRuler(const MeaScreenProvider& screenProvider);
 
     /// Destroys a ruler.
     ///
@@ -307,29 +310,30 @@ private:
     ///
     void FillInfo(MeaRulerCallback::RulerInfo& rulerInfo, UINT flags, const CPoint& point);
 
-    COLORREF m_borderColor;             ///< Color for the ruler border and tick marks.
-    COLORREF m_backColor;               ///< Color for the ruler background.
-    SIZE m_majorTickHeight;             ///< Height of the major tick marks, in pixels.
-    SIZE m_minorTickHeight;             ///< Height of the minor tick marks, in pixels.
-    SIZE m_margin;                      ///< Height spacing between tick marks, number label and border, in pixels.
-    MeaRulerCallback* m_callback;       ///< Object to be called on ruler drag
-    Orientation m_orientation;          ///< Orientation of the rule (i.e. horizontal or vertical)
-    int m_position;                     ///< Position of the ruler, in pixels
-    CRect m_targetRect;                 ///< Containment rectangle for the ruler. The ruler's longest
-                                        ///< dimension will be sized to fit within this rectangle.
-    LabelPosition m_labelPosition;      ///< Current location of the number labels.
-    CFont m_hFont;                      ///< Font for horizontal ruler labels.
-    CFont m_vFont;                      ///< Font for vertical ruler labels.
-    int m_fontHeight;                   ///< Height of the current font, in pixels.
-    int m_thk;                          ///< Thickness of the ruler (i.e. its minor dimension), in pixels.
-    int m_indicatorLoc[NumIndicators];  ///< Location of each position indicator, in pixels.
-    bool m_mouseCaptured;               ///< Indicates whether the mouse is currently captured by the ruler window.
-    CSize m_pointerOffset;              ///< Offset between pointer position and ruler edge.
-    BYTE m_opacity;                     ///< Current ruler opacity setting (0 - 255).
-    CDC m_rulerDC;                      ///< Ruler device context
-    CDC m_backDC;                       ///< Background device context for alpha blending when the ruler is a child window
-    CBitmap m_rulerBitmap;              ///< Bitmap into which to draw the ruler when it is a child window
-    CBitmap* m_origRulerBitmap;         ///< Original bitmap for the ruler
-    CBitmap m_backBitmap;               ///< Bitmap for the background when alpha blending when the ruler is a child window
-    CBitmap* m_origBackBitmap;          ///< Original background bitmap 
+    const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
+    COLORREF m_borderColor;                     ///< Color for the ruler border and tick marks.
+    COLORREF m_backColor;                       ///< Color for the ruler background.
+    SIZE m_majorTickHeight;                     ///< Height of the major tick marks, in pixels.
+    SIZE m_minorTickHeight;                     ///< Height of the minor tick marks, in pixels.
+    SIZE m_margin;                              ///< Height spacing between tick marks, number label and border, in pixels.
+    MeaRulerCallback* m_callback;               ///< Object to be called on ruler drag
+    Orientation m_orientation;                  ///< Orientation of the rule (i.e. horizontal or vertical)
+    int m_position;                             ///< Position of the ruler, in pixels
+    CRect m_targetRect;                         ///< Containment rectangle for the ruler. The ruler's longest
+                                                ///< dimension will be sized to fit within this rectangle.
+    LabelPosition m_labelPosition;              ///< Current location of the number labels.
+    CFont m_hFont;                              ///< Font for horizontal ruler labels.
+    CFont m_vFont;                              ///< Font for vertical ruler labels.
+    int m_fontHeight;                           ///< Height of the current font, in pixels.
+    int m_thk;                                  ///< Thickness of the ruler (i.e. its minor dimension), in pixels.
+    int m_indicatorLoc[NumIndicators];          ///< Location of each position indicator, in pixels.
+    bool m_mouseCaptured;                       ///< Indicates whether the mouse is currently captured by the ruler window.
+    CSize m_pointerOffset;                      ///< Offset between pointer position and ruler edge.
+    BYTE m_opacity;                             ///< Current ruler opacity setting (0 - 255).
+    CDC m_rulerDC;                              ///< Ruler device context
+    CDC m_backDC;                               ///< Background device context for alpha blending when the ruler is a child window
+    CBitmap m_rulerBitmap;                      ///< Bitmap into which to draw the ruler when it is a child window
+    CBitmap* m_origRulerBitmap;                 ///< Original bitmap for the ruler
+    CBitmap m_backBitmap;                       ///< Bitmap for the background when alpha blending when the ruler is a child window
+    CBitmap* m_origBackBitmap;              ///< Original background bitmap 
 };

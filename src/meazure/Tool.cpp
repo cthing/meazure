@@ -26,12 +26,8 @@
 POINT MeaTool::m_defaultPos { 0, 0 };
 
 
-MeaTool::MeaTool(MeaToolMgr* mgr) :
-    m_mgr(mgr), m_enabled(false) {}
-
-MeaTool::~MeaTool() {
-    m_mgr = nullptr;
-}
+MeaTool::MeaTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    m_mgr(mgr), m_screenProvider(screenProvider), m_enabled(false) {}
 
 void MeaTool::SaveProfile(MeaProfile& /* profile */) {}
 

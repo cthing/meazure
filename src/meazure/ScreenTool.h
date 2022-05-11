@@ -36,9 +36,10 @@ public:
     /// Constructs a new instance of the Screen information tool. To use
     /// a newly constructed Screen info tool, the Enable() method must be called.
     ///
-    /// @param mgr  [in] Tool manager parent of the Screen info tool.
+    /// @param mgr              [in] Tool manager parent of the Screen info tool
+    /// @param screenProvider   [in] Screen information provider
     ///
-    explicit MeaScreenTool(MeaToolMgr* mgr);
+    explicit MeaScreenTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
 
     /// Disables and then destroys the Screen information tool.
     ///

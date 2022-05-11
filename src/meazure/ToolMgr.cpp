@@ -28,22 +28,24 @@ MeaToolMgr::MeaToolMgr(token) :
     MeaSingleton_T<MeaToolMgr>(),
     m_dataDisplay(nullptr),
     m_crosshairsEnabled(kDefCrosshairsEnabled) {
+    const MeaScreenProvider& screenProvider = MeaScreenMgr::Instance();
+
     // Radio tools
     //
-    m_cursorTool = new MeaCursorTool(this);
-    m_pointTool = new MeaPointTool(this);
-    m_lineTool = new MeaLineTool(this);
-    m_rectTool = new MeaRectTool(this);
-    m_circleTool = new MeaCircleTool(this);
-    m_angleTool = new MeaAngleTool(this);
-    m_windowTool = new MeaWindowTool(this);
+    m_cursorTool = new MeaCursorTool(*this, screenProvider);
+    m_pointTool = new MeaPointTool(*this, screenProvider);
+    m_lineTool = new MeaLineTool(*this, screenProvider);
+    m_rectTool = new MeaRectTool(*this, screenProvider);
+    m_circleTool = new MeaCircleTool(*this, screenProvider);
+    m_angleTool = new MeaAngleTool(*this, screenProvider);
+    m_windowTool = new MeaWindowTool(*this, screenProvider);
 
     // Non-radio tools
     //
-    m_screenTool = new MeaScreenTool(this);
-    m_rulerTool = new MeaRulerTool(this);
-    m_gridTool = new MeaGridTool(this);
-    m_originTool = new MeaOriginTool(this);
+    m_screenTool = new MeaScreenTool(*this, screenProvider);
+    m_rulerTool = new MeaRulerTool(*this, screenProvider);
+    m_gridTool = new MeaGridTool(*this, screenProvider);
+    m_originTool = new MeaOriginTool(*this, screenProvider);
 
     // Put the tools in the map.
     //

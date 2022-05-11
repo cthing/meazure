@@ -23,14 +23,20 @@
 #include "Resource.h"
 #include "Colors.h"
 #include "ToolMgr.h"
-#include "ScreenMgr.h"
 
 
 const CString   MeaCircleTool::kToolName(_T("CircleTool"));
 
 
-MeaCircleTool::MeaCircleTool(MeaToolMgr* mgr) :
-    MeaRadioTool(mgr), MeaCrossHairCallback(), m_curPos(&m_center), m_center(MeaScreenMgr::Instance().GetCenter()) {
+MeaCircleTool::MeaCircleTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    MeaRadioTool(mgr, screenProvider),
+    MeaCrossHairCallback(),
+    m_curPos(&m_center),
+    m_center(screenProvider.GetCenter()),
+    m_centerCH(screenProvider),
+    m_perimeterCH(screenProvider),
+    m_dataWinCenter(screenProvider),
+    m_dataWinPerimeter(screenProvider) {
     // Set the default tool positions. The center of the circle
     // is placed at the center of the screen containing the application.
     //
@@ -73,10 +79,10 @@ bool MeaCircleTool::Create() {
 
     // Create the circle and the radial line.
     //
-    if (!m_circle.Create()) {
+    if (!m_circle.Create(m_screenProvider)) {
         return false;
     }
-    if (!m_line.Create(3)) {
+    if (!m_line.Create(3, m_screenProvider)) {
         return false;
     }
 
@@ -143,7 +149,7 @@ void MeaCircleTool::LoadProfile(MeaProfile& profile) {
 }
 
 void MeaCircleTool::EnableCrosshairs() {
-    if (m_mgr->CrosshairsEnabled() && IsWindow(m_centerCH)) {
+    if (m_mgr.CrosshairsEnabled() && IsWindow(m_centerCH)) {
         m_centerCH.Show();
         m_perimeterCH.Show();
     }
@@ -178,13 +184,13 @@ void MeaCircleTool::Enable() {
     // Tell the tool manager which data display fields
     // we will be using.
     //
-    m_mgr->EnableRegionFields(MeaX1Field | MeaY1Field |
-                              MeaXVField | MeaYVField |
-                              MeaWidthField | MeaHeightField |
-                              MeaDistanceField | MeaAngleField |
-                              MeaAreaField,
-                              MeaX1Field | MeaY1Field |
-                              MeaXVField | MeaYVField);
+    m_mgr.EnableRegionFields(MeaX1Field | MeaY1Field |
+                             MeaXVField | MeaYVField |
+                             MeaWidthField | MeaHeightField |
+                             MeaDistanceField | MeaAngleField |
+                             MeaAreaField,
+                             MeaX1Field | MeaY1Field |
+                             MeaXVField | MeaYVField);
 
     if (!IsWindow(m_circle)) {
         Create();
@@ -192,7 +198,7 @@ void MeaCircleTool::Enable() {
 
     // Show one liner on how to use the tool.
     //
-    m_mgr->SetStatus(IDS_MEA_CIRCLE_STATUS);
+    m_mgr.SetStatus(IDS_MEA_CIRCLE_STATUS);
 
     // Make the lines and crosshairs visible, flash
     // the crosshairs and update the data display.
@@ -246,17 +252,17 @@ void MeaCircleTool::Update(MeaUpdateReason reason) {
         // Display the results of the measurement in
         // the data display fields.
         //
-        m_mgr->ShowXYV(m_center, p1);
-        m_mgr->ShowXY1(m_perimeter, p2);
-        m_mgr->ShowWH(wh);
-        m_mgr->ShowDistance(r);
-        m_mgr->ShowAngle(MeaLayout::GetAngle(p1, p2));
-        m_mgr->ShowCircleArea(r);
+        m_mgr.ShowXYV(m_center, p1);
+        m_mgr.ShowXY1(m_perimeter, p2);
+        m_mgr.ShowWH(wh);
+        m_mgr.ShowDistance(r);
+        m_mgr.ShowAngle(MeaLayout::GetAngle(p1, p2));
+        m_mgr.ShowCircleArea(r);
 
         // The screen information depends on the
         // current position.
         //
-        m_mgr->UpdateScreenInfo(*m_curPos);
+        m_mgr.UpdateScreenInfo(*m_curPos);
 
         // Display the results of the measurement in
         // the crosshair data windows.
@@ -314,11 +320,11 @@ void MeaCircleTool::SetPosition(MeaFields which, int pixels) {
     // Reposition the tool based on the crosshair locations.
     //
     if (which & MeaXVField || which & MeaYVField) {
-        m_center = MeaScreenMgr::Instance().LimitPosition(m_center);
+        m_center = m_screenProvider.LimitPosition(m_center);
         m_centerCH.SetPosition(m_center);
         m_curPos = &m_center;
     } else {
-        m_perimeter = MeaScreenMgr::Instance().LimitPosition(m_perimeter);
+        m_perimeter = m_screenProvider.LimitPosition(m_perimeter);
         m_perimeterCH.SetPosition(m_perimeter);
         m_curPos = &m_perimeter;
     }
@@ -356,8 +362,8 @@ void MeaCircleTool::SetPosition() {
     // Ensure that the positions fall within the
     // limits of the screen containing the point.
     //
-    m_center = MeaScreenMgr::Instance().LimitPosition(m_center);
-    m_perimeter = MeaScreenMgr::Instance().LimitPosition(m_perimeter);
+    m_center = m_screenProvider.LimitPosition(m_center);
+    m_perimeter = m_screenProvider.LimitPosition(m_perimeter);
 
     // Reposition the tool.
     //
@@ -510,7 +516,7 @@ void MeaCircleTool::OnCHMove(const CHInfo* info) {
             followingPos = m_center + movingDelta;
         }
 
-        movingDelta -= followingPos - MeaScreenMgr::Instance().LimitPosition(followingPos);
+        movingDelta -= followingPos - m_screenProvider.LimitPosition(followingPos);
         m_center += movingDelta;
         m_perimeter += movingDelta;
 

@@ -21,13 +21,12 @@
 #include "OriginTool.h"
 #include "Colors.h"
 #include "ToolMgr.h"
-#include "ScreenMgr.h"
 
 
 const CString MeaOriginTool::kToolName(_T("OriginTool"));
 
 
-MeaOriginTool::MeaOriginTool(MeaToolMgr* mgr) : MeaTool(mgr) {}
+MeaOriginTool::MeaOriginTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) : MeaTool(mgr, screenProvider) {}
 
 MeaOriginTool::~MeaOriginTool() {
     try {
@@ -40,9 +39,9 @@ MeaOriginTool::~MeaOriginTool() {
 bool MeaOriginTool::Create() {
     // Create the line for each axis.
     //
-    if (!m_xAxis.Create(0))
+    if (!m_xAxis.Create(0, m_screenProvider))
         return false;
-    if (!m_yAxis.Create(0))
+    if (!m_yAxis.Create(0, m_screenProvider))
         return false;
 
     return true;
@@ -102,20 +101,19 @@ void MeaOriginTool::Update(MeaUpdateReason reason) {
         MeaTool::Update(reason);
 
         MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
-        MeaScreenMgr& smgr = MeaScreenMgr::Instance();
 
         POINT origin = umgr.GetOrigin();
         bool inverted = umgr.GetInvertY();
 
         if (inverted && (origin.x == 0) && (origin.y == 0)) {
-            origin.y = smgr.GetVirtualRect().Height() - 1;
+            origin.y = m_screenProvider.GetVirtualRect().Height() - 1;
         }
 
         // The length of the axes are expressed in inches and are
         // converted to pixels based on the resolution of the display
         // containing the origin.
         //
-        FSIZE res = smgr.GetScreenRes(smgr.GetScreenIter(origin));
+        FSIZE res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(origin));
         SIZE length = umgr.ConvertToPixels(MeaInchesId, res, 0.25, 10);
 
         POINT xEnd, yEnd;

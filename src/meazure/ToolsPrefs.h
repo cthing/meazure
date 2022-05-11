@@ -38,12 +38,13 @@
 ///     <li>Display of the origin marker</li>
 /// </ul>
 class MeaToolsPrefs : public CPropertyPage {
-    DECLARE_DYNCREATE(MeaToolsPrefs)
 
 public:
     /// Creates an instance of the tool property page.
+    /// 
+    /// @param screenProvider   [in] Screen information provider
     ///
-    MeaToolsPrefs();
+    MeaToolsPrefs(const MeaScreenProvider& screenProvider);
 
     /// Destroys an instance of the tool property page.
     ///
@@ -136,8 +137,9 @@ protected:
     DECLARE_MESSAGE_MAP()
 
 private:
-    MeaSwatch m_line;           ///< Swatch to display the line color.
-    MeaCrossHair m_normalCH;    ///< Sample crosshair to preview the normal background color.
-    MeaCrossHair m_hiliteCH;    ///< Sample crosshair to preview the highlight color.
-    MeaDataWin m_dataWin;       ///< Sample data popup window.
+    const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
+    MeaSwatch m_line;                           ///< Swatch to display the line color.
+    MeaCrossHair m_normalCH;                    ///< Sample crosshair to preview the normal background color.
+    MeaCrossHair m_hiliteCH;                    ///< Sample crosshair to preview the highlight color.
+    MeaDataWin m_dataWin;                       ///< Sample data popup window.
 };

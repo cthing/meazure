@@ -22,14 +22,13 @@
 #include "MeaAssert.h"
 #include "GridTool.h"
 #include "Colors.h"
-#include "ScreenMgr.h"
 
 
 const CString MeaGridTool::kToolName(_T("GridTool"));
 
 
-MeaGridTool::MeaGridTool(MeaToolMgr* mgr) :
-    MeaTool(mgr), m_gridSpacing(kDefDefaultSpacing, kDefDefaultSpacing), m_linked(kDefLinked) {}
+MeaGridTool::MeaGridTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    MeaTool(mgr, screenProvider), m_gridSpacing(kDefDefaultSpacing, kDefDefaultSpacing), m_linked(kDefLinked) {}
 
 MeaGridTool::~MeaGridTool() {
     try {
@@ -182,7 +181,7 @@ void MeaGridTool::ColorsChanged() {
 
 void MeaGridTool::SetLines(LineDir dir) {
     int numLinesReq, numLinesAct;
-    const CRect& virtRect = MeaScreenMgr::Instance().GetVirtualRect();
+    const CRect& virtRect = m_screenProvider.GetVirtualRect();
 
     if (dir == VDir) {
         // New lines are created on demand and added to the list
@@ -195,7 +194,7 @@ void MeaGridTool::SetLines(LineDir dir) {
             int delta = numLinesReq - numLinesAct;
             for (int i = 0; i < delta; i++) {
                 MeaLine* line = new MeaLine();
-                line->Create(0);
+                line->Create(0, m_screenProvider);
                 m_hlineList.push_back(line);
             }
         }
@@ -221,7 +220,7 @@ void MeaGridTool::SetLines(LineDir dir) {
             int delta = numLinesReq - numLinesAct;
             for (int i = 0; i < delta; i++) {
                 MeaLine* line = new MeaLine();
-                line->Create(0);
+                line->Create(0, m_screenProvider);
                 m_vlineList.push_back(line);
             }
         }
@@ -253,7 +252,7 @@ void MeaGridTool::HideLines(LineDir dir) const {
 
 void MeaGridTool::ShowLines(LineDir dir) {
     int c;
-    const CRect& virtRect = MeaScreenMgr::Instance().GetVirtualRect();
+    const CRect& virtRect = m_screenProvider.GetVirtualRect();
 
     if (dir == VDir) {
         LineList::const_iterator iter = m_hlineList.begin();

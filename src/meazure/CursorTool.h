@@ -39,9 +39,10 @@ public:
     /// be called. Enable() will call the Create() method the first time
     /// it is called if Create() has not previously been called.
     ///
-    /// @param mgr  [in] Tool manager parent of the Cursor tool.
+    /// @param mgr              [in] Tool manager parent of the Cursor tool.
+    /// @param screenProvider   [in] Screen information provider
     ///
-    explicit MeaCursorTool(MeaToolMgr* mgr);
+    explicit MeaCursorTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
 
     /// Destroys the Cursor tool.
     ///

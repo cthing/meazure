@@ -46,9 +46,10 @@ public:
     /// Enable() will call the Create() method the first time it is called
     /// if Create() has not previously been called.
     ///
-    /// @param mgr  [in] Tool manager parent of the Angle tool.
+    /// @param mgr              [in] Tool manager parent of the Angle tool.
+    /// @param screenProvider   [in] Screen information provider
     ///
-    explicit MeaAngleTool(MeaToolMgr* mgr);
+    explicit MeaAngleTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
 
     /// Hides and then destroys the Angle tool.
     ///

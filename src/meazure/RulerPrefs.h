@@ -23,6 +23,7 @@
 #pragma once
 
 #include "Ruler.h"
+#include "ScreenProvider.h"
 
 
 /// Property page for setting ruler preferences. The ruler preferences
@@ -32,12 +33,13 @@
 /// applied. 
 ///
 class MeaRulerPrefs : public CPropertyPage {
-    DECLARE_DYNCREATE(MeaRulerPrefs)
 
 public:
     /// Constructs an instance of the ruler property page.
+    /// 
+    /// @param screenProvider   [in] Screen information provider
     ///
-    MeaRulerPrefs();
+    MeaRulerPrefs(const MeaScreenProvider& screenProvider);
 
     /// Destroys an instance of the ruler property page.
     ///

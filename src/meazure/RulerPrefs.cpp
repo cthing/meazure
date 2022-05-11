@@ -31,9 +31,6 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 
-IMPLEMENT_DYNCREATE(MeaRulerPrefs, CPropertyPage)
-
-
 BEGIN_MESSAGE_MAP(MeaRulerPrefs, CPropertyPage)
     ON_BN_CLICKED(IDC_RULER_BACK_BTN, OnChangeBkColor)
     ON_BN_CLICKED(IDC_RULER_BORDER_BTN, OnChangeBorderColor)
@@ -43,8 +40,9 @@ BEGIN_MESSAGE_MAP(MeaRulerPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaRulerPrefs::MeaRulerPrefs() :
-    CPropertyPage(MeaRulerPrefs::IDD), m_backColor(0), m_borderColor(0), m_opacity(0) {
+MeaRulerPrefs::MeaRulerPrefs(const MeaScreenProvider& screenProvider) :
+    CPropertyPage(MeaRulerPrefs::IDD),
+    m_vRuler(screenProvider), m_hRuler(screenProvider), m_backColor(0), m_borderColor(0), m_opacity(0) {
     m_psp.dwFlags &= ~(PSP_HASHELP);
 }
 

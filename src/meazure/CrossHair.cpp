@@ -21,7 +21,6 @@
 #include "MeaAssert.h"
 #include "CrossHair.h"
 #include "Resource.h"
-#include "ScreenMgr.h"
 #include "Layout.h"
 #include "UnitsMgr.h"
 #define COMPILE_LAYERED_WINDOW_STUBS
@@ -46,8 +45,9 @@ BEGIN_MESSAGE_MAP(MeaCrossHair, MeaGraphic)
 END_MESSAGE_MAP()
 
 
-MeaCrossHair::MeaCrossHair() :
+MeaCrossHair::MeaCrossHair(const MeaScreenProvider& screenProvider) :
     MeaGraphic(),
+    m_screenProvider(screenProvider),
     m_callback(nullptr),
     m_mouseCaptured(false),
     m_mouseOver(false),
@@ -91,9 +91,8 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
     // instance of the class is created.
     //
     if (m_size.cx == 0) {
-        MeaScreenMgr& smgr = MeaScreenMgr::Instance();
         MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
-        FSIZE res = smgr.GetScreenRes(smgr.GetScreenIter(AfxGetMainWnd()));
+        FSIZE res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(AfxGetMainWnd()));
 
         m_size = umgr.ConvertToPixels(MeaInchesId, res, 0.25, 25);
         m_size.cx += 1 - (m_size.cx % 2);       // Must be odd
@@ -384,7 +383,7 @@ void MeaCrossHair::FillInfo(MeaCrossHairCallback::CHInfo& chs, UINT flags,
     chs.ch = this;
     chs.centerPoint = point - (m_pointerOffset - m_halfSize);
     ClientToScreen(&chs.centerPoint);
-    chs.centerPoint = MeaScreenMgr::Instance().LimitPosition(chs.centerPoint);
+    chs.centerPoint = m_screenProvider.LimitPosition(chs.centerPoint);
     chs.id = m_id;
     chs.flags = flags;
 }

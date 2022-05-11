@@ -25,7 +25,7 @@
 #include "MeaAssert.h"
 #include "NumberField.h"
 #include "RulerSlider.h"
-#include "ScreenMgr.h"
+#include "ScreenProvider.h"
 #include <map>
 
 
@@ -64,8 +64,10 @@ public:
 
 
     /// Constructs a calibration property page instance.
+    /// 
+    /// @param screenProvider   [in] Screen information provider
     ///
-    MeaCalibrationPrefs();
+    MeaCalibrationPrefs(const MeaScreenProvider& screenProvider);
 
     /// Destroys a calibration property page instance.
     ///
@@ -116,7 +118,7 @@ public:
     /// Maps iterators pointing to the screens attached to the system, to
     /// Screen information structures that describe the screen characteristics.
     ///
-    typedef std::map<MeaScreenMgr::ScreenIter, Screen, MeaScreenMgr::less> ScreenMap;
+    typedef std::map<MeaScreenProvider::ScreenIter, Screen, MeaScreenProvider::less> ScreenMap;
 
     ScreenMap m_screens;    ///< Map of screen iterators to screen information structures.
 
@@ -291,13 +293,14 @@ private:
     }
 
 
-    MeaNumberField m_rxField;       ///< Numeric text field for the x-axis resolution.
-    MeaNumberField m_ryField;       ///< Numeric text field for the y-axis resolution.
-    MeaNumberField m_wField;        ///< Numeric text field for the screen width dimension.
-    MeaNumberField m_hField;        ///< Numeric text field for the screen height dimension.
-    MeaRulerSlider m_rxSlider;      ///< Calibration slider for the x-axis resolution.
-    MeaRulerSlider m_rySlider;      ///< Calibration slider for the y-axis resolution.
-    UINT m_lockoutId;               ///< ID of the UI object that should not be updated during DDX.
-    bool m_inDDX;                   ///< Indicates if currently in DoDataExchange method
-    MeaScreenMgr::ScreenIter m_currentIter;     ///< Current screen.
+    MeaNumberField m_rxField;                       ///< Numeric text field for the x-axis resolution.
+    MeaNumberField m_ryField;                       ///< Numeric text field for the y-axis resolution.
+    MeaNumberField m_wField;                        ///< Numeric text field for the screen width dimension.
+    MeaNumberField m_hField;                        ///< Numeric text field for the screen height dimension.
+    MeaRulerSlider m_rxSlider;                      ///< Calibration slider for the x-axis resolution.
+    MeaRulerSlider m_rySlider;                      ///< Calibration slider for the y-axis resolution.
+    UINT m_lockoutId;                               ///< ID of the UI object that should not be updated during DDX.
+    bool m_inDDX;                                   ///< Indicates if currently in DoDataExchange method
+    const MeaScreenProvider& m_screenProvider;      ///< Screen information provider
+    MeaScreenProvider::ScreenIter m_currentIter;    ///< Current screen.
 };

@@ -42,7 +42,8 @@ BEGIN_MESSAGE_MAP(MeaCalibrationPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaCalibrationPrefs::MeaCalibrationPrefs() : CPropertyPage(IDD_PREF_CALIBRATION), m_lockoutId(0), m_inDDX(false) {}
+MeaCalibrationPrefs::MeaCalibrationPrefs(const MeaScreenProvider& screenProvider) :
+    CPropertyPage(IDD_PREF_CALIBRATION), m_lockoutId(0), m_inDDX(false), m_screenProvider(screenProvider) {}
 
 MeaCalibrationPrefs::~MeaCalibrationPrefs() {}
 
@@ -147,13 +148,12 @@ void MeaCalibrationPrefs::DDX_DimText(CDataExchange* pDX, int nIDC, double& dimV
 }
 
 bool MeaCalibrationPrefs::Validate() {
-    MeaScreenMgr& screenMgr = MeaScreenMgr::Instance();
-    const CRect& screenRect = screenMgr.GetScreenRect(m_currentIter);
+    const CRect& screenRect = m_screenProvider.GetScreenRect(m_currentIter);
     Screen& screen = GetScreen();
     bool mr;
     FSIZE r;
 
-    screenMgr.GetScreenRes(m_currentIter, mr, r);
+    m_screenProvider.GetScreenRes(m_currentIter, mr, r);
 
     if (screen.m_resMode == AutoRes) {
         if (!ValidateField(IDC_CAL_RX_FIELD)) {
@@ -292,7 +292,7 @@ void MeaCalibrationPrefs::OnRxFieldChange() {
     Screen& screen = GetScreen();
 
     if (GetFieldValue(IDC_CAL_RX_FIELD, screen.m_res.cx)) {
-        const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
+        const CRect& screenRect = m_screenProvider.GetScreenRect(m_currentIter);
 
         OnChange();
         UpdateSlider(IDC_CAL_RX_SLIDER, screen.m_res.cx);
@@ -305,7 +305,7 @@ void MeaCalibrationPrefs::OnRyFieldChange() {
     Screen& screen = GetScreen();
 
     if (GetFieldValue(IDC_CAL_RY_FIELD, screen.m_res.cy)) {
-        const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
+        const CRect& screenRect = m_screenProvider.GetScreenRect(m_currentIter);
 
         OnChange();
         UpdateSlider(IDC_CAL_RY_SLIDER, screen.m_res.cy);
@@ -318,7 +318,7 @@ void MeaCalibrationPrefs::OnWFieldChange() {
     Screen& screen = GetScreen();
 
     if (GetFieldValue(IDC_CAL_W_FIELD, screen.m_size.cx)) {
-        const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
+        const CRect& screenRect = m_screenProvider.GetScreenRect(m_currentIter);
 
         OnChange();
         screen.m_res.cx = screenRect.Width() / screen.m_size.cx;
@@ -331,7 +331,7 @@ void MeaCalibrationPrefs::OnHFieldChange() {
     Screen& screen = GetScreen();
 
     if (GetFieldValue(IDC_CAL_H_FIELD, screen.m_size.cy)) {
-        const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
+        const CRect& screenRect = m_screenProvider.GetScreenRect(m_currentIter);
 
         OnChange();
         screen.m_res.cy = screenRect.Height() / screen.m_size.cy;
@@ -372,7 +372,7 @@ void MeaCalibrationPrefs::OnChange() {
 
 LRESULT MeaCalibrationPrefs::OnCaliperChange(WPARAM pos, LPARAM id) {
     Screen& screen = GetScreen();
-    const CRect& screenRect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
+    const CRect& screenRect = m_screenProvider.GetScreenRect(m_currentIter);
     double resValue;
 
     OnChange();
@@ -401,7 +401,7 @@ void MeaCalibrationPrefs::UpdateView() {
     SetResMode(static_cast<ResolutionMode>(screen.m_resMode));
     SetResUnits(static_cast<ResolutionUnits>(screen.m_resUnits));
 
-    const CRect& rect = MeaScreenMgr::Instance().GetScreenRect(m_currentIter);
+    const CRect& rect = m_screenProvider.GetScreenRect(m_currentIter);
 
     screen.m_size.cx = rect.Width() / screen.m_res.cx;
     screen.m_size.cy = rect.Height() / screen.m_res.cy;
@@ -415,16 +415,15 @@ void MeaCalibrationPrefs::UpdateCurrentScreen() {
         return;
     }
 
-    MeaScreenMgr& mgr = MeaScreenMgr::Instance();
     RECT winRect;
     GetWindowRect(&winRect);
 
-    m_currentIter = mgr.GetScreenIter(winRect);
+    m_currentIter = m_screenProvider.GetScreenIter(winRect);
 
     CWnd* frame = GetDlgItem(IDC_CALRES_TITLE);
     if (frame != nullptr) {
         CString title;
-        title.Format(IDS_MEA_CALRES_TITLE, static_cast<LPCTSTR>(mgr.GetScreenName(m_currentIter)));
+        title.Format(IDS_MEA_CALRES_TITLE, static_cast<LPCTSTR>(m_screenProvider.GetScreenName(m_currentIter)));
         frame->SetWindowText(title);
 
         MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());

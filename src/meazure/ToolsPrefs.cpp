@@ -32,9 +32,6 @@ static char THIS_FILE[] = __FILE__;
 #endif
 
 
-IMPLEMENT_DYNCREATE(MeaToolsPrefs, CPropertyPage)
-
-
 BEGIN_MESSAGE_MAP(MeaToolsPrefs, CPropertyPage)
     ON_BN_CLICKED(IDC_TOOLS_LINE_BTN, OnChangeLineColor)
     ON_BN_CLICKED(IDC_TOOLS_LINE_DEF, OnDefLineColor)
@@ -50,10 +47,19 @@ BEGIN_MESSAGE_MAP(MeaToolsPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaToolsPrefs::MeaToolsPrefs() :
+MeaToolsPrefs::MeaToolsPrefs(const MeaScreenProvider& screenProvider) :
     CPropertyPage(MeaToolsPrefs::IDD),
-    m_lineColor(0), m_backColor(0), m_borderColor(0), m_hiliteColor(0),
-    m_showDataWin(FALSE), m_opacity(0), m_originMarker(FALSE) {}
+    m_screenProvider(screenProvider),
+    m_lineColor(0),
+    m_backColor(0),
+    m_borderColor(0),
+    m_hiliteColor(0),
+    m_showDataWin(FALSE),
+    m_opacity(0),
+    m_originMarker(FALSE),
+    m_normalCH(screenProvider),
+    m_hiliteCH(screenProvider),
+    m_dataWin(screenProvider) {}
 
 MeaToolsPrefs::~MeaToolsPrefs() {}
 

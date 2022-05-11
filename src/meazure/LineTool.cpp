@@ -23,18 +23,23 @@
 #include "Resource.h"
 #include "Colors.h"
 #include "ToolMgr.h"
-#include "ScreenMgr.h"
 
 
 const CString   MeaLineTool::kToolName(_T("LineTool"));
 
 
-MeaLineTool::MeaLineTool(MeaToolMgr* mgr) :
-    MeaRadioTool(mgr), MeaCrossHairCallback(), m_curPos(&m_point1) {
+MeaLineTool::MeaLineTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    MeaRadioTool(mgr, screenProvider),
+    MeaCrossHairCallback(),
+    m_curPos(&m_point1),
+    m_point1CH(screenProvider),
+    m_point2CH(screenProvider),
+    m_dataWin1(screenProvider),
+    m_dataWin2(screenProvider) {
     // Set the default tool positions. The line is initially
     // placed at the center of the screen containing the application.
     //
-    m_point1 = MeaScreenMgr::Instance().GetCenter();
+    m_point1 = m_screenProvider.GetCenter();
     m_point2 = m_point1;
 
     // Offset the end points to initially give the line some length.
@@ -72,7 +77,7 @@ bool MeaLineTool::Create() {
 
     // Create the line connecting the crosshairs.
     //
-    if (!m_line.Create(3)) {
+    if (!m_line.Create(3, m_screenProvider)) {
         return false;
     }
 
@@ -134,7 +139,7 @@ void MeaLineTool::LoadProfile(MeaProfile& profile) {
 }
 
 void MeaLineTool::EnableCrosshairs() {
-    if (m_mgr->CrosshairsEnabled() && IsWindow(m_point1CH)) {
+    if (m_mgr.CrosshairsEnabled() && IsWindow(m_point1CH)) {
         m_point1CH.Show();
         m_point2CH.Show();
     }
@@ -169,13 +174,13 @@ void MeaLineTool::Enable() {
     // Tell the tool manager which data display fields
     // we will be using.
     //
-    m_mgr->EnableRegionFields(MeaX1Field | MeaY1Field |
-                              MeaX2Field | MeaY2Field |
-                              MeaWidthField | MeaHeightField |
-                              MeaDistanceField | MeaAngleField |
-                              MeaAspectField | MeaAreaField,
-                              MeaX1Field | MeaY1Field |
-                              MeaX2Field | MeaY2Field);
+    m_mgr.EnableRegionFields(MeaX1Field | MeaY1Field |
+                             MeaX2Field | MeaY2Field |
+                             MeaWidthField | MeaHeightField |
+                             MeaDistanceField | MeaAngleField |
+                             MeaAspectField | MeaAreaField,
+                             MeaX1Field | MeaY1Field |
+                             MeaX2Field | MeaY2Field);
 
     if (!IsWindow(m_line)) {
         Create();
@@ -183,7 +188,7 @@ void MeaLineTool::Enable() {
 
     // Show one liner on how to use the tool.
     //
-    m_mgr->SetStatus(IDS_MEA_LINE_STATUS);
+    m_mgr.SetStatus(IDS_MEA_LINE_STATUS);
 
     // Make the line and crosshairs visible, flash
     // the crosshairs and update the data display.
@@ -220,18 +225,18 @@ void MeaLineTool::Update(MeaUpdateReason reason) {
         // Display the results of the measurement in
         // the data display fields.
         //
-        m_mgr->ShowXY1(m_point1, p1);
-        m_mgr->ShowXY2(m_point2, p2);
-        m_mgr->ShowWH(wh);
-        m_mgr->ShowDistance(wh);
-        m_mgr->ShowAngle(MeaLayout::GetAngle(p1, p2));
-        m_mgr->ShowAspect(wh);
-        m_mgr->ShowRectArea(wh);
+        m_mgr.ShowXY1(m_point1, p1);
+        m_mgr.ShowXY2(m_point2, p2);
+        m_mgr.ShowWH(wh);
+        m_mgr.ShowDistance(wh);
+        m_mgr.ShowAngle(MeaLayout::GetAngle(p1, p2));
+        m_mgr.ShowAspect(wh);
+        m_mgr.ShowRectArea(wh);
 
         // The screen information depends on the
         // current position.
         //
-        m_mgr->UpdateScreenInfo(*m_curPos);
+        m_mgr.UpdateScreenInfo(*m_curPos);
 
         // Display the results of the measurement in
         // the crosshair data windows.
@@ -269,11 +274,11 @@ void MeaLineTool::SetPosition(MeaFields which, int pixels) {
     // Reposition the tool based on the crosshair locations.
     //
     if (which & MeaX1Field || which & MeaY1Field) {
-        m_point1 = MeaScreenMgr::Instance().LimitPosition(m_point1);
+        m_point1 = m_screenProvider.LimitPosition(m_point1);
         m_point1CH.SetPosition(m_point1);
         m_curPos = &m_point1;
     } else {
-        m_point2 = MeaScreenMgr::Instance().LimitPosition(m_point2);
+        m_point2 = m_screenProvider.LimitPosition(m_point2);
         m_point2CH.SetPosition(m_point2);
         m_curPos = &m_point2;
     }
@@ -309,8 +314,8 @@ void MeaLineTool::SetPosition() {
     // Ensure that the positions fall within the
     // limits of the screen containing the point.
     //
-    m_point1 = MeaScreenMgr::Instance().LimitPosition(m_point1);
-    m_point2 = MeaScreenMgr::Instance().LimitPosition(m_point2);
+    m_point1 = m_screenProvider.LimitPosition(m_point1);
+    m_point2 = m_screenProvider.LimitPosition(m_point2);
 
     // Reposition the tool.
     //
@@ -455,7 +460,7 @@ void MeaLineTool::OnCHMove(const CHInfo* info) {
             followingPos = m_point1 + movingDelta;
         }
 
-        movingDelta -= followingPos - MeaScreenMgr::Instance().LimitPosition(followingPos);
+        movingDelta -= followingPos - m_screenProvider.LimitPosition(followingPos);
         m_point1 += movingDelta;
         m_point2 += movingDelta;
 

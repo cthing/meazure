@@ -21,18 +21,17 @@
 #include "RulerTool.h"
 #include "MeaAssert.h"
 #include "Colors.h"
-#include "ScreenMgr.h"
 
 
 const CString   MeaRulerTool::kToolName(_T("RulerTool"));
 
 
-MeaRulerTool::MeaRulerTool(MeaToolMgr* mgr) :
-    MeaTool(mgr), MeaRulerCallback() {
+MeaRulerTool::MeaRulerTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
+    MeaTool(mgr, screenProvider), MeaRulerCallback() {
     // Position each indicator completely off any screen.
     //
     int i;
-    CPoint offScreen(MeaScreenMgr::Instance().GetOffScreen());
+    CPoint offScreen(m_screenProvider.GetOffScreen());
 
     for (i = 0; i < MeaRuler::NumIndicators; i++) {
         m_indicatorPos[i] = offScreen;
@@ -41,9 +40,9 @@ MeaRulerTool::MeaRulerTool(MeaToolMgr* mgr) :
     // Create a set of rulers for each display screen and add
     // it to the collection of ruler sets.
     //
-    int numScreens = MeaScreenMgr::Instance().GetNumScreens();
+    int numScreens = m_screenProvider.GetNumScreens();
     for (i = 0; i < numScreens; i++) {
-        m_rulers.push_back(new RulerSet());
+        m_rulers.push_back(new RulerSet(m_screenProvider));
     }
 }
 
@@ -81,16 +80,15 @@ void MeaRulerTool::SaveProfile(MeaProfile& profile) {
 }
 
 void MeaRulerTool::LoadProfile(MeaProfile& profile) {
-    MeaScreenMgr& mgr = MeaScreenMgr::Instance();
-    MeaScreenMgr::ScreenIter iter;
+    MeaScreenProvider::ScreenIter iter;
     unsigned int i;
 
     // Load the position of each ruler.
     //
-    for (i = 0, iter = mgr.GetScreenIter(); !mgr.AtEnd(iter); ++iter, i++) {
+    for (i = 0, iter = m_screenProvider.GetScreenIter(); !m_screenProvider.AtEnd(iter); ++iter, i++) {
         CString tag;
 
-        const CRect& rect = mgr.GetScreenRect(iter);
+        const CRect& rect = m_screenProvider.GetScreenRect(iter);
 
         tag.Format(_T("RulerSet%d-"), i);
         m_rulers[i]->m_xPos = static_cast<int>(profile.ReadInt(tag + _T("XPos"), rect.left));
@@ -121,16 +119,15 @@ void MeaRulerTool::Enable() {
 
     MeaTool::Enable();
 
-    MeaScreenMgr& mgr = MeaScreenMgr::Instance();
-    MeaScreenMgr::ScreenIter iter;
+    MeaScreenProvider::ScreenIter iter;
     int i;
 
     // Display the rulers on all screens. If the rulers have
     // never been displayed before, create them.
     //
-    for (i = 0, iter = mgr.GetScreenIter(); !mgr.AtEnd(iter); ++iter, i++) {
+    for (i = 0, iter = m_screenProvider.GetScreenIter(); !m_screenProvider.AtEnd(iter); ++iter, i++) {
         if (!IsWindow(m_rulers[i]->m_vRuler)) {
-            const CRect& rect = mgr.GetScreenRect(iter);
+            const CRect& rect = m_screenProvider.GetScreenRect(iter);
 
             m_rulers[i]->m_vRuler.Create(MeaColors::Get(MeaColors::RulerBorder),
                                          MeaColors::Get(MeaColors::RulerBack),

@@ -153,9 +153,10 @@ public:
     /// Constructs a new instance of the Grid overlay tool. To use
     /// a newly constructed Grid tool, the Enable() method must be called.
     ///
-    /// @param mgr  [in] Tool manager parent of the Grid tool.
+    /// @param mgr              [in] Tool manager parent of the Grid tool.
+    /// @param screenProvider   [in] Screen information provider
     ///
-    explicit MeaGridTool(MeaToolMgr* mgr);
+    explicit MeaGridTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
 
     /// Hides and then destroys the Grid tool.
     ///

@@ -35,8 +35,6 @@ set(top_SRCS
     Units.h
     UnitsLabels.cpp
     UnitsLabels.h
-    UnitsMgr.cpp
-    UnitsMgr.h
 )
 source_group(App FILES ${top_SRCS})
 
@@ -62,6 +60,11 @@ set(graphic_SRCS
 )
 source_group(Graphics FILES ${graphic_SRCS})
 
+set(interface_SRCS
+    ScreenProvider.h
+)
+source_group(Interfaces FILES ${interface_SRCS})
+
 set(manager_SRCS
     PositionLogMgr.cpp
     PositionLogMgr.h
@@ -71,6 +74,8 @@ set(manager_SRCS
     ScreenMgr.h
     ToolMgr.cpp
     ToolMgr.h
+    UnitsMgr.cpp
+    UnitsMgr.h
 )
 source_group(Managers FILES ${manager_SRCS})
 
@@ -172,6 +177,7 @@ set(meazure_SRCS
     ${top_SRCS}
     ${exval_SRCS}
     ${graphic_SRCS}
+    ${interface_SRCS}
     ${manager_SRCS}
     ${pref_SRCS}
     ${profile_SRCS}

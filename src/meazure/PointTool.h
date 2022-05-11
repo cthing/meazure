@@ -40,9 +40,10 @@ public:
     /// Enable() will call the Create() method the first time it is called
     /// if Create() has not previously been called.
     ///
-    /// @param mgr  [in] Tool manager parent of the Line tool.
+    /// @param mgr              [in] Tool manager parent of the Line tool
+    /// @param screenProvider   [in] Screen information provider
     ///
-    explicit MeaPointTool(MeaToolMgr* mgr);
+    explicit MeaPointTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
 
     /// Hides and then destroys the Point tool.
     //

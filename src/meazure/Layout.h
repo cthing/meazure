@@ -25,6 +25,8 @@
 #include <math.h>
 #include "Units.h"
 #include "Utils.h"
+#include "ScreenProvider.h"
+#include "UnitsProvider.h"
 
 
 /// Utility methods for performing various window layout tasks.
@@ -315,6 +317,9 @@ public:
     ///
     /// @param wnd      [in] Window representing the control.
     /// @param dc       [in] Device context into which to draw the background.
+    /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    static void DrawOpacityBackground(const CWnd& wnd, CDC& dc);
+    static void DrawOpacityBackground(const CWnd& wnd, CDC& dc, const MeaScreenProvider& screenProvider,
+                                      const MeaUnitsProvider& unitsProvider);
 };

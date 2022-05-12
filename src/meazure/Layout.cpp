@@ -19,8 +19,6 @@
 
 #include "StdAfx.h"
 #include "Layout.h"
-#include "ScreenMgr.h"
-#include "UnitsMgr.h"
 #include <stdarg.h>
 
 
@@ -144,7 +142,8 @@ void MeaLayout::AlphaBlend(CDC& dstDC, const CDC& srcDC, int width, int height, 
     }
 }
 
-void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc) {
+void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc, const MeaScreenProvider& screenProvider,
+                                      const MeaUnitsProvider& unitsProvider) {
     CRect clientRect;
     CRect winRect;
     ;
@@ -158,11 +157,9 @@ void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc) {
 
     dc.FillSolidRect(clientRect.left, clientRect.top, clientRect.Width(), clientRect.Height(), backColor);
 
-    MeaScreenMgr& smgr = MeaScreenMgr::Instance();
-    MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
-    FSIZE res = smgr.GetScreenRes(smgr.GetScreenIter(winRect));
+    FSIZE res = screenProvider.GetScreenRes(screenProvider.GetScreenIter(winRect));
 
-    SIZE forePixels = umgr.ConvertToPixels(MeaInchesId, res, 0.02, 3);
+    SIZE forePixels = unitsProvider.ConvertToPixels(MeaInchesId, res, 0.02, 3);
     sepPixels.cx = 3 * forePixels.cx;
     sepPixels.cy = 3 * forePixels.cy;
 

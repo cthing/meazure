@@ -165,7 +165,7 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
         m_rulerBitmap.CreateCompatibleBitmap(dc, rect.Width(), rect.Height());
         m_origRulerBitmap = m_rulerDC.SelectObject(&m_rulerBitmap);
 
-        MeaLayout::DrawOpacityBackground(*this, m_backDC);
+        MeaLayout::DrawOpacityBackground(*this, m_backDC, m_screenProvider, m_unitsProvider);
     }
 
     ReleaseDC(dc);

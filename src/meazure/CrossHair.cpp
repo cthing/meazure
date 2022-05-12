@@ -137,7 +137,7 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
         m_chBitmap.CreateCompatibleBitmap(dc, m_size.cx, m_size.cy);
         m_origCHBitmap = m_chDC.SelectObject(&m_chBitmap);
 
-        MeaLayout::DrawOpacityBackground(*this, m_backDC);
+        MeaLayout::DrawOpacityBackground(*this, m_backDC, m_screenProvider, m_unitsProvider);
 
         ReleaseDC(dc);
     }

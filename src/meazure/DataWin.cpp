@@ -324,7 +324,7 @@ void MeaDataWin::OnPaint() {
         dataBitmap.CreateCompatibleBitmap(&dc, rect.Width(), rect.Height());
         CBitmap* origDataBitmap = dataDC.SelectObject(&dataBitmap);
 
-        MeaLayout::DrawOpacityBackground(*this, backDC);
+        MeaLayout::DrawOpacityBackground(*this, backDC, m_screenProvider, m_unitsProvider);
         DrawWin(dataDC);
 
         MeaLayout::AlphaBlend(dataDC, backDC, rect.Width(), rect.Height(), m_opacity);

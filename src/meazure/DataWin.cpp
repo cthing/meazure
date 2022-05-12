@@ -36,9 +36,10 @@ SIZE MeaDataWin::m_margin { 3, 1 };
 UINT MeaDataWin::m_flashInterval { 100 };   // Flash interval in milliseconds
 
 
-MeaDataWin::MeaDataWin(const MeaScreenProvider& screenProvider) :
+MeaDataWin::MeaDataWin(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider) :
     CWnd(),
     m_screenProvider(screenProvider),
+    m_unitsProvider(unitsProvider),
     m_parent(nullptr),
     m_textHeight(0),
     m_winHeight(0),
@@ -225,19 +226,17 @@ void MeaDataWin::SetOpacity(BYTE opacity) {
 }
 
 int MeaDataWin::CalcWidth() {
-    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
-
     const CRect& vscreen = m_screenProvider.GetVirtualRect();
     CPoint topLeft(vscreen.TopLeft());
     CPoint bottomRight(vscreen.BottomRight());
-    FSIZE wh = unitsMgr.GetWidthHeight(topLeft, bottomRight);
+    FSIZE wh = m_unitsProvider.GetWidthHeight(topLeft, bottomRight);
 
-    CString xStr = _T("-") + unitsMgr.Format(MeaX, wh.cx);
-    CString yStr = _T("-") + unitsMgr.Format(MeaY, wh.cy);
-    CString wStr = unitsMgr.Format(MeaW, wh.cx);
-    CString hStr = unitsMgr.Format(MeaH, wh.cy);
-    CString dStr = unitsMgr.Format(MeaD, MeaLayout::CalcLength(wh.cx, wh.cy));
-    CString aStr = unitsMgr.FormatConvertAngle(-3.0);
+    CString xStr = _T("-") + m_unitsProvider.Format(MeaX, wh.cx);
+    CString yStr = _T("-") + m_unitsProvider.Format(MeaY, wh.cy);
+    CString wStr = m_unitsProvider.Format(MeaW, wh.cx);
+    CString hStr = m_unitsProvider.Format(MeaH, wh.cy);
+    CString dStr = m_unitsProvider.Format(MeaD, MeaLayout::CalcLength(wh.cx, wh.cy));
+    CString aStr = m_unitsProvider.FormatConvertAngle(-3.0);
 
     int maxLen = 0;
 

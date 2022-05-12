@@ -46,8 +46,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the Line tool
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaLineTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaLineTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                         const MeaUnitsProvider& unitsProvider);
 
     /// Hides and then destroys the Line tool.
     //

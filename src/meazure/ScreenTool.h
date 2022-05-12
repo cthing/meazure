@@ -38,8 +38,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the Screen info tool
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaScreenTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaScreenTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                           const MeaUnitsProvider& unitsProvider);
 
     /// Disables and then destroys the Screen information tool.
     ///

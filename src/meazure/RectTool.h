@@ -46,8 +46,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the Rectangle tool
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaRectTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaRectTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                         const MeaUnitsProvider& unitsProvider);
 
     /// Hides and then destroys the Rectangle tool.
     //

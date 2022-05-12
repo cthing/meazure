@@ -40,9 +40,13 @@ BEGIN_MESSAGE_MAP(MeaRulerPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaRulerPrefs::MeaRulerPrefs(const MeaScreenProvider& screenProvider) :
+MeaRulerPrefs::MeaRulerPrefs(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider) :
     CPropertyPage(MeaRulerPrefs::IDD),
-    m_vRuler(screenProvider), m_hRuler(screenProvider), m_backColor(0), m_borderColor(0), m_opacity(0) {
+    m_vRuler(screenProvider, unitsProvider),
+    m_hRuler(screenProvider, unitsProvider),
+    m_backColor(0),
+    m_borderColor(0),
+    m_opacity(0) {
     m_psp.dwFlags &= ~(PSP_HASHELP);
 }
 

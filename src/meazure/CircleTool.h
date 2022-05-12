@@ -47,8 +47,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the Circle tool
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaCircleTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaCircleTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                           const MeaUnitsProvider& unitsProvider);
 
     /// Hides and then destroys the Circle tool.
     ///

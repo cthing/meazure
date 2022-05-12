@@ -28,12 +28,13 @@
 const CString MeaPointTool::kToolName(_T("PointTool"));
 
 
-MeaPointTool::MeaPointTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
-    MeaRadioTool(mgr, screenProvider),
+MeaPointTool::MeaPointTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                           const MeaUnitsProvider& unitsProvider) :
+    MeaRadioTool(mgr, screenProvider, unitsProvider),
     MeaCrossHairCallback(),
     m_center(screenProvider.GetCenter()),
-    m_crossHair(screenProvider),
-    m_dataWin(screenProvider) {
+    m_crossHair(screenProvider, unitsProvider),
+    m_dataWin(screenProvider, unitsProvider) {
     // Set the default tool position. The crosshair is initially
     // is placed at the center of the screen containing the application.
     //
@@ -71,30 +72,26 @@ bool MeaPointTool::Create() {
 }
 
 void MeaPointTool::SaveProfile(MeaProfile& profile) {
-    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
-
     // Save the position of the crosshair.
     //
-    FPOINT pt = unitsMgr.ConvertPos(m_center);
+    FPOINT pt = m_unitsProvider.ConvertPos(m_center);
     profile.WriteStr(_T("PointX1"), MeaUtils::DblToStr(pt.x));
     profile.WriteStr(_T("PointY1"), MeaUtils::DblToStr(pt.y));
 }
 
 void MeaPointTool::LoadProfile(MeaProfile& profile) {
-    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
-
     // Use the current position as the default value
     // for those position components that are not
     // specified in the profile.
     //
-    FPOINT def = unitsMgr.ConvertPos(m_center);
+    FPOINT def = m_unitsProvider.ConvertPos(m_center);
 
     // Load the crosshair position.
     //
     FPOINT pt;
     pt.x = profile.ReadDbl(_T("PointX1"), def.x);
     pt.y = profile.ReadDbl(_T("PointY1"), def.y);
-    m_center = unitsMgr.UnconvertPos(pt);
+    m_center = m_unitsProvider.UnconvertPos(pt);
     m_anchorPoint = m_center;
 
     SetPosition();
@@ -165,7 +162,7 @@ void MeaPointTool::Update(MeaUpdateReason reason) {
 
         // Convert the pixel location to the current units.
         //
-        FPOINT center = MeaUnitsMgr::Instance().ConvertCoord(m_center);
+        FPOINT center = m_unitsProvider.ConvertCoord(m_center);
 
         // Display the results of the measurement in
         // the data display fields.
@@ -238,7 +235,7 @@ void MeaPointTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     // Convert the pixel locations to the current units and record
     // the position in the position object.
     //
-    position.RecordXY1(MeaUnitsMgr::Instance().ConvertCoord(m_center));
+    position.RecordXY1(m_unitsProvider.ConvertCoord(m_center));
 }
 
 void MeaPointTool::IncPosition(MeaFields which) {

@@ -43,8 +43,9 @@ public:
     /// Creates an instance of the tool property page.
     /// 
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    MeaToolsPrefs(const MeaScreenProvider& screenProvider);
+    MeaToolsPrefs(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider);
 
     /// Destroys an instance of the tool property page.
     ///

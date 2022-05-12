@@ -25,6 +25,7 @@
 #include <list>
 #include "Units.h"
 #include "UnitsLabels.h"
+#include "UnitsProvider.h"
 #include "Singleton.h"
 
 
@@ -32,7 +33,7 @@
 /// the units objects and labels, specifying the current units, setting
 /// the measurement origin and setting the y-axis orientation.
 ///
-class MeaUnitsMgr : public MeaSingleton_T<MeaUnitsMgr> {
+class MeaUnitsMgr : public MeaUnitsProvider, public MeaSingleton_T<MeaUnitsMgr> {
 
 public:
     static constexpr bool kDefHaveWarned { false };             ///< Indicates whether the user has
@@ -102,7 +103,7 @@ public:
     ///
     /// @return Current linear units.
     ///
-    MeaLinearUnits* GetLinearUnits() { return m_currentLinearUnits; }
+    MeaLinearUnits* GetLinearUnits() const override { return m_currentLinearUnits; }
 
     /// Returns the linear measurement units object corresponding
     /// to the specified identifier string (e.g. "px").
@@ -111,7 +112,7 @@ public:
     ///
     /// @return Linear measurement units object.
     ///
-    MeaLinearUnits* GetLinearUnits(const CString& unitsStr) {
+    MeaLinearUnits* GetLinearUnits(const CString& unitsStr) const {
         for (const auto& unitsEntry : m_linearUnitsMap) {
             if (unitsEntry.second->GetUnitsStr() == unitsStr) {
                 return unitsEntry.second;
@@ -137,7 +138,7 @@ public:
     ///
     /// @return Current angular units.
     ///
-    MeaAngularUnits* GetAngularUnits() { return m_currentAngularUnits; }
+    MeaAngularUnits* GetAngularUnits() const { return m_currentAngularUnits; }
 
     /// Returns the angular measurement units object corresponding
     /// to the specified identifier string (e.g. "deg").
@@ -146,7 +147,7 @@ public:
     ///
     /// @return Angular measurement units object.
     ///
-    MeaAngularUnits* GetAngularUnits(const CString& unitsStr) {
+    MeaAngularUnits* GetAngularUnits(const CString& unitsStr) const {
         for (const auto& unitsEntry : m_angularUnitsMap) {
             if (unitsEntry.second->GetUnitsStr() == unitsStr) {
                 return unitsEntry.second;
@@ -265,7 +266,7 @@ public:
     ///         actual location of the origin is determined by the SetOrigin
     ///         method.
     ///
-    bool GetInvertY() const { return MeaLinearUnits::GetInvertY(); }
+    bool GetInvertY() const override { return MeaLinearUnits::GetInvertY(); }
 
     /// Moves the origin of the coordinate system to the specified point. The
     /// orientation of the axes is not effected by this method. To change the
@@ -280,7 +281,7 @@ public:
     ///
     /// @return Location of the origin of the coordinate system, in pixels.
     ///
-    const POINT& GetOrigin() const { return MeaLinearUnits::GetOrigin(); }
+    const POINT& GetOrigin() const override { return MeaLinearUnits::GetOrigin(); }
 
     /// Uses the current linear measurement units to convert the two specified
     /// points from pixels to the current units, and then calculates the
@@ -296,7 +297,7 @@ public:
     ///         width and height are inclusive (e.g. p1.x = 1, p2.x = 3,
     ///         width = p2.x - p1.x + 1 = 3).
     ///
-    FSIZE GetWidthHeight(const POINT& p1, const POINT& p2) const;
+    FSIZE GetWidthHeight(const POINT& p1, const POINT& p2) const override;
 
     /// Creates a new length measurement units label object.
     ///
@@ -344,7 +345,7 @@ public:
     /// and formats the result for display.
     /// @param angle    [in] Angle to be converted and displayed, in radians.
     /// @return String containing the converted and formatted angle data.
-    CString FormatConvertAngle(double angle) const {
+    CString FormatConvertAngle(double angle) const override {
         return Format(MeaA, ConvertAngle(angle));
     }
 
@@ -354,7 +355,7 @@ public:
     /// @param value    [in] Linear measurement value to format,
     ///                 in current units.
     /// @return String containing the formatted measurement data.
-    CString Format(MeaLinearMeasurementId id, double value) const {
+    CString Format(MeaLinearMeasurementId id, double value) const override {
         return m_currentLinearUnits->Format(id, value);
     }
 
@@ -378,7 +379,7 @@ public:
     ///         conversion takes into account the location of the origin and
     ///         the orientation of the y-axis.
     ///         
-    FPOINT ConvertCoord(const POINT& pos) const {
+    FPOINT ConvertCoord(const POINT& pos) const override {
         return m_currentLinearUnits->ConvertCoord(pos);
     }
 
@@ -405,7 +406,7 @@ public:
     ///         conversion does not take into account the location of the
     ///         origin nor does it compensate for the orientation of the y-axis.
     ///
-    FPOINT ConvertPos(const POINT& pos) const {
+    FPOINT ConvertPos(const POINT& pos) const override {
         return m_currentLinearUnits->ConvertPos(pos);
     }
 
@@ -418,7 +419,7 @@ public:
     ///         does not take into account the location of the origin nor the
     ///         orientation of the y-axis.
     ///
-    POINT UnconvertPos(const FPOINT& pos) const {
+    POINT UnconvertPos(const FPOINT& pos) const override {
         return m_currentLinearUnits->UnconvertPos(pos);
     }
 
@@ -428,7 +429,7 @@ public:
     ///
     /// @return Resolution converted from pixels/inch to the desired units.
     ///
-    FSIZE ConvertRes(const FSIZE& res) const {
+    FSIZE ConvertRes(const FSIZE& res) const override {
         return m_currentLinearUnits->ConvertRes(res);
     }
 
@@ -455,7 +456,7 @@ public:
     ///
     /// @return X and Y pixel values.
     ///
-    SIZE ConvertToPixels(MeaLinearUnitsId id, const FSIZE& res, double value, int minPixels) const {
+    SIZE ConvertToPixels(MeaLinearUnitsId id, const FSIZE& res, double value, int minPixels) const override {
         return ((*m_linearUnitsMap.find(id)).second)->ConvertToPixels(res, value, minPixels);
     }
 
@@ -465,7 +466,7 @@ public:
     /// @return Number of minor tick marks to display before displaying a major
     ///         tick mark.
     ///
-    int GetMajorTickCount() const { return m_majorTickCount; }
+    int GetMajorTickCount() const override { return m_majorTickCount; }
 
     /// Returns the increment between minor tick marks on the measurement rulers.
     ///
@@ -474,7 +475,7 @@ public:
     ///
     /// @return Increment for the minor tick marks, in the current units.
     ///
-    FSIZE GetMinorIncr(const RECT& rect) const;
+    FSIZE GetMinorIncr(const RECT& rect) const override;
 
 private:
     static const double kTickIncrements[];  ///< Ruler tick increments. The order of magnitude of

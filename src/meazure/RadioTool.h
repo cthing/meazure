@@ -47,8 +47,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the tool.
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaRadioTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaRadioTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                          const MeaUnitsProvider& unitsProvider);
 
     /// Destroys the tool.
     ///

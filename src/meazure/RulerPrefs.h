@@ -38,8 +38,9 @@ public:
     /// Constructs an instance of the ruler property page.
     /// 
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    MeaRulerPrefs(const MeaScreenProvider& screenProvider);
+    MeaRulerPrefs(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider);
 
     /// Destroys an instance of the ruler property page.
     ///

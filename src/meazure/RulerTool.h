@@ -45,8 +45,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the Ruler tool
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaRulerTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaRulerTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                          const MeaUnitsProvider& unitsProvider);
 
     /// Hides and then destroys the Ruler tool.
     ///
@@ -130,8 +132,11 @@ private:
     class RulerSet {
 
     public:
-        RulerSet(const MeaScreenProvider& screenProvider) :
-            m_vRuler(screenProvider), m_hRuler(screenProvider), m_xPos(0), m_yPos(0) {}
+        RulerSet(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider) :
+            m_vRuler(screenProvider, unitsProvider),
+            m_hRuler(screenProvider, unitsProvider),
+            m_xPos(0),
+            m_yPos(0) {}
         ~RulerSet() {}
 
         MeaRuler m_vRuler;  ///< Vertical ruler

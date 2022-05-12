@@ -24,6 +24,7 @@
 
 #include "Graphic.h"
 #include "ScreenProvider.h"
+#include "UnitsProvider.h"
 
 
 class MeaCrossHair;
@@ -114,8 +115,9 @@ public:
     /// create the crosshair's window.
     /// 
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    MeaCrossHair(const MeaScreenProvider& screenProvider);
+    MeaCrossHair(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvier);
 
     /// Destroys the circle.
     ///
@@ -317,6 +319,7 @@ private:
 
 
     const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
+    const MeaUnitsProvider& m_unitsProvider;    ///< Units information provider
     MeaCrossHairCallback* m_callback;           ///< Object to call for crosshair events
     bool m_mouseCaptured;                       ///< Indicates if the pointer is captured
     bool m_mouseOver;                           ///< Indicates if the pointer is over the crosshair

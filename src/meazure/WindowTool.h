@@ -46,8 +46,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the Window tool.
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaWindowTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaWindowTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                           const MeaUnitsProvider& unitsProvider);
 
     /// Hides and then destroys the Window tool.
     //

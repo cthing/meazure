@@ -24,8 +24,8 @@
 
 #include "Profile.h"
 #include "Layout.h"
-#include "UnitsMgr.h"
 #include "ScreenProvider.h"
+#include "UnitsProvider.h"
 
 
 /// A popup data display window. A data display window is attached to each
@@ -46,8 +46,9 @@ public:
     /// must be called and the window must be displayed using the Show method.
     /// 
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    MeaDataWin(const MeaScreenProvider& screenProvider);
+    MeaDataWin(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider);
 
     /// Destroys a data window.
     ///
@@ -83,8 +84,8 @@ public:
     /// @param point    [in] Coordinates to display.
     ///
     void ShowXY(const FPOINT& point) {
-        m_xData = MeaUnitsMgr::Instance().Format(MeaX, point.x);
-        m_yData = MeaUnitsMgr::Instance().Format(MeaY, point.y);
+        m_xData = m_unitsProvider.Format(MeaX, point.x);
+        m_yData = m_unitsProvider.Format(MeaY, point.y);
     }
 
     /// Displays the specified width and height. For the values
@@ -94,8 +95,8 @@ public:
     /// @param size     [in] Dimensions to display.
     ///
     void ShowWH(const FSIZE& size) {
-        m_wData = MeaUnitsMgr::Instance().Format(MeaW, size.cx);
-        m_hData = MeaUnitsMgr::Instance().Format(MeaH, size.cy);
+        m_wData = m_unitsProvider.Format(MeaW, size.cx);
+        m_hData = m_unitsProvider.Format(MeaH, size.cy);
     }
 
     /// Displays a diagonal distance based on the specified width and height.
@@ -105,7 +106,7 @@ public:
     /// @param dist     [in] Dimensions used to calculate the distance.
     ///
     void ShowDistance(const FSIZE& dist) {
-        m_dData = MeaUnitsMgr::Instance().Format(MeaD, MeaLayout::CalcLength(dist.cx, dist.cy));
+        m_dData = m_unitsProvider.Format(MeaD, MeaLayout::CalcLength(dist.cx, dist.cy));
     }
 
     /// Displays the specified distance. For the value to be displayed, a
@@ -115,7 +116,7 @@ public:
     /// @param dist     [in] Distance to display.
     ///
     void ShowDistance(double dist) {
-        m_dData = MeaUnitsMgr::Instance().Format(MeaD, dist);
+        m_dData = m_unitsProvider.Format(MeaD, dist);
     }
 
     /// Displays the specified angle. For the value to be displayed, a
@@ -125,7 +126,7 @@ public:
     /// @param angle    [in] Angle to display.
     ///
     void ShowAngle(double angle) {
-        m_aData = MeaUnitsMgr::Instance().FormatConvertAngle(angle);
+        m_aData = m_unitsProvider.FormatConvertAngle(angle);
     }
 
     /// Displays the currently set data in the window.
@@ -256,6 +257,7 @@ private:
 
 
     const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
+    const MeaUnitsProvider& m_unitsProvider;    ///< Units information provider
     CString m_xLabel;                           ///< Label for the x coordinate data.
     CString m_yLabel;                           ///< Label for the y coordinate data.
     CString m_wLabel;                           ///< Label for the width data.

@@ -22,7 +22,6 @@
 #include "CrossHair.h"
 #include "Resource.h"
 #include "Layout.h"
-#include "UnitsMgr.h"
 #define COMPILE_LAYERED_WINDOW_STUBS
 #include "LayeredWindows.h"
 
@@ -45,9 +44,10 @@ BEGIN_MESSAGE_MAP(MeaCrossHair, MeaGraphic)
 END_MESSAGE_MAP()
 
 
-MeaCrossHair::MeaCrossHair(const MeaScreenProvider& screenProvider) :
+MeaCrossHair::MeaCrossHair(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider) :
     MeaGraphic(),
     m_screenProvider(screenProvider),
+    m_unitsProvider(unitsProvider),
     m_callback(nullptr),
     m_mouseCaptured(false),
     m_mouseOver(false),
@@ -91,17 +91,16 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
     // instance of the class is created.
     //
     if (m_size.cx == 0) {
-        MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
         FSIZE res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(AfxGetMainWnd()));
 
-        m_size = umgr.ConvertToPixels(MeaInchesId, res, 0.25, 25);
+        m_size = m_unitsProvider.ConvertToPixels(MeaInchesId, res, 0.25, 25);
         m_size.cx += 1 - (m_size.cx % 2);       // Must be odd
         m_size.cy += 1 - (m_size.cy % 2);
 
         m_halfSize.cx = m_size.cx / 2;
         m_halfSize.cy = m_size.cy / 2;
 
-        m_spread = umgr.ConvertToPixels(MeaInchesId, res, 0.04, 4);
+        m_spread = m_unitsProvider.ConvertToPixels(MeaInchesId, res, 0.04, 4);
         m_spread.cx += (m_spread.cx % 2);       // Must be even
         m_spread.cy += (m_spread.cy % 2);
     }

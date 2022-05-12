@@ -26,8 +26,9 @@
 const CString   MeaRulerTool::kToolName(_T("RulerTool"));
 
 
-MeaRulerTool::MeaRulerTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
-    MeaTool(mgr, screenProvider), MeaRulerCallback() {
+MeaRulerTool::MeaRulerTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                           const MeaUnitsProvider& unitsProvider) :
+    MeaTool(mgr, screenProvider, unitsProvider), MeaRulerCallback() {
     // Position each indicator completely off any screen.
     //
     int i;
@@ -42,7 +43,7 @@ MeaRulerTool::MeaRulerTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvi
     //
     int numScreens = m_screenProvider.GetNumScreens();
     for (i = 0; i < numScreens; i++) {
-        m_rulers.push_back(new RulerSet(m_screenProvider));
+        m_rulers.push_back(new RulerSet(m_screenProvider, m_unitsProvider));
     }
 }
 

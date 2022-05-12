@@ -21,6 +21,7 @@
 #include "Resource.h"
 #include "Preferences.h"
 #include "ScreenMgr.h"
+#include "UnitsMgr.h"
 
 
 #ifdef _DEBUG
@@ -43,8 +44,8 @@ END_MESSAGE_MAP()
 MeaPreferences::MeaPreferences(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPage) :
     CPropertySheet(nIDCaption, pParentWnd, iSelectPage),
     m_calibrationPrefs(MeaScreenMgr::Instance()),
-    m_rulerPrefs(MeaScreenMgr::Instance()),
-    m_toolsPrefs(MeaScreenMgr::Instance()) {
+    m_rulerPrefs(MeaScreenMgr::Instance(), MeaUnitsMgr::Instance()),
+    m_toolsPrefs(MeaScreenMgr::Instance(), MeaUnitsMgr::Instance()) {
 
     // Remove the help button from the dialog.
     //
@@ -63,8 +64,8 @@ MeaPreferences::MeaPreferences(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPa
 MeaPreferences::MeaPreferences(LPCTSTR pszCaption, CWnd* pParentWnd, UINT iSelectPage)
     :CPropertySheet(pszCaption, pParentWnd, iSelectPage),
     m_calibrationPrefs(MeaScreenMgr::Instance()),
-    m_rulerPrefs(MeaScreenMgr::Instance()),
-    m_toolsPrefs(MeaScreenMgr::Instance()) {
+    m_rulerPrefs(MeaScreenMgr::Instance(), MeaUnitsMgr::Instance()),
+    m_toolsPrefs(MeaScreenMgr::Instance(), MeaUnitsMgr::Instance()) {
     // Remove the help button from the dialog.
     //
     m_psh.dwFlags &= ~(PSH_HASHELP);
@@ -118,7 +119,7 @@ BOOL MeaPreferences::OnCommand(WPARAM wParam, LPARAM lParam) {
         // on whether the window exists [e.g. whether inside DoModal()].
         // If window exists, it actually asks the tab control for the active
         // page. Otherwise it merely returns m_psh.nStartPage -- meaning that
-        // after DoModal() returns, the value is simply what we startedwith.
+        // after DoModal() returns, the value is simply what we started with.
         // This makes it impossible to bring up the sheet next time with
         // whatever page the user last had active -- a desirable behavior.
         //

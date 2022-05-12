@@ -20,7 +20,6 @@
 #include "StdAfx.h"
 #include "Ruler.h"
 #include "Colors.h"
-#include "UnitsMgr.h"
 #include "Layout.h"
 #include "LayeredWindows.h"
 
@@ -37,9 +36,10 @@ END_MESSAGE_MAP()
 void MeaRulerCallback::OnRulerMove(const RulerInfo* /* info */) {}
 
 
-MeaRuler::MeaRuler(const MeaScreenProvider& screenProvider) :
+MeaRuler::MeaRuler(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider) :
     MeaGraphic(),
     m_screenProvider(screenProvider),
+    m_unitsProvider(unitsProvider),
     m_borderColor(0),
     m_backColor(0),
     m_callback(nullptr),
@@ -73,7 +73,6 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
 
     SetColors(borderColor, backColor);
 
-    MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
     FSIZE res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(targetRect));
 
     // To ensure the proper sizing of the ruler tick marks and margins,
@@ -83,9 +82,9 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
     // resolution is such that the pixels sizes are too small, a minimum
     // pixel size is used.
     //
-    m_majorTickHeight = umgr.ConvertToPixels(MeaInchesId, res, kMajorTickHeight, kMinMajorTickHeight);
-    m_minorTickHeight = umgr.ConvertToPixels(MeaInchesId, res, kMinorTickHeight, kMinMinorTickHeight);
-    m_margin = umgr.ConvertToPixels(MeaInchesId, res, kMargin, kMinMargin);
+    m_majorTickHeight = m_unitsProvider.ConvertToPixels(MeaInchesId, res, kMajorTickHeight, kMinMajorTickHeight);
+    m_minorTickHeight = m_unitsProvider.ConvertToPixels(MeaInchesId, res, kMinorTickHeight, kMinMinorTickHeight);
+    m_margin = m_unitsProvider.ConvertToPixels(MeaInchesId, res, kMargin, kMinMargin);
 
     // Use the appropriate arrow cursor for the ruler orientation.
     //
@@ -340,15 +339,14 @@ void MeaRuler::DrawRuler(CDC& dc) {
 
     // Draw tick marks and labels
     // 
-    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
-    MeaLinearUnits* units = unitsMgr.GetLinearUnits();
-    int majorTickCount = unitsMgr.GetMajorTickCount();
+    MeaLinearUnits* units = m_unitsProvider.GetLinearUnits();
+    int majorTickCount = m_unitsProvider.GetMajorTickCount();
     double p;
     bool isMajorTick, isExact;
     int tick, x, xa, xb, y, ya, yb;
     int tickHeight;
 
-    FSIZE minorIncr = unitsMgr.GetMinorIncr(winRect);
+    FSIZE minorIncr = m_unitsProvider.GetMinorIncr(winRect);
 
     // Determine the blending colors for non-pixel aligned hash mark placement.
     //
@@ -391,7 +389,7 @@ void MeaRuler::DrawRuler(CDC& dc) {
                             dc.LineTo(clientRect.right - tickHeight, yb);
                         }
                         if (isMajorTick) {
-                            dc.TextOut(clientRect.left + m_margin.cx, y, unitsMgr.Format(MeaY, p));
+                            dc.TextOut(clientRect.left + m_margin.cx, y, m_unitsProvider.Format(MeaY, p));
                         }
                     } else {
                         dc.MoveTo(clientRect.left, ya);
@@ -402,7 +400,7 @@ void MeaRuler::DrawRuler(CDC& dc) {
                             dc.LineTo(clientRect.left + tickHeight, yb);
                         }
                         if (isMajorTick) {
-                            dc.TextOut(clientRect.left + tickHeight + m_margin.cx, y, unitsMgr.Format(MeaY, p));
+                            dc.TextOut(clientRect.left + tickHeight + m_margin.cx, y, m_unitsProvider.Format(MeaY, p));
                         }
                     }
 
@@ -441,7 +439,7 @@ void MeaRuler::DrawRuler(CDC& dc) {
                             dc.LineTo(xb, clientRect.bottom - tickHeight);
                         }
                         if (isMajorTick) {
-                            dc.TextOut(x, clientRect.top + m_margin.cy, unitsMgr.Format(MeaX, p));
+                            dc.TextOut(x, clientRect.top + m_margin.cy, m_unitsProvider.Format(MeaX, p));
                         }
                     } else {
                         dc.MoveTo(xa, clientRect.top);
@@ -452,7 +450,7 @@ void MeaRuler::DrawRuler(CDC& dc) {
                             dc.LineTo(xb, clientRect.top + tickHeight);
                         }
                         if (isMajorTick) {
-                            dc.TextOut(x, clientRect.top + tickHeight + m_margin.cy, unitsMgr.Format(MeaX, p));
+                            dc.TextOut(x, clientRect.top + tickHeight + m_margin.cy, m_unitsProvider.Format(MeaX, p));
                         }
                     }
 

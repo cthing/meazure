@@ -155,8 +155,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the Grid tool.
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaGridTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaGridTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                         const MeaUnitsProvider& unitsProvider);
 
     /// Hides and then destroys the Grid tool.
     ///

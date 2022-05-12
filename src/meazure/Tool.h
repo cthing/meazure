@@ -53,8 +53,9 @@ public:
     ///
     /// @param mgr            [in] Tool manager parent of the tool.
     /// @param screenProvider [in] Screen information provider
+    /// @param unitsProvider  [in] Units information provider
     ///
-    explicit MeaTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider);
 
     /// Destroys the tool.
     ///
@@ -162,5 +163,6 @@ protected:
                                                 ///< position. This position is returned by the GetPosition() method
     MeaToolMgr& m_mgr;                          ///< Tool manager
     const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
+    const MeaUnitsProvider& m_unitsProvider;    ///< Units information provider
     bool m_enabled;                             ///< Indicates whether the tool is enabled
 };

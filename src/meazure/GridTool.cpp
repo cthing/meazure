@@ -27,8 +27,11 @@
 const CString MeaGridTool::kToolName(_T("GridTool"));
 
 
-MeaGridTool::MeaGridTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
-    MeaTool(mgr, screenProvider), m_gridSpacing(kDefDefaultSpacing, kDefDefaultSpacing), m_linked(kDefLinked) {}
+MeaGridTool::MeaGridTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                         const MeaUnitsProvider& unitsProvider) :
+    MeaTool(mgr, screenProvider, unitsProvider),
+    m_gridSpacing(kDefDefaultSpacing, kDefDefaultSpacing),
+    m_linked(kDefLinked) {}
 
 MeaGridTool::~MeaGridTool() {
     try {

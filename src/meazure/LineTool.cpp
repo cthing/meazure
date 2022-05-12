@@ -28,14 +28,15 @@
 const CString   MeaLineTool::kToolName(_T("LineTool"));
 
 
-MeaLineTool::MeaLineTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
-    MeaRadioTool(mgr, screenProvider),
+MeaLineTool::MeaLineTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                         const MeaUnitsProvider& unitsProvider) :
+    MeaRadioTool(mgr, screenProvider, unitsProvider),
     MeaCrossHairCallback(),
     m_curPos(&m_point1),
-    m_point1CH(screenProvider),
-    m_point2CH(screenProvider),
-    m_dataWin1(screenProvider),
-    m_dataWin2(screenProvider) {
+    m_point1CH(screenProvider, unitsProvider),
+    m_point2CH(screenProvider, unitsProvider),
+    m_dataWin1(screenProvider, unitsProvider),
+    m_dataWin2(screenProvider, unitsProvider) {
     // Set the default tool positions. The line is initially
     // placed at the center of the screen containing the application.
     //
@@ -103,37 +104,34 @@ bool MeaLineTool::Create() {
 
 void MeaLineTool::SaveProfile(MeaProfile& profile) {
     FPOINT pt;
-    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     // Save the position of each end point.
     //
-    pt = unitsMgr.ConvertPos(m_point1);
+    pt = m_unitsProvider.ConvertPos(m_point1);
     profile.WriteStr(_T("LineX1"), MeaUtils::DblToStr(pt.x));
     profile.WriteStr(_T("LineY1"), MeaUtils::DblToStr(pt.y));
-    pt = unitsMgr.ConvertPos(m_point2);
+    pt = m_unitsProvider.ConvertPos(m_point2);
     profile.WriteStr(_T("LineX2"), MeaUtils::DblToStr(pt.x));
     profile.WriteStr(_T("LineY2"), MeaUtils::DblToStr(pt.y));
 }
 
 void MeaLineTool::LoadProfile(MeaProfile& profile) {
-    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
-
     // Use the current positions as the default values
     // for those positions that are not specified in the
     // profile.
     //
-    FPOINT def1 = unitsMgr.ConvertPos(m_point1);
-    FPOINT def2 = unitsMgr.ConvertPos(m_point2);
+    FPOINT def1 = m_unitsProvider.ConvertPos(m_point1);
+    FPOINT def2 = m_unitsProvider.ConvertPos(m_point2);
 
     // Load the end point positions.
     //
     FPOINT pt;
     pt.x = profile.ReadDbl(_T("LineX1"), def1.x);
     pt.y = profile.ReadDbl(_T("LineY1"), def1.y);
-    m_point1 = unitsMgr.UnconvertPos(pt);
+    m_point1 = m_unitsProvider.UnconvertPos(pt);
     pt.x = profile.ReadDbl(_T("LineX2"), def2.x);
     pt.y = profile.ReadDbl(_T("LineY2"), def2.y);
-    m_point2 = unitsMgr.UnconvertPos(pt);
+    m_point2 = m_unitsProvider.UnconvertPos(pt);
 
     SetPosition();
 }
@@ -214,13 +212,11 @@ void MeaLineTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
-        MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-
         // Convert the pixel locations to the current units.
         //
-        FPOINT p1 = units.ConvertCoord(m_point1);
-        FPOINT p2 = units.ConvertCoord(m_point2);
-        FSIZE wh = units.GetWidthHeight(m_point1, m_point2);
+        FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
+        FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
+        FSIZE wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
 
         // Display the results of the measurement in
         // the data display fields.
@@ -331,13 +327,11 @@ const POINT& MeaLineTool::GetPosition() const {
 }
 
 void MeaLineTool::GetPosition(MeaPositionLogMgr::Position& position) const {
-    MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-
     // Convert the pixel locations to the current units.
     //
-    FPOINT p1 = units.ConvertCoord(m_point1);
-    FPOINT p2 = units.ConvertCoord(m_point2);
-    FSIZE wh = units.GetWidthHeight(m_point1, m_point2);
+    FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
+    FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
+    FSIZE wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
 
     // Save the positions in the position object.
     //

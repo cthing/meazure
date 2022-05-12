@@ -24,6 +24,7 @@
 
 #include "Graphic.h"
 #include "ScreenProvider.h"
+#include "UnitsProvider.h"
 
 
 class MeaRuler;
@@ -116,8 +117,9 @@ public:
     /// Constructs a ruler.
     /// 
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    MeaRuler(const MeaScreenProvider& screenProvider);
+    MeaRuler(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unisProvider);
 
     /// Destroys a ruler.
     ///
@@ -311,6 +313,7 @@ private:
     void FillInfo(MeaRulerCallback::RulerInfo& rulerInfo, UINT flags, const CPoint& point);
 
     const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
+    const MeaUnitsProvider& m_unitsProvider;    ///< Units information provider
     COLORREF m_borderColor;                     ///< Color for the ruler border and tick marks.
     COLORREF m_backColor;                       ///< Color for the ruler background.
     SIZE m_majorTickHeight;                     ///< Height of the major tick marks, in pixels.

@@ -22,6 +22,7 @@
 #include "ToolMgr.h"
 #include "StatusBar.h"
 #include "ScreenMgr.h"
+#include "UnitsMgr.h"
 
 
 MeaToolMgr::MeaToolMgr(token) :
@@ -29,23 +30,24 @@ MeaToolMgr::MeaToolMgr(token) :
     m_dataDisplay(nullptr),
     m_crosshairsEnabled(kDefCrosshairsEnabled) {
     const MeaScreenProvider& screenProvider = MeaScreenMgr::Instance();
+    const MeaUnitsProvider& unitsProvider = MeaUnitsMgr::Instance();
 
     // Radio tools
     //
-    m_cursorTool = new MeaCursorTool(*this, screenProvider);
-    m_pointTool = new MeaPointTool(*this, screenProvider);
-    m_lineTool = new MeaLineTool(*this, screenProvider);
-    m_rectTool = new MeaRectTool(*this, screenProvider);
-    m_circleTool = new MeaCircleTool(*this, screenProvider);
-    m_angleTool = new MeaAngleTool(*this, screenProvider);
-    m_windowTool = new MeaWindowTool(*this, screenProvider);
+    m_cursorTool = new MeaCursorTool(*this, screenProvider, unitsProvider);
+    m_pointTool = new MeaPointTool(*this, screenProvider, unitsProvider);
+    m_lineTool = new MeaLineTool(*this, screenProvider, unitsProvider);
+    m_rectTool = new MeaRectTool(*this, screenProvider, unitsProvider);
+    m_circleTool = new MeaCircleTool(*this, screenProvider, unitsProvider);
+    m_angleTool = new MeaAngleTool(*this, screenProvider, unitsProvider);
+    m_windowTool = new MeaWindowTool(*this, screenProvider, unitsProvider);
 
     // Non-radio tools
     //
-    m_screenTool = new MeaScreenTool(*this, screenProvider);
-    m_rulerTool = new MeaRulerTool(*this, screenProvider);
-    m_gridTool = new MeaGridTool(*this, screenProvider);
-    m_originTool = new MeaOriginTool(*this, screenProvider);
+    m_screenTool = new MeaScreenTool(*this, screenProvider, unitsProvider);
+    m_rulerTool = new MeaRulerTool(*this, screenProvider, unitsProvider);
+    m_gridTool = new MeaGridTool(*this, screenProvider, unitsProvider);
+    m_originTool = new MeaOriginTool(*this, screenProvider, unitsProvider);
 
     // Put the tools in the map.
     //

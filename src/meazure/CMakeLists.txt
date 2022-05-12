@@ -62,6 +62,7 @@ source_group(Graphics FILES ${graphic_SRCS})
 
 set(interface_SRCS
     ScreenProvider.h
+    UnitsProvider.h
 )
 source_group(Interfaces FILES ${interface_SRCS})
 

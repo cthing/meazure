@@ -31,12 +31,13 @@
 const CString MeaCursorTool::kToolName(_T("CursorTool"));
 
 
-MeaCursorTool::MeaCursorTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
-    MeaRadioTool(mgr, screenProvider),
+MeaCursorTool::MeaCursorTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                             const MeaUnitsProvider& unitsProvider) :
+    MeaRadioTool(mgr, screenProvider, unitsProvider),
     m_cursorPos(0, 0),
     m_xDist(0),
     m_yDist(0),
-    m_dataWin(screenProvider) {}
+    m_dataWin(screenProvider, unitsProvider) {}
 
 
 MeaCursorTool::~MeaCursorTool() {
@@ -113,7 +114,7 @@ void MeaCursorTool::Update(MeaUpdateReason reason) {
         // Convert the pixel position of the pointer
         // to the current units.
         //
-        FPOINT cursorPos = MeaUnitsMgr::Instance().ConvertCoord(m_cursorPos);
+        FPOINT cursorPos = m_unitsProvider.ConvertCoord(m_cursorPos);
 
         // Display the measurement.
         //
@@ -165,7 +166,7 @@ const POINT& MeaCursorTool::GetPosition() const {
 }
 
 void MeaCursorTool::GetPosition(MeaPositionLogMgr::Position& position) const {
-    position.RecordXY1(MeaUnitsMgr::Instance().ConvertCoord(m_cursorPos));
+    position.RecordXY1(m_unitsProvider.ConvertCoord(m_cursorPos));
 }
 
 CString MeaCursorTool::GetToolName() const {

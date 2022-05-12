@@ -47,7 +47,7 @@ BEGIN_MESSAGE_MAP(MeaToolsPrefs, CPropertyPage)
 END_MESSAGE_MAP()
 
 
-MeaToolsPrefs::MeaToolsPrefs(const MeaScreenProvider& screenProvider) :
+MeaToolsPrefs::MeaToolsPrefs(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider) :
     CPropertyPage(MeaToolsPrefs::IDD),
     m_screenProvider(screenProvider),
     m_lineColor(0),
@@ -57,9 +57,9 @@ MeaToolsPrefs::MeaToolsPrefs(const MeaScreenProvider& screenProvider) :
     m_showDataWin(FALSE),
     m_opacity(0),
     m_originMarker(FALSE),
-    m_normalCH(screenProvider),
-    m_hiliteCH(screenProvider),
-    m_dataWin(screenProvider) {}
+    m_normalCH(screenProvider, unitsProvider),
+    m_hiliteCH(screenProvider, unitsProvider),
+    m_dataWin(screenProvider, unitsProvider) {}
 
 MeaToolsPrefs::~MeaToolsPrefs() {}
 

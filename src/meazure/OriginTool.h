@@ -47,8 +47,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the Origin tool.
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaOriginTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaOriginTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                           const MeaUnitsProvider& unitsProvider);
 
     /// Hides and then destroys the Origin tool.
     //

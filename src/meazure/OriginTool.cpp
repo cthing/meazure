@@ -26,7 +26,9 @@
 const CString MeaOriginTool::kToolName(_T("OriginTool"));
 
 
-MeaOriginTool::MeaOriginTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) : MeaTool(mgr, screenProvider) {}
+MeaOriginTool::MeaOriginTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                             const MeaUnitsProvider& unitsProvider) : 
+    MeaTool(mgr, screenProvider, unitsProvider) {}
 
 MeaOriginTool::~MeaOriginTool() {
     try {
@@ -100,10 +102,8 @@ void MeaOriginTool::Update(MeaUpdateReason reason) {
     if (IsEnabled()) {
         MeaTool::Update(reason);
 
-        MeaUnitsMgr& umgr = MeaUnitsMgr::Instance();
-
-        POINT origin = umgr.GetOrigin();
-        bool inverted = umgr.GetInvertY();
+        POINT origin = m_unitsProvider.GetOrigin();
+        bool inverted = m_unitsProvider.GetInvertY();
 
         if (inverted && (origin.x == 0) && (origin.y == 0)) {
             origin.y = m_screenProvider.GetVirtualRect().Height() - 1;
@@ -114,7 +114,7 @@ void MeaOriginTool::Update(MeaUpdateReason reason) {
         // containing the origin.
         //
         FSIZE res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(origin));
-        SIZE length = umgr.ConvertToPixels(MeaInchesId, res, 0.25, 10);
+        SIZE length = m_unitsProvider.ConvertToPixels(MeaInchesId, res, 0.25, 10);
 
         POINT xEnd, yEnd;
 
@@ -141,5 +141,5 @@ CString MeaOriginTool::GetToolName() const {
 }
 
 const POINT& MeaOriginTool::GetPosition() const {
-    return MeaUnitsMgr::Instance().GetOrigin();
+    return m_unitsProvider.GetOrigin();
 }

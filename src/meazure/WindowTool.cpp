@@ -31,14 +31,15 @@
 const CString MeaWindowTool::kToolName(_T("WindowTool"));
 
 
-MeaWindowTool::MeaWindowTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
-    MeaRadioTool(mgr, screenProvider),
+MeaWindowTool::MeaWindowTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                             const MeaUnitsProvider& unitsProvider) :
+    MeaRadioTool(mgr, screenProvider, unitsProvider),
     m_pointerPos(0, 0),
     m_point1(-1, -1),
     m_point2(-1, -1),
     m_currentWnd(nullptr),
     m_hiliteWnd(nullptr),
-    m_dataWin(screenProvider) {}
+    m_dataWin(screenProvider, unitsProvider) {}
 
 MeaWindowTool::~MeaWindowTool() {
     try {
@@ -132,13 +133,11 @@ void MeaWindowTool::Update(MeaUpdateReason reason) {
             }
         }
 
-        MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-
         // Convert the window dimensions to the current units.
         //
-        FPOINT p1 = units.ConvertCoord(m_point1);
-        FPOINT p2 = units.ConvertCoord(m_point2);
-        FSIZE wh = units.GetWidthHeight(m_point1, m_point2);
+        FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
+        FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
+        FSIZE wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
 
         // Display the measurement information.
         //
@@ -191,13 +190,11 @@ const POINT& MeaWindowTool::GetPosition() const {
 }
 
 void MeaWindowTool::GetPosition(MeaPositionLogMgr::Position& position) const {
-    MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-
     // Convert the pixel locations to the current units.
     //
-    FPOINT p1 = units.ConvertCoord(m_point1);
-    FPOINT p2 = units.ConvertCoord(m_point2);
-    FSIZE wh = units.GetWidthHeight(m_point1, m_point2);
+    FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
+    FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
+    FSIZE wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
 
     // Save the positions in the position object.
     //

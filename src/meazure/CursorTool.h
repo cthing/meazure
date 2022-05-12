@@ -41,8 +41,10 @@ public:
     ///
     /// @param mgr              [in] Tool manager parent of the Cursor tool.
     /// @param screenProvider   [in] Screen information provider
+    /// @param unitsProvider    [in] Units information provider
     ///
-    explicit MeaCursorTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider);
+    explicit MeaCursorTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                           const MeaUnitsProvider& unitsProvider);
 
     /// Destroys the Cursor tool.
     ///

@@ -25,8 +25,9 @@
 const CString MeaScreenTool::kToolName(_T("ScreenTool"));
 
 
-MeaScreenTool::MeaScreenTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider) :
-    MeaTool(mgr, screenProvider), m_rect(0, 0, 0, 0), m_anyOSRes(true) {
+MeaScreenTool::MeaScreenTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
+                             const MeaUnitsProvider& unitsProvider) :
+    MeaTool(mgr, screenProvider, unitsProvider), m_rect(0, 0, 0, 0), m_anyOSRes(true) {
     m_res.cx = 0.0;
     m_res.cy = 0.0;
 }
@@ -79,11 +80,9 @@ void MeaScreenTool::Update(MeaUpdateReason reason) {
         CPoint bottomRight(m_rect.BottomRight());
         bottomRight.Offset(-1, -1);
 
-        MeaUnitsMgr& units = MeaUnitsMgr::Instance();
-
         m_mgr.ShowScreenName(m_name);
-        m_mgr.ShowScreenWH(units.GetWidthHeight(topLeft, bottomRight));
-        m_mgr.ShowScreenRes(units.ConvertRes(m_res));
+        m_mgr.ShowScreenWH(m_unitsProvider.GetWidthHeight(topLeft, bottomRight));
+        m_mgr.ShowScreenRes(m_unitsProvider.ConvertRes(m_res));
         m_mgr.ShowCalButton(m_anyOSRes);
     }
 }

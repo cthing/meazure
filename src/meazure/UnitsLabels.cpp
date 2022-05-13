@@ -27,7 +27,7 @@
  * MeaUnitsLabel
  **************************************************************************/
 
-MeaUnitsLabel::MeaUnitsLabel(UINT format, LabelMap& labels, int& width) :
+MeaUnitsLabel::MeaUnitsLabel(UINT format, const LabelMap& labels, int& width) :
     MeaLabel(),
     m_labelsRef(labels),
     m_widthRef(width),
@@ -79,7 +79,7 @@ bool MeaUnitsLabel::SetSize() {
 CString MeaUnitsLabel::ConstructLabel(int unitsId) const {
     CString labelStr;
 
-    labelStr.Format(m_format, static_cast<LPCTSTR>(m_labelsRef[unitsId]));
+    labelStr.Format(m_format, static_cast<LPCTSTR>(m_labelsRef.at(unitsId)));
     return labelStr;
 }
 

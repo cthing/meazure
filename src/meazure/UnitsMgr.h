@@ -183,7 +183,7 @@ public:
     /// @param precisions   [in] Array of decimal places for each measurement type.
     ///
     void SetLinearDisplayPrecisions(MeaLinearUnitsId unitsId, const MeaUnits::DisplayPrecisions& precisions) {
-        m_linearUnitsMap[unitsId]->SetDisplayPrecisions(precisions);
+        m_linearUnitsMap.at(unitsId)->SetDisplayPrecisions(precisions);
     }
 
     /// Returns the array of decimal places currently set for each linear measurement
@@ -194,7 +194,7 @@ public:
     /// @return Array of decimal places for each linear measurement type.
     ///
     const MeaUnits::DisplayPrecisions& GetLinearDisplayPrecisions(MeaLinearUnitsId unitsId) {
-        return m_linearUnitsMap[unitsId]->GetDisplayPrecisions();
+        return m_linearUnitsMap.at(unitsId)->GetDisplayPrecisions();
     }
 
     /// Returns the array of default decimal places for each linear measurement
@@ -205,7 +205,7 @@ public:
     /// @return Array of decimal places for each linear measurement type.
     ///
     const MeaUnits::DisplayPrecisions& GetLinearDefaultPrecisions(MeaLinearUnitsId unitsId) {
-        return m_linearUnitsMap[unitsId]->GetDefaultPrecisions();
+        return m_linearUnitsMap.at(unitsId)->GetDefaultPrecisions();
     }
 
     /// Set the number of decimal places to show on the data display for angular
@@ -215,7 +215,7 @@ public:
     /// @param precisions   [in] Array of decimal places.
     ///
     void SetAngularDisplayPrecisions(MeaAngularUnitsId unitsId, const MeaUnits::DisplayPrecisions& precisions) {
-        m_angularUnitsMap[unitsId]->SetDisplayPrecisions(precisions);
+        m_angularUnitsMap.at(unitsId)->SetDisplayPrecisions(precisions);
     }
 
     /// Returns the array of decimal places currently set for the specified angular
@@ -226,7 +226,7 @@ public:
     /// @return Array of decimal places.
     ///
     const MeaUnits::DisplayPrecisions& GetAngularDisplayPrecisions(MeaAngularUnitsId unitsId) {
-        return m_angularUnitsMap[unitsId]->GetDisplayPrecisions();
+        return m_angularUnitsMap.at(unitsId)->GetDisplayPrecisions();
     }
 
     /// Returns the array of default decimal places for the specified angular
@@ -237,7 +237,7 @@ public:
     /// @return Array of decimal places.
     ///
     const MeaUnits::DisplayPrecisions& GetAngularDefaultPrecisions(MeaAngularUnitsId unitsId) {
-        return m_angularUnitsMap[unitsId]->GetDefaultPrecisions();
+        return m_angularUnitsMap.at(unitsId)->GetDefaultPrecisions();
     }
 
     /// By default, the Windows coordinate system is inverted from the

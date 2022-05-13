@@ -66,7 +66,7 @@ protected:
     ///                 label strings.
     /// @param width    [out] Width of the labels, in pixels.
     ///
-    MeaUnitsLabel(UINT format, LabelMap& labels, int& width);
+    MeaUnitsLabel(UINT format, const LabelMap& labels, int& width);
 
     /// Returns the measurement type format string.
     ///
@@ -92,9 +92,9 @@ protected:
     CString ConstructLabel(int unitsId) const;
 
 private:
-    LabelMap& m_labelsRef;  ///< Maps units identifiers to label strings.
-    int& m_widthRef;        ///< Width of the label object, in pixels.
-    UINT m_format;          ///< Label format string identifier.
+    const LabelMap& m_labelsRef;    ///< Maps units identifiers to label strings.
+    int& m_widthRef;                ///< Width of the label object, in pixels.
+    UINT m_format;                  ///< Label format string identifier.
 };
 
 

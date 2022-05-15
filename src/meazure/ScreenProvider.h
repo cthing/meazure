@@ -113,7 +113,7 @@ struct MeaScreenProvider {
     virtual CPoint GetOffScreen() const = 0;
 
     /// Returns the virtual screen rectangle. The virtual rectangle
-    /// is the rectangle containing all display screen attached to
+    /// is the rectangle containing all display screens attached to
     /// the system.
     ///
     /// @return Rectangle encompassing all display screens attached

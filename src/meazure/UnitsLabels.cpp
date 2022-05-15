@@ -92,6 +92,8 @@ MeaUnitsLabel::LabelMap MeaLinearUnitsLabel::m_labels;
 
 MeaLinearUnitsLabel::MeaLinearUnitsLabel(UINT format, int& width) :
     MeaUnitsLabel(format, m_labels, width) {
+
+    // Static initialization cannot be used because an HINSTANCE is not yet available for reading the string table.
     if (m_labels.empty()) {
         m_labels[MeaPixelsId].LoadString(IDS_MEA_PIXELS);
         m_labels[MeaPointsId].LoadString(IDS_MEA_POINTS);
@@ -127,6 +129,8 @@ int                     MeaAngularUnitsLabel::m_labelWidth = -1;
 
 MeaAngularUnitsLabel::MeaAngularUnitsLabel() :
     MeaUnitsLabel(IDS_MEA_DEF_LABEL_FMT, m_labels, m_labelWidth) {
+
+    // Static initialization cannot be used because an HINSTANCE is not yet available for reading the string table.
     if (m_labels.empty()) {
         m_labels[MeaDegreesId].LoadString(IDS_MEA_DEGREES);
         m_labels[MeaRadiansId].LoadString(IDS_MEA_RADIANS);

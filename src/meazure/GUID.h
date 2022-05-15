@@ -142,12 +142,12 @@ public:
     /// Tests the specified MeaGUID object for equality with this.
     /// @param guid     [in] MeaGUID object to test.
     /// @return <b>true</b> if the specified GUID object equals this object.
-    bool    IsEqual(const MeaGUID& guid) const { return IsEqual(guid.m_guid); }
+    bool IsEqual(const MeaGUID& guid) const { return IsEqual(guid.m_guid); }
 
     /// Tests the specified GUID structure for equality with this.
     /// @param guid     [in] Operating system defined GUID structure.
     /// @return <b>true</b> if the specified GUID structure equals this object.
-    bool    IsEqual(const GUID& guid) const {
+    bool IsEqual(const GUID& guid) const {
         return ((m_guid.Data1 == guid.Data1) &&
                 (m_guid.Data2 == guid.Data2) &&
                 (m_guid.Data3 == guid.Data3) &&

@@ -458,7 +458,7 @@ public:
     /// @param c2       [out] Closest integral pixel value above the converted
     ///                 coordinate.
     ///
-    /// @return <b>true</b> if the  conversion to pixels was exact.
+    /// @return <b>true</b> if the conversion to pixels was exact.
     ///
     bool UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double pos, int& c1, int& c2) const;
 
@@ -802,6 +802,8 @@ public:
 class MeaCustomUnits : public MeaLinearUnits {
 
 public:
+    typedef void (*ChangeLabelFunc)(MeaLinearUnitsId, const CString&);
+
     /// User defined units are based on a conversion factor. This factor
     /// converts from a basis set of units to the custom units. The
     /// basis for the conversion is identified by this enumeration.
@@ -819,9 +821,10 @@ public:
 
     /// Constructs custom units.
     /// 
-    /// @param screenProvider [in] Screen information provider
+    /// @param screenProvider   [in] Screen information provider
+    /// @param changeLabelFunc  [in] Function to change the label of the custom units
     ///
-    MeaCustomUnits(const MeaScreenProvider& screenProvider);
+    MeaCustomUnits(const MeaScreenProvider& screenProvider, ChangeLabelFunc changeLabelFunc);
 
     /// Destroys custom units.
     ///
@@ -943,8 +946,9 @@ public:
     virtual FSIZE FromPixels(const FSIZE& res) const override;
 
 private:
-    CString m_name;             ///< Name for the custom units.
-    CString m_abbrev;           ///< Abbreviation for the custom units.
-    ScaleBasis m_scaleBasis;    ///< Conversion basis for the custom units.
-    double m_scaleFactor;       ///< Conversion factor for the custom units.
+    ChangeLabelFunc m_changeLabelFunc;  ///< Function to change the label text
+    CString m_name;                     ///< Name for the custom units.
+    CString m_abbrev;                   ///< Abbreviation for the custom units.
+    ScaleBasis m_scaleBasis;            ///< Conversion basis for the custom units.
+    double m_scaleFactor;               ///< Conversion factor for the custom units.
 };

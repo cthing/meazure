@@ -92,7 +92,7 @@ MeaUnitsMgr::MeaUnitsMgr(token) :
     m_cmUnits(MeaScreenMgr::Instance()),
     m_mmUnits(MeaScreenMgr::Instance()),
     m_picaUnits(MeaScreenMgr::Instance()),
-    m_customUnits(MeaScreenMgr::Instance()),
+    m_customUnits(MeaScreenMgr::Instance(), &MeaLinearUnitsLabel::ChangeLabel),
     m_currentLinearUnits(&m_pixelUnits),
     m_currentAngularUnits(&m_degreeUnits),
     m_haveWarned(kDefHaveWarned),

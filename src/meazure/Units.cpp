@@ -19,7 +19,6 @@
 
 #include "StdAfx.h"
 #include "Units.h"
-#include "UnitsLabels.h"
 
 
 //*************************************************************************
@@ -553,8 +552,9 @@ const double MeaCustomUnits::kDefScaleFactor = 1.0;
 const MeaCustomUnits::ScaleBasis MeaCustomUnits::kDefScaleBasis = MeaCustomUnits::PixelBasis;
 
 
-MeaCustomUnits::MeaCustomUnits(const MeaScreenProvider& screenProvider) :
+MeaCustomUnits::MeaCustomUnits(const MeaScreenProvider& screenProvider, ChangeLabelFunc changeLabelFunc) :
     MeaLinearUnits(MeaCustomId, _T("custom"), screenProvider),
+    m_changeLabelFunc(changeLabelFunc),
     m_scaleBasis(kDefScaleBasis),
     m_scaleFactor(kDefScaleFactor) {
     AddPrecision(0);        // MeaX
@@ -635,7 +635,7 @@ void MeaCustomUnits::SetAbbrev(const CString& abbrev) {
     m_abbrev.TrimLeft();
     m_abbrev.TrimRight();
 
-    MeaLinearUnitsLabel::ChangeLabel(MeaCustomId, m_abbrev);
+    m_changeLabelFunc(MeaCustomId, m_abbrev);
 }
 
 CString MeaCustomUnits::GetScaleBasisStr() const {

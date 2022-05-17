@@ -18,8 +18,8 @@
  */
 #include "pch.h"
 #define COMPILE_LAYERED_WINDOW_STUBS
-#include "LayeredWindows.h"
-#include <Colors.h>
+#include <meazure/ui/LayeredWindows.h>
+#include <meazure/graphics/Colors.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

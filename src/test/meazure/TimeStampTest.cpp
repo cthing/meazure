@@ -18,7 +18,7 @@
  */
 
 #include "pch.h"
-#include <TimeStamp.h>
+#include <meazure/utilities/TimeStamp.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

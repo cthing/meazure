@@ -17,8 +17,8 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ScreenProvider.h"
-#include "Units.h"
+#include <meazure/ui/ScreenProvider.h>
+#include <meazure/units/Units.h>
 
 class MockScreenProvider : public MeaScreenProvider {
 

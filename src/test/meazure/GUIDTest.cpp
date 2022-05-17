@@ -18,7 +18,7 @@
  */
 
 #include "pch.h"
-#include <GUID.h>
+#include <meazure/utilities/GUID.h>
 #include <set>
 
 #ifdef _DEBUG

@@ -29,10 +29,11 @@ find_package(MFC REQUIRED)
 find_package(HTMLHelp REQUIRED)
 find_package(PythonInterp REQUIRED)
 
-set(APP_DIR "${PROJECT_SOURCE_DIR}/src/meazure")
+set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
+set(APP_DIR "${SRC_DIR}/meazure")
+set(TEST_DIR "${SRC_DIR}/test")
 set(SUPPORT_DIR "${PROJECT_SOURCE_DIR}/support")
 set(TOOLS_DIR "${SUPPORT_DIR}/tools")
-set(TEST_DIR "${PROJECT_SOURCE_DIR}/src/test")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /WX /W4")
 

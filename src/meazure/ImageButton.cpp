@@ -17,7 +17,7 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StdAfx.h"
+#include "pch.h"
 #define COMPILE_THEME_STUBS
 #include "Themes.h"
 #include "ImageButton.h"

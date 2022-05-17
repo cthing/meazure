@@ -17,7 +17,7 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StdAfx.h"
+#include "pch.h"
 #include "TimeStamp.h"
 #include <time.h>
 #include <string>

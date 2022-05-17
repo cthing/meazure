@@ -17,7 +17,7 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StdAfx.h"
+#include "pch.h"
 #include "Ruler.h"
 #include "Colors.h"
 #include "Layout.h"

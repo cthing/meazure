@@ -24,11 +24,12 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 set(Boost_NO_WARN_NEW_VERSIONS ON)
 
-find_package(Boost COMPONENTS date_time REQUIRED)
+find_package(Boost COMPONENTS date_time unit_test_framework REQUIRED)
 find_package(MFC REQUIRED)
 find_package(HTMLHelp REQUIRED)
 find_package(PythonInterp REQUIRED)
 
+set(APP_DIR "${PROJECT_SOURCE_DIR}/src/meazure")
 set(SUPPORT_DIR "${PROJECT_SOURCE_DIR}/support")
 set(TOOLS_DIR "${SUPPORT_DIR}/tools")
 set(TEST_DIR "${PROJECT_SOURCE_DIR}/src/test")

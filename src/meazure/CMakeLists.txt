@@ -29,8 +29,6 @@ set(top_SRCS
     PositionSaveDlg.cpp
     PositionSaveDlg.h
     resource.h
-    stdafx.cpp
-    stdafx.h
     Units.cpp
     Units.h
     UnitsLabels.cpp
@@ -190,6 +188,7 @@ configure_file(VersionNumbers.h.in VersionNumbers.h @ONLY)
 
 add_executable(Meazure WIN32 ${meazure_SRCS})
 add_dependencies(Meazure apphelp libexpat hooks)
+target_precompile_headers(Meazure PRIVATE pch.h)
 target_link_libraries(Meazure PRIVATE libexpat hooks Version.lib ${HTML_HELP_LIBRARY})
 target_include_directories(Meazure PRIVATE ${Boost_INCLUDE_DIRS} "${CMAKE_SOURCE_DIR}/src" "${CMAKE_CURRENT_BINARY_DIR}")
 target_link_directories(Meazure PRIVATE ${Boost_LIBRARY_DIRS})

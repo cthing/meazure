@@ -17,7 +17,7 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StdAfx.h"
+#include "pch.h"
 #include "RegistryProfile.h"
 #include "VersionInfo.h"
 

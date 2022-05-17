@@ -17,7 +17,7 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StdAfx.h"
+#include "pch.h"
 #include "DataWin.h"
 #include "ToolMgr.h"
 #include "Resource.h"

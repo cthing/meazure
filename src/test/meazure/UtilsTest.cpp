@@ -17,9 +17,8 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StdAfx.h"
+#include "pch.h"
 #include <Utils.h>
-#include <boost/test/included/unit_test.hpp>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -46,6 +45,7 @@ namespace {
 
         FSIZE fs3 = fs1 + fs2;
         BOOST_CHECK_CLOSE(15.0, fs3.cx, 0.0001);
+
         BOOST_CHECK_CLOSE(17.0, fs3.cy, 0.0001);
     }
 

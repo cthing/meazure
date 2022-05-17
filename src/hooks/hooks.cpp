@@ -17,7 +17,7 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "stdafx.h"
+#include "pch.h"
 #define MEA_HOOKSAPI __declspec(dllexport)
 #include "hooks.h"
 #include <crtdbg.h>

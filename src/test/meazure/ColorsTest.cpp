@@ -16,11 +16,10 @@
  * You should have received a copy of the GNU General Public License along
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "StdAfx.h"
+#include "pch.h"
 #define COMPILE_LAYERED_WINDOW_STUBS
 #include "LayeredWindows.h"
 #include <Colors.h>
-#include <boost/test/included/unit_test.hpp>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

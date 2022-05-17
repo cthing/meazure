@@ -17,10 +17,9 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "StdAfx.h"
+#include "pch.h"
 #include <GUID.h>
 #include <set>
-#include <boost/test/included/unit_test.hpp>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW

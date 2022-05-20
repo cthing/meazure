@@ -22,15 +22,7 @@
 
 #pragma once
 
-#include <math.h>
-#include <float.h>
-
-
-/// Tests whether the two specified double precision values
-/// are equal. The resolution of the double is used to make
-/// the determination of equality.
-///
-#define MEA_DBL_EQL(x, y)   (fabs((x) - (y)) < DBL_EPSILON)
+#include <cmath>
 
 
 /// Represents a rectangular size. Unlike the Windows SIZE
@@ -271,8 +263,8 @@ struct FSIZE {
 ///
 inline FSIZE log10(const FSIZE& fsize) {
     FSIZE f;
-    f.cx = log10(fsize.cx);
-    f.cy = log10(fsize.cy);
+    f.cx = std::log10(fsize.cx);
+    f.cy = std::log10(fsize.cy);
     return f;
 }
 
@@ -296,8 +288,8 @@ inline FSIZE log10(const FSIZE& fsize) {
 ///
 inline FSIZE floor(const FSIZE& fsize) {
     FSIZE f;
-    f.cx = floor(fsize.cx);
-    f.cy = floor(fsize.cy);
+    f.cx = std::floor(fsize.cx);
+    f.cy = std::floor(fsize.cy);
     return f;
 }
 
@@ -361,6 +353,27 @@ struct FPOINT {
 class MeaUtils {
 
 public:
+    /// Tests whether the two specified floating point values are equal.
+    /// 
+    /// @tparam T One of <b>float</b>, <b>double</b>, or <b>long double</b>
+    /// @param f1 [in] Value to test
+    /// @param f2 [in] Value to test
+    /// 
+    /// @return <b>true</b> if the two values are equal within an epsilon of the floating point type compensated
+    /// for the magnitude of the values. See
+    /// <a href="https://randomascii.wordpress.com/2012/02/25/comparing-floating-point-numbers-2012-edition/">Comparing
+    /// Floating Point Numbers, 2012 Edition</a> and
+    /// <a href="https://embeddeduse.com/2019/08/26/qt-compare-two-floats/">Comparing Two Floating-Point Numbers</a> 
+    /// for details on this implementation.
+    ///
+    template<typename T>
+    static bool IsFloatingEqual(T f1, T f2) {
+        if (std::fabs(f1 - f2) <= std::numeric_limits<T>::epsilon()) {
+            return true;
+        }
+        return std::fabs(f1 - f2) <= (std::numeric_limits<T>::epsilon() * std::fmax(std::fabs(f1), std::fabs(f2)));
+    }
+
     /// Converts the specified double to a string with the
     /// minimum number of decimal places.
     ///

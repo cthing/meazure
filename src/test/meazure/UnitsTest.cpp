@@ -18,6 +18,7 @@
  */
 
 #include "pch.h"
+#include <boost/test/unit_test.hpp>
 #include "mocks/MockScreenProvider.h"
 #include <meazure/units/Units.h>
 
@@ -26,10 +27,6 @@
 #endif
 
 CWinApp theApp;
-
-using namespace std;
-using namespace boost::unit_test;
-using boost::unit_test_framework::test_suite;
 
 
 BOOST_TEST_DONT_PRINT_LOG_VALUE(MeaUnits::DisplayPrecisions)
@@ -449,18 +446,18 @@ namespace {
     }
 }
 
-test_suite* init_unit_test_suite(int, char* []) {
+boost::unit_test_framework::test_suite* init_unit_test_suite(int, char* []) {
     if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-        cerr << "Fatal Error: MFC initialization failed\n";
+        std::cerr << "Fatal Error: MFC initialization failed\n";
         return nullptr;
     }
 
-    test_suite* angularUnitsTestSuite = BOOST_TEST_SUITE("Angular Units Tests");
+    boost::unit_test_framework::test_suite* angularUnitsTestSuite = BOOST_TEST_SUITE("Angular Units Tests");
     angularUnitsTestSuite->add(BOOST_TEST_CASE(&TestDegreeUnits));
     angularUnitsTestSuite->add(BOOST_TEST_CASE(&TestRadianUnits));
-    framework::master_test_suite().add(angularUnitsTestSuite);
+    boost::unit_test_framework::framework::master_test_suite().add(angularUnitsTestSuite);
 
-    test_suite* linearUnitsTestSuite = BOOST_TEST_SUITE("Linear Units Tests");
+    boost::unit_test_framework::test_suite* linearUnitsTestSuite = BOOST_TEST_SUITE("Linear Units Tests");
     linearUnitsTestSuite->add(BOOST_TEST_CASE(&TestPixelUnits));
     linearUnitsTestSuite->add(BOOST_TEST_CASE(&TestPointUnits));
     linearUnitsTestSuite->add(BOOST_TEST_CASE(&TestPicaUnits));
@@ -469,7 +466,7 @@ test_suite* init_unit_test_suite(int, char* []) {
     linearUnitsTestSuite->add(BOOST_TEST_CASE(&TestCentimeterUnits));
     linearUnitsTestSuite->add(BOOST_TEST_CASE(&TestMillimeterUnits));
     linearUnitsTestSuite->add(BOOST_TEST_CASE(&TestCustomUnits));
-    framework::master_test_suite().add(linearUnitsTestSuite);
+    boost::unit_test_framework::framework::master_test_suite().add(linearUnitsTestSuite);
 
     return nullptr;
 }

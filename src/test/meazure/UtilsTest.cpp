@@ -18,6 +18,7 @@
  */
 
 #include "pch.h"
+#include <boost/test/unit_test.hpp>
 #include <meazure/utilities/Utils.h>
 
 #ifdef _DEBUG
@@ -25,11 +26,6 @@
 #endif
 
 CWinApp theApp;
-
-
-using namespace std;
-using namespace boost::unit_test;
-using boost::unit_test_framework::test_suite;
 
 
 namespace {
@@ -45,7 +41,6 @@ namespace {
 
         FSIZE fs3 = fs1 + fs2;
         BOOST_CHECK_CLOSE(15.0, fs3.cx, 0.0001);
-
         BOOST_CHECK_CLOSE(17.0, fs3.cy, 0.0001);
     }
 
@@ -191,6 +186,20 @@ namespace {
         BOOST_CHECK_EQUAL(CString(_T("0.0")), str);
     }
 
+    void TestIsFloatingEqual() {
+        BOOST_CHECK(MeaUtils::IsFloatingEqual(0.0, 0.0));
+        BOOST_CHECK(MeaUtils::IsFloatingEqual(1.0, 1.0));
+        BOOST_CHECK(MeaUtils::IsFloatingEqual(-1.0, -1.0));
+        BOOST_CHECK(MeaUtils::IsFloatingEqual(3.141596, 3.141596));
+        BOOST_CHECK(MeaUtils::IsFloatingEqual(1.0/17.0, 1/17.0));
+        BOOST_CHECK(MeaUtils::IsFloatingEqual(std::numeric_limits<double>::epsilon(), std::numeric_limits<double>::epsilon()));
+        BOOST_CHECK(MeaUtils::IsFloatingEqual(1.000000001f, 1.000000002f));
+
+        BOOST_CHECK(!MeaUtils::IsFloatingEqual(0.0, 1.5));
+        BOOST_CHECK(!MeaUtils::IsFloatingEqual(-10.0, 3.141596));
+        BOOST_CHECK(!MeaUtils::IsFloatingEqual(1.000001f, 1.000002f));
+    }
+
     void TestIsNumber() {
         BOOST_CHECK(MeaUtils::IsNumber(_T("123")));
         BOOST_CHECK(MeaUtils::IsNumber(_T("+123")));
@@ -255,13 +264,13 @@ namespace {
     }
 }
 
-test_suite* init_unit_test_suite(int, char*[]) {
+boost::unit_test_framework::test_suite* init_unit_test_suite(int, char*[]) {
     if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-        cerr << "Fatal Error: MFC initialization failed\n";
+        std::cerr << "Fatal Error: MFC initialization failed\n";
         return nullptr;
     }
 
-    test_suite* fsizeTestSuite = BOOST_TEST_SUITE("FSIZE Tests");
+    boost::unit_test_framework::test_suite* fsizeTestSuite = BOOST_TEST_SUITE("FSIZE Tests");
     fsizeTestSuite->add(BOOST_TEST_CASE(&TestAddFSize));
     fsizeTestSuite->add(BOOST_TEST_CASE(&TestAddValue));
     fsizeTestSuite->add(BOOST_TEST_CASE(&TestMultFSize));
@@ -273,15 +282,16 @@ test_suite* init_unit_test_suite(int, char*[]) {
     fsizeTestSuite->add(BOOST_TEST_CASE(&TestLog10));
     fsizeTestSuite->add(BOOST_TEST_CASE(&TestFloor));
     fsizeTestSuite->add(BOOST_TEST_CASE(&TestValueSub));
-    framework::master_test_suite().add(fsizeTestSuite);
+    boost::unit_test_framework::framework::master_test_suite().add(fsizeTestSuite);
 
-    test_suite* utilsTestSuite = BOOST_TEST_SUITE("Utils Tests");
+    boost::unit_test_framework::test_suite* utilsTestSuite = BOOST_TEST_SUITE("Utils Tests");
     utilsTestSuite->add(BOOST_TEST_CASE(&TestDblToStr));
+    utilsTestSuite->add(BOOST_TEST_CASE(&TestIsFloatingEqual));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestIsNumber));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestIsBoolean));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestLFtoCRLF));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestCRLFtoLF));
-    framework::master_test_suite().add(utilsTestSuite);
+    boost::unit_test_framework::framework::master_test_suite().add(utilsTestSuite);
 
     return nullptr;
 }

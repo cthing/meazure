@@ -108,7 +108,7 @@ void MeaColors::RGBtoHSL(COLORREF rgb, HSL& hsl) {
     double cmin = Min(r, Min(g, b));
 
     l = (cmax + cmin) / 2.0;
-    if (MEA_DBL_EQL(cmax, cmin)) {
+    if (MeaUtils::IsFloatingEqual(cmax, cmin)) {
         s = 0.0;
         h = 0.0; // it's really undefined
     } else {
@@ -119,9 +119,9 @@ void MeaColors::RGBtoHSL(COLORREF rgb, HSL& hsl) {
         }
         double delta = cmax - cmin;
 
-        if (MEA_DBL_EQL(r, cmax)) {
+        if (MeaUtils::IsFloatingEqual(r, cmax)) {
             h = (g - b) / delta;
-        } else if (MEA_DBL_EQL(g, cmax)) {
+        } else if (MeaUtils::IsFloatingEqual(g, cmax)) {
             h = 2.0 + (b - r) / delta;
         } else {
             h = 4.0 + (r - g) / delta;

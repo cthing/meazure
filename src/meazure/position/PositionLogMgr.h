@@ -163,12 +163,12 @@ public:
         ///
         bool IsEqual(const Screen& screen) const {
             return ((m_primary == screen.m_primary) &&
-                    MEA_DBL_EQL(m_rect.top, screen.m_rect.top) &&
-                    MEA_DBL_EQL(m_rect.bottom, screen.m_rect.bottom) &&
-                    MEA_DBL_EQL(m_rect.left, screen.m_rect.left) &&
-                    MEA_DBL_EQL(m_rect.right, screen.m_rect.right) &&
-                    MEA_DBL_EQL(m_res.cx, screen.m_res.cx) &&
-                    MEA_DBL_EQL(m_res.cy, screen.m_res.cy) &&
+                    MeaUtils::IsFloatingEqual(m_rect.top, screen.m_rect.top) &&
+                    MeaUtils::IsFloatingEqual(m_rect.bottom, screen.m_rect.bottom) &&
+                    MeaUtils::IsFloatingEqual(m_rect.left, screen.m_rect.left) &&
+                    MeaUtils::IsFloatingEqual(m_rect.right, screen.m_rect.right) &&
+                    MeaUtils::IsFloatingEqual(m_res.cx, screen.m_res.cx) &&
+                    MeaUtils::IsFloatingEqual(m_res.cy, screen.m_res.cy) &&
                     (m_manualRes == screen.m_manualRes) &&
                     (m_desc == screen.m_desc));
         }
@@ -349,18 +349,18 @@ public:
         ///         Note that the object's unique IDs are not compared.
         ///
         bool IsEqual(const DesktopInfo& desktop) const {
-            return (MEA_DBL_EQL(m_origin.x, desktop.m_origin.x) &&
-                    MEA_DBL_EQL(m_origin.y, desktop.m_origin.y) &&
+            return (MeaUtils::IsFloatingEqual(m_origin.x, desktop.m_origin.x) &&
+                    MeaUtils::IsFloatingEqual(m_origin.y, desktop.m_origin.y) &&
                     (m_invertY == desktop.m_invertY) &&
-                    MEA_DBL_EQL(m_size.cx, desktop.m_size.cx) &&
-                    MEA_DBL_EQL(m_size.cy, desktop.m_size.cy) &&
+                    MeaUtils::IsFloatingEqual(m_size.cx, desktop.m_size.cx) &&
+                    MeaUtils::IsFloatingEqual(m_size.cy, desktop.m_size.cy) &&
                     (m_linearUnits == desktop.m_linearUnits) &&
                     (m_angularUnits == desktop.m_angularUnits) &&
                     (m_screens == desktop.m_screens) &&
                     (m_customName == desktop.m_customName) &&
                     (m_customAbbrev == desktop.m_customAbbrev) &&
                     (m_customBasisStr == desktop.m_customBasisStr) &&
-                    MEA_DBL_EQL(m_customFactor, desktop.m_customFactor) &&
+                    MeaUtils::IsFloatingEqual(m_customFactor, desktop.m_customFactor) &&
                     (m_customPrecisions == desktop.m_customPrecisions));
         }
 

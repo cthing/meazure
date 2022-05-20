@@ -18,6 +18,7 @@
  */
 #include "pch.h"
 #define COMPILE_LAYERED_WINDOW_STUBS
+#include <boost/test/unit_test.hpp>
 #include <meazure/ui/LayeredWindows.h>
 #include <meazure/graphics/Colors.h>
 
@@ -26,11 +27,6 @@
 #endif
 
 CWinApp theApp;
-
-
-using namespace std;
-using namespace boost::unit_test;
-using boost::unit_test_framework::test_suite;
 
 
 namespace {
@@ -173,13 +169,13 @@ namespace {
     }
 }
 
-test_suite* init_unit_test_suite(int, char*[]) {
+boost::unit_test_framework::test_suite* init_unit_test_suite(int, char*[]) {
     if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-        cerr << "Fatal Error: MFC initialization failed\n";
+        std::cerr << "Fatal Error: MFC initialization failed\n";
         return nullptr;
     }
 
-    test_suite* suite = BOOST_TEST_SUITE("Colors Tests");
+    boost::unit_test_framework::test_suite* suite = BOOST_TEST_SUITE("Colors Tests");
     suite->add(BOOST_TEST_CASE(&TestRGBtoHSL));
     suite->add(BOOST_TEST_CASE(&TestHSLtoRGB));
     suite->add(BOOST_TEST_CASE(&TestInterpolateColor));

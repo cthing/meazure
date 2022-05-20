@@ -104,7 +104,10 @@ void MeaScreenTool::SetPosition(const POINT& pos) {
     // the tool is different from the information for the screen
     // corresponding to the specified position.
     //
-    if ((m_rect != rect) || !MEA_DBL_EQL(m_res.cx, res.cx) || !MEA_DBL_EQL(m_res.cy, res.cy) || (m_anyOSRes != anyOSRes)) {
+    if ((m_rect != rect)
+        || !MeaUtils::IsFloatingEqual(m_res.cx, res.cx)
+        || !MeaUtils::IsFloatingEqual(m_res.cy, res.cy)
+        || (m_anyOSRes != anyOSRes)) {
         m_rect = rect;
         m_res = res;
         m_anyOSRes = m_screenProvider.AnyOSRes();

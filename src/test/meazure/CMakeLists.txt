@@ -1,5 +1,5 @@
 
-add_definitions(-D_CONSOLE -D_AFXDLL)
+add_definitions(-D_CONSOLE -D_AFXDLL) 
 set(CMAKE_MFC_FLAG 2)
 
 if(CMAKE_CXX_FLAGS MATCHES "/EHs")
@@ -17,6 +17,7 @@ macro(add_meazure_test runner reuse)
     endif()
     target_include_directories(${runner} PRIVATE ${SRC_DIR} ${Boost_INCLUDE_DIRS})
     target_link_libraries(${runner} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY})
+    set_target_properties(${runner} PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE")
     add_test(${runner} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${runner})    
 endmacro()
 

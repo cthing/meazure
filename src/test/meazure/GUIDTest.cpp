@@ -18,6 +18,7 @@
  */
 
 #include "pch.h"
+#include <boost/test/unit_test.hpp>
 #include <meazure/utilities/GUID.h>
 #include <set>
 
@@ -26,11 +27,6 @@
 #endif
 
 CWinApp theApp;
-
-
-using namespace std;
-using namespace boost::unit_test;
-using boost::unit_test_framework::test_suite;
 
 
 namespace {
@@ -271,13 +267,13 @@ namespace {
     }
 }
 
-test_suite* init_unit_test_suite(int, char*[]) {
+boost::unit_test_framework::test_suite* init_unit_test_suite(int, char*[]) {
     if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-        cerr << "Fatal Error: MFC initialization failed\n";
+        std::cerr << "Fatal Error: MFC initialization failed\n";
         return nullptr;
     }
 
-    test_suite* suite = BOOST_TEST_SUITE("GUID Tests");
+    boost::unit_test_framework::test_suite* suite = BOOST_TEST_SUITE("GUID Tests");
     suite->add(BOOST_TEST_CASE(&TestDefaultCtor));
     suite->add(BOOST_TEST_CASE(&TestGUIDCtor));
     suite->add(BOOST_TEST_CASE(&TestCopyCtor));

@@ -356,7 +356,7 @@ bool MeaCalibrationPrefs::GetFieldValue(UINT fieldId, double& value) {
                     v *= 2.54;
                 }
             }
-            if ((v > DBL_EPSILON) && !MEA_DBL_EQL(value, v)) {
+            if ((v > DBL_EPSILON) && !MeaUtils::IsFloatingEqual(value, v)) {
                 value = v;
                 return true;
             }

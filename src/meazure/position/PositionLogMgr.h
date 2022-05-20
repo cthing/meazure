@@ -68,15 +68,7 @@ public:
     public:
         /// Constructs a screen object.
         ///
-        Screen() : m_primary(false), m_manualRes(false) {
-            m_rect.left = 0.0;
-            m_rect.right = 0.0;
-            m_rect.top = 0.0;
-            m_rect.bottom = 0.0;
-
-            m_res.cx = 0.0;
-            m_res.cy = 0.0;
-        }
+        Screen() : m_primary(false), m_manualRes(false) {}
 
         /// Constructs deep copy screen object from the specified
         /// iterator over the list of screens.

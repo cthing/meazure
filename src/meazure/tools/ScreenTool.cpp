@@ -28,8 +28,6 @@ const CString MeaScreenTool::kToolName(_T("ScreenTool"));
 MeaScreenTool::MeaScreenTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                              const MeaUnitsProvider& unitsProvider) :
     MeaTool(mgr, screenProvider, unitsProvider), m_rect(0, 0, 0, 0), m_anyOSRes(true) {
-    m_res.cx = 0.0;
-    m_res.cy = 0.0;
 }
 
 MeaScreenTool::~MeaScreenTool() {

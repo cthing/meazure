@@ -34,6 +34,17 @@ struct FSIZE {
     double cy;     ///< Length in the y dimension.
 
 
+    /// Constructs a size object initialized to 0.0 width and height.
+    ///
+    FSIZE() : cx(0.0), cy(0.0) {}
+
+    /// Constructs a size object initialized to the specified dimensions.
+    /// 
+    /// @param x  [in] Length in the x dimension
+    /// @param y  [in] Length in the y dimension
+    ///
+    FSIZE(double x, double y) : cx(x), cy(y) {}
+
     /// Adds this and the specified object and returns
     /// a new size object.
     /// \f[
@@ -56,10 +67,7 @@ struct FSIZE {
     /// @return New object that is the sum of this and the
     ///         specified object.
     FSIZE operator+(const FSIZE& fsize) const {
-        FSIZE f;
-        f.cx = cx + fsize.cx;
-        f.cy = cy + fsize.cy;
-        return f;
+        return FSIZE(cx + fsize.cx, cy + fsize.cy);
     }
 
     /// Adds this and the specified value and returns
@@ -84,10 +92,7 @@ struct FSIZE {
     /// @return New object that is the sum of this and the
     ///         specified value.
     FSIZE operator+(double val) const {
-        FSIZE f;
-        f.cx = cx + val;
-        f.cy = cy + val;
-        return f;
+        return FSIZE(cx + val, cy + val);
     }
 
     /// Multiplies this and the specified object and returns
@@ -111,10 +116,7 @@ struct FSIZE {
     /// @return New object that is the product of this and the
     ///         specified object.
     FSIZE operator*(const FSIZE& fsize) const {
-        FSIZE f;
-        f.cx = cx * fsize.cx;
-        f.cy = cy * fsize.cy;
-        return f;
+        return FSIZE(cx * fsize.cx, cy * fsize.cy);
     }
 
     /// Multiplies this and the specified object and returns
@@ -138,10 +140,7 @@ struct FSIZE {
     /// @return New object that is the product of this and the
     ///         specified object.
     FSIZE operator*(const SIZE& size) const {
-        FSIZE f;
-        f.cx = cx * size.cx;
-        f.cy = cy * size.cy;
-        return f;
+        return FSIZE(cx * size.cx, cy * size.cy);
     }
 
     /// Multiplies this and the specified value and returns
@@ -161,10 +160,7 @@ struct FSIZE {
     /// @return New object that is the product of this and the
     ///         specified value.
     FSIZE operator*(double mult) const {
-        FSIZE f;
-        f.cx = cx * mult;
-        f.cy = cy * mult;
-        return f;
+        return FSIZE(cx * mult, cy * mult);
     }
 
     /// Adds the specified size object to this.
@@ -262,10 +258,7 @@ struct FSIZE {
 ///         the specified size object's dimensions.
 ///
 inline FSIZE log10(const FSIZE& fsize) {
-    FSIZE f;
-    f.cx = std::log10(fsize.cx);
-    f.cy = std::log10(fsize.cy);
-    return f;
+    return FSIZE(std::log10(fsize.cx), std::log10(fsize.cy));
 }
 
 /// Calculates the floor on each dimension of the specified
@@ -287,10 +280,7 @@ inline FSIZE log10(const FSIZE& fsize) {
 ///         the specified size object's dimensions.
 ///
 inline FSIZE floor(const FSIZE& fsize) {
-    FSIZE f;
-    f.cx = std::floor(fsize.cx);
-    f.cy = std::floor(fsize.cy);
-    return f;
+    return FSIZE(std::floor(fsize.cx), std::floor(fsize.cy));
 }
 
 /// Subtracts the specified size object from the specified
@@ -320,10 +310,7 @@ inline FSIZE floor(const FSIZE& fsize) {
 ///         object being subtracted from the specified value.
 ///
 inline FSIZE operator-(double val, const FSIZE& fsize) {
-    FSIZE f;
-    f.cx = val - fsize.cx;
-    f.cy = val - fsize.cy;
-    return f;
+    return FSIZE(val - fsize.cx, val - fsize.cy);
 }
 
 
@@ -336,6 +323,19 @@ struct FRECT {
     double bottom;      ///< Bottom of the rectangle.
     double left;        ///< Left side of the rectangle.
     double right;       ///< Right side of the rectangle.
+
+    /// Constructs a rectangle object initialized to 0.0 in all coordinates.
+    ///
+    FRECT() : top(0.0), bottom(0.0), left(0.0), right(0.0) {}
+
+    /// Constructs a rectangle object initialized to the specified coordinates.
+    /// 
+    /// @param t  [in] Initial top coordinate 
+    /// @param b  [in] Initial bottom coordinate
+    /// @param l  [in] Initial left coordinate
+    /// @param r  [in] Initial right coordinate
+    /// 
+    FRECT(double t, double b, double l, double r) : top(t), bottom(b), left(l), right(r) {}
 };
 
 
@@ -347,6 +347,17 @@ struct FRECT {
 struct FPOINT {
     double x;       ///< X position.
     double y;       ///< Y position.
+
+    /// Constructs a point object initialized to (0.0, 0.0).
+    ///
+    FPOINT(): x(0.0), y(0.0) {}
+    
+    /// Constructs a point object initialized to the specified coordinates.
+    /// 
+    /// @param xi  [in] Initial x coordinate 
+    /// @param yi  [in] Initial y coordinate
+    /// 
+    FPOINT(double xi, double yi) : x(xi), y(yi) {}
 };
 
 

@@ -532,6 +532,14 @@ private:
         return GetParentFrame()->GetControlBar(AFX_IDW_STATUS_BAR)->IsVisible() ? true : false;
     }
 
+    /// Indicates whether the specified key is being pressed.
+    ///
+    /// @param keyCode  ASCII character code or VK_* for a virtual key.
+    /// 
+    static bool IsKeyPressed(int keyCode) {
+        return GetKeyState(keyCode) & 0x8000;
+    }
+
     /// Displays or hides the measurement data section.
     ///
     /// @param enable       [in] <b>true</b> if the section should be shown.

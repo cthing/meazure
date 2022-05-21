@@ -427,14 +427,14 @@ BOOL AppView::PreTranslateMessage(MSG* pMsg) {
 
     if (pMsg->message == WM_KEYDOWN) {
         auto incPosition = [&pressed](int keyCode, MeaFields which) {
-            if (MeaUtils::IsKeyPressed(keyCode)) {
+            if (IsKeyPressed(keyCode)) {
                 MeaToolMgr::Instance().IncPosition(which);
                 pressed = true;
             }
         };
 
         auto decPosition = [&pressed](int keyCode, MeaFields which) {
-            if (MeaUtils::IsKeyPressed(keyCode)) {
+            if (IsKeyPressed(keyCode)) {
                 MeaToolMgr::Instance().DecPosition(which);
                 pressed = true;
             }
@@ -442,28 +442,28 @@ BOOL AppView::PreTranslateMessage(MSG* pMsg) {
 
         switch (pMsg->wParam) {
         case VK_DOWN:
-            if (MeaUtils::IsKeyPressed(VK_CONTROL)) {
+            if (IsKeyPressed(VK_CONTROL)) {
                 incPosition(CHAR_1, MeaY1Field);
                 incPosition(CHAR_2, MeaY2Field);
                 incPosition(CHAR_3, MeaYVField);
             }
             break;
         case VK_UP:
-            if (MeaUtils::IsKeyPressed(VK_CONTROL)) {
+            if (IsKeyPressed(VK_CONTROL)) {
                 decPosition(CHAR_1, MeaY1Field);
                 decPosition(CHAR_2, MeaY2Field);
                 decPosition(CHAR_3, MeaYVField);
             }
             break;
         case VK_LEFT:
-            if (MeaUtils::IsKeyPressed(VK_CONTROL)) {
+            if (IsKeyPressed(VK_CONTROL)) {
                 decPosition(CHAR_1, MeaX1Field);
                 decPosition(CHAR_2, MeaX2Field);
                 decPosition(CHAR_3, MeaXVField);
             }
             break;
         case VK_RIGHT:
-            if (MeaUtils::IsKeyPressed(VK_CONTROL)) {
+            if (IsKeyPressed(VK_CONTROL)) {
                 incPosition(CHAR_1, MeaX1Field);
                 incPosition(CHAR_2, MeaX2Field);
                 incPosition(CHAR_3, MeaXVField);

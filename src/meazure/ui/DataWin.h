@@ -23,7 +23,7 @@
 #pragma once
 
 #include <meazure/profile/Profile.h>
-#include "Layout.h"
+#include <meazure/utilities/Geometry.h>
 #include "ScreenProvider.h"
 #include <meazure/units/UnitsProvider.h>
 
@@ -106,7 +106,7 @@ public:
     /// @param dist     [in] Dimensions used to calculate the distance.
     ///
     void ShowDistance(const FSIZE& dist) {
-        m_dData = m_unitsProvider.Format(MeaD, MeaLayout::CalcLength(dist.cx, dist.cy));
+        m_dData = m_unitsProvider.Format(MeaD, MeaGeometry::CalcLength(dist.cx, dist.cy));
     }
 
     /// Displays the specified distance. For the value to be displayed, a

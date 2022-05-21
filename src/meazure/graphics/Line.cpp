@@ -20,7 +20,7 @@
 #include <meazure/pch.h>
 #include "Line.h"
 #include <meazure/utilities/MeaAssert.h>
-#include <meazure/ui/Layout.h>
+#include <meazure/utilities/Geometry.h>
 #include "Colors.h"
 #include <cstdlib>
 
@@ -64,8 +64,8 @@ MeaLine::~MeaLine() {
 
 bool MeaLine::Create(int shrink, const MeaScreenProvider& screenProvider, const CWnd* parent) {
     const CRect& vscreen = screenProvider.GetVirtualRect();
-    UINT size = 2 * static_cast<UINT>(MeaLayout::CalcLength(static_cast<double>(vscreen.Width()),
-                                                            static_cast<double>(vscreen.Height())));
+    UINT size = 2 * static_cast<UINT>(MeaGeometry::CalcLength(static_cast<double>(vscreen.Width()),
+                                                              static_cast<double>(vscreen.Height())));
     m_shrink = shrink;
 
     if (m_varr == nullptr) {

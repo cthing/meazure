@@ -23,6 +23,8 @@
 #include "ScreenMgr.h"
 #include <meazure/resource.h>
 #include <meazure/utilities/MeaAssert.h>
+#include <meazure/utilities/NumericUtils.h>
+#include <meazure/utilities/Geometry.h>
 #include <stdio.h>
 #include <AfxPriv.h>
 #include <windowsx.h>
@@ -468,7 +470,7 @@ void MeaDataDisplay::ShowWH(const FSIZE& size) {
 }
 
 void MeaDataDisplay::ShowDistance(const FSIZE& size) {
-    m_length.SetText(MeaUnitsMgr::Instance().Format(MeaD, MeaLayout::CalcLength(size.cx, size.cy)));
+    m_length.SetText(MeaUnitsMgr::Instance().Format(MeaD, MeaGeometry::CalcLength(size.cx, size.cy)));
 }
 
 void MeaDataDisplay::ShowDistance(double dist) {
@@ -492,7 +494,7 @@ void MeaDataDisplay::ShowRectArea(const FSIZE& size) {
 }
 
 void MeaDataDisplay::ShowCircleArea(double radius) {
-    m_area.SetText(MeaUnitsMgr::Instance().Format(MeaAr, MeaUnits::kPI * radius * radius));
+    m_area.SetText(MeaUnitsMgr::Instance().Format(MeaAr, MeaNumericUtils::PI * radius * radius));
 }
 
 void MeaDataDisplay::ShowScreenName(const CString& name) {

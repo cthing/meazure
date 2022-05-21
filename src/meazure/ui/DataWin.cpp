@@ -21,6 +21,8 @@
 #include "DataWin.h"
 #include "LayeredWindows.h"
 #include <meazure/tools/ToolMgr.h>
+#include <meazure/ui/Layout.h>
+#include <meazure/utilities/Geometry.h>
 #include <meazure/resource.h>
 
 
@@ -235,7 +237,7 @@ int MeaDataWin::CalcWidth() {
     CString yStr = _T("-") + m_unitsProvider.Format(MeaY, wh.cy);
     CString wStr = m_unitsProvider.Format(MeaW, wh.cx);
     CString hStr = m_unitsProvider.Format(MeaH, wh.cy);
-    CString dStr = m_unitsProvider.Format(MeaD, MeaLayout::CalcLength(wh.cx, wh.cy));
+    CString dStr = m_unitsProvider.Format(MeaD, MeaGeometry::CalcLength(wh.cx, wh.cy));
     CString aStr = m_unitsProvider.FormatConvertAngle(-3.0);
 
     int maxLen = 0;

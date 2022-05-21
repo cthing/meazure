@@ -165,9 +165,11 @@ source_group(Tools FILES ${tool_SRCS})
 set(utility_SRCS
     utilities/exval.cpp
     utilities/exval.h
+    utilities/Geometry.h
     utilities/GUID.cpp
     utilities/GUID.h
     utilities/MeaAssert.h
+    utilities/NumericUtils.h
     utilities/Singleton.h
     utilities/Timer.cpp
     utilities/Timer.h

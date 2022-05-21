@@ -20,9 +20,10 @@
 #include <meazure/pch.h>
 #include "AngleTool.h"
 #include "ToolMgr.h"
-#include <meazure/ui/Layout.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
+#include <meazure/utilities/Geometry.h>
+#include <meazure/utilities/NumericUtils.h>
 
 
 const CString   MeaAngleTool::kToolName(_T("AngleTool"));
@@ -272,7 +273,7 @@ void MeaAngleTool::Update(MeaUpdateReason reason) {
         // Calculate the angle based on the locations
         // of the crosshairs in the current units.
         //
-        double angle = MeaLayout::GetAngle(v, p1, p2);
+        double angle = MeaGeometry::CalcAngle(v, p1, p2);
 
         // Display the results of the measurement in
         // the data display fields.
@@ -419,7 +420,7 @@ void MeaAngleTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     // Compute the angle and save it in the
     // position object.
     //
-    double angle = MeaLayout::GetAngle(v, p1, p2);
+    double angle = MeaGeometry::CalcAngle(v, p1, p2);
     position.RecordAngle(angle);
 }
 
@@ -606,16 +607,10 @@ void MeaAngleTool::OnCHMove(const CHInfo* info) {
             // to vertical or horizontal.
             //
             if (info->flags & MK_SHIFT) {
-                switch (MeaLayout::GetSector(m_vertex, m_point1)) {
-                case 1:
-                case -1:
-                case 2:
-                case -2:
+                if (MeaGeometry::IsVerticallyOriented(m_vertex, m_point1)) {
                     m_point1.x = m_vertex.x;
-                    break;
-                default:
+                } else {
                     m_point1.y = m_vertex.y;
-                    break;
                 }
             }
 
@@ -628,16 +623,10 @@ void MeaAngleTool::OnCHMove(const CHInfo* info) {
             // to vertical or horizontal.
             //
             if (info->flags & MK_SHIFT) {
-                switch (MeaLayout::GetSector(m_vertex, m_point2)) {
-                case 1:
-                case -1:
-                case 2:
-                case -2:
+                if (MeaGeometry::IsVerticallyOriented(m_vertex, m_point2)) {
                     m_point2.x = m_vertex.x;
-                    break;
-                default:
+                } else {
                     m_point2.y = m_vertex.y;
-                    break;
                 }
             }
 
@@ -650,16 +639,10 @@ void MeaAngleTool::OnCHMove(const CHInfo* info) {
             // to vertical or horizontal.
             //
             if (info->flags & MK_SHIFT) {
-                switch (MeaLayout::GetSector(m_vertexAnchor, m_vertex)) {
-                case 1:
-                case -1:
-                case 2:
-                case -2:
+                if (MeaGeometry::IsVerticallyOriented(m_vertexAnchor, m_vertex)) {
                     m_vertex.x = m_vertexAnchor.x;
-                    break;
-                default:
+                } else {
                     m_vertex.y = m_vertexAnchor.y;
-                    break;
                 }
             } else {
                 m_vertexAnchor = m_vertex;
@@ -701,7 +684,7 @@ void MeaAngleTool::UpdateBisector() {
     //
     // Bisector angle = (angle 1 + angle 2) / 2
     //
-    double alphaB = (MeaLayout::GetAngle(v, p1) + MeaLayout::GetAngle(v, p2)) / 2.0;
+    double alphaB = (MeaGeometry::CalcAngle(v, p1) + MeaGeometry::CalcAngle(v, p2)) / 2.0;
 
     if (m_unitsProvider.GetInvertY()) {
         alphaB = -alphaB;
@@ -713,14 +696,14 @@ void MeaAngleTool::UpdateBisector() {
                   m_vertex.y + static_cast<LONG>(kLengthB * sin(alphaB)));
     FPOINT pB = m_unitsProvider.ConvertCoord(pointB);
 
-    bool angleSign = MeaLayout::GetAngle(v, p1, p2) >= 0.0;
-    bool bisectorSign = MeaLayout::GetAngle(v, p1, pB) >= 0.0;
+    bool angleSign = MeaGeometry::CalcAngle(v, p1, p2) >= 0.0;
+    bool bisectorSign = MeaGeometry::CalcAngle(v, p1, pB) >= 0.0;
 
     // If we need to flip the bisector, add 180 degrees and recalculate
     // its location.
     //
     if ((angleSign && !bisectorSign) || (!angleSign && bisectorSign)) {
-        alphaB = alphaB + MeaUnits::kPI;
+        alphaB = alphaB + MeaNumericUtils::PI;
         pointB.x = m_vertex.x + static_cast<LONG>(kLengthB * cos(alphaB));
         pointB.y = m_vertex.y + static_cast<LONG>(kLengthB * sin(alphaB));
     }

@@ -21,6 +21,7 @@
 #include "ToolsPrefs.h"
 #include <meazure/ui/ColorDialog.h>
 #include <meazure/ui/LayeredWindows.h>
+#include <meazure/ui/Layout.h>
 #include <meazure/graphics/Colors.h>
 
 

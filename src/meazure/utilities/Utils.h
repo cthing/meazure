@@ -385,6 +385,18 @@ public:
         return std::fabs(f1 - f2) <= (std::numeric_limits<T>::epsilon() * std::fmax(std::fabs(f1), std::fabs(f2)));
     }
 
+    /// Tests whether the specified floating point value is zero.
+    /// 
+    /// @tparam T One of <b>float</b>, <b>double</b>, or <b>long double</b>
+    /// @param f [in] Value to test
+    /// 
+    /// @return <b>true</b> if the value is equal to zero within an epsilon of the floating point type.
+    ///
+    template<typename T>
+    static bool IsFloatingZero(T f) {
+        return std::fabs(f) <= std::numeric_limits<T>::epsilon();
+    }
+
     /// Converts the specified double to a string with the
     /// minimum number of decimal places.
     ///

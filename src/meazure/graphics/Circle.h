@@ -23,8 +23,8 @@
 #pragma once
 
 #include "Graphic.h"
-#include <meazure/ui/Layout.h>
 #include <meazure/ui/ScreenProvider.h>
+#include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/Timer.h>
 
 
@@ -92,7 +92,7 @@ public:
     /// @return The length of the circle's radius, in pixels.
     ///
     int GetRadius() const {
-        return static_cast<int>(MeaLayout::CalcLength(m_center, m_perimeter));
+        return static_cast<int>(MeaGeometry::CalcLength(m_center, m_perimeter));
     }
 
     /// Sets the color of the circle's line.

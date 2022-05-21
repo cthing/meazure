@@ -93,8 +93,6 @@ enum MeaConvertDir {
 class MeaUnits {
 
 public:
-    static const double kPI;    ///< The value of pi.
-
     typedef std::vector<int>        DisplayPrecisions;      ///< Number of decimal places to display for each type of measurement.
     typedef std::vector<CString>    DisplayPrecisionNames;  ///< Strings to identify units precisions in profiles.
 

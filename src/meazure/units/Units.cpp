@@ -19,14 +19,12 @@
 
 #include <meazure/pch.h>
 #include "Units.h"
+#include <meazure/utilities/NumericUtils.h>
 
 
 //*************************************************************************
 // MeaUnits
 //*************************************************************************
-
-
-const double MeaUnits::kPI = 3.14159265359;
 
 
 MeaUnits::MeaUnits(LPCTSTR unitsStr) : m_unitsStr(unitsStr) {}
@@ -106,7 +104,7 @@ MeaDegreeUnits::MeaDegreeUnits() : MeaAngularUnits(MeaDegreesId, _T("deg")) {
 MeaDegreeUnits::~MeaDegreeUnits() {}
 
 double MeaDegreeUnits::ConvertAngle(double angle) const {
-    return 360.0 * angle / (2.0 * MeaUnits::kPI);
+    return 360.0 * angle / (2.0 * MeaNumericUtils::PI);
 }
 
 

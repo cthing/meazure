@@ -28,6 +28,8 @@
 #include <meazure/VersionInfo.h>
 #include <meazure/utilities/TimeStamp.h>
 #include <meazure/utilities/Utils.h>
+#include <meazure/utilities/NumericUtils.h>
+#include <meazure/utilities/Geometry.h>
 
 
 MeaPositionLogMgr::MeaPositionLogMgr(token) :
@@ -956,7 +958,7 @@ void MeaPositionLogMgr::Position::RecordWH(const FSIZE& size) {
 void MeaPositionLogMgr::Position::RecordDistance(const FSIZE& size) {
     m_fieldMask |= MeaDistanceField;
 
-    m_distance = MeaLayout::CalcLength(size.cx, size.cy);
+    m_distance = MeaGeometry::CalcLength(size.cx, size.cy);
 }
 
 void MeaPositionLogMgr::Position::RecordDistance(double dist) {
@@ -980,7 +982,7 @@ void MeaPositionLogMgr::Position::RecordRectArea(const FSIZE& size) {
 void MeaPositionLogMgr::Position::RecordCircleArea(double radius) {
     m_fieldMask |= MeaAreaField;
 
-    m_area = MeaUnits::kPI * radius * radius;
+    m_area = MeaNumericUtils::PI * radius * radius;
 }
 
 void MeaPositionLogMgr::Position::Show() const {

@@ -67,9 +67,9 @@ bool MeaCircle::Create(const MeaScreenProvider& screenProvider, const CWnd* pare
     // is made up of each screen display.
     //
     m_clipRect = screenProvider.GetVirtualRect();
-    double radius = MeaLayout::CalcLength(static_cast<double>(m_clipRect.Width()),
-                                          static_cast<double>(m_clipRect.Height()));
-    UINT size = 2 * static_cast<UINT>(MeaLayout::CalcCircumference(radius));
+    double radius = MeaGeometry::CalcLength(static_cast<double>(m_clipRect.Width()),
+                                            static_cast<double>(m_clipRect.Height()));
+    UINT size = 2 * static_cast<UINT>(MeaGeometry::CalcCircumference(radius));
 
     // Single the circular region is composed of a series of rectangles, preload
     // the vertex count array with 4, the number of vertices composing a rectangle.

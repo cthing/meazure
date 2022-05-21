@@ -20,7 +20,7 @@
 #include <meazure/pch.h>
 #include "RectTool.h"
 #include "ToolMgr.h"
-#include <meazure/ui/Layout.h>
+#include <meazure/utilities/Geometry.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
 
@@ -232,7 +232,7 @@ void MeaRectTool::Update(MeaUpdateReason reason) {
         m_mgr.ShowXY2(m_point2, p2);
         m_mgr.ShowWH(wh);
         m_mgr.ShowDistance(wh);
-        m_mgr.ShowAngle(MeaLayout::GetAngle(p1, p2));
+        m_mgr.ShowAngle(MeaGeometry::CalcAngle(p1, p2));
         m_mgr.ShowAspect(wh);
         m_mgr.ShowRectArea(wh);
 
@@ -360,7 +360,7 @@ void MeaRectTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     position.RecordXY2(p2);
     position.RecordWH(wh);
     position.RecordDistance(wh);
-    position.RecordAngle(MeaLayout::GetAngle(p1, p2));
+    position.RecordAngle(MeaGeometry::CalcAngle(p1, p2));
     position.RecordRectArea(wh);
 }
 
@@ -492,16 +492,10 @@ void MeaRectTool::OnCHMove(const CHInfo* info) {
         // to vertical or horizontal.
         //
         if (info->flags & MK_SHIFT) {
-            switch (MeaLayout::GetSector(anchorPoint, movingPoint)) {
-            case 1:
-            case -1:
-            case 2:
-            case -2:
+            if (MeaGeometry::IsVerticallyOriented(anchorPoint, movingPoint)) {
                 movingPoint.x = anchorPoint.x;
-                break;
-            default:
+            } else {
                 movingPoint.y = anchorPoint.y;
-                break;
             }
         } else {
             anchorPoint = movingPoint;

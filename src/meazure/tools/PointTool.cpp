@@ -20,7 +20,7 @@
 #include <meazure/pch.h>
 #include "PointTool.h"
 #include "ToolMgr.h"
-#include <meazure/ui/Layout.h>
+#include <meazure/utilities/Geometry.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
 
@@ -299,16 +299,10 @@ void MeaPointTool::OnCHMove(const CHInfo* info) {
     // to vertical or horizontal.
     //
     if (info->flags & MK_SHIFT) {
-        switch (MeaLayout::GetSector(m_anchorPoint, m_center)) {
-        case 1:
-        case -1:
-        case 2:
-        case -2:
+        if (MeaGeometry::IsVerticallyOriented(m_anchorPoint, m_center)) {
             m_center.x = m_anchorPoint.x;
-            break;
-        default:
+        } else {
             m_center.y = m_anchorPoint.y;
-            break;
         }
     } else {
         m_anchorPoint = m_center;

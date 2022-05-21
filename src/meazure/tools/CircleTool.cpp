@@ -20,7 +20,7 @@
 #include <meazure/pch.h>
 #include "CircleTool.h"
 #include "ToolMgr.h"
-#include <meazure/ui/Layout.h>
+#include <meazure/utilities/Geometry.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
 
@@ -252,7 +252,7 @@ void MeaCircleTool::Update(MeaUpdateReason reason) {
         m_mgr.ShowXY1(m_perimeter, p2);
         m_mgr.ShowWH(wh);
         m_mgr.ShowDistance(r);
-        m_mgr.ShowAngle(MeaLayout::GetAngle(p1, p2));
+        m_mgr.ShowAngle(MeaGeometry::CalcAngle(p1, p2));
         m_mgr.ShowCircleArea(r);
 
         // The screen information depends on the
@@ -394,7 +394,7 @@ void MeaCircleTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     position.RecordXY1(p2);
     position.RecordWH(wh);
     position.RecordDistance(r);
-    position.RecordAngle(MeaLayout::GetAngle(p1, p2));
+    position.RecordAngle(MeaGeometry::CalcAngle(p1, p2));
     position.RecordCircleArea(r);
 }
 
@@ -529,16 +529,10 @@ void MeaCircleTool::OnCHMove(const CHInfo* info) {
         // to vertical or horizontal.
         //
         if (info->flags & MK_SHIFT) {
-            switch (MeaLayout::GetSector(m_center, m_perimeter)) {
-            case 1:
-            case -1:
-            case 2:
-            case -2:
+            if (MeaGeometry::IsVerticallyOriented(m_center, m_perimeter)) {
                 movingPoint.x = fixedPoint.x;
-                break;
-            default:
+            } else {
                 movingPoint.y = fixedPoint.y;
-                break;
             }
         }
 

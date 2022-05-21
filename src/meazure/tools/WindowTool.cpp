@@ -21,7 +21,7 @@
 #include "WindowTool.h"
 #include "ToolMgr.h"
 #include <meazure/utilities/MeaAssert.h>
-#include <meazure/ui/Layout.h>
+#include <meazure/utilities/Geometry.h>
 #include <meazure/graphics/Colors.h>
 #include <meazure/resource.h>
 #include <Hooks/Hooks.h>
@@ -145,7 +145,7 @@ void MeaWindowTool::Update(MeaUpdateReason reason) {
         m_mgr.ShowXY2(m_point2, p2);
         m_mgr.ShowWH(wh);
         m_mgr.ShowDistance(wh);
-        m_mgr.ShowAngle(MeaLayout::GetAngle(p1, p2));
+        m_mgr.ShowAngle(MeaGeometry::CalcAngle(p1, p2));
         m_mgr.ShowAspect(wh);
         m_mgr.ShowRectArea(wh);
 
@@ -202,7 +202,7 @@ void MeaWindowTool::GetPosition(MeaPositionLogMgr::Position& position) const {
     position.RecordXY2(p2);
     position.RecordWH(wh);
     position.RecordDistance(wh);
-    position.RecordAngle(MeaLayout::GetAngle(p1, p2));
+    position.RecordAngle(MeaGeometry::CalcAngle(p1, p2));
     position.RecordRectArea(wh);
 }
 

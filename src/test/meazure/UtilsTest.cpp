@@ -234,6 +234,17 @@ namespace {
         BOOST_CHECK(!MeaUtils::IsFloatingEqual(1.000001f, 1.000002f));
     }
 
+    void TestIsFloatingZero() {
+        BOOST_CHECK(MeaUtils::IsFloatingZero(0.0));
+        BOOST_CHECK(MeaUtils::IsFloatingZero(-0.0));
+        BOOST_CHECK(MeaUtils::IsFloatingZero(std::numeric_limits<double>::epsilon()));
+
+        BOOST_CHECK(!MeaUtils::IsFloatingZero(1.0));
+        BOOST_CHECK(!MeaUtils::IsFloatingZero(-1.0));
+        BOOST_CHECK(!MeaUtils::IsFloatingZero(2.0 * std::numeric_limits<double>::epsilon()));
+        BOOST_CHECK(!MeaUtils::IsFloatingZero(-2.0 * std::numeric_limits<double>::epsilon()));
+    }
+
     void TestIsNumber() {
         BOOST_CHECK(MeaUtils::IsNumber(_T("123")));
         BOOST_CHECK(MeaUtils::IsNumber(_T("+123")));
@@ -330,6 +341,7 @@ boost::unit_test_framework::test_suite* init_unit_test_suite(int, char*[]) {
     boost::unit_test_framework::test_suite* utilsTestSuite = BOOST_TEST_SUITE("Utils Tests");
     utilsTestSuite->add(BOOST_TEST_CASE(&TestDblToStr));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestIsFloatingEqual));
+    utilsTestSuite->add(BOOST_TEST_CASE(&TestIsFloatingZero));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestIsNumber));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestIsBoolean));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestLFtoCRLF));

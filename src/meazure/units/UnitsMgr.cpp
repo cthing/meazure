@@ -22,6 +22,7 @@
 #include <meazure/resource.h>
 #include <meazure/Messages.h>
 #include <meazure/ui/ScreenMgr.h>
+#include <meazure/utilities/StringUtils.h>
 
 
  //*************************************************************************
@@ -121,8 +122,8 @@ void MeaUnitsMgr::SaveProfile(MeaProfile& profile) {
     profile.WriteBool(_T("InvertY"), GetInvertY());
 
     FPOINT pt = ConvertPos(GetOrigin());
-    profile.WriteStr(_T("OriginX"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("OriginY"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("OriginX"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("OriginY"), MeaStringUtils::DblToStr(pt.y));
 
     if (!profile.UserInitiated()) {
         profile.WriteBool(_T("HaveWarned"), m_haveWarned);

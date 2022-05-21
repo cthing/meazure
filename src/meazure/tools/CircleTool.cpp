@@ -21,6 +21,7 @@
 #include "CircleTool.h"
 #include "ToolMgr.h"
 #include <meazure/utilities/Geometry.h>
+#include <meazure/utilities/StringUtils.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
 
@@ -115,12 +116,12 @@ void MeaCircleTool::SaveProfile(MeaProfile& profile) {
     // Save the position of the center and perimeter points.
     //
     pt = m_unitsProvider.ConvertPos(m_center);
-    profile.WriteStr(_T("CircleXV"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("CircleYV"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("CircleXV"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("CircleYV"), MeaStringUtils::DblToStr(pt.y));
 
     pt = m_unitsProvider.ConvertPos(m_perimeter);
-    profile.WriteStr(_T("CircleX1"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("CircleY1"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("CircleX1"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("CircleY1"), MeaStringUtils::DblToStr(pt.y));
 }
 
 void MeaCircleTool::LoadProfile(MeaProfile& profile) {

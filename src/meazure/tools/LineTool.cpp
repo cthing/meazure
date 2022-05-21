@@ -21,6 +21,7 @@
 #include "LineTool.h"
 #include "ToolMgr.h"
 #include <meazure/utilities/Geometry.h>
+#include <meazure/utilities/StringUtils.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
 
@@ -108,11 +109,11 @@ void MeaLineTool::SaveProfile(MeaProfile& profile) {
     // Save the position of each end point.
     //
     pt = m_unitsProvider.ConvertPos(m_point1);
-    profile.WriteStr(_T("LineX1"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("LineY1"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("LineX1"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("LineY1"), MeaStringUtils::DblToStr(pt.y));
     pt = m_unitsProvider.ConvertPos(m_point2);
-    profile.WriteStr(_T("LineX2"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("LineY2"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("LineX2"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("LineY2"), MeaStringUtils::DblToStr(pt.y));
 }
 
 void MeaLineTool::LoadProfile(MeaProfile& profile) {

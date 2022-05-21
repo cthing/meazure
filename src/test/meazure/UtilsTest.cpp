@@ -202,86 +202,6 @@ namespace {
         BOOST_CHECK_CLOSE(1.0, fp2.x, 0.0001);
         BOOST_CHECK_CLOSE(2.0, fp2.y, 0.0001);
     }
-
-    void TestDblToStr() {
-        CString str = MeaUtils::DblToStr(123.456);
-        BOOST_CHECK_EQUAL(CString(_T("123.456")), str);
-
-        str = MeaUtils::DblToStr(-123.456);
-        BOOST_CHECK_EQUAL(CString(_T("-123.456")), str);
-
-        str = MeaUtils::DblToStr(+123.456);
-        BOOST_CHECK_EQUAL(CString(_T("123.456")), str);
-
-        str = MeaUtils::DblToStr(0);
-        BOOST_CHECK_EQUAL(CString(_T("0.0")), str);
-
-        str = MeaUtils::DblToStr(0.0);
-        BOOST_CHECK_EQUAL(CString(_T("0.0")), str);
-    }
-
-    void TestIsNumber() {
-        BOOST_CHECK(MeaUtils::IsNumber(_T("123")));
-        BOOST_CHECK(MeaUtils::IsNumber(_T("+123")));
-        BOOST_CHECK(MeaUtils::IsNumber(_T("-123")));
-        BOOST_CHECK(MeaUtils::IsNumber(_T("1.30")));
-        BOOST_CHECK(!MeaUtils::IsNumber(_T("a123")));
-        BOOST_CHECK(!MeaUtils::IsNumber(_T("")));
-
-        double value;
-        MeaUtils::IsNumber(_T("123"), &value);
-        BOOST_CHECK_CLOSE(123.0, value, 0.0001);
-        MeaUtils::IsNumber(_T("+123"), &value);
-        BOOST_CHECK_CLOSE(123.0, value, 0.0001);
-        MeaUtils::IsNumber(_T("-123"), &value);
-        BOOST_CHECK_CLOSE(-123.0, value, 0.0001);
-        MeaUtils::IsNumber(_T("1.30"), &value);
-        BOOST_CHECK_CLOSE(1.3, value, 0.0001);
-    }
-
-    void TestIsBoolean() {
-        BOOST_CHECK(MeaUtils::IsBoolean(_T("1")));
-        BOOST_CHECK(MeaUtils::IsBoolean(_T("true")));
-        BOOST_CHECK(MeaUtils::IsBoolean(_T("TRUE")));
-        BOOST_CHECK(MeaUtils::IsBoolean(_T("0")));
-        BOOST_CHECK(MeaUtils::IsBoolean(_T("false")));
-        BOOST_CHECK(MeaUtils::IsBoolean(_T("FALSE")));
-        BOOST_CHECK(!MeaUtils::IsBoolean(_T("10")));
-        BOOST_CHECK(!MeaUtils::IsBoolean(_T("-1")));
-        BOOST_CHECK(!MeaUtils::IsBoolean(_T("ON")));
-        BOOST_CHECK(!MeaUtils::IsBoolean(_T("OFF")));
-        BOOST_CHECK(!MeaUtils::IsBoolean(_T("")));
-
-        bool value;
-        MeaUtils::IsBoolean(_T("1"), &value);
-        BOOST_CHECK(value);
-        MeaUtils::IsBoolean(_T("true"), &value);
-        BOOST_CHECK(value);
-        MeaUtils::IsBoolean(_T("TRUE"), &value);
-        BOOST_CHECK(value);
-        MeaUtils::IsBoolean(_T("0"), &value);
-        BOOST_CHECK(!value);
-        MeaUtils::IsBoolean(_T("false"), &value);
-        BOOST_CHECK(!value);
-        MeaUtils::IsBoolean(_T("FALSE"), &value);
-        BOOST_CHECK(!value);
-    }
-
-    void TestLFtoCRLF() {
-        BOOST_CHECK_EQUAL(CString(_T("\r\n")), MeaUtils::LFtoCRLF(_T("\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\r\n")), MeaUtils::LFtoCRLF(_T("\r\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\r\nHello\r\n\r\nWorld\r\n")), MeaUtils::LFtoCRLF(_T("\nHello\n\nWorld\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\r\nHello\r\n\r\nWorld\r\n")), MeaUtils::LFtoCRLF(_T("\r\nHello\n\r\nWorld\n")));
-        BOOST_CHECK_EQUAL(CString(_T("")), MeaUtils::LFtoCRLF(_T("")));
-    }
-
-    void TestCRLFtoLF() {
-        BOOST_CHECK_EQUAL(CString(_T("\n")), MeaUtils::CRLFtoLF(_T("\r\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\n")), MeaUtils::CRLFtoLF(_T("\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\nHello\n\nWorld\n")), MeaUtils::CRLFtoLF(_T("\r\nHello\r\n\r\nWorld\r\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\nHello\n\nWorld\n")), MeaUtils::CRLFtoLF(_T("\r\nHello\n\r\nWorld\n")));
-        BOOST_CHECK_EQUAL(CString(_T("")), MeaUtils::LFtoCRLF(_T("")));
-    }
 }
 
 boost::unit_test_framework::test_suite* init_unit_test_suite(int, char*[]) {
@@ -312,14 +232,6 @@ boost::unit_test_framework::test_suite* init_unit_test_suite(int, char*[]) {
     boost::unit_test_framework::test_suite* fpointTestSuite = BOOST_TEST_SUITE("FPOINT Tests");
     fpointTestSuite->add(BOOST_TEST_CASE(&TestInitialPoint));
     boost::unit_test_framework::framework::master_test_suite().add(fpointTestSuite);
-
-    boost::unit_test_framework::test_suite* utilsTestSuite = BOOST_TEST_SUITE("Utils Tests");
-    utilsTestSuite->add(BOOST_TEST_CASE(&TestDblToStr));
-    utilsTestSuite->add(BOOST_TEST_CASE(&TestIsNumber));
-    utilsTestSuite->add(BOOST_TEST_CASE(&TestIsBoolean));
-    utilsTestSuite->add(BOOST_TEST_CASE(&TestLFtoCRLF));
-    utilsTestSuite->add(BOOST_TEST_CASE(&TestCRLFtoLF));
-    boost::unit_test_framework::framework::master_test_suite().add(utilsTestSuite);
 
     return nullptr;
 }

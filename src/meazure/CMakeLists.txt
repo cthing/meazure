@@ -171,6 +171,8 @@ set(utility_SRCS
     utilities/MeaAssert.h
     utilities/NumericUtils.h
     utilities/Singleton.h
+    utilities/StringUtils.cpp
+    utilities/StringUtils.h
     utilities/Timer.cpp
     utilities/Timer.h
     utilities/TimeStamp.cpp

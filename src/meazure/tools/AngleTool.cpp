@@ -24,6 +24,7 @@
 #include <meazure/graphics/Colors.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/NumericUtils.h>
+#include <meazure/utilities/StringUtils.h>
 
 
 const CString   MeaAngleTool::kToolName(_T("AngleTool"));
@@ -139,14 +140,14 @@ void MeaAngleTool::SaveProfile(MeaProfile& profile) {
     // Save the position of point 1, point 2 and the vertex.
     //
     pt = m_unitsProvider.ConvertPos(m_point1);
-    profile.WriteStr(_T("AngleX1"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("AngleY1"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("AngleX1"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("AngleY1"), MeaStringUtils::DblToStr(pt.y));
     pt = m_unitsProvider.ConvertPos(m_point2);
-    profile.WriteStr(_T("AngleX2"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("AngleY2"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("AngleX2"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("AngleY2"), MeaStringUtils::DblToStr(pt.y));
     pt = m_unitsProvider.ConvertPos(m_vertex);
-    profile.WriteStr(_T("AngleXV"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("AngleYV"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("AngleXV"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("AngleYV"), MeaStringUtils::DblToStr(pt.y));
 }
 
 void MeaAngleTool::LoadProfile(MeaProfile& profile) {

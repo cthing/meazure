@@ -23,6 +23,7 @@
 #include "ScreenMgr.h"
 #include <meazure/resource.h>
 #include <meazure/utilities/MeaAssert.h>
+#include <meazure/utilities/StringUtils.h>
 
 
 /// Represents a single display screen.
@@ -216,8 +217,8 @@ void MeaScreenMgr::SaveProfile(MeaProfile& profile) const {
             profile.WriteInt(tag + _T("CenterX"), screenEntry.second->GetCenter().x);
             profile.WriteInt(tag + _T("CenterY"), screenEntry.second->GetCenter().y);
             profile.WriteBool(tag + _T("UseManualRes"), useManualRes);
-            profile.WriteStr(tag + _T("ManualResX"), MeaUtils::DblToStr(manualRes.cx));
-            profile.WriteStr(tag + _T("ManualResY"), MeaUtils::DblToStr(manualRes.cy));
+            profile.WriteStr(tag + _T("ManualResX"), MeaStringUtils::DblToStr(manualRes.cx));
+            profile.WriteStr(tag + _T("ManualResY"), MeaStringUtils::DblToStr(manualRes.cy));
             profile.WriteBool(tag + _T("CalInInches"), screenEntry.second->GetCalInInches());
 
             screenIdx++;

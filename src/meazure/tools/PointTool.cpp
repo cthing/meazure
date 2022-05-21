@@ -21,6 +21,7 @@
 #include "PointTool.h"
 #include "ToolMgr.h"
 #include <meazure/utilities/Geometry.h>
+#include <meazure/utilities/StringUtils.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
 
@@ -75,8 +76,8 @@ void MeaPointTool::SaveProfile(MeaProfile& profile) {
     // Save the position of the crosshair.
     //
     FPOINT pt = m_unitsProvider.ConvertPos(m_center);
-    profile.WriteStr(_T("PointX1"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("PointY1"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("PointX1"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("PointY1"), MeaStringUtils::DblToStr(pt.y));
 }
 
 void MeaPointTool::LoadProfile(MeaProfile& profile) {

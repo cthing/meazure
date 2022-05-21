@@ -30,6 +30,7 @@
 #include <meazure/utilities/Utils.h>
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/Geometry.h>
+#include <meazure/utilities/StringUtils.h>
 
 
 MeaPositionLogMgr::MeaPositionLogMgr(token) :
@@ -487,7 +488,7 @@ CString MeaPositionLogMgr::ProcessDataNodes(const MeaXMLNode* elementNode) {
         }
     }
 
-    return MeaUtils::LFtoCRLF(data);
+    return MeaStringUtils::LFtoCRLF(data);
 }
 
 void MeaPositionLogMgr::WriteInfoSection(int indent) {
@@ -498,7 +499,7 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) {
 
     Write(indent, _T("<info>\n"));
     indent++;
-    Write(indent, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_title))));
+    Write(indent, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_title))));
     Write(indent, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(nullptr))));
     Write(indent, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
           static_cast<LPCTSTR>(AfxGetAppName()),
@@ -506,7 +507,7 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) {
           g_versionInfo.GetProductBuild());
     Write(indent, _T("<machine name=\"%s\"/>\n"), nameBuffer);
     if (!m_desc.IsEmpty()) {
-        Write(indent, _T("<desc>%s</desc>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_desc))));
+        Write(indent, _T("<desc>%s</desc>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
     }
     indent--;
     Write(indent, _T("</info>\n"));
@@ -628,13 +629,13 @@ void MeaPositionLogMgr::Screen::Save(MeaPositionLogMgr& mgr, int indent) const {
               (m_primary ? _T("true") : _T("false")));
     indent++;
     mgr.Write(indent, _T("<rect top=\"%s\" bottom=\"%s\" left=\"%s\" right=\"%s\"/>\n"),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_rect.top)),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_rect.bottom)),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_rect.left)),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_rect.right)));
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.top)),
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.bottom)),
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.left)),
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.right)));
     mgr.Write(indent, _T("<resolution x=\"%s\" y=\"%s\" manual=\"%s\"/>\n"),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_res.cx)),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_res.cy)),
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_res.cx)),
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_res.cy)),
               (m_manualRes ? _T("true") : _T("false")));
     indent--;
     mgr.Write(indent, _T("</screen>\n"));
@@ -759,12 +760,12 @@ void MeaPositionLogMgr::DesktopInfo::Save(MeaPositionLogMgr& mgr, int indent) co
     }
 
     mgr.Write(indent, _T("<origin xoffset=\"%s\" yoffset=\"%s\" invertY=\"%s\"/>\n"),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_origin.x)),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_origin.y)),
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_origin.x)),
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_origin.y)),
               (m_invertY ? _T("true") : _T("false")));
     mgr.Write(indent, _T("<size x=\"%s\" y=\"%s\"/>\n"),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_size.cx)),
-              static_cast<LPCTSTR>(MeaUtils::DblToStr(m_size.cy)));
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_size.cx)),
+              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_size.cy)));
 
     mgr.Write(indent, _T("<screens>\n"));
     indent++;
@@ -1125,7 +1126,7 @@ void MeaPositionLogMgr::Position::Save(int indent) const {
     indent++;
     if (!m_desc.IsEmpty()) {
         m_mgr->Write(indent, _T("<desc>%s</desc>\n"),
-                     static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaUtils::CRLFtoLF(m_desc))));
+                     static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
     }
 
     m_mgr->Write(indent, _T("<points>\n"));
@@ -1133,8 +1134,8 @@ void MeaPositionLogMgr::Position::Save(int indent) const {
     for (const auto& pointEntry : m_points) {
         m_mgr->Write(indent, _T("<point name=\"%s\" x=\"%s\" y=\"%s\"/>\n"),
                      static_cast<LPCTSTR>(pointEntry.first),
-                     static_cast<LPCTSTR>(MeaUtils::DblToStr(pointEntry.second.x)),
-                     static_cast<LPCTSTR>(MeaUtils::DblToStr(pointEntry.second.y)));
+                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.x)),
+                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.y)));
     }
     indent--;
     m_mgr->Write(indent, _T("</points>\n"));
@@ -1143,23 +1144,23 @@ void MeaPositionLogMgr::Position::Save(int indent) const {
     indent++;
     if (m_fieldMask & MeaWidthField) {
         m_mgr->Write(indent, _T("<width value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaUtils::DblToStr(m_width)));
+                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_width)));
     }
     if (m_fieldMask & MeaHeightField) {
         m_mgr->Write(indent, _T("<height value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaUtils::DblToStr(m_height)));
+                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_height)));
     }
     if (m_fieldMask & MeaDistanceField) {
         m_mgr->Write(indent, _T("<distance value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaUtils::DblToStr(m_distance)));
+                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_distance)));
     }
     if (m_fieldMask & MeaAreaField) {
         m_mgr->Write(indent, _T("<area value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaUtils::DblToStr(m_area)));
+                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_area)));
     }
     if (m_fieldMask & MeaAngleField) {
         m_mgr->Write(indent, _T("<angle value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaUtils::DblToStr(m_angle)));
+                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_angle)));
     }
     indent--;
     m_mgr->Write(indent, _T("</properties>\n"));

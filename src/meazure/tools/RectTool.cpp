@@ -21,6 +21,7 @@
 #include "RectTool.h"
 #include "ToolMgr.h"
 #include <meazure/utilities/Geometry.h>
+#include <meazure/utilities/StringUtils.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
 
@@ -109,11 +110,11 @@ void MeaRectTool::SaveProfile(MeaProfile& profile) {
     // Save the position of the each crosshairs.
     //
     pt = m_unitsProvider.ConvertPos(m_point1);
-    profile.WriteStr(_T("RectX1"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("RectY1"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("RectX1"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("RectY1"), MeaStringUtils::DblToStr(pt.y));
     pt = m_unitsProvider.ConvertPos(m_point2);
-    profile.WriteStr(_T("RectX2"), MeaUtils::DblToStr(pt.x));
-    profile.WriteStr(_T("RectY2"), MeaUtils::DblToStr(pt.y));
+    profile.WriteStr(_T("RectX2"), MeaStringUtils::DblToStr(pt.x));
+    profile.WriteStr(_T("RectY2"), MeaStringUtils::DblToStr(pt.y));
 }
 
 void MeaRectTool::LoadProfile(MeaProfile& profile) {

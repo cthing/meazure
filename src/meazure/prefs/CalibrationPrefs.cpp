@@ -21,6 +21,7 @@
 #include "CalibrationPrefs.h"
 #include "Preferences.h"
 #include <meazure/resource.h>
+#include <meazure/utilities/NumericUtils.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -356,7 +357,7 @@ bool MeaCalibrationPrefs::GetFieldValue(UINT fieldId, double& value) {
                     v *= 2.54;
                 }
             }
-            if ((v > DBL_EPSILON) && !MeaUtils::IsFloatingEqual(value, v)) {
+            if ((v > DBL_EPSILON) && !MeaNumericUtils::IsFloatingEqual(value, v)) {
                 value = v;
                 return true;
             }

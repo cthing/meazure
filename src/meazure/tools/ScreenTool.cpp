@@ -20,6 +20,7 @@
 #include <meazure/pch.h>
 #include "ScreenTool.h"
 #include "ToolMgr.h"
+#include <meazure/utilities/NumericUtils.h>
 
 
 const CString MeaScreenTool::kToolName(_T("ScreenTool"));
@@ -103,8 +104,8 @@ void MeaScreenTool::SetPosition(const POINT& pos) {
     // corresponding to the specified position.
     //
     if ((m_rect != rect)
-        || !MeaUtils::IsFloatingEqual(m_res.cx, res.cx)
-        || !MeaUtils::IsFloatingEqual(m_res.cy, res.cy)
+        || !MeaNumericUtils::IsFloatingEqual(m_res.cx, res.cx)
+        || !MeaNumericUtils::IsFloatingEqual(m_res.cy, res.cy)
         || (m_anyOSRes != anyOSRes)) {
         m_rect = rect;
         m_res = res;

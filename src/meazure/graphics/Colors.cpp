@@ -20,7 +20,7 @@
 #include <meazure/pch.h>
 #include "Colors.h"
 #include <meazure/ui/LayeredWindows.h>
-#include <meazure/utilities/Utils.h>
+#include <meazure/utilities/NumericUtils.h>
 
 
 MeaColors::Colors MeaColors::m_defColors;
@@ -108,7 +108,7 @@ void MeaColors::RGBtoHSL(COLORREF rgb, HSL& hsl) {
     double cmin = Min(r, Min(g, b));
 
     l = (cmax + cmin) / 2.0;
-    if (MeaUtils::IsFloatingEqual(cmax, cmin)) {
+    if (MeaNumericUtils::IsFloatingEqual(cmax, cmin)) {
         s = 0.0;
         h = 0.0; // it's really undefined
     } else {
@@ -119,9 +119,9 @@ void MeaColors::RGBtoHSL(COLORREF rgb, HSL& hsl) {
         }
         double delta = cmax - cmin;
 
-        if (MeaUtils::IsFloatingEqual(r, cmax)) {
+        if (MeaNumericUtils::IsFloatingEqual(r, cmax)) {
             h = (g - b) / delta;
-        } else if (MeaUtils::IsFloatingEqual(g, cmax)) {
+        } else if (MeaNumericUtils::IsFloatingEqual(g, cmax)) {
             h = 2.0 + (b - r) / delta;
         } else {
             h = 4.0 + (r - g) / delta;

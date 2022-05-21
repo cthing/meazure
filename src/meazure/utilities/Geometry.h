@@ -200,7 +200,7 @@ public:
         double deltax = end.x - start.x;
         double deltay = end.y - start.y;
 
-        if (MeaUtils::IsFloatingZero(deltax) && MeaUtils::IsFloatingZero(deltay)) {
+        if (MeaNumericUtils::IsFloatingZero(deltax) && MeaNumericUtils::IsFloatingZero(deltay)) {
             return 0.0;
         }
         return std::atan2(deltay, deltax);
@@ -225,7 +225,7 @@ public:
         double numer = deltay2 * deltax1 - deltay1 * deltax2;
         double denom = deltax2 * deltax1 + deltay1 * deltay2;
 
-        if (MeaUtils::IsFloatingZero(numer) && MeaUtils::IsFloatingZero(denom)) {
+        if (MeaNumericUtils::IsFloatingZero(numer) && MeaNumericUtils::IsFloatingZero(denom)) {
             return 0.0;
         }
         return std::atan2(numer, denom);

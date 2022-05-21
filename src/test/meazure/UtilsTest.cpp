@@ -220,31 +220,6 @@ namespace {
         BOOST_CHECK_EQUAL(CString(_T("0.0")), str);
     }
 
-    void TestIsFloatingEqual() {
-        BOOST_CHECK(MeaUtils::IsFloatingEqual(0.0, 0.0));
-        BOOST_CHECK(MeaUtils::IsFloatingEqual(1.0, 1.0));
-        BOOST_CHECK(MeaUtils::IsFloatingEqual(-1.0, -1.0));
-        BOOST_CHECK(MeaUtils::IsFloatingEqual(3.141596, 3.141596));
-        BOOST_CHECK(MeaUtils::IsFloatingEqual(1.0/17.0, 1/17.0));
-        BOOST_CHECK(MeaUtils::IsFloatingEqual(std::numeric_limits<double>::epsilon(), std::numeric_limits<double>::epsilon()));
-        BOOST_CHECK(MeaUtils::IsFloatingEqual(1.000000001f, 1.000000002f));
-
-        BOOST_CHECK(!MeaUtils::IsFloatingEqual(0.0, 1.5));
-        BOOST_CHECK(!MeaUtils::IsFloatingEqual(-10.0, 3.141596));
-        BOOST_CHECK(!MeaUtils::IsFloatingEqual(1.000001f, 1.000002f));
-    }
-
-    void TestIsFloatingZero() {
-        BOOST_CHECK(MeaUtils::IsFloatingZero(0.0));
-        BOOST_CHECK(MeaUtils::IsFloatingZero(-0.0));
-        BOOST_CHECK(MeaUtils::IsFloatingZero(std::numeric_limits<double>::epsilon()));
-
-        BOOST_CHECK(!MeaUtils::IsFloatingZero(1.0));
-        BOOST_CHECK(!MeaUtils::IsFloatingZero(-1.0));
-        BOOST_CHECK(!MeaUtils::IsFloatingZero(2.0 * std::numeric_limits<double>::epsilon()));
-        BOOST_CHECK(!MeaUtils::IsFloatingZero(-2.0 * std::numeric_limits<double>::epsilon()));
-    }
-
     void TestIsNumber() {
         BOOST_CHECK(MeaUtils::IsNumber(_T("123")));
         BOOST_CHECK(MeaUtils::IsNumber(_T("+123")));
@@ -340,8 +315,6 @@ boost::unit_test_framework::test_suite* init_unit_test_suite(int, char*[]) {
 
     boost::unit_test_framework::test_suite* utilsTestSuite = BOOST_TEST_SUITE("Utils Tests");
     utilsTestSuite->add(BOOST_TEST_CASE(&TestDblToStr));
-    utilsTestSuite->add(BOOST_TEST_CASE(&TestIsFloatingEqual));
-    utilsTestSuite->add(BOOST_TEST_CASE(&TestIsFloatingZero));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestIsNumber));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestIsBoolean));
     utilsTestSuite->add(BOOST_TEST_CASE(&TestLFtoCRLF));

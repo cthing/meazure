@@ -24,7 +24,6 @@
 
 #include <math.h>
 #include <meazure/units/Units.h>
-#include <meazure/utilities/Utils.h>
 #include "ScreenProvider.h"
 #include <meazure/units/UnitsProvider.h>
 

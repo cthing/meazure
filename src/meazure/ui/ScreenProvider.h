@@ -23,7 +23,7 @@
 #pragma once
 
 #include <map>
-#include <meazure/utilities/Utils.h>
+#include <meazure/utilities/Geometry.h>
 
 
 /// Provides information on the display monitor(s).

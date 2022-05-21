@@ -25,7 +25,7 @@
 #include <meazure/utilities/Singleton.h>
 #include "ScreenProvider.h"
 #include <meazure/profile/Profile.h>
-#include <meazure/utilities/Utils.h>
+#include <meazure/utilities/Geometry.h>
 
 
 /// Provides information on the display monitor(s). One of the primary

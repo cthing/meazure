@@ -26,7 +26,7 @@
 #include <map>
 #include <stdexcept>
 #include <meazure/units/Units.h>
-#include <meazure/utilities/Utils.h>
+#include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/XMLParser.h>
 #include <meazure/utilities/GUID.h>
 #include <meazure/utilities/Singleton.h>

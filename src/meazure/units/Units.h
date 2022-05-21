@@ -25,7 +25,7 @@
 #include <vector>
 #include <meazure/ui/ScreenProvider.h>
 #include <meazure/profile/Profile.h>
-#include <meazure/utilities/Utils.h>
+#include <meazure/utilities/Geometry.h>
 
 
 /// Identifiers for linear measurement units.

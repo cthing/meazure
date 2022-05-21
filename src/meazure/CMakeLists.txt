@@ -177,7 +177,6 @@ set(utility_SRCS
     utilities/Timer.h
     utilities/TimeStamp.cpp
     utilities/TimeStamp.h
-    utilities/Utils.h
     utilities/XMLParser.cpp
     utilities/XMLParser.h
 )

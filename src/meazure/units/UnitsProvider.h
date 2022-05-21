@@ -23,7 +23,7 @@
 #pragma once
 
 #include "Units.h"
-#include <meazure/utilities/Utils.h>
+#include <meazure/utilities/Geometry.h>
 
 
 /// Interface for units related information.

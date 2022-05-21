@@ -27,7 +27,6 @@
 #include <meazure/tools/Tool.h>
 #include <meazure/VersionInfo.h>
 #include <meazure/utilities/TimeStamp.h>
-#include <meazure/utilities/Utils.h>
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/StringUtils.h>

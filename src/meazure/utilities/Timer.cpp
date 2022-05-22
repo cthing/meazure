@@ -44,14 +44,14 @@ MeaTimer::~MeaTimer() {
         m_timerThread = nullptr;
         m_parent = nullptr;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
 void MeaTimer::Start(int elapse) {
     // The timer needs a parent object to send the timer expire event.
     //
-    MeaAssert(m_parent != nullptr);
+    assert(m_parent != nullptr);
 
     // Only one thread at a time can set or read the timer thread ID.
     //

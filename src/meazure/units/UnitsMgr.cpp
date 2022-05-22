@@ -23,6 +23,7 @@
 #include <meazure/Messages.h>
 #include <meazure/ui/ScreenMgr.h>
 #include <meazure/utilities/StringUtils.h>
+#include <cassert>
 
 
  //*************************************************************************
@@ -349,7 +350,7 @@ MeaResUnitsLabel* MeaUnitsMgr::NewResUnitsLabel() {
 }
 
 void MeaUnitsMgr::DeleteUnitsLabel(MeaUnitsLabel* label) {
-    MeaAssert(label != nullptr);
+    assert(label != nullptr);
 
     // Cannot tell which list the label is from so attempt
     // to remove it from both. It is a benign op under

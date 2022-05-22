@@ -19,8 +19,8 @@
 
 #include <meazure/pch.h>
 #include "Tool.h"
-#include <meazure/utilities/MeaAssert.h>
 #include <crtdbg.h>
+#include <cassert>
 
 
 POINT MeaTool::m_defaultPos { 0, 0 };
@@ -39,7 +39,7 @@ void MeaTool::LoadProfile(MeaProfile& /* profile */) {}
 void MeaTool::MasterReset() {}
 
 void MeaTool::Enable() {
-    MeaAssert(!m_enabled);
+    assert(!m_enabled);
     m_enabled = true;
 }
 
@@ -48,7 +48,7 @@ void MeaTool::Disable() {
 }
 
 void MeaTool::Update(MeaUpdateReason /* reason */) {
-    MeaAssert(m_enabled);
+    assert(m_enabled);
 }
 
 bool MeaTool::IsRadioTool() {

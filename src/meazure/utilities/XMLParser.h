@@ -23,9 +23,9 @@
 #pragma once
 
 #include "exval.h"
-#include "MeaAssert.h"
 #include <map>
 #include <stack>
+#include <cassert>
 
 
 class MeaXMLParser;
@@ -212,7 +212,7 @@ public:
     /// @param child        [in] Node to add as a child.
     ///
     void AddChild(MeaXMLNode* child) {
-        MeaAssert(child != nullptr);
+        assert(child != nullptr);
         child->SetParent(this);
         m_children.push_back(child);
     }

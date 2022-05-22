@@ -19,7 +19,6 @@
 
 #include <meazure/pch.h>
 #include "ToolMgr.h"
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/ui/StatusBar.h>
 #include <meazure/ui/ScreenMgr.h>
 #include <meazure/units/UnitsMgr.h>
@@ -75,7 +74,7 @@ MeaToolMgr::~MeaToolMgr() {
         }
         m_tools.clear();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -105,7 +104,7 @@ void MeaToolMgr::LoadProfile(MeaProfile& profile) {
 
     MeaTool* tool = m_tools[profile.ReadStr(_T("CurrentRadioTool"),
         m_currentRadioTool->GetToolName())];
-    MeaAssert(tool->IsRadioTool());
+    assert(tool->IsRadioTool());
     m_currentRadioTool = static_cast<MeaRadioTool*>(tool);
 
     if (!profile.UserInitiated()) {

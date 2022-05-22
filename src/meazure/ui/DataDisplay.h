@@ -30,6 +30,7 @@
 #include <meazure/profile/Profile.h>
 #include <meazure/units/UnitsMgr.h>
 #include <set>
+#include <cassert>
 
 
 /// Each data text field on the display is specified by one of
@@ -365,7 +366,7 @@ private:
                     delete m_spin;
                 }
             } catch (...) {
-                MeaAssert(false);
+                assert(false);
             }
         }
 
@@ -535,7 +536,7 @@ private:
         /// @return Spin control.
         ///
         CSpinButtonCtrl& GetSpin() {
-            MeaAssert(m_spin != nullptr);
+            assert(m_spin != nullptr);
             return *m_spin;
         }
 
@@ -545,7 +546,7 @@ private:
         /// @return Units label object.
         ///
         MeaUnitsLabel& GetUnitsLabel() {
-            MeaAssert(m_unitsLabel != nullptr);
+            assert(m_unitsLabel != nullptr);
             return *m_unitsLabel;
         }
 

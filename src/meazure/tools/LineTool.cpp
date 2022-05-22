@@ -24,6 +24,7 @@
 #include <meazure/utilities/StringUtils.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
+#include <cassert>
 
 
 const CString   MeaLineTool::kToolName(_T("LineTool"));
@@ -55,7 +56,7 @@ MeaLineTool::~MeaLineTool() {
         Disable();
         m_curPos = nullptr;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

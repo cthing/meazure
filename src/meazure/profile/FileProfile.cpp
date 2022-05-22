@@ -21,6 +21,7 @@
 #include "FileProfile.h"
 #include <meazure/VersionInfo.h>
 #include <meazure/utilities/TimeStamp.h>
+#include <cassert>
 
 
 MeaFileProfile::MeaFileProfile(LPCTSTR pathname, Mode mode) :
@@ -53,7 +54,7 @@ MeaFileProfile::~MeaFileProfile() {
 
         m_stdioFile.Close();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

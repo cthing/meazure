@@ -22,7 +22,6 @@
 #include "Layout.h"
 #include "ScreenMgr.h"
 #include <meazure/resource.h>
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/Geometry.h>
 #include <stdio.h>
@@ -632,12 +631,12 @@ LRESULT MeaDataDisplay::OnFieldEntry(WPARAM wParam, LPARAM id) {
         pixels = unitsMgr.UnconvertCoord(pos).y;
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 
     GetParent()->SendMessage(MeaDataChangeMsg, static_cast<WPARAM>(pixels) + wParam, id);
-    MeaAssert(field != nullptr);
+    assert(field != nullptr);
     const_cast<MeaNumberField*>(field)->SetFocus();
 
     return TRUE;

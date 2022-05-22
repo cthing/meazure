@@ -24,8 +24,8 @@
 
 
 #include <afxmt.h>
-#include "MeaAssert.h"
 #include <meazure/Messages.h>
+#include <cassert>
 
 
 /// Implements a timer that issues timing messages at a higher priority
@@ -51,7 +51,7 @@ public:
     /// @param userData [in] Caller defined data.
     ///
     void Create(CWnd* parent, WPARAM userData = 0) {
-        MeaAssert(parent != nullptr);
+        assert(parent != nullptr);
         m_parent = parent;
         m_userData = userData;
     }

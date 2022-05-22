@@ -19,11 +19,11 @@
 
 #include <meazure/pch.h>
 #include "CrossHair.h"
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/resource.h>
 #include <meazure/ui/Layout.h>
 #define COMPILE_LAYERED_WINDOW_STUBS
 #include <meazure/ui/LayeredWindows.h>
+#include <cassert>
 
 
 SIZE MeaCrossHair::m_size;
@@ -105,7 +105,7 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
         m_spread.cy += (m_spread.cy % 2);
     }
 
-    MeaAssert(m_backBrush != nullptr);
+    assert(m_backBrush != nullptr);
     CString wndClass = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW,
         LoadCursor(nullptr, IDC_ARROW));
 

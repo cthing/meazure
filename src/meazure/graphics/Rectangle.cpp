@@ -20,6 +20,7 @@
 #include <meazure/pch.h>
 #include "Rectangle.h"
 #include "Colors.h"
+#include <cassert>
 
 
 BEGIN_MESSAGE_MAP(MeaRectangle, MeaGraphic)
@@ -40,7 +41,7 @@ MeaRectangle::~MeaRectangle() {
 
         delete m_foreBrush;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

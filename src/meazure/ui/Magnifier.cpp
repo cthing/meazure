@@ -24,6 +24,7 @@
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
 #include <AfxPriv.h>
+#include <cassert>
 
 
 BEGIN_MESSAGE_MAP(MeaMagnifier, CWnd)
@@ -49,7 +50,7 @@ MeaMagnifier::~MeaMagnifier() {
     try {
         Disable();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -432,7 +433,7 @@ void MeaMagnifier::Draw(HDC hDC) {
     }
     break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 

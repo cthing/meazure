@@ -19,10 +19,10 @@
 
 #include <meazure/pch.h>
 #include "Line.h"
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/utilities/Geometry.h>
 #include "Colors.h"
 #include <cstdlib>
+#include <cassert>
 
 
 const CSize MeaLine::kMargin(5, 5);
@@ -58,7 +58,7 @@ MeaLine::~MeaLine() {
 
         delete m_foreBrush;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -215,7 +215,7 @@ LRESULT MeaLine::OnHPTimer(WPARAM, LPARAM) {
         rect.InflateRect(kMargin);
         PlotLine();
 
-        MeaAssert(m_arr != nullptr);
+        assert(m_arr != nullptr);
         HRGN region = ::CreatePolyPolygonRgn(&m_arr[4 * m_shrink], m_varr,
             m_count - (2 * m_shrink), ALTERNATE);
         ::OffsetRgn(region, -rect.left, -rect.top);

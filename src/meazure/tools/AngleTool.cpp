@@ -25,6 +25,7 @@
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/StringUtils.h>
+#include <cassert>
 
 
 const CString   MeaAngleTool::kToolName(_T("AngleTool"));
@@ -62,7 +63,7 @@ MeaAngleTool::~MeaAngleTool() {
         Disable();
         m_curPos = nullptr;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -530,7 +531,7 @@ void MeaAngleTool::OnCHEnter(const CHInfo* info) {
         m_dataWinV.Show();
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 
@@ -553,7 +554,7 @@ void MeaAngleTool::OnCHLeave(const CHInfo* info) {
         m_dataWinV.Hide();
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }

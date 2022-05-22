@@ -20,12 +20,12 @@
 #include <meazure/pch.h>
 #include "WindowTool.h"
 #include "ToolMgr.h"
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/graphics/Colors.h>
 #include <meazure/resource.h>
 #include <Hooks/Hooks.h>
 #include <windowsx.h>
+#include <cassert>
 
 
 const CString MeaWindowTool::kToolName(_T("WindowTool"));
@@ -47,7 +47,7 @@ MeaWindowTool::~MeaWindowTool() {
         m_currentWnd = nullptr;
         m_hiliteWnd = nullptr;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -108,7 +108,7 @@ void MeaWindowTool::Disable() {
     BOOL ret =
 #endif
         MeaDisableMouseHook();
-    MeaAssert(ret);
+    assert(ret);
 
     m_dataWin.Hide();
     m_rectangle.Hide();

@@ -20,7 +20,6 @@
 #include <meazure/pch.h>
 #include "CustomUnitsPrefs.h"
 #include "Preferences.h"
-#include <meazure/utilities/MeaAssert.h>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -144,11 +143,11 @@ BOOL MeaCustomUnitsPrefs::OnInitDialog() {
 
 
 void MeaCustomUnitsPrefs::SetCheck(UINT buttonId) {
-    MeaAssert(m_pxButton != nullptr);
+    assert(m_pxButton != nullptr);
     m_pxButton->SetCheck((buttonId == IDC_CUST_PX) ? 1 : 0);
-    MeaAssert(m_inButton != nullptr);
+    assert(m_inButton != nullptr);
     m_inButton->SetCheck((buttonId == IDC_CUST_IN) ? 1 : 0);
-    MeaAssert(m_cmButton != nullptr);
+    assert(m_cmButton != nullptr);
     m_cmButton->SetCheck((buttonId == IDC_CUST_CM) ? 1 : 0);
 }
 
@@ -186,9 +185,9 @@ bool MeaCustomUnitsPrefs::Validate() {
     CString name;
     CString abbrev;
 
-    MeaAssert(m_nameField != nullptr);
+    assert(m_nameField != nullptr);
     m_nameField->GetWindowText(name);
-    MeaAssert(m_abbrevField != nullptr);
+    assert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(abbrev);
 
     // The name and abbreviation fields must either both be empty
@@ -239,7 +238,7 @@ void MeaCustomUnitsPrefs::GetScaleFactor(MeaCustomUnits::ScaleBasis& scaleBasis,
         scaleFactor = m_cmScaleFactor;
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }
@@ -263,7 +262,7 @@ void MeaCustomUnitsPrefs::SetScaleFactor(MeaCustomUnits::ScaleBasis scaleBasis, 
         m_cmScaleFactor = scaleFactor;
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }
@@ -273,23 +272,23 @@ void MeaCustomUnitsPrefs::EnableScaleFactor() {
     CString name;
     CString abbrev;
 
-    MeaAssert(m_nameField != nullptr);
+    assert(m_nameField != nullptr);
     m_nameField->GetWindowText(name);
     name.TrimLeft();
     name.TrimRight();
 
-    MeaAssert(m_abbrevField != nullptr);
+    assert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(abbrev);
     abbrev.TrimLeft();
     abbrev.TrimRight();
 
     bool notEmpty = !name.IsEmpty() && !abbrev.IsEmpty();
 
-    MeaAssert((m_basisLabel != nullptr) && (m_precisionButton != nullptr));
+    assert((m_basisLabel != nullptr) && (m_precisionButton != nullptr));
     m_basisLabel->EnableWindow(notEmpty);
     m_precisionButton->EnableWindow(notEmpty);
 
-    MeaAssert((m_pxButton != nullptr) &&
+    assert((m_pxButton != nullptr) &&
               (m_pxLabel != nullptr) &&
               (m_pxAbbrev != nullptr));
     m_pxButton->EnableWindow(notEmpty);
@@ -297,7 +296,7 @@ void MeaCustomUnitsPrefs::EnableScaleFactor() {
     m_pxLabel->EnableWindow(notEmpty);
     m_pxAbbrev->EnableWindow(notEmpty);
 
-    MeaAssert((m_inButton != nullptr) &&
+    assert((m_inButton != nullptr) &&
               (m_inLabel != nullptr) &&
               (m_inAbbrev != nullptr));
     m_inButton->EnableWindow(notEmpty);
@@ -305,7 +304,7 @@ void MeaCustomUnitsPrefs::EnableScaleFactor() {
     m_inLabel->EnableWindow(notEmpty);
     m_inAbbrev->EnableWindow(notEmpty);
 
-    MeaAssert((m_cmButton != nullptr) &&
+    assert((m_cmButton != nullptr) &&
               (m_cmLabel != nullptr) &&
               (m_cmAbbrev != nullptr));
     m_cmButton->EnableWindow(notEmpty);
@@ -355,7 +354,7 @@ void MeaCustomUnitsPrefs::OnNameChange() {
 void MeaCustomUnitsPrefs::OnAbbrevChange() {
     CString label;
 
-    MeaAssert(m_abbrevField != nullptr);
+    assert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(label);
     label.TrimLeft();
     label.TrimRight();
@@ -364,11 +363,11 @@ void MeaCustomUnitsPrefs::OnAbbrevChange() {
         label.LoadString(IDS_MEA_CUSTOM_LABEL);
     }
 
-    MeaAssert(m_pxAbbrev != nullptr);
+    assert(m_pxAbbrev != nullptr);
     m_pxAbbrev->SetWindowText(label);
-    MeaAssert(m_inAbbrev != nullptr);
+    assert(m_inAbbrev != nullptr);
     m_inAbbrev->SetWindowText(label);
-    MeaAssert(m_cmAbbrev != nullptr);
+    assert(m_cmAbbrev != nullptr);
     m_cmAbbrev->SetWindowText(label);
 
     EnableScaleFactor();
@@ -381,9 +380,9 @@ void MeaCustomUnitsPrefs::OnClear() {
     CString name;
     CString abbrev;
 
-    MeaAssert(m_nameField != nullptr);
+    assert(m_nameField != nullptr);
     m_nameField->GetWindowText(name);
-    MeaAssert(m_abbrevField != nullptr);
+    assert(m_abbrevField != nullptr);
     m_abbrevField->GetWindowText(abbrev);
 
     if (!name.IsEmpty() || !abbrev.IsEmpty()) {
@@ -398,7 +397,7 @@ void MeaCustomUnitsPrefs::OnClear() {
 
 void MeaCustomUnitsPrefs::OnPrecision() {
     MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());
-    MeaAssert(sheet != nullptr);
+    assert(sheet != nullptr);
 
     sheet->ShowCustomPrecision();
 }

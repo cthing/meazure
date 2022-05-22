@@ -22,7 +22,8 @@
 #include <meazure/resource.h>
 #include "FileProfile.h"
 #include <meazure/AppFrame.h>
-#include <stdlib.h>
+#include <cstdlib>
+#include <cassert>
 
 
 LPCTSTR MeaProfileMgr::m_ext { _T("mea") };
@@ -55,7 +56,7 @@ MeaProfileMgr::~MeaProfileMgr() {
         delete m_saveDialog;
         delete m_loadDialog;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

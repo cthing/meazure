@@ -24,13 +24,13 @@
 #include "ColorDialog.h"
 #include "DataWin.h"
 #include <meazure/resource.h>
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/graphics/Colors.h>
 #include <meazure/profile/FileProfile.h>
 #include <meazure/profile/ProfileMgr.h>
 #include <meazure/tools/ScreenTool.h>
 #include <meazure/tools/ToolMgr.h>
 #include <meazure/position/PositionLogMgr.h>
+#include <cassert>
 
 
 #ifdef _DEBUG
@@ -160,7 +160,7 @@ AppView::~AppView() {
     try {
         MeaToolMgr::Instance().SetDataDisplay(nullptr);
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -516,7 +516,7 @@ void AppView::OnUpdateUnits(CCmdUI* pCmdUI) {
         pCmdUI->SetRadio(unitsMgr.GetLinearUnitsId() == MeaPicasId);
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }
@@ -547,7 +547,7 @@ void AppView::OnUnits(UINT nID) {
         unitsMgr.SetLinearUnits(MeaPicasId);
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 
@@ -567,7 +567,7 @@ void AppView::OnUpdateAngles(CCmdUI* pCmdUI) {
         pCmdUI->SetRadio(unitsMgr.GetAngularUnitsId() == MeaRadiansId);
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }
@@ -583,7 +583,7 @@ void AppView::OnAngles(UINT nID) {
         unitsMgr.SetAngularUnits(MeaRadiansId);
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 
@@ -654,7 +654,7 @@ void AppView::OnUpdateColorFmt(CCmdUI* pCmdUI) {
         pCmdUI->SetRadio(m_magnifier.GetColorFmt() == MeaMagnifier::YIQFmt);
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }
@@ -683,7 +683,7 @@ void AppView::OnColorFmt(UINT nID) {
         m_magnifier.SetColorFmt(MeaMagnifier::YIQFmt);
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }
@@ -766,7 +766,7 @@ void AppView::OnUpdateRadioTool(CCmdUI* pCmdUI) {
         pCmdUI->SetRadio(MeaToolMgr::Instance().GetToolName() == MeaWindowTool::kToolName);
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }
@@ -795,7 +795,7 @@ void AppView::OnRadioTool(UINT nID) {
         MeaToolMgr::Instance().SetRadioTool(MeaWindowTool::kToolName);
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }

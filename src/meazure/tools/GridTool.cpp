@@ -20,8 +20,8 @@
 #include <meazure/pch.h>
 #include "GridTool.h"
 #include <meazure/resource.h>
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/graphics/Colors.h>
+#include <cassert>
 
 
 const CString MeaGridTool::kToolName(_T("GridTool"));
@@ -37,7 +37,7 @@ MeaGridTool::~MeaGridTool() {
     try {
         Disable();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -354,7 +354,7 @@ void MeaGridDialog::UpdateDisplay() {
         UpdateData(FALSE);      // Load the dialog controls
     }
     m_vSpaceField.SetReadOnly(m_linked);
-    MeaAssert(m_vSpaceSpin != nullptr);
+    assert(m_vSpaceSpin != nullptr);
     m_vSpaceSpin->EnableWindow(!m_linked);
 
     m_tool->SetLinked(m_linked);

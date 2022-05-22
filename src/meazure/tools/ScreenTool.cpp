@@ -21,6 +21,7 @@
 #include "ScreenTool.h"
 #include "ToolMgr.h"
 #include <meazure/utilities/NumericUtils.h>
+#include <cassert>
 
 
 const CString MeaScreenTool::kToolName(_T("ScreenTool"));
@@ -35,7 +36,7 @@ MeaScreenTool::~MeaScreenTool() {
     try {
         Disable();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

@@ -19,8 +19,8 @@
 
 #include <meazure/pch.h>
 #include "RulerTool.h"
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/graphics/Colors.h>
+#include <cassert>
 
 
 const CString   MeaRulerTool::kToolName(_T("RulerTool"));
@@ -55,7 +55,7 @@ MeaRulerTool::~MeaRulerTool() {
             delete m_rulers[i];
         }
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -226,7 +226,7 @@ void MeaRulerTool::PositionIndicators(int rulerIdx, MeaRuler::IndicatorId indId)
 }
 
 void MeaRulerTool::OnRulerMove(const RulerInfo* info) {
-    MeaAssert(info != nullptr);
+    assert(info != nullptr);
 
     RulerSet* rulerSet = m_rulers[info->id];
 

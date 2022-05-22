@@ -20,7 +20,7 @@
 #include <meazure/pch.h>
 #include "AdvancedPrefs.h"
 #include "Preferences.h"
-#include <meazure/utilities/MeaAssert.h>
+#include <cassert>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -53,7 +53,7 @@ void MeaAdvancedPrefs::DoDataExchange(CDataExchange* pDX) {
 }
 
 void MeaAdvancedPrefs::OnProfileBtn() {
-    MeaAssert(m_startupProfileDlg != nullptr);
+    assert(m_startupProfileDlg != nullptr);
     if (m_startupProfileDlg->DoModal() == IDOK) {
         CEdit* edit = static_cast<CEdit*>(GetDlgItem(IDC_PROFILE_PATHNAME));
         edit->SetWindowText(m_startupProfileDlg->GetPathName());
@@ -72,7 +72,7 @@ void MeaAdvancedPrefs::OnChangeProfilePathname() {
 void MeaAdvancedPrefs::OnMasterReset() {
     if (AfxMessageBox(IDS_MEA_MASTER_RESET, MB_YESNO | MB_ICONWARNING) == IDYES) {
         MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());
-        MeaAssert(sheet != nullptr);
+        assert(sheet != nullptr);
 
         sheet->EndDialog(ID_MEA_MASTER_RESET);
     }

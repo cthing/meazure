@@ -21,6 +21,7 @@
 #include "OriginTool.h"
 #include "ToolMgr.h"
 #include <meazure/graphics/Colors.h>
+#include <cassert>
 
 
 const CString MeaOriginTool::kToolName(_T("OriginTool"));
@@ -34,7 +35,7 @@ MeaOriginTool::~MeaOriginTool() {
     try {
         Disable();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

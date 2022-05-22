@@ -22,8 +22,8 @@
 #define COMPILE_MULTIMON_STUBS 1
 #include "ScreenMgr.h"
 #include <meazure/resource.h>
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/utilities/StringUtils.h>
+#include <cassert>
 
 
 /// Represents a single display screen.
@@ -179,7 +179,7 @@ private:
 MeaScreenMgr::MeaScreenMgr(token) :
     MeaSingleton_T<MeaScreenMgr>(), m_sizeChanged(false) {
     EnumDisplayMonitors(nullptr, nullptr, CreateScreens, reinterpret_cast<LPARAM>(this));
-    MeaAssert(m_screens.size() > 0);
+    assert(m_screens.size() > 0);
 
     m_virtualRect.left = GetSystemMetrics(SM_XVIRTUALSCREEN);
     m_virtualRect.top = GetSystemMetrics(SM_YVIRTUALSCREEN);
@@ -193,7 +193,7 @@ MeaScreenMgr::~MeaScreenMgr() {
             delete screenEntry.second;
         }
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -286,9 +286,9 @@ void MeaScreenMgr::MasterReset() const {
 
 const CPoint& MeaScreenMgr::GetCenter() const {
     HMONITOR mon = MonitorFromWindow(*AfxGetMainWnd(), MONITOR_DEFAULTTONEAREST);
-    MeaAssert(mon != nullptr);
+    assert(mon != nullptr);
     Screens::const_iterator iter = m_screens.find(mon);
-    MeaAssert(iter != m_screens.end());
+    assert(iter != m_screens.end());
     return (*iter).second->GetCenter();
 }
 
@@ -304,9 +304,9 @@ CRect MeaScreenMgr::EnsureVisible(const RECT& windowRect) const {
 
     if (MonitorFromRect(&windowRect, MONITOR_DEFAULTTONULL) == nullptr) {
         HMONITOR mon = MonitorFromRect(&windowRect, MONITOR_DEFAULTTONEAREST);
-        MeaAssert(mon != nullptr);
+        assert(mon != nullptr);
         Screens::const_iterator iter = m_screens.find(mon);
-        MeaAssert(iter != m_screens.end());
+        assert(iter != m_screens.end());
 
         int dx = (*iter).second->GetRect().left - windowRect.left;
         int dy = (*iter).second->GetRect().top - windowRect.top;
@@ -321,9 +321,9 @@ CPoint MeaScreenMgr::LimitPosition(const CPoint& pt) const {
 
     if (MonitorFromPoint(limitPt, MONITOR_DEFAULTTONULL) == nullptr) {
         HMONITOR mon = MonitorFromPoint(limitPt, MONITOR_DEFAULTTONEAREST);
-        MeaAssert(mon != nullptr);
+        assert(mon != nullptr);
         Screens::const_iterator iter = m_screens.find(mon);
-        MeaAssert(iter != m_screens.end());
+        assert(iter != m_screens.end());
 
         const CRect& rect = (*iter).second->GetRect();
 
@@ -349,7 +349,7 @@ MeaScreenMgr::Screen* MeaScreenMgr::GetScreen(const POINT& point) const {
     HMONITOR mon = MonitorFromPoint(point, MONITOR_DEFAULTTONULL);
     if (mon != nullptr) {
         Screens::const_iterator iter = m_screens.find(mon);
-        MeaAssert(iter != m_screens.end());
+        assert(iter != m_screens.end());
         screen = (*iter).second;
     }
 
@@ -358,28 +358,28 @@ MeaScreenMgr::Screen* MeaScreenMgr::GetScreen(const POINT& point) const {
 
 MeaScreenMgr::ScreenIter MeaScreenMgr::GetScreenIter(const CWnd* wnd) const {
     HMONITOR mon = MonitorFromWindow(*wnd, MONITOR_DEFAULTTONEAREST);
-    MeaAssert(mon != nullptr);
+    assert(mon != nullptr);
 
     Screens::const_iterator iter = m_screens.find(mon);
-    MeaAssert(iter != m_screens.end());
+    assert(iter != m_screens.end());
     return iter;
 }
 
 MeaScreenMgr::ScreenIter MeaScreenMgr::GetScreenIter(const POINT& point) const {
     HMONITOR mon = MonitorFromPoint(point, MONITOR_DEFAULTTONEAREST);
-    MeaAssert(mon != nullptr);
+    assert(mon != nullptr);
 
     Screens::const_iterator iter = m_screens.find(mon);
-    MeaAssert(iter != m_screens.end());
+    assert(iter != m_screens.end());
     return iter;
 }
 
 MeaScreenMgr::ScreenIter MeaScreenMgr::GetScreenIter(const RECT& rect) const {
     HMONITOR mon = MonitorFromRect(&rect, MONITOR_DEFAULTTONEAREST);
-    MeaAssert(mon != nullptr);
+    assert(mon != nullptr);
 
     Screens::const_iterator iter = m_screens.find(mon);
-    MeaAssert(iter != m_screens.end());
+    assert(iter != m_screens.end());
     return iter;
 }
 

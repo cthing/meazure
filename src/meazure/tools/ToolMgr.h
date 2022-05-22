@@ -24,7 +24,6 @@
 
 #include <map>
 #include <meazure/profile/Profile.h>
-#include <meazure/utilities/MeaAssert.h>
 #include "ScreenTool.h"
 #include "CursorTool.h"
 #include "PointTool.h"
@@ -38,6 +37,7 @@
 #include "OriginTool.h"
 #include <meazure/ui/DataDisplay.h>
 #include <meazure/utilities/Singleton.h>
+#include <cassert>
 
 
 /// Manages the measurement tools including selection, enabling, disabling, and communicating various messages
@@ -91,7 +91,7 @@ public:
     ///
     void SetRadioTool(const CString& toolName) {
         MeaTool* tool = FindTool(toolName);
-        MeaAssert(tool->IsRadioTool());
+        assert(tool->IsRadioTool());
         m_currentRadioTool = static_cast<MeaRadioTool*>(tool);
         ChangeRadioToolEnable();
     }
@@ -119,7 +119,7 @@ public:
     ///
     MeaTool* FindTool(const CString& toolName) const {
         ToolsMap::const_iterator iter = m_tools.find(toolName);
-        MeaAssert(iter != m_tools.end());
+        assert(iter != m_tools.end());
         return (*iter).second;
     }
 

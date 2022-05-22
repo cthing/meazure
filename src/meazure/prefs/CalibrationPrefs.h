@@ -22,11 +22,11 @@
 
 #pragma once
 
-#include <meazure/utilities/MeaAssert.h>
 #include <meazure/ui/NumberField.h>
 #include <meazure/ui/RulerSlider.h>
 #include <meazure/ui/ScreenProvider.h>
 #include <map>
+#include <cassert>
 
 
 /// Property page for screen resolution calibration preferences. Using this
@@ -288,7 +288,7 @@ private:
     ///
     Screen& GetScreen() {
         ScreenMap::iterator citer = m_screens.find(m_currentIter);
-        MeaAssert(citer != m_screens.end());
+        assert(citer != m_screens.end());
         return (*citer).second;
     }
 

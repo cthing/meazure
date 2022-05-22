@@ -428,7 +428,7 @@ void MeaCalibrationPrefs::UpdateCurrentScreen() {
         frame->SetWindowText(title);
 
         MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());
-        MeaAssert(sheet != nullptr);
+        assert(sheet != nullptr);
 
         if (sheet->GetActivePage() == this) {
             UpdateView();

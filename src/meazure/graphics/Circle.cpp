@@ -19,8 +19,8 @@
 
 #include <meazure/pch.h>
 #include "Circle.h"
-#include <meazure/utilities/MeaAssert.h>
 #include "Colors.h"
+#include <cassert>
 
 
  // Padding around circle
@@ -56,7 +56,7 @@ MeaCircle::~MeaCircle() {
 
         delete m_foreBrush;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -200,7 +200,7 @@ LRESULT MeaCircle::OnHPTimer(WPARAM, LPARAM) {
 
     // Create a polygonal window region made up of polygons.
     //
-    MeaAssert(m_arr != nullptr);
+    assert(m_arr != nullptr);
     HRGN region = ::CreatePolyPolygonRgn(m_arr, m_varr, static_cast<int>(m_count), ALTERNATE);
     ::OffsetRgn(region, -rect.left, -rect.top);
     SetWindowRgn(region, TRUE);

@@ -19,7 +19,7 @@
 
 #include <meazure/pch.h>
 #include "Swatch.h"
-#include <meazure/utilities/MeaAssert.h>
+#include <cassert>
 
 
 BEGIN_MESSAGE_MAP(MeaSwatch, CWnd)
@@ -35,7 +35,7 @@ MeaSwatch::~MeaSwatch() {
             delete m_backBrush;
         }
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -47,7 +47,7 @@ void MeaSwatch::OnDestroy() {
 bool MeaSwatch::Create(COLORREF color, const RECT& rect, CWnd* parent) {
     SetColor(color);
 
-    MeaAssert(m_backBrush != nullptr);
+    assert(m_backBrush != nullptr);
     CString classname = AfxRegisterWndClass(CS_HREDRAW | CS_VREDRAW,
         nullptr, *m_backBrush);
     return CreateEx(0, classname, "", ((parent == nullptr) ? WS_POPUP : WS_CHILD),

@@ -24,6 +24,7 @@
 #include <meazure/utilities/StringUtils.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
+#include <cassert>
 
 
 const CString   MeaCircleTool::kToolName(_T("CircleTool"));
@@ -57,7 +58,7 @@ MeaCircleTool::~MeaCircleTool() {
         Disable();
         m_curPos = nullptr;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

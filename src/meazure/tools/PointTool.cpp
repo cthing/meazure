@@ -24,6 +24,7 @@
 #include <meazure/utilities/StringUtils.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
+#include <cassert>
 
 
 const CString MeaPointTool::kToolName(_T("PointTool"));
@@ -46,7 +47,7 @@ MeaPointTool::~MeaPointTool() {
     try {
         Disable();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

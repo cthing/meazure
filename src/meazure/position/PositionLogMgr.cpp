@@ -19,7 +19,6 @@
 
 #include <meazure/pch.h>
 #include <meazure/resource.h>
-#include <meazure/utilities/MeaAssert.h>
 #include "PositionLogMgr.h"
 #include "PositionLogDlg.h"
 #include "PositionSaveDlg.h"
@@ -30,6 +29,7 @@
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/StringUtils.h>
+#include <cassert>
 
 
 MeaPositionLogMgr::MeaPositionLogMgr(token) :
@@ -53,7 +53,7 @@ MeaPositionLogMgr::~MeaPositionLogMgr() {
         m_manageDialog = nullptr;
         m_observer = nullptr;
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -178,7 +178,7 @@ MeaGUID MeaPositionLogMgr::RecordDesktopInfo() {
 
 MeaPositionLogMgr::DesktopInfo& MeaPositionLogMgr::GetDesktopInfo(const MeaGUID& id) {
     DesktopInfoMap::iterator iter = m_desktopInfoMap.find(id);
-    MeaAssert(iter != m_desktopInfoMap.end());  // Validator ensures this
+    assert(iter != m_desktopInfoMap.end());  // Validator ensures this
     return (*iter).second;
 }
 
@@ -694,12 +694,12 @@ void MeaPositionLogMgr::DesktopInfo::Init() {
 
 void MeaPositionLogMgr::DesktopInfo::SetLinearUnits(const CString& unitsStr) {
     m_linearUnits = MeaUnitsMgr::Instance().GetLinearUnits(unitsStr);
-    MeaAssert(m_linearUnits != nullptr);
+    assert(m_linearUnits != nullptr);
 }
 
 void MeaPositionLogMgr::DesktopInfo::SetAngularUnits(const CString& unitsStr) {
     m_angularUnits = MeaUnitsMgr::Instance().GetAngularUnits(unitsStr);
-    MeaAssert(m_angularUnits != nullptr);
+    assert(m_angularUnits != nullptr);
 }
 
 void MeaPositionLogMgr::DesktopInfo::Load(const MeaXMLNode* desktopNode) {
@@ -898,7 +898,7 @@ MeaPositionLogMgr::Position::~Position() {
             m_mgr->ReleaseDesktopRef(m_desktopInfoId);
         }
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -1180,7 +1180,7 @@ MeaPositionLogMgr::Positions::~Positions() {
     try {
         DeleteAll();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

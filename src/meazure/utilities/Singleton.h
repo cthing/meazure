@@ -22,8 +22,6 @@
 
 #pragma once
 
-#include "MeaAssert.h"
-
 
 /// Mix-in class implementing the Singleton pattern. A Singleton
 /// object is never created or destroyed explicitly. Instead, the

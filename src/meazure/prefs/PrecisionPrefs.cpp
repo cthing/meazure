@@ -20,6 +20,7 @@
 #include <meazure/pch.h>
 #include "PrecisionPrefs.h"
 #include <meazure/units/UnitsMgr.h>
+#include <cassert>
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -95,7 +96,7 @@ MeaPrecisionPrefs::~MeaPrecisionPrefs() {
         m_linearFields.clear();
         m_angularFields.clear();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 

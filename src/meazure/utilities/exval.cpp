@@ -19,7 +19,7 @@
 
 #pragma warning(disable: 4702)
 #include "exval.h"
-#include "MeaAssert.h"
+#include <cassert>
 #pragma warning(disable: 4511 4512)
 #include <boost/tokenizer.hpp>
 #include <boost/format.hpp>
@@ -294,7 +294,7 @@ protected:
     Category    Categorize() const;
     
     /// Determines whether the children of the this content model
-    /// node are simple name name nodes with no cardinality.
+    /// node are simple name nodes with no cardinality.
     ///
     /// @return <b>true</b> if the children are simple name nodes
     ///         with no cardinality.
@@ -1251,7 +1251,7 @@ Validator::~Validator()
         m_handler = NULL;
     }
     catch(...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -1315,7 +1315,7 @@ SymbolSet Validator::GetAllowableElements() const
 void Validator::AddElementDecl(const XML_Char* elementName,
                                const XML_Content *contentModel)
 {
-    MeaAssert(elementName != NULL);
+    assert(elementName != NULL);
 
     ContentModel model(contentModel);
 
@@ -1386,7 +1386,7 @@ void Validator::AddAttributeDecl(const XML_Char* elementName,
     } else {
         elementDecl = (*iter).second;
     }
-    MeaAssert(elementDecl != NULL);
+    assert(elementDecl != NULL);
 
     // Add the attribute decl to the element decl
     //
@@ -1419,7 +1419,7 @@ bool Validator::StartElement(XML_Parser parser, const XML_Char* elementName,
     // Get the start state of the DFA.
     //
     const State *startState = elementDecl->GetStartState();
-    MeaAssert(startState != NULL);
+    assert(startState != NULL);
 
     // If the state stack is empty, this element must be the first
     // occurrence of the document element.
@@ -1451,7 +1451,7 @@ bool Validator::StartElement(XML_Parser parser, const XML_Char* elementName,
     //
     else {
         const State *currentState = TopState();
-        MeaAssert(currentState != NULL);
+        assert(currentState != NULL);
         const State *nextState = currentState->GetNextState(elementName);
 
         if (nextState == NULL) {
@@ -1576,7 +1576,7 @@ bool Validator::StartElement(XML_Parser parser, const XML_Char* elementName,
             }
             break;
         default:
-            MeaAssert(false);
+            assert(false);
             break;
         }
     }
@@ -1604,7 +1604,7 @@ bool Validator::EndElement(XML_Parser parser)
     // Retrieve the current state and verify that it is an accepting state.
     //
     const State* currentState = TopState();
-    MeaAssert(currentState != NULL);
+    assert(currentState != NULL);
     if (!currentState->IsAccepting()) {
         SendError(parser, ValidationError::InvalidElementPattern, TopElement()->GetName().c_str());
         return false;
@@ -1616,7 +1616,7 @@ bool Validator::EndElement(XML_Parser parser)
 
     // Retrieve the containing element.
     //
-    MeaAssert(!IsElementStackEmpty());
+    assert(!IsElementStackEmpty());
     PopElement();
 
     // If the state stack is empty, we have closed the document element.
@@ -1687,7 +1687,7 @@ const XML_Char* Validator::GetCurrentElement() const
 
 bool Validator::IsWhitespace(const XML_Char* str, int len) const
 {
-    MeaAssert(str != NULL);
+    assert(str != NULL);
 
     for (; len > 0; len--, str++) {
         if ((*str != EV_T('\x20')) &&
@@ -1819,7 +1819,7 @@ ParseNode::~ParseNode()
         delete m_right;
     }
     catch(...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -2058,7 +2058,7 @@ DFA::DFA(Validator& validator, const ContentModel& contentModel) :
 #endif /* EV_TIMING */
 
             m_parseTree = BuildParseTree(contentModel);
-            MeaAssert(m_parseTree != NULL);
+            assert(m_parseTree != NULL);
 
 #ifdef EV_TIMING
             m_parseTreeTime = clock() - m_parseTreeTime;
@@ -2088,7 +2088,7 @@ DFA::DFA(Validator& validator, const ContentModel& contentModel) :
         }
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 }
@@ -2105,7 +2105,7 @@ DFA::~DFA()
         m_states.clear();
     }
     catch(...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -2278,7 +2278,7 @@ ParseNode* DFA::BuildParseTree(const ContentModel& contentModel, bool top)
     case ContentModel::EmptyType:
     case ContentModel::AnyType:
     case ContentModel::MixedType:
-        MeaAssert(false);
+        assert(false);
         break;
     case ContentModel::NameType:
         rootNode = new ParseNode(ParseNode::Name);
@@ -2291,7 +2291,7 @@ ParseNode* DFA::BuildParseTree(const ContentModel& contentModel, bool top)
         break;
     }
 
-    MeaAssert(rootNode != NULL);
+    assert(rootNode != NULL);
 
     // If there is a Name given, add it to the node
     //
@@ -2342,7 +2342,7 @@ ParseNode* DFA::BuildParseTree(const ContentModel& contentModel, bool top)
         rootNode = new ParseNode(ParseNode::Plus, rootNode);
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 
@@ -2396,7 +2396,7 @@ State* DFA::GetUnmarkedState()
 ContentModel::ContentModel(const XML_Content *model, bool root) :
     m_root(root), m_category(ComplexCat)
 {
-    MeaAssert(model != NULL);
+    assert(model != NULL);
 
     // Copy the content model node type
     //
@@ -2420,7 +2420,7 @@ ContentModel::ContentModel(const XML_Content *model, bool root) :
         m_type = SeqType;
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 
@@ -2440,7 +2440,7 @@ ContentModel::ContentModel(const XML_Content *model, bool root) :
         m_quantity = PlusQuant;
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 
@@ -2478,7 +2478,7 @@ ContentModel::~ContentModel()
         }
     }
     catch(...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -2578,7 +2578,7 @@ EVString ContentModel::MakeSignature() const
         sig = EV_T('S');
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 
@@ -2596,7 +2596,7 @@ EVString ContentModel::MakeSignature() const
         sig += EV_T('+');
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
 
@@ -2663,7 +2663,7 @@ ElementDecl::~ElementDecl()
         m_dfa = NULL;
     }
     catch(...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -2703,7 +2703,7 @@ AttributeDecl::AttributeDecl(ElementDecl& elementDecl, const XML_Char* attrName,
 {
     // Determine the attribute type
     //
-    MeaAssert(attrType != NULL);
+    assert(attrType != NULL);
 
     if (_evcscmp(attrType, EV_T("CDATA")) == 0) {
         m_type = CDATA;
@@ -2815,7 +2815,7 @@ EVOstream& ev::operator<<(EVOstream& stream, const ContentModel& contentModel)
             stream << EV_T("Complex");
             break;
         default:
-            MeaAssert(false);
+            assert(false);
             break;
         }
         stream << std::endl;
@@ -2846,7 +2846,7 @@ EVOstream& ev::operator<<(EVOstream& stream, const ContentModel& contentModel)
         line += EV_T("SEQ");
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
     stream << line.c_str() << std::endl;
@@ -2866,7 +2866,7 @@ EVOstream& ev::operator<<(EVOstream& stream, const ContentModel& contentModel)
         line += EV_T("+");
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
     stream << line.c_str() << std::endl;
@@ -2933,7 +2933,7 @@ EVOstream& ev::operator<<(EVOstream& stream, const State* state)
         stream << EV_T("Mixed");
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
     stream << std::endl;
@@ -3004,7 +3004,7 @@ EVOstream& ev::operator<<(EVOstream& stream, const ParseNode *node)
         stream << EV_T("plus");
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
     stream << std::endl;
@@ -3114,7 +3114,7 @@ EVOstream& ev::operator<<(EVOstream& stream, const AttributeDecl* attributeDecl)
         stream << EV_T("NOTATION");
         break;
     default:
-        MeaAssert(false);
+        assert(false);
         break;
     }
     stream << std::endl;

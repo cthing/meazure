@@ -31,7 +31,7 @@
 MeaXMLAttributes::MeaXMLAttributes() {}
 
 MeaXMLAttributes::MeaXMLAttributes(const XML_Char** atts, int numSpecified) {
-    MeaAssert(atts != nullptr);
+    assert(atts != nullptr);
 
     // Run through the atts and insert them in the map. Also mark
     // which attributes are set by default versus  having been
@@ -130,7 +130,7 @@ MeaXMLNode::~MeaXMLNode() {
         }
         m_children.clear();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -221,7 +221,7 @@ MeaXMLParser::MeaXMLParser(MeaXMLParserHandler* handler, bool buildDOM) :
     m_nodeStack = new NodeStack;
 
     m_parser = XML_ParserCreate(nullptr);
-    MeaAssert(m_parser != nullptr);
+    assert(m_parser != nullptr);
 
     XML_SetUserData(m_parser, this);
     XML_SetExternalEntityRefHandlerArg(m_parser, this);
@@ -254,7 +254,7 @@ MeaXMLParser::MeaXMLParser(const MeaXMLParser& parentParser) :
     m_nodeStack(parentParser.m_nodeStack) {
     m_parser = XML_ExternalEntityParserCreate(parentParser.m_parser,
                                                 m_context, nullptr);
-    MeaAssert(m_parser != nullptr);
+    assert(m_parser != nullptr);
 
     XML_SetUserData(m_parser, this);
     XML_SetExternalEntityRefHandlerArg(m_parser, this);
@@ -271,7 +271,7 @@ MeaXMLParser::~MeaXMLParser() {
             delete m_dom;
         }
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -305,7 +305,7 @@ void MeaXMLParser::StartElementHandler(void* userData, const XML_Char* elementNa
     if (ps->m_buildDOM) {
         MeaXMLNode* node = new MeaXMLNode(name, attributes);
         if (ps->m_nodeStack->empty()) {
-            MeaAssert(ps->m_dom == nullptr);
+            assert(ps->m_dom == nullptr);
             ps->m_dom = node;
         } else {
             ps->m_nodeStack->top()->AddChild(node);
@@ -321,7 +321,7 @@ void MeaXMLParser::EndElementHandler(void* userData, const XML_Char* elementName
         ps->m_validator->EndElement(ps->m_parser);
 
     CString name(FromUTF8(elementName));
-    MeaAssert(!ps->m_elementStack->empty());
+    assert(!ps->m_elementStack->empty());
     ps->m_elementStack->pop();
     CString container;
     if (!ps->m_elementStack->empty()) {

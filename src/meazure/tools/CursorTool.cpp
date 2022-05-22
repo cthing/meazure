@@ -20,12 +20,12 @@
 #include <meazure/pch.h>
 #include "CursorTool.h"
 #include "ToolMgr.h"
-#include <meazure/utilities/MeaAssert.h>
 #include <hooks/hooks.h>
 #include <meazure/resource.h>
 #include <meazure/graphics/Colors.h>
 #include <crtdbg.h>
 #include <windowsx.h>
+#include <cassert>
 
 
 const CString MeaCursorTool::kToolName(_T("CursorTool"));
@@ -44,7 +44,7 @@ MeaCursorTool::~MeaCursorTool() {
     try {
         Disable();
     } catch (...) {
-        MeaAssert(false);
+        assert(false);
     }
 }
 
@@ -102,7 +102,7 @@ void MeaCursorTool::Disable() {
     bool ret =
 #endif
         MeaDisableMouseHook();
-    MeaAssert(ret);
+    assert(ret);
 
     MeaTool::Disable();
 }

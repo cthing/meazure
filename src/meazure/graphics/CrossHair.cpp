@@ -19,18 +19,19 @@
 
 #include <meazure/pch.h>
 #include "CrossHair.h"
+#include "Plotter.h"
 #include <meazure/resource.h>
 #include <meazure/ui/Layout.h>
 #define COMPILE_LAYERED_WINDOW_STUBS
 #include <meazure/ui/LayeredWindows.h>
 #include <cassert>
+#include <functional>
 
 
 SIZE MeaCrossHair::m_size;
 SIZE MeaCrossHair::m_halfSize;
 SIZE MeaCrossHair::m_spread;
 UINT MeaCrossHair::m_flashInterval { 100 };
-int* MeaCrossHair::m_numCoords { nullptr };
 
 
 BEGIN_MESSAGE_MAP(MeaCrossHair, MeaGraphic)
@@ -220,24 +221,8 @@ void MeaCrossHair::DestroyColors() {
 }
 
 void MeaCrossHair::SetRegion() {
-    int xc = m_halfSize.cx;
-    int yc = m_halfSize.cy;
-    int numLayers = 5;
-    int totalLayers = 4 * numLayers;
-    int spread;
-    int c;
-    int layer;
-    int ind = 0;
-    int thkx = m_halfSize.cx / numLayers;
-    int thky = m_halfSize.cy / numLayers;
-    POINT* coords = new POINT[4 * totalLayers];
-
-    if (m_numCoords == nullptr) {
-        m_numCoords = new int[totalLayers];
-        for (int i = 0; i < totalLayers; i++) {
-            m_numCoords[i] = 4;
-        }
-    }
+    POINT coords[4 * kTotalLayers];
+    POINT* coord = coords;
 
     // Each petal of the crosshair is made up of stacked rectangles.
     // Each rectangle is thk high by 2 * spread wide. Each rectangle
@@ -255,66 +240,16 @@ void MeaCrossHair::SetRegion() {
     //           *             |
     //           * -------------
 
-    //
-    // Top petal
-    //
-    for (layer = 0, spread = m_spread.cx, c = 0; layer < numLayers && spread >= 0; layer++, spread--, c += thky) {
-        coords[ind].x = xc - spread;
-        coords[ind++].y = c;
-        coords[ind].x = xc + spread + 1;
-        coords[ind++].y = c;
-        coords[ind].x = xc + spread + 1;
-        coords[ind++].y = c + thky;
-        coords[ind].x = xc - spread;
-        coords[ind++].y = c + thky;
-    }
+    std::function<void(int, int)> addPoint = [&](int x, int y) {
+        coord->x = x;
+        coord->y = y;
+        coord++;
+    };
 
-    //
-    // Left petal
-    //
-    for (layer = 0, spread = m_spread.cy, c = 0; layer < numLayers && spread >= 0; layer++, spread--, c += thkx) {
-        coords[ind].y = yc - spread;
-        coords[ind++].x = c;
-        coords[ind].y = yc + spread + 1;
-        coords[ind++].x = c;
-        coords[ind].y = yc + spread + 1;
-        coords[ind++].x = c + thkx;
-        coords[ind].y = yc - spread;
-        coords[ind++].x = c + thkx;
-    }
+    MeaPlotter::PlotCrosshair(m_size, m_spread, kPetalLayers, addPoint);
 
-    //
-    // Bottom petal
-    //
-    for (layer = 0, spread = m_spread.cx, c = m_size.cy; layer < numLayers && spread >= 0; layer++, spread--, c -= thky) {
-        coords[ind].x = xc - spread;
-        coords[ind++].y = c;
-        coords[ind].x = xc + spread + 1;
-        coords[ind++].y = c;
-        coords[ind].x = xc + spread + 1;
-        coords[ind++].y = c - thky;
-        coords[ind].x = xc - spread;
-        coords[ind++].y = c - thky;
-    }
-
-    //
-    // Right petal
-    //
-    for (layer = 0, spread = m_spread.cy, c = m_size.cx; layer < numLayers && spread >= 0; layer++, spread--, c -= thkx) {
-        coords[ind].y = yc - spread;
-        coords[ind++].x = c;
-        coords[ind].y = yc + spread + 1;
-        coords[ind++].x = c;
-        coords[ind].y = yc + spread + 1;
-        coords[ind++].x = c - thkx;
-        coords[ind].y = yc - spread;
-        coords[ind++].x = c - thkx;
-    }
-
-    HRGN region = ::CreatePolyPolygonRgn(coords, m_numCoords, totalLayers, ALTERNATE);
+    HRGN region = ::CreatePolyPolygonRgn(coords, m_numCoords.data(), kTotalLayers, ALTERNATE);
     SetWindowRgn(region, FALSE);
-
-    delete[] coords;
 }
 
 void MeaCrossHair::SetPosition(const POINT& center) {

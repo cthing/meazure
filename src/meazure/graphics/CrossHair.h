@@ -25,6 +25,7 @@
 #include "Graphic.h"
 #include <meazure/ui/ScreenProvider.h>
 #include <meazure/units/UnitsProvider.h>
+#include <array>
 
 
 class MeaCrossHair;
@@ -267,6 +268,23 @@ private:
         Inverted    ///< Draw the crosshair in its inverted appearance.
     };
 
+    static constexpr int kPetalLayers = { 5 };
+    static constexpr int kTotalLayers = { 4 * kPetalLayers };
+
+    static constexpr std::array<int, kTotalLayers> MakeNumCoords() noexcept {
+        std::array<int, kTotalLayers> arr {};
+        // The fill method is not constexpr until C++20
+        for (int i = 0; i < kTotalLayers; i++) {
+            arr[i] = 4;
+        }
+        return arr;
+    }
+    static inline const std::array<int, kTotalLayers> m_numCoords = MakeNumCoords();
+
+    static SIZE m_size;             ///< Width and height of the crosshair, in pixels
+    static SIZE m_halfSize;         ///< Half the width and height of the crosshair, in pixels
+    static SIZE m_spread;           ///< Half the length of the base of a triangular section of the crosshair, in pixels
+    static UINT m_flashInterval;    ///< Number of milliseconds to hold each display state while flashing the crosshair
 
     /// Given the center of the crosshair, returns the corresponding
     /// upper left corner.
@@ -277,14 +295,6 @@ private:
     ///         in pixels.
     ///
     static CPoint GetLeftTop(const CPoint& center) { return center - m_halfSize; }
-
-
-    static SIZE m_size;             ///< Width and height of the crosshair, in pixels
-    static SIZE m_halfSize;         ///< Half the width and height of the crosshair, in pixels
-    static SIZE m_spread;           ///< Half the length of the base of a triangular section of the crosshair, in pixels
-    static UINT m_flashInterval;    ///< Number of milliseconds to hold each display state while flashing the crosshair
-    static int* m_numCoords;        ///< Number of coordinates in each rectangle making up part of the crosshair (4)
-
 
     /// Forms the window into the shape of the crosshair. A series of
     /// rectangular regions are aggregated together to form the four
@@ -339,5 +349,5 @@ private:
     CBitmap* m_origCHBitmap;                    ///< Original bitmap for the crosshair
     CBitmap m_backBitmap;                       ///< Bitmap for the background when alpha blending when the crosshair
                                                 ///< is a child window
-    CBitmap* m_origBackBitmap;                  ///< Original background bitmap 
+    CBitmap* m_origBackBitmap;                  ///< Original background bitmap
 };

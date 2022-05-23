@@ -77,6 +77,7 @@ set(graphic_SRCS
     graphics/Graphic.h
     graphics/Line.cpp
     graphics/Line.h
+    graphics/Plotter.h
     graphics/Rectangle.cpp
     graphics/Rectangle.h
     graphics/Ruler.cpp

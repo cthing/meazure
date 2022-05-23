@@ -157,13 +157,8 @@ private:
     /// @param y    [in] Y coordinate of the point on the line
     ///
     void AddPoint(int x, int y) {
-        POINT p;
+        POINT p { x, y };
         POINT* arr = &m_arr[m_count << 2];
-
-        // Put the coordinates into a point
-        //
-        p.x = x;
-        p.y = y;
 
         // (x,y)   (x+1, y)
         //    ---------
@@ -176,7 +171,7 @@ private:
 
         // (x,y)
         //
-        * arr++ = p;
+        *arr++ = p;
 
         // (x+1,y)
         //

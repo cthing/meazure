@@ -19,10 +19,12 @@
 
 #include <meazure/pch.h>
 #include "Line.h"
+#include "Plotter.h"
 #include <meazure/utilities/Geometry.h>
 #include "Colors.h"
 #include <cstdlib>
 #include <cassert>
+#include <functional>
 
 
 const CSize MeaLine::kMargin(5, 5);
@@ -121,48 +123,11 @@ void MeaLine::PlotLine() {
         endPoint = m_startPoint;
     }
 
-    // Bresenham algorithm adapted from "Graphics Gems",
-    // Academic Press, 1990, p. 685. We need to create the line in
-    // this brute force way because relying on the polygon region
-    // method produces a horrible looking line.
-    //
-    int dx = endPoint.x - startPoint.x;
-    int dy = endPoint.y - startPoint.y;
-
-    int ax = 2 * abs(dx);
-    int ay = 2 * abs(dy);
-
-    int sx = (dx < 0) ? -1 : 1;
-    int sy = (dy < 0) ? -1 : 1;
-
-    int x = startPoint.x;
-    int y = startPoint.y;
-
     m_count = 0;
 
-    if (ax > ay) {      /* x dominant */
-        int d = ay - (ax / 2);
-        while (x != endPoint.x) {
-            if (d >= 0) {
-                y += sy;
-                d -= ax;
-            }
-            x += sx;
-            d += ay;
-            AddPoint(x, y);
-        }
-    } else {            /* y dominant */
-        int d = ax - (ay / 2);
-        while (y != endPoint.y) {
-            if (d >= 0) {
-                x += sx;
-                d -= ay;
-            }
-            y += sy;
-            d += ax;
-            AddPoint(x, y);
-        }
-    }
+    std::function<void(int, int)> addPoint = std::bind(&MeaLine::AddPoint, this, std::placeholders::_1,
+                                                       std::placeholders::_2);
+    MeaPlotter::PlotLine(startPoint, endPoint, addPoint);
 }
 
 void MeaLine::SetPosition(const POINT& startPoint, const POINT& endPoint) {

@@ -155,12 +155,7 @@ private:
     /// @param y    [in] Y coordinate of the point on the circle
     ///
     void AddPoint(int x, int y) {
-        POINT p;
-
-        // Put the coordinates into a point
-        //
-        p.x = x;
-        p.y = y;
+        POINT p { x, y };
 
         // Make sure the point is somewhere on the virtual rectangle
         // formed by all display monitors.
@@ -182,7 +177,7 @@ private:
 
             // (x,y)
             //
-            * arr++ = p;
+            *arr++ = p;
 
             // (x+1,y)
             //

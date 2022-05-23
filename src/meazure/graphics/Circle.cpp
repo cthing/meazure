@@ -19,8 +19,10 @@
 
 #include <meazure/pch.h>
 #include "Circle.h"
+#include "Plotter.h"
 #include "Colors.h"
 #include <cassert>
+#include <functional>
 
 
  // Padding around circle
@@ -125,36 +127,11 @@ void MeaCircle::SetColor(COLORREF color) {
 }
 
 void MeaCircle::PlotCircle(int radius) {
-    int x = radius;
-    int y = 0;
-    int xc = m_center.x;
-    int yc = m_center.y;
-    int deltax = 1 - 2 * radius;
-    int deltay = 1;
-    int radiusError = 0;
-
     m_count = 0;
 
-    while (x >= y) {
-        AddPoint(xc + x, yc + y);       // Octant 1
-        AddPoint(xc - x, yc + y);       // Octant 4
-        AddPoint(xc - x, yc - y);       // Octant 5
-        AddPoint(xc + x, yc - y);       // Octant 8
-        AddPoint(xc + y, yc + x);       // Octant 2
-        AddPoint(xc - y, yc + x);       // Octant 3
-        AddPoint(xc - y, yc - x);       // Octant 6
-        AddPoint(xc + y, yc - x);       // Octant 7
-
-        y++;
-        radiusError += deltay;
-        deltay += 2;
-
-        if ((2 * radiusError + deltax) > 0) {
-            x--;
-            radiusError += deltax;
-            deltax += 2;
-        }
-    }
+    std::function<void(int, int)> addPoint = std::bind(&MeaCircle::AddPoint, this, std::placeholders::_1,
+                                                       std::placeholders::_2);
+    MeaPlotter::PlotCircle(m_center, radius, addPoint);
 }
 
 void MeaCircle::SetPosition(const POINT& center, const POINT& perimeter) {

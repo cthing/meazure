@@ -18,36 +18,30 @@
  */
 
 #include "pch.h"
+#define BOOST_TEST_MODULE TimeStampTest
 #include <boost/test/unit_test.hpp>
 #include <meazure/utilities/TimeStamp.h>
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
 
-CWinApp theApp;
-
-
-namespace {
-    void TestMakeTimeStamp() {
-        BOOST_CHECK_EQUAL(CString(_T("1970-01-01T00:00:00Z")), MeaMakeTimeStamp(0));        // Epoch
-        BOOST_CHECK_EQUAL(CString(_T("1971-02-05T01:00:00Z")), MeaMakeTimeStamp(34563600)); // Epoch + 400 d, 1 h
+struct GlobalFixture {
+    GlobalFixture() {
+        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
+            BOOST_FAIL("Fatal Error: MFC initialization failed");
+        }
     }
 
-    void TestParseTimeStamp() {
-        BOOST_CHECK_EQUAL(0, MeaParseTimeStamp(_T("1970-01-01T00:00:00Z")));
-        BOOST_CHECK_EQUAL(34563600, MeaParseTimeStamp(_T("1971-02-05T01:00:00Z")));
-    }
+    CWinApp theApp;
+};
+
+BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
+
+
+BOOST_AUTO_TEST_CASE(TestMakeTimeStamp) {
+    BOOST_TEST(MeaMakeTimeStamp(0) == _T("1970-01-01T00:00:00Z"));        // Epoch
+    BOOST_TEST(MeaMakeTimeStamp(34563600) == _T("1971-02-05T01:00:00Z")); // Epoch + 400 d, 1 h
 }
 
-boost::unit_test_framework::test_suite* init_unit_test_suite(int, char*[]) {
-    if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-        std::cerr << "Fatal Error: MFC initialization failed\n";
-        return nullptr;
-    }
-
-    boost::unit_test_framework::test_suite* suite = BOOST_TEST_SUITE("TimeStamp Tests");
-    suite->add(BOOST_TEST_CASE(&TestMakeTimeStamp));
-    suite->add(BOOST_TEST_CASE(&TestParseTimeStamp));
-    return suite;
+BOOST_AUTO_TEST_CASE(TestParseTimeStamp) {
+    BOOST_TEST(MeaParseTimeStamp(_T("1970-01-01T00:00:00Z")) == 0);
+    BOOST_TEST(MeaParseTimeStamp(_T("1971-02-05T01:00:00Z")) == 34563600);
 }

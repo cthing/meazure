@@ -18,54 +18,46 @@
  */
 
 #include "pch.h"
+#define BOOST_TEST_MODULE NumericUtilsTest
 #include <boost/test/unit_test.hpp>
 #include <meazure/utilities/NumericUtils.h>
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
 
-CWinApp theApp;
-
-
-namespace {
-    void TestIsFloatingEqual() {
-        BOOST_CHECK(MeaNumericUtils::IsFloatingEqual(0.0, 0.0));
-        BOOST_CHECK(MeaNumericUtils::IsFloatingEqual(1.0, 1.0));
-        BOOST_CHECK(MeaNumericUtils::IsFloatingEqual(-1.0, -1.0));
-        BOOST_CHECK(MeaNumericUtils::IsFloatingEqual(3.141596, 3.141596));
-        BOOST_CHECK(MeaNumericUtils::IsFloatingEqual(1.0 / 17.0, 1 / 17.0));
-        BOOST_CHECK(MeaNumericUtils::IsFloatingEqual(std::numeric_limits<double>::epsilon(),
-                                                     std::numeric_limits<double>::epsilon()));
-        BOOST_CHECK(MeaNumericUtils::IsFloatingEqual(1.000000001f, 1.000000002f));
-
-        BOOST_CHECK(!MeaNumericUtils::IsFloatingEqual(0.0, 1.5));
-        BOOST_CHECK(!MeaNumericUtils::IsFloatingEqual(-10.0, 3.141596));
-        BOOST_CHECK(!MeaNumericUtils::IsFloatingEqual(1.000001f, 1.000002f));
+struct GlobalFixture {
+    GlobalFixture() {
+        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
+            BOOST_FAIL("Fatal Error: MFC initialization failed");
+        }
     }
 
-    void TestIsFloatingZero() {
-        BOOST_CHECK(MeaNumericUtils::IsFloatingZero(0.0));
-        BOOST_CHECK(MeaNumericUtils::IsFloatingZero(-0.0));
-        BOOST_CHECK(MeaNumericUtils::IsFloatingZero(std::numeric_limits<double>::epsilon()));
+    CWinApp theApp;
+};
 
-        BOOST_CHECK(!MeaNumericUtils::IsFloatingZero(1.0));
-        BOOST_CHECK(!MeaNumericUtils::IsFloatingZero(-1.0));
-        BOOST_CHECK(!MeaNumericUtils::IsFloatingZero(2.0 * std::numeric_limits<double>::epsilon()));
-        BOOST_CHECK(!MeaNumericUtils::IsFloatingZero(-2.0 * std::numeric_limits<double>::epsilon()));
-    }
+BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
+
+
+BOOST_AUTO_TEST_CASE(TestIsFloatingEqual) {
+    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(0.0, 0.0));
+    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(1.0, 1.0));
+    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(-1.0, -1.0));
+    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(3.141596, 3.141596));
+    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(1.0 / 17.0, 1 / 17.0));
+    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(std::numeric_limits<double>::epsilon(),
+                                                    std::numeric_limits<double>::epsilon()));
+    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(1.000000001f, 1.000000002f));
+
+    BOOST_TEST(!MeaNumericUtils::IsFloatingEqual(0.0, 1.5));
+    BOOST_TEST(!MeaNumericUtils::IsFloatingEqual(-10.0, 3.141596));
+    BOOST_TEST(!MeaNumericUtils::IsFloatingEqual(1.000001f, 1.000002f));
 }
 
-boost::unit_test_framework::test_suite* init_unit_test_suite(int, char* []) {
-    if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-        std::cerr << "Fatal Error: MFC initialization failed\n";
-        return nullptr;
-    }
+BOOST_AUTO_TEST_CASE(TestIsFloatingZero) {
+    BOOST_TEST(MeaNumericUtils::IsFloatingZero(0.0));
+    BOOST_TEST(MeaNumericUtils::IsFloatingZero(-0.0));
+    BOOST_TEST(MeaNumericUtils::IsFloatingZero(std::numeric_limits<double>::epsilon()));
 
-    boost::unit_test_framework::test_suite* numericSuite = BOOST_TEST_SUITE("Numeric Tests");
-    numericSuite->add(BOOST_TEST_CASE(&TestIsFloatingEqual));
-    numericSuite->add(BOOST_TEST_CASE(&TestIsFloatingZero));
-    boost::unit_test_framework::framework::master_test_suite().add(numericSuite);
-
-    return nullptr;
+    BOOST_TEST(!MeaNumericUtils::IsFloatingZero(1.0));
+    BOOST_TEST(!MeaNumericUtils::IsFloatingZero(-1.0));
+    BOOST_TEST(!MeaNumericUtils::IsFloatingZero(2.0 * std::numeric_limits<double>::epsilon()));
+    BOOST_TEST(!MeaNumericUtils::IsFloatingZero(-2.0 * std::numeric_limits<double>::epsilon()));
 }

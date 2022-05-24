@@ -22,6 +22,8 @@
 
 #pragma once
 
+#include <iostream>
+
 
 /// Represents a globally unique identifier (GUID) and common operations
 /// on a GUID.
@@ -173,3 +175,12 @@ private:
     GUID m_guid;                ///< Underlying GUID for the object.
     mutable CString m_buffer;   ///< Buffer holding the string representation of the GUID.
 };
+
+
+/// Writes the GUID to the specified output stream. The output format is the same as ToString().
+/// 
+/// @param os    [in] Output stream to which the GUID should be written
+/// @param guid  [in] The GUID to be written 
+/// @return The specified output stream
+/// 
+std::ostream& operator<<(std::ostream& os, const MeaGUID& guid);

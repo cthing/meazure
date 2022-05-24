@@ -18,111 +18,98 @@
  */
 
 #include "pch.h"
+#define BOOST_TEST_MODULE StringUtilsTest
 #include <boost/test/unit_test.hpp>
 #include <meazure/utilities/StringUtils.h>
+#include <float.h>
 
-using namespace boost::unit_test;
-
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
-
-CWinApp theApp;
+namespace bt = boost::unit_test;
 
 
-namespace {
-    void TestDblToStr() {
-        CString str = MeaStringUtils::DblToStr(123.456);
-        BOOST_CHECK_EQUAL(CString(_T("123.456")), str);
-
-        str = MeaStringUtils::DblToStr(-123.456);
-        BOOST_CHECK_EQUAL(CString(_T("-123.456")), str);
-
-        str = MeaStringUtils::DblToStr(+123.456);
-        BOOST_CHECK_EQUAL(CString(_T("123.456")), str);
-
-        str = MeaStringUtils::DblToStr(0);
-        BOOST_CHECK_EQUAL(CString(_T("0.0")), str);
-
-        str = MeaStringUtils::DblToStr(0.0);
-        BOOST_CHECK_EQUAL(CString(_T("0.0")), str);
+struct GlobalFixture {
+    GlobalFixture() {
+        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
+            BOOST_FAIL("Fatal Error: MFC initialization failed");
+        }
     }
 
-    void TestIsNumber() {
-        BOOST_CHECK(MeaStringUtils::IsNumber(_T("123")));
-        BOOST_CHECK(MeaStringUtils::IsNumber(_T("+123")));
-        BOOST_CHECK(MeaStringUtils::IsNumber(_T("-123")));
-        BOOST_CHECK(MeaStringUtils::IsNumber(_T("1.30")));
-        BOOST_CHECK(!MeaStringUtils::IsNumber(_T("a123")));
-        BOOST_CHECK(!MeaStringUtils::IsNumber(_T("")));
+    CWinApp theApp;
+};
 
-        double value;
-        MeaStringUtils::IsNumber(_T("123"), &value);
-        BOOST_CHECK_CLOSE(123.0, value, 0.0001);
-        MeaStringUtils::IsNumber(_T("+123"), &value);
-        BOOST_CHECK_CLOSE(123.0, value, 0.0001);
-        MeaStringUtils::IsNumber(_T("-123"), &value);
-        BOOST_CHECK_CLOSE(-123.0, value, 0.0001);
-        MeaStringUtils::IsNumber(_T("1.30"), &value);
-        BOOST_CHECK_CLOSE(1.3, value, 0.0001);
-    }
+BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
 
-    void TestIsBoolean() {
-        BOOST_CHECK(MeaStringUtils::IsBoolean(_T("1")));
-        BOOST_CHECK(MeaStringUtils::IsBoolean(_T("true")));
-        BOOST_CHECK(MeaStringUtils::IsBoolean(_T("TRUE")));
-        BOOST_CHECK(MeaStringUtils::IsBoolean(_T("0")));
-        BOOST_CHECK(MeaStringUtils::IsBoolean(_T("false")));
-        BOOST_CHECK(MeaStringUtils::IsBoolean(_T("FALSE")));
-        BOOST_CHECK(!MeaStringUtils::IsBoolean(_T("10")));
-        BOOST_CHECK(!MeaStringUtils::IsBoolean(_T("-1")));
-        BOOST_CHECK(!MeaStringUtils::IsBoolean(_T("ON")));
-        BOOST_CHECK(!MeaStringUtils::IsBoolean(_T("OFF")));
-        BOOST_CHECK(!MeaStringUtils::IsBoolean(_T("")));
 
-        bool value;
-        MeaStringUtils::IsBoolean(_T("1"), &value);
-        BOOST_CHECK(value);
-        MeaStringUtils::IsBoolean(_T("true"), &value);
-        BOOST_CHECK(value);
-        MeaStringUtils::IsBoolean(_T("TRUE"), &value);
-        BOOST_CHECK(value);
-        MeaStringUtils::IsBoolean(_T("0"), &value);
-        BOOST_CHECK(!value);
-        MeaStringUtils::IsBoolean(_T("false"), &value);
-        BOOST_CHECK(!value);
-        MeaStringUtils::IsBoolean(_T("FALSE"), &value);
-        BOOST_CHECK(!value);
-    }
-
-    void TestLFtoCRLF() {
-        BOOST_CHECK_EQUAL(CString(_T("\r\n")), MeaStringUtils::LFtoCRLF(_T("\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\r\n")), MeaStringUtils::LFtoCRLF(_T("\r\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\r\nHello\r\n\r\nWorld\r\n")), MeaStringUtils::LFtoCRLF(_T("\nHello\n\nWorld\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\r\nHello\r\n\r\nWorld\r\n")), MeaStringUtils::LFtoCRLF(_T("\r\nHello\n\r\nWorld\n")));
-        BOOST_CHECK_EQUAL(CString(_T("")), MeaStringUtils::LFtoCRLF(_T("")));
-    }
-
-    void TestCRLFtoLF() {
-        BOOST_CHECK_EQUAL(CString(_T("\n")), MeaStringUtils::CRLFtoLF(_T("\r\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\n")), MeaStringUtils::CRLFtoLF(_T("\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\nHello\n\nWorld\n")), MeaStringUtils::CRLFtoLF(_T("\r\nHello\r\n\r\nWorld\r\n")));
-        BOOST_CHECK_EQUAL(CString(_T("\nHello\n\nWorld\n")), MeaStringUtils::CRLFtoLF(_T("\r\nHello\n\r\nWorld\n")));
-        BOOST_CHECK_EQUAL(CString(_T("")), MeaStringUtils::LFtoCRLF(_T("")));
-    }
+BOOST_AUTO_TEST_CASE(TestDblToStr) {
+    BOOST_TEST(MeaStringUtils::DblToStr(123.456) == _T("123.456"));
+    BOOST_TEST(MeaStringUtils::DblToStr(-123.456) == _T("-123.456"));
+    BOOST_TEST(MeaStringUtils::DblToStr(+123.456) == _T("123.456"));
+    BOOST_TEST(MeaStringUtils::DblToStr(0) == _T("0.0"));
+    BOOST_TEST(MeaStringUtils::DblToStr(0.0) == _T("0.0"));
 }
 
-test_suite* init_unit_test_suite(int, char* []) {
-    if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-        std::cerr << "Fatal Error: MFC initialization failed\n";
-        return nullptr;
-    }
+BOOST_AUTO_TEST_CASE(TestIsNumber) {
+    BOOST_TEST(MeaStringUtils::IsNumber(_T("123")));
+    BOOST_TEST(MeaStringUtils::IsNumber(_T("+123")));
+    BOOST_TEST(MeaStringUtils::IsNumber(_T("-123")));
+    BOOST_TEST(MeaStringUtils::IsNumber(_T("1.30")));
+    BOOST_TEST(!MeaStringUtils::IsNumber(_T("a123")));
+    BOOST_TEST(!MeaStringUtils::IsNumber(_T("")));
+}
 
-    framework::master_test_suite().add(BOOST_TEST_CASE(&TestDblToStr));
-    framework::master_test_suite().add(BOOST_TEST_CASE(&TestIsNumber));
-    framework::master_test_suite().add(BOOST_TEST_CASE(&TestIsBoolean));
-    framework::master_test_suite().add(BOOST_TEST_CASE(&TestLFtoCRLF));
-    framework::master_test_suite().add(BOOST_TEST_CASE(&TestCRLFtoLF));
+BOOST_AUTO_TEST_CASE(TestIsNumberValue, *bt::tolerance(FLT_EPSILON)) {
+    double value;
+    MeaStringUtils::IsNumber(_T("123"), &value);
+    BOOST_TEST(value == 123.0);
+    MeaStringUtils::IsNumber(_T("+123"), &value);
+    BOOST_TEST(value == 123.0);
+    MeaStringUtils::IsNumber(_T("-123"), &value);
+    BOOST_TEST(value = -123.0);
+    MeaStringUtils::IsNumber(_T("1.30"), &value);
+    BOOST_TEST(value == 1.3);
+}
 
-    return nullptr;
+BOOST_AUTO_TEST_CASE(TestIsBoolean) {
+    BOOST_TEST(MeaStringUtils::IsBoolean(_T("1")));
+    BOOST_TEST(MeaStringUtils::IsBoolean(_T("true")));
+    BOOST_TEST(MeaStringUtils::IsBoolean(_T("TRUE")));
+    BOOST_TEST(MeaStringUtils::IsBoolean(_T("0")));
+    BOOST_TEST(MeaStringUtils::IsBoolean(_T("false")));
+    BOOST_TEST(MeaStringUtils::IsBoolean(_T("FALSE")));
+    BOOST_TEST(!MeaStringUtils::IsBoolean(_T("10")));
+    BOOST_TEST(!MeaStringUtils::IsBoolean(_T("-1")));
+    BOOST_TEST(!MeaStringUtils::IsBoolean(_T("ON")));
+    BOOST_TEST(!MeaStringUtils::IsBoolean(_T("OFF")));
+    BOOST_TEST(!MeaStringUtils::IsBoolean(_T("")));
+}
+
+BOOST_AUTO_TEST_CASE(TestIsBooleanValue) {
+    bool value;
+    MeaStringUtils::IsBoolean(_T("1"), &value);
+    BOOST_TEST(value);
+    MeaStringUtils::IsBoolean(_T("true"), &value);
+    BOOST_TEST(value);
+    MeaStringUtils::IsBoolean(_T("TRUE"), &value);
+    BOOST_TEST(value);
+    MeaStringUtils::IsBoolean(_T("0"), &value);
+    BOOST_TEST(!value);
+    MeaStringUtils::IsBoolean(_T("false"), &value);
+    BOOST_TEST(!value);
+    MeaStringUtils::IsBoolean(_T("FALSE"), &value);
+    BOOST_TEST(!value);
+}
+
+BOOST_AUTO_TEST_CASE(TestLFtoCRLF) {
+    BOOST_TEST(MeaStringUtils::LFtoCRLF(_T("\n")) == _T("\r\n"));
+    BOOST_TEST(MeaStringUtils::LFtoCRLF(_T("\r\n")) == _T("\r\n"));
+    BOOST_TEST(MeaStringUtils::LFtoCRLF(_T("\nHello\n\nWorld\n")) == _T("\r\nHello\r\n\r\nWorld\r\n"));
+    BOOST_TEST(MeaStringUtils::LFtoCRLF(_T("\r\nHello\n\r\nWorld\n")) == _T("\r\nHello\r\n\r\nWorld\r\n"));
+    BOOST_TEST(MeaStringUtils::LFtoCRLF(_T("")) == _T(""));
+}
+
+BOOST_AUTO_TEST_CASE(TestCRLFtoLF) {
+    BOOST_TEST(MeaStringUtils::CRLFtoLF(_T("\r\n")) == _T("\n"));
+    BOOST_TEST(MeaStringUtils::CRLFtoLF(_T("\n")) == _T("\n"));
+    BOOST_TEST(MeaStringUtils::CRLFtoLF(_T("\r\nHello\r\n\r\nWorld\r\n")) == _T("\nHello\n\nWorld\n"));
+    BOOST_TEST(MeaStringUtils::CRLFtoLF(_T("\r\nHello\n\r\nWorld\n")) == _T("\nHello\n\nWorld\n"));
+    BOOST_TEST(MeaStringUtils::LFtoCRLF(_T("")) == _T(""));
 }

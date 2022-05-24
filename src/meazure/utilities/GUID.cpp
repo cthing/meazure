@@ -63,3 +63,9 @@ CString MeaGUID::ToString() const {
                     m_guid.Data4[4], m_guid.Data4[5], m_guid.Data4[6], m_guid.Data4[7]);
     return m_buffer;
 }
+
+
+std::ostream& operator<<(std::ostream& os, const MeaGUID& guid) {
+    os << guid.ToString();
+    return os;
+}

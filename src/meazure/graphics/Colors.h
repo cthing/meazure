@@ -29,11 +29,14 @@
 /// Represents a color in the Hue-Saturation-Lightness color space.
 /// All values are between 0.0 and 1.0.
 ///
-typedef struct {
+struct HSL {
     double hue;
     double saturation;
     double lightness;
-} HSL;
+
+    HSL(): hue(0.0), saturation(0.0), lightness(0.0) {}
+    HSL(double h, double s, double l): hue(h), saturation(s), lightness(l) {}
+};
 
 
 /// A color style sheet class that provides the colors and opacities used
@@ -136,7 +139,6 @@ public:
     /// @param startRGB     [in] Starting interpolation point.
     /// @param endRGB       [in] Ending interpolation point.
     /// @param percent      [in] Interpolation point between startRGB and endRGB as a percentage.
-    ///
     /// @return Interpolated color.
     ///
     static COLORREF InterpolateColor(COLORREF startRGB, COLORREF endRGB, int percent);
@@ -144,16 +146,16 @@ public:
     /// Converts from the RGB color space to the HSL color space.
     ///
     /// @param rgb      [in] RGB colors as values between 0 and 255.
-    /// @param hsl      [out] HSL colors as values between 0.0 and 1.0
+    /// @return HSL colors as values between 0.0 and 1.0
     ///
-    static void RGBtoHSL(COLORREF rgb, HSL& hsl);
+    static HSL RGBtoHSL(COLORREF rgb);
 
     /// Converts from the HSL color space to the RGB color space.
     ///
     /// @param hsl      [in] HSL colors as values between 0.0 and 1.0.
-    /// @param rgb      [out] RGB colors as values between 0 and 255.
+    /// @return RGB colors as values between 0 and 255.
     ///
-    static void HSLtoRGB(const HSL& hsl, COLORREF& rgb);
+    static COLORREF HSLtoRGB(const HSL& hsl);
 
 private:
     /// All members of this class are static. No instances

@@ -57,6 +57,18 @@ std::ostream& operator<<(std::ostream& os, const ColorTestData& cd) {
 }
 
 
+BOOST_AUTO_TEST_CASE(TestHSL, *bt::tolerance(FLT_EPSILON)) {
+    HSL hsl1;
+    BOOST_TEST(hsl1.hue == 0.0);
+    BOOST_TEST(hsl1.saturation == 0.0);
+    BOOST_TEST(hsl1.lightness == 0.0);
+
+    HSL hsl2(1.0, 2.0, 3.0);
+    BOOST_TEST(hsl2.hue == 1.0);
+    BOOST_TEST(hsl2.saturation == 2.0);
+    BOOST_TEST(hsl2.lightness == 3.0);
+}
+
 BOOST_DATA_TEST_CASE(TestRGBtoHSL,
                      bdata::make({
                          ColorTestData{     0.0, 0.0, 0.0,   0,   0,   0 },
@@ -70,9 +82,7 @@ BOOST_DATA_TEST_CASE(TestRGBtoHSL,
                          ColorTestData{ 0.55555555555555547, 0.60000000000000009, 0.49019607843137253, 50, 150, 200 },
                      }),
                      colorData) {
-    HSL hsl;
-
-    MeaColors::RGBtoHSL(RGB(colorData.red, colorData.green, colorData.blue), hsl);
+    HSL hsl = MeaColors::RGBtoHSL(RGB(colorData.red, colorData.green, colorData.blue));
     BOOST_TEST(hsl.hue == colorData.hue, tt::tolerance(FLT_EPSILON));
     BOOST_TEST(hsl.saturation == colorData.saturation, tt::tolerance(FLT_EPSILON));
     BOOST_TEST(hsl.lightness == colorData.lightness, tt::tolerance(FLT_EPSILON));
@@ -91,9 +101,8 @@ BOOST_DATA_TEST_CASE(TestHSLtoRGB,
                          ColorTestData{  0.5556, 0.6, 0.49,  49, 149, 199 }
                      }),
                      colorData) {
-    HSL hsl{ colorData.hue, colorData.saturation, colorData.lightness };
-    COLORREF rgb;
-    MeaColors::HSLtoRGB(hsl, rgb);
+    HSL hsl(colorData.hue, colorData.saturation, colorData.lightness);
+    COLORREF rgb = MeaColors::HSLtoRGB(hsl);
     BOOST_TEST(rgb == RGB(colorData.red, colorData.green, colorData.blue));
 }
 

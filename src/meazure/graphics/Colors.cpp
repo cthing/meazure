@@ -84,22 +84,17 @@ COLORREF MeaColors::InterpolateColor(COLORREF startRGB, COLORREF endRGB, int per
         return start + (end - start) * percent / 100.0;
     };
 
-    HSL hsl, startHSL, endHSL;
-    COLORREF rgb;
+    HSL startHSL = RGBtoHSL(startRGB);
+    HSL endHSL = RGBtoHSL(endRGB);
 
-    RGBtoHSL(startRGB, startHSL);
-    RGBtoHSL(endRGB, endHSL);
+    HSL hsl(interpolate(startHSL.hue, endHSL.hue, percent), 
+            interpolate(startHSL.saturation, endHSL.saturation, percent),
+            interpolate(startHSL.lightness, endHSL.lightness, percent));
 
-    hsl.hue = interpolate(startHSL.hue, endHSL.hue, percent);
-    hsl.saturation = interpolate(startHSL.saturation, endHSL.saturation, percent);
-    hsl.lightness = interpolate(startHSL.lightness, endHSL.lightness, percent);
-
-    HSLtoRGB(hsl, rgb);
-
-    return rgb;
+    return HSLtoRGB(hsl);
 }
 
-void MeaColors::RGBtoHSL(COLORREF rgb, HSL& hsl) {
+HSL MeaColors::RGBtoHSL(COLORREF rgb) {
     double h, s, l;
     double r = GetRValue(rgb) / 255.0;
     double g = GetGValue(rgb) / 255.0;
@@ -133,9 +128,7 @@ void MeaColors::RGBtoHSL(COLORREF rgb, HSL& hsl) {
         }
     }
 
-    hsl.hue = h;
-    hsl.lightness = l;
-    hsl.saturation = s;
+    return HSL(h, s, l);
 }
 
 double MeaColors::HuetoRGB(double m1, double m2, double h) {
@@ -157,7 +150,7 @@ double MeaColors::HuetoRGB(double m1, double m2, double h) {
     return m1;
 }
 
-void MeaColors::HSLtoRGB(const HSL& hsl, COLORREF& rgb) {
+COLORREF MeaColors::HSLtoRGB(const HSL& hsl) {
     double r, g, b;
 
     if (hsl.saturation == 0.0) {
@@ -177,5 +170,5 @@ void MeaColors::HSLtoRGB(const HSL& hsl, COLORREF& rgb) {
         b = HuetoRGB(m1, m2, hsl.hue - 1.0 / 3.0);
     }
 
-    rgb = RGB((BYTE)(r * 255), (BYTE)(g * 255), (BYTE)(b * 255));
+    return RGB((BYTE)(r * 255), (BYTE)(g * 255), (BYTE)(b * 255));
 }

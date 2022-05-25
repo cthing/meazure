@@ -126,7 +126,6 @@ source_group(Preferences FILES ${pref_SRCS})
 set(profile_SRCS
     profile/FileProfile.cpp
     profile/FileProfile.h
-    profile/Profile.cpp
     profile/Profile.h
     profile/RegistryProfile.cpp
     profile/RegistryProfile.h

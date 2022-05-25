@@ -75,6 +75,10 @@ CString MeaRegistryProfile::ReadStr(LPCTSTR key, LPCTSTR defaultValue) {
     return AfxGetApp()->GetProfileString(m_loadVersion, key, defaultValue);
 }
 
+bool MeaRegistryProfile::UserInitiated() {
+    return false;
+}
+
 int MeaRegistryProfile::GetVersion() {
     return atoi(m_loadVersion);
 }

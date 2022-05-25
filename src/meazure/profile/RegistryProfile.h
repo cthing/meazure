@@ -95,6 +95,14 @@ public:
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
     virtual CString ReadStr(LPCTSTR key, LPCTSTR defaultValue) override;
 
+    /// Indicates whether the profile is being written at
+    /// the user's request (i.e. a file profile).
+    ///
+    /// @return Always <b>false</b> because a registry profile
+    ///         is not written at the user's request.
+    ///
+    virtual bool UserInitiated() override;
+
     /// Returns the profile format version number.
     ///
     /// @return Profile format version number.

@@ -22,6 +22,7 @@ macro(add_meazure_test runner reuse)
 endmacro()
 
 add_meazure_test(ColorsTest "" ${APP_DIR}/graphics/Colors.cpp)
+add_meazure_test(CommandLineInfoTest ColorsTest ${APP_DIR}/CommandLineInfo.cpp)
 add_meazure_test(GeometryTest ColorsTest)
 add_meazure_test(GUIDTest ColorsTest ${APP_DIR}/utilities/GUID.cpp)
 add_meazure_test(NumericUtilsTest ColorsTest)

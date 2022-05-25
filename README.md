@@ -44,6 +44,8 @@ Refer to [Building.md](Building.md) for information on how to build Meazure from
   (see [issue #9](https://github.com/cthing/meazure/issues/9)). To work around this issue, right-click on Meazure.exe
   and select Properties. In the properties dialog, select the Compatibility tab. Press the "Change high DPI settings"
   button. Check the box next to "Override high DPI scaling behavior Scaling performed by: Application".
+
+- Meazure reports incorrect screen size for 4K monitors (#34)
   
 ## Feedback
 
@@ -58,10 +60,15 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 ### Changes 3.0.2 to 3.0.3 (unreleased)
 
-- Migrate codesbase to C++17
+- A more readable font is used for all dialogs
 
-- Use a more readable font for all dialogs
-
+- Internal improvements
+    - Migrated codesbase to C++17
+    - Reorganized source code into subfolders
+    - Increased unit test coverage
+    - Uses precompiled headers to greatly reduce build time
+    - Refactoring, renaming, and migration of class functionality for testability and clarity
+ 
 ### Changes 3.0.1 to 3.0.2
 
 - Fix: Should not be able to paste numbers into readonly data fields.

@@ -16,7 +16,7 @@ macro(add_meazure_test runner reuse)
         target_precompile_headers(${runner} REUSE_FROM ${reuse})
     endif()
     target_include_directories(${runner} PRIVATE ${SRC_DIR} ${Boost_INCLUDE_DIRS} "${CMAKE_BINARY_DIR}/src")
-    target_link_libraries(${runner} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} "version.lib")
+    target_link_libraries(${runner} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} "version.lib" libexpat)
     set_target_properties(${runner} PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE")
     add_test(${runner} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${runner})    
 endmacro()
@@ -33,3 +33,11 @@ add_meazure_test(StringUtilsTest ColorsTest ${APP_DIR}/utilities/StringUtils.cpp
 add_meazure_test(TimeStampTest ColorsTest ${APP_DIR}/utilities/TimeStamp.cpp)
 add_meazure_test(UnitsTest ColorsTest ${APP_DIR}/units/Units.cpp)
 add_meazure_test(VersionInfoTest ColorsTest ${APP_DIR}/VersionInfo.cpp)
+
+add_meazure_test(FileProfileTest ColorsTest
+                 ${APP_DIR}/profile/FileProfile.cpp
+                 ${APP_DIR}/utilities/XMLParser.cpp
+                 ${APP_DIR}/utilities/exval.cpp
+                 ${APP_DIR}/utilities/TimeStamp.cpp
+                 ${APP_DIR}/VersionInfo.cpp)
+target_link_libraries(FileProfileTest libexpat)

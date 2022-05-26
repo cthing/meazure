@@ -233,6 +233,11 @@ BOOST_FIXTURE_TEST_CASE(TestReeadStr, TestFixture) {
     BOOST_TEST(mock.m_getStringCount == 1);
 }
 
+BOOST_FIXTURE_TEST_CASE(TestUserInitiated, TestFixture) {
+    MeaRegistryProfile profile(mock);
+    BOOST_TEST(!profile.UserInitiated());
+}
+
 BOOST_FIXTURE_TEST_CASE(TestGetVersion, TestFixture) {
     MeaRegistryProfile profile(mock);
     BOOST_TEST(profile.GetVersion() == 2);

@@ -33,6 +33,7 @@ public:
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Boolean value for the key
+    /// @return true if successful.
     ///
     virtual bool WriteBool(LPCTSTR key, bool value) = 0;
 
@@ -40,6 +41,7 @@ public:
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Integer value for the key
+    /// @return true if successful.
     ///
     virtual bool WriteInt(LPCTSTR key, int value) = 0;
 
@@ -47,6 +49,7 @@ public:
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Double value for the key
+    /// @return true if successful.
     ///
     virtual bool WriteDbl(LPCTSTR key, double value) = 0;
 
@@ -54,6 +57,7 @@ public:
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] String value for the key
+    /// @return true if successful.
     ///
     virtual bool WriteStr(LPCTSTR key, LPCTSTR value) = 0;
 
@@ -61,24 +65,32 @@ public:
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
+    /// @return Boolean value for the key or the default value if the key is not found.
+    /// 
     virtual bool ReadBool(LPCTSTR key, bool defaultValue) = 0;
 
     /// Reads an unsigned integer value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
+    /// @return Integer value for the key or the default value if the key is not found.
+    /// 
     virtual UINT ReadInt(LPCTSTR key, int defaultValue) = 0;
 
     /// Reads a double value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
+    /// @return Double value for the key or the default value if the key is not found.
+    /// 
     virtual double ReadDbl(LPCTSTR key, double defaultValue) = 0;
 
     /// Reads a string value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
+    /// @return String value for the key or the default value if the key is not found.
+    /// 
     virtual CString ReadStr(LPCTSTR key, LPCTSTR defaultValue) = 0;
 
     /// Indicates whether the profile is being written at

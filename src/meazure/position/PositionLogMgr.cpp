@@ -270,7 +270,7 @@ bool MeaPositionLogMgr::Save(bool askPathname) {
 
     Write(indent, _T("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"));
     Write(indent, _T("<!DOCTYPE positionLog SYSTEM \"https://www.cthing.com/dtd/PositionLog1.dtd\">\n"));
-    Write(indent, _T("<positionLog version=\"%d\">\n"), g_versionInfo.GetLogFileMajor());
+    Write(indent, _T("<positionLog version=\"%d\">\n"), MeaVersionInfo::Instance().GetLogFileMajor());
     indent++;
     WriteInfoSection(indent);
     WriteDesktopsSection(indent);
@@ -502,8 +502,8 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) {
     Write(indent, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(nullptr))));
     Write(indent, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
           static_cast<LPCTSTR>(AfxGetAppName()),
-          static_cast<LPCTSTR>(g_versionInfo.GetProductVersion()),
-          g_versionInfo.GetProductBuild());
+          static_cast<LPCTSTR>(MeaVersionInfo::Instance().GetProductVersion()),
+          MeaVersionInfo::Instance().GetProductBuild());
     Write(indent, _T("<machine name=\"%s\"/>\n"), nameBuffer);
     if (!m_desc.IsEmpty()) {
         Write(indent, _T("<desc>%s</desc>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_desc))));

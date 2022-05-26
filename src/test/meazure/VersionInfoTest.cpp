@@ -44,26 +44,24 @@ BOOST_AUTO_TEST_CASE(TestVersionNumbers) {
 }
 
 BOOST_AUTO_TEST_CASE(TestGetProductVersion) {
-    MeaVersionInfo versionInfo;
-    std::regex productRegex("[\\d]+\\.[\\d]+(\\.[\\d]+)?");
-    LPCTSTR productVersion = versionInfo.GetProductVersion();
-    BOOST_TEST(std::regex_match(productVersion, productRegex));
+    MeaVersionInfo& versionInfo = MeaVersionInfo::Instance();
+    BOOST_TEST(versionInfo.GetProductVersion() == _T("1.2.3"));
 }
 
 BOOST_AUTO_TEST_CASE(TestVersionComponents) {
-    MeaVersionInfo versionInfo;
-    BOOST_TEST(versionInfo.GetProductMajor() >= 0);
-    BOOST_TEST(versionInfo.GetProductMinor() >= 0);
-    BOOST_TEST(versionInfo.GetProductFix() >= 0);
-    BOOST_TEST(versionInfo.GetProductBuild() >= 0);
+    MeaVersionInfo& versionInfo = MeaVersionInfo::Instance();
+    BOOST_TEST(versionInfo.GetProductMajor() == 1);
+    BOOST_TEST(versionInfo.GetProductMinor() == 2);
+    BOOST_TEST(versionInfo.GetProductFix() == 3);
+    BOOST_TEST(versionInfo.GetProductBuild() == 4);
 }
 
 BOOST_AUTO_TEST_CASE(TestProfileVersion) {
-    MeaVersionInfo versionInfo;
+    MeaVersionInfo& versionInfo = MeaVersionInfo::Instance();
     BOOST_TEST(versionInfo.GetProfileFileMajor() == 2);
 }
 
 BOOST_AUTO_TEST_CASE(TestLogVersion) {
-    MeaVersionInfo versionInfo;
+    MeaVersionInfo& versionInfo = MeaVersionInfo::Instance();
     BOOST_TEST(versionInfo.GetLogFileMajor() == 1);
 }

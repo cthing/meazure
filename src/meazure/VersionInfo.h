@@ -22,16 +22,18 @@
 
 #pragma once
 
+#include "utilities/Singleton.h"
+
 
 /// Convenience class for obtaining version number information for the
 /// applications.
 ///
-class MeaVersionInfo {
+class MeaVersionInfo : public MeaSingleton_T<MeaVersionInfo> {
 
 public:
     /// Constructs an instance of the version number information class.
     ///
-    MeaVersionInfo();
+    MeaVersionInfo(token);
 
     /// Destroys an instance of the class.
     ///
@@ -79,6 +81,3 @@ private:
     void* m_data;               ///< Version information buffer.
     VS_FIXEDFILEINFO* m_info;   ///< Version information.
 };
-
-
-extern MeaVersionInfo g_versionInfo;    ///< Version number information object.

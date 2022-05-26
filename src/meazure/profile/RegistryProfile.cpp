@@ -27,7 +27,7 @@ MeaRegistryProfile::MeaRegistryProfile(MeaRegistryProvider& registry) : MeaProfi
     // by testing for a known key.
     //
     CString curVer;
-    curVer.Format(_T("%d.0"), g_versionInfo.GetProfileFileMajor());
+    curVer.Format(_T("%d.0"), MeaVersionInfo::Instance().GetProfileFileMajor());
 
     m_loadVersion = (!HaveVersionKey(curVer) && HaveVersionKey(_T("1.0"))) ? _T("1.0") : curVer;
     m_saveVersion = curVer;

@@ -142,7 +142,7 @@ int MeaFileProfile::GetVersion() {
 
 void MeaFileProfile::WriteFileStart() {
     Write(0, _T("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"));
-    Write(0, _T("<profile version=\"%d\">\n"), g_versionInfo.GetProfileFileMajor());
+    Write(0, _T("<profile version=\"%d\">\n"), MeaVersionInfo::Instance().GetProfileFileMajor());
 
     TCHAR nameBuffer[MAX_COMPUTERNAME_LENGTH + 1];
     DWORD size = MAX_COMPUTERNAME_LENGTH + 1;
@@ -153,8 +153,8 @@ void MeaFileProfile::WriteFileStart() {
     Write(2, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(nullptr))));
     Write(2, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
           static_cast<LPCTSTR>(AfxGetAppName()),
-          static_cast<LPCTSTR>(g_versionInfo.GetProductVersion()),
-          g_versionInfo.GetProductBuild());
+          static_cast<LPCTSTR>(MeaVersionInfo::Instance().GetProductVersion()),
+          MeaVersionInfo::Instance().GetProductBuild());
     Write(2, _T("<machine name=\"%s\"/>\n"), nameBuffer);
     Write(1, _T("</info>\n"));
     Write(1, _T("<data>\n"));

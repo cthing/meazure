@@ -20,11 +20,7 @@
 #include "pch.h"
 #include "VersionInfo.h"
 
-
-MeaVersionInfo g_versionInfo;
-
-
-MeaVersionInfo::MeaVersionInfo() {
+MeaVersionInfo::MeaVersionInfo(token) {
     TCHAR pathname[_MAX_PATH];
     DWORD size;
     DWORD handle;
@@ -33,12 +29,16 @@ MeaVersionInfo::MeaVersionInfo() {
     GetModuleFileName(nullptr, pathname, _MAX_PATH);
     size = GetFileVersionInfoSize(pathname, &handle);
     m_data = new char[size];
-    GetFileVersionInfo(pathname, 0, size, m_data);
-    VerQueryValue(m_data, _T("\\"), reinterpret_cast<void**>(&m_info), &len);
+    if (!GetFileVersionInfo(pathname, 0, size, m_data)) {
+        AfxThrowResourceException();
+    }
+    if (!VerQueryValue(m_data, _T("\\"), reinterpret_cast<void**>(&m_info), &len)) {
+        AfxThrowResourceException();
+    }
 }
 
 MeaVersionInfo::~MeaVersionInfo() {
-    delete[]m_data;
+    delete[] m_data;
 }
 
 CString MeaVersionInfo::GetProductVersion() const {

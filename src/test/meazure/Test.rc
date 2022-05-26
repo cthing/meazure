@@ -1,25 +1,32 @@
-//
-// MEAZURE.RC2 - resources Microsoft Visual C++ does not edit directly
-//
+#include "afxres.h"
 
-#ifdef APSTUDIO_INVOKED
-	#error this file is not editable by Microsoft Visual C++
-#endif //APSTUDIO_INVOKED
+2 TEXTINCLUDE
+BEGIN
+"#include ""afxres.h""\r\n"
+"\0"
+END
 
+3 TEXTINCLUDE
+BEGIN
+"#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+"#define _AFX_NO_OLE_RESOURCES\r\n"
+"#define _AFX_NO_TRACKER_RESOURCES\r\n"
+"#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+"\r\n"
+"#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+"#ifdef _WIN32\r\n"
+"LANGUAGE 9, 1\r\n"
+"#pragma code_page(1252)\r\n"
+"#endif //_WIN32\r\n"
+"#include ""afxres.rc""         // Standard components\r\n"
+"#endif\r\n"
+"\0"
+END
 
-/////////////////////////////////////////////////////////////////////////////
-// Add manually edited resources here...
-
-#ifndef _MAC
-/////////////////////////////////////////////////////////////////////////////
-//
-// Version
-//
-#include "VersionNumbers.h"
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION FILE_VERSION
- PRODUCTVERSION PRODUCT_VERSION
+ FILEVERSION 1,2,3,4
+ PRODUCTVERSION 1,2,3,4
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -37,14 +44,14 @@ BEGIN
             VALUE "Comments", "\0"
             VALUE "CompanyName", "C Thing Software\0"
             VALUE "FileDescription", "Measure, magnify, and capture objects on the screen\0"
-            VALUE "FileVersion", STR_FILE_VERSION
+            VALUE "FileVersion", "1, 2, 3, 4\0"
             VALUE "InternalName", "Meazure\0"
             VALUE "LegalCopyright", "Copyright 2001 C Thing Software\0"
             VALUE "LegalTrademarks", "\0"
             VALUE "OriginalFilename", "Meazure.exe\0"
             VALUE "PrivateBuild", "\0"
             VALUE "ProductName", "Meazure Application\0"
-            VALUE "ProductVersion", STR_PRODUCT_VERSION
+            VALUE "ProductVersion", "1, 2, 3, 4\0"
             VALUE "SpecialBuild", "\0"
         END
     END
@@ -54,6 +61,4 @@ BEGIN
     END
 END
 
-#endif    // !_MAC
-
-/////////////////////////////////////////////////////////////////////////////
+#include "afxres.rc"         // Standard components

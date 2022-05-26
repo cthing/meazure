@@ -296,12 +296,12 @@ BOOL CAboutDlg::OnInitDialog() {
     CStatic* buildStr = static_cast<CStatic*>(GetDlgItem(IDC_PROGRAM_BUILD));
 
     versionStr->GetWindowText(str);
-    str += g_versionInfo.GetProductVersion();
+    str += MeaVersionInfo::Instance().GetProductVersion();
     versionStr->SetWindowText(str);
 
     CString bstr;
     buildStr->GetWindowText(str);
-    bstr.Format(_T("%d"), g_versionInfo.GetProductBuild());
+    bstr.Format(_T("%d"), MeaVersionInfo::Instance().GetProductBuild());
     str += bstr;
     buildStr->SetWindowText(str);
 

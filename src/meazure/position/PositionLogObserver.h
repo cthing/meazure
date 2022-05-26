@@ -31,14 +31,6 @@
 class MeaPositionLogObserver {
 
 public:
-    /// Interface does nothing in a constructor.
-    ///
-    MeaPositionLogObserver() {}
-
-    /// Interface does nothing in a destructor.
-    ///
-    virtual ~MeaPositionLogObserver() {}
-
     /// Called when a position log file is loaded.
     ///
     virtual void LogLoaded() = 0;

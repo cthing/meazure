@@ -49,14 +49,6 @@ public:
     };
 
 
-    /// Constructs a callback object.
-    ///
-    MeaRulerCallback() {}
-
-    /// Destroys a callback object.
-    ///
-    virtual ~MeaRulerCallback() {}
-
     /// Called when the user presses the left mouse button and
     /// then moves the mouse pointer while over the ruler
     /// (i.e. a drag operation). It is the responsibility of

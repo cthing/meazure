@@ -42,16 +42,7 @@ class MeaPositionLogObserver;
 /// Exception thrown if a problem occurs while reading or writing
 /// the position log file.
 ///
-class MeaLogFileException {
-
-public:
-    /// Constructor for the exception.
-    ///
-    MeaLogFileException() {}
-
-    /// Destroys the exception.
-    ///
-    virtual ~MeaLogFileException() {}
+struct MeaLogFileException {
 };
 
 
@@ -84,10 +75,6 @@ public:
         /// @param screen       [in] Screen object to be copied.
         ///
         Screen(const Screen& screen) { Copy(screen); }
-
-        /// Destroys a screen object.
-        ///
-        ~Screen() {}
 
         /// Loads screen elements of the log file.
         ///

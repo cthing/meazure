@@ -59,6 +59,16 @@ public:
     };
 
 
+    /// All members of this class are static. No instances
+    /// of this class are ever created.
+    ///
+    MeaColors() = delete;
+
+    /// All members of this class are static. No instances
+    /// of this class are ever created.
+    ///
+    ~MeaColors() = delete;
+
     /// Initializes the class by establishing the default colors.
     ///
     static void Initialize();
@@ -158,16 +168,6 @@ public:
     static COLORREF HSLtoRGB(const HSL& hsl);
 
 private:
-    /// All members of this class are static. No instances
-    /// of this class are ever created.
-    ///
-    MeaColors() {}
-
-    /// All members of this class are static. No instances
-    /// of this class are ever created.
-    ///
-    ~MeaColors() {}
-
     typedef std::map<Item, COLORREF> Colors;        ///< Maps items to their colors.
 
      /// Determines the minimum of two values.

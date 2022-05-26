@@ -33,6 +33,9 @@
 class MeaLayout {
 
 public:
+    MeaLayout() = delete;
+    ~MeaLayout() = delete;
+
     /// Aligns the specified windows such that their left edges all begin
     /// at the specified x location.
     ///

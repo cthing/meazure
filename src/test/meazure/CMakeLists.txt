@@ -1,6 +1,7 @@
 
 add_definitions(-D_CONSOLE -D_AFXDLL) 
 set(CMAKE_MFC_FLAG 2)
+set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} /nologo")
 
 if(CMAKE_CXX_FLAGS MATCHES "/EHs")
     string(REGEX REPLACE "/EHs" "/EHa" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")

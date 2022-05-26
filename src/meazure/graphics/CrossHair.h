@@ -50,14 +50,6 @@ public:
     };
 
 
-    /// Constructs a callback object.
-    ///
-    MeaCrossHairCallback() {}
-
-    /// Destroys a callback object.
-    ///
-    virtual ~MeaCrossHairCallback() {}
-
     /// Called when the left mouse button is pressed while
     /// the pointer is positioned over the crosshair.
     ///

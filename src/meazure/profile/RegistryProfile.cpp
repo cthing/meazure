@@ -22,7 +22,7 @@
 #include <meazure/VersionInfo.h>
 
 
-MeaRegistryProfile::MeaRegistryProfile() : MeaProfile() {
+MeaRegistryProfile::MeaRegistryProfile(MeaRegistryProvider& registry) : MeaProfile(), m_registry(registry) {
     // Determine which version of the registry profile is available
     // by testing for a known key.
     //
@@ -36,35 +36,35 @@ MeaRegistryProfile::MeaRegistryProfile() : MeaProfile() {
 MeaRegistryProfile::~MeaRegistryProfile() {}
 
 bool MeaRegistryProfile::WriteBool(LPCTSTR key, bool value) {
-    return AfxGetApp()->WriteProfileInt(m_saveVersion, key, value) == TRUE;
+    return m_registry.WriteInt(m_saveVersion, key, value) == TRUE;
 }
 
 bool MeaRegistryProfile::WriteInt(LPCTSTR key, int value) {
-    return AfxGetApp()->WriteProfileInt(m_saveVersion, key, value) == TRUE;
+    return m_registry.WriteInt(m_saveVersion, key, value) == TRUE;
 }
 
 bool MeaRegistryProfile::WriteDbl(LPCTSTR key, double value) {
     CString vstr;
 
     vstr.Format(_T("%f"), value);
-    return AfxGetApp()->WriteProfileString(m_saveVersion, key, vstr) == TRUE;
+    return m_registry.WriteString(m_saveVersion, key, vstr) == TRUE;
 }
 
 bool MeaRegistryProfile::WriteStr(LPCTSTR key, LPCTSTR value) {
-    return AfxGetApp()->WriteProfileString(m_saveVersion, key, value) == TRUE;
+    return m_registry.WriteString(m_saveVersion, key, value) == TRUE;
 }
 
 bool MeaRegistryProfile::ReadBool(LPCTSTR key, bool defaultValue) {
-    return AfxGetApp()->GetProfileInt(m_loadVersion, key, defaultValue) != 0;
+    return m_registry.GetInt(m_loadVersion, key, defaultValue) != 0;
 }
 
 UINT MeaRegistryProfile::ReadInt(LPCTSTR key, int defaultValue) {
-    return AfxGetApp()->GetProfileInt(m_loadVersion, key, defaultValue);
+    return m_registry.GetInt(m_loadVersion, key, defaultValue);
 }
 
 
 double MeaRegistryProfile::ReadDbl(LPCTSTR key, double defaultValue) {
-    CString str = AfxGetApp()->GetProfileString(m_loadVersion, key, _T(""));
+    CString str = m_registry.GetString(m_loadVersion, key, _T(""));
     if (str.IsEmpty()) {
         return defaultValue;
     }
@@ -72,7 +72,7 @@ double MeaRegistryProfile::ReadDbl(LPCTSTR key, double defaultValue) {
 }
 
 CString MeaRegistryProfile::ReadStr(LPCTSTR key, LPCTSTR defaultValue) {
-    return AfxGetApp()->GetProfileString(m_loadVersion, key, defaultValue);
+    return m_registry.GetString(m_loadVersion, key, defaultValue);
 }
 
 bool MeaRegistryProfile::UserInitiated() {
@@ -87,12 +87,11 @@ bool MeaRegistryProfile::HaveVersionKey(LPCTSTR version) const {
     CString key;
     HKEY hKey;
 
-    key.Format(_T("Software\\%s\\%s\\%s"), AfxGetApp()->m_pszRegistryKey,
-                AfxGetAppName(), version);
+    key.Format(_T("Software\\%s\\%s\\%s"), m_registry.GetKeyName(), AfxGetAppName(), version);
 
-    if (RegOpenKeyEx(HKEY_CURRENT_USER, key, 0, KEY_READ, &hKey) != ERROR_SUCCESS) {
+    if (m_registry.OpenKey(HKEY_CURRENT_USER, key, 0, KEY_READ, &hKey) != ERROR_SUCCESS) {
         return false;
     }
-    RegCloseKey(hKey);
+    m_registry.CloseKey(hKey);
     return true;
 }

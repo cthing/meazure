@@ -23,6 +23,7 @@
 #pragma once
 
 #include "Profile.h"
+#include <meazure/utilities/RegistryProvider.h>
 
 
 /// Persists the application state to the registry. On application
@@ -36,8 +37,10 @@ class MeaRegistryProfile : public MeaProfile {
 public:
     /// Creates an instance of the registry profile and opens the appropriate
     /// registry key.
+    /// 
+    /// @param registry  [in] Provider for reading and writing the Windows Registry
     ///
-    MeaRegistryProfile();
+    MeaRegistryProfile(MeaRegistryProvider& registry);
 
     /// Destroys the instance of the registry profile object.
     ///
@@ -122,6 +125,7 @@ private:
     bool HaveVersionKey(LPCTSTR version) const;
 
 
-    CString m_loadVersion;      ///< Profile format version read.
-    CString m_saveVersion;      ///< Profile format version written.
+    MeaRegistryProvider& m_registry;    ///< Access to the Windows Registry
+    CString m_loadVersion;              ///< Profile format version read.
+    CString m_saveVersion;              ///< Profile format version written.
 };

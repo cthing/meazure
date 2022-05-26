@@ -24,6 +24,7 @@
 #include "prefs/Preferences.h"
 #include "ui/Layout.h"
 #include "ui/ScreenMgr.h"
+#include "utilities/Registry.h"
 
 
 #ifdef _DEBUG
@@ -129,7 +130,8 @@ int AppFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 
     // Restore the state of the program from the registry.
     //
-    MeaRegistryProfile profile;
+    MeaRegistry registry;
+    MeaRegistryProfile profile(registry);
     LoadProfile(profile);
 
     // Tell everyone to initialize its view
@@ -320,7 +322,8 @@ void AppFrame::OnReportIssue() {
 
 void AppFrame::OnEndSession(BOOL bEnding) {
     if (bEnding) {
-        MeaRegistryProfile profile;
+        MeaRegistry registry;
+        MeaRegistryProfile profile(registry);
         SaveProfile(profile);
     }
 
@@ -328,7 +331,8 @@ void AppFrame::OnEndSession(BOOL bEnding) {
 }
 
 void AppFrame::OnClose() {
-    MeaRegistryProfile profile;
+    MeaRegistry registry;
+    MeaRegistryProfile profile(registry);
     SaveProfile(profile);
 
     CFrameWnd::OnClose();

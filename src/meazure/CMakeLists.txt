@@ -169,6 +169,9 @@ set(utility_SRCS
     utilities/GUID.cpp
     utilities/GUID.h
     utilities/NumericUtils.h
+    utilities/Registry.cpp
+    utilities/Registry.h
+    utilities/RegistryProvider.h
     utilities/Singleton.h
     utilities/StringUtils.cpp
     utilities/StringUtils.h

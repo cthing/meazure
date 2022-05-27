@@ -565,7 +565,7 @@ public:
     private:
         MeaPositionLogMgr* m_mgr;   ///< Parent manager.
         UINT m_fieldMask;           ///< Data fields defined for this position. Different tools provide different amounts of data.
-        PointMap m_points;          ///< Location of the current tool, , in the units in effect when the position was recorded.
+        PointMap m_points;          ///< Location of the current tool, in the units in effect when the position was recorded.
         double m_width;             ///< Width of rectangle or bounding box, in the units in effect when the position was recorded.
         double m_height;            ///< Height of rectangle or bounding box, in the units in effect when the position was recorded.
         double m_distance;          ///< Length of line or diagonal, in the units in effect when the position was recorded.
@@ -947,8 +947,5 @@ private:
     bool m_modified;                    ///< Have the positions been modified since last save.
     MeaPositionLogDlg* m_manageDialog;  ///< Position management dialog.
 
-    friend class Screen;                ///< Represents a display screen.
-    friend class DesktopInfo;           ///< Desktop information object.
-    friend class Position;              ///< A tool position.
     friend class MeaPositionLogDlg;     ///< Position save dialog.
 };

@@ -78,7 +78,15 @@ public:
         return m_res;
     }
 
+    virtual bool IsManualRes(const ScreenIter&) const override {
+        return false;
+    }
+
     virtual bool AnyOSRes() const override {
+        return true;
+    }
+
+    virtual bool IsPrimary(const ScreenIter&) const override {
         return true;
     }
 

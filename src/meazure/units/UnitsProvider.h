@@ -36,6 +36,12 @@ struct MeaUnitsProvider {
     ///
     virtual MeaLinearUnits* GetLinearUnits() const = 0;
 
+    /// Returns the current angular measurement units.
+    ///
+    /// @return Current angular units.
+    ///
+    virtual MeaAngularUnits* GetAngularUnits() const = 0;
+
     /// Returns the orientation of the y-axis.
     ///
     /// @return If <b>true</b> is returned, the origin of the coordinate

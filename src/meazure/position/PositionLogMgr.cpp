@@ -238,7 +238,7 @@ void MeaPositionLogMgr::ShowPosition(unsigned int posIndex) {
 }
 
 MeaGUID MeaPositionLogMgr::RecordDesktopInfo() {
-    DesktopInfo desktopInfo;
+    DesktopInfo desktopInfo(MeaUnitsMgr::Instance(), MeaScreenMgr::Instance());
 
     for (const auto& desktopEntry : m_desktopInfoMap) {
         if (desktopInfo == desktopEntry.second) {
@@ -247,7 +247,7 @@ MeaGUID MeaPositionLogMgr::RecordDesktopInfo() {
     }
 
     const MeaGUID& guid = desktopInfo.GetId();
-    m_desktopInfoMap[guid] = desktopInfo;
+    m_desktopInfoMap.emplace(guid, desktopInfo);
     return guid;
 }
 
@@ -508,12 +508,12 @@ void MeaPositionLogMgr::ProcessDesktopNode(const MeaXMLNode* desktopNode) {
     desktopNode->GetAttributes().GetValueStr(_T("id"), valueStr, def);
 
     try {
-        DesktopInfo desktopInfo(valueStr);
+        DesktopInfo desktopInfo(valueStr, MeaUnitsMgr::Instance(), MeaScreenMgr::Instance());
 
         desktopInfo.Load(desktopNode);
 
         const MeaGUID& guid = desktopInfo.GetId();
-        m_desktopInfoMap[guid] = desktopInfo;
+        m_desktopInfoMap.emplace(guid, desktopInfo);
     } catch (COleException* ex) {
         ex->Delete();
 
@@ -650,23 +650,21 @@ CString MeaPositionLogMgr::GetFilePathname() {
 //*************************************************************************
 
 
-MeaPositionLogMgr::Screen::Screen(const MeaScreenMgr::ScreenIter& screenIter) {
-    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
-    MeaScreenMgr& screenMgr = MeaScreenMgr::Instance();
-
-    const CRect& rect = screenMgr.GetScreenRect(screenIter);
-    FPOINT p1 = unitsMgr.ConvertCoord(rect.TopLeft());
-    FPOINT p2 = unitsMgr.ConvertCoord(rect.BottomRight());
+MeaPositionLogMgr::Screen::Screen(const MeaScreenMgr::ScreenIter& screenIter, const MeaUnitsProvider& unitsProvider,
+                                  const MeaScreenProvider& screenProvider) {
+    const CRect& rect = screenProvider.GetScreenRect(screenIter);
+    FPOINT p1 = unitsProvider.ConvertCoord(rect.TopLeft());
+    FPOINT p2 = unitsProvider.ConvertCoord(rect.BottomRight());
 
     m_rect.top = p1.y;
     m_rect.bottom = p2.y;
     m_rect.left = p1.x;
     m_rect.right = p2.x;
 
-    m_primary = screenMgr.IsPrimary(screenIter);
-    m_manualRes = screenMgr.IsManualRes(screenIter);
-    m_res = unitsMgr.ConvertRes(screenMgr.GetScreenRes(screenIter));
-    m_desc = screenMgr.GetScreenName(screenIter);
+    m_primary = screenProvider.IsPrimary(screenIter);
+    m_manualRes = screenProvider.IsManualRes(screenIter);
+    m_res = unitsProvider.ConvertRes(screenProvider.GetScreenRes(screenIter));
+    m_desc = screenProvider.GetScreenName(screenIter);
 }
 
 void MeaPositionLogMgr::Screen::Load(const MeaXMLNode* screenNode) {
@@ -718,27 +716,27 @@ void MeaPositionLogMgr::Screen::Save(MeaPositionLogMgr& mgr, int indent) const {
 //*************************************************************************
 
 
-MeaPositionLogMgr::DesktopInfo::DesktopInfo() {
-    Init();
+MeaPositionLogMgr::DesktopInfo::DesktopInfo(const MeaUnitsProvider& unitsProvider,
+                                            const MeaScreenProvider& screenProvider) {
+    Init(unitsProvider, screenProvider);
 }
 
-MeaPositionLogMgr::DesktopInfo::DesktopInfo(LPCTSTR guidStr) : m_id(guidStr) {
-    Init();
+MeaPositionLogMgr::DesktopInfo::DesktopInfo(LPCTSTR guidStr, const MeaUnitsProvider& unitsProvider,
+                                            const MeaScreenProvider& screenProvider) : m_id(guidStr) {
+    Init(unitsProvider, screenProvider);
 }
 
-void MeaPositionLogMgr::DesktopInfo::Init() {
-    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
-    MeaScreenMgr& screenMgr = MeaScreenMgr::Instance();
-
-    const CRect& size = screenMgr.GetVirtualRect();
+void MeaPositionLogMgr::DesktopInfo::Init(const MeaUnitsProvider& unitsProvider,
+                                          const MeaScreenProvider& screenProvider) {
+    const CRect& size = screenProvider.GetVirtualRect();
     CPoint bottomRight(size.BottomRight());
     bottomRight.Offset(-1, -1);
 
-    m_linearUnits = unitsMgr.GetLinearUnits();
-    m_angularUnits = unitsMgr.GetAngularUnits();
-    m_invertY = unitsMgr.GetInvertY();
-    m_origin = unitsMgr.ConvertPos(unitsMgr.GetOrigin());
-    m_size = unitsMgr.GetWidthHeight(size.TopLeft(), bottomRight);
+    m_linearUnits = unitsProvider.GetLinearUnits();
+    m_angularUnits = unitsProvider.GetAngularUnits();
+    m_invertY = unitsProvider.GetInvertY();
+    m_origin = unitsProvider.ConvertPos(unitsProvider.GetOrigin());
+    m_size = unitsProvider.GetWidthHeight(size.TopLeft(), bottomRight);
 
     if (m_linearUnits->GetUnitsId() == MeaCustomId) {
         MeaCustomUnits* custom = static_cast<MeaCustomUnits*>(m_linearUnits);
@@ -757,8 +755,8 @@ void MeaPositionLogMgr::DesktopInfo::Init() {
     }
 
     MeaScreenMgr::ScreenIter iter;
-    for (iter = screenMgr.GetScreenIter(); !screenMgr.AtEnd(iter); ++iter) {
-        Screen screen(iter);
+    for (iter = screenProvider.GetScreenIter(); !screenProvider.AtEnd(iter); ++iter) {
+        Screen screen(iter, unitsProvider, screenProvider);
 
         m_screens.push_back(screen);
     }

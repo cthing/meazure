@@ -138,7 +138,7 @@ public:
     ///
     /// @return Current angular units.
     ///
-    MeaAngularUnits* GetAngularUnits() const { return m_currentAngularUnits; }
+    MeaAngularUnits* GetAngularUnits() const override { return m_currentAngularUnits; }
 
     /// Returns the angular measurement units object corresponding
     /// to the specified identifier string (e.g. "deg").

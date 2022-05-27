@@ -174,7 +174,7 @@ public:
     ///
     /// @return <b>true</b> if the screen's resolution was set manually.
     ///
-    bool IsManualRes(const ScreenIter& iter) const;
+    bool IsManualRes(const ScreenIter& iter) const override;
 
     /// Indicates whether any screen is using the operating system reported
     /// resolution. In other words, are there any screen that require calibration.
@@ -196,7 +196,7 @@ public:
     ///
     /// @return <b>true</b> if the specified screen is the primary.
     ///
-    bool IsPrimary(const ScreenIter& iter) const;
+    bool IsPrimary(const ScreenIter& iter) const override;
 
     /// Returns the name for the specified screen.
     ///

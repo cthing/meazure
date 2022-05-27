@@ -26,12 +26,14 @@
 #include <map>
 #include <stdexcept>
 #include <meazure/units/Units.h>
+#include <meazure/units/UnitsProvider.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/XMLParser.h>
 #include <meazure/utilities/GUID.h>
 #include <meazure/utilities/Singleton.h>
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/ui/ScreenMgr.h>
+#include <meazure/ui/ScreenProvider.h>
 
 
 class MeaPositionSaveDlg;
@@ -58,10 +60,12 @@ public:
         /// Constructs deep copy screen object from the specified
         /// iterator over the list of screens.
         ///
-        /// @param screenIter   [in] Iterator from which to construct
-        ///                     a copy of the screen.
+        /// @param screenIter     [in] Iterator from which to construct a copy of the screen.
+        /// @param unitsProvider  [in] Units information and conversion provider
+        /// @param screenProvider [in] Screen information provider
         ///
-        explicit Screen(const MeaScreenMgr::ScreenIter& screenIter);
+        explicit Screen(const MeaScreenMgr::ScreenIter& screenIter, const MeaUnitsProvider& unitsProvider,
+                        const MeaScreenProvider& screenProvider);
 
         /// Constructs a deep copy of the specified screen.
         ///
@@ -168,14 +172,20 @@ public:
 
     public:
         /// Constructs a desktop information object.
+        /// 
+        /// @param unitsProvider   [in] Units information and conversion provider
+        /// @param screenProvider  [in] Screen information provider
         ///
-        DesktopInfo();
+        DesktopInfo(const MeaUnitsProvider& unitsProvider, const MeaScreenProvider& screenProvider);
 
         /// Constructs a desktop information object with the specified unique ID.
         ///
-        /// @param guidStr      [in] GUID ID for the desktop information object.
+        /// @param guidStr          [in] GUID ID for the desktop information object.
+        /// @param unitsProvider    [in] Units information and conversion provider
+        /// @param screenProvider   [in] Screen information provider
         ///
-        explicit DesktopInfo(LPCTSTR guidStr);
+        explicit DesktopInfo(LPCTSTR guidStr, const MeaUnitsProvider& unitsProvider,
+                             const MeaScreenProvider& screenProvider);
 
         /// Constructs a desktop information object as a copy of the specified object.
         ///
@@ -310,8 +320,11 @@ public:
 
         /// Centralized initialization method for the class. All
         /// non-copy constructors call this method.
+        /// 
+        /// @param unitsProvider   [in] Units information and conversion provider
+        /// @param screenProvider  [in] Screen information provider
         ///
-        void Init();
+        void Init(const MeaUnitsProvider& unitsProvider, const MeaScreenProvider& screenProvider);
 
         /// Determines whether the specified desktop information object
         /// is equal to this object.

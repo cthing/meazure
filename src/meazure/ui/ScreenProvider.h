@@ -153,12 +153,27 @@ struct MeaScreenProvider {
     ///
     virtual const FSIZE& GetScreenRes(const ScreenIter& iter) const = 0;
 
+    /// Indicates it the resolution for the specified screen has been set manually.
+    ///
+    /// @param iter     [in] Screen iterator pointed at the screen whose
+    ///                 resolution setting is being queried.
+    ///
+    /// @return <b>true</b> if the screen's resolution was set manually.
+    ///
+    virtual bool IsManualRes(const ScreenIter& iter) const = 0;
+
     /// Indicates whether any screen is using the operating system reported
     /// resolution. In other words, are there any screen that require calibration.
     ///
     /// @return <b>true</b> if there are any screens requiring manual calibration.
     ///
     virtual bool AnyOSRes() const = 0;
+
+    /// Indicates if the screen pointed to by the specified iterator is the primary.
+    ///
+    /// @return <b>true</b> if the specified screen is the primary.
+    ///
+    virtual bool IsPrimary(const ScreenIter& iter) const = 0;
 
     /// Returns the name for the specified screen.
     ///

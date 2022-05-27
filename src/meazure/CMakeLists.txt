@@ -203,7 +203,12 @@ configure_file(VersionNumbers.h.in VersionNumbers.h @ONLY)
 
 # Copy the DTD to the runtime directory so that position log loading will work when Meazure is run from
 # that directory during development.
-configure_file(${SUPPORT_DIR}/dtd/PositionLog1.dtd ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/dtd/PositionLog1.dtd COPYONLY)
+if (CMAKE_GENERATOR MATCHES "Visual Studio")
+    file(GENERATE OUTPUT ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<CONFIG>/dtd/PositionLog1.dtd
+                  INPUT ${SUPPORT_DIR}/dtd/PositionLog1.dtd)
+else()
+    configure_file(${SUPPORT_DIR}/dtd/PositionLog1.dtd ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/dtd/PositionLog1.dtd COPYONLY)
+endif()
 
 add_executable(Meazure WIN32 ${meazure_SRCS})
 add_dependencies(Meazure apphelp libexpat hooks)

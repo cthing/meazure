@@ -189,7 +189,7 @@ const POINT& MeaWindowTool::GetPosition() const {
     return m_pointerPos;
 }
 
-void MeaWindowTool::RecordPosition(MeaPositionLogMgr::Position& position) const {
+void MeaWindowTool::RecordPosition(MeaPosition& position) const {
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);

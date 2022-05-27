@@ -182,7 +182,7 @@ public:
 
     /// Returns the type of the node.
     /// @return Node type.
-    Type            GetType() const { return m_type; }
+    Type GetType() const { return m_type; }
 
     /// Returns the data for the node. The data returned
     /// depends on the node type:
@@ -196,6 +196,12 @@ public:
     /// @return Data appropriate for the node.
     ///
     const CString& GetData() const { return m_data; }
+
+    /// Concatenates all child data nodes into a single string.
+    ///
+    /// @return String concatenation of all child data nodes.
+    ///
+    CString GetChildData() const;
 
     /// Returns the attributes associated with the node if it
     /// is of type Element.

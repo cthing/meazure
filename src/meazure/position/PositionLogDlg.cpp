@@ -21,6 +21,7 @@
 #include <meazure/resource.h>
 #include "PositionLogDlg.h"
 #include "PositionLogMgr.h"
+#include "Position.h"
 #include <meazure/utilities/TimeStamp.h>
 
 #ifdef _DEBUG
@@ -190,7 +191,7 @@ void MeaPositionLogDlg::UpdatePositionInfo(int posIndex) const {
         str.Format(_T("%d of %d"), posIndex + 1, count);
         numField->SetWindowText(str);
 
-        const MeaPositionLogMgr::Position& position = mgr.GetPosition(posIndex);
+        const MeaPosition& position = mgr.GetPosition(posIndex);
 
         CTime ts(MeaParseTimeStamp(position.GetTimeStamp()));
         recordedField->SetWindowText(ts.Format(_T("%c")));
@@ -339,7 +340,7 @@ void MeaPositionLogDlg::OnKillfocusPositionDesc() {
     if (mgr.HavePositions()) {
         int posIndex = GetScrollPos();
 
-        MeaPositionLogMgr::Position& position = mgr.GetPosition(posIndex);
+        MeaPosition& position = mgr.GetPosition(posIndex);
         CString origStr = position.GetDesc();
 
         CString newStr;

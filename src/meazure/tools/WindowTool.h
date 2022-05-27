@@ -25,6 +25,7 @@
 #include "RadioTool.h"
 #include <meazure/graphics/Rectangle.h>
 #include <meazure/ui/DataWin.h>
+#include <meazure/position/Position.h>
 
 
 /// Window measurement tool. This tool tracks the mouse pointer and attempts
@@ -119,7 +120,7 @@ public:
     /// @param position     [in] The position of the window rectangle is recorded
     ///                     into the position log manager's position object.
     ///
-    virtual void RecordPosition(MeaPositionLogMgr::Position& position) const override;
+    virtual void RecordPosition(MeaPosition& position) const override;
 
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position

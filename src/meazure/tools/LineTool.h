@@ -26,6 +26,7 @@
 #include <meazure/graphics/CrossHair.h>
 #include <meazure/graphics/Line.h>
 #include <meazure/ui/DataWin.h>
+#include <meazure/position/Position.h>
 
 
 /// Line measurement tool. This tool provides a line to measure the
@@ -141,7 +142,7 @@ public:
     /// @param position     [in] The tool's current position is recorded into
     ///                     the position log manager's position object.
     ///
-    virtual void RecordPosition(MeaPositionLogMgr::Position& position) const override;
+    virtual void RecordPosition(MeaPosition& position) const override;
 
     /// Increments the specified position field.
     /// 

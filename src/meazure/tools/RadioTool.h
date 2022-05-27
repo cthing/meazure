@@ -23,7 +23,7 @@
 #pragma once
 
 #include "Tool.h"
-#include <meazure/position/PositionLogMgr.h>
+#include <meazure/position/Position.h>
 
 
 /// Abstract base class for tools whose use is mutually exclusive. For
@@ -134,7 +134,7 @@ public:
     /// @param position     [in] The tool's current position is recorded into
     ///                     the position log manager's position object.
     ///
-    virtual void RecordPosition(MeaPositionLogMgr::Position& position) const = 0;
+    virtual void RecordPosition(MeaPosition& position) const = 0;
 
     /// Called by the OS when the mouse pointer is moved. This base class
     /// implementation does nothing.

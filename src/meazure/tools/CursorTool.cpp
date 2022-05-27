@@ -165,7 +165,7 @@ const POINT& MeaCursorTool::GetPosition() const {
     return m_cursorPos;
 }
 
-void MeaCursorTool::RecordPosition(MeaPositionLogMgr::Position& position) const {
+void MeaCursorTool::RecordPosition(MeaPosition& position) const {
     position.SetToolName(kToolName);
     position.RecordXY1(m_unitsProvider.ConvertCoord(m_cursorPos));
 }

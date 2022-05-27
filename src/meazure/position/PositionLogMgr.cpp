@@ -105,7 +105,9 @@ CFileDialog* MeaPositionLogMgr::CreateLoadDialog() {
 }
 
 void MeaPositionLogMgr::RecordPosition() {
-    m_positions.Add(new Position(this, RecordDesktopInfo()));
+    MeaPosition* position = new MeaPosition(RecordDesktopInfo());
+    MeaToolMgr::Instance().RecordPosition(*position);
+    m_positions.Add(position);
 
     MeaToolMgr::Instance().StrobeTool();
 
@@ -117,7 +119,9 @@ void MeaPositionLogMgr::RecordPosition() {
 }
 
 void MeaPositionLogMgr::ReplacePosition(int posIndex) {
-    m_positions.Set(posIndex, new Position(this, RecordDesktopInfo()));
+    MeaPosition* position = new MeaPosition(RecordDesktopInfo());
+    MeaToolMgr::Instance().RecordPosition(*position);
+    m_positions.Set(posIndex, position);
 
     MeaToolMgr::Instance().StrobeTool();
 
@@ -163,7 +167,7 @@ void MeaPositionLogMgr::ShowPosition(unsigned int posIndex) {
     MeaToolMgr& toolMgr = MeaToolMgr::Instance();
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
-    Position& position = m_positions.Get(posIndex);
+    MeaPosition& position = m_positions.Get(posIndex);
 
     // Change the radio tool, if needed. Note that if the position
     // used the cursor tool, we display it using the point tool so
@@ -185,7 +189,7 @@ void MeaPositionLogMgr::ShowPosition(unsigned int posIndex) {
     // Change the units if needed. If these are custom units perform
     // additional configuration.
     //
-    const DesktopInfo& desktopInfo = GetDesktopInfo(position.GetDesktopInfoId());
+    const MeaPositionDesktop& desktopInfo = GetDesktopInfo(position.GetDesktopInfoRef());
     CString unitsStr = desktopInfo.GetLinearUnits()->GetUnitsStr();
     CString anglesStr = desktopInfo.GetAngularUnits()->GetUnitsStr();
 
@@ -237,21 +241,20 @@ void MeaPositionLogMgr::ShowPosition(unsigned int posIndex) {
     toolMgr.SetPosition(toolPoints);
 }
 
-MeaGUID MeaPositionLogMgr::RecordDesktopInfo() {
-    DesktopInfo desktopInfo(MeaUnitsMgr::Instance(), MeaScreenMgr::Instance());
+MeaPositionDesktopRef MeaPositionLogMgr::RecordDesktopInfo() {
+    MeaPositionDesktop desktopInfo(MeaUnitsMgr::Instance(), MeaScreenMgr::Instance());
 
     for (const auto& desktopEntry : m_desktopInfoMap) {
         if (desktopInfo == desktopEntry.second) {
-            return desktopEntry.first;
+            return MeaPositionDesktopRef(this, desktopEntry.second);
         }
     }
 
-    const MeaGUID& guid = desktopInfo.GetId();
-    m_desktopInfoMap.emplace(guid, desktopInfo);
-    return guid;
+    m_desktopInfoMap.emplace(desktopInfo.GetId(), desktopInfo);
+    return MeaPositionDesktopRef(this, desktopInfo);
 }
 
-MeaPositionLogMgr::DesktopInfo& MeaPositionLogMgr::GetDesktopInfo(const MeaGUID& id) {
+MeaPositionDesktop& MeaPositionLogMgr::GetDesktopInfo(const MeaGUID& id) {
     DesktopInfoMap::iterator iter = m_desktopInfoMap.find(id);
     assert(iter != m_desktopInfoMap.end());  // Validator ensures this
     return (*iter).second;
@@ -349,7 +352,7 @@ bool MeaPositionLogMgr::Save(bool askPathname) {
     indent++;
     WriteInfoSection(indent);
     WriteDesktopsSection(indent);
-    WritePositionsSection(indent);
+    WritePositionsSection(*this, indent);
     indent--;
     Write(indent, _T("</positionLog>\n"));
 
@@ -493,9 +496,9 @@ void MeaPositionLogMgr::ProcessInfoNode(const MeaXMLNode* infoNode) {
 
         if (node->GetType() == MeaXMLNode::Type::Element) {
             if (node->GetData() == _T("title")) {
-                m_title = ProcessDataNodes(node);
+                m_title = MeaStringUtils::LFtoCRLF(node->GetChildData());
             } else if (node->GetData() == _T("desc")) {
-                m_desc = ProcessDataNodes(node);
+                m_desc = MeaStringUtils::LFtoCRLF(node->GetChildData());
             }
         }
     }
@@ -508,7 +511,7 @@ void MeaPositionLogMgr::ProcessDesktopNode(const MeaXMLNode* desktopNode) {
     desktopNode->GetAttributes().GetValueStr(_T("id"), valueStr, def);
 
     try {
-        DesktopInfo desktopInfo(valueStr, MeaUnitsMgr::Instance(), MeaScreenMgr::Instance());
+        MeaPositionDesktop desktopInfo(valueStr, MeaUnitsMgr::Instance(), MeaScreenMgr::Instance());
 
         desktopInfo.Load(desktopNode);
 
@@ -534,7 +537,8 @@ void MeaPositionLogMgr::ProcessPositionNode(const MeaXMLNode* positionNode) {
     positionNode->GetAttributes().GetValueStr(_T("date"), dateStr, def);
 
     try {
-        Position* position = new Position(this, idStr, toolStr, dateStr);
+        MeaPositionDesktopRef desktopRef(this, idStr);
+        MeaPosition* position = new MeaPosition(desktopRef, toolStr, dateStr);
 
         position->Load(positionNode);
 
@@ -546,20 +550,6 @@ void MeaPositionLogMgr::ProcessPositionNode(const MeaXMLNode* positionNode) {
         msg.Format(IDS_MEA_INVALID_DESKTOPREF, static_cast<LPCTSTR>(idStr));
         MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
     }
-}
-
-CString MeaPositionLogMgr::ProcessDataNodes(const MeaXMLNode* elementNode) {
-    CString data;
-
-    for (MeaXMLNode::NodeIter_c iter = elementNode->GetChildIter(); !elementNode->AtEnd(iter); ++iter) {
-        MeaXMLNode* node = *iter;
-
-        if (node->GetType() == MeaXMLNode::Type::Data) {
-            data += node->GetData();
-        }
-    }
-
-    return MeaStringUtils::LFtoCRLF(data);
 }
 
 void MeaPositionLogMgr::WriteInfoSection(int indent) {
@@ -596,10 +586,10 @@ void MeaPositionLogMgr::WriteDesktopsSection(int indent) {
     Write(indent, _T("</desktops>\n"));
 }
 
-void MeaPositionLogMgr::WritePositionsSection(int indent) {
+void MeaPositionLogMgr::WritePositionsSection(MeaPositionLogWriter& writer, int indent) {
     Write(indent, _T("<positions>\n"));
     indent++;
-    m_positions.Save(indent);
+    m_positions.Save(writer, indent);
     indent--;
     Write(indent, _T("</positions>\n"));
 }
@@ -646,509 +636,11 @@ CString MeaPositionLogMgr::GetFilePathname() {
 
 
 //*************************************************************************
-// Screen
+// MeaPositions
 //*************************************************************************
 
 
-MeaPositionLogMgr::Screen::Screen(const MeaScreenMgr::ScreenIter& screenIter, const MeaUnitsProvider& unitsProvider,
-                                  const MeaScreenProvider& screenProvider) {
-    const CRect& rect = screenProvider.GetScreenRect(screenIter);
-    FPOINT p1 = unitsProvider.ConvertCoord(rect.TopLeft());
-    FPOINT p2 = unitsProvider.ConvertCoord(rect.BottomRight());
-
-    m_rect.top = p1.y;
-    m_rect.bottom = p2.y;
-    m_rect.left = p1.x;
-    m_rect.right = p2.x;
-
-    m_primary = screenProvider.IsPrimary(screenIter);
-    m_manualRes = screenProvider.IsManualRes(screenIter);
-    m_res = unitsProvider.ConvertRes(screenProvider.GetScreenRes(screenIter));
-    m_desc = screenProvider.GetScreenName(screenIter);
-}
-
-void MeaPositionLogMgr::Screen::Load(const MeaXMLNode* screenNode) {
-    CString valueStr;
-    bool def;
-
-    screenNode->GetAttributes().GetValueBool(_T("primary"), m_primary, def);
-    screenNode->GetAttributes().GetValueStr(_T("desc"), m_desc, def);
-
-    for (MeaXMLNode::NodeIter_c iter = screenNode->GetChildIter(); !screenNode->AtEnd(iter); ++iter) {
-        MeaXMLNode* node = *iter;
-        const MeaXMLAttributes& attrs = node->GetAttributes();
-
-        if (node->GetType() == MeaXMLNode::Type::Element) {
-            if (node->GetData() == _T("rect")) {
-                attrs.GetValueDbl(_T("top"), m_rect.top, def);
-                attrs.GetValueDbl(_T("bottom"), m_rect.bottom, def);
-                attrs.GetValueDbl(_T("left"), m_rect.left, def);
-                attrs.GetValueDbl(_T("right"), m_rect.right, def);
-            } else if (node->GetData() == _T("resolution")) {
-                attrs.GetValueDbl(_T("x"), m_res.cx, def);
-                attrs.GetValueDbl(_T("y"), m_res.cy, def);
-                attrs.GetValueBool(_T("manual"), m_manualRes, def);
-            }
-        }
-    }
-}
-
-void MeaPositionLogMgr::Screen::Save(MeaPositionLogMgr& mgr, int indent) const {
-    mgr.Write(indent, _T("<screen desc=\"%s\" primary=\"%s\">\n"), static_cast<LPCTSTR>(m_desc),
-              (m_primary ? _T("true") : _T("false")));
-    indent++;
-    mgr.Write(indent, _T("<rect top=\"%s\" bottom=\"%s\" left=\"%s\" right=\"%s\"/>\n"),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.top)),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.bottom)),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.left)),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.right)));
-    mgr.Write(indent, _T("<resolution x=\"%s\" y=\"%s\" manual=\"%s\"/>\n"),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_res.cx)),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_res.cy)),
-              (m_manualRes ? _T("true") : _T("false")));
-    indent--;
-    mgr.Write(indent, _T("</screen>\n"));
-}
-
-
-//*************************************************************************
-// DesktopInfo
-//*************************************************************************
-
-
-MeaPositionLogMgr::DesktopInfo::DesktopInfo(const MeaUnitsProvider& unitsProvider,
-                                            const MeaScreenProvider& screenProvider) {
-    Init(unitsProvider, screenProvider);
-}
-
-MeaPositionLogMgr::DesktopInfo::DesktopInfo(LPCTSTR guidStr, const MeaUnitsProvider& unitsProvider,
-                                            const MeaScreenProvider& screenProvider) : m_id(guidStr) {
-    Init(unitsProvider, screenProvider);
-}
-
-void MeaPositionLogMgr::DesktopInfo::Init(const MeaUnitsProvider& unitsProvider,
-                                          const MeaScreenProvider& screenProvider) {
-    const CRect& size = screenProvider.GetVirtualRect();
-    CPoint bottomRight(size.BottomRight());
-    bottomRight.Offset(-1, -1);
-
-    m_linearUnits = unitsProvider.GetLinearUnits();
-    m_angularUnits = unitsProvider.GetAngularUnits();
-    m_invertY = unitsProvider.GetInvertY();
-    m_origin = unitsProvider.ConvertPos(unitsProvider.GetOrigin());
-    m_size = unitsProvider.GetWidthHeight(size.TopLeft(), bottomRight);
-
-    if (m_linearUnits->GetUnitsId() == MeaCustomId) {
-        MeaCustomUnits* custom = static_cast<MeaCustomUnits*>(m_linearUnits);
-
-        m_customName = custom->GetName();
-        m_customAbbrev = custom->GetAbbrev();
-        m_customBasisStr = custom->GetScaleBasisStr();
-        m_customFactor = custom->GetScaleFactor();
-        m_customPrecisions = custom->GetDefaultPrecisions();
-    } else {
-        m_customName = _T("");
-        m_customAbbrev = _T("");
-        m_customBasisStr = _T("");
-        m_customFactor = 0.0;
-        m_customPrecisions.clear();
-    }
-
-    MeaScreenMgr::ScreenIter iter;
-    for (iter = screenProvider.GetScreenIter(); !screenProvider.AtEnd(iter); ++iter) {
-        Screen screen(iter, unitsProvider, screenProvider);
-
-        m_screens.push_back(screen);
-    }
-}
-
-void MeaPositionLogMgr::DesktopInfo::SetLinearUnits(const CString& unitsStr) {
-    m_linearUnits = MeaUnitsMgr::Instance().GetLinearUnits(unitsStr);
-    assert(m_linearUnits != nullptr);
-}
-
-void MeaPositionLogMgr::DesktopInfo::SetAngularUnits(const CString& unitsStr) {
-    m_angularUnits = MeaUnitsMgr::Instance().GetAngularUnits(unitsStr);
-    assert(m_angularUnits != nullptr);
-}
-
-void MeaPositionLogMgr::DesktopInfo::Load(const MeaXMLNode* desktopNode) {
-    CString valueStr;
-    bool def;
-
-    for (MeaXMLNode::NodeIter_c iter = desktopNode->GetChildIter(); !desktopNode->AtEnd(iter); ++iter) {
-        MeaXMLNode* node = *iter;
-        const MeaXMLAttributes& attrs = node->GetAttributes();
-
-        if (node->GetType() == MeaXMLNode::Type::Element) {
-            if (node->GetData() == _T("units")) {
-                attrs.GetValueStr(_T("length"), valueStr, def);
-                SetLinearUnits(valueStr);
-                attrs.GetValueStr(_T("angle"), valueStr, def);
-                SetAngularUnits(valueStr);
-            } else if (node->GetData() == _T("customUnits")) {
-                attrs.GetValueStr(_T("name"), m_customName, def);
-                attrs.GetValueStr(_T("abbrev"), m_customAbbrev, def);
-                attrs.GetValueStr(_T("scaleBasis"), m_customBasisStr, def);
-                attrs.GetValueDbl(_T("scaleFactor"), m_customFactor, def);
-            } else if (node->GetData() == _T("origin")) {
-                attrs.GetValueDbl(_T("xoffset"), m_origin.x, def);
-                attrs.GetValueDbl(_T("yoffset"), m_origin.y, def);
-                attrs.GetValueBool(_T("invertY"), m_invertY, def);
-            } else if (node->GetData() == _T("size")) {
-                attrs.GetValueDbl(_T("x"), m_size.cx, def);
-                attrs.GetValueDbl(_T("y"), m_size.cy, def);
-            } else if (node->GetData() == _T("screens")) {
-                m_screens.clear();
-                for (MeaXMLNode::NodeIter_c screenIter = node->GetChildIter();
-                     !node->AtEnd(screenIter); ++screenIter) {
-                    Screen screen;
-                    screen.Load(*screenIter);
-                    m_screens.push_back(screen);
-                }
-            } else if (node->GetData() == _T("displayPrecisions")) {
-                MeaXMLNode::NodeIter_c precIter = node->GetChildIter();
-                LoadCustomPrecisions(*precIter);
-            }
-        }
-    }
-}
-
-void MeaPositionLogMgr::DesktopInfo::Save(MeaPositionLogMgr& mgr, int indent) const {
-    mgr.Write(indent, _T("<desktop id=\"%s\">\n"), static_cast<LPCTSTR>(m_id));
-    indent++;
-    mgr.Write(indent, _T("<units length=\"%s\" angle=\"%s\"/>\n"),
-        static_cast<LPCTSTR>(m_linearUnits->GetUnitsStr()),
-        static_cast<LPCTSTR>(m_angularUnits->GetUnitsStr()));
-
-    if (m_linearUnits->GetUnitsId() == MeaCustomId) {
-        mgr.Write(indent, _T("<customUnits name=\"%s\" abbrev=\"%s\" scaleBasis=\"%s\" scaleFactor=\"%f\"/>\n"),
-                  static_cast<LPCTSTR>(m_customName),
-                  static_cast<LPCTSTR>(m_customAbbrev),
-                  static_cast<LPCTSTR>(m_customBasisStr), m_customFactor);
-    }
-
-    mgr.Write(indent, _T("<origin xoffset=\"%s\" yoffset=\"%s\" invertY=\"%s\"/>\n"),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_origin.x)),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_origin.y)),
-              (m_invertY ? _T("true") : _T("false")));
-    mgr.Write(indent, _T("<size x=\"%s\" y=\"%s\"/>\n"),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_size.cx)),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_size.cy)));
-
-    mgr.Write(indent, _T("<screens>\n"));
-    indent++;
-    for (const auto& screen : m_screens) {
-        screen.Save(mgr, indent);
-    }
-    indent--;
-    mgr.Write(indent, _T("</screens>\n"));
-
-    if (m_linearUnits->GetUnitsId() == MeaCustomId) {
-        mgr.Write(indent, _T("<displayPrecisions>\n"));
-        indent++;
-        SaveCustomPrecisions(mgr, indent);
-        indent--;
-        mgr.Write(indent, _T("</displayPrecisions>\n"));
-    }
-    indent--;
-    mgr.Write(indent, _T("</desktop>\n"));
-}
-
-void MeaPositionLogMgr::DesktopInfo::LoadCustomPrecisions(const MeaXMLNode* displayPrecisionNode) {
-    typedef std::map<CString, int> PrecisionMap;
-    typedef PrecisionMap::const_iterator PrecisionIter;
-
-    bool def;
-    PrecisionMap precMap;
-
-    for (MeaXMLNode::NodeIter_c measurementIter = displayPrecisionNode->GetChildIter();
-                                !displayPrecisionNode->AtEnd(measurementIter); ++measurementIter) {
-        MeaXMLNode* measurementNode = *measurementIter;
-        const MeaXMLAttributes& attrs = measurementNode->GetAttributes();
-
-        if (measurementNode->GetData() == _T("measurement")) {
-            CString name;
-            int places;
-
-            attrs.GetValueStr(_T("name"), name, def);
-            attrs.GetValueInt(_T("decimalPlaces"), places, def);
-
-            precMap[name] = places;
-        }
-    }
-
-    const MeaUnits::DisplayPrecisionNames& precisionNames = m_linearUnits->GetDisplayPrecisionNames();
-    const MeaUnits::DisplayPrecisions& precisions = m_linearUnits->GetDisplayPrecisions();
-    unsigned int i;
-
-    m_customPrecisions.clear();
-
-    for (i = 0; i < precisionNames.size(); i++) {
-        PrecisionIter precIter = precMap.find(precisionNames[i]);
-
-        m_customPrecisions.push_back((precIter != precMap.end()) ? (*precIter).second : precisions[i]);
-    }
-}
-
-void MeaPositionLogMgr::DesktopInfo::SaveCustomPrecisions(MeaPositionLogMgr& mgr, int indent) const {
-    const MeaUnits::DisplayPrecisionNames& precisionNames = m_linearUnits->GetDisplayPrecisionNames();
-    unsigned int i;
-
-    mgr.Write(indent, _T("<displayPrecision units=\"%s\">\n"),
-        static_cast<LPCTSTR>(m_linearUnits->GetUnitsStr()));
-    indent++;
-    for (i = 0; i < m_customPrecisions.size(); i++) {
-        mgr.Write(indent, _T("<measurement name=\"%s\" decimalPlaces=\"%d\"/>\n"),
-            static_cast<LPCTSTR>(precisionNames[i]), m_customPrecisions[i]);
-    }
-    indent--;
-    mgr.Write(indent, _T("</displayPrecision>\n"));
-}
-
-
-//*************************************************************************
-// Position
-//*************************************************************************
-
-
-MeaPositionLogMgr::Position::Position(MeaPositionLogMgr* mgr, const MeaGUID& desktopInfoId) :
-    m_mgr(mgr),
-    m_fieldMask(0),
-    m_width(0.0),
-    m_height(0.0),
-    m_distance(0.0),
-    m_area(0.0),
-    m_angle(0.0),
-    m_desktopInfoId(desktopInfoId),
-    m_timestamp(MeaMakeTimeStamp(time(nullptr))) {
-
-    MeaToolMgr::Instance().RecordPosition(*this);
-    m_mgr->AddDesktopRef(m_desktopInfoId);
-}
-
-MeaPositionLogMgr::Position::Position(MeaPositionLogMgr* mgr, const CString& desktopInfoIdStr,
-                                      const CString& toolName, const CString& timestamp) :
-    m_mgr(mgr),
-    m_fieldMask(0),
-    m_width(0.0),
-    m_height(0.0),
-    m_distance(0.0),
-    m_area(0.0),
-    m_angle(0.0),
-    m_desktopInfoId(desktopInfoIdStr),
-    m_toolName(toolName),
-    m_timestamp(timestamp) {
-    m_mgr->AddDesktopRef(m_desktopInfoId);
-}
-
-MeaPositionLogMgr::Position::Position(const Position& position) :
-    m_mgr(position.m_mgr),
-    m_fieldMask(position.m_fieldMask),
-    m_width(position.m_width),
-    m_height(position.m_height),
-    m_distance(position.m_distance),
-    m_area(position.m_area),
-    m_angle(position.m_angle),
-    m_desktopInfoId(position.m_desktopInfoId),
-    m_toolName(position.m_toolName),
-    m_timestamp(position.m_timestamp),
-    m_desc(position.m_desc),
-    m_points(position.m_points) {
-    m_mgr->AddDesktopRef(m_desktopInfoId);
-}
-
-MeaPositionLogMgr::Position::~Position() {
-    try {
-        m_mgr->ReleaseDesktopRef(m_desktopInfoId);
-    } catch (...) {
-        assert(false);
-    }
-}
-
-MeaPositionLogMgr::Position& MeaPositionLogMgr::Position::operator=(const Position& position) {
-    if (&position != this) {
-        m_mgr->ReleaseDesktopRef(m_desktopInfoId);
-
-        m_mgr = position.m_mgr;
-        m_fieldMask = position.m_fieldMask;
-        m_width = position.m_width;
-        m_height = position.m_height;
-        m_distance = position.m_distance;
-        m_area = position.m_area;
-        m_angle = position.m_angle;
-        m_desktopInfoId = position.m_desktopInfoId;
-        m_toolName = position.m_toolName;
-        m_timestamp = position.m_timestamp;
-        m_desc = position.m_desc;
-        m_points = position.m_points;
-
-        m_mgr->AddDesktopRef(m_desktopInfoId);
-    }
-
-    return *this;
-}
-
-void MeaPositionLogMgr::Position::RecordXY1(const FPOINT& point) {
-    m_fieldMask |= MeaX1Field | MeaY1Field;
-
-    m_points[_T("1")] = point;
-}
-
-void MeaPositionLogMgr::Position::RecordXY2(const FPOINT& point) {
-    m_fieldMask |= MeaX2Field | MeaY2Field;
-
-    m_points[_T("2")] = point;
-}
-
-void MeaPositionLogMgr::Position::RecordXYV(const FPOINT& point) {
-    m_fieldMask |= MeaXVField | MeaYVField;
-
-    m_points[_T("v")] = point;
-}
-
-void MeaPositionLogMgr::Position::RecordWH(const FSIZE& size) {
-    m_fieldMask |= MeaWidthField | MeaHeightField;
-
-    m_width = size.cx;
-    m_height = size.cy;
-}
-
-void MeaPositionLogMgr::Position::RecordDistance(const FSIZE& size) {
-    m_fieldMask |= MeaDistanceField;
-
-    m_distance = MeaGeometry::CalcLength(size.cx, size.cy);
-}
-
-void MeaPositionLogMgr::Position::RecordDistance(double dist) {
-    m_fieldMask |= MeaDistanceField;
-
-    m_distance = dist;
-}
-
-void MeaPositionLogMgr::Position::RecordAngle(double angle) {
-    m_fieldMask |= MeaAngleField;
-
-    m_angle = MeaUnitsMgr::Instance().ConvertAngle(angle);
-}
-
-void MeaPositionLogMgr::Position::RecordRectArea(const FSIZE& size) {
-    m_fieldMask |= MeaAreaField;
-
-    m_area = size.cx * size.cy;
-}
-
-void MeaPositionLogMgr::Position::RecordCircleArea(double radius) {
-    m_fieldMask |= MeaAreaField;
-
-    m_area = MeaNumericUtils::PI * radius * radius;
-}
-
-void MeaPositionLogMgr::Position::Load(const MeaXMLNode* positionNode) {
-    bool def;
-
-    for (MeaXMLNode::NodeIter_c iter = positionNode->GetChildIter(); !positionNode->AtEnd(iter); ++iter) {
-        MeaXMLNode* node = *iter;
-
-        if (node->GetType() == MeaXMLNode::Type::Element) {
-            if (node->GetData() == _T("desc")) {
-                SetDesc(ProcessDataNodes(node));
-            } else if (node->GetData() == _T("points")) {
-                for (MeaXMLNode::NodeIter_c pointIter = node->GetChildIter(); !node->AtEnd(pointIter); ++pointIter) {
-                    MeaXMLNode* pointNode = *pointIter;
-                    const MeaXMLAttributes& attrs = pointNode->GetAttributes();
-
-                    if ((pointNode->GetType() == MeaXMLNode::Type::Element) && (pointNode->GetData() == _T("point"))) {
-                        CString name;
-                        FPOINT pt;
-                        attrs.GetValueStr(_T("name"), name, def);
-                        attrs.GetValueDbl(_T("x"), pt.x, def);
-                        attrs.GetValueDbl(_T("y"), pt.y, def);
-                        AddPoint(name, pt);
-                    }
-                }
-            } else if (node->GetData() == _T("properties")) {
-                for (MeaXMLNode::NodeIter_c pointIter = node->GetChildIter(); !node->AtEnd(pointIter); ++pointIter) {
-                    MeaXMLNode* pointNode = *pointIter;
-                    const MeaXMLAttributes& attrs = pointNode->GetAttributes();
-
-                    if (pointNode->GetType() == MeaXMLNode::Type::Element) {
-                        if (pointNode->GetData() == _T("width")) {
-                            attrs.GetValueDbl(_T("value"), m_width, def);
-                            m_fieldMask |= MeaWidthField;
-                        } else if (pointNode->GetData() == _T("height")) {
-                            attrs.GetValueDbl(_T("value"), m_height, def);
-                            m_fieldMask |= MeaHeightField;
-                        } else if (pointNode->GetData() == _T("distance")) {
-                            attrs.GetValueDbl(_T("value"), m_distance, def);
-                            m_fieldMask |= MeaDistanceField;
-                        } else if (pointNode->GetData() == _T("area")) {
-                            attrs.GetValueDbl(_T("value"), m_area, def);
-                            m_fieldMask |= MeaAreaField;
-                        } else if (pointNode->GetData() == _T("angle")) {
-                            attrs.GetValueDbl(_T("value"), m_angle, def);
-                            m_fieldMask |= MeaAngleField;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-void MeaPositionLogMgr::Position::Save(int indent) const {
-    m_mgr->Write(indent, _T("<position desktopRef=\"%s\" tool=\"%s\" date=\"%s\">\n"),
-                 static_cast<LPCTSTR>(m_desktopInfoId),
-                 static_cast<LPCTSTR>(m_toolName),
-                 static_cast<LPCTSTR>(m_timestamp));
-    indent++;
-    if (!m_desc.IsEmpty()) {
-        m_mgr->Write(indent, _T("<desc>%s</desc>\n"),
-                    static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
-    }
-
-    m_mgr->Write(indent, _T("<points>\n"));
-    indent++;
-    for (const auto& pointEntry : m_points) {
-        m_mgr->Write(indent, _T("<point name=\"%s\" x=\"%s\" y=\"%s\"/>\n"),
-                    static_cast<LPCTSTR>(pointEntry.first),
-                    static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.x)),
-                    static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.y)));
-    }
-    indent--;
-    m_mgr->Write(indent, _T("</points>\n"));
-
-    m_mgr->Write(indent, _T("<properties>\n"));
-    indent++;
-    if (m_fieldMask & MeaWidthField) {
-        m_mgr->Write(indent, _T("<width value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_width)));
-    }
-    if (m_fieldMask & MeaHeightField) {
-        m_mgr->Write(indent, _T("<height value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_height)));
-    }
-    if (m_fieldMask & MeaDistanceField) {
-        m_mgr->Write(indent, _T("<distance value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_distance)));
-    }
-    if (m_fieldMask & MeaAreaField) {
-        m_mgr->Write(indent, _T("<area value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_area)));
-    }
-    if (m_fieldMask & MeaAngleField) {
-        m_mgr->Write(indent, _T("<angle value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_angle)));
-    }
-    indent--;
-    m_mgr->Write(indent, _T("</properties>\n"));
-
-    indent--;
-    m_mgr->Write(indent, _T("</position>\n"));
-}
-
-
-//*************************************************************************
-// Positions
-//*************************************************************************
-
-
-MeaPositionLogMgr::Positions::~Positions() {
+MeaPositionLogMgr::MeaPositions::~MeaPositions() {
     try {
         DeleteAll();
     } catch (...) {
@@ -1156,12 +648,12 @@ MeaPositionLogMgr::Positions::~Positions() {
     }
 }
 
-void MeaPositionLogMgr::Positions::Add(Position* position) {
+void MeaPositionLogMgr::MeaPositions::Add(MeaPosition* position) {
     int posIndex = Size();
     m_posMap[posIndex] = position;
 }
 
-void MeaPositionLogMgr::Positions::Set(int posIndex, Position* position) {
+void MeaPositionLogMgr::MeaPositions::Set(int posIndex, MeaPosition* position) {
     PositionMap::iterator iter = m_posMap.find(posIndex);
     if (iter == m_posMap.end()) {
         throw new std::out_of_range("Positions::Set posIndex out of range");
@@ -1171,7 +663,7 @@ void MeaPositionLogMgr::Positions::Set(int posIndex, Position* position) {
     (*iter).second = position;
 }
 
-MeaPositionLogMgr::Position& MeaPositionLogMgr::Positions::Get(int posIndex) {
+MeaPosition& MeaPositionLogMgr::MeaPositions::Get(int posIndex) {
     PositionMap::const_iterator iter = m_posMap.find(posIndex);
     if (iter == m_posMap.end()) {
         throw new std::out_of_range("Positions::Get posIndex out of range");
@@ -1180,7 +672,7 @@ MeaPositionLogMgr::Position& MeaPositionLogMgr::Positions::Get(int posIndex) {
     return *(*iter).second;
 }
 
-void MeaPositionLogMgr::Positions::Delete(int posIndex) {
+void MeaPositionLogMgr::MeaPositions::Delete(int posIndex) {
     // Find the position entry corresponding to the specified
     // position index.
     //
@@ -1205,15 +697,15 @@ void MeaPositionLogMgr::Positions::Delete(int posIndex) {
     m_posMap.erase(static_cast<int>(m_posMap.size()) - 1);
 }
 
-void MeaPositionLogMgr::Positions::DeleteAll() {
+void MeaPositionLogMgr::MeaPositions::DeleteAll() {
     for (const auto& posEntry : m_posMap) {
         delete posEntry.second;
     }
     m_posMap.clear();
 }
 
-void MeaPositionLogMgr::Positions::Save(int indent) const {
+void MeaPositionLogMgr::MeaPositions::Save(MeaPositionLogWriter& writer, int indent) const {
     for (const auto& posEntry : m_posMap) {
-        posEntry.second->Save(indent);
+        posEntry.second->Save(writer, indent);
     }
 }

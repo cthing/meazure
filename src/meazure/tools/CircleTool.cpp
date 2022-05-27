@@ -377,7 +377,7 @@ const POINT& MeaCircleTool::GetPosition() const {
     return *m_curPos;
 }
 
-void MeaCircleTool::RecordPosition(MeaPositionLogMgr::Position& position) const {
+void MeaCircleTool::RecordPosition(MeaPosition& position) const {
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = m_unitsProvider.ConvertCoord(m_center);

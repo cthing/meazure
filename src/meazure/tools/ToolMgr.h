@@ -37,6 +37,7 @@
 #include "OriginTool.h"
 #include <meazure/ui/DataDisplay.h>
 #include <meazure/utilities/Singleton.h>
+#include <meazure/position/Position.h>
 #include <cassert>
 
 
@@ -311,7 +312,7 @@ public:
     /// @param position     [out] Position into which to record the location of
     ///                     the current radio tool and its name.
     ///
-    void RecordPosition(MeaPositionLogMgr::Position& position) const {
+    void RecordPosition(MeaPosition& position) const {
         m_currentRadioTool->RecordPosition(position);
     }
 

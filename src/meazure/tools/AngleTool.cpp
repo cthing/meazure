@@ -406,7 +406,7 @@ const POINT& MeaAngleTool::GetPosition() const {
     return *m_curPos;
 }
 
-void MeaAngleTool::RecordPosition(MeaPositionLogMgr::Position& position) const {
+void MeaAngleTool::RecordPosition(MeaPosition& position) const {
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);

@@ -233,7 +233,7 @@ const POINT& MeaPointTool::GetPosition() const {
     return m_center;
 }
 
-void MeaPointTool::RecordPosition(MeaPositionLogMgr::Position& position) const {
+void MeaPointTool::RecordPosition(MeaPosition& position) const {
     // Convert the pixel locations to the current units and record
     // the position and the name of this tool in the position object.
     //

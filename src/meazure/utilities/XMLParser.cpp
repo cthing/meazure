@@ -144,6 +144,20 @@ MeaXMLNode& MeaXMLNode::Assign(const MeaXMLNode& node) {
     return *this;
 }
 
+CString MeaXMLNode::GetChildData() const {
+    CString data;
+
+    for (MeaXMLNode::NodeIter_c iter = GetChildIter(); !AtEnd(iter); ++iter) {
+        MeaXMLNode* node = *iter;
+
+        if (node->GetType() == MeaXMLNode::Type::Data) {
+            data += node->GetData();
+        }
+    }
+
+    return data;
+}
+
 #ifdef MEA_XMLNODE_DEBUG
 
 void MeaXMLNode::Dump() const {

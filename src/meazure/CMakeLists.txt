@@ -58,11 +58,18 @@ set(units_SRCS
 source_group(Units FILES ${units_SRCS})
 
 set(position_SRCS
+    position/Position.cpp
+    position/Position.h
+    position/PositionDesktop.cpp
+    position/PositionDesktop.h
     position/PositionLogDlg.cpp
     position/PositionLogDlg.h
     position/PositionLogObserver.h
     position/PositionSaveDlg.cpp
     position/PositionSaveDlg.h
+    position/PositionScreen.cpp
+    position/PositionScreen.h
+    position/PositionLogWriter.h
 )
 source_group(Position FILES ${position_SRCS})
 

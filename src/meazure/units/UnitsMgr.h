@@ -112,7 +112,7 @@ public:
     ///
     /// @return Linear measurement units object.
     ///
-    MeaLinearUnits* GetLinearUnits(const CString& unitsStr) const {
+    MeaLinearUnits* GetLinearUnits(const CString& unitsStr) const override {
         for (const auto& unitsEntry : m_linearUnitsMap) {
             if (unitsEntry.second->GetUnitsStr() == unitsStr) {
                 return unitsEntry.second;
@@ -147,7 +147,7 @@ public:
     ///
     /// @return Angular measurement units object.
     ///
-    MeaAngularUnits* GetAngularUnits(const CString& unitsStr) const {
+    MeaAngularUnits* GetAngularUnits(const CString& unitsStr) const override {
         for (const auto& unitsEntry : m_angularUnitsMap) {
             if (unitsEntry.second->GetUnitsStr() == unitsStr) {
                 return unitsEntry.second;

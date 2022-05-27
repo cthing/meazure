@@ -328,7 +328,7 @@ const POINT& MeaLineTool::GetPosition() const {
     return *m_curPos;
 }
 
-void MeaLineTool::RecordPosition(MeaPositionLogMgr::Position& position) const {
+void MeaLineTool::RecordPosition(MeaPosition& position) const {
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);

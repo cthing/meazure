@@ -36,11 +36,29 @@ struct MeaUnitsProvider {
     ///
     virtual MeaLinearUnits* GetLinearUnits() const = 0;
 
+    /// Returns the linear measurement units object corresponding
+    /// to the specified identifier string (e.g. "px").
+    ///
+    /// @param unitsStr     [in] Linear units identifier string.
+    ///
+    /// @return Linear measurement units object.
+    ///
+    virtual MeaLinearUnits* GetLinearUnits(const CString& unitsStr) const = 0;
+
     /// Returns the current angular measurement units.
     ///
     /// @return Current angular units.
     ///
     virtual MeaAngularUnits* GetAngularUnits() const = 0;
+
+    /// Returns the angular measurement units object corresponding
+    /// to the specified identifier string (e.g. "deg").
+    ///
+    /// @param unitsStr     [in] Angular units identifier string.
+    ///
+    /// @return Angular measurement units object.
+    ///
+    virtual MeaAngularUnits* GetAngularUnits(const CString& unitsStr) const = 0;
 
     /// Returns the orientation of the y-axis.
     ///

@@ -156,10 +156,85 @@ void MeaPositionLogMgr::ClearPositions() {
 }
 
 void MeaPositionLogMgr::ShowPosition(unsigned int posIndex) {
-    if (posIndex < m_positions.Size()) {
-        Position& position = m_positions.Get(posIndex);
-        position.Show();
+    if (posIndex >= m_positions.Size()) {
+        return;
     }
+
+    MeaToolMgr& toolMgr = MeaToolMgr::Instance();
+    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
+
+    Position& position = m_positions.Get(posIndex);
+
+    // Change the radio tool, if needed. Note that if the position
+    // used the cursor tool, we display it using the point tool so
+    // that the cursor is not pulled out from under the user. In
+    // addition, if the position used the window tool, we display
+    // it using the rectangle tool.
+    //
+    CString toolName(position.GetToolName());
+    if (toolName == MeaCursorTool::kToolName) {
+        toolName = MeaPointTool::kToolName;
+    } else if (toolName == MeaWindowTool::kToolName) {
+        toolName = MeaRectTool::kToolName;
+    }
+
+    if (toolName != toolMgr.GetToolName()) {
+        toolMgr.SetRadioTool(toolName);
+    }
+
+    // Change the units if needed. If these are custom units perform
+    // additional configuration.
+    //
+    const DesktopInfo& desktopInfo = GetDesktopInfo(position.GetDesktopInfoId());
+    CString unitsStr = desktopInfo.GetLinearUnits()->GetUnitsStr();
+    CString anglesStr = desktopInfo.GetAngularUnits()->GetUnitsStr();
+
+    if (unitsStr != unitsMgr.GetLinearUnitsStr()) {
+        MeaLinearUnitsId unitsId = desktopInfo.GetLinearUnits()->GetUnitsId();
+
+        if (unitsId == MeaCustomId) {
+            MeaCustomUnits* custom = unitsMgr.GetCustomUnits();
+
+            custom->SetName(desktopInfo.GetCustomName());
+            custom->SetAbbrev(desktopInfo.GetCustomAbbrev());
+            custom->SetScaleBasis(desktopInfo.GetCustomBasisStr());
+            custom->SetScaleFactor(desktopInfo.GetCustomFactor());
+            custom->SetDisplayPrecisions(desktopInfo.GetCustomPrecisions());
+        }
+
+        unitsMgr.SetLinearUnits(unitsStr);
+        toolMgr.UpdateTools(MeaUpdateReason::UnitsChanged);
+    }
+
+    if (anglesStr != unitsMgr.GetAngularUnitsStr()) {
+        unitsMgr.SetAngularUnits(anglesStr);
+        toolMgr.UpdateTools(MeaUpdateReason::UnitsChanged);
+    }
+
+    // Set the origin and y-axis orientation.
+    //
+    bool invertY = desktopInfo.GetInvertY();
+    if ((invertY && !unitsMgr.GetInvertY()) || (!invertY && unitsMgr.GetInvertY())) {
+        unitsMgr.SetInvertY(invertY);
+        toolMgr.UpdateTools();
+    }
+
+    POINT newOrigin = unitsMgr.UnconvertCoord(desktopInfo.GetOrigin());
+
+    if ((newOrigin.x != unitsMgr.GetOrigin().x) || (newOrigin.y != unitsMgr.GetOrigin().y)) {
+        unitsMgr.SetOrigin(newOrigin);
+        toolMgr.UpdateTools(MeaUpdateReason::OriginChanged);
+    }
+
+    // Show the points.
+    //
+    MeaRadioTool::PointMap toolPoints;
+
+    for (const auto& pointEntry : position.GetPoints()) {
+        toolPoints[pointEntry.first] = unitsMgr.UnconvertCoord(pointEntry.second);
+    }
+
+    toolMgr.SetPosition(toolPoints);
 }
 
 MeaGUID MeaPositionLogMgr::RecordDesktopInfo() {
@@ -345,11 +420,8 @@ bool MeaPositionLogMgr::Load(LPCTSTR pathname) {
             status = true;
         } catch (MeaXMLParserException&) {
             // Handled by the parser.
-        } catch (MeaLogFileException&) {
-            CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_INVALID_LOGFILE));
-            MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
         } catch (...) {
-            CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_NO_POSITIONS));
+            CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_INVALID_LOGFILE));
             MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
         }
 
@@ -842,17 +914,7 @@ void MeaPositionLogMgr::DesktopInfo::SaveCustomPrecisions(MeaPositionLogMgr& mgr
 //*************************************************************************
 
 
-MeaPositionLogMgr::Position::Position() :
-    m_mgr(nullptr),
-    m_fieldMask(0),
-    m_width(0.0),
-    m_height(0.0),
-    m_distance(0.0),
-    m_area(0.0),
-    m_angle(0.0) {}
-
-MeaPositionLogMgr::Position::Position(MeaPositionLogMgr* mgr,
-                                      const MeaGUID& desktopInfoId) :
+MeaPositionLogMgr::Position::Position(MeaPositionLogMgr* mgr, const MeaGUID& desktopInfoId) :
     m_mgr(mgr),
     m_fieldMask(0),
     m_width(0.0),
@@ -861,17 +923,14 @@ MeaPositionLogMgr::Position::Position(MeaPositionLogMgr* mgr,
     m_area(0.0),
     m_angle(0.0),
     m_desktopInfoId(desktopInfoId),
-    m_toolName(MeaToolMgr::Instance().GetToolName()),
     m_timestamp(MeaMakeTimeStamp(time(nullptr))) {
-    MeaToolMgr::Instance().GetPosition(*this);
 
-    if (m_mgr != nullptr) {
-        m_mgr->AddDesktopRef(m_desktopInfoId);
-    }
+    MeaToolMgr::Instance().RecordPosition(*this);
+    m_mgr->AddDesktopRef(m_desktopInfoId);
 }
 
 MeaPositionLogMgr::Position::Position(MeaPositionLogMgr* mgr, const CString& desktopInfoIdStr,
-                              const CString& toolName, const CString& timestamp) :
+                                      const CString& toolName, const CString& timestamp) :
     m_mgr(mgr),
     m_fieldMask(0),
     m_width(0.0),
@@ -882,49 +941,51 @@ MeaPositionLogMgr::Position::Position(MeaPositionLogMgr* mgr, const CString& des
     m_desktopInfoId(desktopInfoIdStr),
     m_toolName(toolName),
     m_timestamp(timestamp) {
-    if (m_mgr != nullptr) {
-        m_mgr->AddDesktopRef(m_desktopInfoId);
-    }
+    m_mgr->AddDesktopRef(m_desktopInfoId);
 }
 
-MeaPositionLogMgr::Position::Position(const Position& position) : m_mgr(nullptr),
-m_fieldMask(0) {
-    Copy(position);
+MeaPositionLogMgr::Position::Position(const Position& position) :
+    m_mgr(position.m_mgr),
+    m_fieldMask(position.m_fieldMask),
+    m_width(position.m_width),
+    m_height(position.m_height),
+    m_distance(position.m_distance),
+    m_area(position.m_area),
+    m_angle(position.m_angle),
+    m_desktopInfoId(position.m_desktopInfoId),
+    m_toolName(position.m_toolName),
+    m_timestamp(position.m_timestamp),
+    m_desc(position.m_desc),
+    m_points(position.m_points) {
+    m_mgr->AddDesktopRef(m_desktopInfoId);
 }
 
 MeaPositionLogMgr::Position::~Position() {
     try {
-        if (m_mgr != nullptr) {
-            m_mgr->ReleaseDesktopRef(m_desktopInfoId);
-        }
+        m_mgr->ReleaseDesktopRef(m_desktopInfoId);
     } catch (...) {
         assert(false);
     }
 }
 
-MeaPositionLogMgr::Position& MeaPositionLogMgr::Position::Copy(const Position& position) {
+MeaPositionLogMgr::Position& MeaPositionLogMgr::Position::operator=(const Position& position) {
     if (&position != this) {
-        if (m_mgr != nullptr) {
-            m_mgr->ReleaseDesktopRef(m_desktopInfoId);
-        }
+        m_mgr->ReleaseDesktopRef(m_desktopInfoId);
 
         m_mgr = position.m_mgr;
-        m_desktopInfoId = position.m_desktopInfoId;
-        m_toolName = position.m_toolName;
-        m_timestamp = position.m_timestamp;
-        m_desc = position.m_desc;
-
         m_fieldMask = position.m_fieldMask;
-        m_points = position.m_points;
         m_width = position.m_width;
         m_height = position.m_height;
         m_distance = position.m_distance;
         m_area = position.m_area;
         m_angle = position.m_angle;
+        m_desktopInfoId = position.m_desktopInfoId;
+        m_toolName = position.m_toolName;
+        m_timestamp = position.m_timestamp;
+        m_desc = position.m_desc;
+        m_points = position.m_points;
 
-        if (m_mgr != nullptr) {
-            m_mgr->AddDesktopRef(m_desktopInfoId);
-        }
+        m_mgr->AddDesktopRef(m_desktopInfoId);
     }
 
     return *this;
@@ -985,82 +1046,6 @@ void MeaPositionLogMgr::Position::RecordCircleArea(double radius) {
     m_area = MeaNumericUtils::PI * radius * radius;
 }
 
-void MeaPositionLogMgr::Position::Show() const {
-    MeaToolMgr& toolMgr = MeaToolMgr::Instance();
-    MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
-
-    // Change the radio tool, if needed. Note that if the position
-    // used the cursor tool, we display it using the point tool so
-    // that the cursor is not pulled out from under the user. In
-    // addition, if the position used the window tool, we display
-    // it using the rectangle tool.
-    //
-    CString toolName(m_toolName);
-    if (toolName == MeaCursorTool::kToolName) {
-        toolName = MeaPointTool::kToolName;
-    } else if (toolName == MeaWindowTool::kToolName) {
-        toolName = MeaRectTool::kToolName;
-    }
-
-    if (toolName != toolMgr.GetToolName()) {
-        toolMgr.SetRadioTool(toolName);
-    }
-
-    // Change the units if needed. If these are custom units perform
-    // additional configuration.
-    //
-    const DesktopInfo& desktopInfo = m_mgr->GetDesktopInfo(m_desktopInfoId);
-    CString unitsStr = desktopInfo.GetLinearUnits()->GetUnitsStr();
-    CString anglesStr = desktopInfo.GetAngularUnits()->GetUnitsStr();
-
-    if (unitsStr != unitsMgr.GetLinearUnitsStr()) {
-        MeaLinearUnitsId unitsId = desktopInfo.GetLinearUnits()->GetUnitsId();
-
-        if (unitsId == MeaCustomId) {
-            MeaCustomUnits* custom = unitsMgr.GetCustomUnits();
-
-            custom->SetName(desktopInfo.GetCustomName());
-            custom->SetAbbrev(desktopInfo.GetCustomAbbrev());
-            custom->SetScaleBasis(desktopInfo.GetCustomBasisStr());
-            custom->SetScaleFactor(desktopInfo.GetCustomFactor());
-            custom->SetDisplayPrecisions(desktopInfo.GetCustomPrecisions());
-        }
-
-        unitsMgr.SetLinearUnits(unitsStr);
-        toolMgr.UpdateTools(MeaUpdateReason::UnitsChanged);
-    }
-
-    if (anglesStr != unitsMgr.GetAngularUnitsStr()) {
-        unitsMgr.SetAngularUnits(anglesStr);
-        toolMgr.UpdateTools(MeaUpdateReason::UnitsChanged);
-    }
-
-    // Set the origin and y-axis orientation.
-    //
-    bool invertY = desktopInfo.GetInvertY();
-    if ((invertY && !unitsMgr.GetInvertY()) || (!invertY && unitsMgr.GetInvertY())) {
-        unitsMgr.SetInvertY(invertY);
-        toolMgr.UpdateTools();
-    }
-
-    POINT newOrigin = unitsMgr.UnconvertCoord(desktopInfo.GetOrigin());
-
-    if ((newOrigin.x != unitsMgr.GetOrigin().x) || (newOrigin.y != unitsMgr.GetOrigin().y)) {
-        unitsMgr.SetOrigin(newOrigin);
-        toolMgr.UpdateTools(MeaUpdateReason::OriginChanged);
-    }
-
-    // Show the points.
-    //
-    MeaRadioTool::PointMap toolPoints;
-
-    for (const auto& pointEntry : m_points) {
-        toolPoints[pointEntry.first] = unitsMgr.UnconvertCoord(pointEntry.second);
-    }
-
-    toolMgr.SetPosition(toolPoints);
-}
-
 void MeaPositionLogMgr::Position::Load(const MeaXMLNode* positionNode) {
     bool def;
 
@@ -1114,10 +1099,6 @@ void MeaPositionLogMgr::Position::Load(const MeaXMLNode* positionNode) {
 }
 
 void MeaPositionLogMgr::Position::Save(int indent) const {
-    if (m_mgr == nullptr) {
-        return;
-    }
-
     m_mgr->Write(indent, _T("<position desktopRef=\"%s\" tool=\"%s\" date=\"%s\">\n"),
                  static_cast<LPCTSTR>(m_desktopInfoId),
                  static_cast<LPCTSTR>(m_toolName),
@@ -1125,16 +1106,16 @@ void MeaPositionLogMgr::Position::Save(int indent) const {
     indent++;
     if (!m_desc.IsEmpty()) {
         m_mgr->Write(indent, _T("<desc>%s</desc>\n"),
-                     static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
+                    static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
     }
 
     m_mgr->Write(indent, _T("<points>\n"));
     indent++;
     for (const auto& pointEntry : m_points) {
         m_mgr->Write(indent, _T("<point name=\"%s\" x=\"%s\" y=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(pointEntry.first),
-                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.x)),
-                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.y)));
+                    static_cast<LPCTSTR>(pointEntry.first),
+                    static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.x)),
+                    static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.y)));
     }
     indent--;
     m_mgr->Write(indent, _T("</points>\n"));
@@ -1142,24 +1123,19 @@ void MeaPositionLogMgr::Position::Save(int indent) const {
     m_mgr->Write(indent, _T("<properties>\n"));
     indent++;
     if (m_fieldMask & MeaWidthField) {
-        m_mgr->Write(indent, _T("<width value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_width)));
+        m_mgr->Write(indent, _T("<width value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_width)));
     }
     if (m_fieldMask & MeaHeightField) {
-        m_mgr->Write(indent, _T("<height value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_height)));
+        m_mgr->Write(indent, _T("<height value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_height)));
     }
     if (m_fieldMask & MeaDistanceField) {
-        m_mgr->Write(indent, _T("<distance value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_distance)));
+        m_mgr->Write(indent, _T("<distance value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_distance)));
     }
     if (m_fieldMask & MeaAreaField) {
-        m_mgr->Write(indent, _T("<area value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_area)));
+        m_mgr->Write(indent, _T("<area value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_area)));
     }
     if (m_fieldMask & MeaAngleField) {
-        m_mgr->Write(indent, _T("<angle value=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_angle)));
+        m_mgr->Write(indent, _T("<angle value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_angle)));
     }
     indent--;
     m_mgr->Write(indent, _T("</properties>\n"));
@@ -1173,8 +1149,6 @@ void MeaPositionLogMgr::Position::Save(int indent) const {
 // Positions
 //*************************************************************************
 
-
-MeaPositionLogMgr::Positions::Positions() {}
 
 MeaPositionLogMgr::Positions::~Positions() {
     try {

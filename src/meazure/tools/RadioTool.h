@@ -121,7 +121,7 @@ public:
 
     /// Sets the position of the tool. This method is called by the
     /// position log manager to play back a tool's position that was
-    /// previously recorded using the GetPosition method. This base
+    /// previously recorded using the RecordPosition method. This base
     /// class implementation does nothing.
     ///
     /// @param points   [in] Map of positions for the tool's crosshairs.
@@ -134,7 +134,7 @@ public:
     /// @param position     [in] The tool's current position is recorded into
     ///                     the position log manager's position object.
     ///
-    virtual void GetPosition(MeaPositionLogMgr::Position& position) const = 0;
+    virtual void RecordPosition(MeaPositionLogMgr::Position& position) const = 0;
 
     /// Called by the OS when the mouse pointer is moved. This base class
     /// implementation does nothing.

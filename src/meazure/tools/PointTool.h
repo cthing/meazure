@@ -117,7 +117,7 @@ public:
 
     /// Sets the position of the tool. This method is called by the
     /// position log manager to play back a tool's position that was
-    /// previously recorded using the GetPosition method.
+    /// previously recorded using the RecordPosition method.
     ///
     /// @param points   [in] Map of positions for the tool's crosshairs.
     ///
@@ -135,7 +135,7 @@ public:
     /// @param position     [in] The tool's crosshair position is recorded
     ///                     into the position log manager's position object.
     ///
-    virtual void GetPosition(MeaPositionLogMgr::Position& position) const override;
+    virtual void RecordPosition(MeaPositionLogMgr::Position& position) const override;
 
     /// Increments the specified position field.
     /// 

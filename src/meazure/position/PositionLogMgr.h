@@ -39,13 +39,6 @@ class MeaPositionLogDlg;
 class MeaPositionLogObserver;
 
 
-/// Exception thrown if a problem occurs while reading or writing
-/// the position log file.
-///
-struct MeaLogFileException {
-};
-
-
 /// Manages the recording, saving and loading of tool positions. The
 /// positions are saved to an XML format file.
 ///
@@ -401,11 +394,8 @@ public:
     class Position {
 
     public:
-        /// Constructs a position object. This constructor is intended for use solely
-        /// by STL collections and is not used to construct new position objects in
-        /// general use.
-        ///
-        Position();
+        typedef std::map<CString, FPOINT> PointMap;     ///< Maps a point name to the coordinates of the point.
+
 
         /// Constructs a position object that references the specified desktop information
         /// object.
@@ -444,9 +434,19 @@ public:
         ///
         /// @return This object.
         ///
-        Position& operator=(const Position& position) {
-            return Copy(position);
-        }
+        Position& operator=(const Position& position);
+
+        /// Sets the name of the tool that recorded this position.
+        /// 
+        /// @param toolName Name of the tool that recorded this position
+        /// 
+        void SetToolName(const CString& toolName) { m_toolName = toolName; }
+
+        /// Returns the name of the tool that recorded this position.
+        /// 
+        /// @return Name of the tool that recorded this position.
+        /// 
+        CString GetToolName() const { return m_toolName; }
 
         /// Places a description on the position.
         ///
@@ -466,6 +466,19 @@ public:
         /// @return Timestamp for the position in ISO 8601 format.
         ///
         CString GetTimeStamp() const { return m_timestamp; }
+
+        /// Returns the identifier of the desktop information object referenced by this position.
+        /// 
+        /// @return Desktop information identifier referenced by this position.
+        ///  
+        const MeaGUID& GetDesktopInfoId() const { return m_desktopInfoId; }
+
+        /// Returns the points representing the position.
+        /// 
+        /// @return  Points representing the position as a map of the name of the point (e.g. "1") and its
+        ///     coordinates. The point names are meaningful to the tool that recorded the position.
+        ///
+        const PointMap& GetPoints() const { return m_points; }
 
         /// Adds the specified point to the position using the specified name
         /// to identify the point.
@@ -523,11 +536,6 @@ public:
         /// @param radius       [in] Radius used to calculate the area, in the current units.
         void RecordCircleArea(double radius);
 
-        /// Tells the tool manager to display the position using the
-        /// appropriate tool.
-        ///
-        void Show() const;
-
         /// Loads the position elements of the log file.
         ///
         /// @param positionNode     [in] Position node in the DOM.
@@ -542,18 +550,7 @@ public:
         void Save(int indent) const;
 
     private:
-        typedef std::map<CString, FPOINT> PointMap;     ///< Maps a point name to the coordinates of the point.
-
-
-        /// Copies the specified position to this object.
-        ///
-        /// @param position     [in] Position to be copied.
-        ///
-        /// @return This object.
-        ///
-        Position& Copy(const Position& position);
-
-
+        MeaPositionLogMgr* m_mgr;   ///< Parent manager.
         UINT m_fieldMask;           ///< Data fields defined for this position. Different tools provide different amounts of data.
         PointMap m_points;          ///< Location of the current tool, , in the units in effect when the position was recorded.
         double m_width;             ///< Width of rectangle or bounding box, in the units in effect when the position was recorded.
@@ -561,12 +558,12 @@ public:
         double m_distance;          ///< Length of line or diagonal, in the units in effect when the position was recorded.
         double m_area;              ///< Area of rectangle or bounding box, in the units in effect when the position was recorded.
         double m_angle;             ///< Angle of diagonal, line, or angle tool, in the units in effect when the position was recorded.
-        MeaPositionLogMgr* m_mgr;   ///< Parent manager.
         MeaGUID m_desktopInfoId;    ///< Id of desktop information object referenced by this position.
         CString m_toolName;         ///< Name of measurement tool whose position is represented by this object.
         CString m_timestamp;        ///< Date and time the position was recorded.
         CString m_desc;             ///< Description for position.
     };
+
 
     MeaPositionLogMgr(token);
     ~MeaPositionLogMgr();
@@ -717,10 +714,6 @@ private:
     class Positions {
 
     public:
-        /// Constructs a position collection object.
-        ///
-        Positions();
-
         /// Destroys a position collection object.
         ///
         ~Positions();

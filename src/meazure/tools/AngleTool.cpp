@@ -406,15 +406,16 @@ const POINT& MeaAngleTool::GetPosition() const {
     return *m_curPos;
 }
 
-void MeaAngleTool::GetPosition(MeaPositionLogMgr::Position& position) const {
+void MeaAngleTool::RecordPosition(MeaPositionLogMgr::Position& position) const {
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
     FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
     FPOINT v = m_unitsProvider.ConvertCoord(m_vertex);
 
-    // Save the positions in the position object.
+    // Save the positions and the name of this tool in the position object.
     //
+    position.SetToolName(kToolName);
     position.RecordXY1(p1);
     position.RecordXY2(p2);
     position.RecordXYV(v);

@@ -304,15 +304,15 @@ public:
         return static_cast<MeaTool*>(m_currentRadioTool)->GetPosition();
     }
 
-    /// Returns the current radio tool's position as a position object.
+    /// Records the current radio tool's position as a position object.
     /// The position object contains the complete set of points that
-    /// describe the location of the tool.
+    /// describe the location of the tool and the name of the tool.
     ///
-    /// @param position     [out] Position representing the location of
-    ///                     the current radio tool.
+    /// @param position     [out] Position into which to record the location of
+    ///                     the current radio tool and its name.
     ///
-    void GetPosition(MeaPositionLogMgr::Position& position) const {
-        m_currentRadioTool->GetPosition(position);
+    void RecordPosition(MeaPositionLogMgr::Position& position) const {
+        m_currentRadioTool->RecordPosition(position);
     }
 
     /// Increments the specified position field. 

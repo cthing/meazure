@@ -198,7 +198,12 @@ set(meazure_SRCS
     ${utility_SRCS}
 )
 
+# Replace the version variables with the actual values from the project version.
 configure_file(VersionNumbers.h.in VersionNumbers.h @ONLY)
+
+# Copy the DTD to the runtime directory so that position log loading will work when Meazure is run from
+# that directory during development.
+configure_file(${SUPPORT_DIR}/dtd/PositionLog1.dtd ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/dtd/PositionLog1.dtd COPYONLY)
 
 add_executable(Meazure WIN32 ${meazure_SRCS})
 add_dependencies(Meazure apphelp libexpat hooks)

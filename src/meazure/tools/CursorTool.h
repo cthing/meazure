@@ -90,7 +90,7 @@ public:
     /// @param position     [in] The position of the mouse pointer is recorded
     ///                     into the position log manager's position object.
     ///
-    virtual void GetPosition(MeaPositionLogMgr::Position& position) const override;
+    virtual void RecordPosition(MeaPositionLogMgr::Position& position) const override;
 
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position

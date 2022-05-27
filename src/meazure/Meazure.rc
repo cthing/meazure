@@ -929,7 +929,6 @@ STRINGTABLE
 BEGIN
     IDS_MEA_NO_LOAD_LOG     "Could not load position log file\n%s"
     IDS_MEA_ASK_SAVE        "Positions have been recorded but have not yet been saved. \n\nSave these positions?"
-    IDS_MEA_NO_POSITIONS    "Invalid log file"
     IDS_MEA_VALIDATION_TITLE "File Validation Error"
     IDS_MEA_VALIDATION_MSG  "There is a format error in the file:\n%s\nLine: %d\nCharacter: %d\n\n"
     IDS_MEA_MULTIPLE_DOCUMENT_ELEMENTS 

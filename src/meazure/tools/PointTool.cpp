@@ -233,10 +233,11 @@ const POINT& MeaPointTool::GetPosition() const {
     return m_center;
 }
 
-void MeaPointTool::GetPosition(MeaPositionLogMgr::Position& position) const {
+void MeaPointTool::RecordPosition(MeaPositionLogMgr::Position& position) const {
     // Convert the pixel locations to the current units and record
-    // the position in the position object.
+    // the position and the name of this tool in the position object.
     //
+    position.SetToolName(kToolName);
     position.RecordXY1(m_unitsProvider.ConvertCoord(m_center));
 }
 

@@ -377,7 +377,7 @@ const POINT& MeaCircleTool::GetPosition() const {
     return *m_curPos;
 }
 
-void MeaCircleTool::GetPosition(MeaPositionLogMgr::Position& position) const {
+void MeaCircleTool::RecordPosition(MeaPositionLogMgr::Position& position) const {
     // Convert the pixel locations to the current units.
     //
     FPOINT p1 = m_unitsProvider.ConvertCoord(m_center);
@@ -390,8 +390,9 @@ void MeaCircleTool::GetPosition(MeaPositionLogMgr::Position& position) const {
 
     double r = wh.cx / 2.0;
 
-    // Save the positions in the position object.
+    // Save the positions and the name of this tool in the position object.
     //
+    position.SetToolName(kToolName);
     position.RecordXYV(p1);
     position.RecordXY1(p2);
     position.RecordWH(wh);

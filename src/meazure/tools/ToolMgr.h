@@ -277,7 +277,7 @@ public:
     /// @param which        [in] Specifies the component of the tools position to set.
     /// @param pixels       [in] Position value for the component.
     ///
-    void SetPosition(MeaFields which, int pixels) {
+    void SetPosition(MeaDataFieldId which, int pixels) {
         static_cast<MeaTool*>(m_currentRadioTool)->SetPosition(which, pixels);
     }
 
@@ -294,7 +294,7 @@ public:
     /// @param xfield  [in] X position to set
     /// @param yfield  [in] Y position to set
     /// 
-    void SetPositionToCursor(MeaFields xfield, MeaFields yfield);
+    void SetPositionToCursor(MeaDataFieldId xfield, MeaDataFieldId yfield);
 
     /// Returns a representative position from the current radio tool.
     ///
@@ -320,7 +320,7 @@ public:
     /// 
     /// @param which Position field to increment
     ///
-    void IncPosition(MeaFields which) {
+    void IncPosition(MeaDataFieldId which) {
         m_currentRadioTool->IncPosition(which);
     }
 
@@ -328,7 +328,7 @@ public:
     /// 
     /// @param which Position field to decrement
     ///
-    void DecPosition(MeaFields which) {
+    void DecPosition(MeaDataFieldId which) {
         m_currentRadioTool->DecPosition(which);
     }
 

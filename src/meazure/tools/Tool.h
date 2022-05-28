@@ -93,7 +93,7 @@ public:
     /// @param which    [in] Position component
     /// @param pixels   [in] Position to set for the component, in pixels
     ///
-    virtual void SetPosition(MeaFields which, int pixels);
+    virtual void SetPosition(MeaDataFieldId which, int pixels);
 
     /// Returns the tool's current position. The current position is
     /// the position of the last crosshair entered or moved. The default
@@ -107,13 +107,13 @@ public:
     /// 
     /// @param which Position field to increment
     ///
-    virtual void IncPosition(MeaFields which);
+    virtual void IncPosition(MeaDataFieldId which);
 
     /// Decrements the specified position field. 
     /// 
     /// @param which Position field to decrement
     ///
-    virtual void DecPosition(MeaFields which);
+    virtual void DecPosition(MeaDataFieldId which);
 
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position

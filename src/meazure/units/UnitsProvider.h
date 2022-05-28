@@ -151,6 +151,15 @@ struct MeaUnitsProvider {
     ///
     virtual FSIZE ConvertRes(const FSIZE& res) const = 0;
 
+    /// Converts the specified angle value from its native radians
+    /// to the desired units.
+    ///
+    /// @param angle    [in] Value to be converted.
+    ///
+    /// @return Angle value converted to the desired units.
+    ///
+    virtual double ConvertAngle(double angle) const = 0;
+
     /// Converts the specified value from the specified units to pixels. A minimum
     /// pixel value is specified in case the resolution is such that the conversion
     /// to pixels results in a value that is too small.

@@ -184,7 +184,7 @@ void MeaPointTool::Update(MeaUpdateReason reason) {
     }
 }
 
-void MeaPointTool::SetPosition(MeaFields which, int pixels) {
+void MeaPointTool::SetPosition(MeaDataFieldId which, int pixels) {
     // Set the specified position component.
     //
     if (which & MeaX1Field) {
@@ -241,7 +241,7 @@ void MeaPointTool::RecordPosition(MeaPosition& position) const {
     position.RecordXY1(m_unitsProvider.ConvertCoord(m_center));
 }
 
-void MeaPointTool::IncPosition(MeaFields which) {
+void MeaPointTool::IncPosition(MeaDataFieldId which) {
     // Increment the specified position component.
     //
     if (which & MeaX1Field) {
@@ -251,7 +251,7 @@ void MeaPointTool::IncPosition(MeaFields which) {
     }
 }
 
-void MeaPointTool::DecPosition(MeaFields which) {
+void MeaPointTool::DecPosition(MeaDataFieldId which) {
     // Decrement the specified position component.
     //
     if (which & MeaX1Field) {

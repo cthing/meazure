@@ -26,6 +26,7 @@ set(ui_SRCS
     ui/ColorDialog.h
     ui/DataDisplay.cpp
     ui/DataDisplay.h
+    ui/DataFieldId.h
     ui/DataWin.cpp
     ui/DataWin.h
     ui/ImageButton.cpp

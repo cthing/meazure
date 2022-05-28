@@ -22,7 +22,7 @@
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/TimeStamp.h>
 #include <meazure/utilities/StringUtils.h>
-#include <meazure/ui/DataDisplay.h>
+#include <meazure/ui/DataFieldId.h>
 
 
 MeaPosition::MeaPosition(MeaPositionDesktopRef desktopInfoRef) :
@@ -118,7 +118,7 @@ void MeaPosition::RecordDistance(double dist) {
 void MeaPosition::RecordAngle(double angle) {
     m_fieldMask |= MeaAngleField;
 
-    m_angle = MeaUnitsMgr::Instance().ConvertAngle(angle);
+    m_angle = angle;
 }
 
 void MeaPosition::RecordRectArea(const FSIZE& size) {

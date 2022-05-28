@@ -678,7 +678,7 @@ BOOL MeaDataDisplay::OnNotify(WPARAM /* wParam */, LPARAM lParam, LRESULT* pResu
     return static_cast<BOOL>(*pResult);
 }
 
-bool MeaDataDisplay::DataItem::CreateField(UINT labelId, int numChars, CWnd* parentWnd, MeaFields fieldId, int spinId) {
+bool MeaDataDisplay::DataItem::CreateField(UINT labelId, int numChars, CWnd* parentWnd, MeaDataFieldId fieldId, int spinId) {
     if (!m_titleLabel.Create(labelId, WS_CHILD | WS_VISIBLE, CPoint(0, 0), parentWnd)) {
         return false;
     }
@@ -687,14 +687,14 @@ bool MeaDataDisplay::DataItem::CreateField(UINT labelId, int numChars, CWnd* par
         return false;
     }
     if (spinId != 0xFFFF) {
-        if (!CreateSpinButton(parentWnd, static_cast<MeaFields>(spinId))) {
+        if (!CreateSpinButton(parentWnd, static_cast<MeaDataFieldId>(spinId))) {
             return false;
         }
     }
     return true;
 }
 
-bool MeaDataDisplay::DataItem::CreateSpinButton(CWnd* parentWnd, MeaFields id) {
+bool MeaDataDisplay::DataItem::CreateSpinButton(CWnd* parentWnd, MeaDataFieldId id) {
     CRect rect;
 
     m_field.GetWindowRect(&rect);

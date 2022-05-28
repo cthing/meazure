@@ -55,10 +55,10 @@ bool MeaTool::IsRadioTool() {
     return false;
 }
 
-void MeaTool::SetPosition(MeaFields, int) {}
+void MeaTool::SetPosition(MeaDataFieldId, int) {}
 
-void MeaTool::IncPosition(MeaFields) {}
+void MeaTool::IncPosition(MeaDataFieldId) {}
 
-void MeaTool::DecPosition(MeaFields) {}
+void MeaTool::DecPosition(MeaDataFieldId) {}
 
 void MeaTool::ColorsChanged() {}

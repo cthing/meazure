@@ -78,7 +78,7 @@ MeaToolMgr::~MeaToolMgr() {
     }
 }
 
-void MeaToolMgr::SetPositionToCursor(MeaFields xfield, MeaFields yfield) {
+void MeaToolMgr::SetPositionToCursor(MeaDataFieldId xfield, MeaDataFieldId yfield) {
     POINT point;
     GetCursorPos(&point);
     SetPosition(xfield, point.x);

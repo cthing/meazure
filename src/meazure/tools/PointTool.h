@@ -114,7 +114,7 @@ public:
     /// @param which    [in] Position component
     /// @param pixels   [in] Position to set for the component, in pixels
     ///
-    virtual void SetPosition(MeaFields which, int pixels) override;
+    virtual void SetPosition(MeaDataFieldId which, int pixels) override;
 
     /// Sets the position of the tool. This method is called by the
     /// position log manager to play back a tool's position that was
@@ -142,13 +142,13 @@ public:
     /// 
     /// @param which Field to increment
     ///
-    virtual void IncPosition(MeaFields which) override;
+    virtual void IncPosition(MeaDataFieldId which) override;
 
     /// Decrements the specified position field.
     /// 
     /// @param which Field to decrement
     ///
-    virtual void DecPosition(MeaFields which) override;
+    virtual void DecPosition(MeaDataFieldId which) override;
 
     /// Returns the name of the tool. Each tool has a unique name
     /// which is used to identify the tool in profiles and position

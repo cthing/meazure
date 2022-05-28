@@ -249,7 +249,7 @@ void MeaLineTool::Update(MeaUpdateReason reason) {
     }
 }
 
-void MeaLineTool::SetPosition(MeaFields which, int pixels) {
+void MeaLineTool::SetPosition(MeaDataFieldId which, int pixels) {
     // Set the specified position component.
     //
     switch (which) {
@@ -342,11 +342,13 @@ void MeaLineTool::RecordPosition(MeaPosition& position) const {
     position.RecordXY2(p2);
     position.RecordWH(wh);
     position.RecordDistance(wh);
-    position.RecordAngle(MeaGeometry::CalcAngle(p1, p2));
     position.RecordRectArea(wh);
+
+    double angle = MeaGeometry::CalcAngle(p1, p2);
+    position.RecordAngle(m_unitsProvider.ConvertAngle(angle));
 }
 
-void MeaLineTool::IncPosition(MeaFields which) {
+void MeaLineTool::IncPosition(MeaDataFieldId which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x + 1);
@@ -365,7 +367,7 @@ void MeaLineTool::IncPosition(MeaFields which) {
     }
 }
 
-void MeaLineTool::DecPosition(MeaFields which) {
+void MeaLineTool::DecPosition(MeaDataFieldId which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x - 1);

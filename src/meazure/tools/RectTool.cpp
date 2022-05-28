@@ -269,7 +269,7 @@ RECT MeaRectTool::GetRegion() {
     return rect;
 }
 
-void MeaRectTool::SetPosition(MeaFields which, int pixels) {
+void MeaRectTool::SetPosition(MeaDataFieldId which, int pixels) {
     // Set the specified position component.
     //
     switch (which) {
@@ -363,11 +363,13 @@ void MeaRectTool::RecordPosition(MeaPosition& position) const {
     position.RecordXY2(p2);
     position.RecordWH(wh);
     position.RecordDistance(wh);
-    position.RecordAngle(MeaGeometry::CalcAngle(p1, p2));
     position.RecordRectArea(wh);
+
+    double angle = MeaGeometry::CalcAngle(p1, p2);
+    position.RecordAngle(m_unitsProvider.ConvertAngle(angle));
 }
 
-void MeaRectTool::IncPosition(MeaFields which) {
+void MeaRectTool::IncPosition(MeaDataFieldId which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x + 1);
@@ -386,7 +388,7 @@ void MeaRectTool::IncPosition(MeaFields which) {
     }
 }
 
-void MeaRectTool::DecPosition(MeaFields which) {
+void MeaRectTool::DecPosition(MeaDataFieldId which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x - 1);

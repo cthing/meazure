@@ -307,7 +307,7 @@ void MeaAngleTool::Update(MeaUpdateReason reason) {
     }
 }
 
-void MeaAngleTool::SetPosition(MeaFields which, int pixels) {
+void MeaAngleTool::SetPosition(MeaDataFieldId which, int pixels) {
     // Set the specified position component.
     //
     switch (which) {
@@ -420,14 +420,13 @@ void MeaAngleTool::RecordPosition(MeaPosition& position) const {
     position.RecordXY2(p2);
     position.RecordXYV(v);
 
-    // Compute the angle and save it in the
-    // position object.
+    // Compute the angle and save it in the position object.
     //
     double angle = MeaGeometry::CalcAngle(v, p1, p2);
-    position.RecordAngle(angle);
+    position.RecordAngle(m_unitsProvider.ConvertAngle(angle));
 }
 
-void MeaAngleTool::IncPosition(MeaFields which) {
+void MeaAngleTool::IncPosition(MeaDataFieldId which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x + 1);
@@ -452,7 +451,7 @@ void MeaAngleTool::IncPosition(MeaFields which) {
     }
 }
 
-void MeaAngleTool::DecPosition(MeaFields which) {
+void MeaAngleTool::DecPosition(MeaDataFieldId which) {
     switch (which) {
     case MeaX1Field:
         SetPosition(which, m_point1.x - 1);

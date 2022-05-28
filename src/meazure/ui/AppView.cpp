@@ -426,14 +426,14 @@ BOOL AppView::PreTranslateMessage(MSG* pMsg) {
     bool pressed = false;
 
     if (pMsg->message == WM_KEYDOWN) {
-        auto incPosition = [&pressed](int keyCode, MeaFields which) {
+        auto incPosition = [&pressed](int keyCode, MeaDataFieldId which) {
             if (IsKeyPressed(keyCode)) {
                 MeaToolMgr::Instance().IncPosition(which);
                 pressed = true;
             }
         };
 
-        auto decPosition = [&pressed](int keyCode, MeaFields which) {
+        auto decPosition = [&pressed](int keyCode, MeaDataFieldId which) {
             if (IsKeyPressed(keyCode)) {
                 MeaToolMgr::Instance().DecPosition(which);
                 pressed = true;
@@ -1023,7 +1023,7 @@ void AppView::OnUpdateScreenInfo(CCmdUI* pCmdUI) {
 }
 
 LRESULT AppView::OnDataChange(WPARAM wParam, LPARAM lParam) {
-    MeaToolMgr::Instance().SetPosition(static_cast<MeaFields>(lParam), static_cast<int>(wParam));
+    MeaToolMgr::Instance().SetPosition(static_cast<MeaDataFieldId>(lParam), static_cast<int>(wParam));
     return 0;
 }
 

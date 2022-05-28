@@ -295,7 +295,7 @@ RECT MeaCircleTool::GetRegion() {
     return rect;
 }
 
-void MeaCircleTool::SetPosition(MeaFields which, int pixels) {
+void MeaCircleTool::SetPosition(MeaDataFieldId which, int pixels) {
     // Set the specified position component.
     //
     switch (which) {
@@ -397,11 +397,13 @@ void MeaCircleTool::RecordPosition(MeaPosition& position) const {
     position.RecordXY1(p2);
     position.RecordWH(wh);
     position.RecordDistance(r);
-    position.RecordAngle(MeaGeometry::CalcAngle(p1, p2));
     position.RecordCircleArea(r);
+
+    double angle = MeaGeometry::CalcAngle(p1, p2);
+    position.RecordAngle(m_unitsProvider.ConvertAngle(angle));
 }
 
-void MeaCircleTool::IncPosition(MeaFields which) {
+void MeaCircleTool::IncPosition(MeaDataFieldId which) {
     switch (which) {
     case MeaXVField:
         SetPosition(which, m_center.x + 1);
@@ -420,7 +422,7 @@ void MeaCircleTool::IncPosition(MeaFields which) {
     }
 }
 
-void MeaCircleTool::DecPosition(MeaFields which) {
+void MeaCircleTool::DecPosition(MeaDataFieldId which) {
     switch (which) {
     case MeaXVField:
         SetPosition(which, m_center.x - 1);

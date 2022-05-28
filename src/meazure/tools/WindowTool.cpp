@@ -203,8 +203,10 @@ void MeaWindowTool::RecordPosition(MeaPosition& position) const {
     position.RecordXY2(p2);
     position.RecordWH(wh);
     position.RecordDistance(wh);
-    position.RecordAngle(MeaGeometry::CalcAngle(p1, p2));
     position.RecordRectArea(wh);
+
+    double angle = MeaGeometry::CalcAngle(p1, p2);
+    position.RecordAngle(m_unitsProvider.ConvertAngle(angle));
 }
 
 CString MeaWindowTool::GetToolName() const {

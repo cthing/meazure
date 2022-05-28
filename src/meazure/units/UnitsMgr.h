@@ -440,7 +440,7 @@ public:
     ///
     /// @return Angle value converted to the desired units.
     ///
-    double ConvertAngle(double angle) const {
+    double ConvertAngle(double angle) const override {
         return m_currentAngularUnits->ConvertAngle(angle);
     }
 

@@ -22,7 +22,7 @@
 #include <meazure/utilities/StringUtils.h>
 
 
-MeaPositionScreen::MeaPositionScreen(const MeaScreenMgr::ScreenIter& screenIter,
+MeaPositionScreen::MeaPositionScreen(const MeaScreenProvider::ScreenIter& screenIter,
                                      const MeaUnitsProvider& unitsProvider,
                                      const MeaScreenProvider& screenProvider) {
     const CRect& rect = screenProvider.GetScreenRect(screenIter);

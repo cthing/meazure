@@ -61,7 +61,7 @@ void MeaPositionDesktop::Init(const MeaUnitsProvider& unitsProvider, const MeaSc
         m_customPrecisions.clear();
     }
 
-    MeaScreenMgr::ScreenIter iter;
+    MeaScreenProvider::ScreenIter iter;
     for (iter = screenProvider.GetScreenIter(); !screenProvider.AtEnd(iter); ++iter) {
         MeaPositionScreen screen(iter, unitsProvider, screenProvider);
 

@@ -23,7 +23,6 @@
 #pragma once
 
 #include "PositionLogWriter.h"
-#include <meazure/ui/ScreenMgr.h>
 #include <meazure/units/UnitsProvider.h>
 #include <meazure/ui/ScreenProvider.h>
 #include <meazure/utilities/XMLParser.h>
@@ -46,7 +45,7 @@ public:
     /// @param unitsProvider  [in] Units information and conversion provider
     /// @param screenProvider [in] Screen information provider
     ///
-    explicit MeaPositionScreen(const MeaScreenMgr::ScreenIter& screenIter, const MeaUnitsProvider& unitsProvider,
+    explicit MeaPositionScreen(const MeaScreenProvider::ScreenIter& screenIter, const MeaUnitsProvider& unitsProvider,
                                const MeaScreenProvider& screenProvider);
 
     /// Constructs a deep copy of the specified screen.

@@ -19,23 +19,12 @@
 
 #include "pch.h"
 #define BOOST_TEST_MODULE PlotterTest
+#include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
 #include <meazure/graphics/Plotter.h>
 #include <vector>
 #include <functional>
 
-
-struct GlobalFixture {
-    GlobalFixture() {
-        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-            BOOST_FAIL("Fatal Error: MFC initialization failed");
-        }
-    }
-
-    CWinApp theApp;
-};
-
-BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
 
 bool operator==(const POINT& lhs, const POINT& rhs) {
     return lhs.x == rhs.x && lhs.y == rhs.y;

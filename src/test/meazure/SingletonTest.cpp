@@ -19,21 +19,9 @@
 
 #include "pch.h"
 #define BOOST_TEST_MODULE SingletonTest
+#include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
 #include <meazure/utilities/Singleton.h>
-
-
-struct GlobalFixture {
-    GlobalFixture() {
-        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-            BOOST_FAIL("Fatal Error: MFC initialization failed");
-        }
-    }
-
-    CWinApp theApp;
-};
-
-BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
 
 
 struct ATestSingleton : public MeaSingleton_T<ATestSingleton> {

@@ -18,6 +18,7 @@
  */
 #include "pch.h"
 #define BOOST_TEST_MODULE ColorsTest
+#include "GlobalFixture.h"
 #define COMPILE_LAYERED_WINDOW_STUBS
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
@@ -29,19 +30,6 @@
 namespace bt = boost::unit_test;
 namespace tt = boost::test_tools;
 namespace bdata = boost::unit_test::data;
-
-
-struct GlobalFixture {
-    GlobalFixture() {
-        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-            BOOST_FAIL("Fatal Error: MFC initialization failed");
-        }
-    }
-
-    CWinApp theApp;
-};
-
-BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
 
 struct ColorTestData {
     double hue;

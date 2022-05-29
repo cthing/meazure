@@ -19,6 +19,7 @@
 
 #include "pch.h"
 #define BOOST_TEST_MODULE FileProfileTest
+#include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
 #include <meazure/profile/FileProfile.h>
 #include <filesystem>
@@ -26,16 +27,6 @@
 
 namespace tt = boost::test_tools;
 
-
-struct GlobalFixture {
-    GlobalFixture() {
-        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-            BOOST_FAIL("Fatal Error: MFC initialization failed");
-        }
-    }
-
-    CWinApp theApp;
-};
 
 struct TestFixture {
     TestFixture() {
@@ -51,7 +42,6 @@ struct TestFixture {
     TCHAR tempFileName[MAX_PATH];
 };
 
-BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
 
 BOOST_FIXTURE_TEST_CASE(TestReadWrite, TestFixture) {
     {

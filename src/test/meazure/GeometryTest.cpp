@@ -19,6 +19,7 @@
 
 #include "pch.h"
 #define BOOST_TEST_MODULE GeometryTest
+#include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
@@ -30,19 +31,6 @@ namespace tt = boost::test_tools;
 namespace bdata = boost::unit_test::data;
 
 BOOST_TEST_DONT_PRINT_LOG_VALUE(POINT)
-
-
-struct GlobalFixture {
-    GlobalFixture() {
-        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-            BOOST_FAIL("Fatal Error: MFC initialization failed");
-        }
-    }
-
-    CWinApp theApp;
-};
-
-BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
 
 
 BOOST_AUTO_TEST_SUITE(FSIZETests, *bt::tolerance(FLT_EPSILON))

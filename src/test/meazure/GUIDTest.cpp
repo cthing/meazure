@@ -19,25 +19,13 @@
 
 #include "pch.h"
 #define BOOST_TEST_MODULE GUIDTest
+#include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
 #include <meazure/utilities/GUID.h>
 #include <set>
 
 
 BOOST_TEST_DONT_PRINT_LOG_VALUE(GUID)
-
-
-struct GlobalFixture {
-    GlobalFixture() {
-        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-            BOOST_FAIL("Fatal Error: MFC initialization failed");
-        }
-    }
-
-    CWinApp theApp;
-};
-
-BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
 
 
 void validateGUID(const MeaGUID& guid) {

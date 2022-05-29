@@ -19,24 +19,13 @@
 
 #include "pch.h"
 #define BOOST_TEST_MODULE UnitsTest
+#include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
 #include "mocks/MockScreenProvider.h"
 #include <meazure/units/Units.h>
 
 namespace bt = boost::unit_test;
 namespace tt = boost::test_tools;
-
-struct GlobalFixture {
-    GlobalFixture() {
-        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
-            BOOST_FAIL("Fatal Error: MFC initialization failed");
-        }
-    }
-
-    CWinApp theApp;
-};
-
-BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);
 
 BOOST_TEST_DONT_PRINT_LOG_VALUE(MeaUnits::DisplayPrecisions)
 BOOST_TEST_DONT_PRINT_LOG_VALUE(MeaUnits::DisplayPrecisionNames)

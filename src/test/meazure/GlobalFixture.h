@@ -16,19 +16,20 @@
  * You should have received a copy of the GNU General Public License along
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "pch.h"
-#define BOOST_TEST_MODULE ColorsTest
-#include "GlobalFixture.h"
+
+#pragma once
+
 #include <boost/test/unit_test.hpp>
-#include <meazure/CommandLineInfo.h>
 
 
-BOOL g_enableLayeredWindows { TRUE };
+struct GlobalFixture {
+    GlobalFixture() {
+        if (!AfxWinInit(::GetModuleHandle(nullptr), nullptr, ::GetCommandLine(), 0)) {
+            BOOST_FAIL("Fatal Error: MFC initialization failed");
+        }
+    }
 
+    CWinApp theApp;
+};
 
-BOOST_AUTO_TEST_CASE(TestOptions) {
-    BOOST_TEST(g_enableLayeredWindows);
-    MeaCommandLineInfo cmdLine;
-    cmdLine.ParseParam("nl", TRUE, TRUE);
-    BOOST_TEST(!g_enableLayeredWindows);
-}
+BOOST_TEST_GLOBAL_FIXTURE(GlobalFixture);

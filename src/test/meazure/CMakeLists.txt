@@ -24,10 +24,51 @@ endmacro()
 
 add_meazure_test(ColorsTest "" ${APP_DIR}/graphics/Colors.cpp)
 add_meazure_test(CommandLineInfoTest ColorsTest ${APP_DIR}/CommandLineInfo.cpp)
+add_meazure_test(FileProfileTest ColorsTest
+                 ${APP_DIR}/profile/FileProfile.cpp
+                 ${APP_DIR}/utilities/XMLParser.cpp
+                 ${APP_DIR}/utilities/exval.cpp
+                 ${APP_DIR}/utilities/TimeStamp.cpp
+                 ${APP_DIR}/VersionInfo.cpp)
 add_meazure_test(GeometryTest ColorsTest)
 add_meazure_test(GUIDTest ColorsTest ${APP_DIR}/utilities/GUID.cpp)
 add_meazure_test(NumericUtilsTest ColorsTest)
 add_meazure_test(PlotterTest ColorsTest)
+add_meazure_test(PositionTest ColorsTest
+                 ${APP_DIR}/units/Units.cpp
+                 ${APP_DIR}/utilities/XMLParser.cpp
+                 ${APP_DIR}/utilities/exval.cpp
+                 ${APP_DIR}/utilities/GUID.cpp
+                 ${APP_DIR}/utilities/StringUtils.cpp
+                 ${APP_DIR}/utilities/TimeStamp.cpp
+                 ${APP_DIR}/position/PositionDesktop.cpp
+                 ${APP_DIR}/position/PositionScreen.cpp
+                 ${APP_DIR}/position/Position.cpp)
+add_meazure_test(PositionCollectionTest ColorsTest
+                 ${APP_DIR}/units/Units.cpp
+                 ${APP_DIR}/utilities/XMLParser.cpp
+                 ${APP_DIR}/utilities/exval.cpp
+                 ${APP_DIR}/utilities/GUID.cpp
+                 ${APP_DIR}/utilities/StringUtils.cpp
+                 ${APP_DIR}/utilities/TimeStamp.cpp
+                 ${APP_DIR}/position/PositionDesktop.cpp
+                 ${APP_DIR}/position/PositionScreen.cpp
+                 ${APP_DIR}/position/Position.cpp
+                 ${APP_DIR}/position/PositionCollection.cpp)
+add_meazure_test(PositionDesktopTest ColorsTest
+                 ${APP_DIR}/units/Units.cpp
+                 ${APP_DIR}/utilities/XMLParser.cpp
+                 ${APP_DIR}/utilities/exval.cpp
+                 ${APP_DIR}/utilities/GUID.cpp
+                 ${APP_DIR}/utilities/StringUtils.cpp
+                 ${APP_DIR}/position/PositionDesktop.cpp
+                 ${APP_DIR}/position/PositionScreen.cpp)
+add_meazure_test(PositionScreenTest ColorsTest
+                 ${APP_DIR}/units/Units.cpp
+                 ${APP_DIR}/utilities/XMLParser.cpp
+                 ${APP_DIR}/utilities/exval.cpp
+                 ${APP_DIR}/utilities/StringUtils.cpp
+                 ${APP_DIR}/position/PositionScreen.cpp)
 add_meazure_test(RegistryProfileTest ColorsTest ${APP_DIR}/profile/RegistryProfile.cpp ${APP_DIR}/VersionInfo.cpp)
 add_meazure_test(SingletonTest ColorsTest)
 add_meazure_test(StringUtilsTest ColorsTest ${APP_DIR}/utilities/StringUtils.cpp)
@@ -35,10 +76,4 @@ add_meazure_test(TimeStampTest ColorsTest ${APP_DIR}/utilities/TimeStamp.cpp)
 add_meazure_test(UnitsTest ColorsTest ${APP_DIR}/units/Units.cpp)
 add_meazure_test(VersionInfoTest ColorsTest ${APP_DIR}/VersionInfo.cpp)
 
-add_meazure_test(FileProfileTest ColorsTest
-                 ${APP_DIR}/profile/FileProfile.cpp
-                 ${APP_DIR}/utilities/XMLParser.cpp
-                 ${APP_DIR}/utilities/exval.cpp
-                 ${APP_DIR}/utilities/TimeStamp.cpp
-                 ${APP_DIR}/VersionInfo.cpp)
 target_link_libraries(FileProfileTest libexpat)

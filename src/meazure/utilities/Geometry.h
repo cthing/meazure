@@ -23,6 +23,7 @@
 #pragma once
 
 #include <cmath>
+#include <iostream>
 #include "NumericUtils.h"
 
 
@@ -45,6 +46,24 @@ struct FSIZE {
     /// @param y  [in] Length in the y dimension
     ///
     FSIZE(double x, double y) : cx(x), cy(y) {}
+
+    /// Tests equality between this with the specified size.
+    /// 
+    /// @param other  [in] Other size to compare against this
+    /// @return <b>true</b> if this and the specified size have the same dimensions.
+    /// 
+    bool operator==(const FSIZE& other) const {
+        return MeaNumericUtils::IsFloatingEqual(cx, other.cx) && MeaNumericUtils::IsFloatingEqual(cy, other.cy);
+    }
+
+    /// Tests inequality between this with the specified size.
+    /// 
+    /// @param other  [in] Other size to compare against this
+    /// @return <b>true</b> if this and the specified size have the different dimensions.
+    /// 
+    bool operator!=(const FSIZE& other) const {
+        return !(*this == other);
+    }
 
     /// Adds this and the specified object and returns
     /// a new size object.
@@ -240,6 +259,17 @@ struct FSIZE {
 };
 
 
+/// Provides output of the size in the format "(cx,cy)".
+/// 
+/// @param os     [in] Output stream to write
+/// @param size   [in] Size object to write
+/// @return The specified output stream.
+/// 
+inline std::ostream& operator<<(std::ostream& os, const FSIZE& size) {
+    os << '(' << size.cx << ',' << size.cy << ')';
+    return os;
+}
+
 /// Calculates the log base 10 on each dimension of the specified
 /// size object and returns the results in a new size object.
 /// \f[
@@ -337,8 +367,40 @@ struct FRECT {
     /// @param r  [in] Initial right coordinate
     /// 
     FRECT(double t, double b, double l, double r) : top(t), bottom(b), left(l), right(r) {}
+
+    /// Tests equality between this with the specified rectangle.
+    /// 
+    /// @param other  [in] Other rectangle to compare against this
+    /// @return <b>true</b> if this and the specified rectangle have the same dimensions.
+    /// 
+    bool operator==(const FRECT& other) const {
+        return MeaNumericUtils::IsFloatingEqual(top, other.top) &&
+               MeaNumericUtils::IsFloatingEqual(bottom, other.bottom) &&
+               MeaNumericUtils::IsFloatingEqual(left, other.left) &&
+               MeaNumericUtils::IsFloatingEqual(right, other.right);
+    }
+
+    /// Tests inequality between this with the specified rectangle.
+    /// 
+    /// @param other  [in] Other rectangle to compare against this
+    /// @return <b>true</b> if this and the specified rectangle have the different dimensions.
+    /// 
+    bool operator!=(const FRECT& other) const {
+        return !(*this == other);
+    }
 };
 
+
+/// Provides output of the rectangle in the format "[top right bottom left]".
+/// 
+/// @param os     [in] Output stream to write
+/// @param rect   [in] Rectangle object to write
+/// @return The specified output stream.
+/// 
+inline std::ostream& operator<<(std::ostream& os, const FRECT& rect) {
+    os << '[' << rect.top << ' ' << rect.right << ' ' << rect.bottom << ' ' << rect.left << ']';
+    return os;
+}
 
 
 /// Represents a point. Unlike the Windows POINT
@@ -359,7 +421,37 @@ struct FPOINT {
     /// @param yi  [in] Initial y coordinate
     /// 
     FPOINT(double xi, double yi) : x(xi), y(yi) {}
+
+    /// Tests equality between this with the specified point.
+    /// 
+    /// @param other  [in] Other point to compare against this
+    /// @return <b>true</b> if this and the specified point have the same dimensions.
+    /// 
+    bool operator==(const FPOINT& other) const {
+        return MeaNumericUtils::IsFloatingEqual(x, other.x) && MeaNumericUtils::IsFloatingEqual(y, other.y);
+    }
+
+    /// Tests inequality between this with the specified point.
+    /// 
+    /// @param other  [in] Other point to compare against this
+    /// @return <b>true</b> if this and the specified point have the different dimensions.
+    /// 
+    bool operator!=(const FPOINT& other) const {
+        return !(*this == other);
+    }
 };
+
+
+/// Provides output of the point in the format "(x,y)".
+/// 
+/// @param os     [in] Output stream to write
+/// @param point  [in] Point object to write
+/// @return The specified output stream.
+/// 
+inline std::ostream& operator<<(std::ostream& os, const FPOINT& point) {
+    os << '(' << point.x << ',' << point.y << ')';
+    return os;
+}
 
 
 /// Convenience methods for calculating various geometric values (e.g. circumference, angle).

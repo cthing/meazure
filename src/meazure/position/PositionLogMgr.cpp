@@ -189,7 +189,7 @@ void MeaPositionLogMgr::ShowPosition(unsigned int posIndex) {
     // Change the units if needed. If these are custom units perform
     // additional configuration.
     //
-    const MeaPositionDesktop& desktopInfo = GetDesktopInfo(position.GetDesktopInfoRef());
+    const MeaPositionDesktop& desktopInfo = GetDesktopInfo(position.GetDesktopRef());
     CString unitsStr = desktopInfo.GetLinearUnits()->GetUnitsStr();
     CString anglesStr = desktopInfo.GetAngularUnits()->GetUnitsStr();
 
@@ -632,80 +632,4 @@ void MeaPositionLogMgr::ParseEntity(MeaXMLParser& parser,
 
 CString MeaPositionLogMgr::GetFilePathname() {
     return m_stdioOpen ? m_stdioFile.GetFilePath() : m_pathname;
-}
-
-
-//*************************************************************************
-// MeaPositions
-//*************************************************************************
-
-
-MeaPositionLogMgr::MeaPositions::~MeaPositions() {
-    try {
-        DeleteAll();
-    } catch (...) {
-        assert(false);
-    }
-}
-
-void MeaPositionLogMgr::MeaPositions::Add(MeaPosition* position) {
-    int posIndex = Size();
-    m_posMap[posIndex] = position;
-}
-
-void MeaPositionLogMgr::MeaPositions::Set(int posIndex, MeaPosition* position) {
-    PositionMap::iterator iter = m_posMap.find(posIndex);
-    if (iter == m_posMap.end()) {
-        throw new std::out_of_range("Positions::Set posIndex out of range");
-    }
-
-    delete (*iter).second;
-    (*iter).second = position;
-}
-
-MeaPosition& MeaPositionLogMgr::MeaPositions::Get(int posIndex) {
-    PositionMap::const_iterator iter = m_posMap.find(posIndex);
-    if (iter == m_posMap.end()) {
-        throw new std::out_of_range("Positions::Get posIndex out of range");
-    }
-
-    return *(*iter).second;
-}
-
-void MeaPositionLogMgr::MeaPositions::Delete(int posIndex) {
-    // Find the position entry corresponding to the specified
-    // position index.
-    //
-    PositionMap::iterator iter = m_posMap.find(posIndex);
-    if (iter == m_posMap.end()) {
-        throw new std::out_of_range("Positions::Delete posIndex out of range");
-    }
-
-    // Delete the position object associated with the index.
-    //
-    delete (*iter).second;
-
-    // Move each position object "down" one index.
-    //
-    for (iter++; iter != m_posMap.end(); ++iter, posIndex++) {
-        m_posMap[posIndex] = (*iter).second;
-    }
-
-    // Delete the last entry in the map since it has been
-    // moved "down" one index.
-    //
-    m_posMap.erase(static_cast<int>(m_posMap.size()) - 1);
-}
-
-void MeaPositionLogMgr::MeaPositions::DeleteAll() {
-    for (const auto& posEntry : m_posMap) {
-        delete posEntry.second;
-    }
-    m_posMap.clear();
-}
-
-void MeaPositionLogMgr::MeaPositions::Save(MeaPositionLogWriter& writer, int indent) const {
-    for (const auto& posEntry : m_posMap) {
-        posEntry.second->Save(writer, indent);
-    }
 }

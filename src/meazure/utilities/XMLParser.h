@@ -344,6 +344,10 @@ public:
 class MeaXMLParser : public ev::IValidationHandler {
 
 public:
+    /// Constructs an XML parser that only builds a DOM.
+    ///
+    MeaXMLParser();
+
     /// Constructs an XML parser.
     ///
     /// @param handler      [in] Callback object for parsing events.
@@ -392,6 +396,12 @@ public:
     /// @param isFinal  [in] Indicates if this is the end of the XML data.
     ///
     void ParseBuffer(int len, bool isFinal);
+
+    /// Parses the XML data contained in the specified string.
+    /// 
+    /// @param content  [in] XML content to parse
+    ///  
+    void ParseString(CString& content);
 
     /// If a DOM was constructed, this method returns its root node.
     ///
@@ -529,17 +539,19 @@ private:
     virtual void HandleValidationError(const ev::ValidationError& error);
 
 
-    static CString m_homeURL1;          ///< URL for cthing.com
-    static CString m_homeURL2;          ///< URL for cthing.com
-    XML_Parser m_parser;                ///< The expat XML parser.
-    bool m_isSubParser;                 ///< Indicates whether this is an external entity sub-parser.
-    ev::Validator* m_validator;         ///< XML validator.
-    MeaXMLParserHandler* m_handler;     ///< XML event callback object.
-    ElementStack* m_elementStack;       ///< Stack of open elements.
-    PathnameStack* m_pathnameStack;     ///< Stack of pathnames for the entities being parsed.
-    bool m_haveDTD;                     ///< Indicates if a DTD is referenced by the XML file being parsed.
-    const XML_Char* m_context;          ///< Internal expat parser state.
-    bool m_buildDOM;                    ///< Indicates whether a DOM is being built.
-    MeaXMLNode* m_dom;                  ///< Root node of the DOM being built, or nullptr.
-    NodeStack* m_nodeStack;             ///< Stack of XML DOM nodes.
+    static MeaXMLParserHandler m_noopHandler;   ///< Do nothing handler when only building a DOM
+    static CString m_homeURL1;                  ///< URL for cthing.com
+    static CString m_homeURL2;                  ///< URL for cthing.com
+
+    XML_Parser m_parser;                    ///< The expat XML parser.
+    bool m_isSubParser;                     ///< Indicates whether this is an external entity sub-parser.
+    ev::Validator* m_validator;             ///< XML validator.
+    MeaXMLParserHandler* m_handler;         ///< XML event callback object.
+    ElementStack* m_elementStack;           ///< Stack of open elements.
+    PathnameStack* m_pathnameStack;         ///< Stack of pathnames for the entities being parsed.
+    bool m_haveDTD;                         ///< Indicates if a DTD is referenced by the XML file being parsed.
+    const XML_Char* m_context;              ///< Internal expat parser state.
+    bool m_buildDOM;                        ///< Indicates whether a DOM is being built.
+    MeaXMLNode* m_dom;                      ///< Root node of the DOM being built, or nullptr.
+    NodeStack* m_nodeStack;                 ///< Stack of XML DOM nodes.
 };

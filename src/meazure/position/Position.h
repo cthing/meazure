@@ -109,14 +109,44 @@ public:
     /// 
     /// @return Desktop information identifier referenced by this position.
     ///  
-    MeaPositionDesktopRef GetDesktopInfoRef() const { return m_desktopInfoRef; }
+    MeaPositionDesktopRef GetDesktopRef() const { return m_desktopRef; }
 
     /// Returns the points representing the position.
     /// 
-    /// @return  Points representing the position as a map of the name of the point (e.g. "1") and its
+    /// @return Points representing the position as a map of the name of the point (e.g. "1") and its
     ///     coordinates. The point names are meaningful to the tool that recorded the position.
     ///
     const PointMap& GetPoints() const { return m_points; }
+
+    /// Returns the recorded width.
+    /// 
+    /// @return Recorded width
+    /// 
+    double GetWidth() const { return m_width; }
+
+    /// Returns the recorded height.
+    /// 
+    /// @return Recorded height
+    /// 
+    double GetHeight() const { return m_height; }
+
+    /// Returns the recorded distance.
+    /// 
+    /// @return Recorded distance
+    /// 
+    double GetDistance() const { return m_distance; }
+
+    /// Returns the recorded area.
+    /// 
+    /// @return Recorded area
+    /// 
+    double GetArea() const { return m_area; }
+
+    /// Returns the recorded angle.
+    /// 
+    /// @return Recorded angle.
+    /// 
+    double GetAngle() const { return m_angle; }
 
     /// Adds the specified point to the position using the specified name
     /// to identify the point.
@@ -127,19 +157,27 @@ public:
     void AddPoint(LPCTSTR name, const FPOINT& pt) { m_points[name] = pt; }
 
     /// Records the specified point as an x1, y1 point.
+    /// 
     /// @param point        [in] Point to record, in the current units.
+    /// 
     void RecordXY1(const FPOINT& point);
 
     /// Records the specified point as an x2, y2 point.
+    /// 
     /// @param point        [in] Point to record, in the current units.
+    /// 
     void RecordXY2(const FPOINT& point);
 
     /// Records the specified point as an xv, yv point.
+    /// 
     /// @param point        [in] Point to record, in the current units.
+    /// 
     void RecordXYV(const FPOINT& point);
 
     /// Records the specified width and height.
+    /// 
     /// @param size         [in] Width and height to record, in the current units.
+    /// 
     void RecordWH(const FSIZE& size);
 
     /// Records a distance. The distance is calculated
@@ -147,15 +185,21 @@ public:
     /// \f[
     ///     distance=\sqrt{size_x^2+size_y^2}
     /// \f]
+    /// 
     /// @param size         [in] Width and height used to calculate the distance, in the current units.
+    /// 
     void RecordDistance(const FSIZE& size);
 
     /// Records the specified distance.
+    /// 
     /// @param dist         [in] Distance to record, in the current units.
+    /// 
     void RecordDistance(double dist);
 
     /// Records the angle.
+    /// 
     /// @param angle        [in] Angle to record, in the current angular units.
+    /// 
     void RecordAngle(double angle);
 
     /// Records a rectangular area. The area is calculated
@@ -163,7 +207,9 @@ public:
     /// \f[
     ///     area=size_w*size_h
     /// \f]
+    /// 
     /// @param size         [in] WWidth and height used to calculate the area, in the current units.
+    /// 
     void RecordRectArea(const FSIZE& size);
 
     /// Records a circular area. The area is calculated using
@@ -171,7 +217,9 @@ public:
     /// \f[
     ///     area=\pi*radius^2
     /// \f]
+    /// 
     /// @param radius       [in] Radius used to calculate the area, in the current units.
+    /// 
     void RecordCircleArea(double radius);
 
     /// Loads the position elements of the log file.
@@ -188,16 +236,43 @@ public:
     ///
     void Save(MeaPositionLogWriter& writer, int indent) const;
 
+    /// Compares the specified position information object with this to determine equality.
+    ///
+    /// @param position     [in] Position information object to compare with this.
+    ///
+    /// @return <b>true</b> if the specified object and this are equal.
+    ///
+    bool operator==(const MeaPosition& position) const {
+        return (m_points == position.m_points) &&
+            MeaNumericUtils::IsFloatingEqual(m_width, position.m_width) &&
+            MeaNumericUtils::IsFloatingEqual(m_height, position.m_height) &&
+            MeaNumericUtils::IsFloatingEqual(m_distance, position.m_distance) &&
+            MeaNumericUtils::IsFloatingEqual(m_area, position.m_area) &&
+            MeaNumericUtils::IsFloatingEqual(m_angle, position.m_angle) &&
+            (m_desktopRef == position.m_desktopRef) &&
+            (m_toolName == position.m_toolName) &&
+            (m_timestamp == position.m_timestamp) &&
+            (m_desc == position.m_desc);
+    }
+
+    /// Compares the specified position information object with this to determine inequality.
+    ///
+    /// @param position    [in] Position information object to compare with this.
+    ///
+    /// @return <b>true</b> if the specified object and this are not equal.
+    ///
+    bool operator!=(const MeaPosition& position) const { return !(*this == position); }
+
 private:
-    UINT m_fieldMask;                   ///< Data fields defined for this position. Different tools provide different amounts of data.
-    PointMap m_points;                  ///< Location of the current tool, in the units in effect when the position was recorded.
-    double m_width;                     ///< Width of rectangle or bounding box, in the units in effect when the position was recorded.
-    double m_height;                    ///< Height of rectangle or bounding box, in the units in effect when the position was recorded.
-    double m_distance;                  ///< Length of line or diagonal, in the units in effect when the position was recorded.
-    double m_area;                      ///< Area of rectangle or bounding box, in the units in effect when the position was recorded.
-    double m_angle;                     ///< Angle of diagonal, line, or angle tool, in the units in effect when the position was recorded.
-    MeaPositionDesktopRef m_desktopInfoRef;    ///< Reference to the desktop information object for this position.
-    CString m_toolName;                 ///< Name of measurement tool whose position is represented by this object.
-    CString m_timestamp;                ///< Date and time the position was recorded.
-    CString m_desc;                     ///< Description for position.
+    UINT m_fieldMask;    ///< Data fields defined for this position. Different tools provide different amounts of data.
+    PointMap m_points;   ///< Location of the current tool, in the units in effect when the position was recorded.
+    double m_width;      ///< Width of rectangle or bounding box, in the units in effect when the position was recorded.
+    double m_height;     ///< Height of rectangle or bounding box, in the units in effect when the position was recorded.
+    double m_distance;   ///< Length of line or diagonal, in the units in effect when the position was recorded.
+    double m_area;       ///< Area of rectangle or bounding box, in the units in effect when the position was recorded.
+    double m_angle;      ///< Angle of diagonal, line, or angle tool, in the units in effect when the position was recorded.
+    MeaPositionDesktopRef m_desktopRef; ///< Reference to the desktop information object for this position.
+    CString m_toolName;  ///< Name of measurement tool whose position is represented by this object.
+    CString m_timestamp; ///< Date and time the position was recorded.
+    CString m_desc;      ///< Description for position.
 };

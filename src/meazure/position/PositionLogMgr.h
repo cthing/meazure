@@ -23,6 +23,7 @@
 #pragma once
 
 #include "Position.h"
+#include "PositionCollection.h"
 #include "PositionScreen.h"
 #include "PositionDesktop.h"
 #include "PositionLogWriter.h"
@@ -196,84 +197,6 @@ public:
     static bool IsPositionFile(LPCTSTR filename);
 
 private:
-    /// Represents a collection of positions. A position log consists
-    /// of a collection of positions. In turn, a position consists of
-    /// on or more points depending on the measurement tool.
-    ///
-    class MeaPositions {
-
-    public:
-        /// Destroys a position collection object.
-        ///
-        ~MeaPositions();
-
-        /// Indicates if there are any positions stored in the object.
-        ///
-        /// @return <b>true</b> if there are positions.
-        ///
-        bool Empty() const { return m_posMap.empty(); }
-
-        /// Returns the number of positions stored in the object.
-        ///
-        /// @return Number of positions.
-        ///
-        unsigned int Size() const { return static_cast<unsigned int>(m_posMap.size()); }
-
-        /// Adds the specified position to the collection of positions.
-        ///
-        /// @param position     [in] Position to add to the collection.
-        ///
-        void Add(MeaPosition* position);
-
-        /// Places the specified position at the specified location in
-        /// the collection.
-        ///
-        /// @param posIndex     [in] Zero based index indicating where in
-        ///                     the collection to place the position.
-        /// @param position     [in] Position object to insert in the collection.
-        /// @throws std::out_of_range if the specified position is out of bounds
-        ///
-        void Set(int posIndex, MeaPosition* position);
-
-        /// Returns the position object at the specified location in the collection.
-        ///
-        /// @param posIndex     [in] Zero based index into the collection.
-        ///
-        /// @return Position object located at the specified location in the
-        ///         collection.
-        /// @throws std::out_of_range if the specified position is out of bounds
-        ///
-        MeaPosition& Get(int posIndex);
-
-        /// Removes the position object from the specified location in the
-        /// collection and destroys the object.
-        ///
-        /// @param posIndex     [in] Zero based index indicating where in
-        ///                     the collection to delete a position.
-        /// @throws std::out_of_range if the specified position is out of bounds
-        ///
-        void Delete(int posIndex);
-
-        /// Removes all positions from the collection and destroys the
-        /// position objects.
-        ///
-        void DeleteAll();
-
-        /// Saves all positions in the collection to the log file.
-        ///
-        /// @param writer       [in] Provides ability to write a position to the log.
-        /// @param indent       [in] Output indentation level.
-        /// @throws CFileException if there was a problem saving the position
-        ///
-        void Save(MeaPositionLogWriter& writer, int indent) const;
-
-    private:
-        typedef std::map<int, MeaPosition*> PositionMap;       ///< Maps indices to position objects.
-
-        PositionMap m_posMap;       ///< Collection of positions.
-    };
-
-private:
     typedef std::map<MeaGUID, MeaPositionDesktop, MeaGUID::less> DesktopInfoMap;   ///< Maps GUID to a desktop information object.
     typedef std::map<MeaGUID, int, MeaGUID::less> RefCountMap;              ///< Maps a GUID to a reference count.
 
@@ -405,7 +328,7 @@ private:
     MeaPositionLogObserver* m_observer; ///< Position log manager observer.
     DesktopInfoMap m_desktopInfoMap;    ///< Desktop information objects
     RefCountMap m_refCountMap;          ///< Desktop information object reference count.
-    MeaPositions m_positions;              ///< Recorded positions.
+    MeaPositionCollection m_positions;              ///< Recorded positions.
     MeaPositionSaveDlg* m_saveDialog;   ///< Position log file save dialog.
     CFileDialog* m_loadDialog;          ///< Position log file open dialog.
     CString m_saveDlgTitle;             ///< Title for the file save dialog.

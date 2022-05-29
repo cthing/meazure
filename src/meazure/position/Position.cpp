@@ -32,7 +32,7 @@ MeaPosition::MeaPosition(MeaPositionDesktopRef desktopInfoRef) :
     m_distance(0.0),
     m_area(0.0),
     m_angle(0.0),
-    m_desktopInfoRef(desktopInfoRef),
+    m_desktopRef(desktopInfoRef),
     m_timestamp(MeaMakeTimeStamp(time(nullptr))) {
 }
 
@@ -43,7 +43,7 @@ MeaPosition::MeaPosition(MeaPositionDesktopRef desktopInfoRef, const CString& to
     m_distance(0.0),
     m_area(0.0),
     m_angle(0.0),
-    m_desktopInfoRef(desktopInfoRef),
+    m_desktopRef(desktopInfoRef),
     m_toolName(toolName),
     m_timestamp(timestamp) {}
 
@@ -54,7 +54,7 @@ MeaPosition::MeaPosition(const MeaPosition& position) :
     m_distance(position.m_distance),
     m_area(position.m_area),
     m_angle(position.m_angle),
-    m_desktopInfoRef(position.m_desktopInfoRef),
+    m_desktopRef(position.m_desktopRef),
     m_toolName(position.m_toolName),
     m_timestamp(position.m_timestamp),
     m_desc(position.m_desc),
@@ -68,7 +68,7 @@ MeaPosition& MeaPosition::operator=(const MeaPosition& position) {
         m_distance = position.m_distance;
         m_area = position.m_area;
         m_angle = position.m_angle;
-        m_desktopInfoRef = position.m_desktopInfoRef;
+        m_desktopRef = position.m_desktopRef;
         m_toolName = position.m_toolName;
         m_timestamp = position.m_timestamp;
         m_desc = position.m_desc;
@@ -187,7 +187,7 @@ void MeaPosition::Load(const MeaXMLNode* positionNode) {
 
 void MeaPosition::Save(MeaPositionLogWriter& writer, int indent) const {
     writer.Write(indent, _T("<position desktopRef=\"%s\" tool=\"%s\" date=\"%s\">\n"),
-                 static_cast<LPCTSTR>(m_desktopInfoRef),
+                 static_cast<LPCTSTR>(m_desktopRef),
                  static_cast<LPCTSTR>(m_toolName),
                  static_cast<LPCTSTR>(m_timestamp));
     indent++;

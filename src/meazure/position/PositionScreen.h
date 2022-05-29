@@ -85,7 +85,17 @@ public:
     ///
     /// @return <b>true</b> if the specified screen object and this are equal.
     ///
-    bool operator==(const MeaPositionScreen& screen) const { return IsEqual(screen); }
+    bool operator==(const MeaPositionScreen& screen) const {
+        return ((m_primary == screen.m_primary) &&
+                MeaNumericUtils::IsFloatingEqual(m_rect.top, screen.m_rect.top) &&
+                MeaNumericUtils::IsFloatingEqual(m_rect.bottom, screen.m_rect.bottom) &&
+                MeaNumericUtils::IsFloatingEqual(m_rect.left, screen.m_rect.left) &&
+                MeaNumericUtils::IsFloatingEqual(m_rect.right, screen.m_rect.right) &&
+                MeaNumericUtils::IsFloatingEqual(m_res.cx, screen.m_res.cx) &&
+                MeaNumericUtils::IsFloatingEqual(m_res.cy, screen.m_res.cy) &&
+                (m_manualRes == screen.m_manualRes) &&
+                (m_desc == screen.m_desc));
+    }
 
     /// Tests for inequality between the specified screen object and this.
     ///
@@ -93,7 +103,38 @@ public:
     ///
     /// @return <b>true</b> if the specified screen object and this are not equal.
     ///
-    bool operator!=(const MeaPositionScreen& screen) const { return !IsEqual(screen); }
+    bool operator!=(const MeaPositionScreen& screen) const { return !(*this == screen); }
+
+    /// Indicates whether this screen is the primary display.
+    /// 
+    /// @return <b>true</b> if this screen is the primary display.
+    /// 
+    bool IsPrimary() const { return m_primary; }
+
+    /// Provides the screen rectangle expressed in the units that were in effect at the time the
+    /// screen object was created.
+    /// 
+    /// @return Screen rectangle
+    /// 
+    const FRECT& GetRect() const { return m_rect; }
+
+    /// Provides the screen resolution expressed in the units that were in effect at the time the
+    /// screen object was created.
+    /// 
+    /// @return Screen resolution.
+    ///  
+    const FSIZE& GetRes() const { return m_res; }
+
+    /// Indicates whether the resolution calibrated manually.
+    /// 
+    /// @return <b>true</b> if the screen resolution has been manually calibrated.
+    /// 
+    bool IsManualRes() const { return m_manualRes; }
+
+    /// Description of the screen.
+    /// 
+    /// @return Screen description.
+    const CString& GetDesc() const { return m_desc; }
 
 private:
     /// Makes a deep copy of the specified screen object.
@@ -113,24 +154,6 @@ private:
         return *this;
     }
 
-    /// Tests whether the specified screen object is equal to this.
-    ///
-    /// @param screen       [in] Screen object to test against this.
-    ///
-    /// @return <b>true</b> if the specified screen object is equal to this.
-    ///
-    bool IsEqual(const MeaPositionScreen& screen) const {
-        return ((m_primary == screen.m_primary) &&
-                MeaNumericUtils::IsFloatingEqual(m_rect.top, screen.m_rect.top) &&
-                MeaNumericUtils::IsFloatingEqual(m_rect.bottom, screen.m_rect.bottom) &&
-                MeaNumericUtils::IsFloatingEqual(m_rect.left, screen.m_rect.left) &&
-                MeaNumericUtils::IsFloatingEqual(m_rect.right, screen.m_rect.right) &&
-                MeaNumericUtils::IsFloatingEqual(m_res.cx, screen.m_res.cx) &&
-                MeaNumericUtils::IsFloatingEqual(m_res.cy, screen.m_res.cy) &&
-                (m_manualRes == screen.m_manualRes) &&
-                (m_desc == screen.m_desc));
-    }
-
 
     bool m_primary;     ///< Is this the primary screen
     FRECT m_rect;       ///< Screen rectangle expressed in the units that were
@@ -138,5 +161,5 @@ private:
     FSIZE m_res;        ///< Screen resolution expressed in the units that were
                         ///< in effect at the time the screen object was created.
     bool m_manualRes;   ///< Is the resolution calibrated manually.
-    CString m_desc;     ///< Description for the screen
+    CString m_desc;     ///< Description of the screen
 };

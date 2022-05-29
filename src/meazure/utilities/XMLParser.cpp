@@ -21,6 +21,7 @@
 #include "XMLParser.h"
 #include <meazure/resource.h>
 #include <mbstring.h>
+#include <cstring>
 
 
  //*************************************************************************
@@ -218,7 +219,10 @@ CString MeaXMLParserHandler::GetFilePathname() {
 
 CString MeaXMLParser::m_homeURL1(_T("https://www.cthing.com/"));
 CString MeaXMLParser::m_homeURL2(_T("http://www.cthing.com/"));
+MeaXMLParserHandler MeaXMLParser::m_noopHandler;
 
+
+MeaXMLParser::MeaXMLParser() : MeaXMLParser(&m_noopHandler, true) {}
 
 MeaXMLParser::MeaXMLParser(MeaXMLParserHandler* handler, bool buildDOM) :
     IValidationHandler(),
@@ -298,6 +302,13 @@ void MeaXMLParser::ParseBuffer(int len, bool isFinal) {
         HandleParserError();
         throw MeaXMLParserException();
     }
+}
+
+void MeaXMLParser::ParseString(CString& content) {
+    UINT numBytes = content.GetLength() * sizeof(TCHAR);
+    void* buf = GetBuffer(numBytes);
+    std::memcpy(buf, content.GetBuffer(), numBytes);
+    ParseBuffer(numBytes, true);
 }
 
 void MeaXMLParser::StartElementHandler(void* userData, const XML_Char* elementName,
@@ -438,8 +449,7 @@ void MeaXMLParser::AttributeDeclHandler(void* userData,
 void MeaXMLParser::HandleParserError() {
     CString title(reinterpret_cast<LPCSTR>(IDS_MEA_PARSER_TITLE));
     CString msg, errorMsg;
-    CString pathname(m_pathnameStack->empty() ?
-                        m_handler->GetFilePathname() : m_pathnameStack->top());
+    CString pathname(m_pathnameStack->empty() ? m_handler->GetFilePathname() : m_pathnameStack->top());
 
     msg.Format(IDS_MEA_PARSER_MSG,
                 static_cast<LPCTSTR>(pathname),

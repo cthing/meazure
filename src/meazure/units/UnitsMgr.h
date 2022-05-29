@@ -365,7 +365,7 @@ public:
     /// @param value    [in] Angular measurement value to format,
     ///                 in current units.
     /// @return String containing the formatted measurement data.
-    CString Format(MeaAngularMeasurementId id, double value) const {
+    CString Format(MeaAngularMeasurementId id, double value) const override {
         return m_currentAngularUnits->Format(id, value);
     }
 

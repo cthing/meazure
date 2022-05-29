@@ -97,6 +97,10 @@ public:
     typedef std::vector<CString>    DisplayPrecisionNames;  ///< Strings to identify units precisions in profiles.
 
 
+    /// Base class destructor.
+    ///
+    virtual ~MeaUnits();
+
     /// Persists the state of a units class instance to the specified
     /// profile object.
     ///
@@ -182,10 +186,6 @@ protected:
     ///
     explicit MeaUnits(LPCTSTR unitsStr);
 
-    /// Base class destructor.
-    ///
-    virtual ~MeaUnits();
-
     /// Adds the specified identifying name to the list of
     /// precision names.
     ///
@@ -220,6 +220,10 @@ private:
 class MeaAngularUnits : public MeaUnits {
 
 public:
+    /// Destroys an angular-based unit.
+    ///
+    virtual ~MeaAngularUnits();
+
     /// Returns the identifier for the angular units.
     ///
     /// @return Angular units ID.
@@ -254,10 +258,6 @@ protected:
     /// @param unitsStr     [in] Name for the units.
     ///
     MeaAngularUnits(MeaAngularUnitsId unitsId, LPCTSTR unitsStr);
-
-    /// Destroys an angular-based unit.
-    ///
-    virtual ~MeaAngularUnits();
 
 private:
     MeaAngularUnitsId m_unitsId;  ///< Identifier for the units.
@@ -320,6 +320,10 @@ public:
 class MeaLinearUnits : public MeaUnits {
 
 public:
+    /// Destroys the linear units.
+    ///
+    virtual ~MeaLinearUnits();
+
     /// Returns the identifier for the linear units.
     ///
     /// @return Linear units ID.
@@ -514,10 +518,6 @@ protected:
     /// @param screenProvider [in] Screen information provider
     ///
     MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr, const MeaScreenProvider& screenProvider);
-
-    /// Destroys the linear units.
-    ///
-    virtual ~MeaLinearUnits();
 
     /// Returns a resolution conversion factor. For most units this is
     /// the same as the values returned by the FromPixels method. However,

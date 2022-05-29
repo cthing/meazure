@@ -25,6 +25,7 @@
 #include <boost/test/data/monomorphic.hpp>
 #include <meazure/utilities/Geometry.h>
 #include <float.h>
+#include <sstream>
 
 namespace bt = boost::unit_test;
 namespace tt = boost::test_tools;
@@ -43,6 +44,16 @@ BOOST_AUTO_TEST_CASE(TestInitialSize) {
     FSIZE fs2(1.0, 2.0);
     BOOST_TEST(fs2.cx == 1.0);
     BOOST_TEST(fs2.cy == 2.0);
+}
+
+BOOST_AUTO_TEST_CASE(TestSizeEquality) {
+    FSIZE fs1(10.0, 11.0);
+    FSIZE fs2(10.0, 11.0);
+    FSIZE fs3(5.0, 6.0);
+
+    BOOST_TEST(fs1 == fs1);
+    BOOST_TEST(fs1 == fs2);
+    BOOST_TEST(fs1 != fs3);
 }
 
 BOOST_AUTO_TEST_CASE(TestAddFSize) {
@@ -139,6 +150,14 @@ BOOST_AUTO_TEST_CASE(TestValueSub) {
     BOOST_TEST(fs2.cy == 155.0);
 }
 
+BOOST_AUTO_TEST_CASE(TestSizeOstream) {
+    FSIZE fs(10.1, 20.1);
+
+    std::ostringstream ss;
+    ss << fs;
+    BOOST_TEST(ss.str().c_str() == CString("(10.1,20.1)"));
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 
 
@@ -158,6 +177,24 @@ BOOST_AUTO_TEST_CASE(TestInitialRectangle) {
     BOOST_TEST(fr2.right == 4.0);
 }
 
+BOOST_AUTO_TEST_CASE(TestRectEquality) {
+    FRECT fr1(10.0, 11.0, 12.0, 13.0);
+    FRECT fr2(10.0, 11.0, 12.0, 13.0);
+    FRECT fr3(5.0, 6.0, 7.0, 8.0);
+
+    BOOST_TEST(fr1 == fr1);
+    BOOST_TEST(fr1 == fr2);
+    BOOST_TEST(fr1 != fr3);
+}
+
+BOOST_AUTO_TEST_CASE(TestRectOstream) {
+    FRECT fr(10.1, 11.1, 12.1, 13.1);
+
+    std::ostringstream ss;
+    ss << fr;
+    BOOST_TEST(ss.str().c_str() == CString("[10.1 13.1 11.1 12.1]"));
+}
+
 BOOST_AUTO_TEST_SUITE_END()
 
 
@@ -171,6 +208,24 @@ BOOST_AUTO_TEST_CASE(TestInitialPoint) {
     FPOINT fp2(1.0, 2.0);
     BOOST_TEST(fp2.x == 1.0);
     BOOST_TEST(fp2.y == 2.0);
+}
+
+BOOST_AUTO_TEST_CASE(TestPointEquality) {
+    FPOINT fp1(10.0, 11.0);
+    FPOINT fp2(10.0, 11.0);
+    FPOINT fp3(5.0, 6.0);
+
+    BOOST_TEST(fp1 == fp1);
+    BOOST_TEST(fp1 == fp2);
+    BOOST_TEST(fp1 != fp3);
+}
+
+BOOST_AUTO_TEST_CASE(TestPointOstream) {
+    FSIZE fp(10.1, 20.1);
+
+    std::ostringstream ss;
+    ss << fp;
+    BOOST_TEST(ss.str().c_str() == CString("(10.1,20.1)"));
 }
 
 BOOST_AUTO_TEST_SUITE_END()

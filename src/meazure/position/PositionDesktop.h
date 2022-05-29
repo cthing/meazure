@@ -143,19 +143,33 @@ public:
 
     /// Compares the specified desktop information object with this to determine equality.
     ///
-    /// @param di       [in] Desktop information object to compare with this.
+    /// @param desktop      [in] Desktop information object to compare with this.
     ///
     /// @return <b>true</b> if the specified object and this are equal.
     ///
-    bool operator==(const MeaPositionDesktop& di) const { return IsEqual(di); }
+    bool operator==(const MeaPositionDesktop& desktop) const {
+        return (MeaNumericUtils::IsFloatingEqual(m_origin.x, desktop.m_origin.x) &&
+            MeaNumericUtils::IsFloatingEqual(m_origin.y, desktop.m_origin.y) &&
+            (m_invertY == desktop.m_invertY) &&
+            MeaNumericUtils::IsFloatingEqual(m_size.cx, desktop.m_size.cx) &&
+            MeaNumericUtils::IsFloatingEqual(m_size.cy, desktop.m_size.cy) &&
+            (m_linearUnits == desktop.m_linearUnits) &&
+            (m_angularUnits == desktop.m_angularUnits) &&
+            (m_screens == desktop.m_screens) &&
+            (m_customName == desktop.m_customName) &&
+            (m_customAbbrev == desktop.m_customAbbrev) &&
+            (m_customBasisStr == desktop.m_customBasisStr) &&
+            MeaNumericUtils::IsFloatingEqual(m_customFactor, desktop.m_customFactor) &&
+            (m_customPrecisions == desktop.m_customPrecisions));
+    }
 
     /// Compares the specified desktop information object with this to determine inequality.
     ///
-    /// @param di       [in] Desktop information object to compare with this.
+    /// @param desktop     [in] Desktop information object to compare with this.
     ///
     /// @return <b>true</b> if the specified object and this are not equal.
     ///
-    bool operator!=(const MeaPositionDesktop& di) const { return !IsEqual(di); }
+    bool operator!=(const MeaPositionDesktop& desktop) const { return !(*this == desktop); }
 
 private:
     typedef std::list<MeaPositionScreen> PositionScreenList;   ///< List of all display screens attached to the system.
@@ -194,30 +208,6 @@ private:
     /// @param screenProvider  [in] Screen information provider
     ///
     void Init(const MeaUnitsProvider& unitsProvider, const MeaScreenProvider& screenProvider);
-
-    /// Determines whether the specified desktop information object
-    /// is equal to this object.
-    ///
-    /// @param desktop      [in] Desktop information object to compare with this.
-    ///
-    /// @return <b>true</b> if the specified object and this object are equal.
-    ///         Note that the object's unique IDs are not compared.
-    ///
-    bool IsEqual(const MeaPositionDesktop& desktop) const {
-        return (MeaNumericUtils::IsFloatingEqual(m_origin.x, desktop.m_origin.x) &&
-                MeaNumericUtils::IsFloatingEqual(m_origin.y, desktop.m_origin.y) &&
-                (m_invertY == desktop.m_invertY) &&
-                MeaNumericUtils::IsFloatingEqual(m_size.cx, desktop.m_size.cx) &&
-                MeaNumericUtils::IsFloatingEqual(m_size.cy, desktop.m_size.cy) &&
-                (m_linearUnits == desktop.m_linearUnits) &&
-                (m_angularUnits == desktop.m_angularUnits) &&
-                (m_screens == desktop.m_screens) &&
-                (m_customName == desktop.m_customName) &&
-                (m_customAbbrev == desktop.m_customAbbrev) &&
-                (m_customBasisStr == desktop.m_customBasisStr) &&
-                MeaNumericUtils::IsFloatingEqual(m_customFactor, desktop.m_customFactor) &&
-                (m_customPrecisions == desktop.m_customPrecisions));
-    }
 
     /// Sets the linear units for the object based on the specified units name.
     ///
@@ -290,10 +280,10 @@ public:
     /// Constructs a reference to the specified desktop information object.
     /// 
     /// @param counter  [in] Reference count manager
-    /// @param info     [in] Desktop information object to reference
+    /// @param desktop  [in] Desktop information object to reference
     /// 
-    MeaPositionDesktopRef(MeaPositionDesktopRefCounter* counter, const MeaPositionDesktop& info) :
-        m_counter(counter), m_id(info.GetId()) {
+    MeaPositionDesktopRef(MeaPositionDesktopRefCounter* counter, const MeaPositionDesktop& desktop) :
+        m_counter(counter), m_id(desktop.GetId()) {
         m_counter->AddDesktopRef(m_id);
     }
 
@@ -336,6 +326,9 @@ public:
 
         return *this;
     }
+
+    bool operator==(const MeaPositionDesktopRef& ref) const { return m_id == ref.m_id; }
+    bool operator!=(const MeaPositionDesktopRef& ref) const { return m_id != ref.m_id; }
 
     operator MeaGUID() const { return m_id; }
     operator LPCTSTR() const { return static_cast<LPCTSTR>(m_id); }

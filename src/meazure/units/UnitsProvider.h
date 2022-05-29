@@ -108,6 +108,14 @@ struct MeaUnitsProvider {
     /// @return String containing the formatted measurement data.
     virtual CString Format(MeaLinearMeasurementId id, double value) const = 0;
 
+    /// Formats the specified angular measurement value for display.
+    /// @param id       [in] Identifies the angular measurement for
+    ///                 use in determining the display precision.
+    /// @param value    [in] Angular measurement value to format,
+    ///                 in current units.
+    /// @return String containing the formatted measurement data.
+    virtual CString Format(MeaAngularMeasurementId id, double value) const = 0;
+
     /// Converts the specified coordinate from pixels to the desired units.
     /// This conversion takes into account the location of the origin and the
     /// orientation of the y-axis.

@@ -204,9 +204,7 @@ BOOST_AUTO_TEST_CASE(TestEqualityGUID) {
 
     MeaGUID guid3(guid1);
     BOOST_TEST(guid3 == guid1);
-    BOOST_TEST(guid3.IsEqual(guid1));
     BOOST_TEST(guid3 != guid2);
-    BOOST_TEST(!guid3.IsEqual(guid2));
 }
 
 BOOST_AUTO_TEST_CASE(TestEqualityMeaGUID) {
@@ -215,9 +213,7 @@ BOOST_AUTO_TEST_CASE(TestEqualityMeaGUID) {
 
     MeaGUID guid3(guid1);
     BOOST_TEST(guid3 == guid1);
-    BOOST_TEST(guid3.IsEqual(guid1));
     BOOST_TEST(guid3 != guid2);
-    BOOST_TEST(!guid3.IsEqual(guid2));
 }
 
 BOOST_AUTO_TEST_CASE(TestCast) {

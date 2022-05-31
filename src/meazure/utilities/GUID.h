@@ -73,22 +73,34 @@ public:
     /// Tests for equality between two MeaGUID objects.
     /// @param guid     [in] MeaGUID object to test against this object.
     /// @return <b>true</b> if the specified object equals this object.
-    bool operator==(const MeaGUID& guid) const { return IsEqual(guid); }
+    bool operator==(const MeaGUID& guid) const { return this->m_guid == guid.m_guid; }
 
     /// Tests for inequality between two MeaGUID objects.
     /// @param guid     [in] MeaGUID object to test against this object.
     /// @return <b>true</b> if the specified object does not equal this object.
-    bool operator!=(const MeaGUID& guid) const { return !IsEqual(guid); }
+    bool operator!=(const MeaGUID& guid) const { return !(*this == guid); }
 
     /// Tests for equality between two this object and a GUID structure.
     /// @param guid     [in] Operating system defined GUID structure to test against this object.
     /// @return <b>true</b> if the specified GUID equals this object.
-    bool operator==(const GUID& guid) const { return IsEqual(guid); }
+    bool operator==(const GUID& guid) const {
+        return ((m_guid.Data1 == guid.Data1) && 
+                (m_guid.Data2 == guid.Data2) &&
+                (m_guid.Data3 == guid.Data3) &&
+                (m_guid.Data4[0] == guid.Data4[0]) &&
+                (m_guid.Data4[1] == guid.Data4[1]) &&
+                (m_guid.Data4[2] == guid.Data4[2]) &&
+                (m_guid.Data4[3] == guid.Data4[3]) &&
+                (m_guid.Data4[4] == guid.Data4[4]) &&
+                (m_guid.Data4[5] == guid.Data4[5]) &&
+                (m_guid.Data4[6] == guid.Data4[6]) &&
+                (m_guid.Data4[7] == guid.Data4[7]));
+    }
 
     /// Tests for inequality between two this object and a GUID structure.
     /// @param guid     [in] Operating system defined GUID structure to test against this object.
     /// @return <b>true</b> if the specified GUID does not equal this object.
-    bool operator!=(const GUID& guid) const { return !IsEqual(guid); }
+    bool operator!=(const GUID& guid) const { return !(*this == guid); }
 
     /// Casts to an operating system defined GUID structure.
     /// @return Operating system defined GUID structure.
@@ -136,28 +148,6 @@ public:
             Assign(guid.m_guid);
         }
         return *this;
-    }
-
-    /// Tests the specified MeaGUID object for equality with this.
-    /// @param guid     [in] MeaGUID object to test.
-    /// @return <b>true</b> if the specified GUID object equals this object.
-    bool IsEqual(const MeaGUID& guid) const { return IsEqual(guid.m_guid); }
-
-    /// Tests the specified GUID structure for equality with this.
-    /// @param guid     [in] Operating system defined GUID structure.
-    /// @return <b>true</b> if the specified GUID structure equals this object.
-    bool IsEqual(const GUID& guid) const {
-        return ((m_guid.Data1 == guid.Data1) &&
-                (m_guid.Data2 == guid.Data2) &&
-                (m_guid.Data3 == guid.Data3) &&
-                (m_guid.Data4[0] == guid.Data4[0]) &&
-                (m_guid.Data4[1] == guid.Data4[1]) &&
-                (m_guid.Data4[2] == guid.Data4[2]) &&
-                (m_guid.Data4[3] == guid.Data4[3]) &&
-                (m_guid.Data4[4] == guid.Data4[4]) &&
-                (m_guid.Data4[5] == guid.Data4[5]) &&
-                (m_guid.Data4[6] == guid.Data4[6]) &&
-                (m_guid.Data4[7] == guid.Data4[7]));
     }
 
     /// Returns a string representation of the GUID. Note that the

@@ -102,10 +102,6 @@ BOOL App::InitInstance() {
     //
     CreateMutex(nullptr, FALSE, "MeazureInstallerMutex");
 
-    // Initialize colors
-    //
-    MeaColors::Initialize();
-
     // App appearance
     //
     InitCommonControls();       // To support XP visual styles, if available

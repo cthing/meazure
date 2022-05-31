@@ -23,24 +23,19 @@
 #include <meazure/utilities/NumericUtils.h>
 
 
-MeaColors::Colors MeaColors::m_defColors;
-MeaColors::Colors MeaColors::m_colors;
+MeaColors::Colors const MeaColors::m_defColors = {
+        { LineFore,         RGB(0xFF, 0, 0) },
+        { CrossHairBack,    RGB(0xFF, 0, 0) },
+        { CrossHairBorder,  RGB(0x50, 0x50, 0x50) },
+        { CrossHairHilite,  RGB(0xFF, 0xFF, 0) },
+        { CrossHairOpacity, RGB(HaveLayeredWindows() ? 0xE5 : 0xFF, 0, 0) },
+        { RulerBack,        RGB(0xFF, 0xFF, 0xFF) },
+        { RulerBorder,      RGB(0, 0, 0) },
+        { RulerOpacity,     RGB(HaveLayeredWindows() ? 0xE5 : 0xFF, 0, 0) }
+};
 
+MeaColors::Colors MeaColors::m_colors = m_defColors;
 
-void MeaColors::Initialize() {
-    if (m_defColors.empty()) {
-        m_defColors[LineFore] = RGB(0xFF, 0, 0);
-        m_defColors[CrossHairBack] = RGB(0xFF, 0, 0);
-        m_defColors[CrossHairBorder] = RGB(0x50, 0x50, 0x50);
-        m_defColors[CrossHairHilite] = RGB(0xFF, 0xFF, 0);
-        m_defColors[CrossHairOpacity] = RGB(HaveLayeredWindows() ? 0xE5 : 0xFF, 0, 0);
-        m_defColors[RulerBack] = RGB(0xFF, 0xFF, 0xFF);
-        m_defColors[RulerBorder] = RGB(0, 0, 0);
-        m_defColors[RulerOpacity] = RGB(HaveLayeredWindows() ? 0xE5 : 0xFF, 0, 0);
-
-        m_colors = m_defColors;
-    }
-}
 
 void MeaColors::SaveProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
@@ -57,14 +52,14 @@ void MeaColors::SaveProfile(MeaProfile& profile) {
 
 void MeaColors::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
-        m_colors[LineFore] = profile.ReadInt(_T("LineFore"), m_defColors[LineFore]);
-        m_colors[CrossHairBack] = profile.ReadInt(_T("CrossHairBack"), m_defColors[CrossHairBack]);
-        m_colors[CrossHairBorder] = profile.ReadInt(_T("CrossHairBorder"), m_defColors[CrossHairBorder]);
-        m_colors[CrossHairHilite] = profile.ReadInt(_T("CrossHairHilite"), m_defColors[CrossHairHilite]);
-        m_colors[CrossHairOpacity] = profile.ReadInt(_T("CrossHairOpacity"), m_defColors[CrossHairOpacity]);
-        m_colors[RulerBack] = profile.ReadInt(_T("RulerBack"), m_defColors[RulerBack]);
-        m_colors[RulerBorder] = profile.ReadInt(_T("RulerBorder"), m_defColors[RulerBorder]);
-        m_colors[RulerOpacity] = profile.ReadInt(_T("RulerOpacity"), m_defColors[RulerOpacity]);
+        m_colors[LineFore] = profile.ReadInt(_T("LineFore"), m_defColors.at(LineFore));
+        m_colors[CrossHairBack] = profile.ReadInt(_T("CrossHairBack"), m_defColors.at(CrossHairBack));
+        m_colors[CrossHairBorder] = profile.ReadInt(_T("CrossHairBorder"), m_defColors.at(CrossHairBorder));
+        m_colors[CrossHairHilite] = profile.ReadInt(_T("CrossHairHilite"), m_defColors.at(CrossHairHilite));
+        m_colors[CrossHairOpacity] = profile.ReadInt(_T("CrossHairOpacity"), m_defColors.at(CrossHairOpacity));
+        m_colors[RulerBack] = profile.ReadInt(_T("RulerBack"), m_defColors.at(RulerBack));
+        m_colors[RulerBorder] = profile.ReadInt(_T("RulerBorder"), m_defColors.at(RulerBorder));
+        m_colors[RulerOpacity] = profile.ReadInt(_T("RulerOpacity"), m_defColors.at(RulerOpacity));
     }
 }
 

@@ -69,10 +69,6 @@ public:
     ///
     ~MeaColors() = delete;
 
-    /// Initializes the class by establishing the default colors.
-    ///
-    static void Initialize();
-
     /// Resets all colors to their default values.
     ///
     static void Reset() {
@@ -139,7 +135,7 @@ public:
     /// @param item     [in] Item whose default color is desired.
     /// @return Default color for the specified item.
     static COLORREF GetDef(Item item) {
-        return m_defColors[item];
+        return m_defColors.at(item);
     }
 
     /// Performs linear interpolation between the specified RGB color.
@@ -189,6 +185,6 @@ private:
     static double HuetoRGB(double m1, double m2, double h);
 
 
-    static Colors m_defColors;  ///< Map of default colors. 
+    static const Colors m_defColors;  ///< Map of default colors. 
     static Colors m_colors;     ///< Map of active colors.
 };

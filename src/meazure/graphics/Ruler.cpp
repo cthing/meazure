@@ -73,7 +73,7 @@ bool MeaRuler::Create(COLORREF borderColor, COLORREF backColor, BYTE opacity,
 
     SetColors(borderColor, backColor);
 
-    FSIZE res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(targetRect));
+    MeaFSize res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(targetRect));
 
     // To ensure the proper sizing of the ruler tick marks and margins,
     // the dimensions are stated in inches and converted to pixels at
@@ -346,7 +346,7 @@ void MeaRuler::DrawRuler(CDC& dc) {
     int tick, x, xa, xb, y, ya, yb;
     int tickHeight;
 
-    FSIZE minorIncr = m_unitsProvider.GetMinorIncr(winRect);
+    MeaFSize minorIncr = m_unitsProvider.GetMinorIncr(winRect);
 
     // Determine the blending colors for non-pixel aligned hash mark placement.
     //

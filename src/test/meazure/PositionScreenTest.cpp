@@ -43,8 +43,8 @@ BOOST_AUTO_TEST_CASE(TestDefaultCtor) {
     MeaPositionScreen screen;
 
     BOOST_TEST(!screen.IsPrimary());
-    BOOST_TEST(screen.GetRect() == FRECT());
-    BOOST_TEST(screen.GetRes() == FSIZE());
+    BOOST_TEST(screen.GetRect() == MeaFRect());
+    BOOST_TEST(screen.GetRes() == MeaFSize());
     BOOST_TEST(!screen.IsManualRes());
     BOOST_TEST(screen.GetDesc() == _T(""));
 }
@@ -53,8 +53,8 @@ BOOST_FIXTURE_TEST_CASE(TestIterCtor, TestFixture) {
     MeaPositionScreen screen(screenProvider.GetScreenIter(), unitsProvider, screenProvider);
 
     BOOST_TEST(screen.IsPrimary());
-    BOOST_TEST(screen.GetRect() == FRECT(0.0, 1024.0, 0.0, 1280.0));
-    BOOST_TEST(screen.GetRes() == FSIZE(96.0, 96.0));
+    BOOST_TEST(screen.GetRect() == MeaFRect(0.0, 1024.0, 0.0, 1280.0));
+    BOOST_TEST(screen.GetRes() == MeaFSize(96.0, 96.0));
     BOOST_TEST(!screen.IsManualRes());
     BOOST_TEST(screen.GetDesc() == _T("MockScreen"));
 }
@@ -67,14 +67,14 @@ BOOST_FIXTURE_TEST_CASE(TestCopy, TestFixture) {
     screen3 = screen1;
 
     BOOST_TEST(screen2.IsPrimary());
-    BOOST_TEST(screen2.GetRect() == FRECT(0.0, 1024.0, 0.0, 1280.0));
-    BOOST_TEST(screen2.GetRes() == FSIZE(96.0, 96.0));
+    BOOST_TEST(screen2.GetRect() == MeaFRect(0.0, 1024.0, 0.0, 1280.0));
+    BOOST_TEST(screen2.GetRes() == MeaFSize(96.0, 96.0));
     BOOST_TEST(!screen2.IsManualRes());
     BOOST_TEST(screen2.GetDesc() == _T("MockScreen"));
 
     BOOST_TEST(screen3.IsPrimary());
-    BOOST_TEST(screen3.GetRect() == FRECT(0.0, 1024.0, 0.0, 1280.0));
-    BOOST_TEST(screen3.GetRes() == FSIZE(96.0, 96.0));
+    BOOST_TEST(screen3.GetRect() == MeaFRect(0.0, 1024.0, 0.0, 1280.0));
+    BOOST_TEST(screen3.GetRes() == MeaFSize(96.0, 96.0));
     BOOST_TEST(!screen3.IsManualRes());
     BOOST_TEST(screen3.GetDesc() == _T("MockScreen"));
 }
@@ -103,8 +103,8 @@ BOOST_FIXTURE_TEST_CASE(TestSaveLoad, TestFixture) {
     screen2.Load(screenNode);
 
     BOOST_TEST(screen2.IsPrimary());
-    BOOST_TEST(screen2.GetRect() == FRECT(0.0, 1024.0, 0.0, 1280.0));
-    BOOST_TEST(screen2.GetRes() == FSIZE(96.0, 96.0));
+    BOOST_TEST(screen2.GetRect() == MeaFRect(0.0, 1024.0, 0.0, 1280.0));
+    BOOST_TEST(screen2.GetRes() == MeaFSize(96.0, 96.0));
     BOOST_TEST(!screen2.IsManualRes());
     BOOST_TEST(screen2.GetDesc() == _T("MockScreen"));
 }

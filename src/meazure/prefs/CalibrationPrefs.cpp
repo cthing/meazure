@@ -152,7 +152,7 @@ bool MeaCalibrationPrefs::Validate() {
     const CRect& screenRect = m_screenProvider.GetScreenRect(m_currentIter);
     Screen& screen = GetScreen();
     bool mr;
-    FSIZE r;
+    MeaFSize r;
 
     m_screenProvider.GetScreenRes(m_currentIter, mr, r);
 

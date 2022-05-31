@@ -27,32 +27,31 @@
 #include "NumericUtils.h"
 
 
-/// Represents a rectangular size. Unlike the Windows SIZE
-/// structure, the dimensions of the FSIZE structure are
+/// Represents a rectangular size. Unlike the Windows SIZE structure, the dimensions of the MeaFSize structure are
 /// double precision values.
 ///
-struct FSIZE {
+struct MeaFSize {
     double cx;     ///< Length in the x dimension.
     double cy;     ///< Length in the y dimension.
 
 
     /// Constructs a size object initialized to 0.0 width and height.
     ///
-    FSIZE() : FSIZE(0.0, 0.0) {}
+    MeaFSize() : MeaFSize(0.0, 0.0) {}
 
     /// Constructs a size object initialized to the specified dimensions.
     /// 
     /// @param x  [in] Length in the x dimension
     /// @param y  [in] Length in the y dimension
     ///
-    FSIZE(double x, double y) : cx(x), cy(y) {}
+    MeaFSize(double x, double y) : cx(x), cy(y) {}
 
     /// Tests equality between this with the specified size.
     /// 
     /// @param other  [in] Other size to compare against this
     /// @return <b>true</b> if this and the specified size have the same dimensions.
     /// 
-    bool operator==(const FSIZE& other) const {
+    bool operator==(const MeaFSize& other) const {
         return MeaNumericUtils::IsFloatingEqual(cx, other.cx) && MeaNumericUtils::IsFloatingEqual(cy, other.cy);
     }
 
@@ -61,12 +60,11 @@ struct FSIZE {
     /// @param other  [in] Other size to compare against this
     /// @return <b>true</b> if this and the specified size have the different dimensions.
     /// 
-    bool operator!=(const FSIZE& other) const {
+    bool operator!=(const MeaFSize& other) const {
         return !(*this == other);
     }
 
-    /// Adds this and the specified object and returns
-    /// a new size object.
+    /// Adds this and the specified object and returns a new size object.
     /// \f[
     ///     \left[ \begin{array}{c}
     ///     f_x \\
@@ -84,14 +82,13 @@ struct FSIZE {
     ///     \end{array} \right]
     /// \f]
     /// @param fsize    [in] Size object to add.
-    /// @return New object that is the sum of this and the
-    ///         specified object.
-    FSIZE operator+(const FSIZE& fsize) const {
-        return FSIZE(cx + fsize.cx, cy + fsize.cy);
+    /// @return New object that is the sum of this and the specified object.
+    /// 
+    MeaFSize operator+(const MeaFSize& fsize) const {
+        return MeaFSize(cx + fsize.cx, cy + fsize.cy);
     }
 
-    /// Adds this and the specified value and returns
-    /// a new size object.
+    /// Adds this and the specified value and returns a new size object.
     /// \f[
     ///     \left[ \begin{array}{c}
     ///     f_x \\
@@ -109,14 +106,13 @@ struct FSIZE {
     ///     \end{array} \right]
     /// \f]
     /// @param val      [in] Length to add to both dimensions.
-    /// @return New object that is the sum of this and the
-    ///         specified value.
-    FSIZE operator+(double val) const {
-        return FSIZE(cx + val, cy + val);
+    /// @return New object that is the sum of this and the specified value.
+    /// 
+    MeaFSize operator+(double val) const {
+        return MeaFSize(cx + val, cy + val);
     }
 
-    /// Multiplies this and the specified object and returns
-    /// a new size object.
+    /// Multiplies this and the specified object and returns a new size object.
     /// \f[
     ///     \left[ \begin{array}{c}
     ///     f_x \\
@@ -133,14 +129,13 @@ struct FSIZE {
     ///     \end{array} \right]
     /// \f]
     /// @param fsize    [in] Size object to multiply.
-    /// @return New object that is the product of this and the
-    ///         specified object.
-    FSIZE operator*(const FSIZE& fsize) const {
-        return FSIZE(cx * fsize.cx, cy * fsize.cy);
+    /// @return New object that is the product of this and the specified object.
+    /// 
+    MeaFSize operator*(const MeaFSize& fsize) const {
+        return MeaFSize(cx * fsize.cx, cy * fsize.cy);
     }
 
-    /// Multiplies this and the specified object and returns
-    /// a new size object.
+    /// Multiplies this and the specified object and returns a new size object.
     /// \f[
     ///     \left[ \begin{array}{c}
     ///     f_x \\
@@ -157,14 +152,13 @@ struct FSIZE {
     ///     \end{array} \right]
     /// \f]
     /// @param size     [in] Size object to multiply.
-    /// @return New object that is the product of this and the
-    ///         specified object.
-    FSIZE operator*(const SIZE& size) const {
-        return FSIZE(cx * size.cx, cy * size.cy);
+    /// @return New object that is the product of this and the specified object.
+    /// 
+    MeaFSize operator*(const SIZE& size) const {
+        return MeaFSize(cx * size.cx, cy * size.cy);
     }
 
-    /// Multiplies this and the specified value and returns
-    /// a new size object.
+    /// Multiplies this and the specified value and returns a new size object.
     /// \f[
     ///     \left[ \begin{array}{c}
     ///     f_x \\
@@ -177,10 +171,10 @@ struct FSIZE {
     ///     \end{array} \right]
     /// \f]
     /// @param mult     [in] Value to multiply both dimensions.
-    /// @return New object that is the product of this and the
-    ///         specified value.
-    FSIZE operator*(double mult) const {
-        return FSIZE(cx * mult, cy * mult);
+    /// @return New object that is the product of this and the specified value.
+    /// 
+    MeaFSize operator*(double mult) const {
+        return MeaFSize(cx * mult, cy * mult);
     }
 
     /// Adds the specified size object to this.
@@ -202,7 +196,8 @@ struct FSIZE {
     /// \f]
     /// @param fsize        [in] Size object to add to this.
     /// @return this object.
-    FSIZE& operator+=(const FSIZE& fsize) {
+    /// 
+    MeaFSize& operator+=(const MeaFSize& fsize) {
         cx += fsize.cx;
         cy += fsize.cy;
         return *this;
@@ -227,7 +222,7 @@ struct FSIZE {
     /// \f]
     /// @param fsize        [in] Size object to subtract from this.
     /// @return this object.
-    FSIZE& operator-=(const FSIZE& fsize) {
+    MeaFSize& operator-=(const MeaFSize& fsize) {
         cx -= fsize.cx;
         cy -= fsize.cy;
         return *this;
@@ -251,7 +246,7 @@ struct FSIZE {
     /// \f]
     /// @param fsize        [in] Size object to multiply with this.
     /// @return this object.
-    FSIZE& operator*=(const FSIZE& fsize) {
+    MeaFSize& operator*=(const MeaFSize& fsize) {
         cx *= fsize.cx;
         cy *= fsize.cy;
         return *this;
@@ -265,7 +260,7 @@ struct FSIZE {
 /// @param size   [in] Size object to write
 /// @return The specified output stream.
 /// 
-inline std::ostream& operator<<(std::ostream& os, const FSIZE& size) {
+inline std::ostream& operator<<(std::ostream& os, const MeaFSize& size) {
     os << '(' << size.cx << ',' << size.cy << ')';
     return os;
 }
@@ -288,8 +283,8 @@ inline std::ostream& operator<<(std::ostream& os, const FSIZE& size) {
 /// @return A new size object whose dimensions are the base 10 log of
 ///         the specified size object's dimensions.
 ///
-inline FSIZE log10(const FSIZE& fsize) {
-    return FSIZE(std::log10(fsize.cx), std::log10(fsize.cy));
+inline MeaFSize log10(const MeaFSize& fsize) {
+    return MeaFSize(std::log10(fsize.cx), std::log10(fsize.cy));
 }
 
 /// Calculates the floor on each dimension of the specified
@@ -310,8 +305,8 @@ inline FSIZE log10(const FSIZE& fsize) {
 /// @return A new size object whose dimensions are the floor of
 ///         the specified size object's dimensions.
 ///
-inline FSIZE floor(const FSIZE& fsize) {
-    return FSIZE(std::floor(fsize.cx), std::floor(fsize.cy));
+inline MeaFSize floor(const MeaFSize& fsize) {
+    return MeaFSize(std::floor(fsize.cx), std::floor(fsize.cy));
 }
 
 /// Subtracts the specified size object from the specified
@@ -340,16 +335,16 @@ inline FSIZE floor(const FSIZE& fsize) {
 /// @return New size object formed by the specified size
 ///         object being subtracted from the specified value.
 ///
-inline FSIZE operator-(double val, const FSIZE& fsize) {
-    return FSIZE(val - fsize.cx, val - fsize.cy);
+inline MeaFSize operator-(double val, const MeaFSize& fsize) {
+    return MeaFSize(val - fsize.cx, val - fsize.cy);
 }
 
 
 /// Represents a rectangular. Unlike the Windows RECT
-/// structure, the positions of the FRECT structure are
+/// structure, the positions of the MeaFRect structure are
 /// double precision values.
 ///
-struct FRECT {
+struct MeaFRect {
     double top;         ///< Top of the rectangle.
     double bottom;      ///< Bottom of the rectangle.
     double left;        ///< Left side of the rectangle.
@@ -357,7 +352,7 @@ struct FRECT {
 
     /// Constructs a rectangle object initialized to 0.0 in all coordinates.
     ///
-    FRECT() : FRECT(0.0, 0.0, 0.0, 0.0) {}
+    MeaFRect() : MeaFRect(0.0, 0.0, 0.0, 0.0) {}
 
     /// Constructs a rectangle object initialized to the specified coordinates.
     /// 
@@ -366,14 +361,14 @@ struct FRECT {
     /// @param l  [in] Initial left coordinate
     /// @param r  [in] Initial right coordinate
     /// 
-    FRECT(double t, double b, double l, double r) : top(t), bottom(b), left(l), right(r) {}
+    MeaFRect(double t, double b, double l, double r) : top(t), bottom(b), left(l), right(r) {}
 
     /// Tests equality between this with the specified rectangle.
     /// 
     /// @param other  [in] Other rectangle to compare against this
     /// @return <b>true</b> if this and the specified rectangle have the same dimensions.
     /// 
-    bool operator==(const FRECT& other) const {
+    bool operator==(const MeaFRect& other) const {
         return MeaNumericUtils::IsFloatingEqual(top, other.top) &&
                MeaNumericUtils::IsFloatingEqual(bottom, other.bottom) &&
                MeaNumericUtils::IsFloatingEqual(left, other.left) &&
@@ -385,7 +380,7 @@ struct FRECT {
     /// @param other  [in] Other rectangle to compare against this
     /// @return <b>true</b> if this and the specified rectangle have the different dimensions.
     /// 
-    bool operator!=(const FRECT& other) const {
+    bool operator!=(const MeaFRect& other) const {
         return !(*this == other);
     }
 };
@@ -397,37 +392,36 @@ struct FRECT {
 /// @param rect   [in] Rectangle object to write
 /// @return The specified output stream.
 /// 
-inline std::ostream& operator<<(std::ostream& os, const FRECT& rect) {
+inline std::ostream& operator<<(std::ostream& os, const MeaFRect& rect) {
     os << '[' << rect.top << ' ' << rect.right << ' ' << rect.bottom << ' ' << rect.left << ']';
     return os;
 }
 
 
-/// Represents a point. Unlike the Windows POINT
-/// structure, the positions of the FPOINT structure are
+/// Represents a point. Unlike the Windows POINT structure, the positions of the MeaFPoint structure are
 /// double precision values.
 ///
-struct FPOINT {
+struct MeaFPoint {
     double x;       ///< X position.
     double y;       ///< Y position.
 
     /// Constructs a point object initialized to (0.0, 0.0).
     ///
-    FPOINT() : FPOINT(0.0, 0.0) {}
+    MeaFPoint() : MeaFPoint(0.0, 0.0) {}
 
     /// Constructs a point object initialized to the specified coordinates.
     /// 
     /// @param xi  [in] Initial x coordinate 
     /// @param yi  [in] Initial y coordinate
     /// 
-    FPOINT(double xi, double yi) : x(xi), y(yi) {}
+    MeaFPoint(double xi, double yi) : x(xi), y(yi) {}
 
     /// Tests equality between this with the specified point.
     /// 
     /// @param other  [in] Other point to compare against this
     /// @return <b>true</b> if this and the specified point have the same dimensions.
     /// 
-    bool operator==(const FPOINT& other) const {
+    bool operator==(const MeaFPoint& other) const {
         return MeaNumericUtils::IsFloatingEqual(x, other.x) && MeaNumericUtils::IsFloatingEqual(y, other.y);
     }
 
@@ -436,7 +430,7 @@ struct FPOINT {
     /// @param other  [in] Other point to compare against this
     /// @return <b>true</b> if this and the specified point have the different dimensions.
     /// 
-    bool operator!=(const FPOINT& other) const {
+    bool operator!=(const MeaFPoint& other) const {
         return !(*this == other);
     }
 };
@@ -448,7 +442,7 @@ struct FPOINT {
 /// @param point  [in] Point object to write
 /// @return The specified output stream.
 /// 
-inline std::ostream& operator<<(std::ostream& os, const FPOINT& point) {
+inline std::ostream& operator<<(std::ostream& os, const MeaFPoint& point) {
     os << '(' << point.x << ',' << point.y << ')';
     return os;
 }
@@ -456,10 +450,7 @@ inline std::ostream& operator<<(std::ostream& os, const FPOINT& point) {
 
 /// Convenience methods for calculating various geometric values (e.g. circumference, angle).
 ///
-class MeaGeometry {
-public:
-    MeaGeometry() = delete;
-    ~MeaGeometry() = delete;
+namespace MeaGeometry {
 
     /// Calculates the length corresponding to the specified x and y distances using the formula:
     /// \f[
@@ -470,7 +461,7 @@ public:
     ///
     /// @return Length corresponding to the vertical and horizontal distances.
     ///
-    static double CalcLength(double dx, double dy) {
+    inline double CalcLength(double dx, double dy) {
         return std::sqrt(dx * dx + dy * dy);
     }
 
@@ -483,7 +474,7 @@ public:
     ///
     /// @return Length between point 1 and point 2.
     ///
-    static double CalcLength(const POINT& p1, const POINT& p2) {
+    inline double CalcLength(const POINT& p1, const POINT& p2) {
         return CalcLength(static_cast<double>(p2.x - p1.x), static_cast<double>(p2.y - p1.y));
     }
 
@@ -495,7 +486,7 @@ public:
     ///
     /// @return Circumference of the circle.
     ///
-    static double CalcCircumference(double radius) {
+    inline double CalcCircumference(double radius) {
         return 2.0 * radius * MeaNumericUtils::PI;
     }
 
@@ -552,7 +543,7 @@ public:
     ///
     /// @return The circular sector corresponding to the vector in the range [-4.0, 4.0].
     ///
-    static int CalcSector(const POINT& start, const POINT& end) {
+    inline int CalcSector(const POINT& start, const POINT& end) {
         int deltax = end.x - start.x;
         int deltay = end.y - start.y;
 
@@ -579,7 +570,7 @@ public:
     /// @return <b>true</b> if the specified vector is vertically oriented. Returns <b>false</b> if the
     ///     vector is horizontally oriented or is the empty vector.
     /// 
-    static bool IsVerticallyOriented(const POINT& start, const POINT& end) {
+    inline bool IsVerticallyOriented(const POINT& start, const POINT& end) {
         switch (CalcSector(start, end)) {
         case 2:
         case -2:
@@ -599,7 +590,7 @@ public:
     /// @return <b>true</b> if the specified vector is horizontally oriented. Returns <b>false</b> if the
     ///     vector is vertically oriented or is the empty vector.
     /// 
-    static bool IsHorizontallyOriented(const POINT& start, const POINT& end) {
+    inline bool IsHorizontallyOriented(const POINT& start, const POINT& end) {
         switch (CalcSector(start, end)) {
         case 1:
         case -1:
@@ -623,7 +614,7 @@ public:
     ///
     /// @return Angle between the x-axis and the line, in radians. Degenerate cases return 0.0.
     ///
-    static double CalcAngle(const FPOINT& start, const FPOINT& end) {
+    inline double CalcAngle(const MeaFPoint& start, const MeaFPoint& end) {
         double deltax = end.x - start.x;
         double deltay = end.y - start.y;
 
@@ -643,7 +634,7 @@ public:
     ///
     /// @return Angle between the vectors vertex-p1 and vertex-p2.
     ///
-    static double CalcAngle(const FPOINT& vertex, const FPOINT& p1, const FPOINT& p2) {
+    inline double CalcAngle(const MeaFPoint& vertex, const MeaFPoint& p1, const MeaFPoint& p2) {
         double deltax1 = p1.x - vertex.x;
         double deltax2 = p2.x - vertex.x;
         double deltay1 = p1.y - vertex.y;

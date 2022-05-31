@@ -154,7 +154,7 @@ public:
     ///                     manually.
     /// @param manualRes    [out] Manually set resolution, in pixels per inch.
     ///
-    void GetScreenRes(const ScreenIter& iter, bool& useManualRes, FSIZE& manualRes) const override;
+    void GetScreenRes(const ScreenIter& iter, bool& useManualRes, MeaFSize& manualRes) const override;
 
     /// Returns the resolution for the screen pointed to by the specified iterator.
     ///
@@ -165,7 +165,7 @@ public:
     ///         set manually, it is returned. Otherwise, the operating system
     ///         reported resolution is returned.
     ///
-    const FSIZE& GetScreenRes(const ScreenIter& iter) const override;
+    const MeaFSize& GetScreenRes(const ScreenIter& iter) const override;
 
     /// Indicates it the resolution for the specified screen has been set manually.
     ///
@@ -190,7 +190,7 @@ public:
     /// @param useManualRes     [in] <b>true</b> if the resolution is manually calibrated.
     /// @param manualRes        [in] Manually calibrated screen resolution, in pixels.
     ///
-    void SetScreenRes(const ScreenIter& iter, bool useManualRes, const FSIZE* manualRes = nullptr) const;
+    void SetScreenRes(const ScreenIter& iter, bool useManualRes, const MeaFSize* manualRes = nullptr) const;
 
     /// Indicates if the screen pointed to by the specified iterator is the primary.
     ///
@@ -255,7 +255,7 @@ public:
     ///
     /// @return Resolution in pixels per inch.
     ///
-    FSIZE GetOSScreenRes() const;
+    MeaFSize GetOSScreenRes() const;
 
 private:
     /// Called by the constructor via EnumDisplayMonitors.

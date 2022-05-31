@@ -431,7 +431,7 @@ void MeaDataDisplay::Disable(MeaSection section) {
     }
 }
 
-void MeaDataDisplay::ShowXY1(const POINT& point, const FPOINT& cpoint) {
+void MeaDataDisplay::ShowXY1(const POINT& point, const MeaFPoint& cpoint) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     m_x1.SetSpinPos(point.x);
@@ -441,7 +441,7 @@ void MeaDataDisplay::ShowXY1(const POINT& point, const FPOINT& cpoint) {
     m_y1.SetText(unitsMgr.Format(MeaY, cpoint.y));
 }
 
-void MeaDataDisplay::ShowXY2(const POINT& point, const FPOINT& cpoint) {
+void MeaDataDisplay::ShowXY2(const POINT& point, const MeaFPoint& cpoint) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     m_x2.SetSpinPos(point.x);
@@ -451,7 +451,7 @@ void MeaDataDisplay::ShowXY2(const POINT& point, const FPOINT& cpoint) {
     m_y2.SetText(unitsMgr.Format(MeaY, cpoint.y));
 }
 
-void MeaDataDisplay::ShowXYV(const POINT& point, const FPOINT& cpoint) {
+void MeaDataDisplay::ShowXYV(const POINT& point, const MeaFPoint& cpoint) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     m_xv.SetSpinPos(point.x);
@@ -461,14 +461,14 @@ void MeaDataDisplay::ShowXYV(const POINT& point, const FPOINT& cpoint) {
     m_yv.SetText(unitsMgr.Format(MeaY, cpoint.y));
 }
 
-void MeaDataDisplay::ShowWH(const FSIZE& size) {
+void MeaDataDisplay::ShowWH(const MeaFSize& size) {
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();
 
     m_width.SetText(unitsMgr.Format(MeaW, size.cx));
     m_height.SetText(unitsMgr.Format(MeaH, size.cy));
 }
 
-void MeaDataDisplay::ShowDistance(const FSIZE& size) {
+void MeaDataDisplay::ShowDistance(const MeaFSize& size) {
     m_length.SetText(MeaUnitsMgr::Instance().Format(MeaD, MeaGeometry::CalcLength(size.cx, size.cy)));
 }
 
@@ -480,7 +480,7 @@ void MeaDataDisplay::ShowAngle(double angle) {
     m_angle.SetText(MeaUnitsMgr::Instance().FormatConvertAngle(angle));
 }
 
-void MeaDataDisplay::ShowAspect(const FSIZE& size) {
+void MeaDataDisplay::ShowAspect(const MeaFSize& size) {
     double aspectRatio = (size.cy == 0) ? 0.0 : ((double)size.cx / (double)size.cy);
 
     CString vstr;
@@ -488,7 +488,7 @@ void MeaDataDisplay::ShowAspect(const FSIZE& size) {
     m_aspect.SetText(vstr);
 }
 
-void MeaDataDisplay::ShowRectArea(const FSIZE& size) {
+void MeaDataDisplay::ShowRectArea(const MeaFSize& size) {
     m_area.SetText(MeaUnitsMgr::Instance().Format(MeaAr, size.cx * size.cy));
 }
 
@@ -500,14 +500,14 @@ void MeaDataDisplay::ShowScreenName(const CString& name) {
     m_screenSection.SetWindowText(name);
 }
 
-void MeaDataDisplay::ShowScreenWH(const FSIZE& size) {
+void MeaDataDisplay::ShowScreenWH(const MeaFSize& size) {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
 
     m_screenWidth.SetText(units.Format(MeaW, size.cx));
     m_screenHeight.SetText(units.Format(MeaH, size.cy));
 }
 
-void MeaDataDisplay::ShowScreenRes(const FSIZE& res) {
+void MeaDataDisplay::ShowScreenRes(const MeaFSize& res) {
     MeaUnitsMgr& units = MeaUnitsMgr::Instance();
 
     m_screenResX.SetText(units.Format(MeaRx, res.cx));
@@ -588,7 +588,7 @@ LRESULT MeaDataSection::OnFieldEntry(WPARAM wParam, LPARAM id) {
 }
 
 LRESULT MeaDataDisplay::OnFieldEntry(WPARAM wParam, LPARAM id) {
-    FPOINT pos;
+    MeaFPoint pos;
     LONG pixels = 0;
     const MeaNumberField* field = nullptr;
     MeaUnitsMgr& unitsMgr = MeaUnitsMgr::Instance();

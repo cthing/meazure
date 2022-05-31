@@ -1088,7 +1088,7 @@ void AppView::OnPreferences() {
     // Calibration preferences
     //
     bool useManualRes;
-    FSIZE manualRes;
+    MeaFSize manualRes;
     MeaScreenMgr::ScreenIter iter;
     MeaScreenMgr& screenMgr = MeaScreenMgr::Instance();
 
@@ -1216,7 +1216,7 @@ void AppView::ApplyPreferences(int prefsPage) {
             const MeaCalibrationPrefs::Screen& screen = screenEntry.second;
 
             bool useManualRes = (screen.m_resMode == MeaCalibrationPrefs::AutoRes) ? false : true;
-            FSIZE manualRes = screen.m_res;
+            MeaFSize manualRes = screen.m_res;
             screenMgr.SetScreenRes(screenIter, useManualRes, &manualRes);
 
             bool calInInches = (screen.m_resUnits == MeaCalibrationPrefs::UseInches) ? true : false;

@@ -140,7 +140,7 @@ struct MeaScreenProvider {
     ///                     manually.
     /// @param manualRes    [out] Manually set resolution, in pixels per inch.
     ///
-    virtual void GetScreenRes(const ScreenIter& iter, bool& useManualRes, FSIZE& manualRes) const = 0;
+    virtual void GetScreenRes(const ScreenIter& iter, bool& useManualRes, MeaFSize& manualRes) const = 0;
 
     /// Returns the resolution for the screen pointed to by the specified iterator.
     ///
@@ -151,7 +151,7 @@ struct MeaScreenProvider {
     ///         set manually, it is returned. Otherwise, the operating system
     ///         reported resolution is returned.
     ///
-    virtual const FSIZE& GetScreenRes(const ScreenIter& iter) const = 0;
+    virtual const MeaFSize& GetScreenRes(const ScreenIter& iter) const = 0;
 
     /// Indicates it the resolution for the specified screen has been set manually.
     ///

@@ -26,7 +26,7 @@
 
 
 MeaPosition::MeaPosition(MeaPositionDesktopRef desktopRef) :
-    MeaPosition(desktopRef, _T(""), MeaMakeTimeStamp(time(nullptr))) {}
+    MeaPosition(desktopRef, _T(""), MeaTimeStamp::Make(time(nullptr))) {}
 
 MeaPosition::MeaPosition(MeaPositionDesktopRef desktopRef, const CString& toolName, const CString& timestamp) :
     m_fieldMask(0),
@@ -70,32 +70,32 @@ MeaPosition& MeaPosition::operator=(const MeaPosition& position) {
     return *this;
 }
 
-void MeaPosition::RecordXY1(const FPOINT& point) {
+void MeaPosition::RecordXY1(const MeaFPoint& point) {
     m_fieldMask |= MeaX1Field | MeaY1Field;
 
     m_points[_T("1")] = point;
 }
 
-void MeaPosition::RecordXY2(const FPOINT& point) {
+void MeaPosition::RecordXY2(const MeaFPoint& point) {
     m_fieldMask |= MeaX2Field | MeaY2Field;
 
     m_points[_T("2")] = point;
 }
 
-void MeaPosition::RecordXYV(const FPOINT& point) {
+void MeaPosition::RecordXYV(const MeaFPoint& point) {
     m_fieldMask |= MeaXVField | MeaYVField;
 
     m_points[_T("v")] = point;
 }
 
-void MeaPosition::RecordWH(const FSIZE& size) {
+void MeaPosition::RecordWH(const MeaFSize& size) {
     m_fieldMask |= MeaWidthField | MeaHeightField;
 
     m_width = size.cx;
     m_height = size.cy;
 }
 
-void MeaPosition::RecordDistance(const FSIZE& size) {
+void MeaPosition::RecordDistance(const MeaFSize& size) {
     m_fieldMask |= MeaDistanceField;
 
     m_distance = MeaGeometry::CalcLength(size.cx, size.cy);
@@ -113,7 +113,7 @@ void MeaPosition::RecordAngle(double angle) {
     m_angle = angle;
 }
 
-void MeaPosition::RecordRectArea(const FSIZE& size) {
+void MeaPosition::RecordRectArea(const MeaFSize& size) {
     m_fieldMask |= MeaAreaField;
 
     m_area = size.cx * size.cy;
@@ -141,7 +141,7 @@ void MeaPosition::Load(const MeaXMLNode* positionNode) {
 
                     if ((pointNode->GetType() == MeaXMLNode::Type::Element) && (pointNode->GetData() == _T("point"))) {
                         CString name;
-                        FPOINT pt;
+                        MeaFPoint pt;
                         attrs.GetValueStr(_T("name"), name, def);
                         attrs.GetValueDbl(_T("x"), pt.x, def);
                         attrs.GetValueDbl(_T("y"), pt.y, def);

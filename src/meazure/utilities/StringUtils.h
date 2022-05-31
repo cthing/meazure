@@ -18,16 +18,12 @@
  */
 
  /// @file
- /// @brief String manipulation utility methods.
+ /// @brief String manipulation utility functions.
 
 #pragma once
 
 
-class MeaStringUtils {
-
-public:
-    MeaStringUtils() = delete;
-    ~MeaStringUtils() = delete;
+namespace MeaStringUtils {
 
     /// Converts the specified double to a string with the
     /// minimum number of decimal places.
@@ -36,7 +32,7 @@ public:
     ///
     /// @return String corresponding to the double value.
     ///
-    static CString DblToStr(double value);
+    CString DblToStr(double value);
 
     /// Tests whether the specified string is a number. For the
     /// purposes of this method, a number is a base 10 double
@@ -49,7 +45,7 @@ public:
     ///
     /// @return <b>true</b> if string represents a number.
     ///
-    static bool IsNumber(LPCTSTR str, double* valuep = nullptr);
+    bool IsNumber(LPCTSTR str, double* valuep = nullptr);
 
     /// Tests whether the specified string is a boolean value. For
     /// the purpose of this method, the strings "1", "TRUE", "true"
@@ -63,7 +59,7 @@ public:
     ///
     /// @return <b>true</b> if string represents a boolean value.
     ///
-    static bool IsBoolean(LPCTSTR str, bool* valuep = nullptr);
+    bool IsBoolean(LPCTSTR str, bool* valuep = nullptr);
 
     /// Converts standalone LF characters into a CR+LF pair.
     /// Existing CR+LF pairs in the string are not effected.
@@ -72,7 +68,7 @@ public:
     ///
     /// @return Converted string.
     ///
-    static CString LFtoCRLF(CString str);
+    CString LFtoCRLF(CString str);
 
     /// Converts CR+LF pairs to a single LF character.
     ///
@@ -80,5 +76,5 @@ public:
     ///
     /// @return Converted string.
     ///
-    static CString CRLFtoLF(CString str);
+    CString CRLFtoLF(CString str);
 };

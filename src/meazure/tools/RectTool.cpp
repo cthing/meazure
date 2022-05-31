@@ -106,7 +106,7 @@ bool MeaRectTool::Create() {
 }
 
 void MeaRectTool::SaveProfile(MeaProfile& profile) {
-    FPOINT pt;
+    MeaFPoint pt;
 
     // Save the position of the each crosshairs.
     //
@@ -123,12 +123,12 @@ void MeaRectTool::LoadProfile(MeaProfile& profile) {
     // for those positions that are not specified in the
     // profile.
     //
-    FPOINT def1 = m_unitsProvider.ConvertPos(m_point1);
-    FPOINT def2 = m_unitsProvider.ConvertPos(m_point2);
+    MeaFPoint def1 = m_unitsProvider.ConvertPos(m_point1);
+    MeaFPoint def2 = m_unitsProvider.ConvertPos(m_point2);
 
     // Load the crosshair positions.
     //
-    FPOINT pt;
+    MeaFPoint pt;
     pt.x = profile.ReadDbl(_T("RectX1"), def1.x);
     pt.y = profile.ReadDbl(_T("RectY1"), def1.y);
     m_point1 = m_unitsProvider.UnconvertPos(pt);
@@ -223,9 +223,9 @@ void MeaRectTool::Update(MeaUpdateReason reason) {
 
         // Convert the pixel locations to the current units.
         //
-        FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
-        FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
-        FSIZE wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
+        MeaFPoint p1 = m_unitsProvider.ConvertCoord(m_point1);
+        MeaFPoint p2 = m_unitsProvider.ConvertCoord(m_point2);
+        MeaFSize wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
 
         // Display the results of the measurement in
         // the data display fields.
@@ -352,9 +352,9 @@ const POINT& MeaRectTool::GetPosition() const {
 void MeaRectTool::RecordPosition(MeaPosition& position) const {
     // Convert the pixel locations to the current units.
     //
-    FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
-    FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
-    FSIZE wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
+    MeaFPoint p1 = m_unitsProvider.ConvertCoord(m_point1);
+    MeaFPoint p2 = m_unitsProvider.ConvertCoord(m_point2);
+    MeaFSize wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
 
     // Save the positions and the name of this tool in the position object.
     //

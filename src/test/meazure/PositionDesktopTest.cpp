@@ -51,7 +51,7 @@ BOOST_FIXTURE_TEST_CASE(TestNoGuidCtor, TestFixture) {
     BOOST_TEST(desktop.GetLinearUnits()->GetUnitsId() == MeaPixelsId);
     BOOST_TEST(desktop.GetAngularUnits()->GetUnitsId() == MeaDegreesId);
     BOOST_TEST(!desktop.IsInvertY());
-    BOOST_TEST(desktop.GetOrigin() == FPOINT(0.0, 0.0));
+    BOOST_TEST(desktop.GetOrigin() == MeaFPoint(0.0, 0.0));
     std::regex guidRegex("[A-Fa-f\\d]{8}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{12}");
     BOOST_TEST(std::regex_match(static_cast<LPCTSTR>(desktop.GetId()), guidRegex));
     BOOST_TEST(desktop.GetCustomName() == _T(""));
@@ -67,7 +67,7 @@ BOOST_FIXTURE_TEST_CASE(TestGuidCtor, TestFixture) {
     BOOST_TEST(desktop.GetLinearUnits()->GetUnitsId() == MeaPixelsId);
     BOOST_TEST(desktop.GetAngularUnits()->GetUnitsId() == MeaDegreesId);
     BOOST_TEST(!desktop.IsInvertY());
-    BOOST_TEST(desktop.GetOrigin() == FPOINT(0.0, 0.0));
+    BOOST_TEST(desktop.GetOrigin() == MeaFPoint(0.0, 0.0));
     BOOST_TEST(desktop.GetId() == guid);
     BOOST_TEST(desktop.GetCustomName() == _T(""));
     BOOST_TEST(desktop.GetCustomAbbrev() == _T(""));
@@ -97,7 +97,7 @@ BOOST_FIXTURE_TEST_CASE(TestCopy, TestFixture) {
 BOOST_FIXTURE_TEST_CASE(TestDesktopEquality, TestFixture) {
     MockUnitsProvider unitsProvider1(screenProvider);
     MockUnitsProvider unitsProvider2(screenProvider);
-    unitsProvider2.SetOrigin(FPOINT(2.0, 3.0));
+    unitsProvider2.SetOrigin(MeaFPoint(2.0, 3.0));
     MeaPositionDesktop desktop1(unitsProvider1, screenProvider);
     MeaPositionDesktop desktop2(desktop1);
     MeaPositionDesktop desktop3(unitsProvider2, screenProvider);
@@ -108,7 +108,7 @@ BOOST_FIXTURE_TEST_CASE(TestDesktopEquality, TestFixture) {
 }
 
 BOOST_FIXTURE_TEST_CASE(TestSaveLoad, TestFixture) {
-    unitsProvider.SetOrigin(FPOINT(2.0, 3.0));
+    unitsProvider.SetOrigin(MeaFPoint(2.0, 3.0));
     MeaPositionDesktop desktop1(unitsProvider, screenProvider);
 
     MockPositionLogWriter writer;
@@ -124,7 +124,7 @@ BOOST_FIXTURE_TEST_CASE(TestSaveLoad, TestFixture) {
     BOOST_TEST(desktop2.GetLinearUnits()->GetUnitsId() == MeaPixelsId);
     BOOST_TEST(desktop2.GetAngularUnits()->GetUnitsId() == MeaDegreesId);
     BOOST_TEST(!desktop2.IsInvertY());
-    BOOST_TEST(desktop2.GetOrigin() == FPOINT(2.0, 3.0));
+    BOOST_TEST(desktop2.GetOrigin() == MeaFPoint(2.0, 3.0));
     std::regex guidRegex("[A-Fa-f\\d]{8}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{12}");
     BOOST_TEST(std::regex_match(static_cast<LPCTSTR>(desktop2.GetId()), guidRegex));
     BOOST_TEST(desktop2.GetCustomName() == _T(""));

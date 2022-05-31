@@ -193,7 +193,7 @@ void MeaPositionLogDlg::UpdatePositionInfo(int posIndex) const {
 
         const MeaPosition& position = mgr.GetPosition(posIndex);
 
-        CTime ts(MeaParseTimeStamp(position.GetTimeStamp()));
+        CTime ts(MeaTimeStamp::Parse(position.GetTimeStamp()));
         recordedField->SetWindowText(ts.Format(_T("%c")));
 
         descField->SetWindowText(position.GetDesc());

@@ -129,12 +129,12 @@ void MeaRulerPrefs::OnChangeBorderColor() {
 }
 
 void MeaRulerPrefs::OnDefBkColor() {
-    m_backColor = MeaColors::GetDef(MeaColors::RulerBack);
+    m_backColor = MeaColors::GetDefault(MeaColors::RulerBack);
     ColorsChanged();
 }
 
 void MeaRulerPrefs::OnDefBorderColor() {
-    m_borderColor = MeaColors::GetDef(MeaColors::RulerBorder);
+    m_borderColor = MeaColors::GetDefault(MeaColors::RulerBorder);
     ColorsChanged();
 }
 

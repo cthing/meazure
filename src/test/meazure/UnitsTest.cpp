@@ -98,12 +98,12 @@ void VerifyRequiresRes(const MeaLinearUnits& units, bool requiresRes) {
     BOOST_TEST(units.RequiresRes() == requiresRes);
 }
 
-void VerifyConvertCoords(MeaLinearUnits& units, const FPOINT& corrected, const FPOINT& uncorrected) {
+void VerifyConvertCoords(MeaLinearUnits& units, const MeaFPoint& corrected, const MeaFPoint& uncorrected) {
     POINT newOrigin = { 100, 200 };
     units.SetOrigin(newOrigin);
     units.SetInvertY(true);
     POINT pos = { 110, 220 };
-    FPOINT result = units.ConvertCoord(pos);
+    MeaFPoint result = units.ConvertCoord(pos);
     BOOST_TEST(result.x == corrected.x, tt::tolerance(0.0001));
     BOOST_TEST(result.y == corrected.y, tt::tolerance(0.0001));
     result = units.ConvertPos(pos);
@@ -130,23 +130,23 @@ void VerifyConvertCoords(MeaLinearUnits& units, const FPOINT& corrected, const F
     units.SetInvertY(false);
 }
 
-void VerifyConvertRes(MeaLinearUnits& units, const FSIZE& convertedRes) {
-    FSIZE res(100.0, 90.0);
-    FSIZE result = units.ConvertRes(res);
+void VerifyConvertRes(MeaLinearUnits& units, const MeaFSize& convertedRes) {
+    MeaFSize res(100.0, 90.0);
+    MeaFSize result = units.ConvertRes(res);
     BOOST_TEST(result.cx == convertedRes.cx, tt::tolerance(0.0001));
     BOOST_TEST(result.cy == convertedRes.cy, tt::tolerance(0.0001));
 }
 
 void VerifyToPixels(MeaLinearUnits& units, double x, double y, int convertedX, int convertedY) {
-    FSIZE res(100.0, 90.0);
+    MeaFSize res(100.0, 90.0);
     BOOST_TEST(units.ConvertToPixels(res, x, 1).cx == convertedX);
     BOOST_TEST(units.ConvertToPixels(res, 0.0, 100).cx == 100);
     BOOST_TEST(units.ConvertToPixels(res, y, 1).cy == convertedY);
 }
 
 void VerifyFromPixels(MeaLinearUnits& units, double xfactor, double yfactor) {
-    FSIZE res(100.0, 90.0);
-    FSIZE result = units.FromPixels(res);
+    MeaFSize res(100.0, 90.0);
+    MeaFSize result = units.FromPixels(res);
     BOOST_TEST(result.cx == xfactor, tt::tolerance(0.0001));
     BOOST_TEST(result.cy == yfactor, tt::tolerance(0.0001));
 }
@@ -203,11 +203,11 @@ BOOST_AUTO_TEST_CASE(TestPixelUnits) {
     VerifyFormat(units, MeaX, 90.12345, "90");
     VerifyFormat(units, MeaD, 90.12345, "90.1");
 
-    FPOINT correctedPos(10.0, -20.0);
-    FPOINT uncorrectedPos(110.0, 220.0);
+    MeaFPoint correctedPos(10.0, -20.0);
+    MeaFPoint uncorrectedPos(110.0, 220.0);
     VerifyConvertCoords(units, correctedPos, uncorrectedPos);
 
-    FSIZE res(100.0, 90.0);
+    MeaFSize res(100.0, 90.0);
     VerifyConvertRes(units, res);
 
     VerifyToPixels(units, 10.0, 20.0, 10, 20);
@@ -230,11 +230,11 @@ BOOST_AUTO_TEST_CASE(TestPointUnits) {
     VerifyFormat(units, MeaX, 90.12345, "90.1");
     VerifyFormat(units, MeaRx, 90.12345, "90.12");
 
-    FPOINT correctedPos(7.5, -15.0);
-    FPOINT uncorrectedPos(82.5, 165.0);
+    MeaFPoint correctedPos(7.5, -15.0);
+    MeaFPoint uncorrectedPos(82.5, 165.0);
     VerifyConvertCoords(units, correctedPos, uncorrectedPos);
 
-    FSIZE convertedRes(1.3888888889, 1.25);
+    MeaFSize convertedRes(1.3888888889, 1.25);
     VerifyConvertRes(units, convertedRes);
 
     VerifyToPixels(units, 15.0, 15.0, 20, 18);
@@ -257,11 +257,11 @@ BOOST_AUTO_TEST_CASE(TestPicaUnits) {
     VerifyFormat(units, MeaX, 90.12345, "90.12");
     VerifyFormat(units, MeaRx, 90.12345, "90.1");
 
-    FPOINT correctedPos(0.625, -1.25);
-    FPOINT uncorrectedPos(6.875, 13.75);
+    MeaFPoint correctedPos(0.625, -1.25);
+    MeaFPoint uncorrectedPos(6.875, 13.75);
     VerifyConvertCoords(units, correctedPos, uncorrectedPos);
 
-    FSIZE convertedRes(16.66666667, 15.0);
+    MeaFSize convertedRes(16.66666667, 15.0);
     VerifyConvertRes(units, convertedRes);
 
     VerifyToPixels(units, 1.25, 1.25, 20, 18);
@@ -284,11 +284,11 @@ BOOST_AUTO_TEST_CASE(TestTwipUnits) {
     VerifyFormat(units, MeaX, 90.12345, "90");
     VerifyFormat(units, MeaRx, 90.123456, "90.1235");
 
-    FPOINT correctedPos(150.0, -300.0);
-    FPOINT uncorrectedPos(1650.0, 3300.0);
+    MeaFPoint correctedPos(150.0, -300.0);
+    MeaFPoint uncorrectedPos(1650.0, 3300.0);
     VerifyConvertCoords(units, correctedPos, uncorrectedPos);
 
-    FSIZE convertedRes(0.0694444444, 0.0625);
+    MeaFSize convertedRes(0.0694444444, 0.0625);
     VerifyConvertRes(units, convertedRes);
 
     VerifyToPixels(units, 5000, 2000, 347, 125);
@@ -311,11 +311,11 @@ BOOST_AUTO_TEST_CASE(TestInchUnits) {
     VerifyFormat(units, MeaX, 90.12345, "90.123");
     VerifyFormat(units, MeaRx, 90.123456, "90.1");
 
-    FPOINT correctedPos(0.10416666666666666, -0.20833333333333331);
-    FPOINT uncorrectedPos(1.1458333333333333, 2.2916666666666665);
+    MeaFPoint correctedPos(0.10416666666666666, -0.20833333333333331);
+    MeaFPoint uncorrectedPos(1.1458333333333333, 2.2916666666666665);
     VerifyConvertCoords(units, correctedPos, uncorrectedPos);
 
-    FSIZE convertedRes(100.0, 90.0);
+    MeaFSize convertedRes(100.0, 90.0);
     VerifyConvertRes(units, convertedRes);
 
     VerifyToPixels(units, 50, 20, 5000, 1800);
@@ -338,11 +338,11 @@ BOOST_AUTO_TEST_CASE(TestCentimeterUnits) {
     VerifyFormat(units, MeaX, 90.12345, "90.12");
     VerifyFormat(units, MeaRx, 90.123456, "90.1");
 
-    FPOINT correctedPos(0.26458333333333334, -0.52916666666666667);
-    FPOINT uncorrectedPos(2.9104166666666669, 5.8208333333333337);
+    MeaFPoint correctedPos(0.26458333333333334, -0.52916666666666667);
+    MeaFPoint uncorrectedPos(2.9104166666666669, 5.8208333333333337);
     VerifyConvertCoords(units, correctedPos, uncorrectedPos);
 
-    FSIZE convertedRes = { 39.370078740157481, 35.433070866141733 };
+    MeaFSize convertedRes = { 39.370078740157481, 35.433070866141733 };
     VerifyConvertRes(units, convertedRes);
 
     VerifyToPixels(units, 50, 20, 1968, 708);
@@ -365,11 +365,11 @@ BOOST_AUTO_TEST_CASE(TestMillimeterUnits) {
     VerifyFormat(units, MeaX, 90.12345, "90.1");
     VerifyFormat(units, MeaRx, 90.123456, "90.12");
 
-    FPOINT correctedPos(2.6458333333333334, -5.2916666666666667);
-    FPOINT uncorrectedPos(29.104166666666669, 58.208333333333337);
+    MeaFPoint correctedPos(2.6458333333333334, -5.2916666666666667);
+    MeaFPoint uncorrectedPos(29.104166666666669, 58.208333333333337);
     VerifyConvertCoords(units, correctedPos, uncorrectedPos);
 
-    FSIZE convertedRes(3.9370078740157481, 3.5433070866141733);
+    MeaFSize convertedRes(3.9370078740157481, 3.5433070866141733);
     VerifyConvertRes(units, convertedRes);
 
     VerifyToPixels(units, 50, 20, 196, 70);
@@ -431,11 +431,11 @@ BOOST_AUTO_TEST_CASE(TestCustomUnits, *bt::tolerance(0.0001)) {
     VerifyFormat(units, MeaX, 90.12345, "90");
     VerifyFormat(units, MeaRx, 90.123456, "90.1");
 
-    FPOINT correctedPos(0.0520833333333333294, -0.10416666666666666);
-    FPOINT uncorrectedPos(0.57291666666666663, 1.1458333333333333);
+    MeaFPoint correctedPos(0.0520833333333333294, -0.10416666666666666);
+    MeaFPoint uncorrectedPos(0.57291666666666663, 1.1458333333333333);
     VerifyConvertCoords(units, correctedPos, uncorrectedPos);
 
-    FSIZE convertedRes(200.0, 180.0);
+    MeaFSize convertedRes(200.0, 180.0);
     VerifyConvertRes(units, convertedRes);
 
     VerifyToPixels(units, 50, 20, 10000, 3600);

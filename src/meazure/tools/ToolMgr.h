@@ -394,7 +394,7 @@ public:
     /// @param point    [in] Point, in pixels.
     /// @param cpoint   [in] Point, in the current units.
     ///
-    void ShowXY1(const POINT& point, const FPOINT& cpoint) {
+    void ShowXY1(const POINT& point, const MeaFPoint& cpoint) {
         if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowXY1(point, cpoint);
         }
@@ -408,7 +408,7 @@ public:
     /// @param point    [in] Point, in pixels.
     /// @param cpoint   [in] Point, in the current units.
     ///
-    void ShowXY2(const POINT& point, const FPOINT& cpoint) {
+    void ShowXY2(const POINT& point, const MeaFPoint& cpoint) {
         if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowXY2(point, cpoint);
         }
@@ -422,7 +422,7 @@ public:
     /// @param point    [in] Point, in pixels.
     /// @param cpoint   [in] Point, in the current units.
     ///
-    void ShowXYV(const POINT& point, const FPOINT& cpoint) {
+    void ShowXYV(const POINT& point, const MeaFPoint& cpoint) {
         if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowXYV(point, cpoint);
         }
@@ -434,7 +434,7 @@ public:
     ///
     /// @param size     [in] Width and height, in the current units
     ///
-    void ShowWH(const FSIZE& size) {
+    void ShowWH(const MeaFSize& size) {
         if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowWH(size);
         }
@@ -446,7 +446,7 @@ public:
     /// @param size     [in] The distance is calculated from
     ///                 this parameter, in the current units
     ///
-    void ShowDistance(const FSIZE& size) {
+    void ShowDistance(const MeaFSize& size) {
         if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowDistance(size);
         }
@@ -479,7 +479,7 @@ public:
     ///
     /// @param size    [in] Width and height of the bounding rectangle.
     ///
-    void ShowAspect(const FSIZE& size) {
+    void ShowAspect(const MeaFSize& size) {
         if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowAspect(size);
         }
@@ -492,7 +492,7 @@ public:
     /// @param size     [in] Width and height from which the
     ///                 rectangular area is calculated, in current units.
     ///
-    void ShowRectArea(const FSIZE& size) {
+    void ShowRectArea(const MeaFSize& size) {
         if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowRectArea(size);
         }
@@ -525,7 +525,7 @@ public:
     ///
     /// @param size     [in] Width and height, in the current units.
     ///
-    void ShowScreenWH(const FSIZE& size) {
+    void ShowScreenWH(const MeaFSize& size) {
         if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowScreenWH(size);
         }
@@ -536,7 +536,7 @@ public:
     ///
     /// @param res      [in] Screen resolution, in the current units.
     ///
-    void ShowScreenRes(const FSIZE& res) {
+    void ShowScreenRes(const MeaFSize& res) {
         if (m_dataDisplay != nullptr) {
             m_dataDisplay->ShowScreenRes(res);
         }

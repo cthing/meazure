@@ -21,50 +21,92 @@
 #include "Colors.h"
 #include <meazure/ui/LayeredWindows.h>
 #include <meazure/utilities/NumericUtils.h>
+#include <algorithm>
 
+// Remove Windows defines so std versions can be used.
+#undef min
+#undef max
 
-MeaColors::Colors const MeaColors::m_defColors = {
-        { LineFore,         RGB(0xFF, 0, 0) },
-        { CrossHairBack,    RGB(0xFF, 0, 0) },
-        { CrossHairBorder,  RGB(0x50, 0x50, 0x50) },
-        { CrossHairHilite,  RGB(0xFF, 0xFF, 0) },
-        { CrossHairOpacity, RGB(HaveLayeredWindows() ? 0xE5 : 0xFF, 0, 0) },
-        { RulerBack,        RGB(0xFF, 0xFF, 0xFF) },
-        { RulerBorder,      RGB(0, 0, 0) },
-        { RulerOpacity,     RGB(HaveLayeredWindows() ? 0xE5 : 0xFF, 0, 0) }
+typedef std::map<MeaColors::Item, COLORREF> Colors;        ///< Maps items to their colors.
+
+static Colors const defaultColors = {
+        { MeaColors::LineFore,         RGB(0xFF, 0, 0) },
+        { MeaColors::CrossHairBack,    RGB(0xFF, 0, 0) },
+        { MeaColors::CrossHairBorder,  RGB(0x50, 0x50, 0x50) },
+        { MeaColors::CrossHairHilite,  RGB(0xFF, 0xFF, 0) },
+        { MeaColors::CrossHairOpacity, RGB(HaveLayeredWindows() ? 0xE5 : 0xFF, 0, 0) },
+        { MeaColors::RulerBack,        RGB(0xFF, 0xFF, 0xFF) },
+        { MeaColors::RulerBorder,      RGB(0, 0, 0) },
+        { MeaColors::RulerOpacity,     RGB(HaveLayeredWindows() ? 0xE5 : 0xFF, 0, 0) }
 };
 
-MeaColors::Colors MeaColors::m_colors = m_defColors;
+static Colors colors = defaultColors;
 
+
+void MeaColors::Reset() {
+    colors = defaultColors;
+}
 
 void MeaColors::SaveProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
-        profile.WriteInt(_T("LineFore"), m_colors[LineFore]);
-        profile.WriteInt(_T("CrossHairBack"), m_colors[CrossHairBack]);
-        profile.WriteInt(_T("CrossHairBorder"), m_colors[CrossHairBorder]);
-        profile.WriteInt(_T("CrossHairHilite"), m_colors[CrossHairHilite]);
-        profile.WriteInt(_T("CrossHairOpacity"), m_colors[CrossHairOpacity]);
-        profile.WriteInt(_T("RulerBack"), m_colors[RulerBack]);
-        profile.WriteInt(_T("RulerBorder"), m_colors[RulerBorder]);
-        profile.WriteInt(_T("RulerOpacity"), m_colors[RulerOpacity]);
+        profile.WriteInt(_T("LineFore"), colors[LineFore]);
+        profile.WriteInt(_T("CrossHairBack"), colors[CrossHairBack]);
+        profile.WriteInt(_T("CrossHairBorder"), colors[CrossHairBorder]);
+        profile.WriteInt(_T("CrossHairHilite"), colors[CrossHairHilite]);
+        profile.WriteInt(_T("CrossHairOpacity"), colors[CrossHairOpacity]);
+        profile.WriteInt(_T("RulerBack"), colors[RulerBack]);
+        profile.WriteInt(_T("RulerBorder"), colors[RulerBorder]);
+        profile.WriteInt(_T("RulerOpacity"), colors[RulerOpacity]);
     }
 }
 
 void MeaColors::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
-        m_colors[LineFore] = profile.ReadInt(_T("LineFore"), m_defColors.at(LineFore));
-        m_colors[CrossHairBack] = profile.ReadInt(_T("CrossHairBack"), m_defColors.at(CrossHairBack));
-        m_colors[CrossHairBorder] = profile.ReadInt(_T("CrossHairBorder"), m_defColors.at(CrossHairBorder));
-        m_colors[CrossHairHilite] = profile.ReadInt(_T("CrossHairHilite"), m_defColors.at(CrossHairHilite));
-        m_colors[CrossHairOpacity] = profile.ReadInt(_T("CrossHairOpacity"), m_defColors.at(CrossHairOpacity));
-        m_colors[RulerBack] = profile.ReadInt(_T("RulerBack"), m_defColors.at(RulerBack));
-        m_colors[RulerBorder] = profile.ReadInt(_T("RulerBorder"), m_defColors.at(RulerBorder));
-        m_colors[RulerOpacity] = profile.ReadInt(_T("RulerOpacity"), m_defColors.at(RulerOpacity));
+        colors[LineFore] = profile.ReadInt(_T("LineFore"), defaultColors.at(LineFore));
+        colors[CrossHairBack] = profile.ReadInt(_T("CrossHairBack"), defaultColors.at(CrossHairBack));
+        colors[CrossHairBorder] = profile.ReadInt(_T("CrossHairBorder"), defaultColors.at(CrossHairBorder));
+        colors[CrossHairHilite] = profile.ReadInt(_T("CrossHairHilite"), defaultColors.at(CrossHairHilite));
+        colors[CrossHairOpacity] = profile.ReadInt(_T("CrossHairOpacity"), defaultColors.at(CrossHairOpacity));
+        colors[RulerBack] = profile.ReadInt(_T("RulerBack"), defaultColors.at(RulerBack));
+        colors[RulerBorder] = profile.ReadInt(_T("RulerBorder"), defaultColors.at(RulerBorder));
+        colors[RulerOpacity] = profile.ReadInt(_T("RulerOpacity"), defaultColors.at(RulerOpacity));
     }
 }
 
 void MeaColors::MasterReset() {
-    m_colors = m_defColors;
+    colors = defaultColors;
+}
+
+void MeaColors::Set(Item item, COLORREF clr) {
+    colors[item] = clr;
+}
+
+void MeaColors::SetA(Item item, BYTE opacity) {
+    colors[item] = RGB(opacity, 0, 0);
+}
+
+COLORREF MeaColors::Get(Item item) {
+    return colors[item];
+}
+
+BYTE MeaColors::GetR(Item item) {
+    return GetRValue(colors[item]);
+}
+
+BYTE MeaColors::GetG(Item item) {
+    return GetGValue(colors[item]);
+}
+
+BYTE MeaColors::GetB(Item item) {
+    return GetBValue(colors[item]);
+}
+
+BYTE MeaColors::GetA(Item item) {
+    return GetRValue(colors[item]);
+}
+
+COLORREF MeaColors::GetDefault(Item item) {
+    return defaultColors.at(item);
 }
 
 COLORREF MeaColors::InterpolateColor(COLORREF startRGB, COLORREF endRGB, int percent) {
@@ -89,13 +131,13 @@ COLORREF MeaColors::InterpolateColor(COLORREF startRGB, COLORREF endRGB, int per
     return HSLtoRGB(hsl);
 }
 
-HSL MeaColors::RGBtoHSL(COLORREF rgb) {
+MeaColors::HSL MeaColors::RGBtoHSL(COLORREF rgb) {
     double h, s, l;
     double r = GetRValue(rgb) / 255.0;
     double g = GetGValue(rgb) / 255.0;
     double b = GetBValue(rgb) / 255.0;
-    double cmax = Max(r, Max(g, b));
-    double cmin = Min(r, Min(g, b));
+    double cmax = std::max(r, std::max(g, b));
+    double cmin = std::min(r, std::min(g, b));
 
     l = (cmax + cmin) / 2.0;
     if (MeaNumericUtils::IsFloatingEqual(cmax, cmin)) {
@@ -126,7 +168,14 @@ HSL MeaColors::RGBtoHSL(COLORREF rgb) {
     return HSL(h, s, l);
 }
 
-double MeaColors::HuetoRGB(double m1, double m2, double h) {
+/// Converts a hue to an RGB component value based on the specified weighting factors.
+/// 
+/// @param m1       [in] Weighting factor between lightness and saturation.
+/// @param m2       [in] Weighting factor between lightness and saturation.
+/// @param h        [in] Hue value.
+/// @return Either R, G, or B between 0.0 and 1.0. The component returned depends on the weighting factors specified.
+/// 
+static double HuetoRGB(double m1, double m2, double h) {
     if (h < 0.0) {
         h += 1.0;
     }

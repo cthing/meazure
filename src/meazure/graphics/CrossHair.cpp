@@ -92,7 +92,7 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
     // instance of the class is created.
     //
     if (m_size.cx == 0) {
-        FSIZE res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(AfxGetMainWnd()));
+        MeaFSize res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(AfxGetMainWnd()));
 
         m_size = m_unitsProvider.ConvertToPixels(MeaInchesId, res, 0.25, 25);
         m_size.cx += 1 - (m_size.cx % 2);       // Must be odd

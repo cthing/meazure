@@ -399,7 +399,7 @@ void MeaMagnifier::Draw(HDC hDC) {
     break;
     case HSLFmt:
     {
-        HSL hsl = MeaColors::RGBtoHSL(colorValue);
+        MeaColors::HSL hsl = MeaColors::RGBtoHSL(colorValue);
         colorLbl = _T("HSL:");
         colorStr.Format(_T("%03.0f %03.0f %03.0f"),
             240.0 * hsl.hue,

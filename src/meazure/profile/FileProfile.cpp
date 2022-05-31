@@ -150,7 +150,7 @@ void MeaFileProfile::WriteFileStart() {
 
     Write(1, _T("<info>\n"));
     Write(2, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(m_title)));
-    Write(2, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(nullptr))));
+    Write(2, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaTimeStamp::Make(time(nullptr))));
     Write(2, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
           static_cast<LPCTSTR>(AfxGetAppName()),
           static_cast<LPCTSTR>(MeaVersionInfo::Instance().GetProductVersion()),

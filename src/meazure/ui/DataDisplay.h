@@ -209,29 +209,29 @@ public:
     /// @param point    [in] Coordinates, in pixels.
     /// @param cpoint   [in] Coordinates, in current units.
     /// 
-    void ShowXY1(const POINT& point, const FPOINT& cpoint);
+    void ShowXY1(const POINT& point, const MeaFPoint& cpoint);
 
     /// Displays the specified X2, Y2 coordinates.
     /// @param point    [in] Coordinates, in pixels.
     /// @param cpoint   [in] Coordinates, in current units.
     /// 
-    void ShowXY2(const POINT& point, const FPOINT& cpoint);
+    void ShowXY2(const POINT& point, const MeaFPoint& cpoint);
 
     /// Displays the specified vertex or center X, Y coordinates.
     /// @param point    [in] Coordinates, in pixels.
     /// @param cpoint   [in] Coordinates, in current units.
     /// 
-    void ShowXYV(const POINT& point, const FPOINT& cpoint);
+    void ShowXYV(const POINT& point, const MeaFPoint& cpoint);
 
     /// Displays the specified width and height.
     /// @param size     [in] Width and height, in current units.
     /// 
-    void ShowWH(const FSIZE& size);
+    void ShowWH(const MeaFSize& size);
 
     /// Displays a diagonal distance calculated from the specified width and height.
     /// @param size     [in] Width and height, in current units.
     /// 
-    void ShowDistance(const FSIZE& size);
+    void ShowDistance(const MeaFSize& size);
 
     /// Displays the specified distance.
     /// @param dist     [in] Distance, in current units.
@@ -246,12 +246,12 @@ public:
     /// Displays the aspect ratio of the specified width and height (i.e. width/height).
     /// @param size    [in] Width and height, in current units.
     /// 
-    void ShowAspect(const FSIZE& size);
+    void ShowAspect(const MeaFSize& size);
 
     /// Displays the rectangular area calculated from the specified width and height.
     /// @param size     [in] Width and height, in current units.
     /// 
-    void ShowRectArea(const FSIZE& size);
+    void ShowRectArea(const MeaFSize& size);
 
     /// Displays the circular area calculated from the specified radius.
     /// @param radius   [in] Radius, in current units.
@@ -268,12 +268,12 @@ public:
     /// Displays the specified screen width and height.
     /// @param size     [in] Screen width and height, in the current units.
     /// 
-    void ShowScreenWH(const FSIZE& size);
+    void ShowScreenWH(const MeaFSize& size);
 
     /// Displays the specified screen resolution.
     /// @param res      [in] Screen resolution in the X and Y dimensions, in the current units.
     /// 
-    void ShowScreenRes(const FSIZE& res);
+    void ShowScreenRes(const MeaFSize& res);
 
     ///If one of the enabled text fields has the focus, a pointer
     /// to that window is returned.

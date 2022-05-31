@@ -25,27 +25,29 @@
 #include <time.h>
 
 
-/// Creates an ISO 8601 compliant time stamp based on the specified
-/// time value. The format of the timestamp is:
-///
-/// yyyy-mm-ddThh:mm:ssZ
-///
-/// @param t    [in] Number of seconds since the Epoch as defined
-///             by the system time() function.
-///
-/// @return String containing the timestamp in 8601 format corresponding
-///         to the specified time.
-///
-extern CString MeaMakeTimeStamp(time_t t);
+namespace MeaTimeStamp {
+    /// Creates an ISO 8601 compliant time stamp based on the specified
+    /// time value. The format of the timestamp is:
+    ///
+    /// yyyy-mm-ddThh:mm:ssZ
+    ///
+    /// @param t    [in] Number of seconds since the Epoch as defined
+    ///             by the system time() function.
+    ///
+    /// @return String containing the timestamp in 8601 format corresponding
+    ///         to the specified time.
+    ///
+    CString Make(time_t t);
 
-/// Parses an ISO 8601 compliant time stamp and returns the
-/// corresponding time value. The format of the timestamp must be:
-///
-/// yyy-mm-ddThh:mm:ssZ
-///
-/// @param timeStr  [in] Time stamp string to parse.
-///
-/// @return Number of seconds since the Epoch as defined by the
-///         system time() function.
-///
-extern time_t MeaParseTimeStamp(const CString& timeStr);
+    /// Parses an ISO 8601 compliant time stamp and returns the
+    /// corresponding time value. The format of the timestamp must be:
+    ///
+    /// yyy-mm-ddThh:mm:ssZ
+    ///
+    /// @param timeStr  [in] Time stamp string to parse.
+    ///
+    /// @return Number of seconds since the Epoch as defined by the
+    ///         system time() function.
+    ///
+    time_t Parse(const CString& timeStr);
+};

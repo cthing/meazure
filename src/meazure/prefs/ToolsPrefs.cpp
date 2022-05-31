@@ -200,26 +200,26 @@ void MeaToolsPrefs::OnChangeHiliteColor() {
 }
 
 void MeaToolsPrefs::OnDefLineColor() {
-    m_lineColor = MeaColors::GetDef(MeaColors::LineFore);
+    m_lineColor = MeaColors::GetDefault(MeaColors::LineFore);
     m_line.SetColor(m_lineColor);
     SetModified(TRUE);
 }
 
 void MeaToolsPrefs::OnDefBorderColor() {
-    m_borderColor = MeaColors::GetDef(MeaColors::CrossHairBorder);
+    m_borderColor = MeaColors::GetDefault(MeaColors::CrossHairBorder);
     m_normalCH.SetColors(m_borderColor, m_backColor, m_backColor);
     m_hiliteCH.SetColors(m_borderColor, m_hiliteColor, m_hiliteColor);
     SetModified(TRUE);
 }
 
 void MeaToolsPrefs::OnDefBackColor() {
-    m_backColor = MeaColors::GetDef(MeaColors::CrossHairBack);
+    m_backColor = MeaColors::GetDefault(MeaColors::CrossHairBack);
     m_normalCH.SetColors(m_borderColor, m_backColor, m_backColor);
     SetModified(TRUE);
 }
 
 void MeaToolsPrefs::OnDefHiliteColor() {
-    m_hiliteColor = MeaColors::GetDef(MeaColors::CrossHairHilite);
+    m_hiliteColor = MeaColors::GetDefault(MeaColors::CrossHairHilite);
     m_hiliteCH.SetColors(m_borderColor, m_hiliteColor, m_hiliteColor);
     SetModified(TRUE);
 }

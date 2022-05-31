@@ -135,9 +135,9 @@ void MeaWindowTool::Update(MeaUpdateReason reason) {
 
         // Convert the window dimensions to the current units.
         //
-        FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
-        FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
-        FSIZE wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
+        MeaFPoint p1 = m_unitsProvider.ConvertCoord(m_point1);
+        MeaFPoint p2 = m_unitsProvider.ConvertCoord(m_point2);
+        MeaFSize wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
 
         // Display the measurement information.
         //
@@ -192,9 +192,9 @@ const POINT& MeaWindowTool::GetPosition() const {
 void MeaWindowTool::RecordPosition(MeaPosition& position) const {
     // Convert the pixel locations to the current units.
     //
-    FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
-    FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
-    FSIZE wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
+    MeaFPoint p1 = m_unitsProvider.ConvertCoord(m_point1);
+    MeaFPoint p2 = m_unitsProvider.ConvertCoord(m_point2);
+    MeaFSize wh = m_unitsProvider.GetWidthHeight(m_point1, m_point2);
 
     // Save the positions and the name of this tool in the position object.
     //

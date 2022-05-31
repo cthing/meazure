@@ -41,7 +41,7 @@
 class MeaPosition {
 
 public:
-    typedef std::map<CString, FPOINT> PointMap;     ///< Maps a point name to the coordinates of the point.
+    typedef std::map<CString, MeaFPoint> PointMap;     ///< Maps a point name to the coordinates of the point.
 
 
     /// Constructs a position object that references the specified desktop information object.
@@ -154,31 +154,31 @@ public:
     /// @param name     [in] Name to assign the point.
     /// @param pt       [in] Point to be stored in the position.
     ///
-    void AddPoint(LPCTSTR name, const FPOINT& pt) { m_points[name] = pt; }
+    void AddPoint(LPCTSTR name, const MeaFPoint& pt) { m_points[name] = pt; }
 
     /// Records the specified point as an x1, y1 point.
     /// 
     /// @param point        [in] Point to record, in the current units.
     /// 
-    void RecordXY1(const FPOINT& point);
+    void RecordXY1(const MeaFPoint& point);
 
     /// Records the specified point as an x2, y2 point.
     /// 
     /// @param point        [in] Point to record, in the current units.
     /// 
-    void RecordXY2(const FPOINT& point);
+    void RecordXY2(const MeaFPoint& point);
 
     /// Records the specified point as an xv, yv point.
     /// 
     /// @param point        [in] Point to record, in the current units.
     /// 
-    void RecordXYV(const FPOINT& point);
+    void RecordXYV(const MeaFPoint& point);
 
     /// Records the specified width and height.
     /// 
     /// @param size         [in] Width and height to record, in the current units.
     /// 
-    void RecordWH(const FSIZE& size);
+    void RecordWH(const MeaFSize& size);
 
     /// Records a distance. The distance is calculated
     /// by the method using the formula:
@@ -188,7 +188,7 @@ public:
     /// 
     /// @param size         [in] Width and height used to calculate the distance, in the current units.
     /// 
-    void RecordDistance(const FSIZE& size);
+    void RecordDistance(const MeaFSize& size);
 
     /// Records the specified distance.
     /// 
@@ -210,7 +210,7 @@ public:
     /// 
     /// @param size         [in] WWidth and height used to calculate the area, in the current units.
     /// 
-    void RecordRectArea(const FSIZE& size);
+    void RecordRectArea(const MeaFSize& size);
 
     /// Records a circular area. The area is calculated using
     /// the formula:

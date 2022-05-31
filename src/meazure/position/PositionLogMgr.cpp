@@ -561,7 +561,7 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) {
     Write(indent, _T("<info>\n"));
     indent++;
     Write(indent, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_title))));
-    Write(indent, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaMakeTimeStamp(time(nullptr))));
+    Write(indent, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaTimeStamp::Make(time(nullptr))));
     Write(indent, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
           static_cast<LPCTSTR>(AfxGetAppName()),
           static_cast<LPCTSTR>(MeaVersionInfo::Instance().GetProductVersion()),

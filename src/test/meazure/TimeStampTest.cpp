@@ -25,11 +25,11 @@
 
 
 BOOST_AUTO_TEST_CASE(TestMakeTimeStamp) {
-    BOOST_TEST(MeaMakeTimeStamp(0) == _T("1970-01-01T00:00:00Z"));        // Epoch
-    BOOST_TEST(MeaMakeTimeStamp(34563600) == _T("1971-02-05T01:00:00Z")); // Epoch + 400 d, 1 h
+    BOOST_TEST(MeaTimeStamp::Make(0) == _T("1970-01-01T00:00:00Z"));        // Epoch
+    BOOST_TEST(MeaTimeStamp::Make(34563600) == _T("1971-02-05T01:00:00Z")); // Epoch + 400 d, 1 h
 }
 
 BOOST_AUTO_TEST_CASE(TestParseTimeStamp) {
-    BOOST_TEST(MeaParseTimeStamp(_T("1970-01-01T00:00:00Z")) == 0);
-    BOOST_TEST(MeaParseTimeStamp(_T("1971-02-05T01:00:00Z")) == 34563600);
+    BOOST_TEST(MeaTimeStamp::Parse(_T("1970-01-01T00:00:00Z")) == 0);
+    BOOST_TEST(MeaTimeStamp::Parse(_T("1971-02-05T01:00:00Z")) == 34563600);
 }

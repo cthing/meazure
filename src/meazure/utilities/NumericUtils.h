@@ -27,13 +27,10 @@
 
 /// Constants and convenience methods for working with numbers.
 ///
-class MeaNumericUtils {
-public:
-    MeaNumericUtils() = delete;
-    ~MeaNumericUtils() = delete;
-
-    inline static const double PI = 3.141592653589793;
-    inline static const double PI4 = 0.785398163397448;
+namespace MeaNumericUtils {
+    
+    inline const double PI = 3.141592653589793;
+    inline const double PI4 = 0.785398163397448;
 
     /// Tests whether the two specified floating point values are equal.
     /// 
@@ -49,7 +46,7 @@ public:
     /// for details on this implementation.
     ///
     template<typename T>
-    static bool IsFloatingEqual(T f1, T f2) {
+    inline bool IsFloatingEqual(T f1, T f2) {
         if (std::fabs(f1 - f2) <= std::numeric_limits<T>::epsilon()) {
             return true;
         }
@@ -64,7 +61,7 @@ public:
     /// @return <b>true</b> if the value is equal to zero within an epsilon of the floating point type.
     ///
     template<typename T>
-    static bool IsFloatingZero(T f) {
+    inline bool IsFloatingZero(T f) {
         return std::fabs(f) <= std::numeric_limits<T>::epsilon();
     }
 };

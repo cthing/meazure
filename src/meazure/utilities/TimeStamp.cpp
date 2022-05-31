@@ -28,13 +28,13 @@
 #pragma warning(default: 4244 4127 4701)
 
 
-CString MeaMakeTimeStamp(time_t t) {
+CString MeaTimeStamp::Make(time_t t) {
     CTime ts(t);
 
     return ts.FormatGmt(_T("%Y-%m-%dT%H:%M:%SZ"));
 }
 
-time_t MeaParseTimeStamp(const CString& timeStr) {
+time_t MeaTimeStamp::Parse(const CString& timeStr) {
     using namespace boost::posix_time;
     using namespace boost::gregorian;
 

@@ -97,7 +97,7 @@ void MeaScreenTool::SetPosition(const POINT& pos) {
     MeaScreenProvider::ScreenIter iter = m_screenProvider.GetScreenIter(pos);
 
     const CRect& rect = m_screenProvider.GetScreenRect(iter);
-    const FSIZE& res = m_screenProvider.GetScreenRes(iter);
+    const MeaFSize& res = m_screenProvider.GetScreenRes(iter);
     bool anyOSRes = m_screenProvider.AnyOSRes();
 
     // Update the cached information, if the information cached in

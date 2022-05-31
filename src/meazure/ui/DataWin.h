@@ -83,7 +83,7 @@ public:
     ///
     /// @param point    [in] Coordinates to display.
     ///
-    void ShowXY(const FPOINT& point) {
+    void ShowXY(const MeaFPoint& point) {
         m_xData = m_unitsProvider.Format(MeaX, point.x);
         m_yData = m_unitsProvider.Format(MeaY, point.y);
     }
@@ -94,7 +94,7 @@ public:
     ///
     /// @param size     [in] Dimensions to display.
     ///
-    void ShowWH(const FSIZE& size) {
+    void ShowWH(const MeaFSize& size) {
         m_wData = m_unitsProvider.Format(MeaW, size.cx);
         m_hData = m_unitsProvider.Format(MeaH, size.cy);
     }
@@ -105,7 +105,7 @@ public:
     ///
     /// @param dist     [in] Dimensions used to calculate the distance.
     ///
-    void ShowDistance(const FSIZE& dist) {
+    void ShowDistance(const MeaFSize& dist) {
         m_dData = m_unitsProvider.Format(MeaD, MeaGeometry::CalcLength(dist.cx, dist.cy));
     }
 

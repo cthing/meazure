@@ -28,11 +28,7 @@
 
 /// Plots the points for drawing various shapes (e.g. lines, circles).
 ///
-class MeaPlotter {
-
-public:
-    MeaPlotter() = delete;
-    ~MeaPlotter() = delete;
+namespace MeaPlotter {
 
     /// The window region is composed of single pixel rectangles arranged in a line from the start point to the end
     /// point. The location of each rectangle is determined using the Bresenham algorithm adapted from
@@ -43,7 +39,7 @@ public:
     /// @param end       [in] End point for the line
     /// @param addPoint  [in] Function called to record the plotted point (x, y)
     ///
-    static void PlotLine(const POINT& start, const POINT& end, std::function<void(int, int)> addPoint) {
+    inline void PlotLine(const POINT& start, const POINT& end, std::function<void(int, int)> addPoint) {
         const int dx = end.x - start.x;
         const int dy = end.y - start.y;
 
@@ -91,7 +87,7 @@ public:
     /// @param radius   [in] Radius of the circle, in pixels
     /// @param addPoint [in] Function called to record the plotted point (x, y)
     ///
-    static void PlotCircle(const POINT& center, int radius, std::function<void(int, int)> addPoint) {
+    inline void PlotCircle(const POINT& center, int radius, std::function<void(int, int)> addPoint) {
         const auto [xc, yc] = center;
         int x = radius;
         int y = 0;
@@ -143,7 +139,7 @@ public:
     /// @param layers   [in] number of rectangles comprising a crosshair petal
     /// @param addPoint [in] Function called to record the plotted point (x, y)
     ///
-    static void PlotCrosshair(const SIZE& size, const SIZE& spread, int layers, std::function<void(int, int)> addPoint) {
+    inline void PlotCrosshair(const SIZE& size, const SIZE& spread, int layers, std::function<void(int, int)> addPoint) {
         const int xc = size.cx / 2;
         const int yc = size.cy / 2;
         const int thkx = xc / layers;

@@ -297,7 +297,7 @@ public:
     ///         width and height are inclusive (e.g. p1.x = 1, p2.x = 3,
     ///         width = p2.x - p1.x + 1 = 3).
     ///
-    FSIZE GetWidthHeight(const POINT& p1, const POINT& p2) const override;
+    MeaFSize GetWidthHeight(const POINT& p1, const POINT& p2) const override;
 
     /// Creates a new length measurement units label object.
     ///
@@ -379,7 +379,7 @@ public:
     ///         conversion takes into account the location of the origin and
     ///         the orientation of the y-axis.
     ///         
-    FPOINT ConvertCoord(const POINT& pos) const override {
+    MeaFPoint ConvertCoord(const POINT& pos) const override {
         return m_currentLinearUnits->ConvertCoord(pos);
     }
 
@@ -392,7 +392,7 @@ public:
     ///         takes into account the location of the origin and the orientation of
     ///         the y-axis.
     ///
-    POINT UnconvertCoord(const FPOINT& pos) const {
+    POINT UnconvertCoord(const MeaFPoint& pos) const {
         return m_currentLinearUnits->UnconvertCoord(pos);
     }
 
@@ -406,7 +406,7 @@ public:
     ///         conversion does not take into account the location of the
     ///         origin nor does it compensate for the orientation of the y-axis.
     ///
-    FPOINT ConvertPos(const POINT& pos) const override {
+    MeaFPoint ConvertPos(const POINT& pos) const override {
         return m_currentLinearUnits->ConvertPos(pos);
     }
 
@@ -419,7 +419,7 @@ public:
     ///         does not take into account the location of the origin nor the
     ///         orientation of the y-axis.
     ///
-    POINT UnconvertPos(const FPOINT& pos) const override {
+    POINT UnconvertPos(const MeaFPoint& pos) const override {
         return m_currentLinearUnits->UnconvertPos(pos);
     }
 
@@ -429,7 +429,7 @@ public:
     ///
     /// @return Resolution converted from pixels/inch to the desired units.
     ///
-    FSIZE ConvertRes(const FSIZE& res) const override {
+    MeaFSize ConvertRes(const MeaFSize& res) const override {
         return m_currentLinearUnits->ConvertRes(res);
     }
 
@@ -456,7 +456,7 @@ public:
     ///
     /// @return X and Y pixel values.
     ///
-    SIZE ConvertToPixels(MeaLinearUnitsId id, const FSIZE& res, double value, int minPixels) const override {
+    SIZE ConvertToPixels(MeaLinearUnitsId id, const MeaFSize& res, double value, int minPixels) const override {
         return ((*m_linearUnitsMap.find(id)).second)->ConvertToPixels(res, value, minPixels);
     }
 
@@ -475,7 +475,7 @@ public:
     ///
     /// @return Increment for the minor tick marks, in the current units.
     ///
-    FSIZE GetMinorIncr(const RECT& rect) const override;
+    MeaFSize GetMinorIncr(const RECT& rect) const override;
 
 private:
     static const double kTickIncrements[];  ///< Ruler tick increments. The order of magnitude of

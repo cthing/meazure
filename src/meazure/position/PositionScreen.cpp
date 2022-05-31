@@ -26,8 +26,8 @@ MeaPositionScreen::MeaPositionScreen(const MeaScreenProvider::ScreenIter& screen
                                      const MeaUnitsProvider& unitsProvider,
                                      const MeaScreenProvider& screenProvider) {
     const CRect& rect = screenProvider.GetScreenRect(screenIter);
-    FPOINT p1 = unitsProvider.ConvertCoord(rect.TopLeft());
-    FPOINT p2 = unitsProvider.ConvertCoord(rect.BottomRight());
+    MeaFPoint p1 = unitsProvider.ConvertCoord(rect.TopLeft());
+    MeaFPoint p2 = unitsProvider.ConvertCoord(rect.BottomRight());
 
     m_rect.top = p1.y;
     m_rect.bottom = p2.y;

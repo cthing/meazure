@@ -231,7 +231,7 @@ int MeaDataWin::CalcWidth() {
     const CRect& vscreen = m_screenProvider.GetVirtualRect();
     CPoint topLeft(vscreen.TopLeft());
     CPoint bottomRight(vscreen.BottomRight());
-    FSIZE wh = m_unitsProvider.GetWidthHeight(topLeft, bottomRight);
+    MeaFSize wh = m_unitsProvider.GetWidthHeight(topLeft, bottomRight);
 
     CString xStr = _T("-") + m_unitsProvider.Format(MeaX, wh.cx);
     CString yStr = _T("-") + m_unitsProvider.Format(MeaY, wh.cy);

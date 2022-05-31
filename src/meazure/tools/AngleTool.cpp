@@ -136,7 +136,7 @@ bool MeaAngleTool::Create() {
 }
 
 void MeaAngleTool::SaveProfile(MeaProfile& profile) {
-    FPOINT pt;
+    MeaFPoint pt;
 
     // Save the position of point 1, point 2 and the vertex.
     //
@@ -156,13 +156,13 @@ void MeaAngleTool::LoadProfile(MeaProfile& profile) {
     // for those positions that are not specified in
     // the profile.
     //
-    FPOINT def1 = m_unitsProvider.ConvertPos(m_point1);
-    FPOINT def2 = m_unitsProvider.ConvertPos(m_point2);
-    FPOINT defV = m_unitsProvider.ConvertPos(m_vertex);
+    MeaFPoint def1 = m_unitsProvider.ConvertPos(m_point1);
+    MeaFPoint def2 = m_unitsProvider.ConvertPos(m_point2);
+    MeaFPoint defV = m_unitsProvider.ConvertPos(m_vertex);
 
     // Load the position of point 1, point 2 and the vertex.
     //
-    FPOINT pt;
+    MeaFPoint pt;
     pt.x = profile.ReadDbl(_T("AngleX1"), def1.x);
     pt.y = profile.ReadDbl(_T("AngleY1"), def1.y);
     m_point1 = m_unitsProvider.UnconvertPos(pt);
@@ -268,9 +268,9 @@ void MeaAngleTool::Update(MeaUpdateReason reason) {
         // Convert the pixel locations to the current
         // units.
         //
-        FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
-        FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
-        FPOINT v = m_unitsProvider.ConvertCoord(m_vertex);
+        MeaFPoint p1 = m_unitsProvider.ConvertCoord(m_point1);
+        MeaFPoint p2 = m_unitsProvider.ConvertCoord(m_point2);
+        MeaFPoint v = m_unitsProvider.ConvertCoord(m_vertex);
 
         // Calculate the angle based on the locations
         // of the crosshairs in the current units.
@@ -409,9 +409,9 @@ const POINT& MeaAngleTool::GetPosition() const {
 void MeaAngleTool::RecordPosition(MeaPosition& position) const {
     // Convert the pixel locations to the current units.
     //
-    FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
-    FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
-    FPOINT v = m_unitsProvider.ConvertCoord(m_vertex);
+    MeaFPoint p1 = m_unitsProvider.ConvertCoord(m_point1);
+    MeaFPoint p2 = m_unitsProvider.ConvertCoord(m_point2);
+    MeaFPoint v = m_unitsProvider.ConvertCoord(m_vertex);
 
     // Save the positions and the name of this tool in the position object.
     //
@@ -677,9 +677,9 @@ void MeaAngleTool::UpdateBisector() {
     // positions so that screen resolutions are taken
     // into account.
     //
-    FPOINT p1 = m_unitsProvider.ConvertCoord(m_point1);
-    FPOINT p2 = m_unitsProvider.ConvertCoord(m_point2);
-    FPOINT v = m_unitsProvider.ConvertCoord(m_vertex);
+    MeaFPoint p1 = m_unitsProvider.ConvertCoord(m_point1);
+    MeaFPoint p2 = m_unitsProvider.ConvertCoord(m_point2);
+    MeaFPoint v = m_unitsProvider.ConvertCoord(m_vertex);
 
     // The bisector angle is the average of the angle made by
     // each line relative to the x-axis.
@@ -696,7 +696,7 @@ void MeaAngleTool::UpdateBisector() {
     //
     CPoint pointB(m_vertex.x + static_cast<LONG>(kLengthB * cos(alphaB)),
                   m_vertex.y + static_cast<LONG>(kLengthB * sin(alphaB)));
-    FPOINT pB = m_unitsProvider.ConvertCoord(pointB);
+    MeaFPoint pB = m_unitsProvider.ConvertCoord(pointB);
 
     bool angleSign = MeaGeometry::CalcAngle(v, p1, p2) >= 0.0;
     bool bisectorSign = MeaGeometry::CalcAngle(v, p1, pB) >= 0.0;

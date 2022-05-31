@@ -92,7 +92,7 @@ struct MeaUnitsProvider {
     ///         width and height are inclusive (e.g. p1.x = 1, p2.x = 3,
     ///         width = p2.x - p1.x + 1 = 3).
     ///
-    virtual FSIZE GetWidthHeight(const POINT& p1, const POINT& p2) const = 0;
+    virtual MeaFSize GetWidthHeight(const POINT& p1, const POINT& p2) const = 0;
 
     /// Converts the specified angle to the current angular units
     /// and formats the result for display.
@@ -126,7 +126,7 @@ struct MeaUnitsProvider {
     ///         conversion takes into account the location of the origin and
     ///         the orientation of the y-axis.
     ///         
-    virtual FPOINT ConvertCoord(const POINT& pos) const = 0;
+    virtual MeaFPoint ConvertCoord(const POINT& pos) const = 0;
 
     /// Converts the specified position from pixels to the desired units.
     /// This conversion does not take into account the location of the origin
@@ -138,7 +138,7 @@ struct MeaUnitsProvider {
     ///         conversion does not take into account the location of the
     ///         origin nor does it compensate for the orientation of the y-axis.
     ///
-    virtual FPOINT ConvertPos(const POINT& pos) const = 0;
+    virtual MeaFPoint ConvertPos(const POINT& pos) const = 0;
 
     /// Converts from the current units to pixels. The conversion does not take into
     /// account the location of the origin nor the orientation of the y-axis.
@@ -149,7 +149,7 @@ struct MeaUnitsProvider {
     ///         does not take into account the location of the origin nor the
     ///         orientation of the y-axis.
     ///
-    virtual POINT UnconvertPos(const FPOINT& pos) const = 0;
+    virtual POINT UnconvertPos(const MeaFPoint& pos) const = 0;
 
     /// Converts the specified resolution in pixels/inch to the desired units.
     ///
@@ -157,7 +157,7 @@ struct MeaUnitsProvider {
     ///
     /// @return Resolution converted from pixels/inch to the desired units.
     ///
-    virtual FSIZE ConvertRes(const FSIZE& res) const = 0;
+    virtual MeaFSize ConvertRes(const MeaFSize& res) const = 0;
 
     /// Converts the specified angle value from its native radians
     /// to the desired units.
@@ -180,7 +180,7 @@ struct MeaUnitsProvider {
     ///
     /// @return X and Y pixel values.
     ///
-    virtual SIZE ConvertToPixels(MeaLinearUnitsId id, const FSIZE& res, double value, int minPixels) const = 0;
+    virtual SIZE ConvertToPixels(MeaLinearUnitsId id, const MeaFSize& res, double value, int minPixels) const = 0;
 
     /// Returns the number of minor ticks to display before a major tick mark is
     /// displayed on the measurement rulers.
@@ -197,5 +197,5 @@ struct MeaUnitsProvider {
     ///
     /// @return Increment for the minor tick marks, in the current units.
     ///
-    virtual FSIZE GetMinorIncr(const RECT& rect) const = 0;
+    virtual MeaFSize GetMinorIncr(const RECT& rect) const = 0;
 };

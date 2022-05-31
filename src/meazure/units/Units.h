@@ -409,7 +409,7 @@ public:
     ///         conversion takes into account the location of the origin and
     ///         the orientation of the y-axis.
     ///         
-    FPOINT ConvertCoord(const POINT& pos) const;
+    MeaFPoint ConvertCoord(const POINT& pos) const;
 
     /// Converts the specified position from pixels to the desired units.
     /// This conversion does not take into account the location of the origin
@@ -421,7 +421,7 @@ public:
     ///         conversion does not take into account the location of the
     ///         origin nor does it compensate for the orientation of the y-axis.
     ///
-    FPOINT ConvertPos(const POINT& pos) const;
+    MeaFPoint ConvertPos(const POINT& pos) const;
 
     /// Converts the specified resolution in pixels/inch to the desired units.
     ///
@@ -429,7 +429,7 @@ public:
     ///
     /// @return Resolution converted from pixels/inch to the desired units.
     ///
-    FSIZE ConvertRes(const FSIZE& res) const;
+    MeaFSize ConvertRes(const MeaFSize& res) const;
 
     /// Converts from the current units to pixels. The conversion takes into account
     /// the location of the origin and the orientation of the y-axis. The conversion
@@ -473,7 +473,7 @@ public:
     ///         takes into account the location of the origin and the orientation of
     ///         the y-axis.
     ///
-    POINT UnconvertCoord(const FPOINT& pos) const;
+    POINT UnconvertCoord(const MeaFPoint& pos) const;
 
     /// Converts from the current units to pixels. The conversion does not take into
     /// account the location of the origin nor the orientation of the y-axis.
@@ -484,7 +484,7 @@ public:
     ///         does not take into account the location of the origin nor the
     ///         orientation of the y-axis.
     ///
-    POINT UnconvertPos(const FPOINT& pos) const;
+    POINT UnconvertPos(const MeaFPoint& pos) const;
 
     /// Converts the specified value from the current units to pixels. A minimum
     /// pixel value is specified in case the resolution is such that the conversion
@@ -497,7 +497,7 @@ public:
     ///
     /// @return X and Y pixel values.
     ///
-    SIZE ConvertToPixels(const FSIZE& res, double value, int minPixels) const;
+    SIZE ConvertToPixels(const MeaFSize& res, double value, int minPixels) const;
 
     /// Returns the X and Y factors to convert from pixels to the
     /// current units. In other words, multiplying the values returned
@@ -508,7 +508,7 @@ public:
     ///
     /// @return X and Y conversion factors, in units/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const = 0;
+    virtual MeaFSize FromPixels(const MeaFSize& res) const = 0;
 
 protected:
     /// Constructs the linear units.
@@ -528,7 +528,7 @@ protected:
     ///
     /// @return Resolution conversion factor.
     ///
-    virtual FSIZE GetResFromPixels(const FSIZE& res) const;
+    virtual MeaFSize GetResFromPixels(const MeaFSize& res) const;
 
     /// Converts from the pixels to the current units. The conversion takes into account
     /// the location of the origin and the orientation of the y-axis. The conversion
@@ -555,7 +555,7 @@ protected:
     ///
     /// @return Screen resolution, in the current units.
     ///
-    const FSIZE& FindResFromCoord(const FPOINT& pos) const;
+    const MeaFSize& FindResFromCoord(const MeaFPoint& pos) const;
 
     /// In a multiple monitor environment there are multiple screen resolutions,
     /// one set per monitor. Therefore, to determine the a resolution, a screen must
@@ -568,7 +568,7 @@ protected:
     ///
     /// @return Screen resolution, in the current units.
     ///
-    const FSIZE& FindResFromPos(const FPOINT& pos) const;
+    const MeaFSize& FindResFromPos(const MeaFPoint& pos) const;
 
 protected:
     const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
@@ -616,7 +616,7 @@ public:
     ///
     /// @return 1.0 in both directions.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const override;
+    virtual MeaFSize FromPixels(const MeaFSize& res) const override;
 
 protected:
     /// Returns a resolution conversion factor. Since internally the
@@ -628,7 +628,7 @@ protected:
     ///
     /// @return Resolution conversion factor.
     ///
-    virtual FSIZE GetResFromPixels(const FSIZE& res) const override;
+    virtual MeaFSize GetResFromPixels(const MeaFSize& res) const override;
 };
 
 
@@ -655,7 +655,7 @@ public:
     ///
     /// @return X and Y conversion factors, in points/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const override;
+    virtual MeaFSize FromPixels(const MeaFSize& res) const override;
 };
 
 
@@ -682,7 +682,7 @@ public:
     ///
     /// @return X and Y conversion factors, in picas/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const override;
+    virtual MeaFSize FromPixels(const MeaFSize& res) const override;
 };
 
 
@@ -709,7 +709,7 @@ public:
     ///
     /// @return X and Y conversion factors, in twips/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const override;
+    virtual MeaFSize FromPixels(const MeaFSize& res) const override;
 };
 
 
@@ -737,7 +737,7 @@ public:
     /// @return X and Y conversion factors, in inches/pixels
     ///         (i.e. the inverse of the resolution).
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const override;
+    virtual MeaFSize FromPixels(const MeaFSize& res) const override;
 };
 
 
@@ -764,7 +764,7 @@ public:
     ///
     /// @return X and Y conversion factors, in centimeters/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const override;
+    virtual MeaFSize FromPixels(const MeaFSize& res) const override;
 };
 
 
@@ -791,7 +791,7 @@ public:
     ///
     /// @return X and Y conversion factors, in millimeters/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const override;
+    virtual MeaFSize FromPixels(const MeaFSize& res) const override;
 };
 
 
@@ -941,7 +941,7 @@ public:
     ///
     /// @return X and Y conversion factors, in custom units/pixels.
     ///
-    virtual FSIZE FromPixels(const FSIZE& res) const override;
+    virtual MeaFSize FromPixels(const MeaFSize& res) const override;
 
 private:
     ChangeLabelFunc m_changeLabelFunc;  ///< Function to change the label text

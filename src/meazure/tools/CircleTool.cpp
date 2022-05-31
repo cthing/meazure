@@ -112,7 +112,7 @@ bool MeaCircleTool::Create() {
 }
 
 void MeaCircleTool::SaveProfile(MeaProfile& profile) {
-    FPOINT pt;
+    MeaFPoint pt;
 
     // Save the position of the center and perimeter points.
     //
@@ -130,10 +130,10 @@ void MeaCircleTool::LoadProfile(MeaProfile& profile) {
     // for those positions that are not specified in the
     // profile.
     //
-    FPOINT defC = m_unitsProvider.ConvertPos(m_center);
-    FPOINT defP = m_unitsProvider.ConvertPos(m_perimeter);
+    MeaFPoint defC = m_unitsProvider.ConvertPos(m_center);
+    MeaFPoint defP = m_unitsProvider.ConvertPos(m_perimeter);
 
-    FPOINT pt;
+    MeaFPoint pt;
     pt.x = profile.ReadDbl(_T("CircleXV"), defC.x);
     pt.y = profile.ReadDbl(_T("CircleYV"), defC.y);
     m_center = m_unitsProvider.UnconvertPos(pt);
@@ -232,15 +232,15 @@ void MeaCircleTool::Update(MeaUpdateReason reason) {
         // Convert the pixel locations to the current
         // units.
         //
-        FPOINT p1 = m_unitsProvider.ConvertCoord(m_center);
-        FPOINT p2 = m_unitsProvider.ConvertCoord(m_perimeter);
+        MeaFPoint p1 = m_unitsProvider.ConvertCoord(m_center);
+        MeaFPoint p2 = m_unitsProvider.ConvertCoord(m_perimeter);
 
         // Calculate the bounding square around the circle.
         //
         int radius = m_circle.GetRadius();
         CPoint topLeft(m_center.x - radius, m_center.y - radius);
         CPoint bottomRight(m_center.x + radius, m_center.y + radius);
-        FSIZE wh = m_unitsProvider.GetWidthHeight(topLeft, bottomRight);
+        MeaFSize wh = m_unitsProvider.GetWidthHeight(topLeft, bottomRight);
 
         // For the Circle tool the distance value is the
         // length of the radius.
@@ -380,13 +380,13 @@ const POINT& MeaCircleTool::GetPosition() const {
 void MeaCircleTool::RecordPosition(MeaPosition& position) const {
     // Convert the pixel locations to the current units.
     //
-    FPOINT p1 = m_unitsProvider.ConvertCoord(m_center);
-    FPOINT p2 = m_unitsProvider.ConvertCoord(m_perimeter);
+    MeaFPoint p1 = m_unitsProvider.ConvertCoord(m_center);
+    MeaFPoint p2 = m_unitsProvider.ConvertCoord(m_perimeter);
 
     int radius = m_circle.GetRadius();
     CPoint topLeft(m_center.x - radius, m_center.y - radius);
     CPoint bottomRight(m_center.x + radius, m_center.y + radius);
-    FSIZE wh = m_unitsProvider.GetWidthHeight(topLeft, bottomRight);
+    MeaFSize wh = m_unitsProvider.GetWidthHeight(topLeft, bottomRight);
 
     double r = wh.cx / 2.0;
 

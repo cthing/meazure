@@ -58,8 +58,8 @@ public:
     struct Screen {
         int m_resMode;      ///< Indicates whether calibration for the screen resolution is manual or automatic.
         int m_resUnits;     ///< If manual resolution calibration, indicates if calibration in inches or centimeters.
-        FSIZE m_res;        ///< Screen resolution.
-        FSIZE m_size;       ///< Screen size, in inches or centimeters.
+        MeaFSize m_res;     ///< Screen resolution.
+        MeaFSize m_size;    ///< Screen size, in inches or centimeters.
     };
 
 

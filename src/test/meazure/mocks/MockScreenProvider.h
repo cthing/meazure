@@ -69,12 +69,12 @@ public:
         return m_rect;
     }
 
-    virtual void GetScreenRes(const ScreenIter&, bool& useManualRes, FSIZE& manualRes) const override {
+    virtual void GetScreenRes(const ScreenIter&, bool& useManualRes, MeaFSize& manualRes) const override {
         useManualRes = false;
         manualRes = m_res;
     }
 
-    virtual const FSIZE& GetScreenRes(const ScreenIter&) const override {
+    virtual const MeaFSize& GetScreenRes(const ScreenIter&) const override {
         return m_res;
     }
 
@@ -126,5 +126,5 @@ private:
     Screens m_screens;
     CRect m_rect;
     CPoint m_center;
-    FSIZE m_res;
+    MeaFSize m_res;
 };

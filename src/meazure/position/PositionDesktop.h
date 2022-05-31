@@ -97,7 +97,7 @@ public:
 
     /// Returns the location of the origin when this object was created.
     /// @return The location of the origin when this object was created.
-    const FPOINT& GetOrigin() const { return m_origin; }
+    const MeaFPoint& GetOrigin() const { return m_origin; }
 
     /// Returns the unique ID for this object.
     /// @return GUID ID for this object.
@@ -230,9 +230,9 @@ private:
 
     const MeaUnitsProvider* m_unitsProvider;    ///< Units information object
     MeaGUID m_id;                       ///< ID for use by a Position object to reference this object.
-    FPOINT m_origin;                    ///< Origin in the units that were in effect when the desktop object was created.
+    MeaFPoint m_origin;                 ///< Origin in the units that were in effect when the desktop object was created.
     bool m_invertY;                     ///< Is origin inverted.
-    FSIZE m_size;                       ///< Desktop size in units in effect when desktop object created.
+    MeaFSize m_size;                    ///< Desktop size in units in effect when desktop object created.
     MeaLinearUnits* m_linearUnits;      ///< Current linear units.
     MeaAngularUnits* m_angularUnits;    ///< Current angle units.
     PositionScreenList m_screens;               ///< List of display screens.

@@ -122,7 +122,7 @@ void MeaUnitsMgr::SaveProfile(MeaProfile& profile) {
     profile.WriteStr(_T("AngularUnits"), GetAngularUnitsStr());
     profile.WriteBool(_T("InvertY"), IsInvertY());
 
-    FPOINT pt = ConvertPos(GetOrigin());
+    MeaFPoint pt = ConvertPos(GetOrigin());
     profile.WriteStr(_T("OriginX"), MeaStringUtils::DblToStr(pt.x));
     profile.WriteStr(_T("OriginY"), MeaStringUtils::DblToStr(pt.y));
 
@@ -160,7 +160,7 @@ void MeaUnitsMgr::LoadProfile(MeaProfile& profile) {
     SetAngularUnits(profile.ReadStr(_T("AngularUnits"), kDefAngularUnits));
     SetInvertY(profile.ReadBool(_T("InvertY"), kDefInvertY));
 
-    FPOINT pt;
+    MeaFPoint pt;
     pt.x = profile.ReadDbl(_T("OriginX"), 0.0);
     pt.y = profile.ReadDbl(_T("OriginY"), 0.0);
     SetOrigin(UnconvertPos(pt));
@@ -255,8 +255,8 @@ void MeaUnitsMgr::SetAngularUnits(LPCTSTR unitsStr) {
     }
 }
 
-FSIZE MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const {
-    FSIZE wh;
+MeaFSize MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const {
+    MeaFSize wh;
     POINT np1, np2;
 
     np1 = p1;
@@ -274,8 +274,8 @@ FSIZE MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const {
         np1.y++;
     }
 
-    FPOINT cp1 = ConvertCoord(np1);
-    FPOINT cp2 = ConvertCoord(np2);
+    MeaFPoint cp1 = ConvertCoord(np1);
+    MeaFPoint cp2 = ConvertCoord(np2);
 
     wh.cx = fabs(cp1.x - cp2.x);
     wh.cy = fabs(cp1.y - cp2.y);
@@ -283,19 +283,19 @@ FSIZE MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const {
     return wh;
 }
 
-FSIZE MeaUnitsMgr::GetMinorIncr(const RECT& rect) const {
+MeaFSize MeaUnitsMgr::GetMinorIncr(const RECT& rect) const {
     MeaScreenMgr& smgr = MeaScreenMgr::Instance();
 
     // We want to ensure a minimum resolution-independent
     // separation between the minor ticks. Start by converting
     // the resolution-independent minimum separation to pixels.
     //
-    FSIZE res = smgr.GetScreenRes(smgr.GetScreenIter(rect));
+    MeaFSize res = smgr.GetScreenRes(smgr.GetScreenIter(rect));
     SIZE sepPixels = ConvertToPixels(MeaInchesId, res, kMinSepInches, kMinSepPixels);
 
     // Convert the minimum tick separation to the current units.
     //
-    FSIZE sepUnits = m_currentLinearUnits->FromPixels(res) * sepPixels;
+    MeaFSize sepUnits = m_currentLinearUnits->FromPixels(res) * sepPixels;
 
     // The object is to find a standard minor increment (e.g. 10, 25)
     // that is the closest to the minimum increment but larger than
@@ -303,12 +303,12 @@ FSIZE MeaUnitsMgr::GetMinorIncr(const RECT& rect) const {
     // to normalize the separation value into a standard range
     // (i.e. 10-100).
     //
-    FSIZE sepPower = log10(sepUnits);
-    FSIZE delta = 1.0 - floor(sepPower);
+    MeaFSize sepPower = log10(sepUnits);
+    MeaFSize delta = 1.0 - floor(sepPower);
 
     sepPower += delta;
 
-    FSIZE increment;
+    MeaFSize increment;
     int idx;
     int count = kNumTickIncrements - 1;
 

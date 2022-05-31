@@ -116,14 +116,14 @@ public:
     /// 
     /// @return Screen rectangle
     /// 
-    const FRECT& GetRect() const { return m_rect; }
+    const MeaFRect& GetRect() const { return m_rect; }
 
     /// Provides the screen resolution expressed in the units that were in effect at the time the
     /// screen object was created.
     /// 
     /// @return Screen resolution.
     ///  
-    const FSIZE& GetRes() const { return m_res; }
+    const MeaFSize& GetRes() const { return m_res; }
 
     /// Indicates whether the resolution calibrated manually.
     /// 
@@ -156,9 +156,9 @@ private:
 
 
     bool m_primary;     ///< Is this the primary screen
-    FRECT m_rect;       ///< Screen rectangle expressed in the units that were
+    MeaFRect m_rect;       ///< Screen rectangle expressed in the units that were
                         ///< in effect at the time the screen object was created.
-    FSIZE m_res;        ///< Screen resolution expressed in the units that were
+    MeaFSize m_res;     ///< Screen resolution expressed in the units that were
                         ///< in effect at the time the screen object was created.
     bool m_manualRes;   ///< Is the resolution calibrated manually.
     CString m_desc;     ///< Description of the screen

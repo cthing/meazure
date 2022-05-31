@@ -93,9 +93,9 @@ BOOST_FIXTURE_TEST_CASE(TestProperties, TestFixture) {
 
 BOOST_FIXTURE_TEST_CASE(TestAddPoint, TestFixture) {
     MeaPosition position(ref);
-    FPOINT pt1(1.0, 2.0);
-    FPOINT pt2(5.0, 7.0);
-    FPOINT pt3(17.0, 10.0);
+    MeaFPoint pt1(1.0, 2.0);
+    MeaFPoint pt2(5.0, 7.0);
+    MeaFPoint pt3(17.0, 10.0);
 
     position.AddPoint(_T("a"), pt1);
     position.AddPoint(_T("b"), pt2);
@@ -110,9 +110,9 @@ BOOST_FIXTURE_TEST_CASE(TestAddPoint, TestFixture) {
 
 BOOST_FIXTURE_TEST_CASE(TestRecordPoints, TestFixture) {
     MeaPosition position(ref);
-    FPOINT pt1(1.0, 2.0);
-    FPOINT pt2(5.0, 7.0);
-    FPOINT pt3(17.0, 10.0);
+    MeaFPoint pt1(1.0, 2.0);
+    MeaFPoint pt2(5.0, 7.0);
+    MeaFPoint pt3(17.0, 10.0);
 
     position.RecordXY1(pt1);
     position.RecordXY2(pt2);
@@ -127,7 +127,7 @@ BOOST_FIXTURE_TEST_CASE(TestRecordPoints, TestFixture) {
 
 BOOST_FIXTURE_TEST_CASE(TestRecordWH, TestFixture) {
     MeaPosition position(ref);
-    FSIZE size(10.0, 20.0);
+    MeaFSize size(10.0, 20.0);
 
     position.RecordWH(size);
     BOOST_TEST(position.GetWidth() == 10.0, tt::tolerance(FLT_EPSILON));
@@ -137,7 +137,7 @@ BOOST_FIXTURE_TEST_CASE(TestRecordWH, TestFixture) {
 BOOST_FIXTURE_TEST_CASE(TestRecordDisatnce, TestFixture) {
     MeaPosition position(ref);
 
-    FSIZE size(10.0, 20.0);
+    MeaFSize size(10.0, 20.0);
     position.RecordDistance(size);
     BOOST_TEST(position.GetDistance() == 22.360679774997898, tt::tolerance(FLT_EPSILON));
 
@@ -156,7 +156,7 @@ BOOST_FIXTURE_TEST_CASE(TestRecordAngle, TestFixture) {
 BOOST_FIXTURE_TEST_CASE(TestRecordArea, TestFixture) {
     MeaPosition position(ref);
 
-    FSIZE size(10.0, 20.0);
+    MeaFSize size(10.0, 20.0);
     position.RecordRectArea(size);
     BOOST_TEST(position.GetArea() == 200.0, tt::tolerance(FLT_EPSILON));
 
@@ -189,11 +189,11 @@ BOOST_FIXTURE_TEST_CASE(TestSaveLoad, TestFixture) {
 
     position1.SetToolName(_T("ToolX"));
     position1.SetDesc(_T("Some point"));
-    position1.AddPoint(_T("a"), FPOINT(17.5, 83.1));
-    position1.RecordXY1(FPOINT(10.0, 20.0));
-    position1.RecordXY2(FPOINT(13.45, 12.4));
-    position1.RecordXYV(FPOINT(18.56, 98.3));
-    position1.RecordWH(FSIZE(10.2, 34.7));
+    position1.AddPoint(_T("a"), MeaFPoint(17.5, 83.1));
+    position1.RecordXY1(MeaFPoint(10.0, 20.0));
+    position1.RecordXY2(MeaFPoint(13.45, 12.4));
+    position1.RecordXYV(MeaFPoint(18.56, 98.3));
+    position1.RecordWH(MeaFSize(10.2, 34.7));
     position1.RecordDistance(4.321);
     position1.RecordAngle(12.0);
     position1.RecordCircleArea(3.2);

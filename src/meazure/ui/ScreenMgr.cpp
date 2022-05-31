@@ -79,7 +79,7 @@ public:
     /// @param manualRes        [in] If non-nullptr, specifies the manually calibrated
     ///                         resolution.
     ///
-    void SetScreenRes(bool useManualRes, const FSIZE* manualRes = nullptr) {
+    void SetScreenRes(bool useManualRes, const MeaFSize* manualRes = nullptr) {
         m_useManualRes = useManualRes;
 
         if (manualRes != nullptr) {
@@ -101,7 +101,7 @@ public:
     /// @param manualRes        [out] Manually calibrated resolution, in pixels
     ///                         per inch.
     ///
-    void GetScreenRes(bool& useManualRes, FSIZE& manualRes) const {
+    void GetScreenRes(bool& useManualRes, MeaFSize& manualRes) const {
         useManualRes = m_useManualRes;
         manualRes = m_manualRes;
     }
@@ -112,7 +112,7 @@ public:
     ///
     /// @return Screen resolution, in pixels per inch.
     ///
-    const FSIZE& GetScreenRes() const { return m_currentRes; }
+    const MeaFSize& GetScreenRes() const { return m_currentRes; }
 
     /// Indicates if the screen resolution has been manually set.
     ///
@@ -167,8 +167,8 @@ private:
     MeaScreenMgr& m_mgr;    ///< Parent manager.
     CRect m_rect;           ///< Screen rectangle.
     CPoint m_center;        ///< Center point of the screen.
-    FSIZE m_currentRes;     ///< Current screen resolution, pixels per inch.
-    FSIZE m_manualRes;      ///< Manually calibrated resolution, pixels per inch.
+    MeaFSize m_currentRes;  ///< Current screen resolution, pixels per inch.
+    MeaFSize m_manualRes;   ///< Manually calibrated resolution, pixels per inch.
     bool m_useManualRes;    ///< Indicates if manually calibrated resolution is used.
     bool m_calInInches;     ///< Indicates if calibration in inches or centimeters.
     bool m_primary;         ///< Indicates if this is the primary screen.
@@ -209,7 +209,7 @@ void MeaScreenMgr::SaveProfile(MeaProfile& profile) const {
         for (const auto& screenEntry : m_screens) {
             CString tag;
             bool useManualRes;
-            FSIZE manualRes;
+            MeaFSize manualRes;
 
             screenEntry.second->GetScreenRes(useManualRes, manualRes);
 
@@ -234,7 +234,7 @@ void MeaScreenMgr::LoadProfile(MeaProfile& profile) {
         m_sizeChanged = ((w != m_virtualRect.Width()) || (h != m_virtualRect.Height()));
 
         if ((profile.GetVersion() == 1) || (numScreens == 0)) {
-            FSIZE manualRes;
+            MeaFSize manualRes;
             bool useManualRes = profile.ReadBool(_T("UseManualRes"), kDefUseManualRes);
             manualRes.cx = profile.ReadDbl(_T("ManualResX"), 0.0);
             manualRes.cy = profile.ReadDbl(_T("ManualResY"), 0.0);
@@ -253,7 +253,7 @@ void MeaScreenMgr::LoadProfile(MeaProfile& profile) {
 
                 Screen* screen = GetScreen(center);
                 if (screen != nullptr) {
-                    FSIZE manualRes;
+                    MeaFSize manualRes;
 
                     bool useManualRes = profile.ReadBool(tag + _T("UseManualRes"), kDefUseManualRes);
                     manualRes.cx = profile.ReadDbl(tag + _T("ManualResX"), 0.0);
@@ -273,7 +273,7 @@ void MeaScreenMgr::MasterReset() const {
         Screen* screen = screenEntry.second;
 
         if (screen != nullptr) {
-            FSIZE manualRes;
+            MeaFSize manualRes;
 
             manualRes.cx = 0.0;
             manualRes.cy = 0.0;
@@ -387,15 +387,15 @@ const CRect& MeaScreenMgr::GetScreenRect(const ScreenIter& iter) const {
     return (*iter).second->GetRect();
 }
 
-void MeaScreenMgr::GetScreenRes(const ScreenIter& iter, bool& useManualRes, FSIZE& manualRes) const {
+void MeaScreenMgr::GetScreenRes(const ScreenIter& iter, bool& useManualRes, MeaFSize& manualRes) const {
     (*iter).second->GetScreenRes(useManualRes, manualRes);
 }
 
-const FSIZE& MeaScreenMgr::GetScreenRes(const ScreenIter& iter) const {
+const MeaFSize& MeaScreenMgr::GetScreenRes(const ScreenIter& iter) const {
     return (*iter).second->GetScreenRes();
 }
 
-void MeaScreenMgr::SetScreenRes(const ScreenIter& iter, bool useManualRes, const FSIZE* manualRes) const {
+void MeaScreenMgr::SetScreenRes(const ScreenIter& iter, bool useManualRes, const MeaFSize* manualRes) const {
     (*iter).second->SetScreenRes(useManualRes, manualRes);
 }
 
@@ -403,8 +403,8 @@ bool MeaScreenMgr::IsManualRes(const ScreenIter& iter) const {
     return (*iter).second->IsManualRes();
 }
 
-FSIZE MeaScreenMgr::GetOSScreenRes() const {
-    FSIZE res;
+MeaFSize MeaScreenMgr::GetOSScreenRes() const {
+    MeaFSize res;
 
     HDC dc = ::GetDC(nullptr);
     res.cx = static_cast<double>(::GetDeviceCaps(dc, LOGPIXELSX));

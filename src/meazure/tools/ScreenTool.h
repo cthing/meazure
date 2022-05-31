@@ -94,7 +94,7 @@ public:
 
 private:
     CRect m_rect;       ///< Rectangle representing the current display screen
-    FSIZE m_res;        ///< Resolution of the current display screen
+    MeaFSize m_res;     ///< Resolution of the current display screen
     bool m_anyOSRes;    ///< Indicates if any of the screen resolutions are not calibrated (i.e. the OS reported resolution is used)
     CString m_name;     ///< Name of the display screen
 };

@@ -30,11 +30,7 @@
 
 /// Utility methods for performing various window layout tasks.
 ///
-class MeaLayout {
-
-public:
-    MeaLayout() = delete;
-    ~MeaLayout() = delete;
+namespace MeaLayout {
 
     /// Aligns the specified windows such that their left edges all begin
     /// at the specified x location.
@@ -42,7 +38,7 @@ public:
     /// @param leftX        [in] Align each window's left edge to this x position, in pixels.
     /// @param ...          [in] CWnd pointers terminated by nullptr.
     ///
-    static void AlignLeft(int leftX, ...);
+    void AlignLeft(int leftX, ...);
 
     /// Aligns the specified windows such that their right edges are all
     /// aligned. The widest window is positioned at the specified x location.
@@ -50,7 +46,7 @@ public:
     /// @param leftX        [in] Widest window starts at this x position, in pixels.
     /// @param ...          [in] CWnd pointers terminated by nullptr.
     ///
-    static void AlignRight(int leftX, ...);
+    void AlignRight(int leftX, ...);
 
     /// Aligns the specified windows such that they all share a common vertical
     /// center. The top of the tallest window begins at the specified y position.
@@ -58,7 +54,7 @@ public:
     /// @param topY         [in] Tallest window begins at this y position, in pixels.
     /// @param ...          [in] CWnd pointers terminated by nullptr.
     ///
-    static void AlignCenter(int topY, ...);
+    void AlignCenter(int topY, ...);
 
     /// Performs a right alignment of the specified windows relative to the right
     /// edge of the specified base window.
@@ -66,7 +62,7 @@ public:
     /// @param baseWnd      [in] Align windows relative to this base window.
     /// @param ...          [in] CWnd pointers terminated by nullptr.
     ///
-    static void AlignRightTo(const CWnd* baseWnd, ...);
+    void AlignRightTo(const CWnd* baseWnd, ...);
 
     /// Places the back window after the specified front window and separates
     /// them by the specified spacing.
@@ -75,8 +71,7 @@ public:
     /// @param backWnd      [in] Window to place after frontWnd.
     /// @param spacing      [in] Separation between the two windows, in pixels.
     ///
-    static void PlaceAfter(const CWnd& frontWnd, const CWnd& backWnd, int spacing);
-
+    void PlaceAfter(const CWnd& frontWnd, const CWnd& backWnd, int spacing);
 
     /// Sets the position of the specified window.
     ///
@@ -86,7 +81,7 @@ public:
     ///
     /// @return <b>true</b> if the method succeeds.
     ///
-    static bool SetWindowPos(const CWnd& wnd, int x, int y) {
+    inline bool SetWindowPos(const CWnd& wnd, int x, int y) {
         return ::SetWindowPos(wnd.m_hWnd, nullptr, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER) ? true : false;
     }
 
@@ -98,7 +93,7 @@ public:
     ///
     /// @return <b>true</b> if the method succeeds.
     ///
-    static bool SetWindowSize(const CWnd& wnd, int cx, int cy) {
+    inline bool SetWindowSize(const CWnd& wnd, int cx, int cy) {
         return ::SetWindowPos(wnd.m_hWnd, nullptr, 0, 0, cx, cy, SWP_NOMOVE | SWP_NOZORDER) ? true : false;
     }
 
@@ -108,7 +103,7 @@ public:
     ///
     /// @return Height of the window in pixels.
     ///
-    static int GetWindowHeight(const CWnd& wnd) {
+    inline int GetWindowHeight(const CWnd& wnd) {
         CRect rect;
         wnd.GetWindowRect(rect);
         return rect.Height();
@@ -121,7 +116,7 @@ public:
     ///
     /// @return <b>true</b> if the method succeeds.
     ///
-    static bool SetWindowHeight(const CWnd& wnd, int cy) {
+    inline bool SetWindowHeight(const CWnd& wnd, int cy) {
         CRect rect;
         wnd.GetWindowRect(rect);
         return ::SetWindowPos(wnd.m_hWnd, nullptr, 0, 0, rect.Width(), cy, SWP_NOMOVE | SWP_NOZORDER) ? true : false;
@@ -134,7 +129,7 @@ public:
     ///
     /// @return <b>true</b> if the method succeeds.
     ///
-    static bool MoveWindowHeight(const CWnd& wnd, int cy) {
+    inline bool MoveWindowHeight(const CWnd& wnd, int cy) {
         CRect rect;
         wnd.GetWindowRect(rect);
         CWnd* parentWnd = wnd.GetParent();
@@ -149,7 +144,7 @@ public:
     /// @param sizep        [out] Bounding dimensions encompassing all child windows.
     /// @param parentWnd    [in] All child windows of this window form the bounding dimensions.
     ///
-    static void GetBoundingSize(SIZE* sizep, const CWnd* parentWnd);
+    void GetBoundingSize(SIZE* sizep, const CWnd* parentWnd);
 
     /// Converts the x position in screen coordinates to
     /// an x position in the specified window's coordinate
@@ -161,7 +156,7 @@ public:
     ///
     /// @return <b>true</b> if the conversion was successful.
     ///
-    static bool ScreenToClientX(const CWnd& wnd, int& x) {
+    inline bool ScreenToClientX(const CWnd& wnd, int& x) {
         CPoint pt(x, 0);
         bool ret = ScreenToClient(wnd.m_hWnd, &pt) == TRUE;
         x = pt.x;
@@ -178,7 +173,7 @@ public:
     ///
     /// @return <b>true</b> if the conversion was successful.
     ///
-    static bool ScreenToClientY(const CWnd& wnd, int& y) {
+    inline bool ScreenToClientY(const CWnd& wnd, int& y) {
         CPoint pt(0, y);
         bool ret = ScreenToClient(wnd.m_hWnd, &pt) == TRUE;
         y = pt.y;
@@ -195,7 +190,7 @@ public:
     /// @param height   [in] Height of the device contexts, in pixels.
     /// @param alpha    [in] Opacity value between 0 (transparent) and 255 (opaque).
     ///
-    static void AlphaBlend(CDC& dstDC, const CDC& srcDC, int width, int height, BYTE alpha);
+    void AlphaBlend(CDC& dstDC, const CDC& srcDC, int width, int height, BYTE alpha);
 
     /// Draws an image to use as a background for use in setting
     /// the a control's opacity.
@@ -205,6 +200,6 @@ public:
     /// @param screenProvider   [in] Screen information provider
     /// @param unitsProvider    [in] Units information provider
     ///
-    static void DrawOpacityBackground(const CWnd& wnd, CDC& dc, const MeaScreenProvider& screenProvider,
-                                      const MeaUnitsProvider& unitsProvider);
+    void DrawOpacityBackground(const CWnd& wnd, CDC& dc, const MeaScreenProvider& screenProvider,
+                               const MeaUnitsProvider& unitsProvider);
 };

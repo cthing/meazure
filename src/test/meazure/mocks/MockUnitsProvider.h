@@ -50,12 +50,12 @@ public:
 
     const POINT& GetOrigin() const override { return m_origin; }
 
-    void SetOrigin(const FPOINT& origin) {
+    void SetOrigin(const MeaFPoint& origin) {
         m_origin.x = origin.x;
         m_origin.y = origin.y;
     }
 
-    FSIZE GetWidthHeight(const POINT& p1, const POINT& p2) const override {
+    MeaFSize GetWidthHeight(const POINT& p1, const POINT& p2) const override {
         POINT np1 = p1;
         POINT np2 = p2;
 
@@ -71,7 +71,7 @@ public:
             np1.y++;
         }
 
-        return FSIZE(fabs(np1.x - np2.x), fabs(np1.y - np2.y));
+        return MeaFSize(fabs(np1.x - np2.x), fabs(np1.y - np2.y));
     }
 
     CString FormatConvertAngle(double angle) const override {
@@ -86,19 +86,19 @@ public:
         return m_angularUnits->Format(id, value);
     }
 
-    FPOINT ConvertCoord(const POINT& pos) const override {
+    MeaFPoint ConvertCoord(const POINT& pos) const override {
         return m_linearUnits->ConvertCoord(pos);
     }
 
-    FPOINT ConvertPos(const POINT& pos) const override {
+    MeaFPoint ConvertPos(const POINT& pos) const override {
         return m_linearUnits->ConvertPos(pos);
     }
 
-    POINT UnconvertPos(const FPOINT& pos) const override {
+    POINT UnconvertPos(const MeaFPoint& pos) const override {
         return m_linearUnits->UnconvertPos(pos);
     }
 
-    FSIZE ConvertRes(const FSIZE& res) const override {
+    MeaFSize ConvertRes(const MeaFSize& res) const override {
         return m_linearUnits->ConvertRes(res);
     }
 
@@ -106,7 +106,7 @@ public:
         return m_angularUnits->ConvertAngle(angle);
     }
 
-    SIZE ConvertToPixels(MeaLinearUnitsId, const FSIZE& res, double value, int minPixels) const override {
+    SIZE ConvertToPixels(MeaLinearUnitsId, const MeaFSize& res, double value, int minPixels) const override {
         return m_linearUnits->ConvertToPixels(res, value, minPixels);
     }
 
@@ -114,8 +114,8 @@ public:
         return 10;
     }
 
-    FSIZE GetMinorIncr(const RECT&) const override {
-        return FSIZE(2.0, 2.0);
+    MeaFSize GetMinorIncr(const RECT&) const override {
+        return MeaFSize(2.0, 2.0);
     }
 
 private:

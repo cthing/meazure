@@ -34,22 +34,22 @@ namespace bdata = boost::unit_test::data;
 BOOST_TEST_DONT_PRINT_LOG_VALUE(POINT)
 
 
-BOOST_AUTO_TEST_SUITE(FSIZETests, *bt::tolerance(FLT_EPSILON))
+BOOST_AUTO_TEST_SUITE(MeaFSizeTests, *bt::tolerance(FLT_EPSILON))
 
 BOOST_AUTO_TEST_CASE(TestInitialSize) {
-    FSIZE fs1;
+    MeaFSize fs1;
     BOOST_TEST(fs1.cx == 0.0);
     BOOST_TEST(fs1.cy == 0.0);
 
-    FSIZE fs2(1.0, 2.0);
+    MeaFSize fs2(1.0, 2.0);
     BOOST_TEST(fs2.cx == 1.0);
     BOOST_TEST(fs2.cy == 2.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestSizeEquality) {
-    FSIZE fs1(10.0, 11.0);
-    FSIZE fs2(10.0, 11.0);
-    FSIZE fs3(5.0, 6.0);
+    MeaFSize fs1(10.0, 11.0);
+    MeaFSize fs2(10.0, 11.0);
+    MeaFSize fs3(5.0, 6.0);
 
     BOOST_TEST(fs1 == fs1);
     BOOST_TEST(fs1 == fs2);
@@ -57,51 +57,51 @@ BOOST_AUTO_TEST_CASE(TestSizeEquality) {
 }
 
 BOOST_AUTO_TEST_CASE(TestAddFSize) {
-    FSIZE fs1(10.0, 11.0);
-    FSIZE fs2(5.0, 6.0);
+    MeaFSize fs1(10.0, 11.0);
+    MeaFSize fs2(5.0, 6.0);
 
-    FSIZE fs3 = fs1 + fs2;
+    MeaFSize fs3 = fs1 + fs2;
     BOOST_TEST(fs3.cx == 15.0);
     BOOST_TEST(fs3.cy == 17.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestAddValue) {
-    FSIZE fs1(10.0, 11.0);
+    MeaFSize fs1(10.0, 11.0);
 
-    FSIZE fs2 = fs1 + 13.0;
+    MeaFSize fs2 = fs1 + 13.0;
     BOOST_TEST(fs2.cx == 23.0);
     BOOST_TEST(fs2.cy == 24.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestMultFSize) {
-    FSIZE fs1(10.0, 11.0);
-    FSIZE fs2(2.0, 3.0);
+    MeaFSize fs1(10.0, 11.0);
+    MeaFSize fs2(2.0, 3.0);
 
-    FSIZE fs3 = fs1 * fs2;
+    MeaFSize fs3 = fs1 * fs2;
     BOOST_TEST(fs3.cx == 20.0);
     BOOST_TEST(fs3.cy == 33.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestMultSize) {
-    FSIZE fs1(10.0, 11.0);
+    MeaFSize fs1(10.0, 11.0);
     SIZE s { 2, 3 };
 
-    FSIZE fs2 = fs1 * s;
+    MeaFSize fs2 = fs1 * s;
     BOOST_TEST(fs2.cx == 20.0);
     BOOST_TEST(fs2.cy == 33.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestMultValue) {
-    FSIZE fs1(10.0, 11.0);
+    MeaFSize fs1(10.0, 11.0);
 
-    FSIZE fs2 = fs1 * 2.0;
+    MeaFSize fs2 = fs1 * 2.0;
     BOOST_TEST(fs2.cx == 20.0);
     BOOST_TEST(fs2.cy == 22.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestAddAssign) {
-    FSIZE fs1(10.0, 11.0);
-    FSIZE fs2(5.0, 6.0);
+    MeaFSize fs1(10.0, 11.0);
+    MeaFSize fs2(5.0, 6.0);
 
     fs1 += fs2;
     BOOST_TEST(fs1.cx == 15.0);
@@ -109,8 +109,8 @@ BOOST_AUTO_TEST_CASE(TestAddAssign) {
 }
 
 BOOST_AUTO_TEST_CASE(TestSubAssign) {
-    FSIZE fs1(10.0, 11.0);
-    FSIZE fs2(3.0, 6.0);
+    MeaFSize fs1(10.0, 11.0);
+    MeaFSize fs2(3.0, 6.0);
 
     fs1 -= fs2;
     BOOST_TEST(fs1.cx == 7.0);
@@ -118,8 +118,8 @@ BOOST_AUTO_TEST_CASE(TestSubAssign) {
 }
 
 BOOST_AUTO_TEST_CASE(TestMultAssign) {
-    FSIZE fs1(10.0, 11.0);
-    FSIZE fs2(3.0, 6.0);
+    MeaFSize fs1(10.0, 11.0);
+    MeaFSize fs2(3.0, 6.0);
 
     fs1 *= fs2;
     BOOST_TEST(fs1.cx == 30.0);
@@ -127,31 +127,31 @@ BOOST_AUTO_TEST_CASE(TestMultAssign) {
 }
 
 BOOST_AUTO_TEST_CASE(TestLog10) {
-    FSIZE fs1(1000.0, 100.0);
+    MeaFSize fs1(1000.0, 100.0);
 
-    FSIZE fs2 = log10(fs1);
+    MeaFSize fs2 = log10(fs1);
     BOOST_TEST(fs2.cx == 3.0);
     BOOST_TEST(fs2.cy == 2.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestFloor) {
-    FSIZE fs1(12.98, 4.01);
+    MeaFSize fs1(12.98, 4.01);
 
-    FSIZE fs2 = floor(fs1);
+    MeaFSize fs2 = floor(fs1);
     BOOST_TEST(fs2.cx == 12.0);
     BOOST_TEST(fs2.cy == 4.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestValueSub) {
-    FSIZE fs1(11.0, 45.0);
+    MeaFSize fs1(11.0, 45.0);
 
-    FSIZE fs2 = 200.0 - fs1;
+    MeaFSize fs2 = 200.0 - fs1;
     BOOST_TEST(fs2.cx == 189.0);
     BOOST_TEST(fs2.cy == 155.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestSizeOstream) {
-    FSIZE fs(10.1, 20.1);
+    MeaFSize fs(10.1, 20.1);
 
     std::ostringstream ss;
     ss << fs;
@@ -161,16 +161,16 @@ BOOST_AUTO_TEST_CASE(TestSizeOstream) {
 BOOST_AUTO_TEST_SUITE_END()
 
 
-BOOST_AUTO_TEST_SUITE(FRECTTests, *bt::tolerance(FLT_EPSILON))
+BOOST_AUTO_TEST_SUITE(MeaFRectTests, *bt::tolerance(FLT_EPSILON))
 
 BOOST_AUTO_TEST_CASE(TestInitialRectangle) {
-    FRECT fr1;
+    MeaFRect fr1;
     BOOST_TEST(fr1.top == 0.0);
     BOOST_TEST(fr1.bottom == 0.0);
     BOOST_TEST(fr1.left == 0.0);
     BOOST_TEST(fr1.right == 0.0);
 
-    FRECT fr2(1.0, 2.0, 3.0, 4.0);
+    MeaFRect fr2(1.0, 2.0, 3.0, 4.0);
     BOOST_TEST(fr2.top == 1.0);
     BOOST_TEST(fr2.bottom == 2.0);
     BOOST_TEST(fr2.left == 3.0);
@@ -178,9 +178,9 @@ BOOST_AUTO_TEST_CASE(TestInitialRectangle) {
 }
 
 BOOST_AUTO_TEST_CASE(TestRectEquality) {
-    FRECT fr1(10.0, 11.0, 12.0, 13.0);
-    FRECT fr2(10.0, 11.0, 12.0, 13.0);
-    FRECT fr3(5.0, 6.0, 7.0, 8.0);
+    MeaFRect fr1(10.0, 11.0, 12.0, 13.0);
+    MeaFRect fr2(10.0, 11.0, 12.0, 13.0);
+    MeaFRect fr3(5.0, 6.0, 7.0, 8.0);
 
     BOOST_TEST(fr1 == fr1);
     BOOST_TEST(fr1 == fr2);
@@ -188,7 +188,7 @@ BOOST_AUTO_TEST_CASE(TestRectEquality) {
 }
 
 BOOST_AUTO_TEST_CASE(TestRectOstream) {
-    FRECT fr(10.1, 11.1, 12.1, 13.1);
+    MeaFRect fr(10.1, 11.1, 12.1, 13.1);
 
     std::ostringstream ss;
     ss << fr;
@@ -198,22 +198,22 @@ BOOST_AUTO_TEST_CASE(TestRectOstream) {
 BOOST_AUTO_TEST_SUITE_END()
 
 
-BOOST_AUTO_TEST_SUITE(FPOINTTests, *bt::tolerance(FLT_EPSILON))
+BOOST_AUTO_TEST_SUITE(MeaFPointTests, *bt::tolerance(FLT_EPSILON))
 
 BOOST_AUTO_TEST_CASE(TestInitialPoint) {
-    FPOINT fp1;
+    MeaFPoint fp1;
     BOOST_TEST(fp1.x == 0.0);
     BOOST_TEST(fp1.y == 0.0);
 
-    FPOINT fp2(1.0, 2.0);
+    MeaFPoint fp2(1.0, 2.0);
     BOOST_TEST(fp2.x == 1.0);
     BOOST_TEST(fp2.y == 2.0);
 }
 
 BOOST_AUTO_TEST_CASE(TestPointEquality) {
-    FPOINT fp1(10.0, 11.0);
-    FPOINT fp2(10.0, 11.0);
-    FPOINT fp3(5.0, 6.0);
+    MeaFPoint fp1(10.0, 11.0);
+    MeaFPoint fp2(10.0, 11.0);
+    MeaFPoint fp3(5.0, 6.0);
 
     BOOST_TEST(fp1 == fp1);
     BOOST_TEST(fp1 == fp2);
@@ -221,7 +221,7 @@ BOOST_AUTO_TEST_CASE(TestPointEquality) {
 }
 
 BOOST_AUTO_TEST_CASE(TestPointOstream) {
-    FSIZE fp(10.1, 20.1);
+    MeaFSize fp(10.1, 20.1);
 
     std::ostringstream ss;
     ss << fp;
@@ -329,30 +329,30 @@ BOOST_DATA_TEST_CASE(TestCalcAngle1,
                                     AngleTestData{  1.0, -1.0, -0.78539816 }    // 315 degrees
                                  }),
                      angleData) {
-    FPOINT p0(1.0, 2.0);
-    FPOINT p1(p0.x + angleData.x, p0.y + angleData.y);
+    MeaFPoint p0(1.0, 2.0);
+    MeaFPoint p1(p0.x + angleData.x, p0.y + angleData.y);
     BOOST_TEST(MeaGeometry::CalcAngle(p0, p1) == angleData.angle, tt::tolerance(0.00000001));
 }
 
 BOOST_AUTO_TEST_CASE(TestCalcAngle2, *bt::tolerance(0.00000001)) {
-    FPOINT p0(1.0, 2.0);
+    MeaFPoint p0(1.0, 2.0);
     BOOST_TEST(MeaGeometry::CalcAngle(p0, p0, p0) == 0.0);
 
-    FPOINT p1(5.0, 6.0);
+    MeaFPoint p1(5.0, 6.0);
     BOOST_TEST(MeaGeometry::CalcAngle(p0, p1, p1) == 0.0);
 
-    FPOINT p2(4.0, -1.0);
-    FPOINT p3(5.0, 6.0);
+    MeaFPoint p2(4.0, -1.0);
+    MeaFPoint p3(5.0, 6.0);
     BOOST_TEST(MeaGeometry::CalcAngle(p0, p2, p3) == 1.57079633);
     BOOST_TEST(MeaGeometry::CalcAngle(p0, p3, p2) == -1.57079633);
 
-    FPOINT p4(1.0, 5.0);
-    FPOINT p5(5.0, 2.0);
+    MeaFPoint p4(1.0, 5.0);
+    MeaFPoint p5(5.0, 2.0);
     BOOST_TEST(MeaGeometry::CalcAngle(p0, p4, p5) == -1.57079633);
     BOOST_TEST(MeaGeometry::CalcAngle(p0, p5, p4) == 1.57079633);
 
-    FPOINT p6(5.0, -2.0);
-    FPOINT p7(-4.0, 4.0);
+    MeaFPoint p6(5.0, -2.0);
+    MeaFPoint p7(-4.0, 4.0);
     BOOST_TEST(MeaGeometry::CalcAngle(p0, p6, p7) == -2.73670086);
 }
 

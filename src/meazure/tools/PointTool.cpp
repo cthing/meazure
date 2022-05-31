@@ -76,7 +76,7 @@ bool MeaPointTool::Create() {
 void MeaPointTool::SaveProfile(MeaProfile& profile) {
     // Save the position of the crosshair.
     //
-    FPOINT pt = m_unitsProvider.ConvertPos(m_center);
+    MeaFPoint pt = m_unitsProvider.ConvertPos(m_center);
     profile.WriteStr(_T("PointX1"), MeaStringUtils::DblToStr(pt.x));
     profile.WriteStr(_T("PointY1"), MeaStringUtils::DblToStr(pt.y));
 }
@@ -86,11 +86,11 @@ void MeaPointTool::LoadProfile(MeaProfile& profile) {
     // for those position components that are not
     // specified in the profile.
     //
-    FPOINT def = m_unitsProvider.ConvertPos(m_center);
+    MeaFPoint def = m_unitsProvider.ConvertPos(m_center);
 
     // Load the crosshair position.
     //
-    FPOINT pt;
+    MeaFPoint pt;
     pt.x = profile.ReadDbl(_T("PointX1"), def.x);
     pt.y = profile.ReadDbl(_T("PointY1"), def.y);
     m_center = m_unitsProvider.UnconvertPos(pt);
@@ -164,7 +164,7 @@ void MeaPointTool::Update(MeaUpdateReason reason) {
 
         // Convert the pixel location to the current units.
         //
-        FPOINT center = m_unitsProvider.ConvertCoord(m_center);
+        MeaFPoint center = m_unitsProvider.ConvertCoord(m_center);
 
         // Display the results of the measurement in
         // the data display fields.

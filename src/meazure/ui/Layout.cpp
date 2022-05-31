@@ -157,7 +157,7 @@ void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc, const MeaScreenP
 
     dc.FillSolidRect(clientRect.left, clientRect.top, clientRect.Width(), clientRect.Height(), backColor);
 
-    FSIZE res = screenProvider.GetScreenRes(screenProvider.GetScreenIter(winRect));
+    MeaFSize res = screenProvider.GetScreenRes(screenProvider.GetScreenIter(winRect));
 
     SIZE forePixels = unitsProvider.ConvertToPixels(MeaInchesId, res, 0.02, 3);
     sepPixels.cx = 3 * forePixels.cx;

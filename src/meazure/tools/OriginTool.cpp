@@ -114,7 +114,7 @@ void MeaOriginTool::Update(MeaUpdateReason reason) {
         // converted to pixels based on the resolution of the display
         // containing the origin.
         //
-        FSIZE res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(origin));
+        MeaFSize res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(origin));
         SIZE length = m_unitsProvider.ConvertToPixels(MeaInchesId, res, 0.25, 10);
 
         POINT xEnd, yEnd;

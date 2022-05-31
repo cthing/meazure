@@ -114,7 +114,7 @@ void MeaCursorTool::Update(MeaUpdateReason reason) {
         // Convert the pixel position of the pointer
         // to the current units.
         //
-        FPOINT cursorPos = m_unitsProvider.ConvertCoord(m_cursorPos);
+        MeaFPoint cursorPos = m_unitsProvider.ConvertCoord(m_cursorPos);
 
         // Display the measurement.
         //

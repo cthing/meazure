@@ -217,8 +217,8 @@ void MeaPositionLogMgr::ShowPosition(unsigned int posIndex) {
 
     // Set the origin and y-axis orientation.
     //
-    bool invertY = desktopInfo.GetInvertY();
-    if ((invertY && !unitsMgr.GetInvertY()) || (!invertY && unitsMgr.GetInvertY())) {
+    bool invertY = desktopInfo.IsInvertY();
+    if ((invertY && !unitsMgr.IsInvertY()) || (!invertY && unitsMgr.IsInvertY())) {
         unitsMgr.SetInvertY(invertY);
         toolMgr.UpdateTools();
     }

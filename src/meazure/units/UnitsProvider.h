@@ -70,7 +70,7 @@ struct MeaUnitsProvider {
     ///         actual location of the origin is determined by the SetOrigin
     ///         method.
     ///
-    virtual bool GetInvertY() const = 0;
+    virtual bool IsInvertY() const = 0;
 
     /// Returns the location of the origin of the coordinate system.
     ///

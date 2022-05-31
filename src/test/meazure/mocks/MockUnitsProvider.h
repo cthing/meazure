@@ -46,7 +46,7 @@ public:
 
     MeaAngularUnits* GetAngularUnits(const CString&) const override { return m_angularUnits; }
 
-    bool GetInvertY() const override { return false; }
+    bool IsInvertY() const override { return false; }
 
     const POINT& GetOrigin() const override { return m_origin; }
 

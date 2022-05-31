@@ -266,7 +266,7 @@ public:
     ///         actual location of the origin is determined by the SetOrigin
     ///         method.
     ///
-    bool GetInvertY() const override { return MeaLinearUnits::GetInvertY(); }
+    bool IsInvertY() const override { return MeaLinearUnits::IsInvertY(); }
 
     /// Moves the origin of the coordinate system to the specified point. The
     /// orientation of the axes is not effected by this method. To change the

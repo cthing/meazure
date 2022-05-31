@@ -120,7 +120,7 @@ MeaUnitsMgr::~MeaUnitsMgr() {
 void MeaUnitsMgr::SaveProfile(MeaProfile& profile) {
     profile.WriteStr(_T("LinearUnits"), GetLinearUnitsStr());
     profile.WriteStr(_T("AngularUnits"), GetAngularUnitsStr());
-    profile.WriteBool(_T("InvertY"), GetInvertY());
+    profile.WriteBool(_T("InvertY"), IsInvertY());
 
     FPOINT pt = ConvertPos(GetOrigin());
     profile.WriteStr(_T("OriginX"), MeaStringUtils::DblToStr(pt.x));

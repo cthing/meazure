@@ -212,7 +212,7 @@ public:
     ///
     /// @return <b>true</b> if the resolution was calibrated in inches.
     ///
-    bool GetCalInInches(const ScreenIter& iter) const;
+    bool IsCalInInches(const ScreenIter& iter) const;
 
     /// Specifies the calibration units for the specified screen.
     ///

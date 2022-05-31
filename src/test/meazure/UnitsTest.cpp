@@ -77,9 +77,9 @@ void VerifyConvertAngle(MeaAngularUnits& units, double radians, double expected)
 }
 
 void VerifyInvertY(MeaLinearUnits& units) {
-    BOOST_TEST(!units.GetInvertY());
+    BOOST_TEST(!units.IsInvertY());
     units.SetInvertY(true);
-    BOOST_TEST(units.GetInvertY());
+    BOOST_TEST(units.IsInvertY());
     units.SetInvertY(false);
 }
 

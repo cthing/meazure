@@ -104,7 +104,7 @@ void MeaOriginTool::Update(MeaUpdateReason reason) {
         MeaTool::Update(reason);
 
         POINT origin = m_unitsProvider.GetOrigin();
-        bool inverted = m_unitsProvider.GetInvertY();
+        bool inverted = m_unitsProvider.IsInvertY();
 
         if (inverted && (origin.x == 0) && (origin.y == 0)) {
             origin.y = m_screenProvider.GetVirtualRect().Height() - 1;

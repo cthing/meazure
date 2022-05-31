@@ -31,7 +31,7 @@ MeaPositionDesktop::MeaPositionDesktop(LPCTSTR guidStr, const MeaUnitsProvider& 
     m_id(guidStr),
     m_linearUnits(unitsProvider.GetLinearUnits()),
     m_angularUnits(unitsProvider.GetAngularUnits()),
-    m_invertY(unitsProvider.GetInvertY()),
+    m_invertY(unitsProvider.IsInvertY()),
     m_origin(unitsProvider.ConvertPos(unitsProvider.GetOrigin())),
     m_customFactor(0.0)
 {

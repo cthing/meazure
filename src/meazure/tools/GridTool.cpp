@@ -295,7 +295,7 @@ END_MESSAGE_MAP()
 
 MeaGridDialog::MeaGridDialog(MeaGridTool* tool) :
     CDialog(IDD_GRID_SPACING), m_tool(tool), m_hSpaceSpin(nullptr), m_vSpaceSpin(nullptr), 
-    m_origLinked(tool->GetLinked()), m_linked(tool->GetLinked()), m_origSpacing(tool->GetGridSpacing()),
+    m_origLinked(tool->IsLinked()), m_linked(tool->IsLinked()), m_origSpacing(tool->GetGridSpacing()),
     m_spacing(tool->GetGridSpacing()) {}
 
 MeaGridDialog::~MeaGridDialog() {

@@ -244,7 +244,7 @@ public:
     /// @return <b>true</b> if the horizontal and vertical
     ///         grid spacing are linked.
     ///
-    bool GetLinked() const { return m_linked; }
+    bool IsLinked() const { return m_linked; }
 
     /// Sets the grid spacing link state.
     ///

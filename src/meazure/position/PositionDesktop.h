@@ -93,7 +93,7 @@ public:
 
     /// Indicates whether the y-axis was inverted when this object was created.
     /// @return <b>true</b> if the y-axis was inverted when this object was created.
-    bool GetInvertY() const { return m_invertY; }
+    bool IsInvertY() const { return m_invertY; }
 
     /// Returns the location of the origin when this object was created.
     /// @return The location of the origin when this object was created.

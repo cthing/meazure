@@ -219,7 +219,7 @@ public:
     ///
     /// @return <b>true</b> if the magnifier grid is selected for display.
     ///
-    bool GetShowGrid() const { return m_showGrid; }
+    bool IsShowGrid() const { return m_showGrid; }
 
     /// Returns a pointer to the pixel color display text field if it
     /// has the keyboard focus, and nullptr if it does not.

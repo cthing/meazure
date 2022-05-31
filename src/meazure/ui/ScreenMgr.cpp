@@ -148,7 +148,7 @@ public:
     ///
     /// @return <b>true</b> if the calibration has been performed in inches.
     ///
-    bool GetCalInInches() const { return m_calInInches; }
+    bool IsCalInInches() const { return m_calInInches; }
 
     /// Sets a descriptive name for the screen.
     ///
@@ -219,7 +219,7 @@ void MeaScreenMgr::SaveProfile(MeaProfile& profile) const {
             profile.WriteBool(tag + _T("UseManualRes"), useManualRes);
             profile.WriteStr(tag + _T("ManualResX"), MeaStringUtils::DblToStr(manualRes.cx));
             profile.WriteStr(tag + _T("ManualResY"), MeaStringUtils::DblToStr(manualRes.cy));
-            profile.WriteBool(tag + _T("CalInInches"), screenEntry.second->GetCalInInches());
+            profile.WriteBool(tag + _T("CalInInches"), screenEntry.second->IsCalInInches());
 
             screenIdx++;
         }
@@ -431,8 +431,8 @@ CString MeaScreenMgr::GetScreenName(const ScreenIter& iter) const {
     return (*iter).second->GetName();
 }
 
-bool MeaScreenMgr::GetCalInInches(const ScreenIter& iter) const {
-    return (*iter).second->GetCalInInches();
+bool MeaScreenMgr::IsCalInInches(const ScreenIter& iter) const {
+    return (*iter).second->IsCalInInches();
 }
 
 void MeaScreenMgr::SetCalInInches(const ScreenIter& iter, bool calInInches) const {

@@ -689,12 +689,12 @@ void AppView::OnColorFmt(UINT nID) {
 }
 
 void AppView::OnInvertY() {
-    MeaUnitsMgr::Instance().SetInvertY(!MeaUnitsMgr::Instance().GetInvertY());
+    MeaUnitsMgr::Instance().SetInvertY(!MeaUnitsMgr::Instance().IsInvertY());
     MeaToolMgr::Instance().UpdateTools();
 }
 
 void AppView::OnUpdateInvertY(CCmdUI* pCmdUI) {
-    pCmdUI->SetCheck(MeaUnitsMgr::Instance().GetInvertY());
+    pCmdUI->SetCheck(MeaUnitsMgr::Instance().IsInvertY());
 }
 
 void AppView::OnOrigin() {
@@ -862,11 +862,11 @@ void AppView::OnUpdateZoomOut(CCmdUI* pCmdUI) {
 }
 
 void AppView::OnShowMagGrid() {
-    m_magnifier.SetShowGrid(!m_magnifier.GetShowGrid());
+    m_magnifier.SetShowGrid(!m_magnifier.IsShowGrid());
 }
 
 void AppView::OnUpdateShowMagGrid(CCmdUI* pCmdUI) {
-    pCmdUI->SetCheck(m_magnifier.GetShowGrid());
+    pCmdUI->SetCheck(m_magnifier.IsShowGrid());
 }
 
 void AppView::OnScreenGrid() {
@@ -1099,7 +1099,7 @@ void AppView::OnPreferences() {
         screenMgr.GetScreenRes(iter, useManualRes, manualRes);
         screen.m_resMode = useManualRes ? MeaCalibrationPrefs::ManualRes : MeaCalibrationPrefs::AutoRes;
         screen.m_res = manualRes;
-        screen.m_resUnits = screenMgr.GetCalInInches(iter) ? MeaCalibrationPrefs::UseInches : MeaCalibrationPrefs::UseCentimeters;
+        screen.m_resUnits = screenMgr.IsCalInInches(iter) ? MeaCalibrationPrefs::UseInches : MeaCalibrationPrefs::UseCentimeters;
 
         m_prefs.m_calibrationPrefs.m_screens[iter] = screen;
     }

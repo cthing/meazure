@@ -688,7 +688,7 @@ void MeaAngleTool::UpdateBisector() {
     //
     double alphaB = (MeaGeometry::CalcAngle(v, p1) + MeaGeometry::CalcAngle(v, p2)) / 2.0;
 
-    if (m_unitsProvider.GetInvertY()) {
+    if (m_unitsProvider.IsInvertY()) {
         alphaB = -alphaB;
     }
 

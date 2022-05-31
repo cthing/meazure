@@ -357,7 +357,7 @@ public:
     ///         actual location of the origin is determined by the SetOrigin
     ///         method.
     ///
-    static bool GetInvertY() { return m_invertY; }
+    static bool IsInvertY() { return m_invertY; }
 
     /// Moves the origin of the coordinate system to the specified point. The
     /// orientation of the axes is not effected by this method. To change the

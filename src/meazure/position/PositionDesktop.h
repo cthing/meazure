@@ -201,14 +201,6 @@ private:
         return *this;
     }
 
-    /// Centralized initialization method for the class. All
-    /// non-copy constructors call this method.
-    /// 
-    /// @param unitsProvider   [in] Units information and conversion provider
-    /// @param screenProvider  [in] Screen information provider
-    ///
-    void Init(const MeaUnitsProvider& unitsProvider, const MeaScreenProvider& screenProvider);
-
     /// Sets the linear units for the object based on the specified units name.
     ///
     /// @param unitsStr     [in] Linear units name.

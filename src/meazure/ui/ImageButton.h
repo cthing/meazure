@@ -42,8 +42,7 @@ public:
     /// Constructs an image button with no images specified; the LoadBitmaps
     /// method must be called.
     ///
-    MeaImageButton() : CButton(), m_theme(nullptr), m_up(0), m_down(0),
-        m_disabled(0), m_depressed(false), m_toggle(false) {}
+    MeaImageButton() : MeaImageButton(0) {}
 
     /// Destroys a image button object.
     ///

@@ -25,25 +25,17 @@
 #include <meazure/ui/DataFieldId.h>
 
 
-MeaPosition::MeaPosition(MeaPositionDesktopRef desktopInfoRef) :
-    m_fieldMask(0),
-    m_width(0.0),
-    m_height(0.0),
-    m_distance(0.0),
-    m_area(0.0),
-    m_angle(0.0),
-    m_desktopRef(desktopInfoRef),
-    m_timestamp(MeaMakeTimeStamp(time(nullptr))) {
-}
+MeaPosition::MeaPosition(MeaPositionDesktopRef desktopRef) :
+    MeaPosition(desktopRef, _T(""), MeaMakeTimeStamp(time(nullptr))) {}
 
-MeaPosition::MeaPosition(MeaPositionDesktopRef desktopInfoRef, const CString& toolName, const CString& timestamp) :
+MeaPosition::MeaPosition(MeaPositionDesktopRef desktopRef, const CString& toolName, const CString& timestamp) :
     m_fieldMask(0),
     m_width(0.0),
     m_height(0.0),
     m_distance(0.0),
     m_area(0.0),
     m_angle(0.0),
-    m_desktopRef(desktopInfoRef),
+    m_desktopRef(desktopRef),
     m_toolName(toolName),
     m_timestamp(timestamp) {}
 

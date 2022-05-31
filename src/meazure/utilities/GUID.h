@@ -31,22 +31,19 @@
 class MeaGUID {
 
 public:
-    /// Constructs a GUID with a newly generated GUID using CoCreateGuid.
+    /// Constructs a GUID with either the specified string representation of a GUID or a newly generated GUID
+    /// using CoCreateGuid if no string is specified.
+    /// 
+    /// @param guidStr  [in] String representing a GUID (e.g. "00000000-0000-0000-0000-000000000000").
+    ///     If <b>nullptr</b> is specified, a GUID is generated internally.
     ///
-    MeaGUID();
+    explicit MeaGUID(LPCTSTR guidStr = nullptr);
 
     /// Constructs a GUID based on the specified GUID structure.
     ///
     /// @param guid     [in] Operating system defined GUID structure.
     ///
     explicit MeaGUID(const GUID& guid) { Assign(guid); }
-
-    /// Creates a GUID object initialized with by the string representing
-    /// a GUID (e.g. "00000000-0000-0000-0000-000000000000")
-    ///
-    /// @param guidStr  [in] String representing a GUID.
-    ///
-    explicit MeaGUID(LPCTSTR guidStr) { Assign(guidStr); }
 
     /// Copy constructor.
     ///

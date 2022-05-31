@@ -61,25 +61,6 @@ MeaPreferences::MeaPreferences(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPa
     AddPage(&m_advancedPrefs);
 }
 
-MeaPreferences::MeaPreferences(LPCTSTR pszCaption, CWnd* pParentWnd, UINT iSelectPage)
-    :CPropertySheet(pszCaption, pParentWnd, iSelectPage),
-    m_calibrationPrefs(MeaScreenMgr::Instance()),
-    m_rulerPrefs(MeaScreenMgr::Instance(), MeaUnitsMgr::Instance()),
-    m_toolsPrefs(MeaScreenMgr::Instance(), MeaUnitsMgr::Instance()) {
-    // Remove the help button from the dialog.
-    //
-    m_psh.dwFlags &= ~(PSH_HASHELP);
-
-    // Add the preference pages to the dialog.
-    //
-    AddPage(&m_calibrationPrefs);
-    AddPage(&m_rulerPrefs);
-    AddPage(&m_toolsPrefs);
-    AddPage(&m_precisionPrefs);
-    AddPage(&m_customPrefs);
-    AddPage(&m_advancedPrefs);
-}
-
 MeaPreferences::~MeaPreferences() {}
 
 void MeaPreferences::OnApply() {

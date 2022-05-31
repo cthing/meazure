@@ -22,27 +22,24 @@
 #include <meazure/utilities/StringUtils.h>
 
 
-MeaPositionDesktop::MeaPositionDesktop(const MeaUnitsProvider& unitsProvider,
-                                       const MeaScreenProvider& screenProvider) :
-    m_unitsProvider(&unitsProvider) {
-    Init(unitsProvider, screenProvider);
-}
+MeaPositionDesktop::MeaPositionDesktop(const MeaUnitsProvider& unitsProvider, const MeaScreenProvider& screenProvider) :
+    MeaPositionDesktop(nullptr, unitsProvider, screenProvider) {}
 
 MeaPositionDesktop::MeaPositionDesktop(LPCTSTR guidStr, const MeaUnitsProvider& unitsProvider,
                                        const MeaScreenProvider& screenProvider) :
-    m_unitsProvider(&unitsProvider), m_id(guidStr) {
-    Init(unitsProvider, screenProvider);
-}
+    m_unitsProvider(&unitsProvider),
+    m_id(guidStr),
+    m_linearUnits(unitsProvider.GetLinearUnits()),
+    m_angularUnits(unitsProvider.GetAngularUnits()),
+    m_invertY(unitsProvider.GetInvertY()),
+    m_origin(unitsProvider.ConvertPos(unitsProvider.GetOrigin())),
+    m_customFactor(0.0)
+{
 
-void MeaPositionDesktop::Init(const MeaUnitsProvider& unitsProvider, const MeaScreenProvider& screenProvider) {
     const CRect& size = screenProvider.GetVirtualRect();
     CPoint bottomRight(size.BottomRight());
     bottomRight.Offset(-1, -1);
 
-    m_linearUnits = unitsProvider.GetLinearUnits();
-    m_angularUnits = unitsProvider.GetAngularUnits();
-    m_invertY = unitsProvider.GetInvertY();
-    m_origin = unitsProvider.ConvertPos(unitsProvider.GetOrigin());
     m_size = unitsProvider.GetWidthHeight(size.TopLeft(), bottomRight);
 
     if (m_linearUnits->GetUnitsId() == MeaCustomId) {
@@ -53,12 +50,6 @@ void MeaPositionDesktop::Init(const MeaUnitsProvider& unitsProvider, const MeaSc
         m_customBasisStr = custom->GetScaleBasisStr();
         m_customFactor = custom->GetScaleFactor();
         m_customPrecisions = custom->GetDefaultPrecisions();
-    } else {
-        m_customName = _T("");
-        m_customAbbrev = _T("");
-        m_customBasisStr = _T("");
-        m_customFactor = 0.0;
-        m_customPrecisions.clear();
     }
 
     MeaScreenProvider::ScreenIter iter;

@@ -64,16 +64,6 @@ public:
     /// 
     explicit MeaPreferences(UINT nIDCaption, CWnd* pParentWnd = nullptr, UINT iSelectPage = 0);
 
-    /// Constructs the property sheet.
-    ///
-    /// @param pszCaption       [in] String for the title of the preferences dialog.
-    /// @param pParentWnd       [in] Parent window for the preferences dialog. If the value is
-    ///                         nullptr, the dialog is a popup.
-    /// @param iSelectPage      [in] Preference page to display when the preferences dialog is shown.
-    ///                         Default is the first page.
-    /// 
-    explicit MeaPreferences(LPCTSTR pszCaption, CWnd* pParentWnd = nullptr, UINT iSelectPage = 0);
-
     /// Destroys a property sheet instance.
     ///
     virtual ~MeaPreferences();

@@ -21,10 +21,14 @@
 #include "GUID.h"
 
 
-MeaGUID::MeaGUID() {
-    HRESULT hr = CoCreateGuid(&m_guid);
-    if (FAILED(hr)) {
-        AfxThrowOleException(hr);
+MeaGUID::MeaGUID(LPCTSTR guidStr) {
+    if (guidStr == nullptr) {
+        HRESULT hr = CoCreateGuid(&m_guid);
+        if (FAILED(hr)) {
+            AfxThrowOleException(hr);
+        }
+    } else {
+        Assign(guidStr);
     }
 }
 

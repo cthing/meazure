@@ -38,7 +38,7 @@ struct FSIZE {
 
     /// Constructs a size object initialized to 0.0 width and height.
     ///
-    FSIZE() : cx(0.0), cy(0.0) {}
+    FSIZE() : FSIZE(0.0, 0.0) {}
 
     /// Constructs a size object initialized to the specified dimensions.
     /// 
@@ -357,7 +357,7 @@ struct FRECT {
 
     /// Constructs a rectangle object initialized to 0.0 in all coordinates.
     ///
-    FRECT() : top(0.0), bottom(0.0), left(0.0), right(0.0) {}
+    FRECT() : FRECT(0.0, 0.0, 0.0, 0.0) {}
 
     /// Constructs a rectangle object initialized to the specified coordinates.
     /// 
@@ -413,7 +413,7 @@ struct FPOINT {
 
     /// Constructs a point object initialized to (0.0, 0.0).
     ///
-    FPOINT() : x(0.0), y(0.0) {}
+    FPOINT() : FPOINT(0.0, 0.0) {}
 
     /// Constructs a point object initialized to the specified coordinates.
     /// 

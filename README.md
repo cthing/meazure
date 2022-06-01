@@ -66,8 +66,9 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
     - Migrated codesbase to C++17
     - Reorganized source code into subfolders
     - Increased unit test coverage
-    - Uses precompiled headers to greatly reduce build time
-    - Refactoring, renaming, and migration of class functionality for testability and clarity
+    - Use precompiled headers to greatly reduce build time
+    - Use namespaces for static utility classes
+    - Refactoring, renaming, and reorganizing of class functionality for testability and clarity
  
 ### Changes 3.0.1 to 3.0.2
 

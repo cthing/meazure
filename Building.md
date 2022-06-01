@@ -29,27 +29,38 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
    set(BOOST_ROOT "C:/Program Files/boost/boost_1_79_0")
    ```
 
-5. Download and install Python from <http://www.python.org/download/>
+5. Download and install Python from <http://www.python.org/download/>. Include the following additional packages:
 
-6. Download and install Inno Setup from <http://www.jrsoftware.org/isinfo.php>
+   a. pip
+   b. Python launcher
+   c. Documentation
 
-7. Add `C:\Program Files (x86)\Inno Setup 6` to the user `Path`
+   Check the box to add Python to the environment variables.
 
-8. Download and install Doxygen from <http://www.doxygen.org>
+6. Install the cmakelang package, which provide the cmake-format, cmake-lint and other CMake related tools:
+   ```
+   pip install cmakelang
+   ```
 
-9. Download and install Graphviz from <http://www.graphviz.org/>
+7. Download and install Inno Setup from <http://www.jrsoftware.org/isinfo.php>
 
-10. Download and install MiKTEX from <http://miktex.org/>
+8. Add `C:\Program Files (x86)\Inno Setup 6` to the user `Path`
 
-11. Download and install Ghostscript from <https://www.ghostscript.com/releases/gsdnld.html>
+9. Download and install Doxygen from <http://www.doxygen.org>
 
-12. Open Visual Studio
+10. Download and install Graphviz from <http://www.graphviz.org/>
 
-13. From the `Start` menu, select `Visual Studio 2022 > x64 Native Tools Command Prompt for VS 2022`
+11. Download and install MiKTEX from <http://miktex.org/>
 
-14. In the command window change directory to the root of the Meazure source tree
+12. Download and install Ghostscript from <https://www.ghostscript.com/releases/gsdnld.html>
 
-15. The Meazure build uses the CMake program to configure the build environment.
+13. Open Visual Studio
+
+14. From the `Start` menu, select `Visual Studio 2022 > x64 Native Tools Command Prompt for VS 2022`
+
+15. In the command window change directory to the root of the Meazure source tree
+
+16. The Meazure build uses the CMake program to configure the build environment.
     CMake can generate Makefiles and Visual Studio project files. To generate
     a command line build using Microsoft's NMake tool run the following commands at the
     root of the source tree:
@@ -66,17 +77,17 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
     cmake -G "Visual Studio 17 2022" -A x64 ..
     ```
 
-16. To build Meazure using the command line, run the following command from the `build-nmake`
+17. To build Meazure using the command line, run the following command from the `build-nmake`
     directory:
     ```
     nmake
     ```
     The results are available in the `build-nmake/Release` directory.
 
-17. To load Meazure into Visual Studio, open the `Meazure.sln` file
+18. To load Meazure into Visual Studio, open the `Meazure.sln` file
     in the `build-vs` directory.
 
-18. To run the unit tests run the following command from the `build-nmake` directory:
+19. To run the unit tests run the following command from the `build-nmake` directory:
     ```
     ctest
     ```
@@ -85,14 +96,19 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
     ctest -V
     ```
 
-19. To create the Meazure installer, run the following command from the `build-nmake` directory:
+20. To create the Meazure installer, run the following command from the `build-nmake` directory:
     ```
     nmake dist
     ```
 
     The results are available in the `dist` top level directory.
 
-20. The Meazure source code is heavily commented using the Doxygen comment
+21. To lint check the CMakeLists.txt file, run the following command from the `build-nmake` directory:
+    ```
+    nmake cmakelint
+    ```
+
+22. The Meazure source code is heavily commented using the Doxygen comment
     syntax. The documentation corresponding to these comments has been
     generated and checked into source control in the top level `apidocs` directory. To
     regenerate that documentation, change directories into the `build-nmake`

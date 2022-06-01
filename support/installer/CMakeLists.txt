@@ -4,14 +4,14 @@ set(PACKAGE_PATHNAME "${DIST_DIR}/${PACKAGE_BASENAME}.exe")
 set(PACKAGE_SHA256_PATHNAME "${PACKAGE_PATHNAME}.sha256")
 
 configure_file(Meazure.iss.in Meazure.iss @ONLY)
-                  
+
 set(CMAKE_INSTALL_MFC_LIBRARIES TRUE)
 include(InstallRequiredSystemLibraries)
 set(REDIST_FILES ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS})
 
 set(DEST_REDIST_FILES)
-foreach(REDIST_FILE ${REDIST_FILES})
-    cmake_path(GET REDIST_FILE FILENAME REDIST_NAME)
+foreach(redist_file ${REDIST_FILES})
+    cmake_path(GET redist_file FILENAME REDIST_NAME)
     if(CMAKE_BUILD_TOOL MATCHES "nmake")
         set(DEST_REDIST_FILE "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/${REDIST_NAME}")
     else()

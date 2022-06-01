@@ -29,6 +29,8 @@ find_package(MFC REQUIRED)
 find_package(HTMLHelp REQUIRED)
 find_package(PythonInterp REQUIRED)
 
+find_program(CMAKE_LINT_PROGRAM "cmake-lint")
+
 set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
 set(APP_DIR "${SRC_DIR}/meazure")
 set(TEST_DIR "${SRC_DIR}/test")
@@ -54,3 +56,10 @@ message(STATUS "Output directory: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 
 add_subdirectory(support)
 add_subdirectory(src)
+
+if(CMAKE_LINT_PROGRAM)
+    file(GLOB_RECURSE BUILD_FILES CMakeLists.txt)
+    add_custom_target(cmakelint
+                      COMMAND ${CMAKE_LINT_PROGRAM} ${BUILD_FILES} --config ${PROJECT_SOURCE_DIR}/cmake-lint-config.py
+                      WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
+endif()

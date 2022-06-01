@@ -73,7 +73,7 @@ source_group(Images FILES ${IMAGES})
 set(IMAGE_SRCS
     Graphics/CoordinateSystems.vsd)
 source_group("Image Sources" FILES ${IMAGE_SRCS})
-    
+
 set(TOPICS
     Topics/AdvancedPrefs.htm
     Topics/AlwaysVisible.htm
@@ -154,6 +154,7 @@ add_custom_command(OUTPUT ${DEST_HELP_DIR}/Meazure.chm
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                    DEPENDS ${HELP_APP} ${TEMPLATES} ${TOPICS} ${IMAGES} ${CMAKE_CURRENT_SOURCE_DIR}/hid.h)
 add_custom_command(OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/hid.h
-                   COMMAND ${PYTHON_EXECUTABLE} ${TOOLS_DIR}/makehid/makehid.py "${PROJECT_SOURCE_DIR}/src/meazure/resource.h" hid.h
+                   COMMAND ${PYTHON_EXECUTABLE} ${TOOLS_DIR}/makehid/makehid.py
+                           "${PROJECT_SOURCE_DIR}/src/meazure/resource.h" hid.h
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
                    DEPENDS ${PROJECT_SOURCE_DIR}/src/meazure/resource.h)

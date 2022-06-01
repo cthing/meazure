@@ -3,7 +3,7 @@ add_compile_definitions(_AFXDLL)
 set(CMAKE_MFC_FLAG 2)
 set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} /nologo")
 
-set(top_SRCS
+set(TOP_SRCS
     App.cpp
     App.h
     AppFrame.cpp
@@ -17,9 +17,9 @@ set(top_SRCS
     VersionInfo.h
     VersionNumbers.h
 )
-source_group(App FILES ${top_SRCS})
+source_group(App FILES ${TOP_SRCS})
 
-set(ui_SRCS
+set(UI_SRCS
     ui/AppView.cpp
     ui/AppView.h
     ui/ColorDialog.cpp
@@ -42,23 +42,29 @@ set(ui_SRCS
     ui/NumberField.h
     ui/RulerSlider.cpp
     ui/RulerSlider.h
+    ui/ScreenMgr.cpp
+    ui/ScreenMgr.h
+    ui/ScreenProvider.h
     ui/StatusBar.cpp
     ui/StatusBar.h
     ui/Swatch.cpp
     ui/Swatch.h
     ui/Themes.h
 )
-source_group(UI FILES ${iu_SRCS})
+source_group(UI FILES ${UI_SRCS})
 
-set(units_SRCS
+set(UNITS_SRCS
     units/Units.cpp
     units/Units.h
     units/UnitsLabels.cpp
-    units/UnitsLabels.h    
+    units/UnitsLabels.h
+    units/UnitsMgr.cpp
+    units/UnitsMgr.h
+    units/UnitsProvider.h
 )
-source_group(Units FILES ${units_SRCS})
+source_group(Units FILES ${UNITS_SRCS})
 
-set(position_SRCS
+set(POSITION_SRCS
     position/Position.cpp
     position/Position.h
     position/PositionCollection.cpp
@@ -67,6 +73,8 @@ set(position_SRCS
     position/PositionDesktop.h
     position/PositionLogDlg.cpp
     position/PositionLogDlg.h
+    position/PositionLogMgr.cpp
+    position/PositionLogMgr.h
     position/PositionLogObserver.h
     position/PositionSaveDlg.cpp
     position/PositionSaveDlg.h
@@ -74,9 +82,9 @@ set(position_SRCS
     position/PositionScreen.h
     position/PositionLogWriter.h
 )
-source_group(Position FILES ${position_SRCS})
+source_group(Position FILES ${POSITION_SRCS})
 
-set(graphic_SRCS
+set(GRAPHICS_SRCS
     graphics/Circle.cpp
     graphics/Circle.h
     graphics/Colors.cpp
@@ -93,29 +101,9 @@ set(graphic_SRCS
     graphics/Ruler.cpp
     graphics/Ruler.h
 )
-source_group(Graphics FILES ${graphic_SRCS})
+source_group(Graphics FILES ${GRAPHICS_SRCS})
 
-set(interface_SRCS
-    ui/ScreenProvider.h
-    units/UnitsProvider.h
-)
-source_group(Interfaces FILES ${interface_SRCS})
-
-set(manager_SRCS
-    position/PositionLogMgr.cpp
-    position/PositionLogMgr.h
-    profile/ProfileMgr.cpp
-    profile/ProfileMgr.h
-    ui/ScreenMgr.cpp
-    ui/ScreenMgr.h
-    tools/ToolMgr.cpp
-    tools/ToolMgr.h
-    units/UnitsMgr.cpp
-    units/UnitsMgr.h
-)
-source_group(Managers FILES ${manager_SRCS})
-
-set(pref_SRCS
+set(PREFS_SRCS
     prefs/AdvancedPrefs.cpp
     prefs/AdvancedPrefs.h
     prefs/CalibrationPrefs.cpp
@@ -131,18 +119,20 @@ set(pref_SRCS
     prefs/ToolsPrefs.cpp
     prefs/ToolsPrefs.h
 )
-source_group(Preferences FILES ${pref_SRCS})
+source_group(Preferences FILES ${PREFS_SRCS})
 
-set(profile_SRCS
+set(PROFILE_SRCS
     profile/FileProfile.cpp
     profile/FileProfile.h
     profile/Profile.h
+    profile/ProfileMgr.cpp
+    profile/ProfileMgr.h
     profile/RegistryProfile.cpp
     profile/RegistryProfile.h
 )
-source_group(Profiles FILES ${profile_SRCS})
+source_group(Profiles FILES ${PROFILE_SRCS})
 
-set(tool_SRCS
+set(TOOL_SRCS
     tools/AngleTool.cpp
     tools/AngleTool.h
     tools/CircleTool.cpp
@@ -167,12 +157,14 @@ set(tool_SRCS
     tools/ScreenTool.h
     tools/Tool.cpp
     tools/Tool.h
+    tools/ToolMgr.cpp
+    tools/ToolMgr.h
     tools/WindowTool.cpp
     tools/WindowTool.h
 )
-source_group(Tools FILES ${tool_SRCS})
+source_group(Tools FILES ${TOOL_SRCS})
 
-set(utility_SRCS
+set(UTILITY_SRCS
     utilities/exval.cpp
     utilities/exval.h
     utilities/Geometry.h
@@ -192,20 +184,18 @@ set(utility_SRCS
     utilities/XMLParser.cpp
     utilities/XMLParser.h
 )
-source_group(Utilities FILES ${utility_SRCS})
+source_group(Utilities FILES ${UTILITY_SRCS})
 
-set(meazure_SRCS
-    ${top_SRCS}
-    ${ui_SRCS}
-    ${graphic_SRCS}
-    ${interface_SRCS}
-    ${manager_SRCS}
-    ${pref_SRCS}
-    ${profile_SRCS}
-    ${tool_SRCS}
-    ${units_SRCS}
-    ${position_SRCS}
-    ${utility_SRCS}
+set(MEAZURE_SRCS
+    ${TOP_SRCS}
+    ${UI_SRCS}
+    ${GRAPHICS_SRCS}
+    ${PREFS_SRCS}
+    ${PROFILE_SRCS}
+    ${TOOL_SRCS}
+    ${UNITS_SRCS}
+    ${POSITION_SRCS}
+    ${UTILITY_SRCS}
 )
 
 # Replace the version variables with the actual values from the project version.
@@ -220,10 +210,13 @@ else()
     configure_file(${SUPPORT_DIR}/dtd/PositionLog1.dtd ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/dtd/PositionLog1.dtd COPYONLY)
 endif()
 
-add_executable(Meazure WIN32 ${meazure_SRCS})
+add_executable(Meazure WIN32 ${MEAZURE_SRCS})
 add_dependencies(Meazure apphelp libexpat hooks)
 target_precompile_headers(Meazure PRIVATE pch.h)
 target_link_libraries(Meazure PRIVATE libexpat hooks version.lib ${HTML_HELP_LIBRARY})
-target_include_directories(Meazure PRIVATE ${Boost_INCLUDE_DIRS} "${CMAKE_SOURCE_DIR}/src" "${CMAKE_CURRENT_BINARY_DIR}")
+target_include_directories(Meazure PRIVATE
+                           ${Boost_INCLUDE_DIRS}
+                           "${CMAKE_SOURCE_DIR}/src"
+                           "${CMAKE_CURRENT_BINARY_DIR}")
 target_link_directories(Meazure PRIVATE ${Boost_LIBRARY_DIRS})
 set_target_properties(Meazure PROPERTIES LINK_FLAGS "/MANIFEST")

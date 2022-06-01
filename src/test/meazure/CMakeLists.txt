@@ -1,5 +1,4 @@
-
-add_definitions(-D_CONSOLE -D_AFXDLL) 
+add_definitions(-D_CONSOLE -D_AFXDLL)
 set(CMAKE_MFC_FLAG 2)
 set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} /nologo")
 
@@ -9,7 +8,13 @@ else()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHa")
 endif()
 
-macro(add_meazure_test runner reuse)
+# Builds and adds the specified test runner program to the list of unit tests to run.
+#
+# runner - Name of the test runner source file without the .cpp extension
+# reuse  - Name of the first test runner built so that its PCH file can be reused
+# ...    - Additional source files required to build the test runner
+#
+macro(ADD_MEAZURE_TEST runner reuse)
     add_executable(${runner} WIN32 ${runner}.cpp Test.rc ${ARGN})
     if("${reuse}" STREQUAL "")
         target_precompile_headers(${runner} PRIVATE pch.h)
@@ -19,22 +24,22 @@ macro(add_meazure_test runner reuse)
     target_include_directories(${runner} PRIVATE ${SRC_DIR} ${Boost_INCLUDE_DIRS} "${CMAKE_BINARY_DIR}/src")
     target_link_libraries(${runner} ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY} "version.lib" libexpat)
     set_target_properties(${runner} PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE")
-    add_test(${runner} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${runner})    
+    add_test(${runner} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${runner})
 endmacro()
 
-add_meazure_test(ColorsTest "" ${APP_DIR}/graphics/Colors.cpp)
-add_meazure_test(CommandLineInfoTest ColorsTest ${APP_DIR}/CommandLineInfo.cpp)
-add_meazure_test(FileProfileTest ColorsTest
+ADD_MEAZURE_TEST(ColorsTest "" ${APP_DIR}/graphics/Colors.cpp)
+ADD_MEAZURE_TEST(CommandLineInfoTest ColorsTest ${APP_DIR}/CommandLineInfo.cpp)
+ADD_MEAZURE_TEST(FileProfileTest ColorsTest
                  ${APP_DIR}/profile/FileProfile.cpp
                  ${APP_DIR}/utilities/XMLParser.cpp
                  ${APP_DIR}/utilities/exval.cpp
                  ${APP_DIR}/utilities/TimeStamp.cpp
                  ${APP_DIR}/VersionInfo.cpp)
-add_meazure_test(GeometryTest ColorsTest)
-add_meazure_test(GUIDTest ColorsTest ${APP_DIR}/utilities/GUID.cpp)
-add_meazure_test(NumericUtilsTest ColorsTest)
-add_meazure_test(PlotterTest ColorsTest)
-add_meazure_test(PositionTest ColorsTest
+ADD_MEAZURE_TEST(GeometryTest ColorsTest)
+ADD_MEAZURE_TEST(GUIDTest ColorsTest ${APP_DIR}/utilities/GUID.cpp)
+ADD_MEAZURE_TEST(NumericUtilsTest ColorsTest)
+ADD_MEAZURE_TEST(PlotterTest ColorsTest)
+ADD_MEAZURE_TEST(PositionTest ColorsTest
                  ${APP_DIR}/units/Units.cpp
                  ${APP_DIR}/utilities/XMLParser.cpp
                  ${APP_DIR}/utilities/exval.cpp
@@ -44,7 +49,7 @@ add_meazure_test(PositionTest ColorsTest
                  ${APP_DIR}/position/PositionDesktop.cpp
                  ${APP_DIR}/position/PositionScreen.cpp
                  ${APP_DIR}/position/Position.cpp)
-add_meazure_test(PositionCollectionTest ColorsTest
+ADD_MEAZURE_TEST(PositionCollectionTest ColorsTest
                  ${APP_DIR}/units/Units.cpp
                  ${APP_DIR}/utilities/XMLParser.cpp
                  ${APP_DIR}/utilities/exval.cpp
@@ -55,7 +60,7 @@ add_meazure_test(PositionCollectionTest ColorsTest
                  ${APP_DIR}/position/PositionScreen.cpp
                  ${APP_DIR}/position/Position.cpp
                  ${APP_DIR}/position/PositionCollection.cpp)
-add_meazure_test(PositionDesktopTest ColorsTest
+ADD_MEAZURE_TEST(PositionDesktopTest ColorsTest
                  ${APP_DIR}/units/Units.cpp
                  ${APP_DIR}/utilities/XMLParser.cpp
                  ${APP_DIR}/utilities/exval.cpp
@@ -63,17 +68,17 @@ add_meazure_test(PositionDesktopTest ColorsTest
                  ${APP_DIR}/utilities/StringUtils.cpp
                  ${APP_DIR}/position/PositionDesktop.cpp
                  ${APP_DIR}/position/PositionScreen.cpp)
-add_meazure_test(PositionScreenTest ColorsTest
+ADD_MEAZURE_TEST(PositionScreenTest ColorsTest
                  ${APP_DIR}/units/Units.cpp
                  ${APP_DIR}/utilities/XMLParser.cpp
                  ${APP_DIR}/utilities/exval.cpp
                  ${APP_DIR}/utilities/StringUtils.cpp
                  ${APP_DIR}/position/PositionScreen.cpp)
-add_meazure_test(RegistryProfileTest ColorsTest ${APP_DIR}/profile/RegistryProfile.cpp ${APP_DIR}/VersionInfo.cpp)
-add_meazure_test(SingletonTest ColorsTest)
-add_meazure_test(StringUtilsTest ColorsTest ${APP_DIR}/utilities/StringUtils.cpp)
-add_meazure_test(TimeStampTest ColorsTest ${APP_DIR}/utilities/TimeStamp.cpp)
-add_meazure_test(UnitsTest ColorsTest ${APP_DIR}/units/Units.cpp)
-add_meazure_test(VersionInfoTest ColorsTest ${APP_DIR}/VersionInfo.cpp)
+ADD_MEAZURE_TEST(RegistryProfileTest ColorsTest ${APP_DIR}/profile/RegistryProfile.cpp ${APP_DIR}/VersionInfo.cpp)
+ADD_MEAZURE_TEST(SingletonTest ColorsTest)
+ADD_MEAZURE_TEST(StringUtilsTest ColorsTest ${APP_DIR}/utilities/StringUtils.cpp)
+ADD_MEAZURE_TEST(TimeStampTest ColorsTest ${APP_DIR}/utilities/TimeStamp.cpp)
+ADD_MEAZURE_TEST(UnitsTest ColorsTest ${APP_DIR}/units/Units.cpp)
+ADD_MEAZURE_TEST(VersionInfoTest ColorsTest ${APP_DIR}/VersionInfo.cpp)
 
 target_link_libraries(FileProfileTest libexpat)

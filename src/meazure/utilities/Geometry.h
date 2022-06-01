@@ -52,7 +52,7 @@ struct MeaFSize {
     /// @return <b>true</b> if this and the specified size have the same dimensions.
     /// 
     bool operator==(const MeaFSize& other) const {
-        return MeaNumericUtils::IsFloatingEqual(cx, other.cx) && MeaNumericUtils::IsFloatingEqual(cy, other.cy);
+        return MeaNumericUtils::IsEqualF(cx, other.cx) && MeaNumericUtils::IsEqualF(cy, other.cy);
     }
 
     /// Tests inequality between this with the specified size.
@@ -369,10 +369,10 @@ struct MeaFRect {
     /// @return <b>true</b> if this and the specified rectangle have the same dimensions.
     /// 
     bool operator==(const MeaFRect& other) const {
-        return MeaNumericUtils::IsFloatingEqual(top, other.top) &&
-               MeaNumericUtils::IsFloatingEqual(bottom, other.bottom) &&
-               MeaNumericUtils::IsFloatingEqual(left, other.left) &&
-               MeaNumericUtils::IsFloatingEqual(right, other.right);
+        return MeaNumericUtils::IsEqualF(top, other.top) &&
+               MeaNumericUtils::IsEqualF(bottom, other.bottom) &&
+               MeaNumericUtils::IsEqualF(left, other.left) &&
+               MeaNumericUtils::IsEqualF(right, other.right);
     }
 
     /// Tests inequality between this with the specified rectangle.
@@ -422,7 +422,7 @@ struct MeaFPoint {
     /// @return <b>true</b> if this and the specified point have the same dimensions.
     /// 
     bool operator==(const MeaFPoint& other) const {
-        return MeaNumericUtils::IsFloatingEqual(x, other.x) && MeaNumericUtils::IsFloatingEqual(y, other.y);
+        return MeaNumericUtils::IsEqualF(x, other.x) && MeaNumericUtils::IsEqualF(y, other.y);
     }
 
     /// Tests inequality between this with the specified point.
@@ -618,7 +618,7 @@ namespace MeaGeometry {
         double deltax = end.x - start.x;
         double deltay = end.y - start.y;
 
-        if (MeaNumericUtils::IsFloatingZero(deltax) && MeaNumericUtils::IsFloatingZero(deltay)) {
+        if (MeaNumericUtils::IsZeroF(deltax) && MeaNumericUtils::IsZeroF(deltay)) {
             return 0.0;
         }
         return std::atan2(deltay, deltax);
@@ -643,7 +643,7 @@ namespace MeaGeometry {
         double numer = deltay2 * deltax1 - deltay1 * deltax2;
         double denom = deltax2 * deltax1 + deltay1 * deltay2;
 
-        if (MeaNumericUtils::IsFloatingZero(numer) && MeaNumericUtils::IsFloatingZero(denom)) {
+        if (MeaNumericUtils::IsZeroF(numer) && MeaNumericUtils::IsZeroF(denom)) {
             return 0.0;
         }
         return std::atan2(numer, denom);

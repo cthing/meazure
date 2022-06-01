@@ -87,12 +87,12 @@ public:
     ///
     bool operator==(const MeaPositionScreen& screen) const {
         return ((m_primary == screen.m_primary) &&
-                MeaNumericUtils::IsFloatingEqual(m_rect.top, screen.m_rect.top) &&
-                MeaNumericUtils::IsFloatingEqual(m_rect.bottom, screen.m_rect.bottom) &&
-                MeaNumericUtils::IsFloatingEqual(m_rect.left, screen.m_rect.left) &&
-                MeaNumericUtils::IsFloatingEqual(m_rect.right, screen.m_rect.right) &&
-                MeaNumericUtils::IsFloatingEqual(m_res.cx, screen.m_res.cx) &&
-                MeaNumericUtils::IsFloatingEqual(m_res.cy, screen.m_res.cy) &&
+                MeaNumericUtils::IsEqualF(m_rect.top, screen.m_rect.top) &&
+                MeaNumericUtils::IsEqualF(m_rect.bottom, screen.m_rect.bottom) &&
+                MeaNumericUtils::IsEqualF(m_rect.left, screen.m_rect.left) &&
+                MeaNumericUtils::IsEqualF(m_rect.right, screen.m_rect.right) &&
+                MeaNumericUtils::IsEqualF(m_res.cx, screen.m_res.cx) &&
+                MeaNumericUtils::IsEqualF(m_res.cy, screen.m_res.cy) &&
                 (m_manualRes == screen.m_manualRes) &&
                 (m_desc == screen.m_desc));
     }

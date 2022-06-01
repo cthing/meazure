@@ -46,11 +46,10 @@ namespace MeaNumericUtils {
     /// for details on this implementation.
     ///
     template<typename T>
-    inline bool IsFloatingEqual(T f1, T f2) {
-        if (std::fabs(f1 - f2) <= std::numeric_limits<T>::epsilon()) {
-            return true;
-        }
-        return std::fabs(f1 - f2) <= (std::numeric_limits<T>::epsilon() * std::fmax(std::fabs(f1), std::fabs(f2)));
+    inline bool IsEqualF(T f1, T f2) {
+        return (std::fabs(f1 - f2) <= std::numeric_limits<T>::epsilon())
+            ? true
+            : std::fabs(f1 - f2) <= (std::numeric_limits<T>::epsilon() * std::fmax(std::fabs(f1), std::fabs(f2)));
     }
 
     /// Tests whether the specified floating point value is zero.
@@ -61,7 +60,7 @@ namespace MeaNumericUtils {
     /// @return <b>true</b> if the value is equal to zero within an epsilon of the floating point type.
     ///
     template<typename T>
-    inline bool IsFloatingZero(T f) {
+    inline bool IsZeroF(T f) {
         return std::fabs(f) <= std::numeric_limits<T>::epsilon();
     }
 };

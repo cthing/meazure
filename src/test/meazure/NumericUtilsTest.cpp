@@ -24,28 +24,28 @@
 #include <meazure/utilities/NumericUtils.h>
 
 
-BOOST_AUTO_TEST_CASE(TestIsFloatingEqual) {
-    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(0.0, 0.0));
-    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(1.0, 1.0));
-    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(-1.0, -1.0));
-    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(3.141596, 3.141596));
-    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(1.0 / 17.0, 1 / 17.0));
-    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(std::numeric_limits<double>::epsilon(),
-                                                    std::numeric_limits<double>::epsilon()));
-    BOOST_TEST(MeaNumericUtils::IsFloatingEqual(1.000000001f, 1.000000002f));
+BOOST_AUTO_TEST_CASE(TestIsEqualF) {
+    BOOST_TEST(MeaNumericUtils::IsEqualF(0.0, 0.0));
+    BOOST_TEST(MeaNumericUtils::IsEqualF(1.0, 1.0));
+    BOOST_TEST(MeaNumericUtils::IsEqualF(-1.0, -1.0));
+    BOOST_TEST(MeaNumericUtils::IsEqualF(3.141596, 3.141596));
+    BOOST_TEST(MeaNumericUtils::IsEqualF(1.0 / 17.0, 1 / 17.0));
+    BOOST_TEST(MeaNumericUtils::IsEqualF(std::numeric_limits<double>::epsilon(),
+                                         std::numeric_limits<double>::epsilon()));
+    BOOST_TEST(MeaNumericUtils::IsEqualF(1.000000001f, 1.000000002f));
 
-    BOOST_TEST(!MeaNumericUtils::IsFloatingEqual(0.0, 1.5));
-    BOOST_TEST(!MeaNumericUtils::IsFloatingEqual(-10.0, 3.141596));
-    BOOST_TEST(!MeaNumericUtils::IsFloatingEqual(1.000001f, 1.000002f));
+    BOOST_TEST(!MeaNumericUtils::IsEqualF(0.0, 1.5));
+    BOOST_TEST(!MeaNumericUtils::IsEqualF(-10.0, 3.141596));
+    BOOST_TEST(!MeaNumericUtils::IsEqualF(1.000001f, 1.000002f));
 }
 
-BOOST_AUTO_TEST_CASE(TestIsFloatingZero) {
-    BOOST_TEST(MeaNumericUtils::IsFloatingZero(0.0));
-    BOOST_TEST(MeaNumericUtils::IsFloatingZero(-0.0));
-    BOOST_TEST(MeaNumericUtils::IsFloatingZero(std::numeric_limits<double>::epsilon()));
+BOOST_AUTO_TEST_CASE(TestIsZeroF) {
+    BOOST_TEST(MeaNumericUtils::IsZeroF(0.0));
+    BOOST_TEST(MeaNumericUtils::IsZeroF(-0.0));
+    BOOST_TEST(MeaNumericUtils::IsZeroF(std::numeric_limits<double>::epsilon()));
 
-    BOOST_TEST(!MeaNumericUtils::IsFloatingZero(1.0));
-    BOOST_TEST(!MeaNumericUtils::IsFloatingZero(-1.0));
-    BOOST_TEST(!MeaNumericUtils::IsFloatingZero(2.0 * std::numeric_limits<double>::epsilon()));
-    BOOST_TEST(!MeaNumericUtils::IsFloatingZero(-2.0 * std::numeric_limits<double>::epsilon()));
+    BOOST_TEST(!MeaNumericUtils::IsZeroF(1.0));
+    BOOST_TEST(!MeaNumericUtils::IsZeroF(-1.0));
+    BOOST_TEST(!MeaNumericUtils::IsZeroF(2.0 * std::numeric_limits<double>::epsilon()));
+    BOOST_TEST(!MeaNumericUtils::IsZeroF(-2.0 * std::numeric_limits<double>::epsilon()));
 }

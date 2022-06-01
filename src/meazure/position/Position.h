@@ -244,11 +244,11 @@ public:
     ///
     bool operator==(const MeaPosition& position) const {
         return (m_points == position.m_points) &&
-            MeaNumericUtils::IsFloatingEqual(m_width, position.m_width) &&
-            MeaNumericUtils::IsFloatingEqual(m_height, position.m_height) &&
-            MeaNumericUtils::IsFloatingEqual(m_distance, position.m_distance) &&
-            MeaNumericUtils::IsFloatingEqual(m_area, position.m_area) &&
-            MeaNumericUtils::IsFloatingEqual(m_angle, position.m_angle) &&
+            MeaNumericUtils::IsEqualF(m_width, position.m_width) &&
+            MeaNumericUtils::IsEqualF(m_height, position.m_height) &&
+            MeaNumericUtils::IsEqualF(m_distance, position.m_distance) &&
+            MeaNumericUtils::IsEqualF(m_area, position.m_area) &&
+            MeaNumericUtils::IsEqualF(m_angle, position.m_angle) &&
             (m_desktopRef == position.m_desktopRef) &&
             (m_toolName == position.m_toolName) &&
             (m_timestamp == position.m_timestamp) &&

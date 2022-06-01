@@ -140,7 +140,7 @@ MeaColors::HSL MeaColors::RGBtoHSL(COLORREF rgb) {
     double cmin = std::min(r, std::min(g, b));
 
     l = (cmax + cmin) / 2.0;
-    if (MeaNumericUtils::IsFloatingEqual(cmax, cmin)) {
+    if (MeaNumericUtils::IsEqualF(cmax, cmin)) {
         s = 0.0;
         h = 0.0; // it's really undefined
     } else {
@@ -151,9 +151,9 @@ MeaColors::HSL MeaColors::RGBtoHSL(COLORREF rgb) {
         }
         double delta = cmax - cmin;
 
-        if (MeaNumericUtils::IsFloatingEqual(r, cmax)) {
+        if (MeaNumericUtils::IsEqualF(r, cmax)) {
             h = (g - b) / delta;
-        } else if (MeaNumericUtils::IsFloatingEqual(g, cmax)) {
+        } else if (MeaNumericUtils::IsEqualF(g, cmax)) {
             h = 2.0 + (b - r) / delta;
         } else {
             h = 4.0 + (r - g) / delta;

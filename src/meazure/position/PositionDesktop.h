@@ -148,18 +148,18 @@ public:
     /// @return <b>true</b> if the specified object and this are equal.
     ///
     bool operator==(const MeaPositionDesktop& desktop) const {
-        return (MeaNumericUtils::IsFloatingEqual(m_origin.x, desktop.m_origin.x) &&
-            MeaNumericUtils::IsFloatingEqual(m_origin.y, desktop.m_origin.y) &&
+        return (MeaNumericUtils::IsEqualF(m_origin.x, desktop.m_origin.x) &&
+            MeaNumericUtils::IsEqualF(m_origin.y, desktop.m_origin.y) &&
             (m_invertY == desktop.m_invertY) &&
-            MeaNumericUtils::IsFloatingEqual(m_size.cx, desktop.m_size.cx) &&
-            MeaNumericUtils::IsFloatingEqual(m_size.cy, desktop.m_size.cy) &&
+            MeaNumericUtils::IsEqualF(m_size.cx, desktop.m_size.cx) &&
+            MeaNumericUtils::IsEqualF(m_size.cy, desktop.m_size.cy) &&
             (m_linearUnits == desktop.m_linearUnits) &&
             (m_angularUnits == desktop.m_angularUnits) &&
             (m_screens == desktop.m_screens) &&
             (m_customName == desktop.m_customName) &&
             (m_customAbbrev == desktop.m_customAbbrev) &&
             (m_customBasisStr == desktop.m_customBasisStr) &&
-            MeaNumericUtils::IsFloatingEqual(m_customFactor, desktop.m_customFactor) &&
+            MeaNumericUtils::IsEqualF(m_customFactor, desktop.m_customFactor) &&
             (m_customPrecisions == desktop.m_customPrecisions));
     }
 

@@ -105,8 +105,8 @@ void MeaScreenTool::SetPosition(const POINT& pos) {
     // corresponding to the specified position.
     //
     if ((m_rect != rect)
-        || !MeaNumericUtils::IsFloatingEqual(m_res.cx, res.cx)
-        || !MeaNumericUtils::IsFloatingEqual(m_res.cy, res.cy)
+        || !MeaNumericUtils::IsEqualF(m_res.cx, res.cx)
+        || !MeaNumericUtils::IsEqualF(m_res.cy, res.cy)
         || (m_anyOSRes != anyOSRes)) {
         m_rect = rect;
         m_res = res;

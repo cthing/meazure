@@ -146,8 +146,6 @@ void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc, const MeaScreenP
                                       const MeaUnitsProvider& unitsProvider) {
     CRect clientRect;
     CRect winRect;
-    ;
-    SIZE sepPixels;
 
     COLORREF foreColor = RGB(0, 0, 0);
     COLORREF backColor = RGB(0xFF, 0xFF, 0xFF);
@@ -160,8 +158,7 @@ void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc, const MeaScreenP
     MeaFSize res = screenProvider.GetScreenRes(screenProvider.GetScreenIter(winRect));
 
     SIZE forePixels = unitsProvider.ConvertToPixels(MeaInchesId, res, 0.02, 3);
-    sepPixels.cx = 3 * forePixels.cx;
-    sepPixels.cy = 3 * forePixels.cy;
+    CSize sepPixels(3 * forePixels.cx, 3 * forePixels.cy);
 
     int x, y;
 

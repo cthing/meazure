@@ -308,9 +308,9 @@ private:
     const MeaUnitsProvider& m_unitsProvider;    ///< Units information provider
     COLORREF m_borderColor;                     ///< Color for the ruler border and tick marks.
     COLORREF m_backColor;                       ///< Color for the ruler background.
-    SIZE m_majorTickHeight;                     ///< Height of the major tick marks, in pixels.
-    SIZE m_minorTickHeight;                     ///< Height of the minor tick marks, in pixels.
-    SIZE m_margin;                              ///< Height spacing between tick marks, number label and border, in pixels.
+    CSize m_majorTickHeight;                    ///< Height of the major tick marks, in pixels.
+    CSize m_minorTickHeight;                    ///< Height of the minor tick marks, in pixels.
+    CSize m_margin;                             ///< Height spacing between tick marks, number label and border, in pixels.
     MeaRulerCallback* m_callback;               ///< Object to be called on ruler drag
     Orientation m_orientation;                  ///< Orientation of the rule (i.e. horizontal or vertical)
     int m_position;                             ///< Position of the ruler, in pixels

@@ -109,25 +109,20 @@ void MeaLine::SetColor(COLORREF color) {
 }
 
 void MeaLine::PlotLine() {
-    POINT startPoint;
-    POINT endPoint;
+    m_count = 0;
+
+    std::function<void(int, int)> addPoint = std::bind(&MeaLine::AddPoint, this, std::placeholders::_1,
+                                                       std::placeholders::_2);
 
     // The performance of the region creation functions appears to
     // be sensitive to the direction in which the line is drawn.
     //
     if (m_startPoint.y > m_endPoint.y) {
-        startPoint = m_startPoint;
-        endPoint = m_endPoint;
+        MeaPlotter::PlotLine(m_startPoint, m_endPoint, addPoint);
     } else {
-        startPoint = m_endPoint;
-        endPoint = m_startPoint;
+        MeaPlotter::PlotLine(m_endPoint, m_startPoint, addPoint);
     }
-
-    m_count = 0;
-
-    std::function<void(int, int)> addPoint = std::bind(&MeaLine::AddPoint, this, std::placeholders::_1,
-                                                       std::placeholders::_2);
-    MeaPlotter::PlotLine(startPoint, endPoint, addPoint);
+    
 }
 
 void MeaLine::SetPosition(const POINT& startPoint, const POINT& endPoint) {

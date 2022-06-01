@@ -245,11 +245,10 @@ void MeaScreenMgr::LoadProfile(MeaProfile& profile) {
         } else {
             for (int i = 0; i < numScreens; i++) {
                 CString tag;
-                POINT center;
-
                 tag.Format(_T("Screen%d-"), i);
-                center.x = profile.ReadInt(tag + _T("CenterX"), 0);
-                center.y = profile.ReadInt(tag + _T("CenterY"), 0);
+
+                CPoint center(profile.ReadInt(tag + _T("CenterX"), 0), 
+                              profile.ReadInt(tag + _T("CenterY"), 0));
 
                 Screen* screen = GetScreen(center);
                 if (screen != nullptr) {

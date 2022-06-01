@@ -273,9 +273,9 @@ private:
     }
     static inline const std::array<int, kTotalLayers> m_numCoords = MakeNumCoords();
 
-    static SIZE m_size;             ///< Width and height of the crosshair, in pixels
-    static SIZE m_halfSize;         ///< Half the width and height of the crosshair, in pixels
-    static SIZE m_spread;           ///< Half the length of the base of a triangular section of the crosshair, in pixels
+    static CSize m_size;            ///< Width and height of the crosshair, in pixels
+    static CSize m_halfSize;        ///< Half the width and height of the crosshair, in pixels
+    static CSize m_spread;          ///< Half the length of the base of a triangular section of the crosshair, in pixels
     static UINT m_flashInterval;    ///< Number of milliseconds to hold each display state while flashing the crosshair
 
     /// Given the center of the crosshair, returns the corresponding

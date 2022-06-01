@@ -205,11 +205,10 @@ void MeaGridTool::SetLines(LineDir dir) {
         // Position the lines.
         //
         LineList::const_iterator iter = m_hlineList.begin();
-        POINT startPoint, endPoint;
+        CPoint startPoint(virtRect.left, virtRect.top);
+        CPoint endPoint(virtRect.right, virtRect.top);
 
-        for (startPoint.x = virtRect.left, startPoint.y = virtRect.top, endPoint.x = virtRect.right, endPoint.y = virtRect.top;
-                startPoint.y <= virtRect.bottom;
-                startPoint.y += m_gridSpacing.cy, endPoint.y = startPoint.y) {
+        for ( ; startPoint.y <= virtRect.bottom; startPoint.y += m_gridSpacing.cy, endPoint.y = startPoint.y) {
             (*iter++)->SetPosition(startPoint, endPoint);
         }
     } else {
@@ -231,11 +230,10 @@ void MeaGridTool::SetLines(LineDir dir) {
         // Position the lines.
         //
         LineList::const_iterator iter = m_vlineList.begin();
-        POINT startPoint, endPoint;
+        CPoint startPoint(virtRect.left, virtRect.top);
+        CPoint endPoint(virtRect.left, virtRect.bottom);
 
-        for (startPoint.x = virtRect.left, startPoint.y = virtRect.top, endPoint.x = virtRect.left, endPoint.y = virtRect.bottom;
-                startPoint.x <= virtRect.right;
-                startPoint.x += m_gridSpacing.cx, endPoint.x = startPoint.x) {
+        for ( ; startPoint.x <= virtRect.right; startPoint.x += m_gridSpacing.cx, endPoint.x = startPoint.x) {
             (*iter++)->SetPosition(startPoint, endPoint);
         }
     }

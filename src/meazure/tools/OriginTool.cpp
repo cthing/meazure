@@ -117,13 +117,8 @@ void MeaOriginTool::Update(MeaUpdateReason reason) {
         MeaFSize res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(origin));
         SIZE length = m_unitsProvider.ConvertToPixels(MeaInchesId, res, 0.25, 10);
 
-        POINT xEnd, yEnd;
-
-        xEnd.x = origin.x + length.cx;
-        xEnd.y = origin.y;
-
-        yEnd.x = origin.x;
-        yEnd.y = origin.y + (inverted ? -length.cy : length.cy);
+        CPoint xEnd(origin.x + length.cx, origin.y);
+        CPoint yEnd(origin.x, origin.y + (inverted ? -length.cy : length.cy));
 
         m_xAxis.SetPosition(origin, xEnd);
         m_yAxis.SetPosition(origin, yEnd);

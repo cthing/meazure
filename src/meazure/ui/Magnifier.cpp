@@ -346,12 +346,12 @@ void MeaMagnifier::Draw(HDC hDC) {
     xCoord = srcWidth / 2;
     yCoord = srcHeight / 2;
 
-    RECT centerRect = {
-        xCoord * dstWidth / srcWidth,
-        yCoord * dstHeight / srcHeight,
-        (xCoord + 1) * dstWidth / srcWidth + 1,
-        (yCoord + 1) * dstHeight / srcHeight + 1
-    };
+    CRect centerRect(
+        xCoord * dstWidth / srcWidth,                   // Left
+        yCoord * dstHeight / srcHeight,                 // Top
+        (xCoord + 1) * dstWidth / srcWidth + 1,         // Right
+        (yCoord + 1) * dstHeight / srcHeight + 1        // Bottom
+    );
 
     CBrush brush(RGB(0xFF, 0, 0));
     ::FrameRect(memDC, &centerRect, brush);

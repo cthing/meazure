@@ -159,7 +159,7 @@ public:
     bool IsEnabled() const { return m_enabled; }
 
 protected:
-    static POINT m_defaultPos;                  ///< A default position used by tools that do not have a defined
+    static const CPoint m_defaultPos;           ///< A default position used by tools that do not have a defined
                                                 ///< position. This position is returned by the RecordPosition() method
     MeaToolMgr& m_mgr;                          ///< Tool manager
     const MeaScreenProvider& m_screenProvider;  ///< Screen information provider

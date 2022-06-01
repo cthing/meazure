@@ -157,7 +157,7 @@ private:
     /// @param y    [in] Y coordinate of the point on the line
     ///
     void AddPoint(int x, int y) {
-        POINT p { x, y };
+        CPoint p(x, y);
         POINT* arr = &m_arr[m_count << 2];
 
         // (x,y)   (x+1, y)

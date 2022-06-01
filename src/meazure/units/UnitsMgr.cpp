@@ -172,7 +172,7 @@ void MeaUnitsMgr::MasterReset() {
     SetLinearUnits(kDefLinearUnits);
     SetAngularUnits(kDefAngularUnits);
 
-    POINT origin = { 0, 0 };
+    CPoint origin;
 
     SetInvertY(kDefInvertY);
     SetOrigin(origin);
@@ -256,11 +256,7 @@ void MeaUnitsMgr::SetAngularUnits(LPCTSTR unitsStr) {
 }
 
 MeaFSize MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const {
-    MeaFSize wh;
-    POINT np1, np2;
-
-    np1 = p1;
-    np2 = p2;
+    CPoint np1(p1), np2(p2);
 
     if (np1.x < np2.x) {
         np2.x++;
@@ -277,10 +273,7 @@ MeaFSize MeaUnitsMgr::GetWidthHeight(const POINT& p1, const POINT& p2) const {
     MeaFPoint cp1 = ConvertCoord(np1);
     MeaFPoint cp2 = ConvertCoord(np2);
 
-    wh.cx = fabs(cp1.x - cp2.x);
-    wh.cy = fabs(cp1.y - cp2.y);
-
-    return wh;
+    return MeaFSize(fabs(cp1.x - cp2.x), fabs(cp1.y - cp2.y));
 }
 
 MeaFSize MeaUnitsMgr::GetMinorIncr(const RECT& rect) const {

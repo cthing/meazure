@@ -574,7 +574,7 @@ protected:
     const MeaScreenProvider& m_screenProvider;  ///< Screen information provider
 
 private:
-    static POINT m_originOffset;                ///< Offset of the origin from the system origin, in pixels.
+    static CPoint m_originOffset;               ///< Offset of the origin from the system origin, in pixels.
     static bool m_invertY;                      ///< Indicates if the y-axis direction is inverted.
     MeaLinearUnitsId m_unitsId;                 ///< Linear units identifier.
     int m_majorTickCount;                       ///< Number of minor ruler tick marks between major tick marks.

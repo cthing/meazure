@@ -28,9 +28,9 @@
 #include <functional>
 
 
-SIZE MeaCrossHair::m_size;
-SIZE MeaCrossHair::m_halfSize;
-SIZE MeaCrossHair::m_spread;
+CSize MeaCrossHair::m_size;
+CSize MeaCrossHair::m_halfSize;
+CSize MeaCrossHair::m_spread;
 UINT MeaCrossHair::m_flashInterval { 100 };
 
 

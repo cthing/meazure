@@ -236,7 +236,7 @@ private:
 
 
     static bool m_armed;            ///< Indicates if the data window is allowed to be displayed.
-    static SIZE m_margin;           ///< Margin between the data text and the window border, in pixels.
+    static CSize m_margin;          ///< Margin between the data text and the window border, in pixels.
     static UINT m_flashInterval;    ///< Window flash interval, in milliseconds.
 
 

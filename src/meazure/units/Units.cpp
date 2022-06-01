@@ -128,7 +128,7 @@ double MeaRadianUnits::ConvertAngle(double angle) const {
 //*************************************************************************
 
 bool MeaLinearUnits::m_invertY = false;
-POINT MeaLinearUnits::m_originOffset = { 0, 0 };
+CPoint MeaLinearUnits::m_originOffset;
 
 
 MeaLinearUnits::MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr, const MeaScreenProvider& screenProvider) :
@@ -266,25 +266,16 @@ bool MeaLinearUnits::UnconvertCoord(MeaConvertDir dir, const CWnd* wnd, double p
 
 MeaFPoint MeaLinearUnits::ConvertPos(const POINT& pos) const {
     MeaFSize fromPixels = FromPixels(m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(pos)));
-    MeaFPoint pt;
-    pt.x = fromPixels.cx * pos.x;
-    pt.y = fromPixels.cy * pos.y;
-    return pt;
+    return MeaFPoint(fromPixels.cx * pos.x, fromPixels.cy * pos.y);
 }
 
 POINT MeaLinearUnits::UnconvertPos(const MeaFPoint& pos) const {
     MeaFSize fromPixels = FromPixels(FindResFromPos(pos));
-    POINT pt;
-    pt.x = static_cast<long>(pos.x / fromPixels.cx);
-    pt.y = static_cast<long>(pos.y / fromPixels.cy);
-    return pt;
+    return CPoint(static_cast<long>(pos.x / fromPixels.cx), static_cast<long>(pos.y / fromPixels.cy));
 }
 
 MeaFSize MeaLinearUnits::ConvertRes(const MeaFSize& res) const {
-    MeaFSize pt;
-    pt.cx = 1.0 / GetResFromPixels(res).cx;
-    pt.cy = 1.0 / GetResFromPixels(res).cy;
-    return pt;
+    return MeaFSize(1.0 / GetResFromPixels(res).cx, 1.0 / GetResFromPixels(res).cy);
 }
 
 MeaFSize MeaLinearUnits::GetResFromPixels(const MeaFSize& res) const {
@@ -328,12 +319,8 @@ const MeaFSize& MeaLinearUnits::FindResFromPos(const MeaFPoint& pos) const {
 }
 
 SIZE MeaLinearUnits::ConvertToPixels(const MeaFSize& res, double value, int minPixels) const {
-    SIZE pixels;
-
     MeaFSize fromPixels = FromPixels(res);
-
-    pixels.cx = static_cast<int>(value / fromPixels.cx);
-    pixels.cy = static_cast<int>(value / fromPixels.cy);
+    CSize pixels(static_cast<int>(value / fromPixels.cx), static_cast<int>(value / fromPixels.cy));
 
     // In case the resolution is small enough that the pixel
     // becomes too small, set the separation to the pixel minimum.
@@ -372,17 +359,11 @@ bool MeaPixelUnits::RequiresRes() const {
 }
 
 MeaFSize MeaPixelUnits::GetResFromPixels(const MeaFSize& res) const {
-    MeaFSize resFactor;
-    resFactor.cx = 1.0 / res.cx;
-    resFactor.cy = 1.0 / res.cy;
-    return resFactor;
+    return MeaFSize(1.0 / res.cx, 1.0 / res.cy);
 }
 
 MeaFSize MeaPixelUnits::FromPixels(const MeaFSize& /*res*/) const {
-    MeaFSize fromPixels;
-    fromPixels.cx = 1.0;
-    fromPixels.cy = 1.0;
-    return fromPixels;
+    return MeaFSize(1.0, 1.0);
 }
 
 
@@ -405,10 +386,7 @@ MeaPointUnits::MeaPointUnits(const MeaScreenProvider& screenProvider) :
 MeaPointUnits::~MeaPointUnits() {}
 
 MeaFSize MeaPointUnits::FromPixels(const MeaFSize& res) const {
-    MeaFSize fromPixels;
-    fromPixels.cx = 72.0 / res.cx;
-    fromPixels.cy = 72.0 / res.cy;
-    return fromPixels;
+    return MeaFSize(72.0 / res.cx, 72.0 / res.cy);
 }
 
 
@@ -431,10 +409,7 @@ MeaPicaUnits::MeaPicaUnits(const MeaScreenProvider& screenProvider) :
 MeaPicaUnits::~MeaPicaUnits() {}
 
 MeaFSize MeaPicaUnits::FromPixels(const MeaFSize& res) const {
-    MeaFSize fromPixels;
-    fromPixels.cx = 6.0 / res.cx;
-    fromPixels.cy = 6.0 / res.cy;
-    return fromPixels;
+    return MeaFSize(6.0 / res.cx, 6.0 / res.cy);
 }
 
 
@@ -457,10 +432,7 @@ MeaTwipUnits::MeaTwipUnits(const MeaScreenProvider& screenProvider) :
 MeaTwipUnits::~MeaTwipUnits() {}
 
 MeaFSize MeaTwipUnits::FromPixels(const MeaFSize& res) const {
-    MeaFSize fromPixels;
-    fromPixels.cx = 1440.0 / res.cx;
-    fromPixels.cy = 1440.0 / res.cy;
-    return fromPixels;
+    return MeaFSize(1440.0 / res.cx, 1440.0 / res.cy);
 }
 
 
@@ -483,10 +455,7 @@ MeaInchUnits::MeaInchUnits(const MeaScreenProvider& screenProvider) :
 MeaInchUnits::~MeaInchUnits() {}
 
 MeaFSize MeaInchUnits::FromPixels(const MeaFSize& res) const {
-    MeaFSize fromPixels;
-    fromPixels.cx = 1.0 / res.cx;
-    fromPixels.cy = 1.0 / res.cy;
-    return fromPixels;
+    return MeaFSize(1.0 / res.cx, 1.0 / res.cy);
 }
 
 
@@ -509,10 +478,7 @@ MeaCentimeterUnits::MeaCentimeterUnits(const MeaScreenProvider& screenProvider) 
 MeaCentimeterUnits::~MeaCentimeterUnits() {}
 
 MeaFSize MeaCentimeterUnits::FromPixels(const MeaFSize& res) const {
-    MeaFSize fromPixels;
-    fromPixels.cx = 2.54 / res.cx;
-    fromPixels.cy = 2.54 / res.cy;
-    return fromPixels;
+    return MeaFSize(2.54 / res.cx, 2.54 / res.cy);
 }
 
 
@@ -535,10 +501,7 @@ MeaMillimeterUnits::MeaMillimeterUnits(const MeaScreenProvider& screenProvider) 
 MeaMillimeterUnits::~MeaMillimeterUnits() {}
 
 MeaFSize MeaMillimeterUnits::FromPixels(const MeaFSize& res) const {
-    MeaFSize fromPixels;
-    fromPixels.cx = 25.4 / res.cx;
-    fromPixels.cy = 25.4 / res.cy;
-    return fromPixels;
+    return MeaFSize(25.4 / res.cx, 25.4 / res.cy);
 }
 
 

@@ -155,7 +155,7 @@ private:
     /// @param y    [in] Y coordinate of the point on the circle
     ///
     void AddPoint(int x, int y) {
-        POINT p { x, y };
+        CPoint p(x, y);
 
         // Make sure the point is somewhere on the virtual rectangle
         // formed by all display monitors.

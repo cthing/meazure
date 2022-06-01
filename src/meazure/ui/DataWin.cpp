@@ -34,7 +34,7 @@ END_MESSAGE_MAP()
 
 
 bool MeaDataWin::m_armed { kDefArmed };
-SIZE MeaDataWin::m_margin { 3, 1 };
+CSize MeaDataWin::m_margin(3, 1);
 UINT MeaDataWin::m_flashInterval { 100 };   // Flash interval in milliseconds
 
 

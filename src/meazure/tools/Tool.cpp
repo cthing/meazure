@@ -23,7 +23,7 @@
 #include <cassert>
 
 
-POINT MeaTool::m_defaultPos { 0, 0 };
+const CPoint MeaTool::m_defaultPos;
 
 
 MeaTool::MeaTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider) :

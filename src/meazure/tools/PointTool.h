@@ -175,13 +175,13 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHEnter(const CHInfo* info) override;
+    virtual void OnCHEnter(const CrossHairInfo* info) override;
 
     /// Called when the pointer leaves the tool's crosshair.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHLeave(const CHInfo* info) override;
+    virtual void OnCHLeave(const CrossHairInfo* info) override;
 
     /// Called when the user attempts to drag the tool's crosshair. The
     /// info parameter indicates where the crosshair is to be moved and
@@ -192,7 +192,7 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHMove(const CHInfo* info) override;
+    virtual void OnCHMove(const CrossHairInfo* info) override;
 
 private:
     /// Creates the tool's crosshair and data window. The Enable()

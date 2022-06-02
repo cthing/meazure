@@ -47,6 +47,9 @@ protected:
     /// Represents an attribute value.
     ///
     struct AttributeValue {
+
+        AttributeValue() : isDefault(false) {}
+
         CString value;      ///< The value of the attribute
         bool    isDefault;  ///< <b>true</b> means that the value is set from the DTD default;
                             ///< <b>false</b> means that the value explicitly specified in the XML file.

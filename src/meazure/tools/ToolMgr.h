@@ -128,7 +128,7 @@ public:
     ///
     /// @return Name of the currently set radio tool.
     ///
-    LPCTSTR GetToolName() const {
+    CString GetToolName() const {
         return m_currentRadioTool->GetToolName();
     }
 

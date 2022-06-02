@@ -56,8 +56,13 @@ public:
     /// can be multiple screens connected to a single machine, each with
     /// its own size, resolution can calibration mode.
     struct Screen {
+
+        Screen() : m_resMode(AutoRes), m_resUnits(UseInches) {}
+
         int m_resMode;      ///< Indicates whether calibration for the screen resolution is manual or automatic.
+                            ///< Must be int due to DDX requirements.
         int m_resUnits;     ///< If manual resolution calibration, indicates if calibration in inches or centimeters.
+                            ///< Must be int due to DDX requirements.
         MeaFSize m_res;     ///< Screen resolution.
         MeaFSize m_size;    ///< Screen size, in inches or centimeters.
     };

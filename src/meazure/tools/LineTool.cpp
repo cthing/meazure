@@ -419,7 +419,7 @@ UINT MeaLineTool::GetLabelId() const {
     return IDS_MEA_LINE;
 }
 
-void MeaLineTool::OnCHEnter(const CHInfo* info) {
+void MeaLineTool::OnCHEnter(const CrossHairInfo* info) {
     // Show the data window corresponding to
     // the crosshair that the pointer has entered.
     //
@@ -431,7 +431,7 @@ void MeaLineTool::OnCHEnter(const CHInfo* info) {
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-void MeaLineTool::OnCHLeave(const CHInfo* info) {
+void MeaLineTool::OnCHLeave(const CrossHairInfo* info) {
     // Hide the data window corresponding to
     // the crosshair that the pointer has just
     // left.
@@ -443,7 +443,7 @@ void MeaLineTool::OnCHLeave(const CHInfo* info) {
     }
 }
 
-void MeaLineTool::OnCHMove(const CHInfo* info) {
+void MeaLineTool::OnCHMove(const CrossHairInfo* info) {
     // Ctrl + drag moves the all the crosshairs
     // as a single unit.
     //
@@ -452,10 +452,10 @@ void MeaLineTool::OnCHMove(const CHInfo* info) {
         CPoint followingPos;
 
         if (info->id == kPoint1Id) {
-            movingDelta = info->centerPoint - m_point1;
+            movingDelta = info->center - m_point1;
             followingPos = m_point2 + movingDelta;
         } else {
-            movingDelta = info->centerPoint - m_point2;
+            movingDelta = info->center - m_point2;
             followingPos = m_point1 + movingDelta;
         }
 
@@ -472,7 +472,7 @@ void MeaLineTool::OnCHMove(const CHInfo* info) {
         CPoint& movingPoint = (info->id == kPoint1Id) ? m_point1 : m_point2;
         CPoint& fixedPoint = (info->id != kPoint1Id) ? m_point1 : m_point2;
 
-        movingPoint = info->centerPoint;
+        movingPoint = info->center;
 
         // Shift + drag locks the movement of the crosshair
         // to vertical or horizontal.

@@ -29,6 +29,7 @@
 #include "ui/ScreenMgr.h"
 #include "CommandLineInfo.h"
 #include "Hooks/Hooks.h"
+#include <cstddef>
 
 
 #ifdef _DEBUG
@@ -87,10 +88,9 @@ BOOL App::InitInstance() {
 
         if (!cmdLineInfo.m_strFileName.IsEmpty()) {
             COPYDATASTRUCT cds;
-
             cds.cbData = ID_MEA_COPYDATA;
-            cds.dwData = static_cast<DWORD>(cmdLineInfo.m_strFileName.GetLength() + 1) * sizeof(TCHAR);
-            cds.lpData = reinterpret_cast<LPVOID>(const_cast<LPTSTR>(static_cast<LPCTSTR>(cmdLineInfo.m_strFileName)));
+            cds.dwData = (static_cast<std::size_t>(cmdLineInfo.m_strFileName.GetLength()) + 1) * sizeof(TCHAR);
+            cds.lpData = reinterpret_cast<PVOID>(const_cast<LPTSTR>(static_cast<LPCTSTR>(cmdLineInfo.m_strFileName)));
             ::SendMessage(g_meaMainWnd, WM_COPYDATA, 0, reinterpret_cast<LPARAM>(&cds));
         }
 
@@ -165,16 +165,15 @@ void App::WinHelp(DWORD dwData, UINT nCmd) {
         break;
     case HELP_COMMAND:      // Using this for Search
     {
-        HH_FTS_QUERY q;     // A blank query is required
-
-        q.cbStruct = sizeof(q);    // Sizeof structure in bytes.
-        q.fUniCodeStrings = FALSE;        // TRUE if all strings are Unicode.
-        q.pszSearchQuery = nullptr;      // String containing the search query.
-        q.iProximity = HH_FTS_DEFAULT_PROXIMITY; // Word proximity - only one option
-        q.fStemmedSearch = FALSE;        // TRUE for StemmedSearch only.
-        q.fTitleOnly = FALSE;        // TRUE for Title search only.
-        q.fExecute = FALSE;        // TRUE to initiate the search.
-        q.pszWindow = nullptr;      // Window to display in
+        HH_FTS_QUERY q;                             // A blank query is required
+        q.cbStruct = sizeof(q);                     // Sizeof structure in bytes.
+        q.fUniCodeStrings = FALSE;                  // TRUE if all strings are Unicode.
+        q.pszSearchQuery = nullptr;                 // String containing the search query.
+        q.iProximity = HH_FTS_DEFAULT_PROXIMITY;    // Word proximity - only one option
+        q.fStemmedSearch = FALSE;                   // TRUE for StemmedSearch only.
+        q.fTitleOnly = FALSE;                       // TRUE for Title search only.
+        q.fExecute = FALSE;                         // TRUE to initiate the search.
+        q.pszWindow = nullptr;                      // Window to display in
         TRACE("Search: %s, 0x%X\n", m_pszHelpFilePath, dwData);
         ::HtmlHelp(*AfxGetMainWnd(), m_pszHelpFilePath, HH_DISPLAY_SEARCH, reinterpret_cast<DWORD_PTR>(&q));
     }

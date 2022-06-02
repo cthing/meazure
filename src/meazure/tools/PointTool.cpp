@@ -282,21 +282,21 @@ UINT MeaPointTool::GetLabelId() const {
     return IDS_MEA_POINT;
 }
 
-void MeaPointTool::OnCHEnter(const CHInfo* /* info */) {
+void MeaPointTool::OnCHEnter(const CrossHairInfo* /* info */) {
     // Show the crosshair's data window.
     //
     m_dataWin.Show();
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-void MeaPointTool::OnCHLeave(const CHInfo* /* info */) {
+void MeaPointTool::OnCHLeave(const CrossHairInfo* /* info */) {
     // Hide the crosshair's data window.
     //
     m_dataWin.Hide();
 }
 
-void MeaPointTool::OnCHMove(const CHInfo* info) {
-    m_center = info->centerPoint;
+void MeaPointTool::OnCHMove(const CrossHairInfo* info) {
+    m_center = info->center;
 
     // Shift + drag locks the movement of the crosshair
     // to vertical or horizontal.

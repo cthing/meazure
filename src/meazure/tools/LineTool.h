@@ -178,24 +178,24 @@ public:
     virtual void ColorsChanged() override;
 
     /// Called when the pointer enters one of the tool's crosshairs.
-    /// The crosshair entered is identified by the MeaCrossHairCallback::CHInfo
+    /// The crosshair entered is identified by the MeaCrossHairCallback::CrossHairInfo
     /// structure passed to the method.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHEnter(const CHInfo* info) override;
+    virtual void OnCHEnter(const CrossHairInfo* info) override;
 
     /// Called when the pointer leaves one of the tool's crosshairs.
-    /// The crosshair exited is identified by the MeaCrossHairCallback::CHInfo
+    /// The crosshair exited is identified by the MeaCrossHairCallback::CrossHairInfo
     /// structure passed to the method.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHLeave(const CHInfo* info) override;
+    virtual void OnCHLeave(const CrossHairInfo* info) override;
 
     /// Called when the user attempts to drag one of the tool's
     /// crosshairs. The crosshair to be moved is identified by the
-    /// MeaCrossHairCallback::CHInfo structure passed to the method.
+    /// MeaCrossHairCallback::CrossHairInfo structure passed to the method.
     /// The info parameter indicates where the crosshair is to be
     /// moved and the tool actually moves the crosshair to the new
     /// position. This allows the tool to perform vertical or horizontal
@@ -204,7 +204,7 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHMove(const CHInfo* info) override;
+    virtual void OnCHMove(const CrossHairInfo* info) override;
 
 private:
     static constexpr UINT kPoint1Id { 1 };      ///< ID for the point 1 crosshair

@@ -42,11 +42,15 @@ public:
     /// is initialized and passed as the parameter in each callback
     /// method.
     ///
-    struct CHInfo {
-        MeaCrossHair* ch;            ///< Pointer to crosshair object that initiated the callback
-        CPoint          centerPoint;    ///< Location of the crosshair center point, in pixels
-        UINT            id;             ///< User defined ID for the crosshair
-        UINT            flags;          ///< Virtual key flags including modifier keys (e.g. MK_CONTROL, MK_SHIFT)
+    struct CrossHairInfo {
+
+        CrossHairInfo(MeaCrossHair* ch, UINT chId, UINT chFlags, const CPoint& centerPoint) :
+            crosshair(ch), id(chId), flags(chFlags), center(centerPoint) {}
+
+        MeaCrossHair* crosshair;    ///< Pointer to crosshair object that initiated the callback
+        CPoint center;              ///< Location of the crosshair center point, in pixels
+        UINT id;                    ///< User defined ID for the crosshair
+        UINT flags;                 ///< Virtual key flags including modifier keys (e.g. MK_CONTROL, MK_SHIFT)
     };
 
 
@@ -55,14 +59,14 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHSelect(const CHInfo* info);
+    virtual void OnCHSelect(const CrossHairInfo* info);
 
     /// Called when the left mouse button is release while
     /// the pointer is positioned over the crosshair.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHDeselect(const CHInfo* info);
+    virtual void OnCHDeselect(const CrossHairInfo* info);
 
     /// Called when the user moves the mouse pointer over
     /// the crosshair while the left mouse button is pressed
@@ -73,19 +77,19 @@ public:
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHMove(const CHInfo* info);
+    virtual void OnCHMove(const CrossHairInfo* info);
 
     /// Called when the pointer enters the crosshair window.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHEnter(const CHInfo* info);
+    virtual void OnCHEnter(const CrossHairInfo* info);
 
     /// Called when the pointer leaves the crosshair window.
     ///
     /// @param info     [in] Crosshair information structure
     ///
-    virtual void OnCHLeave(const CHInfo* info);
+    virtual void OnCHLeave(const CrossHairInfo* info);
 };
 
 
@@ -310,14 +314,12 @@ private:
     ///
     void DestroyColors();
 
-    /// Fills in the crosshair information structure with the current
-    /// location of the pointer and the state of the keyboard modifiers.
+    /// Determines the center point of the crosshair.
+    /// 
+    /// @param point  [in] Current location of the pointer, in pixels
+    /// @return Center point of the crosshair
     ///
-    /// @param chs      [in, out] Crosshair information structure to fill
-    /// @param flags    [in] State of the keyboard modifier keys
-    /// @param point    [in] Current location of the pointer, in pixels
-    ///
-    void FillInfo(MeaCrossHairCallback::CHInfo& chs, UINT flags, const CPoint& point);
+    CPoint FindCenter(const CPoint& point) const;
 
 
     const MeaScreenProvider& m_screenProvider;  ///< Screen information provider

@@ -438,7 +438,7 @@ UINT MeaRectTool::GetLabelId() const {
     return IDS_MEA_RECTANGLE;
 }
 
-void MeaRectTool::OnCHEnter(const CHInfo* info) {
+void MeaRectTool::OnCHEnter(const CrossHairInfo* info) {
     // Show the data window corresponding to
     // the crosshair that the pointer has entered.
     //
@@ -450,7 +450,7 @@ void MeaRectTool::OnCHEnter(const CHInfo* info) {
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-void MeaRectTool::OnCHLeave(const CHInfo* info) {
+void MeaRectTool::OnCHLeave(const CrossHairInfo* info) {
     // Hide the data window corresponding to
     // the crosshair that the pointer has just
     // left.
@@ -462,7 +462,7 @@ void MeaRectTool::OnCHLeave(const CHInfo* info) {
     }
 }
 
-void MeaRectTool::OnCHMove(const CHInfo* info) {
+void MeaRectTool::OnCHMove(const CrossHairInfo* info) {
     // Ctrl + drag moves the all the crosshairs
     // as a single unit.
     //
@@ -471,10 +471,10 @@ void MeaRectTool::OnCHMove(const CHInfo* info) {
         CPoint followingPos;
 
         if (info->id == kPoint1Id) {
-            movingDelta = info->centerPoint - m_point1;
+            movingDelta = info->center - m_point1;
             followingPos = m_point2 + movingDelta;
         } else {
-            movingDelta = info->centerPoint - m_point2;
+            movingDelta = info->center - m_point2;
             followingPos = m_point1 + movingDelta;
         }
 
@@ -491,7 +491,7 @@ void MeaRectTool::OnCHMove(const CHInfo* info) {
         CPoint& movingPoint = (info->id == kPoint1Id) ? m_point1 : m_point2;
         CPoint& anchorPoint = (info->id != kPoint1Id) ? m_anchorPoint1 : m_anchorPoint2;
 
-        movingPoint = info->centerPoint;
+        movingPoint = info->center;
 
         // Shift + drag locks the movement of the crosshair
         // to vertical or horizontal.

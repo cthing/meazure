@@ -183,25 +183,27 @@ void AppFrame::SaveProfile(MeaProfile& profile) {
 
 void AppFrame::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
-        WINDOWPLACEMENT wp;
-        int flags;
-        int x, y;
-
         CPoint noPos(MeaScreenMgr::Instance().GetOffScreen());
 
+        WINDOWPLACEMENT wp;
         wp.length = sizeof(WINDOWPLACEMENT);
         GetWindowPlacement(&wp);
 
         CRect appRect(wp.rcNormalPosition);
 
-        if ((flags = profile.ReadInt(_T("WindowFlags"), -1)) != -1) {
+        int flags = profile.ReadInt(_T("WindowFlags"), -1);
+        if (flags != -1) {
             wp.flags = flags;
         }
-        if ((x = profile.ReadInt(_T("WindowLeft"), noPos.x)) != noPos.x) {
+
+        int x = profile.ReadInt(_T("WindowLeft"), noPos.x);
+        if (x != noPos.x) {
             wp.rcNormalPosition.left = x;
             wp.rcNormalPosition.right = wp.rcNormalPosition.left + appRect.Width() - 1;
         }
-        if ((y = profile.ReadInt(_T("WindowTop"), noPos.y)) != noPos.y) {
+
+        int y = profile.ReadInt(_T("WindowTop"), noPos.y);
+        if (y != noPos.y) {
             wp.rcNormalPosition.top = y;
             wp.rcNormalPosition.bottom = wp.rcNormalPosition.top + appRect.Height() - 1;
         }

@@ -66,13 +66,13 @@ MeaLine::~MeaLine() {
 
 bool MeaLine::Create(int shrink, const MeaScreenProvider& screenProvider, const CWnd* parent) {
     const CRect& vscreen = screenProvider.GetVirtualRect();
-    UINT size = 2 * static_cast<UINT>(MeaGeometry::CalcLength(static_cast<double>(vscreen.Width()),
-                                                              static_cast<double>(vscreen.Height())));
+    std::size_t size = 2 * static_cast<std::size_t>(MeaGeometry::CalcLength(static_cast<double>(vscreen.Width()),
+                                                                            static_cast<double>(vscreen.Height())));
     m_shrink = shrink;
 
     if (m_varr == nullptr) {
         m_varr = new int[size];
-        for (UINT i = 0; i < size; i++) {
+        for (std::size_t i = 0; i < size; i++) {
             m_varr[i] = 4;
         }
     }

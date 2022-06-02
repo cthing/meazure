@@ -22,6 +22,7 @@
 #include "Plotter.h"
 #include "Colors.h"
 #include <cassert>
+#include <cstddef>
 #include <functional>
 
 
@@ -71,14 +72,14 @@ bool MeaCircle::Create(const MeaScreenProvider& screenProvider, const CWnd* pare
     m_clipRect = screenProvider.GetVirtualRect();
     double radius = MeaGeometry::CalcLength(static_cast<double>(m_clipRect.Width()),
                                             static_cast<double>(m_clipRect.Height()));
-    UINT size = 2 * static_cast<UINT>(MeaGeometry::CalcCircumference(radius));
+    std::size_t size = 2 * static_cast<std::size_t>(MeaGeometry::CalcCircumference(radius));
 
     // Single the circular region is composed of a series of rectangles, preload
     // the vertex count array with 4, the number of vertices composing a rectangle.
     //
     if (m_varr == nullptr) {
         m_varr = new int[size];
-        for (UINT i = 0; i < size; i++) {
+        for (std::size_t i = 0; i < size; i++) {
             m_varr[i] = 4;
         }
     }

@@ -516,7 +516,7 @@ UINT MeaAngleTool::GetLabelId() const {
     return IDS_MEA_ANGLE_LBL;
 }
 
-void MeaAngleTool::OnCHEnter(const CHInfo* info) {
+void MeaAngleTool::OnCHEnter(const CrossHairInfo* info) {
     // Show the data window corresponding to
     // the crosshair that the pointer has entered.
     //
@@ -538,7 +538,7 @@ void MeaAngleTool::OnCHEnter(const CHInfo* info) {
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-void MeaAngleTool::OnCHLeave(const CHInfo* info) {
+void MeaAngleTool::OnCHLeave(const CrossHairInfo* info) {
     // Hide the data window corresponding to
     // the crosshair that the pointer has just
     // left.
@@ -559,7 +559,7 @@ void MeaAngleTool::OnCHLeave(const CHInfo* info) {
     }
 }
 
-void MeaAngleTool::OnCHMove(const CHInfo* info) {
+void MeaAngleTool::OnCHMove(const CrossHairInfo* info) {
     // Ctrl + drag moves the all the crosshairs
     // as a single unit.
     //
@@ -569,15 +569,15 @@ void MeaAngleTool::OnCHMove(const CHInfo* info) {
         CPoint followingPos2;
 
         if (info->id == kPoint1Id) {
-            movingDelta = info->centerPoint - m_point1;
+            movingDelta = info->center - m_point1;
             followingPos1 = m_point2 + movingDelta;
             followingPos2 = m_vertex + movingDelta;
         } else if (info->id == kPoint2Id) {
-            movingDelta = info->centerPoint - m_point2;
+            movingDelta = info->center - m_point2;
             followingPos1 = m_point1 + movingDelta;
             followingPos2 = m_vertex + movingDelta;
         } else {
-            movingDelta = info->centerPoint - m_vertex;
+            movingDelta = info->center - m_vertex;
             followingPos1 = m_point1 + movingDelta;
             followingPos2 = m_point2 + movingDelta;
         }
@@ -603,7 +603,7 @@ void MeaAngleTool::OnCHMove(const CHInfo* info) {
     //
     else {
         if (info->id == kPoint1Id) {
-            m_point1 = info->centerPoint;
+            m_point1 = info->center;
 
             // Shift + drag locks the movement of the crosshair
             // to vertical or horizontal.
@@ -619,7 +619,7 @@ void MeaAngleTool::OnCHMove(const CHInfo* info) {
             m_point1CH.SetPosition(m_point1);
             m_curPos = &m_point1;
         } else if (info->id == kPoint2Id) {
-            m_point2 = info->centerPoint;
+            m_point2 = info->center;
 
             // Shift + drag locks the movement of the crosshair
             // to vertical or horizontal.
@@ -635,7 +635,7 @@ void MeaAngleTool::OnCHMove(const CHInfo* info) {
             m_point2CH.SetPosition(m_point2);
             m_curPos = &m_point2;
         } else {
-            m_vertex = info->centerPoint;
+            m_vertex = info->center;
 
             // Shift + drag locks the movement of the crosshair
             // to vertical or horizontal.

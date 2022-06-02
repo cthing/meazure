@@ -70,15 +70,15 @@ MeaCrossHair::~MeaCrossHair() {
     m_origBackBitmap = nullptr;
 }
 
-void MeaCrossHairCallback::OnCHSelect(const CHInfo* /* info */) {}
+void MeaCrossHairCallback::OnCHSelect(const CrossHairInfo* /* info */) {}
 
-void MeaCrossHairCallback::OnCHDeselect(const CHInfo* /* info */) {}
+void MeaCrossHairCallback::OnCHDeselect(const CrossHairInfo* /* info */) {}
 
-void MeaCrossHairCallback::OnCHMove(const CHInfo* /* info */) {}
+void MeaCrossHairCallback::OnCHMove(const CrossHairInfo* /* info */) {}
 
-void MeaCrossHairCallback::OnCHEnter(const CHInfo* /* info */) {}
+void MeaCrossHairCallback::OnCHEnter(const CrossHairInfo* /* info */) {}
 
-void MeaCrossHairCallback::OnCHLeave(const CHInfo* /* info */) {}
+void MeaCrossHairCallback::OnCHLeave(const CrossHairInfo* /* info */) {}
 
 bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
                           COLORREF hiliteColor, BYTE opacity,
@@ -312,14 +312,10 @@ void MeaCrossHair::DrawCrossHair(CDC& dc) {
     dc.FrameRgn(&rgn, (m_drawState == Normal) ? m_borderBrush : m_hiliteBrush, 1, 1);
 }
 
-void MeaCrossHair::FillInfo(MeaCrossHairCallback::CHInfo& chs, UINT flags,
-                            const CPoint& point) {
-    chs.ch = this;
-    chs.centerPoint = point - (m_pointerOffset - m_halfSize);
-    ClientToScreen(&chs.centerPoint);
-    chs.centerPoint = m_screenProvider.LimitPosition(chs.centerPoint);
-    chs.id = m_id;
-    chs.flags = flags;
+CPoint MeaCrossHair::FindCenter(const CPoint& point) const {
+    CPoint center(point - (m_pointerOffset - m_halfSize));
+    ClientToScreen(&center);
+    return m_screenProvider.LimitPosition(center);
 }
 
 void MeaCrossHair::OnLButtonDown(UINT flags, CPoint point) {
@@ -328,8 +324,7 @@ void MeaCrossHair::OnLButtonDown(UINT flags, CPoint point) {
     SetCapture();
     m_mouseCaptured = true;
 
-    MeaCrossHairCallback::CHInfo chs;
-    FillInfo(chs, flags, point);
+    MeaCrossHairCallback::CrossHairInfo chs(this, m_id, flags, FindCenter(point));
 
     if (m_callback != nullptr) {
         m_callback->OnCHSelect(&chs);
@@ -340,8 +335,7 @@ void MeaCrossHair::OnLButtonUp(UINT flags, CPoint point) {
     m_mouseCaptured = false;
     ::ReleaseCapture();
 
-    MeaCrossHairCallback::CHInfo chs;
-    FillInfo(chs, flags, point);
+    MeaCrossHairCallback::CrossHairInfo chs(this, m_id, flags, FindCenter(point));
 
     if (m_callback != nullptr) {
         m_callback->OnCHDeselect(&chs);
@@ -353,8 +347,7 @@ void MeaCrossHair::OnMouseMove(UINT flags, CPoint point) {
     // If crosshair has been selected, send callback.
     //
     if (m_mouseCaptured) {
-        MeaCrossHairCallback::CHInfo chs;
-        FillInfo(chs, flags, point);
+        MeaCrossHairCallback::CrossHairInfo chs(this, m_id, flags, FindCenter(point));
 
         if (m_callback != nullptr) {
             m_callback->OnCHMove(&chs);
@@ -368,8 +361,7 @@ void MeaCrossHair::OnMouseMove(UINT flags, CPoint point) {
     if (!m_mouseOver) {
         m_mouseOver = true;
 
-        MeaCrossHairCallback::CHInfo chs;
-        FillInfo(chs, flags, point);
+        MeaCrossHairCallback::CrossHairInfo chs(this, m_id, flags, FindCenter(point));
 
         if (m_callback != nullptr) {
             m_callback->OnCHEnter(&chs);
@@ -389,9 +381,7 @@ void MeaCrossHair::OnMouseMove(UINT flags, CPoint point) {
 LRESULT MeaCrossHair::OnMouseLeave(WPARAM /* wParam */, LPARAM /* lParam */) {
     m_mouseOver = false;
 
-    CPoint point(0, 0);
-    MeaCrossHairCallback::CHInfo chs;
-    FillInfo(chs, 0, point);
+    MeaCrossHairCallback::CrossHairInfo chs(this, m_id, 0, FindCenter(CPoint(0, 0)));
 
     if (m_callback != nullptr) {
         m_callback->OnCHLeave(&chs);

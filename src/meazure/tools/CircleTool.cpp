@@ -475,7 +475,7 @@ UINT MeaCircleTool::GetLabelId() const {
     return IDS_MEA_CIRCLE;
 }
 
-void MeaCircleTool::OnCHEnter(const CHInfo* info) {
+void MeaCircleTool::OnCHEnter(const CrossHairInfo* info) {
     // Show the data window corresponding to
     // the crosshair that the pointer has entered.
     //
@@ -487,7 +487,7 @@ void MeaCircleTool::OnCHEnter(const CHInfo* info) {
     Update(MeaUpdateReason::NormalUpdate);
 }
 
-void MeaCircleTool::OnCHLeave(const CHInfo* info) {
+void MeaCircleTool::OnCHLeave(const CrossHairInfo* info) {
     // Hide the data window corresponding to
     // the crosshair that the pointer has just
     // left.
@@ -499,7 +499,7 @@ void MeaCircleTool::OnCHLeave(const CHInfo* info) {
     }
 }
 
-void MeaCircleTool::OnCHMove(const CHInfo* info) {
+void MeaCircleTool::OnCHMove(const CrossHairInfo* info) {
     // Ctrl + drag moves the all the crosshairs
     // as a single unit.
     //
@@ -508,10 +508,10 @@ void MeaCircleTool::OnCHMove(const CHInfo* info) {
         CPoint followingPos;
 
         if (info->id == kCenterId) {
-            movingDelta = info->centerPoint - m_center;
+            movingDelta = info->center - m_center;
             followingPos = m_perimeter + movingDelta;
         } else {
-            movingDelta = info->centerPoint - m_perimeter;
+            movingDelta = info->center - m_perimeter;
             followingPos = m_center + movingDelta;
         }
 
@@ -528,7 +528,7 @@ void MeaCircleTool::OnCHMove(const CHInfo* info) {
         CPoint& movingPoint = (info->id == kCenterId) ? m_center : m_perimeter;
         CPoint& fixedPoint = (info->id != kCenterId) ? m_center : m_perimeter;
 
-        movingPoint = info->centerPoint;
+        movingPoint = info->center;
 
         // Shift + drag locks the movement of the crosshair
         // to vertical or horizontal.

@@ -29,6 +29,7 @@
 #include <meazure/units/Units.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/GUID.h>
+#include <iostream>
 
 
 /// Represents all information of interest about the system at the time a position is recorded. This includes the
@@ -322,10 +323,20 @@ public:
     bool operator==(const MeaPositionDesktopRef& ref) const { return m_id == ref.m_id; }
     bool operator!=(const MeaPositionDesktopRef& ref) const { return m_id != ref.m_id; }
 
-    operator MeaGUID() const { return m_id; }
-    operator LPCTSTR() const { return static_cast<LPCTSTR>(m_id); }
+    const MeaGUID& GetId() const { return m_id; }
+
+    CString ToString() const { return m_id.ToString(); }
 
 private:
     MeaPositionDesktopRefCounter* m_counter;
     MeaGUID m_id;
 };
+
+
+/// Writes the desktop reference to the specified output stream. The output format is the same as ToString().
+/// 
+/// @param os    [in] Output stream to which the GUID should be written
+/// @param guid  [in] The GUID to be written 
+/// @return The specified output stream
+/// 
+std::ostream& operator<<(std::ostream& os, const MeaPositionDesktopRef& ref);

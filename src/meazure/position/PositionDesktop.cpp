@@ -113,7 +113,7 @@ void MeaPositionDesktop::Load(const MeaXMLNode* desktopNode) {
 }
 
 void MeaPositionDesktop::Save(MeaPositionLogWriter& writer, int indent) const {
-    writer.Write(indent, _T("<desktop id=\"%s\">\n"), static_cast<LPCTSTR>(m_id));
+    writer.Write(indent, _T("<desktop id=\"%s\">\n"), static_cast<LPCTSTR>(m_id.ToString()));
     indent++;
     writer.Write(indent, _T("<units length=\"%s\" angle=\"%s\"/>\n"),
         static_cast<LPCTSTR>(m_linearUnits->GetUnitsStr()),
@@ -201,4 +201,10 @@ void MeaPositionDesktop::SaveCustomPrecisions(MeaPositionLogWriter& writer, int 
     }
     indent--;
     writer.Write(indent, _T("</displayPrecision>\n"));
+}
+
+
+std::ostream& operator<<(std::ostream& os, const MeaPositionDesktopRef& ref) {
+    os << ref.ToString();
+    return os;
 }

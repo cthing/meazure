@@ -61,11 +61,12 @@ MeaGUID& MeaGUID::Assign(LPCTSTR guidStr) {
 }
 
 CString MeaGUID::ToString() const {
-    m_buffer.Format(_T("%08lX-%04hX-%04hX-%02hhX%02hhX-%02hhX%02hhX%02hhX%02hhX%02hhX%02hhX"),
-                    m_guid.Data1, m_guid.Data2, m_guid.Data3,
-                    m_guid.Data4[0], m_guid.Data4[1], m_guid.Data4[2], m_guid.Data4[3],
-                    m_guid.Data4[4], m_guid.Data4[5], m_guid.Data4[6], m_guid.Data4[7]);
-    return m_buffer;
+    CString buffer;
+    buffer.Format(_T("%08lX-%04hX-%04hX-%02hhX%02hhX-%02hhX%02hhX%02hhX%02hhX%02hhX%02hhX"),
+                  m_guid.Data1, m_guid.Data2, m_guid.Data3,
+                  m_guid.Data4[0], m_guid.Data4[1], m_guid.Data4[2], m_guid.Data4[3],
+                  m_guid.Data4[4], m_guid.Data4[5], m_guid.Data4[6], m_guid.Data4[7]);
+    return buffer;
 }
 
 

@@ -179,7 +179,7 @@ void MeaPosition::Load(const MeaXMLNode* positionNode) {
 
 void MeaPosition::Save(MeaPositionLogWriter& writer, int indent) const {
     writer.Write(indent, _T("<position desktopRef=\"%s\" tool=\"%s\" date=\"%s\">\n"),
-                 static_cast<LPCTSTR>(m_desktopRef),
+                 static_cast<LPCTSTR>(m_desktopRef.ToString()),
                  static_cast<LPCTSTR>(m_toolName),
                  static_cast<LPCTSTR>(m_timestamp));
     indent++;

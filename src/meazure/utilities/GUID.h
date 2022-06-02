@@ -106,10 +106,6 @@ public:
     /// @return Operating system defined GUID structure.
     operator GUID() const { return m_guid; }
 
-    /// Casts to a string.
-    /// @return String representation of the GUID.
-    operator LPCTSTR() const { return static_cast<LPCTSTR>(ToString()); }
-
 
     /// Used by the STL to perform ordering of MeaGUID objects in collections.
     ///
@@ -160,7 +156,6 @@ public:
 
 private:
     GUID m_guid;                ///< Underlying GUID for the object.
-    mutable CString m_buffer;   ///< Buffer holding the string representation of the GUID.
 };
 
 

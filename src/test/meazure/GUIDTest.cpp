@@ -221,10 +221,6 @@ BOOST_AUTO_TEST_CASE(TestCast) {
 
     GUID guid2 = guid1;
     validateEqual(guid1, guid2);
-
-    LPCTSTR guid3Str = guid1;
-    MeaGUID guid3(guid3Str);
-    validateEqual(guid1, guid3);
 }
 
 BOOST_AUTO_TEST_CASE(TestToString) {

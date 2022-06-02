@@ -189,7 +189,7 @@ void MeaPositionLogMgr::ShowPosition(unsigned int posIndex) {
     // Change the units if needed. If these are custom units perform
     // additional configuration.
     //
-    const MeaPositionDesktop& desktopInfo = GetDesktopInfo(position.GetDesktopRef());
+    const MeaPositionDesktop& desktopInfo = GetDesktopInfo(position.GetDesktopRef().GetId());
     CString unitsStr = desktopInfo.GetLinearUnits()->GetUnitsStr();
     CString anglesStr = desktopInfo.GetAngularUnits()->GetUnitsStr();
 

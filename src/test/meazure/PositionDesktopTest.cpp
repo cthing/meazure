@@ -53,7 +53,7 @@ BOOST_FIXTURE_TEST_CASE(TestNoGuidCtor, TestFixture) {
     BOOST_TEST(!desktop.IsInvertY());
     BOOST_TEST(desktop.GetOrigin() == MeaFPoint(0.0, 0.0));
     std::regex guidRegex("[A-Fa-f\\d]{8}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{12}");
-    BOOST_TEST(std::regex_match(static_cast<LPCTSTR>(desktop.GetId()), guidRegex));
+    BOOST_TEST(std::regex_match(static_cast<LPCTSTR>(desktop.GetId().ToString()), guidRegex));
     BOOST_TEST(desktop.GetCustomName() == _T(""));
     BOOST_TEST(desktop.GetCustomAbbrev() == _T(""));
     BOOST_TEST(desktop.GetCustomBasisStr() == _T(""));
@@ -62,7 +62,7 @@ BOOST_FIXTURE_TEST_CASE(TestNoGuidCtor, TestFixture) {
 
 BOOST_FIXTURE_TEST_CASE(TestGuidCtor, TestFixture) {
     MeaGUID guid;
-    MeaPositionDesktop desktop(guid, unitsProvider, screenProvider);
+    MeaPositionDesktop desktop(guid.ToString(), unitsProvider, screenProvider);
 
     BOOST_TEST(desktop.GetLinearUnits()->GetUnitsId() == MeaPixelsId);
     BOOST_TEST(desktop.GetAngularUnits()->GetUnitsId() == MeaDegreesId);
@@ -78,10 +78,10 @@ BOOST_FIXTURE_TEST_CASE(TestGuidCtor, TestFixture) {
 BOOST_FIXTURE_TEST_CASE(TestIdProperty, TestFixture) {
     MeaGUID guid1;
     MeaGUID guid2;
-    MeaPositionDesktop desktop(guid1, unitsProvider, screenProvider);
+    MeaPositionDesktop desktop(guid1.ToString(), unitsProvider, screenProvider);
 
     BOOST_TEST(desktop.GetId() == guid1);
-    desktop.SetId(guid2);
+    desktop.SetId(guid2.ToString());
     BOOST_TEST(desktop.GetId() == guid2);
 }
 
@@ -126,7 +126,7 @@ BOOST_FIXTURE_TEST_CASE(TestSaveLoad, TestFixture) {
     BOOST_TEST(!desktop2.IsInvertY());
     BOOST_TEST(desktop2.GetOrigin() == MeaFPoint(2.0, 3.0));
     std::regex guidRegex("[A-Fa-f\\d]{8}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{12}");
-    BOOST_TEST(std::regex_match(static_cast<LPCTSTR>(desktop2.GetId()), guidRegex));
+    BOOST_TEST(std::regex_match(static_cast<LPCTSTR>(desktop2.GetId().ToString()), guidRegex));
     BOOST_TEST(desktop2.GetCustomName() == _T(""));
     BOOST_TEST(desktop2.GetCustomAbbrev() == _T(""));
     BOOST_TEST(desktop2.GetCustomBasisStr() == _T(""));
@@ -141,8 +141,8 @@ BOOST_FIXTURE_TEST_CASE(TestDesktopRefCtor1, TestFixture) {
     BOOST_TEST(counter.m_refCounts.size() == 1);
     BOOST_TEST(counter.m_refCounts.count(desktop1.GetId()) == 1);
     BOOST_TEST(counter.m_refCounts.at(desktop1.GetId()) == 1);
-    BOOST_TEST(static_cast<MeaGUID>(*ref1) == desktop1.GetId());
-    BOOST_TEST(static_cast<LPCTSTR>(*ref1) == desktop1.GetId().ToString());
+    BOOST_TEST(ref1->GetId() == desktop1.GetId());
+    BOOST_TEST(ref1->ToString() == desktop1.GetId().ToString());
 
     MeaPositionDesktop desktop2(unitsProvider, screenProvider);
     MeaPositionDesktopRef* ref2 = new MeaPositionDesktopRef(&counter, desktop2);
@@ -150,8 +150,8 @@ BOOST_FIXTURE_TEST_CASE(TestDesktopRefCtor1, TestFixture) {
     BOOST_TEST(counter.m_refCounts.size() == 2);
     BOOST_TEST(counter.m_refCounts.count(desktop2.GetId()) == 1);
     BOOST_TEST(counter.m_refCounts.at(desktop2.GetId()) == 1);
-    BOOST_TEST(static_cast<MeaGUID>(*ref2) == desktop2.GetId());
-    BOOST_TEST(static_cast<LPCTSTR>(*ref2) == desktop2.GetId().ToString());
+    BOOST_TEST(ref2->GetId() == desktop2.GetId());
+    BOOST_TEST(ref2->ToString() == desktop2.GetId().ToString());
 
     delete ref1;
     BOOST_TEST(counter.m_refCounts.at(desktop1.GetId()) == 0);
@@ -170,8 +170,8 @@ BOOST_FIXTURE_TEST_CASE(TestDesktopRefCtor2, TestFixture) {
     BOOST_TEST(counter.m_refCounts.size() == 1);
     BOOST_TEST(counter.m_refCounts.count(desktop.GetId()) == 1);
     BOOST_TEST(counter.m_refCounts.at(desktop.GetId()) == 1);
-    BOOST_TEST(static_cast<MeaGUID>(*ref) == desktop.GetId());
-    BOOST_TEST(static_cast<LPCTSTR>(*ref) == desktop.GetId().ToString());
+    BOOST_TEST(ref->GetId() == desktop.GetId());
+    BOOST_TEST(ref->ToString() == desktop.GetId().ToString());
 
     delete ref;
     BOOST_TEST(counter.m_refCounts.at(desktop.GetId()) == 0);
@@ -187,9 +187,9 @@ BOOST_FIXTURE_TEST_CASE(TestDesktopRefCopy, TestFixture) {
     BOOST_TEST(counter.m_refCounts.size() == 1);
     BOOST_TEST(counter.m_refCounts.count(desktop.GetId()) == 1);
     BOOST_TEST(counter.m_refCounts.at(desktop.GetId()) == 3);
-    BOOST_TEST(static_cast<MeaGUID>(ref1) == desktop.GetId());
-    BOOST_TEST(static_cast<MeaGUID>(ref2) == desktop.GetId());
-    BOOST_TEST(static_cast<MeaGUID>(ref3) == desktop.GetId());
+    BOOST_TEST(ref1.GetId() == desktop.GetId());
+    BOOST_TEST(ref2.GetId() == desktop.GetId());
+    BOOST_TEST(ref3.GetId() == desktop.GetId());
 }
 
 BOOST_FIXTURE_TEST_CASE(TestDesktopRefEquality, TestFixture) {

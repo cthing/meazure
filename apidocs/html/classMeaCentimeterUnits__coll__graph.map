@@ -1,5 +1,0 @@
-<map id="MeaCentimeterUnits" name="MeaCentimeterUnits">
-<area shape="rect" id="node1" title="Provides linear measurements in centimeters." alt="" coords="5,155,145,181"/>
-<area shape="rect" id="node2" href="$classMeaLinearUnits.html" title="There are two major categories of units: linear and angular." alt="" coords="19,80,131,107"/>
-<area shape="rect" id="node3" href="$classMeaUnits.html" title="Measurement units are packaged into a class, one for each set of units (e.g." alt="" coords="37,5,114,32"/>
-</map>

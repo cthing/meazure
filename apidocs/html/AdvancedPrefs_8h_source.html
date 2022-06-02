@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_dc2fda7be5d66a9d9645a5b3f9c77d55.html">prefs</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -70,69 +70,71 @@ $(function() {
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"></span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="comment"></span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">/// Property page for the advanced preferences. This preference page allows</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">/// a startup profile to be specified and provides the master reset for all</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/// application settings.</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">///</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classMeaAdvancedPrefs.html">   30</a></span><span class="comment"></span><span class="keyword">class </span><a class="code hl_class" href="classMeaAdvancedPrefs.html">MeaAdvancedPrefs</a> : <span class="keyword">public</span> CPropertyPage {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    DECLARE_DYNCREATE(<a class="code hl_class" href="classMeaAdvancedPrefs.html">MeaAdvancedPrefs</a>)</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;meazure/resource.h&gt;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"></span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">/// Property page for the advanced preferences. This preference page allows</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">/// a startup profile to be specified and provides the master reset for all</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">/// application settings.</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">///</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classMeaAdvancedPrefs.html">   32</a></span><span class="comment"></span><span class="keyword">class </span><a class="code hl_class" href="classMeaAdvancedPrefs.html">MeaAdvancedPrefs</a> : <span class="keyword">public</span> CPropertyPage {</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">public</span>:<span class="comment"></span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">    /// Constructs the advanced preferences property page.</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"></span>    <a class="code hl_function" href="classMeaAdvancedPrefs.html#abc80c752564f683c9e9834a81bc0c7ee">MeaAdvancedPrefs</a>();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment"></span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">    /// Destroys the advanced preferences property page.</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"></span>    <a class="code hl_function" href="classMeaAdvancedPrefs.html#a4cede7a004ee6a79015d7832b1f9309d">~MeaAdvancedPrefs</a>();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">enum</span> { IDD = IDD_PREF_ADVANCED };</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    DECLARE_DYNCREATE(<a class="code hl_class" href="classMeaAdvancedPrefs.html">MeaAdvancedPrefs</a>)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">    /// Constructs the advanced preferences property page.</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"></span>    <a class="code hl_function" href="classMeaAdvancedPrefs.html#abc80c752564f683c9e9834a81bc0c7ee">MeaAdvancedPrefs</a>();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"></span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">    /// Destroys the advanced preferences property page.</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"></span>    <a class="code hl_function" href="classMeaAdvancedPrefs.html#a4cede7a004ee6a79015d7832b1f9309d">~MeaAdvancedPrefs</a>();</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="classMeaAdvancedPrefs.html#ac1213f4b07e8cbf835309e11f693b414">   45</a></span>    CString <a class="code hl_variable" href="classMeaAdvancedPrefs.html#ac1213f4b07e8cbf835309e11f693b414">m_startupProfile</a>;           <span class="comment">///&lt; Profile file to load on application startup.</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classMeaAdvancedPrefs.html#a8fe96d1017ff7abdaa50b4417cfc8fd3">   46</a></span>    CFileDialog* <a class="code hl_variable" href="classMeaAdvancedPrefs.html#a8fe96d1017ff7abdaa50b4417cfc8fd3">m_startupProfileDlg</a>;   <span class="comment">///&lt; File dialog for selecting the startup profile file.</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">protected</span>: <span class="comment"></span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">    /// Performs Dynamic Data Exchange (DDX) for the page.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    /// @param pDX  [in] DDX object for exchanging data between the page UI</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">    ///             and the member variables.</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#af96400ac747b7df1950fa246ae1ff1c0">DoDataExchange</a>(CDataExchange* pDX) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"></span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">    /// When the browse button is pressed, this method is called to</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">    /// display the profile file selection dialog.</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">    /// </span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#a6124bad0f28b334b5cc5421333c54164">OnProfileBtn</a>();</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment"></span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">    /// Called when the profile file pathname is changed so that</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">    /// the modified flag can be set.</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">    /// </span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#ab95478bba2bc3a3bc1268b65adfe5f36">OnChangeProfilePathname</a>();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment"></span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">    /// Clears the text in the startup profile edit field.</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#ad07f3ad4473ef206f1fe4cb165a610ce">OnClearProfile</a>();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment"></span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">    /// Called when the mast reset button is pressed. A reset confirmation</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">    /// dialog is displayed and upon an affirmative response, the master</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">    /// reset is performed.</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /// </span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#a798bfd16c24957633809633178a4e4b1">OnMasterReset</a>();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    DECLARE_MESSAGE_MAP()</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>};</div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html"><div class="ttname"><a href="classMeaAdvancedPrefs.html">MeaAdvancedPrefs</a></div><div class="ttdoc">Property page for the advanced preferences.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.h:30</div></div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html_a4cede7a004ee6a79015d7832b1f9309d"><div class="ttname"><a href="classMeaAdvancedPrefs.html#a4cede7a004ee6a79015d7832b1f9309d">MeaAdvancedPrefs::~MeaAdvancedPrefs</a></div><div class="ttdeci">~MeaAdvancedPrefs()</div><div class="ttdoc">Destroys the advanced preferences property page.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:47</div></div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html_a6124bad0f28b334b5cc5421333c54164"><div class="ttname"><a href="classMeaAdvancedPrefs.html#a6124bad0f28b334b5cc5421333c54164">MeaAdvancedPrefs::OnProfileBtn</a></div><div class="ttdeci">afx_msg void OnProfileBtn()</div><div class="ttdoc">When the browse button is pressed, this method is called to display the profile file selection dialog...</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:56</div></div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html_a798bfd16c24957633809633178a4e4b1"><div class="ttname"><a href="classMeaAdvancedPrefs.html#a798bfd16c24957633809633178a4e4b1">MeaAdvancedPrefs::OnMasterReset</a></div><div class="ttdeci">afx_msg void OnMasterReset()</div><div class="ttdoc">Called when the mast reset button is pressed.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:73</div></div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html_a8fe96d1017ff7abdaa50b4417cfc8fd3"><div class="ttname"><a href="classMeaAdvancedPrefs.html#a8fe96d1017ff7abdaa50b4417cfc8fd3">MeaAdvancedPrefs::m_startupProfileDlg</a></div><div class="ttdeci">CFileDialog * m_startupProfileDlg</div><div class="ttdoc">File dialog for selecting the startup profile file.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.h:46</div></div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html_ab95478bba2bc3a3bc1268b65adfe5f36"><div class="ttname"><a href="classMeaAdvancedPrefs.html#ab95478bba2bc3a3bc1268b65adfe5f36">MeaAdvancedPrefs::OnChangeProfilePathname</a></div><div class="ttdeci">afx_msg void OnChangeProfilePathname()</div><div class="ttdoc">Called when the profile file pathname is changed so that the modified flag can be set.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:69</div></div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html_abc80c752564f683c9e9834a81bc0c7ee"><div class="ttname"><a href="classMeaAdvancedPrefs.html#abc80c752564f683c9e9834a81bc0c7ee">MeaAdvancedPrefs::MeaAdvancedPrefs</a></div><div class="ttdeci">MeaAdvancedPrefs()</div><div class="ttdoc">Constructs the advanced preferences property page.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:44</div></div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html_ac1213f4b07e8cbf835309e11f693b414"><div class="ttname"><a href="classMeaAdvancedPrefs.html#ac1213f4b07e8cbf835309e11f693b414">MeaAdvancedPrefs::m_startupProfile</a></div><div class="ttdeci">CString m_startupProfile</div><div class="ttdoc">Profile file to load on application startup.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.h:45</div></div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html_ad07f3ad4473ef206f1fe4cb165a610ce"><div class="ttname"><a href="classMeaAdvancedPrefs.html#ad07f3ad4473ef206f1fe4cb165a610ce">MeaAdvancedPrefs::OnClearProfile</a></div><div class="ttdeci">afx_msg void OnClearProfile()</div><div class="ttdoc">Clears the text in the startup profile edit field.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:64</div></div>
-<div class="ttc" id="aclassMeaAdvancedPrefs_html_af96400ac747b7df1950fa246ae1ff1c0"><div class="ttname"><a href="classMeaAdvancedPrefs.html#af96400ac747b7df1950fa246ae1ff1c0">MeaAdvancedPrefs::DoDataExchange</a></div><div class="ttdeci">virtual void DoDataExchange(CDataExchange *pDX) override</div><div class="ttdoc">Performs Dynamic Data Exchange (DDX) for the page.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:51</div></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">enum</span> { IDD = IDD_PREF_ADVANCED };</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classMeaAdvancedPrefs.html#ac1213f4b07e8cbf835309e11f693b414">   47</a></span>    CString <a class="code hl_variable" href="classMeaAdvancedPrefs.html#ac1213f4b07e8cbf835309e11f693b414">m_startupProfile</a>;           <span class="comment">///&lt; Profile file to load on application startup.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classMeaAdvancedPrefs.html#a8fe96d1017ff7abdaa50b4417cfc8fd3">   48</a></span>    CFileDialog* <a class="code hl_variable" href="classMeaAdvancedPrefs.html#a8fe96d1017ff7abdaa50b4417cfc8fd3">m_startupProfileDlg</a>;   <span class="comment">///&lt; File dialog for selecting the startup profile file.</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">protected</span>: <span class="comment"></span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    /// Performs Dynamic Data Exchange (DDX) for the page.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">    /// @param pDX  [in] DDX object for exchanging data between the page UI</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">    ///             and the member variables.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#af96400ac747b7df1950fa246ae1ff1c0">DoDataExchange</a>(CDataExchange* pDX) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment"></span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">    /// When the browse button is pressed, this method is called to</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">    /// display the profile file selection dialog.</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#a6124bad0f28b334b5cc5421333c54164">OnProfileBtn</a>();</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment"></span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">    /// Called when the profile file pathname is changed so that</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">    /// the modified flag can be set.</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#ab95478bba2bc3a3bc1268b65adfe5f36">OnChangeProfilePathname</a>();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment"></span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    /// Clears the text in the startup profile edit field.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#ad07f3ad4473ef206f1fe4cb165a610ce">OnClearProfile</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment"></span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">    /// Called when the mast reset button is pressed. A reset confirmation</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /// dialog is displayed and upon an affirmative response, the master</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">    /// reset is performed.</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment"></span>    afx_msg <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaAdvancedPrefs.html#a798bfd16c24957633809633178a4e4b1">OnMasterReset</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    DECLARE_MESSAGE_MAP()</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html"><div class="ttname"><a href="classMeaAdvancedPrefs.html">MeaAdvancedPrefs</a></div><div class="ttdoc">Property page for the advanced preferences.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.h:32</div></div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html_a4cede7a004ee6a79015d7832b1f9309d"><div class="ttname"><a href="classMeaAdvancedPrefs.html#a4cede7a004ee6a79015d7832b1f9309d">MeaAdvancedPrefs::~MeaAdvancedPrefs</a></div><div class="ttdeci">~MeaAdvancedPrefs()</div><div class="ttdoc">Destroys the advanced preferences property page.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:46</div></div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html_a6124bad0f28b334b5cc5421333c54164"><div class="ttname"><a href="classMeaAdvancedPrefs.html#a6124bad0f28b334b5cc5421333c54164">MeaAdvancedPrefs::OnProfileBtn</a></div><div class="ttdeci">afx_msg void OnProfileBtn()</div><div class="ttdoc">When the browse button is pressed, this method is called to display the profile file selection dialog...</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:55</div></div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html_a798bfd16c24957633809633178a4e4b1"><div class="ttname"><a href="classMeaAdvancedPrefs.html#a798bfd16c24957633809633178a4e4b1">MeaAdvancedPrefs::OnMasterReset</a></div><div class="ttdeci">afx_msg void OnMasterReset()</div><div class="ttdoc">Called when the mast reset button is pressed.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:72</div></div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html_a8fe96d1017ff7abdaa50b4417cfc8fd3"><div class="ttname"><a href="classMeaAdvancedPrefs.html#a8fe96d1017ff7abdaa50b4417cfc8fd3">MeaAdvancedPrefs::m_startupProfileDlg</a></div><div class="ttdeci">CFileDialog * m_startupProfileDlg</div><div class="ttdoc">File dialog for selecting the startup profile file.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.h:48</div></div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html_ab95478bba2bc3a3bc1268b65adfe5f36"><div class="ttname"><a href="classMeaAdvancedPrefs.html#ab95478bba2bc3a3bc1268b65adfe5f36">MeaAdvancedPrefs::OnChangeProfilePathname</a></div><div class="ttdeci">afx_msg void OnChangeProfilePathname()</div><div class="ttdoc">Called when the profile file pathname is changed so that the modified flag can be set.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:68</div></div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html_abc80c752564f683c9e9834a81bc0c7ee"><div class="ttname"><a href="classMeaAdvancedPrefs.html#abc80c752564f683c9e9834a81bc0c7ee">MeaAdvancedPrefs::MeaAdvancedPrefs</a></div><div class="ttdeci">MeaAdvancedPrefs()</div><div class="ttdoc">Constructs the advanced preferences property page.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:43</div></div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html_ac1213f4b07e8cbf835309e11f693b414"><div class="ttname"><a href="classMeaAdvancedPrefs.html#ac1213f4b07e8cbf835309e11f693b414">MeaAdvancedPrefs::m_startupProfile</a></div><div class="ttdeci">CString m_startupProfile</div><div class="ttdoc">Profile file to load on application startup.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.h:47</div></div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html_ad07f3ad4473ef206f1fe4cb165a610ce"><div class="ttname"><a href="classMeaAdvancedPrefs.html#ad07f3ad4473ef206f1fe4cb165a610ce">MeaAdvancedPrefs::OnClearProfile</a></div><div class="ttdeci">afx_msg void OnClearProfile()</div><div class="ttdoc">Clears the text in the startup profile edit field.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:63</div></div>
+<div class="ttc" id="aclassMeaAdvancedPrefs_html_af96400ac747b7df1950fa246ae1ff1c0"><div class="ttname"><a href="classMeaAdvancedPrefs.html#af96400ac747b7df1950fa246ae1ff1c0">MeaAdvancedPrefs::DoDataExchange</a></div><div class="ttdeci">virtual void DoDataExchange(CDataExchange *pDX) override</div><div class="ttdoc">Performs Dynamic Data Exchange (DDX) for the page.</div><div class="ttdef"><b>Definition:</b> AdvancedPrefs.cpp:50</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1">
 <address style="align: right;"><small>Copyright 2011 C Thing Software</small></address>

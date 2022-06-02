@@ -1,6 +1,0 @@
-<map id="ev::DFA" name="ev::DFA">
-<area shape="rect" id="node1" title="This class represents a deterministic finite state automaton (DFA) (i.e." alt="" coords="119,187,187,213"/>
-<area shape="rect" id="node2" href="$classev_1_1ParseNode.html" title="Represents a node in the parse tree that is constructed by parsing the content model." alt="" coords="5,96,112,123"/>
-<area shape="rect" id="node3" href="$classev_1_1Validator.html" title="The star of the show, this call performs XML validation for the expat parser." alt="" coords="204,96,297,123"/>
-<area shape="rect" id="node4" href="$classev_1_1IValidationHandler.html" title="An application class mixin inherits from the IValidationHandler interface and overrides the HandleVal..." alt="" coords="177,5,324,32"/>
-</map>

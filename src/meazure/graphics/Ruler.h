@@ -111,7 +111,7 @@ public:
     /// @param screenProvider   [in] Screen information provider
     /// @param unitsProvider    [in] Units information provider
     ///
-    MeaRuler(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unisProvider);
+    MeaRuler(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider);
 
     /// Destroys a ruler.
     ///

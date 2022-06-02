@@ -1,0 +1,4 @@
+<map id="MeaUnitsProvider" name="MeaUnitsProvider">
+<area shape="rect" id="node1" title="Interface for units related information." alt="" coords="5,5,128,32"/>
+<area shape="rect" id="node2" href="$classMeaUnitsMgr.html" title="Manager for all units related operations including creating the units objects and labels,..." alt="" coords="17,80,116,107"/>
+</map>

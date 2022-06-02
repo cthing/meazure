@@ -40,11 +40,10 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classMeaSingleton__T-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">MeaSingleton_T&lt; singleton_t &gt; Class Template Reference</div></div>
 </div><!--header-->
@@ -55,87 +54,42 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="Singleton_8h_source.html">Singleton.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaSingleton__T_1_1token.html">token</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allows the derived class constructor to be public but restricts creation to this class.  <a href="structMeaSingleton__T_1_1token.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab5ff6e6054becb1c98156f6a64eb8de0"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#ab5ff6e6054becb1c98156f6a64eb8de0">~MeaSingleton_T</a> ()</td></tr>
-<tr class="memdesc:ab5ff6e6054becb1c98156f6a64eb8de0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the Singleton.  <a href="classMeaSingleton__T.html#ab5ff6e6054becb1c98156f6a64eb8de0">More...</a><br /></td></tr>
-<tr class="separator:ab5ff6e6054becb1c98156f6a64eb8de0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe2d7bbfbb064494f05184e60b360e4f"><td class="memItemLeft" align="right" valign="top"><a id="abe2d7bbfbb064494f05184e60b360e4f" name="abe2d7bbfbb064494f05184e60b360e4f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaSingleton_T</b> (const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt; &amp;src)=delete</td></tr>
+<tr class="memdesc:abe2d7bbfbb064494f05184e60b360e4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons have no copy semantics. <br /></td></tr>
+<tr class="separator:abe2d7bbfbb064494f05184e60b360e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45ad47775641fc1cfb44f04fbbdc608"><td class="memItemLeft" align="right" valign="top"><a id="af45ad47775641fc1cfb44f04fbbdc608" name="af45ad47775641fc1cfb44f04fbbdc608"></a>
+<a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt; &amp;src)=delete</td></tr>
+<tr class="memdesc:af45ad47775641fc1cfb44f04fbbdc608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons have no assignment semantics. <br /></td></tr>
+<tr class="separator:af45ad47775641fc1cfb44f04fbbdc608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a99867d7e6fbd4e6a7f3cacf12648bab2"><td class="memItemLeft" align="right" valign="top">static singleton_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">Instance</a> ()</td></tr>
 <tr class="memdesc:a99867d7e6fbd4e6a7f3cacf12648bab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The first time this method is called, a instance of the Singleton object is created and returned.  <a href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">More...</a><br /></td></tr>
 <tr class="separator:a99867d7e6fbd4e6a7f3cacf12648bab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a188121bb7e8addf897fd59e06159dcb4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a188121bb7e8addf897fd59e06159dcb4">DestroyInstance</a> ()</td></tr>
-<tr class="memdesc:a188121bb7e8addf897fd59e06159dcb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the Singleton object is no longer needed, it must be destroyed using this method.  <a href="classMeaSingleton__T.html#a188121bb7e8addf897fd59e06159dcb4">More...</a><br /></td></tr>
-<tr class="separator:a188121bb7e8addf897fd59e06159dcb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68eb6955739fdfd98a81d744fa9cc438"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a68eb6955739fdfd98a81d744fa9cc438">IsDestroyed</a> ()</td></tr>
-<tr class="memdesc:a68eb6955739fdfd98a81d744fa9cc438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the Singleton object has been destroyed.  <a href="classMeaSingleton__T.html#a68eb6955739fdfd98a81d744fa9cc438">More...</a><br /></td></tr>
-<tr class="separator:a68eb6955739fdfd98a81d744fa9cc438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a59ecb351351d10ee5608e644c3d07b7e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a59ecb351351d10ee5608e644c3d07b7e">MeaSingleton_T</a> ()</td></tr>
-<tr class="memdesc:a59ecb351351d10ee5608e644c3d07b7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Singleton object instance.  <a href="classMeaSingleton__T.html#a59ecb351351d10ee5608e644c3d07b7e">More...</a><br /></td></tr>
-<tr class="separator:a59ecb351351d10ee5608e644c3d07b7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a83baf4a196a2be32a30e828730edff8c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a83baf4a196a2be32a30e828730edff8c">MeaSingleton_T</a> (const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt; &amp;src)</td></tr>
-<tr class="memdesc:a83baf4a196a2be32a30e828730edff8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons have no copy semantics.  <a href="classMeaSingleton__T.html#a83baf4a196a2be32a30e828730edff8c">More...</a><br /></td></tr>
-<tr class="separator:a83baf4a196a2be32a30e828730edff8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacf228d281bd69017139c3dc3e2bd96e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#aacf228d281bd69017139c3dc3e2bd96e">operator=</a> (const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt; &amp;src)</td></tr>
-<tr class="memdesc:aacf228d281bd69017139c3dc3e2bd96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons have no assignment semantics.  <a href="classMeaSingleton__T.html#aacf228d281bd69017139c3dc3e2bd96e">More...</a><br /></td></tr>
-<tr class="separator:aacf228d281bd69017139c3dc3e2bd96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a8f05b771029d64b8b33aa776ff441067"><td class="memItemLeft" align="right" valign="top"><a id="a8f05b771029d64b8b33aa776ff441067" name="a8f05b771029d64b8b33aa776ff441067"></a>
-static singleton_t *&#160;</td><td class="memItemRight" valign="bottom"><b>m_instance</b></td></tr>
-<tr class="memdesc:a8f05b771029d64b8b33aa776ff441067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance of the Singleton object. <br /></td></tr>
-<tr class="separator:a8f05b771029d64b8b33aa776ff441067"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8de7a65edbdc248ca24b56d0061514c"><td class="memItemLeft" align="right" valign="top"><a id="ae8de7a65edbdc248ca24b56d0061514c" name="ae8de7a65edbdc248ca24b56d0061514c"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_destroyed</b></td></tr>
-<tr class="memdesc:ae8de7a65edbdc248ca24b56d0061514c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Has the Singleton object been destroyed. <br /></td></tr>
-<tr class="separator:ae8de7a65edbdc248ca24b56d0061514c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef7a769e71d8bffaa3b9b80b97eaf7fa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#aef7a769e71d8bffaa3b9b80b97eaf7fa">MeaSingleton_T</a> ()=default</td></tr>
+<tr class="memdesc:aef7a769e71d8bffaa3b9b80b97eaf7fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Singleton object instance.  <a href="classMeaSingleton__T.html#aef7a769e71d8bffaa3b9b80b97eaf7fa">More...</a><br /></td></tr>
+<tr class="separator:aef7a769e71d8bffaa3b9b80b97eaf7fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename singleton_t&gt;<br />
 class MeaSingleton_T&lt; singleton_t &gt;</div><p >Mix-in class implementing the Singleton pattern. </p>
-<p >A Singleton object is never created or destroyed explicitly. Instead, the object is created when the <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2" title="The first time this method is called, a instance of the Singleton object is created and returned.">Instance()</a> method is called the first time. The object is destroy when <a class="el" href="classMeaSingleton__T.html#a188121bb7e8addf897fd59e06159dcb4" title="When the Singleton object is no longer needed, it must be destroyed using this method.">DestroyInstance()</a> is called. </p>
+<p >A Singleton object is never created or destroyed explicitly. Instead, the object is created when the <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2" title="The first time this method is called, a instance of the Singleton object is created and returned.">Instance()</a> method is called the first time. The object is destroy when DestroyInstance() is called. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab5ff6e6054becb1c98156f6a64eb8de0" name="ab5ff6e6054becb1c98156f6a64eb8de0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5ff6e6054becb1c98156f6a64eb8de0">&#9670;&nbsp;</a></span>~MeaSingleton_T()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename singleton_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt;::~<a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Destructor for the Singleton. </p>
-<p >This method is called indirectly by the <a class="el" href="classMeaSingleton__T.html#a188121bb7e8addf897fd59e06159dcb4" title="When the Singleton object is no longer needed, it must be destroyed using this method.">DestroyInstance()</a> method. The delete operator is never directly applied to a Singleton object by the user of this class. </p>
-
-</div>
-</div>
-<a id="a59ecb351351d10ee5608e644c3d07b7e" name="a59ecb351351d10ee5608e644c3d07b7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59ecb351351d10ee5608e644c3d07b7e">&#9670;&nbsp;</a></span>MeaSingleton_T() <span class="overload">[1/2]</span></h2>
+<a id="aef7a769e71d8bffaa3b9b80b97eaf7fa" name="aef7a769e71d8bffaa3b9b80b97eaf7fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef7a769e71d8bffaa3b9b80b97eaf7fa">&#9670;&nbsp;</a></span>MeaSingleton_T()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,7 +108,7 @@ template&lt;typename singleton_t &gt; </div>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">default</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -164,70 +118,7 @@ template&lt;typename singleton_t &gt; </div>
 
 </div>
 </div>
-<a id="a83baf4a196a2be32a30e828730edff8c" name="a83baf4a196a2be32a30e828730edff8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83baf4a196a2be32a30e828730edff8c">&#9670;&nbsp;</a></span>MeaSingleton_T() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename singleton_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt;<a class="el" href="classMeaSingleton__T.html">::MeaSingleton_T</a> </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>src</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Singletons have no copy semantics. </p>
-<p >Therefore, this method is purposely left undefined to trigger a compile/link error if an attempt is ever made to use it. </p>
-
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a188121bb7e8addf897fd59e06159dcb4" name="a188121bb7e8addf897fd59e06159dcb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a188121bb7e8addf897fd59e06159dcb4">&#9670;&nbsp;</a></span>DestroyInstance()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename singleton_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt;::DestroyInstance </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>When the Singleton object is no longer needed, it must be destroyed using this method. </p>
-<p >The <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2" title="The first time this method is called, a instance of the Singleton object is created and returned.">Instance()</a> method must not be called after this method has been called or an assertion will be raised. </p>
-
-<p class="reference">References <a class="el" href="classMeaSingleton__T.html#ae8de7a65edbdc248ca24b56d0061514c">MeaSingleton_T&lt; singleton_t &gt;::m_destroyed</a>, and <a class="el" href="classMeaSingleton__T.html#a8f05b771029d64b8b33aa776ff441067">MeaSingleton_T&lt; singleton_t &gt;::m_instance</a>.</p>
-
-</div>
-</div>
 <a id="a99867d7e6fbd4e6a7f3cacf12648bab2" name="a99867d7e6fbd4e6a7f3cacf12648bab2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a99867d7e6fbd4e6a7f3cacf12648bab2">&#9670;&nbsp;</a></span>Instance()</h2>
 
@@ -254,74 +145,8 @@ template&lt;typename singleton_t &gt; </div>
 </div><div class="memdoc">
 
 <p>The first time this method is called, a instance of the Singleton object is created and returned. </p>
-<p >Subsequent calls to this method return the same object instance. The method asserts if <a class="el" href="classMeaSingleton__T.html#a188121bb7e8addf897fd59e06159dcb4" title="When the Singleton object is no longer needed, it must be destroyed using this method.">DestroyInstance()</a> has been called.</p>
+<p >Subsequent calls to this method return the same object instance. The method asserts if DestroyInstance() has been called.</p>
 <dl class="section return"><dt>Returns</dt><dd>Singleton instance. The same instance is always returned. </dd></dl>
-
-<p class="reference">References <a class="el" href="classMeaSingleton__T.html#ae8de7a65edbdc248ca24b56d0061514c">MeaSingleton_T&lt; singleton_t &gt;::m_destroyed</a>, <a class="el" href="classMeaSingleton__T.html#a8f05b771029d64b8b33aa776ff441067">MeaSingleton_T&lt; singleton_t &gt;::m_instance</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
-
-</div>
-</div>
-<a id="a68eb6955739fdfd98a81d744fa9cc438" name="a68eb6955739fdfd98a81d744fa9cc438"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68eb6955739fdfd98a81d744fa9cc438">&#9670;&nbsp;</a></span>IsDestroyed()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename singleton_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static bool <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt;::IsDestroyed </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Indicates whether the Singleton object has been destroyed. </p>
-<p >Once a Singleton instance has been destroyed, it is illegal to call the <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2" title="The first time this method is called, a instance of the Singleton object is created and returned.">Instance()</a> method.</p>
-<dl class="section return"><dt>Returns</dt><dd><b>true</b> if the Singleton object has been destroyed. </dd></dl>
-
-<p class="reference">References <a class="el" href="classMeaSingleton__T.html#ae8de7a65edbdc248ca24b56d0061514c">MeaSingleton_T&lt; singleton_t &gt;::m_destroyed</a>.</p>
-
-</div>
-</div>
-<a id="aacf228d281bd69017139c3dc3e2bd96e" name="aacf228d281bd69017139c3dc3e2bd96e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aacf228d281bd69017139c3dc3e2bd96e">&#9670;&nbsp;</a></span>operator=()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename singleton_t &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt; &amp; <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt;::operator= </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; singleton_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>src</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Singletons have no assignment semantics. </p>
-<p >Therefore, this method is purposely left undefined to trigger a compile/link error if an attempt is ever made to use it. </p>
 
 </div>
 </div>

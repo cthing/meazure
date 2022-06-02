@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_5fa8933a05c7c6ea1b0b07e1b4041736.html">graphics</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -52,13 +52,27 @@ $(function() {
 <p>Crosshair graphic header file.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="Graphic_8h_source.html">Graphic.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="ScreenProvider_8h_source.html">meazure/ui/ScreenProvider.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="UnitsProvider_8h_source.html">meazure/units/UnitsProvider.h</a>&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for CrossHair.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="CrossHair_8h__incl.png" border="0" usemap="#aCrossHair_8h" alt=""/></div>
 <map name="aCrossHair_8h" id="aCrossHair_8h">
-<area shape="rect" title="Crosshair graphic header file." alt="" coords="5,5,96,32"/>
-<area shape="rect" href="Graphic_8h.html" title="Graphic element base class header file." alt="" coords="11,80,90,107"/>
+<area shape="rect" title="Crosshair graphic header file." alt="" coords="199,5,290,32"/>
+<area shape="rect" href="Graphic_8h.html" title="Graphic element base class header file." alt="" coords="61,80,140,107"/>
+<area shape="rect" href="ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="5,229,193,256"/>
+<area shape="rect" href="UnitsProvider_8h.html" title="Interface providing measurement units information." alt="" coords="215,80,410,107"/>
+<area shape="rect" title=" " alt="" coords="434,80,485,107"/>
+<area shape="rect" title=" " alt="" coords="76,304,123,331"/>
+<area shape="rect" href="Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="403,304,593,331"/>
+<area shape="rect" title=" " alt="" coords="489,453,547,480"/>
+<area shape="rect" title=" " alt="" coords="462,379,534,405"/>
+<area shape="rect" href="NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="558,379,665,405"/>
+<area shape="rect" href="Units_8h.html" title="Header file for the units classes." alt="" coords="281,155,344,181"/>
+<area shape="rect" title=" " alt="" coords="218,229,274,256"/>
+<area shape="rect" href="Profile_8h.html" title="Profile base class header file." alt="" coords="299,229,460,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -75,8 +89,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="rect" href="ToolsPrefs_8h.html" title="Tool property page header file." alt="" coords="559,80,654,107"/>
 <area shape="rect" href="ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="237,155,315,181"/>
 <area shape="rect" href="Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="555,155,658,181"/>
-<area shape="rect" href="ChildView_8h.html" title="Header file for the application view." alt="" coords="561,229,652,256"/>
-<area shape="rect" href="MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="565,304,649,331"/>
+<area shape="rect" href="AppView_8h.html" title="Header file for the application view." alt="" coords="565,229,649,256"/>
+<area shape="rect" href="AppFrame_8h.html" title="Header file for the application frame class." alt="" coords="560,304,653,331"/>
 </map>
 </div>
 </div>
@@ -87,8 +101,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHairCallback.html">MeaCrossHairCallback</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crosshair activity callback mixin class.  <a href="classMeaCrossHairCallback.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaCrossHairCallback_1_1CHInfo.html">MeaCrossHairCallback::CHInfo</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback information structure.  <a href="structMeaCrossHairCallback_1_1CHInfo.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaCrossHairCallback_1_1CrossHairInfo.html">MeaCrossHairCallback::CrossHairInfo</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback information structure.  <a href="structMeaCrossHairCallback_1_1CrossHairInfo.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html">MeaCrossHair</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A crosshair element.  <a href="classMeaCrossHair.html#details">More...</a><br /></td></tr>

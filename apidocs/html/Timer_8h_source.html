@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_a8d373d5fc75f1ff25f008a856cb4b02.html">utilities</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,9 +71,9 @@ $(function() {
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;afxmt.h&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;<a class="code" href="MeaAssert_8h.html">MeaAssert.h</a>&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;<a class="code" href="Messages_8h.html">Messages.h</a>&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;afxmt.h&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;<a class="code" href="Messages_8h.html">meazure/Messages.h</a>&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"></span> </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">/// Implements a timer that issues timing messages at a higher priority</span></div>
@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    /// @param userData [in] Caller defined data.</span></div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">    ///</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classMeaTimer.html#af905a0692c7ed51c127cbeba209afb63">   53</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaTimer.html#af905a0692c7ed51c127cbeba209afb63">Create</a>(CWnd* parent, WPARAM userData = 0) {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <a class="code hl_define" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>(parent != <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        assert(parent != <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <a class="code hl_variable" href="classMeaTimer.html#aa721a5962eac6896af38df14f08c88e6">m_parent</a> = parent;</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_variable" href="classMeaTimer.html#a35bb2a97720e326e80533470feddfd61">m_userData</a> = userData;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
@@ -142,8 +142,6 @@ $(function() {
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="classMeaTimer.html#aa721a5962eac6896af38df14f08c88e6">   94</a></span>    CWnd* <a class="code hl_variable" href="classMeaTimer.html#aa721a5962eac6896af38df14f08c88e6">m_parent</a>;                 <span class="comment">///&lt; Window to receive the timer expire message.</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classMeaTimer.html#a35bb2a97720e326e80533470feddfd61">   95</a></span>    WPARAM <a class="code hl_variable" href="classMeaTimer.html#a35bb2a97720e326e80533470feddfd61">m_userData</a>;              <span class="comment">///&lt; Caller defined data.</span></div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>};</div>
-<div class="ttc" id="aMeaAssert_8h_html"><div class="ttname"><a href="MeaAssert_8h.html">MeaAssert.h</a></div><div class="ttdoc">Defines the MeaAssert macro to override assert if necessary.</div></div>
-<div class="ttc" id="aMeaAssert_8h_html_a2bbb95fb90b8342c2c48f57b92251657"><div class="ttname"><a href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a></div><div class="ttdeci">#define MeaAssert(exp)</div><div class="ttdoc">Asserts the specified predicate.</div><div class="ttdef"><b>Definition:</b> MeaAssert.h:29</div></div>
 <div class="ttc" id="aMessages_8h_html"><div class="ttname"><a href="Messages_8h.html">Messages.h</a></div><div class="ttdoc">Application-specific event messages.</div></div>
 <div class="ttc" id="aclassMeaTimer_html"><div class="ttname"><a href="classMeaTimer.html">MeaTimer</a></div><div class="ttdoc">Implements a timer that issues timing messages at a higher priority than the standard windows timer t...</div><div class="ttdef"><b>Definition:</b> Timer.h:34</div></div>
 <div class="ttc" id="aclassMeaTimer_html_a0926c1d43229b2fcae319e8126d1a1c2"><div class="ttname"><a href="classMeaTimer.html#a0926c1d43229b2fcae319e8126d1a1c2">MeaTimer::Start</a></div><div class="ttdeci">void Start(int elapse)</div><div class="ttdoc">Sets the timer to the specified interval and starts it running.</div><div class="ttdef"><b>Definition:</b> Timer.cpp:51</div></div>

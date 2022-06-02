@@ -1,6 +1,6 @@
 <map id="AdvancedPrefs.h" name="AdvancedPrefs.h">
 <area shape="rect" id="node1" title="Advanced preferences property page header file." alt="" coords="5,5,124,32"/>
 <area shape="rect" id="node2" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="13,80,116,107"/>
-<area shape="rect" id="node3" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="19,155,110,181"/>
-<area shape="rect" id="node4" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="23,229,107,256"/>
+<area shape="rect" id="node3" href="$AppView_8h.html" title="Header file for the application view." alt="" coords="23,155,107,181"/>
+<area shape="rect" id="node4" href="$AppFrame_8h.html" title="Header file for the application frame class." alt="" coords="18,229,111,256"/>
 </map>

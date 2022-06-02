@@ -70,9 +70,9 @@ Inheritance diagram for MeaCrossHair:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aef2a831907f83dd296f1ac9ab1f7f03c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#aef2a831907f83dd296f1ac9ab1f7f03c">MeaCrossHair</a> ()</td></tr>
-<tr class="memdesc:aef2a831907f83dd296f1ac9ab1f7f03c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a crosshair.  <a href="classMeaCrossHair.html#aef2a831907f83dd296f1ac9ab1f7f03c">More...</a><br /></td></tr>
-<tr class="separator:aef2a831907f83dd296f1ac9ab1f7f03c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11c9b07a336a784dbf70d26f97aaedc0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#a11c9b07a336a784dbf70d26f97aaedc0">MeaCrossHair</a> (const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;screenProvider, const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;unitsProvider)</td></tr>
+<tr class="memdesc:a11c9b07a336a784dbf70d26f97aaedc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a crosshair.  <a href="classMeaCrossHair.html#a11c9b07a336a784dbf70d26f97aaedc0">More...</a><br /></td></tr>
+<tr class="separator:a11c9b07a336a784dbf70d26f97aaedc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9b275a0fe42f89349c9a238cf15e15f8"><td class="memItemLeft" align="right" valign="top"><a id="a9b275a0fe42f89349c9a238cf15e15f8" name="a9b275a0fe42f89349c9a238cf15e15f8"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaCrossHair</b> ()</td></tr>
 <tr class="memdesc:a9b275a0fe42f89349c9a238cf15e15f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the circle. <br /></td></tr>
@@ -175,18 +175,29 @@ Private Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>DestroyColors</b> ()</td></tr>
 <tr class="memdesc:a088ebad9dd0f4a2bc4c6c00ec17df314"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes the brushes used to draw the crosshair's background and border. <br /></td></tr>
 <tr class="separator:a088ebad9dd0f4a2bc4c6c00ec17df314"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c236daf2de142e67b90056f5d835859"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#a2c236daf2de142e67b90056f5d835859">FillInfo</a> (<a class="el" href="structMeaCrossHairCallback_1_1CHInfo.html">MeaCrossHairCallback::CHInfo</a> &amp;chs, UINT flags, const CPoint &amp;point)</td></tr>
-<tr class="memdesc:a2c236daf2de142e67b90056f5d835859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fills in the crosshair information structure with the current location of the pointer and the state of the keyboard modifiers.  <a href="classMeaCrossHair.html#a2c236daf2de142e67b90056f5d835859">More...</a><br /></td></tr>
-<tr class="separator:a2c236daf2de142e67b90056f5d835859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3e598cb4519ec0bd21100497b43ef5a"><td class="memItemLeft" align="right" valign="top">CPoint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#ae3e598cb4519ec0bd21100497b43ef5a">FindCenter</a> (const CPoint &amp;point) const</td></tr>
+<tr class="memdesc:ae3e598cb4519ec0bd21100497b43ef5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines the center point of the crosshair.  <a href="classMeaCrossHair.html#ae3e598cb4519ec0bd21100497b43ef5a">More...</a><br /></td></tr>
+<tr class="separator:ae3e598cb4519ec0bd21100497b43ef5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
+<tr class="memitem:ad5e6582a9407a6a65a9eefc56d6f1b44"><td class="memItemLeft" align="right" valign="top"><a id="ad5e6582a9407a6a65a9eefc56d6f1b44" name="ad5e6582a9407a6a65a9eefc56d6f1b44"></a>
+static constexpr std::array&lt; int, kTotalLayers &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>MakeNumCoords</b> () noexcept</td></tr>
+<tr class="separator:ad5e6582a9407a6a65a9eefc56d6f1b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac354a044b43c71329deb787c2266ae22"><td class="memItemLeft" align="right" valign="top">static CPoint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCrossHair.html#ac354a044b43c71329deb787c2266ae22">GetLeftTop</a> (const CPoint &amp;center)</td></tr>
 <tr class="memdesc:ac354a044b43c71329deb787c2266ae22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Given the center of the crosshair, returns the corresponding upper left corner.  <a href="classMeaCrossHair.html#ac354a044b43c71329deb787c2266ae22">More...</a><br /></td></tr>
 <tr class="separator:ac354a044b43c71329deb787c2266ae22"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a96c9f2bbb31538fc6e2e64c976b4c4f9"><td class="memItemLeft" align="right" valign="top"><a id="a96c9f2bbb31538fc6e2e64c976b4c4f9" name="a96c9f2bbb31538fc6e2e64c976b4c4f9"></a>
+const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>m_screenProvider</b></td></tr>
+<tr class="memdesc:a96c9f2bbb31538fc6e2e64c976b4c4f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen information provider. <br /></td></tr>
+<tr class="separator:a96c9f2bbb31538fc6e2e64c976b4c4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad47601af9bb51192d73787194e019009"><td class="memItemLeft" align="right" valign="top"><a id="ad47601af9bb51192d73787194e019009" name="ad47601af9bb51192d73787194e019009"></a>
+const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsProvider</b></td></tr>
+<tr class="memdesc:ad47601af9bb51192d73787194e019009"><td class="mdescLeft">&#160;</td><td class="mdescRight">Units information provider. <br /></td></tr>
+<tr class="separator:ad47601af9bb51192d73787194e019009"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac78caf0603fcfd18a0628e25183bf3ba"><td class="memItemLeft" align="right" valign="top"><a id="ac78caf0603fcfd18a0628e25183bf3ba" name="ac78caf0603fcfd18a0628e25183bf3ba"></a>
 <a class="el" href="classMeaCrossHairCallback.html">MeaCrossHairCallback</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_callback</b></td></tr>
 <tr class="memdesc:ac78caf0603fcfd18a0628e25183bf3ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Object to call for crosshair events. <br /></td></tr>
@@ -258,26 +269,31 @@ CBitmap *&#160;</td><td class="memItemRight" valign="bottom"><b>m_origBackBitmap
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a24f6346b9e6caece60e6de5ad796ef1b"><td class="memItemLeft" align="right" valign="top"><a id="a24f6346b9e6caece60e6de5ad796ef1b" name="a24f6346b9e6caece60e6de5ad796ef1b"></a>
-static SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>m_size</b></td></tr>
-<tr class="memdesc:a24f6346b9e6caece60e6de5ad796ef1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Width and height of the crosshair, in pixels. <br /></td></tr>
-<tr class="separator:a24f6346b9e6caece60e6de5ad796ef1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a767001c8f0466bb6e0021cd6e5801588"><td class="memItemLeft" align="right" valign="top"><a id="a767001c8f0466bb6e0021cd6e5801588" name="a767001c8f0466bb6e0021cd6e5801588"></a>
-static SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>m_halfSize</b></td></tr>
-<tr class="memdesc:a767001c8f0466bb6e0021cd6e5801588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Half the width and height of the crosshair, in pixels. <br /></td></tr>
-<tr class="separator:a767001c8f0466bb6e0021cd6e5801588"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fd3b765580526e3edf6af3d9a8a686c"><td class="memItemLeft" align="right" valign="top"><a id="a2fd3b765580526e3edf6af3d9a8a686c" name="a2fd3b765580526e3edf6af3d9a8a686c"></a>
-static SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>m_spread</b></td></tr>
-<tr class="memdesc:a2fd3b765580526e3edf6af3d9a8a686c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Half the length of the base of a triangular section of the crosshair, in pixels. <br /></td></tr>
-<tr class="separator:a2fd3b765580526e3edf6af3d9a8a686c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8e4c16cd0e0f9ab2e28b98de2453de2"><td class="memItemLeft" align="right" valign="top"><a id="ac8e4c16cd0e0f9ab2e28b98de2453de2" name="ac8e4c16cd0e0f9ab2e28b98de2453de2"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kPetalLayers</b> = { 5 }</td></tr>
+<tr class="separator:ac8e4c16cd0e0f9ab2e28b98de2453de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a760b9fa977eb49cbdff4447280204e74"><td class="memItemLeft" align="right" valign="top"><a id="a760b9fa977eb49cbdff4447280204e74" name="a760b9fa977eb49cbdff4447280204e74"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kTotalLayers</b> = { 4 * kPetalLayers }</td></tr>
+<tr class="separator:a760b9fa977eb49cbdff4447280204e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5cfe5efd9134d6f4ca3f535016b3705"><td class="memItemLeft" align="right" valign="top"><a id="aa5cfe5efd9134d6f4ca3f535016b3705" name="aa5cfe5efd9134d6f4ca3f535016b3705"></a>
+static const std::array&lt; int, kTotalLayers &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_numCoords</b> = MakeNumCoords()</td></tr>
+<tr class="separator:aa5cfe5efd9134d6f4ca3f535016b3705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b2b21646538c050fd9f7e88a1d97afe"><td class="memItemLeft" align="right" valign="top"><a id="a9b2b21646538c050fd9f7e88a1d97afe" name="a9b2b21646538c050fd9f7e88a1d97afe"></a>
+static CSize&#160;</td><td class="memItemRight" valign="bottom"><b>m_size</b></td></tr>
+<tr class="memdesc:a9b2b21646538c050fd9f7e88a1d97afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Width and height of the crosshair, in pixels. <br /></td></tr>
+<tr class="separator:a9b2b21646538c050fd9f7e88a1d97afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe21941154100e6eb73838b9a9ad3c8e"><td class="memItemLeft" align="right" valign="top"><a id="abe21941154100e6eb73838b9a9ad3c8e" name="abe21941154100e6eb73838b9a9ad3c8e"></a>
+static CSize&#160;</td><td class="memItemRight" valign="bottom"><b>m_halfSize</b></td></tr>
+<tr class="memdesc:abe21941154100e6eb73838b9a9ad3c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Half the width and height of the crosshair, in pixels. <br /></td></tr>
+<tr class="separator:abe21941154100e6eb73838b9a9ad3c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37887df1ce86488dbc8cbd331f73f4df"><td class="memItemLeft" align="right" valign="top"><a id="a37887df1ce86488dbc8cbd331f73f4df" name="a37887df1ce86488dbc8cbd331f73f4df"></a>
+static CSize&#160;</td><td class="memItemRight" valign="bottom"><b>m_spread</b></td></tr>
+<tr class="memdesc:a37887df1ce86488dbc8cbd331f73f4df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Half the length of the base of a triangular section of the crosshair, in pixels. <br /></td></tr>
+<tr class="separator:a37887df1ce86488dbc8cbd331f73f4df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84f272e874a4f09c524775f63dfc7985"><td class="memItemLeft" align="right" valign="top"><a id="a84f272e874a4f09c524775f63dfc7985" name="a84f272e874a4f09c524775f63dfc7985"></a>
 static UINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_flashInterval</b> { 100 }</td></tr>
 <tr class="memdesc:a84f272e874a4f09c524775f63dfc7985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of milliseconds to hold each display state while flashing the crosshair. <br /></td></tr>
 <tr class="separator:a84f272e874a4f09c524775f63dfc7985"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0361504b3e35238257634fb14edd8ea"><td class="memItemLeft" align="right" valign="top"><a id="ac0361504b3e35238257634fb14edd8ea" name="ac0361504b3e35238257634fb14edd8ea"></a>
-static int *&#160;</td><td class="memItemRight" valign="bottom"><b>m_numCoords</b> { nullptr }</td></tr>
-<tr class="memdesc:ac0361504b3e35238257634fb14edd8ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of coordinates in each rectangle making up part of the crosshair (4) <br /></td></tr>
-<tr class="separator:ac0361504b3e35238257634fb14edd8ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -336,8 +352,8 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aef2a831907f83dd296f1ac9ab1f7f03c" name="aef2a831907f83dd296f1ac9ab1f7f03c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef2a831907f83dd296f1ac9ab1f7f03c">&#9670;&nbsp;</a></span>MeaCrossHair()</h2>
+<a id="a11c9b07a336a784dbf70d26f97aaedc0" name="a11c9b07a336a784dbf70d26f97aaedc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11c9b07a336a784dbf70d26f97aaedc0">&#9670;&nbsp;</a></span>MeaCrossHair()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -345,14 +361,32 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
         <tr>
           <td class="memname">MeaCrossHair::MeaCrossHair </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;&#160;</td>
+          <td class="paramname"><em>screenProvider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;&#160;</td>
+          <td class="paramname"><em>unitsProvider</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Constructs a crosshair. </p>
-<p >Prior to displaying the crosshair with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c" title="Creates the window for the crosshair.">Create()</a> method must be called to create the crosshair's window. </p>
+<p >Prior to displaying the crosshair with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c" title="Creates the window for the crosshair.">Create()</a> method must be called to create the crosshair's window.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">screenProvider</td><td>[in] Screen information provider </td></tr>
+    <tr><td class="paramname">unitsProvider</td><td>[in] Units information provider </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -436,7 +470,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the window is created successfully. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a4452d16827b5eaf35a7029cd7111e32d">MeaUnitsMgr::ConvertToPixels()</a>, <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f">MeaGraphic::Create()</a>, <a class="el" href="classMeaLayout.html#ad8da9dc24587ddc1876627521a7b5d12">MeaLayout::DrawOpacityBackground()</a>, <a class="el" href="classMeaScreenMgr.html#a315eda9353960099ead68494ce52a340">MeaScreenMgr::GetScreenIter()</a>, <a class="el" href="classMeaScreenMgr.html#aac69c5fad41273380b6ad3896719147a">MeaScreenMgr::GetScreenRes()</a>, <a class="el" href="LayeredWindows_8h.html#a73f24e22c5ab220d8030bb996d3bcff8">HaveLayeredWindows()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaUnitsMgr &gt;::Instance()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaCrossHair.html#ac5d7b0f6df4c2298e1c65a208949dad6">m_backBitmap</a>, <a class="el" href="classMeaCrossHair.html#a1b1bf429972ec71cfcf1bebd6a7941c7">m_backBrush</a>, <a class="el" href="classMeaCrossHair.html#a2ecfc83c879b3eb960b4c9b6cd9c0d11">m_backDC</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaCrossHair.html#ad4f243d1ce0dd5c47cec108e9e6da8a0">m_chBitmap</a>, <a class="el" href="classMeaCrossHair.html#ac1c152474000bf079ec773012be1991a">m_chDC</a>, <a class="el" href="classMeaCrossHair.html#a767001c8f0466bb6e0021cd6e5801588">m_halfSize</a>, <a class="el" href="classMeaCrossHair.html#a08b98cc8c7bd90590111147526a8981b">m_origBackBitmap</a>, <a class="el" href="classMeaCrossHair.html#a88a8421b6f64ce7cc77b844f0e2e496f">m_origCHBitmap</a>, <a class="el" href="classMeaGraphic.html#aad9b8c5e7d5841ec42e9b99668fc9e27">MeaGraphic::m_parent</a>, <a class="el" href="classMeaCrossHair.html#a24f6346b9e6caece60e6de5ad796ef1b">m_size</a>, <a class="el" href="classMeaCrossHair.html#a2fd3b765580526e3edf6af3d9a8a686c">m_spread</a>, <a class="el" href="classMeaCrossHair.html#ac81a908fc747c28dae9be6aac0309478">m_toolTip</a>, <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>, <a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996a7a5b4674d6bb1fc6909ea86928caeb97">MeaInchesId</a>, <a class="el" href="classMeaCrossHair.html#a0471e478bd80c45d7d5e833aee5402f7">SetColors()</a>, <a class="el" href="classMeaCrossHair.html#a4db583e3186dde88ce74e748399c04bb">SetOpacity()</a>, <a class="el" href="classMeaCrossHair.html#a8b52e2b6d2b7dcd34301242dccd903c3">SetRegion()</a>, and <a class="el" href="LayeredWindows_8h.html#aadb9d3ad3a7944b83f9bf3d0df68aee7">WS_EX_LAYERED</a>.</p>
+<p class="reference">References <a class="el" href="structMeaUnitsProvider.html#a4effca62d754093cad67c2eec5feea80">MeaUnitsProvider::ConvertToPixels()</a>, <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f">MeaGraphic::Create()</a>, <a class="el" href="namespaceMeaLayout.html#a2279ccdf091ff5a5150ec64fab8854fa">MeaLayout::DrawOpacityBackground()</a>, <a class="el" href="structMeaScreenProvider.html#a54a905f0a77deffd675d11d1e125b8cf">MeaScreenProvider::GetScreenIter()</a>, <a class="el" href="structMeaScreenProvider.html#ad014c94513cc9ee2114f120725872c65">MeaScreenProvider::GetScreenRes()</a>, <a class="el" href="LayeredWindows_8h.html#a73f24e22c5ab220d8030bb996d3bcff8">HaveLayeredWindows()</a>, <a class="el" href="classMeaCrossHair.html#ac5d7b0f6df4c2298e1c65a208949dad6">m_backBitmap</a>, <a class="el" href="classMeaCrossHair.html#a1b1bf429972ec71cfcf1bebd6a7941c7">m_backBrush</a>, <a class="el" href="classMeaCrossHair.html#a2ecfc83c879b3eb960b4c9b6cd9c0d11">m_backDC</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaCrossHair.html#ad4f243d1ce0dd5c47cec108e9e6da8a0">m_chBitmap</a>, <a class="el" href="classMeaCrossHair.html#ac1c152474000bf079ec773012be1991a">m_chDC</a>, <a class="el" href="classMeaCrossHair.html#abe21941154100e6eb73838b9a9ad3c8e">m_halfSize</a>, <a class="el" href="classMeaCrossHair.html#a08b98cc8c7bd90590111147526a8981b">m_origBackBitmap</a>, <a class="el" href="classMeaCrossHair.html#a88a8421b6f64ce7cc77b844f0e2e496f">m_origCHBitmap</a>, <a class="el" href="classMeaGraphic.html#aad9b8c5e7d5841ec42e9b99668fc9e27">MeaGraphic::m_parent</a>, <a class="el" href="classMeaCrossHair.html#a96c9f2bbb31538fc6e2e64c976b4c4f9">m_screenProvider</a>, <a class="el" href="classMeaCrossHair.html#a9b2b21646538c050fd9f7e88a1d97afe">m_size</a>, <a class="el" href="classMeaCrossHair.html#a37887df1ce86488dbc8cbd331f73f4df">m_spread</a>, <a class="el" href="classMeaCrossHair.html#ac81a908fc747c28dae9be6aac0309478">m_toolTip</a>, <a class="el" href="classMeaCrossHair.html#ad47601af9bb51192d73787194e019009">m_unitsProvider</a>, <a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996a7a5b4674d6bb1fc6909ea86928caeb97">MeaInchesId</a>, <a class="el" href="classMeaCrossHair.html#a0471e478bd80c45d7d5e833aee5402f7">SetColors()</a>, <a class="el" href="classMeaCrossHair.html#a4db583e3186dde88ce74e748399c04bb">SetOpacity()</a>, <a class="el" href="classMeaCrossHair.html#a8b52e2b6d2b7dcd34301242dccd903c3">SetRegion()</a>, and <a class="el" href="LayeredWindows_8h.html#aadb9d3ad3a7944b83f9bf3d0df68aee7">WS_EX_LAYERED</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a019c406711d659a6a10f4ce812b2f9db">MeaAngleTool::Create()</a>, <a class="el" href="classMeaCircleTool.html#a83228aff788695fa56178a60ad01caef">MeaCircleTool::Create()</a>, <a class="el" href="classMeaLineTool.html#a256719195abe7589c87f929681bccc7f">MeaLineTool::Create()</a>, <a class="el" href="classMeaPointTool.html#a6449a06daaebaa8fc63c103f728c1247">MeaPointTool::Create()</a>, <a class="el" href="classMeaRectTool.html#ada7f628b1fc4b94d5743d02a321835fa">MeaRectTool::Create()</a>, and <a class="el" href="classMeaToolsPrefs.html#a7a15c4c4aa51a15b2fe2e3ff9bbd7a20">MeaToolsPrefs::OnInitDialog()</a>.</p>
 
@@ -481,8 +515,8 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 
 </div>
 </div>
-<a id="a2c236daf2de142e67b90056f5d835859" name="a2c236daf2de142e67b90056f5d835859"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c236daf2de142e67b90056f5d835859">&#9670;&nbsp;</a></span>FillInfo()</h2>
+<a id="ae3e598cb4519ec0bd21100497b43ef5a" name="ae3e598cb4519ec0bd21100497b43ef5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3e598cb4519ec0bd21100497b43ef5a">&#9670;&nbsp;</a></span>FindCenter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -491,27 +525,11 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MeaCrossHair::FillInfo </td>
+          <td class="memname">CPoint MeaCrossHair::FindCenter </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMeaCrossHairCallback_1_1CHInfo.html">MeaCrossHairCallback::CHInfo</a> &amp;&#160;</td>
-          <td class="paramname"><em>chs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT&#160;</td>
-          <td class="paramname"><em>flags</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const CPoint &amp;&#160;</td>
-          <td class="paramname"><em>point</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="paramname"><em>point</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -521,17 +539,16 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </table>
 </div><div class="memdoc">
 
-<p>Fills in the crosshair information structure with the current location of the pointer and the state of the keyboard modifiers. </p>
+<p>Determines the center point of the crosshair. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">chs</td><td>[in, out] Crosshair information structure to fill </td></tr>
-    <tr><td class="paramname">flags</td><td>[in] State of the keyboard modifier keys </td></tr>
     <tr><td class="paramname">point</td><td>[in] Current location of the pointer, in pixels </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Center point of the crosshair </dd></dl>
 
-<p class="reference">References <a class="el" href="structMeaCrossHairCallback_1_1CHInfo.html#a2f27dd771a2e51a954a346abc5a1d288">MeaCrossHairCallback::CHInfo::centerPoint</a>, <a class="el" href="structMeaCrossHairCallback_1_1CHInfo.html#ac583506345c88b5322b33f562fcf3001">MeaCrossHairCallback::CHInfo::ch</a>, <a class="el" href="structMeaCrossHairCallback_1_1CHInfo.html#aa9186e2b0fa4a331dfa943ffa082b675">MeaCrossHairCallback::CHInfo::flags</a>, <a class="el" href="structMeaCrossHairCallback_1_1CHInfo.html#a376a3fac43215bac9c8b4327845938ec">MeaCrossHairCallback::CHInfo::id</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaScreenMgr.html#aead99180b1b49478edb3afa226277d85">MeaScreenMgr::LimitPosition()</a>, <a class="el" href="classMeaCrossHair.html#a767001c8f0466bb6e0021cd6e5801588">m_halfSize</a>, <a class="el" href="classMeaGraphic.html#a7d5e5cfd64462ac7dd21d655be01d3d0">MeaGraphic::m_id</a>, and <a class="el" href="classMeaCrossHair.html#ac6fc782bd6db3eb8f87be8a61e3e3317">m_pointerOffset</a>.</p>
+<p class="reference">References <a class="el" href="structMeaScreenProvider.html#a6c2b44c68ac104e37421dede14fc9891">MeaScreenProvider::LimitPosition()</a>, <a class="el" href="classMeaCrossHair.html#abe21941154100e6eb73838b9a9ad3c8e">m_halfSize</a>, <a class="el" href="classMeaCrossHair.html#ac6fc782bd6db3eb8f87be8a61e3e3317">m_pointerOffset</a>, and <a class="el" href="classMeaCrossHair.html#a96c9f2bbb31538fc6e2e64c976b4c4f9">m_screenProvider</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaCrossHair.html#a788aafa34cb458b22042d974064a55aa">OnLButtonDown()</a>, <a class="el" href="classMeaCrossHair.html#ac1a696efd55b94150c941a45a708fcca">OnLButtonUp()</a>, <a class="el" href="classMeaCrossHair.html#a2fc3cf64d68347a3199ad435a2a4ac01">OnMouseLeave()</a>, and <a class="el" href="classMeaCrossHair.html#af3c43eeedd9ee3051477123e7bcdc8ed">OnMouseMove()</a>.</p>
 
@@ -600,7 +617,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Location of the upper left corner of the crosshair window, in pixels. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaCrossHair.html#a767001c8f0466bb6e0021cd6e5801588">m_halfSize</a>.</p>
+<p class="reference">References <a class="el" href="classMeaCrossHair.html#abe21941154100e6eb73838b9a9ad3c8e">m_halfSize</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaCrossHair.html#a1b7c6bad980e90233a932ecbb3d6e66a">SetPosition()</a>.</p>
 
@@ -679,7 +696,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaCrossHair.html#a2c236daf2de142e67b90056f5d835859">FillInfo()</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaCrossHair.html#a2ede4133facc9a1579e5382bf7319f27">m_mouseCaptured</a>, <a class="el" href="classMeaCrossHair.html#ac6fc782bd6db3eb8f87be8a61e3e3317">m_pointerOffset</a>, and <a class="el" href="classMeaCrossHairCallback.html#a41819254a784104be07c50c617741fc1">MeaCrossHairCallback::OnCHSelect()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaCrossHair.html#ae3e598cb4519ec0bd21100497b43ef5a">FindCenter()</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaGraphic.html#a7d5e5cfd64462ac7dd21d655be01d3d0">MeaGraphic::m_id</a>, <a class="el" href="classMeaCrossHair.html#a2ede4133facc9a1579e5382bf7319f27">m_mouseCaptured</a>, <a class="el" href="classMeaCrossHair.html#ac6fc782bd6db3eb8f87be8a61e3e3317">m_pointerOffset</a>, and <a class="el" href="classMeaCrossHairCallback.html#ad5cf0527cb9d3b98f4bedceba106844a">MeaCrossHairCallback::OnCHSelect()</a>.</p>
 
 </div>
 </div>
@@ -726,7 +743,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaCrossHair.html#a2c236daf2de142e67b90056f5d835859">FillInfo()</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaCrossHair.html#a2ede4133facc9a1579e5382bf7319f27">m_mouseCaptured</a>, and <a class="el" href="classMeaCrossHairCallback.html#a1c8402f67e18da1c99e8f531fb378d5a">MeaCrossHairCallback::OnCHDeselect()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaCrossHair.html#ae3e598cb4519ec0bd21100497b43ef5a">FindCenter()</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaGraphic.html#a7d5e5cfd64462ac7dd21d655be01d3d0">MeaGraphic::m_id</a>, <a class="el" href="classMeaCrossHair.html#a2ede4133facc9a1579e5382bf7319f27">m_mouseCaptured</a>, and <a class="el" href="classMeaCrossHairCallback.html#a14d84bdefdc803eadeccd51ec55f32d2">MeaCrossHairCallback::OnCHDeselect()</a>.</p>
 
 </div>
 </div>
@@ -765,7 +782,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </div><div class="memdoc">
 
 <p>Called when the pointer leaves the crosshair window. </p>
-<p >The method initializes the crosshair information structure and calls the callback <a class="el" href="classMeaCrossHairCallback.html#a512c32df672f2c88d018be19aac2914d" title="Called when the pointer leaves the crosshair window.">MeaCrossHairCallback::OnCHLeave</a>, if a callback has been specified.</p>
+<p >The method initializes the crosshair information structure and calls the callback <a class="el" href="classMeaCrossHairCallback.html#a558a34f86e7a17801c212be806faff69" title="Called when the pointer leaves the crosshair window.">MeaCrossHairCallback::OnCHLeave</a>, if a callback has been specified.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wParam</td><td>[in] Not used </td></tr>
@@ -775,7 +792,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Always zero. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaCrossHair.html#a2c236daf2de142e67b90056f5d835859">FillInfo()</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaCrossHair.html#a66faabf5d79a53ac23ab3c70ba23c36a">m_mouseOver</a>, and <a class="el" href="classMeaCrossHairCallback.html#a512c32df672f2c88d018be19aac2914d">MeaCrossHairCallback::OnCHLeave()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaCrossHair.html#ae3e598cb4519ec0bd21100497b43ef5a">FindCenter()</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaGraphic.html#a7d5e5cfd64462ac7dd21d655be01d3d0">MeaGraphic::m_id</a>, <a class="el" href="classMeaCrossHair.html#a66faabf5d79a53ac23ab3c70ba23c36a">m_mouseOver</a>, and <a class="el" href="classMeaCrossHairCallback.html#a558a34f86e7a17801c212be806faff69">MeaCrossHairCallback::OnCHLeave()</a>.</p>
 
 </div>
 </div>
@@ -814,7 +831,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </div><div class="memdoc">
 
 <p>Called when the crosshair is dragged. </p>
-<p >The method initializes the crosshair information structure and calls the callback <a class="el" href="classMeaCrossHairCallback.html#aa60f1efe6f4f15c4a6b924f3825e16a1" title="Called when the user moves the mouse pointer over the crosshair while the left mouse button is presse...">MeaCrossHairCallback::OnCHMove</a> method, if a callback has been specified.</p>
+<p >The method initializes the crosshair information structure and calls the callback <a class="el" href="classMeaCrossHairCallback.html#a54a6e1c685b70b12d0d0dd2ade78aa2a" title="Called when the user moves the mouse pointer over the crosshair while the left mouse button is presse...">MeaCrossHairCallback::OnCHMove</a> method, if a callback has been specified.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">flags</td><td>[in] Virtual key state </td></tr>
@@ -823,7 +840,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaCrossHair.html#a2c236daf2de142e67b90056f5d835859">FillInfo()</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaCrossHair.html#a2ede4133facc9a1579e5382bf7319f27">m_mouseCaptured</a>, <a class="el" href="classMeaCrossHair.html#a66faabf5d79a53ac23ab3c70ba23c36a">m_mouseOver</a>, <a class="el" href="classMeaCrossHairCallback.html#a16192c2dbc96f191dda521adebaa05d2">MeaCrossHairCallback::OnCHEnter()</a>, and <a class="el" href="classMeaCrossHairCallback.html#aa60f1efe6f4f15c4a6b924f3825e16a1">MeaCrossHairCallback::OnCHMove()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaCrossHair.html#ae3e598cb4519ec0bd21100497b43ef5a">FindCenter()</a>, <a class="el" href="classMeaCrossHair.html#ac78caf0603fcfd18a0628e25183bf3ba">m_callback</a>, <a class="el" href="classMeaGraphic.html#a7d5e5cfd64462ac7dd21d655be01d3d0">MeaGraphic::m_id</a>, <a class="el" href="classMeaCrossHair.html#a2ede4133facc9a1579e5382bf7319f27">m_mouseCaptured</a>, <a class="el" href="classMeaCrossHair.html#a66faabf5d79a53ac23ab3c70ba23c36a">m_mouseOver</a>, <a class="el" href="classMeaCrossHairCallback.html#aa3800fcc09a47c2dce1b175f180eb7eb">MeaCrossHairCallback::OnCHEnter()</a>, and <a class="el" href="classMeaCrossHairCallback.html#a54a6e1c685b70b12d0d0dd2ade78aa2a">MeaCrossHairCallback::OnCHMove()</a>.</p>
 
 </div>
 </div>
@@ -1003,9 +1020,9 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaCrossHair.html#ac354a044b43c71329deb787c2266ae22">GetLeftTop()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaCrossHair.html#ac354a044b43c71329deb787c2266ae22">GetLeftTop()</a>, and <a class="el" href="namespaceMeaLayout.html#a845c5084125d5d1d420b322ec26a342d">MeaLayout::SetWindowPos()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a71125449362745a432ff0648f255f36f">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#a09e318ee5aa9580e18bd47f6d5cbd2c9">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#abe6423f3d92dc0fc2e8d708eb4458d24">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaRectTool.html#aacbe2a77ecf3578ea6cea95b8929ca48">MeaRectTool::OnCHMove()</a>, <a class="el" href="classMeaToolsPrefs.html#a7a15c4c4aa51a15b2fe2e3ff9bbd7a20">MeaToolsPrefs::OnInitDialog()</a>, <a class="el" href="classMeaPointTool.html#a9a23e2973459c01a1738a8faf516b2a0">MeaPointTool::SetPosition()</a>, <a class="el" href="classMeaAngleTool.html#ab34d9b2b1ff4bf40f58266413d41533b">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#a357c2f206bdd6f6accb942025c0d4efd">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#a02e7f361e8601f2c8735cc49b89c6432">MeaLineTool::SetPosition()</a>, and <a class="el" href="classMeaRectTool.html#ab1659d8d9f457370ebb1dc94d6d8bde0">MeaRectTool::SetPosition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a2778a74c9833bcef47ebc83ef185c2ca">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#af6d7096c9296781c42fb78d6e1c573dc">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#a64b086d37f13f8268a997b314dd03091">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaRectTool.html#a06738f2925591381df7b043ba2f9517f">MeaRectTool::OnCHMove()</a>, <a class="el" href="classMeaToolsPrefs.html#a7a15c4c4aa51a15b2fe2e3ff9bbd7a20">MeaToolsPrefs::OnInitDialog()</a>, <a class="el" href="classMeaPointTool.html#a9a23e2973459c01a1738a8faf516b2a0">MeaPointTool::SetPosition()</a>, <a class="el" href="classMeaAngleTool.html#a703cee8ecae4d113a472c84b10337425">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#a83d4ff838dc0a0c7681273990c185965">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#aaaadc8240590a02273f2d02c552580b5">MeaLineTool::SetPosition()</a>, and <a class="el" href="classMeaRectTool.html#a8bbe275b365c69bf758f5da45635d18b">MeaRectTool::SetPosition()</a>.</p>
 
 </div>
 </div>
@@ -1035,7 +1052,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 <p>Forms the window into the shape of the crosshair. </p>
 <p >A series of rectangular regions are aggregated together to form the four petals of the crosshair. </p>
 
-<p class="reference">References <a class="el" href="classMeaCrossHair.html#a767001c8f0466bb6e0021cd6e5801588">m_halfSize</a>, <a class="el" href="classMeaCrossHair.html#ac0361504b3e35238257634fb14edd8ea">m_numCoords</a>, <a class="el" href="classMeaCrossHair.html#a24f6346b9e6caece60e6de5ad796ef1b">m_size</a>, and <a class="el" href="classMeaCrossHair.html#a2fd3b765580526e3edf6af3d9a8a686c">m_spread</a>.</p>
+<p class="reference">References <a class="el" href="classMeaCrossHair.html#a9b2b21646538c050fd9f7e88a1d97afe">m_size</a>, <a class="el" href="classMeaCrossHair.html#a37887df1ce86488dbc8cbd331f73f4df">m_spread</a>, and <a class="el" href="namespaceMeaPlotter.html#ab40fc3db5ef98ef56986c6c71f744d85">MeaPlotter::PlotCrosshair()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">Create()</a>.</p>
 

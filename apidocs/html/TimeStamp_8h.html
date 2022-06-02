@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_a8d373d5fc75f1ff25f008a856cb4b02.html">utilities</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -66,24 +66,24 @@ Include dependency graph for TimeStamp.h:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1ceca65fd90453d03a591dd7ed0c7a74"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TimeStamp_8h.html#a1ceca65fd90453d03a591dd7ed0c7a74">MeaMakeTimeStamp</a> (time_t t)</td></tr>
-<tr class="memdesc:a1ceca65fd90453d03a591dd7ed0c7a74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an ISO 8601 compliant time stamp based on the specified time value.  <a href="TimeStamp_8h.html#a1ceca65fd90453d03a591dd7ed0c7a74">More...</a><br /></td></tr>
-<tr class="separator:a1ceca65fd90453d03a591dd7ed0c7a74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75002033433d5d3473fea0acf003e4a0"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TimeStamp_8h.html#a75002033433d5d3473fea0acf003e4a0">MeaParseTimeStamp</a> (const CString &amp;timeStr)</td></tr>
-<tr class="memdesc:a75002033433d5d3473fea0acf003e4a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses an ISO 8601 compliant time stamp and returns the corresponding time value.  <a href="TimeStamp_8h.html#a75002033433d5d3473fea0acf003e4a0">More...</a><br /></td></tr>
-<tr class="separator:a75002033433d5d3473fea0acf003e4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab61b64b811b48c763233b3077bc6bd12"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TimeStamp_8h.html#ab61b64b811b48c763233b3077bc6bd12">MeaTimeStamp::Make</a> (time_t t)</td></tr>
+<tr class="memdesc:ab61b64b811b48c763233b3077bc6bd12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an ISO 8601 compliant time stamp based on the specified time value.  <a href="TimeStamp_8h.html#ab61b64b811b48c763233b3077bc6bd12">More...</a><br /></td></tr>
+<tr class="separator:ab61b64b811b48c763233b3077bc6bd12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca07d408e0064d73e08b722a196db002"><td class="memItemLeft" align="right" valign="top">time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="TimeStamp_8h.html#aca07d408e0064d73e08b722a196db002">MeaTimeStamp::Parse</a> (const CString &amp;timeStr)</td></tr>
+<tr class="memdesc:aca07d408e0064d73e08b722a196db002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses an ISO 8601 compliant time stamp and returns the corresponding time value.  <a href="TimeStamp_8h.html#aca07d408e0064d73e08b722a196db002">More...</a><br /></td></tr>
+<tr class="separator:aca07d408e0064d73e08b722a196db002"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Produces an ISO 8601 compliant time stamp. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a1ceca65fd90453d03a591dd7ed0c7a74" name="a1ceca65fd90453d03a591dd7ed0c7a74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ceca65fd90453d03a591dd7ed0c7a74">&#9670;&nbsp;</a></span>MeaMakeTimeStamp()</h2>
+<a id="ab61b64b811b48c763233b3077bc6bd12" name="ab61b64b811b48c763233b3077bc6bd12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61b64b811b48c763233b3077bc6bd12">&#9670;&nbsp;</a></span>Make()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">CString MeaMakeTimeStamp </td>
+          <td class="memname">CString MeaTimeStamp::Make </td>
           <td>(</td>
           <td class="paramtype">time_t&#160;</td>
           <td class="paramname"><em>t</em></td><td>)</td>
@@ -103,18 +103,20 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>String containing the timestamp in 8601 format corresponding to the specified time. </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="classMeaFileProfile.html#adc11d8f22ba9ff8d0fe20f91e782318b">MeaFileProfile::WriteFileStart()</a>, and <a class="el" href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">MeaPositionLogMgr::WriteInfoSection()</a>.</p>
+<p class="reference">References <a class="el" href="TimeStamp_8h.html#ab61b64b811b48c763233b3077bc6bd12">MeaTimeStamp::Make()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="TimeStamp_8h.html#ab61b64b811b48c763233b3077bc6bd12">MeaTimeStamp::Make()</a>.</p>
 
 </div>
 </div>
-<a id="a75002033433d5d3473fea0acf003e4a0" name="a75002033433d5d3473fea0acf003e4a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a75002033433d5d3473fea0acf003e4a0">&#9670;&nbsp;</a></span>MeaParseTimeStamp()</h2>
+<a id="aca07d408e0064d73e08b722a196db002" name="aca07d408e0064d73e08b722a196db002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca07d408e0064d73e08b722a196db002">&#9670;&nbsp;</a></span>Parse()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">time_t MeaParseTimeStamp </td>
+          <td class="memname">time_t MeaTimeStamp::Parse </td>
           <td>(</td>
           <td class="paramtype">const CString &amp;&#160;</td>
           <td class="paramname"><em>timeStr</em></td><td>)</td>
@@ -134,7 +136,9 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of seconds since the Epoch as defined by the system time() function. </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogDlg.html#a6734b83c124f3af0d6b1e15cd17208dc">MeaPositionLogDlg::UpdatePositionInfo()</a>.</p>
+<p class="reference">References <a class="el" href="TimeStamp_8h.html#aca07d408e0064d73e08b722a196db002">MeaTimeStamp::Parse()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="TimeStamp_8h.html#aca07d408e0064d73e08b722a196db002">MeaTimeStamp::Parse()</a>.</p>
 
 </div>
 </div>

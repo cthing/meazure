@@ -1,5 +1,0 @@
-<map id="MeaPositionLogDlg" name="MeaPositionLogDlg">
-<area shape="rect" id="node1" title="A modeless dialog for recording new positions and managing positions that have already been recorded." alt="" coords="42,80,177,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,72,32"/>
-<area shape="rect" id="node3" href="$classMeaPositionLogObserver.html" title="Interface for objects that need to be informed about changes to the position log." alt="" coords="97,5,263,32"/>
-</map>

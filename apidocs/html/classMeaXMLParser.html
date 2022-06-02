@@ -68,6 +68,10 @@ Inheritance diagram for MeaXMLParser:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:afe1971df83dab03e069edf06adb495d6"><td class="memItemLeft" align="right" valign="top"><a id="afe1971df83dab03e069edf06adb495d6" name="afe1971df83dab03e069edf06adb495d6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b> ()</td></tr>
+<tr class="memdesc:afe1971df83dab03e069edf06adb495d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an XML parser that only builds a DOM. <br /></td></tr>
+<tr class="separator:afe1971df83dab03e069edf06adb495d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a359bf533d0b31a1923ecc990dd6b4654"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParser.html#a359bf533d0b31a1923ecc990dd6b4654">MeaXMLParser</a> (<a class="el" href="classMeaXMLParserHandler.html">MeaXMLParserHandler</a> *handler, bool buildDOM=false)</td></tr>
 <tr class="memdesc:a359bf533d0b31a1923ecc990dd6b4654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an XML parser.  <a href="classMeaXMLParser.html#a359bf533d0b31a1923ecc990dd6b4654">More...</a><br /></td></tr>
 <tr class="separator:a359bf533d0b31a1923ecc990dd6b4654"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -87,6 +91,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaXMLParser</b> 
 <tr class="memitem:abfccdb01a460b4e54663b6bc41a01094"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParser.html#abfccdb01a460b4e54663b6bc41a01094">ParseBuffer</a> (int len, bool isFinal)</td></tr>
 <tr class="memdesc:abfccdb01a460b4e54663b6bc41a01094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the XML data contained in the buffer obtained by a previous call to GetBuffer.  <a href="classMeaXMLParser.html#abfccdb01a460b4e54663b6bc41a01094">More...</a><br /></td></tr>
 <tr class="separator:abfccdb01a460b4e54663b6bc41a01094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea64a4c1b5c73bb3e8740c068b066a30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParser.html#aea64a4c1b5c73bb3e8740c068b066a30">ParseString</a> (CString &amp;content)</td></tr>
+<tr class="memdesc:aea64a4c1b5c73bb3e8740c068b066a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses the XML data contained in the specified string.  <a href="classMeaXMLParser.html#aea64a4c1b5c73bb3e8740c068b066a30">More...</a><br /></td></tr>
+<tr class="separator:aea64a4c1b5c73bb3e8740c068b066a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab259166ebb2b56f3c65f496102cd3170"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classMeaXMLNode.html">MeaXMLNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParser.html#ab259166ebb2b56f3c65f496102cd3170">GetDOM</a> () const</td></tr>
 <tr class="memdesc:ab259166ebb2b56f3c65f496102cd3170"><td class="mdescLeft">&#160;</td><td class="mdescRight">If a DOM was constructed, this method returns its root node.  <a href="classMeaXMLParser.html#ab259166ebb2b56f3c65f496102cd3170">More...</a><br /></td></tr>
 <tr class="separator:ab259166ebb2b56f3c65f496102cd3170"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -207,6 +214,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_buildDOM</b></td></
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
+<tr class="memitem:aef2c3b92a27cedea508ddec91055e79f"><td class="memItemLeft" align="right" valign="top"><a id="aef2c3b92a27cedea508ddec91055e79f" name="aef2c3b92a27cedea508ddec91055e79f"></a>
+static <a class="el" href="classMeaXMLParserHandler.html">MeaXMLParserHandler</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_noopHandler</b></td></tr>
+<tr class="memdesc:aef2c3b92a27cedea508ddec91055e79f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do nothing handler when only building a DOM. <br /></td></tr>
+<tr class="separator:aef2c3b92a27cedea508ddec91055e79f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff24f2a83393e7e9be1ab7bd638f6466"><td class="memItemLeft" align="right" valign="top"><a id="aff24f2a83393e7e9be1ab7bd638f6466" name="aff24f2a83393e7e9be1ab7bd638f6466"></a>
 static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL1</b></td></tr>
 <tr class="memdesc:aff24f2a83393e7e9be1ab7bd638f6466"><td class="mdescLeft">&#160;</td><td class="mdescRight">URL for cthing.com. <br /></td></tr>
@@ -263,7 +274,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLParser.html#a8b9ee260e66851731305974b39251bd2">AttributeDeclHandler()</a>, <a class="el" href="classMeaXMLParser.html#a8c7add24f80a551e410c537d6f3a2df1">CharacterDataHandler()</a>, <a class="el" href="classMeaXMLParser.html#a98ce6458d4689056e261a96781e87de7">DoctypeDeclHandler()</a>, <a class="el" href="classMeaXMLParser.html#a7f65207485baf8763baf8e15064ff956">ElementDeclHandler()</a>, <a class="el" href="classMeaXMLParser.html#aaf0617029c3e35fa6078f5e705c18779">EndElementHandler()</a>, <a class="el" href="classMeaXMLParser.html#aa086760faafc192344fe247519611e75">ExternalEntityRefHandler()</a>, <a class="el" href="classMeaXMLParser.html#ae3c9bb9dd984f975ab1e5a7b625e5152">m_elementStack</a>, <a class="el" href="classMeaXMLParser.html#aa25ae342e4a12f7537fc90c18f31e627">m_nodeStack</a>, <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>, <a class="el" href="classMeaXMLParser.html#a980e8ab5dfa23b67205e56a3a098d17e">m_pathnameStack</a>, <a class="el" href="classMeaXMLParser.html#ad8a1421a2a78e9508e8d83435d29d4d6">m_validator</a>, <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>, and <a class="el" href="classMeaXMLParser.html#a20515705b441392be05df6007245e6df">StartElementHandler()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLParser.html#a8b9ee260e66851731305974b39251bd2">AttributeDeclHandler()</a>, <a class="el" href="classMeaXMLParser.html#a8c7add24f80a551e410c537d6f3a2df1">CharacterDataHandler()</a>, <a class="el" href="classMeaXMLParser.html#a98ce6458d4689056e261a96781e87de7">DoctypeDeclHandler()</a>, <a class="el" href="classMeaXMLParser.html#a7f65207485baf8763baf8e15064ff956">ElementDeclHandler()</a>, <a class="el" href="classMeaXMLParser.html#aaf0617029c3e35fa6078f5e705c18779">EndElementHandler()</a>, <a class="el" href="classMeaXMLParser.html#aa086760faafc192344fe247519611e75">ExternalEntityRefHandler()</a>, <a class="el" href="classMeaXMLParser.html#ae3c9bb9dd984f975ab1e5a7b625e5152">m_elementStack</a>, <a class="el" href="classMeaXMLParser.html#aa25ae342e4a12f7537fc90c18f31e627">m_nodeStack</a>, <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>, <a class="el" href="classMeaXMLParser.html#a980e8ab5dfa23b67205e56a3a098d17e">m_pathnameStack</a>, <a class="el" href="classMeaXMLParser.html#ad8a1421a2a78e9508e8d83435d29d4d6">m_validator</a>, and <a class="el" href="classMeaXMLParser.html#a20515705b441392be05df6007245e6df">StartElementHandler()</a>.</p>
 
 </div>
 </div>
@@ -292,7 +303,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLParser.html#a339a3c9e6b984354e12eb23dbec47469">m_context</a>, <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLParser.html#a339a3c9e6b984354e12eb23dbec47469">m_context</a>, and <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>.</p>
 
 </div>
 </div>
@@ -590,7 +601,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>XML encoded string. </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a9d816f815e96044dccc8e32b20942c2f">MeaPositionLogMgr::Position::Save()</a>, <a class="el" href="classMeaFileProfile.html#adc11d8f22ba9ff8d0fe20f91e782318b">MeaFileProfile::WriteFileStart()</a>, and <a class="el" href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">MeaPositionLogMgr::WriteInfoSection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPosition.html#ac4722e15502c0b2306602eaa18e67818">MeaPosition::Save()</a>, <a class="el" href="classMeaFileProfile.html#adc11d8f22ba9ff8d0fe20f91e782318b">MeaFileProfile::WriteFileStart()</a>, and <a class="el" href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">MeaPositionLogMgr::WriteInfoSection()</a>.</p>
 
 </div>
 </div>
@@ -637,7 +648,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classev_1_1Validator.html#adb9592da608ac2e76888436f9a342ff8">ev::Validator::EndElement()</a>, <a class="el" href="classMeaXMLParserHandler.html#a12aaafef6efa14379b6bfc1939de926d">MeaXMLParserHandler::EndElementHandler()</a>, <a class="el" href="classMeaXMLParser.html#a397207b267046fb6a07c943bf197c480">FromUTF8()</a>, <a class="el" href="classMeaXMLParser.html#af5d0e20c72910968c6b504385b89caa7">m_buildDOM</a>, <a class="el" href="classMeaXMLParser.html#ae3c9bb9dd984f975ab1e5a7b625e5152">m_elementStack</a>, <a class="el" href="classMeaXMLParser.html#a5ba84f19ff126cfb239220320e9bdf9f">m_handler</a>, <a class="el" href="classMeaXMLParser.html#aaa8bf4f295f2b855832b1258d9dd7c00">m_haveDTD</a>, <a class="el" href="classMeaXMLParser.html#aa25ae342e4a12f7537fc90c18f31e627">m_nodeStack</a>, <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>, <a class="el" href="classMeaXMLParser.html#ad8a1421a2a78e9508e8d83435d29d4d6">m_validator</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
+<p class="reference">References <a class="el" href="classev_1_1Validator.html#adb9592da608ac2e76888436f9a342ff8">ev::Validator::EndElement()</a>, <a class="el" href="classMeaXMLParserHandler.html#a12aaafef6efa14379b6bfc1939de926d">MeaXMLParserHandler::EndElementHandler()</a>, <a class="el" href="classMeaXMLParser.html#a397207b267046fb6a07c943bf197c480">FromUTF8()</a>, <a class="el" href="classMeaXMLParser.html#af5d0e20c72910968c6b504385b89caa7">m_buildDOM</a>, <a class="el" href="classMeaXMLParser.html#ae3c9bb9dd984f975ab1e5a7b625e5152">m_elementStack</a>, <a class="el" href="classMeaXMLParser.html#a5ba84f19ff126cfb239220320e9bdf9f">m_handler</a>, <a class="el" href="classMeaXMLParser.html#aaa8bf4f295f2b855832b1258d9dd7c00">m_haveDTD</a>, <a class="el" href="classMeaXMLParser.html#aa25ae342e4a12f7537fc90c18f31e627">m_nodeStack</a>, <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>, and <a class="el" href="classMeaXMLParser.html#ad8a1421a2a78e9508e8d83435d29d4d6">m_validator</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaXMLParser.html#a359bf533d0b31a1923ecc990dd6b4654">MeaXMLParser()</a>.</p>
 
@@ -787,7 +798,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
 
 <p class="reference">References <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">MeaPositionLogMgr::Load()</a>, <a class="el" href="classMeaFileProfile.html#a291d697a73d4541146dd4cce73346815">MeaFileProfile::ParseEntity()</a>, <a class="el" href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">MeaPositionLogMgr::ParseEntity()</a>, and <a class="el" href="classMeaFileProfile.html#a2754ddab58ae7078fb3322646f3adf42">MeaFileProfile::ParseFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">MeaPositionLogMgr::Load()</a>, <a class="el" href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">MeaPositionLogMgr::ParseEntity()</a>, <a class="el" href="classMeaFileProfile.html#a291d697a73d4541146dd4cce73346815">MeaFileProfile::ParseEntity()</a>, <a class="el" href="classMeaFileProfile.html#a2754ddab58ae7078fb3322646f3adf42">MeaFileProfile::ParseFile()</a>, and <a class="el" href="classMeaXMLParser.html#aea64a4c1b5c73bb3e8740c068b066a30">ParseString()</a>.</p>
 
 </div>
 </div>
@@ -931,7 +942,35 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
 
 <p class="reference">References <a class="el" href="classMeaXMLParser.html#a68915f7d7c8d86983586bd098af3cfad">HandleParserError()</a>, and <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">MeaPositionLogMgr::Load()</a>, <a class="el" href="classMeaFileProfile.html#a291d697a73d4541146dd4cce73346815">MeaFileProfile::ParseEntity()</a>, <a class="el" href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">MeaPositionLogMgr::ParseEntity()</a>, and <a class="el" href="classMeaFileProfile.html#a2754ddab58ae7078fb3322646f3adf42">MeaFileProfile::ParseFile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">MeaPositionLogMgr::Load()</a>, <a class="el" href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">MeaPositionLogMgr::ParseEntity()</a>, <a class="el" href="classMeaFileProfile.html#a291d697a73d4541146dd4cce73346815">MeaFileProfile::ParseEntity()</a>, <a class="el" href="classMeaFileProfile.html#a2754ddab58ae7078fb3322646f3adf42">MeaFileProfile::ParseFile()</a>, and <a class="el" href="classMeaXMLParser.html#aea64a4c1b5c73bb3e8740c068b066a30">ParseString()</a>.</p>
+
+</div>
+</div>
+<a id="aea64a4c1b5c73bb3e8740c068b066a30" name="aea64a4c1b5c73bb3e8740c068b066a30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea64a4c1b5c73bb3e8740c068b066a30">&#9670;&nbsp;</a></span>ParseString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeaXMLParser::ParseString </td>
+          <td>(</td>
+          <td class="paramtype">CString &amp;&#160;</td>
+          <td class="paramname"><em>content</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parses the XML data contained in the specified string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">content</td><td>[in] XML content to parse </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="classMeaXMLParser.html#a1f4cf48c0323d326f1d07b7821291682">GetBuffer()</a>, and <a class="el" href="classMeaXMLParser.html#abfccdb01a460b4e54663b6bc41a01094">ParseBuffer()</a>.</p>
 
 </div>
 </div>
@@ -1015,7 +1054,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLParser.html#a397207b267046fb6a07c943bf197c480">FromUTF8()</a>, <a class="el" href="classMeaXMLParser.html#af5d0e20c72910968c6b504385b89caa7">m_buildDOM</a>, <a class="el" href="classMeaXMLParser.html#a875633c7eae624dd46a8bc6aaf76d943">m_dom</a>, <a class="el" href="classMeaXMLParser.html#ae3c9bb9dd984f975ab1e5a7b625e5152">m_elementStack</a>, <a class="el" href="classMeaXMLParser.html#a5ba84f19ff126cfb239220320e9bdf9f">m_handler</a>, <a class="el" href="classMeaXMLParser.html#aaa8bf4f295f2b855832b1258d9dd7c00">m_haveDTD</a>, <a class="el" href="classMeaXMLParser.html#aa25ae342e4a12f7537fc90c18f31e627">m_nodeStack</a>, <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>, <a class="el" href="classMeaXMLParser.html#ad8a1421a2a78e9508e8d83435d29d4d6">m_validator</a>, <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>, <a class="el" href="classev_1_1Validator.html#a8f3f63e10eab2c6dc849a80e98605331">ev::Validator::StartElement()</a>, and <a class="el" href="classMeaXMLParserHandler.html#a4c86673265898145c0cb204b1ac5bfce">MeaXMLParserHandler::StartElementHandler()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLParser.html#a397207b267046fb6a07c943bf197c480">FromUTF8()</a>, <a class="el" href="classMeaXMLParser.html#af5d0e20c72910968c6b504385b89caa7">m_buildDOM</a>, <a class="el" href="classMeaXMLParser.html#a875633c7eae624dd46a8bc6aaf76d943">m_dom</a>, <a class="el" href="classMeaXMLParser.html#ae3c9bb9dd984f975ab1e5a7b625e5152">m_elementStack</a>, <a class="el" href="classMeaXMLParser.html#a5ba84f19ff126cfb239220320e9bdf9f">m_handler</a>, <a class="el" href="classMeaXMLParser.html#aaa8bf4f295f2b855832b1258d9dd7c00">m_haveDTD</a>, <a class="el" href="classMeaXMLParser.html#aa25ae342e4a12f7537fc90c18f31e627">m_nodeStack</a>, <a class="el" href="classMeaXMLParser.html#af67885f798141be1d137ff1d50509d47">m_parser</a>, <a class="el" href="classMeaXMLParser.html#ad8a1421a2a78e9508e8d83435d29d4d6">m_validator</a>, <a class="el" href="classev_1_1Validator.html#a8f3f63e10eab2c6dc849a80e98605331">ev::Validator::StartElement()</a>, and <a class="el" href="classMeaXMLParserHandler.html#a4c86673265898145c0cb204b1ac5bfce">MeaXMLParserHandler::StartElementHandler()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaXMLParser.html#a359bf533d0b31a1923ecc990dd6b4654">MeaXMLParser()</a>.</p>
 
@@ -1054,7 +1093,7 @@ static CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_homeURL2<
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>String in UTF8 encoding. </dd></dl>
 
-<p class="reference">Referenced by <a class="el" href="classMeaXMLParser.html#ab4f84a1463b2500a33f8d9f747c46239">SetBasePath()</a>, <a class="el" href="classMeaFileProfile.html#a4a5e605b049b47c537d0226ab39a1420">MeaFileProfile::Write()</a>, and <a class="el" href="classMeaPositionLogMgr.html#afa4531c582388ae6cf28d648da9bbefb">MeaPositionLogMgr::Write()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaXMLParser.html#ab4f84a1463b2500a33f8d9f747c46239">SetBasePath()</a>, <a class="el" href="classMeaFileProfile.html#a4a5e605b049b47c537d0226ab39a1420">MeaFileProfile::Write()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a12aa39f9cd600e33ad90d103d8dfdde4">MeaPositionLogMgr::Write()</a>.</p>
 
 </div>
 </div>

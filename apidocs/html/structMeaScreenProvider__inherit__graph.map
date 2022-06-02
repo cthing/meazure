@@ -1,0 +1,4 @@
+<map id="MeaScreenProvider" name="MeaScreenProvider">
+<area shape="rect" id="node1" title="Provides information on the display monitor(s)." alt="" coords="5,5,140,32"/>
+<area shape="rect" id="node2" href="$classMeaScreenMgr.html" title="Provides information on the display monitor(s)." alt="" coords="17,80,128,107"/>
+</map>

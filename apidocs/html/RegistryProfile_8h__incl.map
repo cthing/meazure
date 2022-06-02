@@ -1,4 +1,5 @@
 <map id="RegistryProfile.h" name="RegistryProfile.h">
-<area shape="rect" id="node1" title="Registry&#45;based profile header file." alt="" coords="5,5,123,32"/>
-<area shape="rect" id="node2" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="29,80,99,107"/>
+<area shape="rect" id="node1" title="Registry&#45;based profile header file." alt="" coords="53,5,171,32"/>
+<area shape="rect" id="node2" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="5,87,75,114"/>
+<area shape="rect" id="node3" href="$RegistryProvider_8h.html" title="Interface representing the Windows Registry." alt="" coords="99,80,269,121"/>
 </map>

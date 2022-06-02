@@ -1,8 +1,0 @@
-<map id="MeaCalibrationPrefs" name="MeaCalibrationPrefs">
-<area shape="rect" id="node1" title="Property page for screen resolution calibration preferences." alt="" coords="131,215,270,241"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,81,116,108"/>
-<area shape="rect" id="node3" href="$classMeaNumberField.html" title="Provides a text field control that allows only numeric entries." alt="" coords="141,81,261,108"/>
-<area shape="rect" id="node4" title=" " alt="" coords="173,5,228,32"/>
-<area shape="rect" id="node5" href="$classMeaRulerSlider.html" title="Slider control on a ruler background." alt="" coords="285,81,396,108"/>
-<area shape="rect" id="node6" title=" " alt="" coords="289,5,392,32"/>
-</map>

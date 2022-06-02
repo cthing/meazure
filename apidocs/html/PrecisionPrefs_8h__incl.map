@@ -1,17 +1,15 @@
 <map id="PrecisionPrefs.h" name="PrecisionPrefs.h">
-<area shape="rect" id="node1" title="Display precision property page header file." alt="" coords="92,5,209,32"/>
-<area shape="rect" id="node2" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="5,80,112,107"/>
-<area shape="rect" id="node4" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="370,80,433,107"/>
-<area shape="rect" id="node7" title=" " alt="" coords="127,155,174,181"/>
-<area shape="rect" id="node3" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="9,155,103,181"/>
-<area shape="rect" id="node5" title=" " alt="" coords="645,229,707,256"/>
-<area shape="rect" id="node6" title=" " alt="" coords="706,155,745,181"/>
-<area shape="rect" id="node8" title=" " alt="" coords="199,155,255,181"/>
-<area shape="rect" id="node9" href="$Label_8h.html" title="Header file for the label control." alt="" coords="279,155,343,181"/>
-<area shape="rect" id="node10" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="367,155,436,181"/>
-<area shape="rect" id="node11" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="461,155,547,181"/>
-<area shape="rect" id="node14" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="572,155,631,181"/>
-<area shape="rect" id="node12" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="443,229,539,256"/>
-<area shape="rect" id="node13" title=" " alt="" coords="456,304,525,331"/>
-<area shape="rect" id="node15" title=" " alt="" coords="563,229,621,256"/>
+<area shape="rect" id="node1" title="Display precision property page header file." alt="" coords="289,5,406,32"/>
+<area shape="rect" id="node2" href="$resource_8h_source.html" title=" " alt="" coords="5,80,143,107"/>
+<area shape="rect" id="node3" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="167,80,341,107"/>
+<area shape="rect" id="node5" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="366,80,515,107"/>
+<area shape="rect" id="node8" title=" " alt="" coords="680,229,727,256"/>
+<area shape="rect" id="node4" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="111,155,258,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="282,155,338,181"/>
+<area shape="rect" id="node7" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="413,155,601,181"/>
+<area shape="rect" id="node9" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="346,229,535,256"/>
+<area shape="rect" id="node13" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="625,155,787,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="431,379,490,405"/>
+<area shape="rect" id="node11" title=" " alt="" coords="405,304,477,331"/>
+<area shape="rect" id="node12" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="501,304,607,331"/>
 </map>

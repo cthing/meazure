@@ -39,34 +39,48 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_a8d373d5fc75f1ff25f008a856cb4b02.html">utilities</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">GUID.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
 <p>Header file for a class representing a globally unique identifier.  
 <a href="#details">More...</a></p>
-<div class="textblock"><div class="dynheader">
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for GUID.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="GUID_8h__incl.png" border="0" usemap="#aGUID_8h" alt=""/></div>
+<map name="aGUID_8h" id="aGUID_8h">
+<area shape="rect" title="Header file for a class representing a globally unique identifier." alt="" coords="9,5,73,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,77,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="GUID_8h__dep__incl.png" border="0" usemap="#aGUID_8hdep" alt=""/></div>
 <map name="aGUID_8hdep" id="aGUID_8hdep">
-<area shape="rect" title="Header file for a class representing a globally unique identifier." alt="" coords="363,5,427,32"/>
-<area shape="rect" href="PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="333,80,456,107"/>
-<area shape="rect" href="RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="349,155,440,181"/>
-<area shape="rect" href="AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="5,229,96,256"/>
-<area shape="rect" href="CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="120,229,211,256"/>
-<area shape="rect" href="CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="235,229,330,256"/>
-<area shape="rect" href="LineTool_8h.html" title="Line measurement tool header file." alt="" coords="354,229,435,256"/>
-<area shape="rect" href="PointTool_8h.html" title="Point measurement tool header file." alt="" coords="459,229,546,256"/>
-<area shape="rect" href="RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="570,229,654,256"/>
-<area shape="rect" href="WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="678,229,781,256"/>
-<area shape="rect" href="ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="355,304,434,331"/>
+<area shape="rect" title="Header file for a class representing a globally unique identifier." alt="" coords="1016,5,1080,32"/>
+<area shape="rect" href="PositionDesktop_8h.html" title="Position context information." alt="" coords="933,80,1061,107"/>
+<area shape="rect" href="PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="961,304,1084,331"/>
+<area shape="rect" href="Position_8h.html" title="Represents a tool position." alt="" coords="548,155,628,181"/>
+<area shape="rect" href="AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="691,304,781,331"/>
+<area shape="rect" href="ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="403,379,482,405"/>
+<area shape="rect" href="CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="5,304,96,331"/>
+<area shape="rect" href="CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="121,304,215,331"/>
+<area shape="rect" href="LineTool_8h.html" title="Line measurement tool header file." alt="" coords="239,304,321,331"/>
+<area shape="rect" href="PointTool_8h.html" title="Point measurement tool header file." alt="" coords="345,304,431,331"/>
+<area shape="rect" href="PositionCollection_8h.html" title="Represents a collection of logged positions." alt="" coords="822,229,959,256"/>
+<area shape="rect" href="RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="431,229,521,256"/>
+<area shape="rect" href="RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="455,304,539,331"/>
+<area shape="rect" href="WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="563,304,666,331"/>
 </map>
 </div>
 </div>
@@ -80,10 +94,58 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaGUID_1_1less.html">MeaGUID::less</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used by the STL to perform ordering of <a class="el" href="classMeaGUID.html" title="Represents a globally unique identifier (GUID) and common operations on a GUID.">MeaGUID</a> objects in collections.  <a href="structMeaGUID_1_1less.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a2ebda4077626dead6960b5c0c80b7992"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="GUID_8h.html#a2ebda4077626dead6960b5c0c80b7992">operator&lt;&lt;</a> (std::ostream &amp;os, const <a class="el" href="classMeaGUID.html">MeaGUID</a> &amp;guid)</td></tr>
+<tr class="memdesc:a2ebda4077626dead6960b5c0c80b7992"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the GUID to the specified output stream.  <a href="GUID_8h.html#a2ebda4077626dead6960b5c0c80b7992">More...</a><br /></td></tr>
+<tr class="separator:a2ebda4077626dead6960b5c0c80b7992"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Header file for a class representing a globally unique identifier. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a2ebda4077626dead6960b5c0c80b7992" name="a2ebda4077626dead6960b5c0c80b7992"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ebda4077626dead6960b5c0c80b7992">&#9670;&nbsp;</a></span>operator&lt;&lt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classMeaGUID.html">MeaGUID</a> &amp;&#160;</td>
+          <td class="paramname"><em>guid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Writes the GUID to the specified output stream. </p>
+<p >The output format is the same as ToString().</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>[in] Output stream to which the GUID should be written </td></tr>
+    <tr><td class="paramname">guid</td><td>[in] The GUID to be written </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The specified output stream </dd></dl>
+
+<p class="reference">References <a class="el" href="classMeaGUID.html#ae7bdb9d5d44ac6008bd208a8af8f51d4">MeaGUID::ToString()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <hr size="1">
 <address style="align: right;"><small>Copyright 2011 C Thing Software</small></address>
 </body>

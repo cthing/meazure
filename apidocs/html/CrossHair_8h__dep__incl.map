@@ -8,6 +8,6 @@
 <area shape="rect" id="node8" href="$ToolsPrefs_8h.html" title="Tool property page header file." alt="" coords="559,80,654,107"/>
 <area shape="rect" id="node3" href="$ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="237,155,315,181"/>
 <area shape="rect" id="node9" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="555,155,658,181"/>
-<area shape="rect" id="node10" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="561,229,652,256"/>
-<area shape="rect" id="node11" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="565,304,649,331"/>
+<area shape="rect" id="node10" href="$AppView_8h.html" title="Header file for the application view." alt="" coords="565,229,649,256"/>
+<area shape="rect" id="node11" href="$AppFrame_8h.html" title="Header file for the application frame class." alt="" coords="560,304,653,331"/>
 </map>

@@ -42,7 +42,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMeaUnits-members.html">List of all members</a>  </div>
@@ -88,6 +87,10 @@ typedef std::vector&lt; CString &gt;&#160;</td><td class="memItemRight" valign="
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a560c289f575da0e11ce5c97df3599979"><td class="memItemLeft" align="right" valign="top"><a id="a560c289f575da0e11ce5c97df3599979" name="a560c289f575da0e11ce5c97df3599979"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaUnits</b> ()</td></tr>
+<tr class="memdesc:a560c289f575da0e11ce5c97df3599979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class destructor. <br /></td></tr>
+<tr class="separator:a560c289f575da0e11ce5c97df3599979"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a37e7df78d5fee5102b39900abbe5ec76"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnits.html#a37e7df78d5fee5102b39900abbe5ec76">SaveProfile</a> (<a class="el" href="classMeaProfile.html">MeaProfile</a> &amp;profile)</td></tr>
 <tr class="memdesc:a37e7df78d5fee5102b39900abbe5ec76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Persists the state of a units class instance to the specified profile object.  <a href="classMeaUnits.html#a37e7df78d5fee5102b39900abbe5ec76">More...</a><br /></td></tr>
 <tr class="separator:a37e7df78d5fee5102b39900abbe5ec76"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,22 +126,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>RestoreDefaultPrecisi
 <tr class="memdesc:ac322c22a687836d8a96c954a4964e475"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the identifying names for the display precisions.  <a href="classMeaUnits.html#ac322c22a687836d8a96c954a4964e475">More...</a><br /></td></tr>
 <tr class="separator:ac322c22a687836d8a96c954a4964e475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:aca11543566ec7c5bcccde78c0d02f8f4"><td class="memItemLeft" align="right" valign="top"><a id="aca11543566ec7c5bcccde78c0d02f8f4" name="aca11543566ec7c5bcccde78c0d02f8f4"></a>
-static const double&#160;</td><td class="memItemRight" valign="bottom"><b>kPI</b> = 3.14159265359</td></tr>
-<tr class="memdesc:aca11543566ec7c5bcccde78c0d02f8f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The value of pi. <br /></td></tr>
-<tr class="separator:aca11543566ec7c5bcccde78c0d02f8f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ae31e87dda2b5868f28055072bee42627"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnits.html#ae31e87dda2b5868f28055072bee42627">MeaUnits</a> (LPCTSTR unitsStr)</td></tr>
 <tr class="memdesc:ae31e87dda2b5868f28055072bee42627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class constructor.  <a href="classMeaUnits.html#ae31e87dda2b5868f28055072bee42627">More...</a><br /></td></tr>
 <tr class="separator:ae31e87dda2b5868f28055072bee42627"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a560c289f575da0e11ce5c97df3599979"><td class="memItemLeft" align="right" valign="top"><a id="a560c289f575da0e11ce5c97df3599979" name="a560c289f575da0e11ce5c97df3599979"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaUnits</b> ()</td></tr>
-<tr class="memdesc:a560c289f575da0e11ce5c97df3599979"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class destructor. <br /></td></tr>
-<tr class="separator:a560c289f575da0e11ce5c97df3599979"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30312d15adffdf85ff30b2262658c060"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnits.html#a30312d15adffdf85ff30b2262658c060">AddPrecisionName</a> (LPCTSTR name)</td></tr>
 <tr class="memdesc:a30312d15adffdf85ff30b2262658c060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the specified identifying name to the list of precision names.  <a href="classMeaUnits.html#a30312d15adffdf85ff30b2262658c060">More...</a><br /></td></tr>
 <tr class="separator:a30312d15adffdf85ff30b2262658c060"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -239,7 +231,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#ae59af10f70bb10ceeb9d33f043189431">m_defaultPrecisions</a>, and <a class="el" href="classMeaUnits.html#a2e6fd8511a58e46509135435769514b2">m_displayPrecisions</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaCentimeterUnits.html#a54eed10d0a6ee4a21ab0b8fd76fce6cb">MeaCentimeterUnits::MeaCentimeterUnits()</a>, <a class="el" href="classMeaCustomUnits.html#a2d848d9a294e4579c3867935fae7a90e">MeaCustomUnits::MeaCustomUnits()</a>, <a class="el" href="classMeaDegreeUnits.html#a6db934539222814437681de0d44b4649">MeaDegreeUnits::MeaDegreeUnits()</a>, <a class="el" href="classMeaInchUnits.html#a3dcc0e8d528178df178450c53dfbd041">MeaInchUnits::MeaInchUnits()</a>, <a class="el" href="classMeaMillimeterUnits.html#af38ba3970eff304750289535d85784da">MeaMillimeterUnits::MeaMillimeterUnits()</a>, <a class="el" href="classMeaPicaUnits.html#a55ed46fbc0f3762640cf1d9e11e7eab9">MeaPicaUnits::MeaPicaUnits()</a>, <a class="el" href="classMeaPixelUnits.html#ace7923be1f17d47ca07947ce83d990c4">MeaPixelUnits::MeaPixelUnits()</a>, <a class="el" href="classMeaPointUnits.html#a9eeed4e677f99183d87186345bc92a7f">MeaPointUnits::MeaPointUnits()</a>, <a class="el" href="classMeaRadianUnits.html#a1feda26f4fe51091d8553e1a3d3b3627">MeaRadianUnits::MeaRadianUnits()</a>, and <a class="el" href="classMeaTwipUnits.html#ae858c7a346810813c32001664750783b">MeaTwipUnits::MeaTwipUnits()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaCentimeterUnits.html#a431b4676715772e4d12a1aee577941ec">MeaCentimeterUnits::MeaCentimeterUnits()</a>, <a class="el" href="classMeaCustomUnits.html#a6b8f3a28b26cf84fbe22bd917d996646">MeaCustomUnits::MeaCustomUnits()</a>, <a class="el" href="classMeaDegreeUnits.html#a6db934539222814437681de0d44b4649">MeaDegreeUnits::MeaDegreeUnits()</a>, <a class="el" href="classMeaInchUnits.html#a5797cc619dc2d18b5cce372aa23aac03">MeaInchUnits::MeaInchUnits()</a>, <a class="el" href="classMeaMillimeterUnits.html#af5ea3ac6d5bc40965945146c9b103330">MeaMillimeterUnits::MeaMillimeterUnits()</a>, <a class="el" href="classMeaPicaUnits.html#a97ebaa39c069601bb3048fb244ce5c2b">MeaPicaUnits::MeaPicaUnits()</a>, <a class="el" href="classMeaPixelUnits.html#a870837d798b531f3d0b5021e7a6a033d">MeaPixelUnits::MeaPixelUnits()</a>, <a class="el" href="classMeaPointUnits.html#a5e08d46bc34353969ffdac7221bd8bd8">MeaPointUnits::MeaPointUnits()</a>, <a class="el" href="classMeaRadianUnits.html#a1feda26f4fe51091d8553e1a3d3b3627">MeaRadianUnits::MeaRadianUnits()</a>, and <a class="el" href="classMeaTwipUnits.html#a668c114891a879f65d551c3f1d363050">MeaTwipUnits::MeaTwipUnits()</a>.</p>
 
 </div>
 </div>
@@ -277,7 +269,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#a581b296c98a86326439ede4e9e76a3d2">m_displayPrecisionNames</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngularUnits.html#a92a13e5563ceff2382bd0f56a6b9c363">MeaAngularUnits::MeaAngularUnits()</a>, and <a class="el" href="classMeaLinearUnits.html#a08ac32bf48666e9d3d48e920fb513c43">MeaLinearUnits::MeaLinearUnits()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngularUnits.html#a92a13e5563ceff2382bd0f56a6b9c363">MeaAngularUnits::MeaAngularUnits()</a>, and <a class="el" href="classMeaLinearUnits.html#aa0847181cae904ea8f5a8a37f7241a31">MeaLinearUnits::MeaLinearUnits()</a>.</p>
 
 </div>
 </div>
@@ -309,7 +301,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#ae59af10f70bb10ceeb9d33f043189431">m_defaultPrecisions</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a74613097a316ad0e0b6737e8366f0066">MeaPositionDesktop::MeaPositionDesktop()</a>.</p>
 
 </div>
 </div>
@@ -341,6 +333,8 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#a581b296c98a86326439ede4e9e76a3d2">m_displayPrecisionNames</a>.</p>
 
+<p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, and <a class="el" href="classMeaPositionDesktop.html#ab6494f8bfd30eb15171301893e6466df">MeaPositionDesktop::SaveCustomPrecisions()</a>.</p>
+
 </div>
 </div>
 <a id="a75a636deeac560f6608a4cfeb381115b" name="a75a636deeac560f6608a4cfeb381115b"></a>
@@ -371,7 +365,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#a2e6fd8511a58e46509135435769514b2">m_displayPrecisions</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngularUnits.html#aa7c827790ee6327ac6850912e64610e7">MeaAngularUnits::Format()</a>, and <a class="el" href="classMeaLinearUnits.html#a0c14e75c0dee4d39fb2f4c0bcb7f01bb">MeaLinearUnits::Format()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngularUnits.html#aa7c827790ee6327ac6850912e64610e7">MeaAngularUnits::Format()</a>, <a class="el" href="classMeaLinearUnits.html#a0c14e75c0dee4d39fb2f4c0bcb7f01bb">MeaLinearUnits::Format()</a>, and <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>.</p>
 
 </div>
 </div>
@@ -403,7 +397,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#aa2db47e02fdcf2c54eb21f746973ce34">m_unitsStr</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#adf35670e33f9f4964bffcc5c19cc1c74">MeaUnitsMgr::GetAngularUnitsStr()</a>, <a class="el" href="classMeaUnitsMgr.html#ac41ae45ca95f81d849538bccddabf94c">MeaUnitsMgr::GetLinearUnitsStr()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#adf35670e33f9f4964bffcc5c19cc1c74">MeaUnitsMgr::GetAngularUnitsStr()</a>, <a class="el" href="classMeaUnitsMgr.html#ac41ae45ca95f81d849538bccddabf94c">MeaUnitsMgr::GetLinearUnitsStr()</a>, <a class="el" href="classMeaPositionDesktop.html#a4b748d7df47ad99b0017f0926edf7db5">MeaPositionDesktop::Save()</a>, <a class="el" href="classMeaPositionDesktop.html#ab6494f8bfd30eb15171301893e6466df">MeaPositionDesktop::SaveCustomPrecisions()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -431,9 +425,9 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaUnits.html#a581b296c98a86326439ede4e9e76a3d2">m_displayPrecisionNames</a>, <a class="el" href="classMeaUnits.html#a2e6fd8511a58e46509135435769514b2">m_displayPrecisions</a>, <a class="el" href="classMeaUnits.html#aa2db47e02fdcf2c54eb21f746973ce34">m_unitsStr</a>, and <a class="el" href="classMeaProfile.html#ac21af58df0802d2617a4c56bf8459fd3">MeaProfile::ReadInt()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUnits.html#a581b296c98a86326439ede4e9e76a3d2">m_displayPrecisionNames</a>, <a class="el" href="classMeaUnits.html#a2e6fd8511a58e46509135435769514b2">m_displayPrecisions</a>, <a class="el" href="classMeaUnits.html#aa2db47e02fdcf2c54eb21f746973ce34">m_unitsStr</a>, and <a class="el" href="classMeaProfile.html#abd21e0a2e04aa91056d8e69b0d17c675">MeaProfile::ReadInt()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnits.html#aae4da3995af255a0dadfccb4a7626e81">LoadProfile()</a>, and <a class="el" href="classMeaCustomUnits.html#a12caa0ffb3443bc991e54a8557a20732">MeaCustomUnits::LoadProfile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnits.html#aae4da3995af255a0dadfccb4a7626e81">LoadProfile()</a>, and <a class="el" href="classMeaCustomUnits.html#a87573b901b6fc169aa788d920c4bdcfc">MeaCustomUnits::LoadProfile()</a>.</p>
 
 </div>
 </div>
@@ -469,9 +463,9 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="classMeaCustomUnits.html#a12caa0ffb3443bc991e54a8557a20732">MeaCustomUnits</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaCustomUnits.html#a87573b901b6fc169aa788d920c4bdcfc">MeaCustomUnits</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaUnits.html#accb4e9ac51313636ada2195239a49cd2">LoadPrecision()</a>, and <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUnits.html#accb4e9ac51313636ada2195239a49cd2">LoadPrecision()</a>, and <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>.</p>
 
 </div>
 </div>
@@ -500,11 +494,11 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
 
 <p>Called to restores the units to their default state. </p>
 
-<p>Reimplemented in <a class="el" href="classMeaCustomUnits.html#aa07b2cdc991587124a8fdc7b44024480">MeaCustomUnits</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaCustomUnits.html#a596915759fdea72db547dc11d375feb8">MeaCustomUnits</a>.</p>
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#af424e1884f1648b9d037ff7fe2f62bab">RestoreDefaultPrecisions()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaCustomUnits.html#aa07b2cdc991587124a8fdc7b44024480">MeaCustomUnits::MasterReset()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaCustomUnits.html#a596915759fdea72db547dc11d375feb8">MeaCustomUnits::MasterReset()</a>.</p>
 
 </div>
 </div>
@@ -532,9 +526,9 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaUnits.html#a581b296c98a86326439ede4e9e76a3d2">m_displayPrecisionNames</a>, <a class="el" href="classMeaUnits.html#a2e6fd8511a58e46509135435769514b2">m_displayPrecisions</a>, <a class="el" href="classMeaUnits.html#aa2db47e02fdcf2c54eb21f746973ce34">m_unitsStr</a>, and <a class="el" href="classMeaProfile.html#a1043bc7c641693654d8f010474471b2d">MeaProfile::WriteInt()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUnits.html#a581b296c98a86326439ede4e9e76a3d2">m_displayPrecisionNames</a>, <a class="el" href="classMeaUnits.html#a2e6fd8511a58e46509135435769514b2">m_displayPrecisions</a>, <a class="el" href="classMeaUnits.html#aa2db47e02fdcf2c54eb21f746973ce34">m_unitsStr</a>, and <a class="el" href="classMeaProfile.html#a9cd4c2b9f6d30c205dde9b1c34ab0bb2">MeaProfile::WriteInt()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnits.html#a37e7df78d5fee5102b39900abbe5ec76">SaveProfile()</a>, and <a class="el" href="classMeaCustomUnits.html#a2e4e79613c9843f06b07f7989f91e42f">MeaCustomUnits::SaveProfile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnits.html#a37e7df78d5fee5102b39900abbe5ec76">SaveProfile()</a>, and <a class="el" href="classMeaCustomUnits.html#a7345da6b1a1f760aaabe6b25bd93c776">MeaCustomUnits::SaveProfile()</a>.</p>
 
 </div>
 </div>
@@ -570,9 +564,9 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
   </dd>
 </dl>
 
-<p>Reimplemented in <a class="el" href="classMeaCustomUnits.html#a2e4e79613c9843f06b07f7989f91e42f">MeaCustomUnits</a>.</p>
+<p>Reimplemented in <a class="el" href="classMeaCustomUnits.html#a7345da6b1a1f760aaabe6b25bd93c776">MeaCustomUnits</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaUnits.html#af5d736623261fb19b793f517e8ca1840">SavePrecision()</a>, and <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUnits.html#af5d736623261fb19b793f517e8ca1840">SavePrecision()</a>, and <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>.</p>
 
 </div>
 </div>
@@ -610,7 +604,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsStr</b></td
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#a2e6fd8511a58e46509135435769514b2">m_displayPrecisions</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>

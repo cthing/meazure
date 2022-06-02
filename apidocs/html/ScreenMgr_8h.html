@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_dc2c0f464ee2a7cad0810e978f984cf2.html">ui</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -51,24 +51,24 @@ $(function() {
 
 <p>Header file for the display screen manager.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="Singleton_8h_source.html">Singleton.h</a>&quot;</code><br />
-<code>#include &lt;map&gt;</code><br />
-<code>#include &quot;<a class="el" href="Profile_8h_source.html">Profile.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Utils_8h_source.html">Utils.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="Singleton_8h_source.html">meazure/utilities/Singleton.h</a>&gt;</code><br />
+<code>#include &quot;<a class="el" href="ScreenProvider_8h_source.html">ScreenProvider.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="Profile_8h_source.html">meazure/profile/Profile.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="Geometry_8h_source.html">meazure/utilities/Geometry.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ScreenMgr.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="ScreenMgr_8h__incl.png" border="0" usemap="#aScreenMgr_8h" alt=""/></div>
 <map name="aScreenMgr_8h" id="aScreenMgr_8h">
-<area shape="rect" title="Header file for the display screen manager." alt="" coords="137,5,233,32"/>
-<area shape="rect" href="Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="10,80,97,107"/>
-<area shape="rect" title=" " alt="" coords="121,80,167,107"/>
-<area shape="rect" href="Profile_8h.html" title="Profile base class header file." alt="" coords="192,80,261,107"/>
-<area shape="rect" href="Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="285,80,344,107"/>
-<area shape="rect" href="MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="5,155,101,181"/>
-<area shape="rect" title=" " alt="" coords="19,229,88,256"/>
-<area shape="rect" title=" " alt="" coords="241,155,303,181"/>
-<area shape="rect" title=" " alt="" coords="327,155,385,181"/>
+<area shape="rect" title="Header file for the display screen manager." alt="" coords="276,5,372,32"/>
+<area shape="rect" href="Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="5,80,192,107"/>
+<area shape="rect" href="ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="216,80,336,107"/>
+<area shape="rect" href="Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="279,155,468,181"/>
+<area shape="rect" href="Profile_8h.html" title="Profile base class header file." alt="" coords="411,80,573,107"/>
+<area shape="rect" title=" " alt="" coords="207,155,254,181"/>
+<area shape="rect" title=" " alt="" coords="364,304,423,331"/>
+<area shape="rect" title=" " alt="" coords="337,229,409,256"/>
+<area shape="rect" href="NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="433,229,540,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -76,21 +76,8 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ScreenMgr_8h__dep__incl.png" border="0" usemap="#aScreenMgr_8hdep" alt=""/></div>
 <map name="aScreenMgr_8hdep" id="aScreenMgr_8hdep">
-<area shape="rect" title="Header file for the display screen manager." alt="" coords="256,5,352,32"/>
-<area shape="rect" href="CalibrationPrefs_8h.html" title="Calibration preferences property page header file." alt="" coords="169,80,293,107"/>
-<area shape="rect" href="PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="367,80,489,107"/>
-<area shape="rect" href="Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="81,155,183,181"/>
-<area shape="rect" href="ChildView_8h.html" title="Header file for the application view." alt="" coords="5,229,96,256"/>
-<area shape="rect" href="MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="9,304,93,331"/>
-<area shape="rect" href="RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="408,155,499,181"/>
-<area shape="rect" href="AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="120,229,211,256"/>
-<area shape="rect" href="CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="235,229,325,256"/>
-<area shape="rect" href="CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="350,229,445,256"/>
-<area shape="rect" href="LineTool_8h.html" title="Line measurement tool header file." alt="" coords="469,229,550,256"/>
-<area shape="rect" href="PointTool_8h.html" title="Point measurement tool header file." alt="" coords="574,229,661,256"/>
-<area shape="rect" href="RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="685,229,769,256"/>
-<area shape="rect" href="WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="793,229,895,256"/>
-<area shape="rect" href="ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="470,304,549,331"/>
+<area shape="rect" title="Header file for the display screen manager." alt="" coords="19,5,115,32"/>
+<area shape="rect" href="PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="5,80,128,107"/>
 </map>
 </div>
 </div>
@@ -100,12 +87,6 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html">MeaScreenMgr</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides information on the display monitor(s).  <a href="classMeaScreenMgr.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr_1_1Screen.html">MeaScreenMgr::Screen</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single display screen.  <a href="classMeaScreenMgr_1_1Screen.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaScreenMgr_1_1less.html">MeaScreenMgr::less</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used by the STL collections for ordering comparisons.  <a href="structMeaScreenMgr_1_1less.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>

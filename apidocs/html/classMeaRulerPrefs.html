@@ -73,10 +73,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:abfa57baacf27c38eea7ab4b339496c77"><td class="memItemLeft" align="right" valign="top"><a id="abfa57baacf27c38eea7ab4b339496c77" name="abfa57baacf27c38eea7ab4b339496c77"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MeaRulerPrefs</b> ()</td></tr>
-<tr class="memdesc:abfa57baacf27c38eea7ab4b339496c77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an instance of the ruler property page. <br /></td></tr>
-<tr class="separator:abfa57baacf27c38eea7ab4b339496c77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e19b8eb08af2f9515f7d81d850d0b0c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRulerPrefs.html#a6e19b8eb08af2f9515f7d81d850d0b0c">MeaRulerPrefs</a> (const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;screenProvider, const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;unitsProvider)</td></tr>
+<tr class="memdesc:a6e19b8eb08af2f9515f7d81d850d0b0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an instance of the ruler property page.  <a href="classMeaRulerPrefs.html#a6e19b8eb08af2f9515f7d81d850d0b0c">More...</a><br /></td></tr>
+<tr class="separator:a6e19b8eb08af2f9515f7d81d850d0b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa652f0443b488b51aa8791da4766acba"><td class="memItemLeft" align="right" valign="top"><a id="aa652f0443b488b51aa8791da4766acba" name="aa652f0443b488b51aa8791da4766acba"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~MeaRulerPrefs</b> ()</td></tr>
 <tr class="memdesc:aa652f0443b488b51aa8791da4766acba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys an instance of the ruler property page. <br /></td></tr>
@@ -143,7 +142,45 @@ Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Property page for setting ruler preferences. </p>
 <p >The ruler preferences include the ruler background and border colors and the ruler opacity (Windows 2000 and up). The property page provides a vertical and a horizontal ruler sample to preview the properties before they are applied. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6e19b8eb08af2f9515f7d81d850d0b0c" name="a6e19b8eb08af2f9515f7d81d850d0b0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e19b8eb08af2f9515f7d81d850d0b0c">&#9670;&nbsp;</a></span>MeaRulerPrefs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MeaRulerPrefs::MeaRulerPrefs </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;&#160;</td>
+          <td class="paramname"><em>screenProvider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;&#160;</td>
+          <td class="paramname"><em>unitsProvider</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs an instance of the ruler property page. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">screenProvider</td><td>[in] Screen information provider </td></tr>
+    <tr><td class="paramname">unitsProvider</td><td>[in] Units information provider </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="abd04fff5d6afd53846147eee79adea7a" name="abd04fff5d6afd53846147eee79adea7a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abd04fff5d6afd53846147eee79adea7a">&#9670;&nbsp;</a></span>DoDataExchange()</h2>
 
@@ -266,7 +303,7 @@ Private Attributes</h2></td></tr>
 <p>Called when the default background color button is pressed. </p>
 <p >This method restores the default background color. </p>
 
-<p class="reference">References <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc">ColorsChanged()</a>, <a class="el" href="classMeaColors.html#accd5fb1bd1276f6c1aecff847612fad5">MeaColors::GetDef()</a>, <a class="el" href="classMeaRulerPrefs.html#a46c94e241d566150d27edcbf0a68e133">m_backColor</a>, and <a class="el" href="classMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdabb8ac6a64ba5583b3c1d9459738df03e">MeaColors::RulerBack</a>.</p>
+<p class="reference">References <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc">ColorsChanged()</a>, <a class="el" href="namespaceMeaColors.html#ad9dc376648d3ae990e2179ceea562d12">MeaColors::GetDefault()</a>, <a class="el" href="classMeaRulerPrefs.html#a46c94e241d566150d27edcbf0a68e133">m_backColor</a>, and <a class="el" href="namespaceMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdabb8ac6a64ba5583b3c1d9459738df03e">MeaColors::RulerBack</a>.</p>
 
 </div>
 </div>
@@ -296,7 +333,7 @@ Private Attributes</h2></td></tr>
 <p>Called when the default border color button is pressed. </p>
 <p >This method restores the default border color. </p>
 
-<p class="reference">References <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc">ColorsChanged()</a>, <a class="el" href="classMeaColors.html#accd5fb1bd1276f6c1aecff847612fad5">MeaColors::GetDef()</a>, <a class="el" href="classMeaRulerPrefs.html#a167b67850c049109ce634bbba80fc8ef">m_borderColor</a>, and <a class="el" href="classMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdac854ee52d7e278d1b59ab4883b177812">MeaColors::RulerBorder</a>.</p>
+<p class="reference">References <a class="el" href="classMeaRulerPrefs.html#ac1defe89ff618c1076ee3bd7644beafc">ColorsChanged()</a>, <a class="el" href="namespaceMeaColors.html#ad9dc376648d3ae990e2179ceea562d12">MeaColors::GetDefault()</a>, <a class="el" href="classMeaRulerPrefs.html#a167b67850c049109ce634bbba80fc8ef">m_borderColor</a>, and <a class="el" href="namespaceMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdac854ee52d7e278d1b59ab4883b177812">MeaColors::RulerBorder</a>.</p>
 
 </div>
 </div>

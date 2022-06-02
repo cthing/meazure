@@ -1,0 +1,4 @@
+<map id="MeaPositionLogWriter" name="MeaPositionLogWriter">
+<area shape="rect" id="node1" title="Interface for classes that provide the ability to write to the position log file." alt="" coords="5,5,156,32"/>
+<area shape="rect" id="node2" href="$classMeaPositionLogMgr.html" title="Manages the recording, saving and loading of tool positions." alt="" coords="12,80,149,107"/>
+</map>

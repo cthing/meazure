@@ -1,0 +1,4 @@
+<map id="MeaPositionDesktopRefCounter" name="MeaPositionDesktopRefCounter">
+<area shape="rect" id="node1" title="Interface for a class that implements reference counting of desktop information objects." alt="" coords="5,5,212,32"/>
+<area shape="rect" id="node2" href="$classMeaPositionLogMgr.html" title="Manages the recording, saving and loading of tool positions." alt="" coords="40,80,177,107"/>
+</map>

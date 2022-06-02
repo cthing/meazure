@@ -1,5 +1,0 @@
-<map id="MeaPositionLogMgr::Screen" name="MeaPositionLogMgr::Screen">
-<area shape="rect" id="node1" title="Represents a single monitor attached to the system." alt="" coords="7,95,153,136"/>
-<area shape="rect" id="node2" href="$structFRECT.html" title="Represents a rectangular." alt="" coords="5,5,69,32"/>
-<area shape="rect" id="node3" href="$structFSIZE.html" title="Represents a rectangular size." alt="" coords="93,5,152,32"/>
-</map>

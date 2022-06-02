@@ -1,4 +1,5 @@
 <map id="MeaUnitsMgr" name="MeaUnitsMgr">
-<area shape="rect" id="node1" title="Manager for all units related operations including creating the units objects and labels,..." alt="" coords="47,95,146,121"/>
-<area shape="rect" id="node2" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,5,188,47"/>
+<area shape="rect" id="node1" title="Manager for all units related operations including creating the units objects and labels,..." alt="" coords="105,95,204,121"/>
+<area shape="rect" id="node2" href="$structMeaUnitsProvider.html" title="Interface for units related information." alt="" coords="5,13,128,39"/>
+<area shape="rect" id="node3" href="$classMeaSingleton__T.html" title=" " alt="" coords="153,5,335,47"/>
 </map>

@@ -336,7 +336,7 @@ private:
 /// Writes the desktop reference to the specified output stream. The output format is the same as ToString().
 /// 
 /// @param os    [in] Output stream to which the GUID should be written
-/// @param guid  [in] The GUID to be written 
+/// @param ref   [in] The desktop reference to be written 
 /// @return The specified output stream
 /// 
 std::ostream& operator<<(std::ostream& os, const MeaPositionDesktopRef& ref);

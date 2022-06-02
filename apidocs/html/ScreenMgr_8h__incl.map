@@ -1,11 +1,11 @@
 <map id="ScreenMgr.h" name="ScreenMgr.h">
-<area shape="rect" id="node1" title="Header file for the display screen manager." alt="" coords="137,5,233,32"/>
-<area shape="rect" id="node2" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="10,80,97,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="121,80,167,107"/>
-<area shape="rect" id="node6" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="192,80,261,107"/>
-<area shape="rect" id="node7" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="285,80,344,107"/>
-<area shape="rect" id="node3" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="5,155,101,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="19,229,88,256"/>
-<area shape="rect" id="node8" title=" " alt="" coords="241,155,303,181"/>
-<area shape="rect" id="node9" title=" " alt="" coords="327,155,385,181"/>
+<area shape="rect" id="node1" title="Header file for the display screen manager." alt="" coords="276,5,372,32"/>
+<area shape="rect" id="node2" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="5,80,192,107"/>
+<area shape="rect" id="node3" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="216,80,336,107"/>
+<area shape="rect" id="node5" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="279,155,468,181"/>
+<area shape="rect" id="node9" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="411,80,573,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="207,155,254,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="364,304,423,331"/>
+<area shape="rect" id="node7" title=" " alt="" coords="337,229,409,256"/>
+<area shape="rect" id="node8" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="433,229,540,256"/>
 </map>

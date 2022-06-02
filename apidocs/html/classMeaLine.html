@@ -75,9 +75,9 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaLine</b> ()</td></tr>
 <tr class="memdesc:a8e38e511609b394733fdef154212869c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the line. <br /></td></tr>
 <tr class="separator:a8e38e511609b394733fdef154212869c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0d31917cdb38d22a9f3630132baafa9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLine.html#ab0d31917cdb38d22a9f3630132baafa9">Create</a> (int shrink, const CWnd *parent=nullptr)</td></tr>
-<tr class="memdesc:ab0d31917cdb38d22a9f3630132baafa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the line.  <a href="classMeaLine.html#ab0d31917cdb38d22a9f3630132baafa9">More...</a><br /></td></tr>
-<tr class="separator:ab0d31917cdb38d22a9f3630132baafa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f54ef638d457e004d0dfe33ef7a8e67"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLine.html#a4f54ef638d457e004d0dfe33ef7a8e67">Create</a> (int shrink, const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;screenProvider, const CWnd *parent=nullptr)</td></tr>
+<tr class="memdesc:a4f54ef638d457e004d0dfe33ef7a8e67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the line.  <a href="classMeaLine.html#a4f54ef638d457e004d0dfe33ef7a8e67">More...</a><br /></td></tr>
+<tr class="separator:a4f54ef638d457e004d0dfe33ef7a8e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03eb40b8356bf96ed84058194a4fdaf1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLine.html#a03eb40b8356bf96ed84058194a4fdaf1">Hide</a> () override</td></tr>
 <tr class="memdesc:a03eb40b8356bf96ed84058194a4fdaf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Hides the graphic.  <a href="classMeaLine.html#a03eb40b8356bf96ed84058194a4fdaf1">More...</a><br /></td></tr>
 <tr class="separator:a03eb40b8356bf96ed84058194a4fdaf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -272,7 +272,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </div><div class="memdoc">
 
 <p>Constructs a line. </p>
-<p >Prior to displaying the line with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaLine.html#ab0d31917cdb38d22a9f3630132baafa9" title="Creates the window for the line.">Create()</a> method must be called to create the line's window. </p>
+<p >Prior to displaying the line with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaLine.html#a4f54ef638d457e004d0dfe33ef7a8e67" title="Creates the window for the line.">Create()</a> method must be called to create the line's window. </p>
 
 </div>
 </div>
@@ -327,8 +327,8 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 
 </div>
 </div>
-<a id="ab0d31917cdb38d22a9f3630132baafa9" name="ab0d31917cdb38d22a9f3630132baafa9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0d31917cdb38d22a9f3630132baafa9">&#9670;&nbsp;</a></span>Create()</h2>
+<a id="a4f54ef638d457e004d0dfe33ef7a8e67" name="a4f54ef638d457e004d0dfe33ef7a8e67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f54ef638d457e004d0dfe33ef7a8e67">&#9670;&nbsp;</a></span>Create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -338,6 +338,12 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>shrink</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;&#160;</td>
+          <td class="paramname"><em>screenProvider</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -358,13 +364,14 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">shrink</td><td>[in] Distance, in pixels, to shrink line from start and end points. The typical use for this parameter is in the Line tool. Shrinking the line allows the contents of the end points to be clear for viewing and measuring. </td></tr>
+    <tr><td class="paramname">screenProvider</td><td>[in] Screen information provider </td></tr>
     <tr><td class="paramname">parent</td><td>[in] Parent window or <b>nullptr</b> if the line does not have an immediate parent. If a parent window is specified, the line is created as a child window (<b>WS_CHILD</b>). Otherwise the line is created as a popup window (<b>WS_POPUP</b>) and is assigned the main window as a parent.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the window is created successfully. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaLayout.html#a495419723066e50b7b77e8e47a8c3878">MeaLayout::CalcLength()</a>, <a class="el" href="classMeaTimer.html#af905a0692c7ed51c127cbeba209afb63">MeaTimer::Create()</a>, <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f">MeaGraphic::Create()</a>, <a class="el" href="classMeaScreenMgr.html#a7350b7437fab6fa98fc6ca498f97d652">MeaScreenMgr::GetVirtualRect()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaLine.html#a7f8a163fd756db985baeb3a8886b31c6">m_arr</a>, <a class="el" href="classMeaLine.html#a65bbe1a1aa8f3a0b62e834c88455a860">m_foreBrush</a>, <a class="el" href="classMeaLine.html#aa8bdab5c47f03089ff43e71827ee271a">m_shrink</a>, <a class="el" href="classMeaLine.html#a6b14dc0603f5fa001d4e121faca8ecca">m_timer</a>, and <a class="el" href="classMeaLine.html#a6a6fa260bbdaafdb817ec11ce695cba2">m_varr</a>.</p>
+<p class="reference">References <a class="el" href="namespaceMeaGeometry.html#aca6be724522cb7d02bc79fe2cc2659dd">MeaGeometry::CalcLength()</a>, <a class="el" href="classMeaTimer.html#af905a0692c7ed51c127cbeba209afb63">MeaTimer::Create()</a>, <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f">MeaGraphic::Create()</a>, <a class="el" href="structMeaScreenProvider.html#a107a0e73724d4a862bb96fe036d1f1fd">MeaScreenProvider::GetVirtualRect()</a>, <a class="el" href="classMeaLine.html#a7f8a163fd756db985baeb3a8886b31c6">m_arr</a>, <a class="el" href="classMeaLine.html#a65bbe1a1aa8f3a0b62e834c88455a860">m_foreBrush</a>, <a class="el" href="classMeaLine.html#aa8bdab5c47f03089ff43e71827ee271a">m_shrink</a>, <a class="el" href="classMeaLine.html#a6b14dc0603f5fa001d4e121faca8ecca">m_timer</a>, and <a class="el" href="classMeaLine.html#a6a6fa260bbdaafdb817ec11ce695cba2">m_varr</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a019c406711d659a6a10f4ce812b2f9db">MeaAngleTool::Create()</a>, <a class="el" href="classMeaCircleTool.html#a83228aff788695fa56178a60ad01caef">MeaCircleTool::Create()</a>, <a class="el" href="classMeaLineTool.html#a256719195abe7589c87f929681bccc7f">MeaLineTool::Create()</a>, <a class="el" href="classMeaOriginTool.html#aa0f37c3a8118d31ab105d1a92dc2a534">MeaOriginTool::Create()</a>, and <a class="el" href="classMeaGridTool.html#a9fad0ac620b42466a11c719e8f8c8638">MeaGridTool::SetLines()</a>.</p>
 
@@ -415,7 +422,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 
 <p class="reference">References <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, and <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a71125449362745a432ff0648f255f36f">MeaAngleTool::OnCHMove()</a>, and <a class="el" href="classMeaLineTool.html#abe6423f3d92dc0fc2e8d708eb4458d24">MeaLineTool::OnCHMove()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a2778a74c9833bcef47ebc83ef185c2ca">MeaAngleTool::OnCHMove()</a>, and <a class="el" href="classMeaLineTool.html#a64b086d37f13f8268a997b314dd03091">MeaLineTool::OnCHMove()</a>.</p>
 
 </div>
 </div>
@@ -443,7 +450,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </div><div class="memdoc">
 
 <p>Hides the graphic. </p>
-<p >Call the <a class="el" href="classMeaLine.html#ab0d31917cdb38d22a9f3630132baafa9" title="Creates the window for the line.">Create()</a> method prior to calling this method for the first time. </p>
+<p >Call the <a class="el" href="classMeaLine.html#a4f54ef638d457e004d0dfe33ef7a8e67" title="Creates the window for the line.">Create()</a> method prior to calling this method for the first time. </p>
 
 <p>Reimplemented from <a class="el" href="classMeaGraphic.html#a231700e892c41b20ac90fabde13f82e3">MeaGraphic</a>.</p>
 
@@ -498,7 +505,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The return is not used so 0 is returned. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a1e17d12b818e225add79a808f4759dae">Angled</a>, <a class="el" href="classMeaLine.html#aaced644da4d355027a1fa08128ffac86">kMargin</a>, <a class="el" href="classMeaLine.html#a7f8a163fd756db985baeb3a8886b31c6">m_arr</a>, <a class="el" href="classMeaLine.html#af7012dea045c7c9adc8093d32938c4e4">m_count</a>, <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, <a class="el" href="classMeaLine.html#ac25226b1e6534333b51687fb58a43c30">m_orientation</a>, <a class="el" href="classMeaLine.html#aa8bdab5c47f03089ff43e71827ee271a">m_shrink</a>, <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>, <a class="el" href="classMeaLine.html#a6a6fa260bbdaafdb817ec11ce695cba2">m_varr</a>, <a class="el" href="classMeaGraphic.html#aa34ff08ab8981a04398f48df2fb7c95d">MeaGraphic::m_visible</a>, <a class="el" href="classMeaLine.html#ae1cd7adbe18c73f471a3aa9fdc35503e">m_wasAngled</a>, <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>, <a class="el" href="classMeaLine.html#a1ef295ca1e1e825602644067a398449a">PlotLine()</a>, <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">MeaGraphic::Show()</a>, and <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a43baa2eb9c53bbcc1e5be4319e1b992d">Vertical</a>.</p>
+<p class="reference">References <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a1e17d12b818e225add79a808f4759dae">Angled</a>, <a class="el" href="classMeaLine.html#aaced644da4d355027a1fa08128ffac86">kMargin</a>, <a class="el" href="classMeaLine.html#a7f8a163fd756db985baeb3a8886b31c6">m_arr</a>, <a class="el" href="classMeaLine.html#af7012dea045c7c9adc8093d32938c4e4">m_count</a>, <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, <a class="el" href="classMeaLine.html#ac25226b1e6534333b51687fb58a43c30">m_orientation</a>, <a class="el" href="classMeaLine.html#aa8bdab5c47f03089ff43e71827ee271a">m_shrink</a>, <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>, <a class="el" href="classMeaLine.html#a6a6fa260bbdaafdb817ec11ce695cba2">m_varr</a>, <a class="el" href="classMeaGraphic.html#aa34ff08ab8981a04398f48df2fb7c95d">MeaGraphic::m_visible</a>, <a class="el" href="classMeaLine.html#ae1cd7adbe18c73f471a3aa9fdc35503e">m_wasAngled</a>, <a class="el" href="classMeaLine.html#a1ef295ca1e1e825602644067a398449a">PlotLine()</a>, <a class="el" href="namespaceMeaLayout.html#a845c5084125d5d1d420b322ec26a342d">MeaLayout::SetWindowPos()</a>, <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">MeaGraphic::Show()</a>, and <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a43baa2eb9c53bbcc1e5be4319e1b992d">Vertical</a>.</p>
 
 </div>
 </div>
@@ -528,7 +535,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 <p>The window region is composed of single pixel rectangles arranged in a line from the start point to the end point. </p>
 <p >The location of each rectangle is determined using the Bresenham algorithm adapted from "Graphics Gems", Academic Press, 1990, p. 685. The line needs to be created in this brute force way because relying on the polygon region method produces a horrible looking line. </p>
 
-<p class="reference">References <a class="el" href="classMeaLine.html#a4e6737091da9e8d30511afcb4c6798fd">AddPoint()</a>, <a class="el" href="classMeaLine.html#af7012dea045c7c9adc8093d32938c4e4">m_count</a>, <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, and <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>.</p>
+<p class="reference">References <a class="el" href="classMeaLine.html#a4e6737091da9e8d30511afcb4c6798fd">AddPoint()</a>, <a class="el" href="classMeaLine.html#af7012dea045c7c9adc8093d32938c4e4">m_count</a>, <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>, and <a class="el" href="namespaceMeaPlotter.html#a35767483a5031382cdffd98c1dce3be1">MeaPlotter::PlotLine()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaLine.html#a809388678c3fead77c6e9543cbbc875a">OnHPTimer()</a>.</p>
 
@@ -601,7 +608,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 
 <p class="reference">References <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a1e17d12b818e225add79a808f4759dae">Angled</a>, <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a83dec057e37935326ef57c71d554f11b">Horizontal</a>, <a class="el" href="classMeaLine.html#a4a5635e385c8327c948a3385026c76bb">m_endPoint</a>, <a class="el" href="classMeaLine.html#ac25226b1e6534333b51687fb58a43c30">m_orientation</a>, <a class="el" href="classMeaLine.html#aed4c3d129e241444868b438b87d71f9c">m_startPoint</a>, <a class="el" href="classMeaLine.html#a6b14dc0603f5fa001d4e121faca8ecca">m_timer</a>, <a class="el" href="classMeaGraphic.html#aa34ff08ab8981a04398f48df2fb7c95d">MeaGraphic::m_visible</a>, <a class="el" href="classMeaLine.html#ae1cd7adbe18c73f471a3aa9fdc35503e">m_wasAngled</a>, <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">MeaGraphic::Show()</a>, <a class="el" href="classMeaTimer.html#a0926c1d43229b2fcae319e8126d1a1c2">MeaTimer::Start()</a>, and <a class="el" href="classMeaLine.html#ac125ae7277c8d888d8358ce162044cb4a43baa2eb9c53bbcc1e5be4319e1b992d">Vertical</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a71125449362745a432ff0648f255f36f">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#a09e318ee5aa9580e18bd47f6d5cbd2c9">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#abe6423f3d92dc0fc2e8d708eb4458d24">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaAngleTool.html#ab34d9b2b1ff4bf40f58266413d41533b">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#a357c2f206bdd6f6accb942025c0d4efd">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#a02e7f361e8601f2c8735cc49b89c6432">MeaLineTool::SetPosition()</a>, <a class="el" href="classMeaOriginTool.html#a5877486bcbf1392f8b780e2390c01aff">MeaOriginTool::Update()</a>, and <a class="el" href="classMeaAngleTool.html#a1e5ce35de5886ec6c12afc0aefe4a5fb">MeaAngleTool::UpdateBisector()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a2778a74c9833bcef47ebc83ef185c2ca">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#af6d7096c9296781c42fb78d6e1c573dc">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#a64b086d37f13f8268a997b314dd03091">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaAngleTool.html#a703cee8ecae4d113a472c84b10337425">MeaAngleTool::SetPosition()</a>, <a class="el" href="classMeaCircleTool.html#a83d4ff838dc0a0c7681273990c185965">MeaCircleTool::SetPosition()</a>, <a class="el" href="classMeaLineTool.html#aaaadc8240590a02273f2d02c552580b5">MeaLineTool::SetPosition()</a>, <a class="el" href="classMeaOriginTool.html#a5877486bcbf1392f8b780e2390c01aff">MeaOriginTool::Update()</a>, and <a class="el" href="classMeaAngleTool.html#a1e5ce35de5886ec6c12afc0aefe4a5fb">MeaAngleTool::UpdateBisector()</a>.</p>
 
 </div>
 </div>

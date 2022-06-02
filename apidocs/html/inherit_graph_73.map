@@ -1,8 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classMeaProfile.html" title="Base class for the persisting the application state to either the Registry or a file." alt="" coords="92,5,175,32"/>
-<area shape="rect" id="node3" href="$classMeaFileProfile.html" title="Persists the application state to an XML file." alt="" coords="327,56,431,83"/>
-<area shape="rect" id="node5" href="$classMeaRegistryProfile.html" title="Persists the application state to the registry." alt="" coords="313,5,444,32"/>
-<area shape="rect" id="node6" href="$classMeaSingleton__T.html" title="MeaSingleton_T\&lt; MeaPositionLogMgr \&gt;" alt="" coords="6,107,261,133"/>
-<area shape="rect" id="node8" href="$classMeaPositionLogMgr.html" title="Manages the recording, saving and loading of tool positions." alt="" coords="310,107,447,133"/>
-<area shape="rect" id="node9" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="56,56,211,83"/>
-</map>

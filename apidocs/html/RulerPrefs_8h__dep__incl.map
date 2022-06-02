@@ -1,6 +1,6 @@
 <map id="RulerPrefs.h" name="RulerPrefs.h">
 <area shape="rect" id="node1" title="Ruler property page header file." alt="" coords="10,5,103,32"/>
 <area shape="rect" id="node2" href="$Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="5,80,108,107"/>
-<area shape="rect" id="node3" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="11,155,102,181"/>
-<area shape="rect" id="node4" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="15,229,99,256"/>
+<area shape="rect" id="node3" href="$AppView_8h.html" title="Header file for the application view." alt="" coords="15,155,99,181"/>
+<area shape="rect" id="node4" href="$AppFrame_8h.html" title="Header file for the application frame class." alt="" coords="10,229,103,256"/>
 </map>

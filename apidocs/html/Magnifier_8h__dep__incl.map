@@ -1,5 +1,5 @@
 <map id="Magnifier.h" name="Magnifier.h">
-<area shape="rect" id="node1" title="Header file for the screen magnifier." alt="" coords="8,5,93,32"/>
-<area shape="rect" id="node2" href="$ChildView_8h.html" title="Header file for the application view." alt="" coords="5,80,96,107"/>
-<area shape="rect" id="node3" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="9,155,93,181"/>
+<area shape="rect" id="node1" title="Header file for the screen magnifier." alt="" coords="9,5,95,32"/>
+<area shape="rect" id="node2" href="$AppView_8h.html" title="Header file for the application view." alt="" coords="10,80,94,107"/>
+<area shape="rect" id="node3" href="$AppFrame_8h.html" title="Header file for the application frame class." alt="" coords="5,155,99,181"/>
 </map>

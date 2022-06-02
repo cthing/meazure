@@ -72,10 +72,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af3580816a4b541efc3230dfe272b4797"><td class="memItemLeft" align="right" valign="top"><a id="af3580816a4b541efc3230dfe272b4797" name="af3580816a4b541efc3230dfe272b4797"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MeaToolsPrefs</b> ()</td></tr>
-<tr class="memdesc:af3580816a4b541efc3230dfe272b4797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an instance of the tool property page. <br /></td></tr>
-<tr class="separator:af3580816a4b541efc3230dfe272b4797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f276b0d9420f8269a9a78f04a53ab4f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolsPrefs.html#a1f276b0d9420f8269a9a78f04a53ab4f">MeaToolsPrefs</a> (const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;screenProvider, const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;unitsProvider)</td></tr>
+<tr class="memdesc:a1f276b0d9420f8269a9a78f04a53ab4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an instance of the tool property page.  <a href="classMeaToolsPrefs.html#a1f276b0d9420f8269a9a78f04a53ab4f">More...</a><br /></td></tr>
+<tr class="separator:a1f276b0d9420f8269a9a78f04a53ab4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd5011c1d0dc7ff19d9be1cf62959adb"><td class="memItemLeft" align="right" valign="top"><a id="abd5011c1d0dc7ff19d9be1cf62959adb" name="abd5011c1d0dc7ff19d9be1cf62959adb"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~MeaToolsPrefs</b> ()</td></tr>
 <tr class="memdesc:abd5011c1d0dc7ff19d9be1cf62959adb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys an instance of the tool property page. <br /></td></tr>
@@ -153,6 +152,10 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a4a24acd0b9a2106e168283770b298b30"><td class="memItemLeft" align="right" valign="top"><a id="a4a24acd0b9a2106e168283770b298b30" name="a4a24acd0b9a2106e168283770b298b30"></a>
+const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>m_screenProvider</b></td></tr>
+<tr class="memdesc:a4a24acd0b9a2106e168283770b298b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen information provider. <br /></td></tr>
+<tr class="separator:a4a24acd0b9a2106e168283770b298b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46dc7785b3fc1acddca62af126eba3a9"><td class="memItemLeft" align="right" valign="top"><a id="a46dc7785b3fc1acddca62af126eba3a9" name="a46dc7785b3fc1acddca62af126eba3a9"></a>
 <a class="el" href="classMeaSwatch.html">MeaSwatch</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_line</b></td></tr>
 <tr class="memdesc:a46dc7785b3fc1acddca62af126eba3a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swatch to display the line color. <br /></td></tr>
@@ -188,7 +191,45 @@ Display of popup data window </li>
 <li>
 Display of the origin marker </li>
 </ul>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a1f276b0d9420f8269a9a78f04a53ab4f" name="a1f276b0d9420f8269a9a78f04a53ab4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f276b0d9420f8269a9a78f04a53ab4f">&#9670;&nbsp;</a></span>MeaToolsPrefs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MeaToolsPrefs::MeaToolsPrefs </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;&#160;</td>
+          <td class="paramname"><em>screenProvider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;&#160;</td>
+          <td class="paramname"><em>unitsProvider</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates an instance of the tool property page. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">screenProvider</td><td>[in] Screen information provider </td></tr>
+    <tr><td class="paramname">unitsProvider</td><td>[in] Units information provider </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a161395a5cc2d91beb6070dd701cd4dc0" name="a161395a5cc2d91beb6070dd701cd4dc0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a161395a5cc2d91beb6070dd701cd4dc0">&#9670;&nbsp;</a></span>DoDataExchange()</h2>
 
@@ -399,7 +440,7 @@ Display of the origin marker </li>
 <p>Called when the default background color button is pressed. </p>
 <p >The default background color is set and displayed on the normal crosshair sample. </p>
 
-<p class="reference">References <a class="el" href="classMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdab954edc126f936f57e114c56982bbccd">MeaColors::CrossHairBack</a>, <a class="el" href="classMeaColors.html#accd5fb1bd1276f6c1aecff847612fad5">MeaColors::GetDef()</a>, <a class="el" href="classMeaToolsPrefs.html#ac7d3c0e2a5c596944d784f2a5f572190">m_backColor</a>, <a class="el" href="classMeaToolsPrefs.html#a73d038d84dc443ecdcb574792d7d176a">m_borderColor</a>, <a class="el" href="classMeaToolsPrefs.html#a0bd10153841310c304ac89e8b839a994">m_normalCH</a>, and <a class="el" href="classMeaCrossHair.html#a0471e478bd80c45d7d5e833aee5402f7">MeaCrossHair::SetColors()</a>.</p>
+<p class="reference">References <a class="el" href="namespaceMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdab954edc126f936f57e114c56982bbccd">MeaColors::CrossHairBack</a>, <a class="el" href="namespaceMeaColors.html#ad9dc376648d3ae990e2179ceea562d12">MeaColors::GetDefault()</a>, <a class="el" href="classMeaToolsPrefs.html#ac7d3c0e2a5c596944d784f2a5f572190">m_backColor</a>, <a class="el" href="classMeaToolsPrefs.html#a73d038d84dc443ecdcb574792d7d176a">m_borderColor</a>, <a class="el" href="classMeaToolsPrefs.html#a0bd10153841310c304ac89e8b839a994">m_normalCH</a>, and <a class="el" href="classMeaCrossHair.html#a0471e478bd80c45d7d5e833aee5402f7">MeaCrossHair::SetColors()</a>.</p>
 
 </div>
 </div>
@@ -429,7 +470,7 @@ Display of the origin marker </li>
 <p>Called when the default border color button is pressed. </p>
 <p >The default border color is set and displayed on the sample crosshairs. </p>
 
-<p class="reference">References <a class="el" href="classMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdaff2ff7df7aa68d8b6fc68f21c46fa813">MeaColors::CrossHairBorder</a>, <a class="el" href="classMeaColors.html#accd5fb1bd1276f6c1aecff847612fad5">MeaColors::GetDef()</a>, <a class="el" href="classMeaToolsPrefs.html#ac7d3c0e2a5c596944d784f2a5f572190">m_backColor</a>, <a class="el" href="classMeaToolsPrefs.html#a73d038d84dc443ecdcb574792d7d176a">m_borderColor</a>, <a class="el" href="classMeaToolsPrefs.html#ad1a05d7ffd90abf9a08be4a8537fb08b">m_hiliteCH</a>, <a class="el" href="classMeaToolsPrefs.html#aacd29ac87cf6ac196802d8b3a10a75a2">m_hiliteColor</a>, <a class="el" href="classMeaToolsPrefs.html#a0bd10153841310c304ac89e8b839a994">m_normalCH</a>, and <a class="el" href="classMeaCrossHair.html#a0471e478bd80c45d7d5e833aee5402f7">MeaCrossHair::SetColors()</a>.</p>
+<p class="reference">References <a class="el" href="namespaceMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdaff2ff7df7aa68d8b6fc68f21c46fa813">MeaColors::CrossHairBorder</a>, <a class="el" href="namespaceMeaColors.html#ad9dc376648d3ae990e2179ceea562d12">MeaColors::GetDefault()</a>, <a class="el" href="classMeaToolsPrefs.html#ac7d3c0e2a5c596944d784f2a5f572190">m_backColor</a>, <a class="el" href="classMeaToolsPrefs.html#a73d038d84dc443ecdcb574792d7d176a">m_borderColor</a>, <a class="el" href="classMeaToolsPrefs.html#ad1a05d7ffd90abf9a08be4a8537fb08b">m_hiliteCH</a>, <a class="el" href="classMeaToolsPrefs.html#aacd29ac87cf6ac196802d8b3a10a75a2">m_hiliteColor</a>, <a class="el" href="classMeaToolsPrefs.html#a0bd10153841310c304ac89e8b839a994">m_normalCH</a>, and <a class="el" href="classMeaCrossHair.html#a0471e478bd80c45d7d5e833aee5402f7">MeaCrossHair::SetColors()</a>.</p>
 
 </div>
 </div>
@@ -459,7 +500,7 @@ Display of the origin marker </li>
 <p>Called when the default highlight color button is pressed. </p>
 <p >The default highlight color is set and displayed on the highlight crosshair sample. </p>
 
-<p class="reference">References <a class="el" href="classMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdabf51d6029da1604a4e0d452ce5769379">MeaColors::CrossHairHilite</a>, <a class="el" href="classMeaColors.html#accd5fb1bd1276f6c1aecff847612fad5">MeaColors::GetDef()</a>, <a class="el" href="classMeaToolsPrefs.html#a73d038d84dc443ecdcb574792d7d176a">m_borderColor</a>, <a class="el" href="classMeaToolsPrefs.html#ad1a05d7ffd90abf9a08be4a8537fb08b">m_hiliteCH</a>, <a class="el" href="classMeaToolsPrefs.html#aacd29ac87cf6ac196802d8b3a10a75a2">m_hiliteColor</a>, and <a class="el" href="classMeaCrossHair.html#a0471e478bd80c45d7d5e833aee5402f7">MeaCrossHair::SetColors()</a>.</p>
+<p class="reference">References <a class="el" href="namespaceMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdabf51d6029da1604a4e0d452ce5769379">MeaColors::CrossHairHilite</a>, <a class="el" href="namespaceMeaColors.html#ad9dc376648d3ae990e2179ceea562d12">MeaColors::GetDefault()</a>, <a class="el" href="classMeaToolsPrefs.html#a73d038d84dc443ecdcb574792d7d176a">m_borderColor</a>, <a class="el" href="classMeaToolsPrefs.html#ad1a05d7ffd90abf9a08be4a8537fb08b">m_hiliteCH</a>, <a class="el" href="classMeaToolsPrefs.html#aacd29ac87cf6ac196802d8b3a10a75a2">m_hiliteColor</a>, and <a class="el" href="classMeaCrossHair.html#a0471e478bd80c45d7d5e833aee5402f7">MeaCrossHair::SetColors()</a>.</p>
 
 </div>
 </div>
@@ -489,7 +530,7 @@ Display of the origin marker </li>
 <p>Called when the default line color button is pressed. </p>
 <p >Resets the line color to its default value. </p>
 
-<p class="reference">References <a class="el" href="classMeaColors.html#accd5fb1bd1276f6c1aecff847612fad5">MeaColors::GetDef()</a>, <a class="el" href="classMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdab6591b3471c8f7c1350f0893aeb09e46">MeaColors::LineFore</a>, <a class="el" href="classMeaToolsPrefs.html#a46dc7785b3fc1acddca62af126eba3a9">m_line</a>, <a class="el" href="classMeaToolsPrefs.html#a7cacafff7206359631942931e0af90d7">m_lineColor</a>, and <a class="el" href="classMeaSwatch.html#af64d64214b330ca8287f0a01f1535192">MeaSwatch::SetColor()</a>.</p>
+<p class="reference">References <a class="el" href="namespaceMeaColors.html#ad9dc376648d3ae990e2179ceea562d12">MeaColors::GetDefault()</a>, <a class="el" href="namespaceMeaColors.html#a160c748e916c8b7f0185b23cabdc29bdab6591b3471c8f7c1350f0893aeb09e46">MeaColors::LineFore</a>, <a class="el" href="classMeaToolsPrefs.html#a46dc7785b3fc1acddca62af126eba3a9">m_line</a>, <a class="el" href="classMeaToolsPrefs.html#a7cacafff7206359631942931e0af90d7">m_lineColor</a>, and <a class="el" href="classMeaSwatch.html#af64d64214b330ca8287f0a01f1535192">MeaSwatch::SetColor()</a>.</p>
 
 </div>
 </div>
@@ -567,7 +608,7 @@ Display of the origin marker </li>
 <p >This method Creates the sample crosshairs, line color swatch, data window, and initializes the opacity slider.</p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE, indicating that the input focus should be set to the first control on the page. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaDataWin.html#a39477172211b707294bd3c441df9b18d">MeaDataWin::Create()</a>, <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">MeaCrossHair::Create()</a>, <a class="el" href="classMeaSwatch.html#a2e2b481e4996ed33313a531831320ac4">MeaSwatch::Create()</a>, <a class="el" href="classMeaLayout.html#a31a4973a8b97c6e382c76ddfbb12c225">MeaLayout::GetWindowHeight()</a>, <a class="el" href="LayeredWindows_8h.html#a73f24e22c5ab220d8030bb996d3bcff8">HaveLayeredWindows()</a>, <a class="el" href="classMeaDataWin.html#aad79b86db5be3ed63c331b3f7d1332d3">MeaDataWin::kNoLabelId</a>, <a class="el" href="classMeaToolsPrefs.html#ac7d3c0e2a5c596944d784f2a5f572190">m_backColor</a>, <a class="el" href="classMeaToolsPrefs.html#a73d038d84dc443ecdcb574792d7d176a">m_borderColor</a>, <a class="el" href="classMeaToolsPrefs.html#a090c11ce6fbe5c0a1225ac7337fefd50">m_dataWin</a>, <a class="el" href="classMeaToolsPrefs.html#ad1a05d7ffd90abf9a08be4a8537fb08b">m_hiliteCH</a>, <a class="el" href="classMeaToolsPrefs.html#aacd29ac87cf6ac196802d8b3a10a75a2">m_hiliteColor</a>, <a class="el" href="classMeaToolsPrefs.html#a46dc7785b3fc1acddca62af126eba3a9">m_line</a>, <a class="el" href="classMeaToolsPrefs.html#a7cacafff7206359631942931e0af90d7">m_lineColor</a>, <a class="el" href="classMeaToolsPrefs.html#a0bd10153841310c304ac89e8b839a994">m_normalCH</a>, <a class="el" href="classMeaToolsPrefs.html#aeaeec8c304b6ed28118790802e0cad12">m_opacity</a>, <a class="el" href="classMeaCrossHair.html#a4db583e3186dde88ce74e748399c04bb">MeaCrossHair::SetOpacity()</a>, <a class="el" href="classMeaDataWin.html#a2d0821d41a06f06f40c99aba8865e45d">MeaDataWin::SetOpacity()</a>, <a class="el" href="classMeaCrossHair.html#a1b7c6bad980e90233a932ecbb3d6e66a">MeaCrossHair::SetPosition()</a>, <a class="el" href="classMeaDataWin.html#a6c5322cae06e49ac5ff27397dc443537">MeaDataWin::Show()</a>, <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">MeaGraphic::Show()</a>, and <a class="el" href="classMeaSwatch.html#ad5f350d3853c79cae94c42215036e119">MeaSwatch::Show()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaDataWin.html#a39477172211b707294bd3c441df9b18d">MeaDataWin::Create()</a>, <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">MeaCrossHair::Create()</a>, <a class="el" href="classMeaSwatch.html#a2e2b481e4996ed33313a531831320ac4">MeaSwatch::Create()</a>, <a class="el" href="namespaceMeaLayout.html#aee9efd3348e9d02cc5bdf57e2b1ebbfe">MeaLayout::GetWindowHeight()</a>, <a class="el" href="LayeredWindows_8h.html#a73f24e22c5ab220d8030bb996d3bcff8">HaveLayeredWindows()</a>, <a class="el" href="classMeaDataWin.html#aad79b86db5be3ed63c331b3f7d1332d3">MeaDataWin::kNoLabelId</a>, <a class="el" href="classMeaToolsPrefs.html#ac7d3c0e2a5c596944d784f2a5f572190">m_backColor</a>, <a class="el" href="classMeaToolsPrefs.html#a73d038d84dc443ecdcb574792d7d176a">m_borderColor</a>, <a class="el" href="classMeaToolsPrefs.html#a090c11ce6fbe5c0a1225ac7337fefd50">m_dataWin</a>, <a class="el" href="classMeaToolsPrefs.html#ad1a05d7ffd90abf9a08be4a8537fb08b">m_hiliteCH</a>, <a class="el" href="classMeaToolsPrefs.html#aacd29ac87cf6ac196802d8b3a10a75a2">m_hiliteColor</a>, <a class="el" href="classMeaToolsPrefs.html#a46dc7785b3fc1acddca62af126eba3a9">m_line</a>, <a class="el" href="classMeaToolsPrefs.html#a7cacafff7206359631942931e0af90d7">m_lineColor</a>, <a class="el" href="classMeaToolsPrefs.html#a0bd10153841310c304ac89e8b839a994">m_normalCH</a>, <a class="el" href="classMeaToolsPrefs.html#aeaeec8c304b6ed28118790802e0cad12">m_opacity</a>, <a class="el" href="classMeaCrossHair.html#a4db583e3186dde88ce74e748399c04bb">MeaCrossHair::SetOpacity()</a>, <a class="el" href="classMeaDataWin.html#a2d0821d41a06f06f40c99aba8865e45d">MeaDataWin::SetOpacity()</a>, <a class="el" href="classMeaCrossHair.html#a1b7c6bad980e90233a932ecbb3d6e66a">MeaCrossHair::SetPosition()</a>, <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">MeaGraphic::Show()</a>, <a class="el" href="classMeaDataWin.html#a6c5322cae06e49ac5ff27397dc443537">MeaDataWin::Show()</a>, and <a class="el" href="classMeaSwatch.html#ad5f350d3853c79cae94c42215036e119">MeaSwatch::Show()</a>.</p>
 
 </div>
 </div>

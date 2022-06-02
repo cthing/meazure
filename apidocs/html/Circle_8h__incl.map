@@ -1,20 +1,14 @@
 <map id="Circle.h" name="Circle.h">
-<area shape="rect" id="node1" title="Circle graphic header file." alt="" coords="258,5,325,32"/>
-<area shape="rect" id="node2" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="152,80,231,107"/>
-<area shape="rect" id="node3" href="$Layout_8h.html" title="Header file for window layout utilities." alt="" coords="255,80,327,107"/>
-<area shape="rect" id="node16" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="691,80,756,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="5,304,68,331"/>
-<area shape="rect" id="node5" href="$Units_8h.html" title="Header file for the units manager and its associated units classes." alt="" coords="260,155,323,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="167,229,205,256"/>
-<area shape="rect" id="node7" title=" " alt="" coords="229,229,276,256"/>
-<area shape="rect" id="node8" title=" " alt="" coords="301,229,357,256"/>
-<area shape="rect" id="node9" href="$Label_8h.html" title="Header file for the label control." alt="" coords="381,229,445,256"/>
-<area shape="rect" id="node10" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="469,229,538,256"/>
-<area shape="rect" id="node11" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="563,229,649,256"/>
-<area shape="rect" id="node14" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="83,229,142,256"/>
-<area shape="rect" id="node12" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="598,304,694,331"/>
-<area shape="rect" id="node13" title=" " alt="" coords="611,379,681,405"/>
-<area shape="rect" id="node15" title=" " alt="" coords="92,304,149,331"/>
-<area shape="rect" id="node17" title=" " alt="" coords="725,155,791,181"/>
-<area shape="rect" id="node18" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="815,155,909,181"/>
+<area shape="rect" id="node1" title="Circle graphic header file." alt="" coords="234,5,301,32"/>
+<area shape="rect" id="node2" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="5,80,84,107"/>
+<area shape="rect" id="node3" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="108,80,296,107"/>
+<area shape="rect" id="node5" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="173,155,362,181"/>
+<area shape="rect" id="node9" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="420,80,584,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="101,155,148,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="258,304,317,331"/>
+<area shape="rect" id="node7" title=" " alt="" coords="231,229,303,256"/>
+<area shape="rect" id="node8" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="327,229,434,256"/>
+<area shape="rect" id="node10" title=" " alt="" coords="387,155,452,181"/>
+<area shape="rect" id="node11" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="477,155,623,181"/>
+<area shape="rect" id="node12" title=" " alt="" coords="648,155,713,181"/>
 </map>

@@ -1,4 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,5,216,32"/>
-<area shape="rect" id="node2" href="$classMeaToolMgr.html" title="Manages the measurement tools including selection, enabling, disabling, and communicating various mes..." alt="" coords="264,5,357,32"/>
+<area shape="rect" id="node1" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,5,188,47"/>
+<area shape="rect" id="node2" href="$classMeaUnitsMgr.html" title="Manager for all units related operations including creating the units objects and labels,..." alt="" coords="236,42,335,69"/>
+<area shape="rect" id="node3" href="$structMeaUnitsProvider.html" title="Interface for units related information." alt="" coords="35,71,158,98"/>
 </map>

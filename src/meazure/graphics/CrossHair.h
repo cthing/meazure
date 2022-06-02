@@ -114,7 +114,7 @@ public:
     /// @param screenProvider   [in] Screen information provider
     /// @param unitsProvider    [in] Units information provider
     ///
-    MeaCrossHair(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvier);
+    MeaCrossHair(const MeaScreenProvider& screenProvider, const MeaUnitsProvider& unitsProvider);
 
     /// Destroys the circle.
     ///

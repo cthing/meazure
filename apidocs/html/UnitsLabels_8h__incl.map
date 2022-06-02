@@ -1,0 +1,13 @@
+<map id="UnitsLabels.h" name="UnitsLabels.h">
+<area shape="rect" id="node1" title="Header file for the units classes." alt="" coords="48,5,149,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="71,229,118,256"/>
+<area shape="rect" id="node3" href="$Label_8h.html" title="Header file for the label control." alt="" coords="33,80,165,107"/>
+<area shape="rect" id="node4" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="189,80,251,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="32,155,88,181"/>
+<area shape="rect" id="node6" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="113,155,301,181"/>
+<area shape="rect" id="node7" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="177,229,367,256"/>
+<area shape="rect" id="node11" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="377,155,538,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="263,379,321,405"/>
+<area shape="rect" id="node9" title=" " alt="" coords="236,304,308,331"/>
+<area shape="rect" id="node10" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="332,304,439,331"/>
+</map>

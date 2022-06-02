@@ -1,6 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" title=" " alt="" coords="5,132,64,159"/>
-<area shape="rect" id="node2" href="$classCChildView.html" title="The view class for the application." alt="" coords="127,5,215,32"/>
+<area shape="rect" id="node2" href="$classAppView.html" title="The view class for the application." alt="" coords="134,5,207,32"/>
 <area shape="rect" id="node3" href="$classMeaDataDisplay.html" title="This class is responsible for the display of all measurement data." alt="" coords="112,56,229,83"/>
 <area shape="rect" id="node4" href="$classMeaDataWin.html" title="A popup data display window." alt="" coords="122,107,219,133"/>
 <area shape="rect" id="node5" href="$classMeaGraphic.html" title="Base class for all graphic elements." alt="" coords="125,157,217,184"/>

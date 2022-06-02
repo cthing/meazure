@@ -1,0 +1,17 @@
+<map id="UnitsMgr.h" name="UnitsMgr.h">
+<area shape="rect" id="node1" title="Header file for the units manager." alt="" coords="324,5,409,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="164,80,203,107"/>
+<area shape="rect" id="node3" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="351,155,414,181"/>
+<area shape="rect" id="node12" href="$UnitsLabels_8h.html" title="Header file for the units classes." alt="" coords="228,80,329,107"/>
+<area shape="rect" id="node14" href="$UnitsProvider_8h.html" title="Interface providing measurement units information." alt="" coords="404,80,513,107"/>
+<area shape="rect" id="node15" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="537,80,724,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="421,229,477,256"/>
+<area shape="rect" id="node5" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="23,229,211,256"/>
+<area shape="rect" id="node7" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="420,304,609,331"/>
+<area shape="rect" id="node11" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="235,229,396,256"/>
+<area shape="rect" id="node6" title=" " alt="" coords="28,304,75,331"/>
+<area shape="rect" id="node8" title=" " alt="" coords="465,453,524,480"/>
+<area shape="rect" id="node9" title=" " alt="" coords="478,379,550,405"/>
+<area shape="rect" id="node10" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="348,379,454,405"/>
+<area shape="rect" id="node13" href="$Label_8h.html" title="Header file for the label control." alt="" coords="195,155,327,181"/>
+</map>

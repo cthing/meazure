@@ -100,6 +100,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaXMLNode</b> ()
 <tr class="memitem:a4fd8fe6763bda3ceb138277086a33b95"><td class="memItemLeft" align="right" valign="top">const CString &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLNode.html#a4fd8fe6763bda3ceb138277086a33b95">GetData</a> () const</td></tr>
 <tr class="memdesc:a4fd8fe6763bda3ceb138277086a33b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the data for the node.  <a href="classMeaXMLNode.html#a4fd8fe6763bda3ceb138277086a33b95">More...</a><br /></td></tr>
 <tr class="separator:a4fd8fe6763bda3ceb138277086a33b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0131d72b3e4d81eb4a27685d6454b10a"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLNode.html#a0131d72b3e4d81eb4a27685d6454b10a">GetChildData</a> () const</td></tr>
+<tr class="memdesc:a0131d72b3e4d81eb4a27685d6454b10a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates all child data nodes into a single string.  <a href="classMeaXMLNode.html#a0131d72b3e4d81eb4a27685d6454b10a">More...</a><br /></td></tr>
+<tr class="separator:a0131d72b3e4d81eb4a27685d6454b10a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afffc27214a4338d7dc7431f3b35dabe8"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLNode.html#afffc27214a4338d7dc7431f3b35dabe8">GetAttributes</a> () const</td></tr>
 <tr class="memdesc:afffc27214a4338d7dc7431f3b35dabe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the attributes associated with the node if it is of type Element.  <a href="classMeaXMLNode.html#afffc27214a4338d7dc7431f3b35dabe8">More...</a><br /></td></tr>
 <tr class="separator:afffc27214a4338d7dc7431f3b35dabe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -325,7 +328,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_data</b></td></t
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLNode.html#a3c9ef23f6671dbb9e4f219454c013b64">m_children</a>, <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>, and <a class="el" href="classMeaXMLNode.html#a75b3465a1f054c1bfd26a205d3ba8874">SetParent()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLNode.html#a3c9ef23f6671dbb9e4f219454c013b64">m_children</a>, and <a class="el" href="classMeaXMLNode.html#a75b3465a1f054c1bfd26a205d3ba8874">SetParent()</a>.</p>
 
 </div>
 </div>
@@ -395,7 +398,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_data</b></td></t
 
 <p class="reference">References <a class="el" href="classMeaXMLNode.html#a3c9ef23f6671dbb9e4f219454c013b64">m_children</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#a697a396e5ed07cadf3c9a88e3c2fd118">MeaPositionLogMgr::DesktopInfo::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Position.html#ae187ac13927ffaf64868f1b93b3faa29">MeaPositionLogMgr::Position::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a6e2a4ca5bf41ee1ed4bca239ef4da3fe">MeaPositionLogMgr::Screen::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#afdf671bc1dd4f3fda327a073bbacf358">MeaPositionLogMgr::DesktopInfo::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#aab619ff89eca0eb824b427f62f0d8dcb">MeaPositionLogMgr::ProcessDataNodes()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">MeaPositionLogMgr::ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaXMLNode.html#a0131d72b3e4d81eb4a27685d6454b10a">GetChildData()</a>, <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>, <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">MeaPositionLogMgr::ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
 
 </div>
 </div>
@@ -427,7 +430,31 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_data</b></td></t
 
 <p class="reference">References <a class="el" href="classMeaXMLNode.html#abfaa6df9eb152b29c2d2358bf2fb5671">m_attributes</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#a697a396e5ed07cadf3c9a88e3c2fd118">MeaPositionLogMgr::DesktopInfo::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Position.html#ae187ac13927ffaf64868f1b93b3faa29">MeaPositionLogMgr::Position::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a6e2a4ca5bf41ee1ed4bca239ef4da3fe">MeaPositionLogMgr::Screen::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#afdf671bc1dd4f3fda327a073bbacf358">MeaPositionLogMgr::DesktopInfo::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#abce3cf55871eecd3321c585cfcbed2d8">MeaPositionLogMgr::ProcessDesktopNode()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a24a89d7c1eb5c0d264d7f7970e047f40">MeaPositionLogMgr::ProcessPositionNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>, <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#abce3cf55871eecd3321c585cfcbed2d8">MeaPositionLogMgr::ProcessDesktopNode()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a24a89d7c1eb5c0d264d7f7970e047f40">MeaPositionLogMgr::ProcessPositionNode()</a>.</p>
+
+</div>
+</div>
+<a id="a0131d72b3e4d81eb4a27685d6454b10a" name="a0131d72b3e4d81eb4a27685d6454b10a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0131d72b3e4d81eb4a27685d6454b10a">&#9670;&nbsp;</a></span>GetChildData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CString MeaXMLNode::GetChildData </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Concatenates all child data nodes into a single string. </p>
+<dl class="section return"><dt>Returns</dt><dd>String concatenation of all child data nodes. </dd></dl>
+
+<p class="reference">References <a class="el" href="classMeaXMLNode.html#a77d610cc8a78a8cd2af055f9b5e89aec">AtEnd()</a>, <a class="el" href="classMeaXMLNode.html#a5c946d37dc271fffd129686f040f4462af6068daa29dbb05a7ead1e3b5a48bbee">Data</a>, <a class="el" href="classMeaXMLNode.html#a2748e3d982a0f6101375f7b075c2f75e">GetChildIter()</a>, <a class="el" href="classMeaXMLNode.html#a4fd8fe6763bda3ceb138277086a33b95">GetData()</a>, and <a class="el" href="classMeaXMLNode.html#a715427dae070677c871015d2323ebaef">GetType()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
 
 </div>
 </div>
@@ -459,7 +486,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_data</b></td></t
 
 <p class="reference">References <a class="el" href="classMeaXMLNode.html#a3c9ef23f6671dbb9e4f219454c013b64">m_children</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#a697a396e5ed07cadf3c9a88e3c2fd118">MeaPositionLogMgr::DesktopInfo::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Position.html#ae187ac13927ffaf64868f1b93b3faa29">MeaPositionLogMgr::Position::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a6e2a4ca5bf41ee1ed4bca239ef4da3fe">MeaPositionLogMgr::Screen::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#afdf671bc1dd4f3fda327a073bbacf358">MeaPositionLogMgr::DesktopInfo::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#aab619ff89eca0eb824b427f62f0d8dcb">MeaPositionLogMgr::ProcessDataNodes()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">MeaPositionLogMgr::ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaXMLNode.html#a0131d72b3e4d81eb4a27685d6454b10a">GetChildData()</a>, <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>, <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">MeaPositionLogMgr::ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
 
 </div>
 </div>
@@ -502,7 +529,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_data</b></td></t
 
 <p class="reference">References <a class="el" href="classMeaXMLNode.html#ae06d0be1ed98035127e029ddb47cc8d4">m_data</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#a697a396e5ed07cadf3c9a88e3c2fd118">MeaPositionLogMgr::DesktopInfo::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Position.html#ae187ac13927ffaf64868f1b93b3faa29">MeaPositionLogMgr::Position::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a6e2a4ca5bf41ee1ed4bca239ef4da3fe">MeaPositionLogMgr::Screen::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#afdf671bc1dd4f3fda327a073bbacf358">MeaPositionLogMgr::DesktopInfo::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#aab619ff89eca0eb824b427f62f0d8dcb">MeaPositionLogMgr::ProcessDataNodes()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">MeaPositionLogMgr::ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaXMLNode.html#a0131d72b3e4d81eb4a27685d6454b10a">GetChildData()</a>, <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>, <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">MeaPositionLogMgr::ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
 
 </div>
 </div>
@@ -534,7 +561,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_data</b></td></t
 
 <p class="reference">References <a class="el" href="classMeaXMLNode.html#a38532c1dee7585ff8e0ea925e4c053d4">m_type</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#a697a396e5ed07cadf3c9a88e3c2fd118">MeaPositionLogMgr::DesktopInfo::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Position.html#ae187ac13927ffaf64868f1b93b3faa29">MeaPositionLogMgr::Position::Load()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a6e2a4ca5bf41ee1ed4bca239ef4da3fe">MeaPositionLogMgr::Screen::Load()</a>, <a class="el" href="classMeaPositionLogMgr.html#aab619ff89eca0eb824b427f62f0d8dcb">MeaPositionLogMgr::ProcessDataNodes()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">MeaPositionLogMgr::ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaXMLNode.html#a0131d72b3e4d81eb4a27685d6454b10a">GetChildData()</a>, <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">MeaPositionLogMgr::ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
 
 </div>
 </div>

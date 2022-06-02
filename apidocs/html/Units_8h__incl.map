@@ -1,14 +1,11 @@
 <map id="Units.h" name="Units.h">
-<area shape="rect" id="node1" title="Header file for the units manager and its associated units classes." alt="" coords="198,5,261,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="146,155,209,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="26,80,65,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="89,80,135,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="160,80,216,107"/>
-<area shape="rect" id="node6" href="$Label_8h.html" title="Header file for the label control." alt="" coords="240,80,304,107"/>
-<area shape="rect" id="node7" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="328,80,397,107"/>
-<area shape="rect" id="node8" href="$Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="506,80,593,107"/>
-<area shape="rect" id="node11" href="$Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="421,80,480,107"/>
-<area shape="rect" id="node9" href="$MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="503,155,599,181"/>
-<area shape="rect" id="node10" title=" " alt="" coords="516,229,585,256"/>
-<area shape="rect" id="node12" title=" " alt="" coords="421,155,478,181"/>
+<area shape="rect" id="node1" title="Header file for the units classes." alt="" coords="214,5,277,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,61,107"/>
+<area shape="rect" id="node3" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="86,80,274,107"/>
+<area shape="rect" id="node5" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="217,155,407,181"/>
+<area shape="rect" id="node9" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="350,80,511,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="146,155,193,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="303,304,361,331"/>
+<area shape="rect" id="node7" title=" " alt="" coords="276,229,348,256"/>
+<area shape="rect" id="node8" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="372,229,479,256"/>
 </map>

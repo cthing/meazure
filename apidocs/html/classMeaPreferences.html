@@ -89,9 +89,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a60b90dec0098eff5571301edf4aadfad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPreferences.html#a60b90dec0098eff5571301edf4aadfad">MeaPreferences</a> (UINT nIDCaption, CWnd *pParentWnd=nullptr, UINT iSelectPage=0)</td></tr>
 <tr class="memdesc:a60b90dec0098eff5571301edf4aadfad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the property sheet.  <a href="classMeaPreferences.html#a60b90dec0098eff5571301edf4aadfad">More...</a><br /></td></tr>
 <tr class="separator:a60b90dec0098eff5571301edf4aadfad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f3c183a3487f23371f2eaed32ff92cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPreferences.html#a4f3c183a3487f23371f2eaed32ff92cc">MeaPreferences</a> (LPCTSTR pszCaption, CWnd *pParentWnd=nullptr, UINT iSelectPage=0)</td></tr>
-<tr class="memdesc:a4f3c183a3487f23371f2eaed32ff92cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs the property sheet.  <a href="classMeaPreferences.html#a4f3c183a3487f23371f2eaed32ff92cc">More...</a><br /></td></tr>
-<tr class="separator:a4f3c183a3487f23371f2eaed32ff92cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd13608d626e1205a4e4f82de7a54c59"><td class="memItemLeft" align="right" valign="top"><a id="afd13608d626e1205a4e4f82de7a54c59" name="afd13608d626e1205a4e4f82de7a54c59"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaPreferences</b> ()</td></tr>
 <tr class="memdesc:afd13608d626e1205a4e4f82de7a54c59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys a property sheet instance. <br /></td></tr>
@@ -181,7 +178,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a60b90dec0098eff5571301edf4aadfad" name="a60b90dec0098eff5571301edf4aadfad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60b90dec0098eff5571301edf4aadfad">&#9670;&nbsp;</a></span>MeaPreferences() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b90dec0098eff5571301edf4aadfad">&#9670;&nbsp;</a></span>MeaPreferences()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,60 +226,6 @@ Protected Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a4f3c183a3487f23371f2eaed32ff92cc" name="a4f3c183a3487f23371f2eaed32ff92cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f3c183a3487f23371f2eaed32ff92cc">&#9670;&nbsp;</a></span>MeaPreferences() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">MeaPreferences::MeaPreferences </td>
-          <td>(</td>
-          <td class="paramtype">LPCTSTR&#160;</td>
-          <td class="paramname"><em>pszCaption</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">CWnd *&#160;</td>
-          <td class="paramname"><em>pParentWnd</em> = <code>nullptr</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT&#160;</td>
-          <td class="paramname"><em>iSelectPage</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Constructs the property sheet. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pszCaption</td><td>[in] String for the title of the preferences dialog. </td></tr>
-    <tr><td class="paramname">pParentWnd</td><td>[in] Parent window for the preferences dialog. If the value is nullptr, the dialog is a popup. </td></tr>
-    <tr><td class="paramname">iSelectPage</td><td>[in] Preference page to display when the preferences dialog is shown. Default is the first page. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="reference">References <a class="el" href="classMeaPreferences.html#af82c853b31f27ba6af0125b9e0264a75">m_advancedPrefs</a>, <a class="el" href="classMeaPreferences.html#a19284021a84a4481a45a6853a51187ea">m_calibrationPrefs</a>, <a class="el" href="classMeaPreferences.html#afbf2962d0375b2ce4f4c8b890052f4ff">m_customPrefs</a>, <a class="el" href="classMeaPreferences.html#a69683f53f7cafaf6d79ac5b57383e0f3">m_precisionPrefs</a>, <a class="el" href="classMeaPreferences.html#a80472f26f7604a75a703b6f7ccc8d9c4">m_rulerPrefs</a>, and <a class="el" href="classMeaPreferences.html#a83a4eb12a44d41c6af21146376067b3e">m_toolsPrefs</a>.</p>
 
 </div>
 </div>

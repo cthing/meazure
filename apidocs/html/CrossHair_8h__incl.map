@@ -1,4 +1,15 @@
 <map id="CrossHair.h" name="CrossHair.h">
-<area shape="rect" id="node1" title="Crosshair graphic header file." alt="" coords="5,5,96,32"/>
-<area shape="rect" id="node2" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="11,80,90,107"/>
+<area shape="rect" id="node1" title="Crosshair graphic header file." alt="" coords="199,5,290,32"/>
+<area shape="rect" id="node2" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="61,80,140,107"/>
+<area shape="rect" id="node3" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="5,229,193,256"/>
+<area shape="rect" id="node9" href="$UnitsProvider_8h.html" title="Interface providing measurement units information." alt="" coords="215,80,410,107"/>
+<area shape="rect" id="node13" title=" " alt="" coords="434,80,485,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="76,304,123,331"/>
+<area shape="rect" id="node5" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="403,304,593,331"/>
+<area shape="rect" id="node6" title=" " alt="" coords="489,453,547,480"/>
+<area shape="rect" id="node7" title=" " alt="" coords="462,379,534,405"/>
+<area shape="rect" id="node8" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="558,379,665,405"/>
+<area shape="rect" id="node10" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="281,155,344,181"/>
+<area shape="rect" id="node11" title=" " alt="" coords="218,229,274,256"/>
+<area shape="rect" id="node12" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="299,229,460,256"/>
 </map>

@@ -1,0 +1,5 @@
+<map id="RegistryProvider.h" name="RegistryProvider.h">
+<area shape="rect" id="node1" title="Interface representing the Windows Registry." alt="" coords="44,5,171,32"/>
+<area shape="rect" id="node2" href="$Registry_8h.html" title="Provides access to the Windows Registry." alt="" coords="5,80,87,107"/>
+<area shape="rect" id="node3" href="$RegistryProfile_8h.html" title="Registry&#45;based profile header file." alt="" coords="111,80,229,107"/>
+</map>

@@ -1,4 +1,4 @@
 <map id="StatusBar.h" name="StatusBar.h">
-<area shape="rect" id="node1" title="Header file for a status bar that allows the overriding of the idle message." alt="" coords="5,5,96,32"/>
-<area shape="rect" id="node2" href="$MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="9,80,93,107"/>
+<area shape="rect" id="node1" title="Header file for a status bar that allows the overriding of the idle message." alt="" coords="7,5,97,32"/>
+<area shape="rect" id="node2" href="$AppFrame_8h.html" title="Header file for the application frame class." alt="" coords="5,80,99,107"/>
 </map>

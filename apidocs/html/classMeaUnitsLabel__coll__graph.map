@@ -1,5 +1,0 @@
-<map id="MeaUnitsLabel" name="MeaUnitsLabel">
-<area shape="rect" id="node1" title="Base class for measurement units labels." alt="" coords="5,155,113,181"/>
-<area shape="rect" id="node2" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="20,80,99,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="27,5,92,32"/>
-</map>

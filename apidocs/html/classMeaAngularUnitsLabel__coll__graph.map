@@ -1,6 +1,0 @@
-<map id="MeaAngularUnitsLabel" name="MeaAngularUnitsLabel">
-<area shape="rect" id="node1" title="There are two categories of labels: those for angular measurements and those for linear measurements." alt="" coords="5,229,157,256"/>
-<area shape="rect" id="node2" href="$classMeaUnitsLabel.html" title="Base class for measurement units labels." alt="" coords="27,155,135,181"/>
-<area shape="rect" id="node3" href="$classMeaLabel.html" title="Creates a label control whose size is automatically set to the size of its text." alt="" coords="42,80,121,107"/>
-<area shape="rect" id="node4" title=" " alt="" coords="49,5,114,32"/>
-</map>

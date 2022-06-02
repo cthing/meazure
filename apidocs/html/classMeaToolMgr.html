@@ -43,9 +43,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="classMeaToolMgr-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">MeaToolMgr Class Reference</div></div>
 </div><!--header-->
@@ -67,6 +65,15 @@ Inheritance diagram for MeaToolMgr:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a73ee552cf0086b0291169ce9b73f1dd3"><td class="memItemLeft" align="right" valign="top"><a id="a73ee552cf0086b0291169ce9b73f1dd3" name="a73ee552cf0086b0291169ce9b73f1dd3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaToolMgr</b> (token)</td></tr>
+<tr class="separator:a73ee552cf0086b0291169ce9b73f1dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9453d6ba2f27d7c82a81a311fa7b8449"><td class="memItemLeft" align="right" valign="top"><a id="a9453d6ba2f27d7c82a81a311fa7b8449" name="a9453d6ba2f27d7c82a81a311fa7b8449"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaToolMgr</b> (const <a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &amp;)=delete</td></tr>
+<tr class="separator:a9453d6ba2f27d7c82a81a311fa7b8449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5568d7be2b266ef962f283a185312fb5"><td class="memItemLeft" align="right" valign="top"><a id="a5568d7be2b266ef962f283a185312fb5" name="a5568d7be2b266ef962f283a185312fb5"></a>
+<a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &amp;)=delete</td></tr>
+<tr class="separator:a5568d7be2b266ef962f283a185312fb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2ac8ea5e457379f500a8dcdce769cd6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ab2ac8ea5e457379f500a8dcdce769cd6">SaveProfile</a> (<a class="el" href="classMeaProfile.html">MeaProfile</a> &amp;profile)</td></tr>
 <tr class="memdesc:ab2ac8ea5e457379f500a8dcdce769cd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Persists the state of the manager to the specified profile object.  <a href="classMeaToolMgr.html#ab2ac8ea5e457379f500a8dcdce769cd6">More...</a><br /></td></tr>
 <tr class="separator:ab2ac8ea5e457379f500a8dcdce769cd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -89,9 +96,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MasterReset</b> ()</t
 <tr class="memitem:a5e7e0b1b726f8cbfc0f9998d197c9578"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaTool.html">MeaTool</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a5e7e0b1b726f8cbfc0f9998d197c9578">FindTool</a> (const CString &amp;toolName) const</td></tr>
 <tr class="memdesc:a5e7e0b1b726f8cbfc0f9998d197c9578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the measurement tool corresponding to the specified tool name.  <a href="classMeaToolMgr.html#a5e7e0b1b726f8cbfc0f9998d197c9578">More...</a><br /></td></tr>
 <tr class="separator:a5e7e0b1b726f8cbfc0f9998d197c9578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a2f2f5c76b6b3bcabb509e3890914d7"><td class="memItemLeft" align="right" valign="top">LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a1a2f2f5c76b6b3bcabb509e3890914d7">GetToolName</a> () const</td></tr>
-<tr class="memdesc:a1a2f2f5c76b6b3bcabb509e3890914d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the currently set radio tool.  <a href="classMeaToolMgr.html#a1a2f2f5c76b6b3bcabb509e3890914d7">More...</a><br /></td></tr>
-<tr class="separator:a1a2f2f5c76b6b3bcabb509e3890914d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae18810d768eb7e205d0e625bc215b9fe"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ae18810d768eb7e205d0e625bc215b9fe">GetToolName</a> () const</td></tr>
+<tr class="memdesc:ae18810d768eb7e205d0e625bc215b9fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the currently set radio tool.  <a href="classMeaToolMgr.html#ae18810d768eb7e205d0e625bc215b9fe">More...</a><br /></td></tr>
+<tr class="separator:ae18810d768eb7e205d0e625bc215b9fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8444bd73a403b9713dad6648c0922b6e"><td class="memItemLeft" align="right" valign="top">UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a8444bd73a403b9713dad6648c0922b6e">GetLabelId</a> () const</td></tr>
 <tr class="memdesc:a8444bd73a403b9713dad6648c0922b6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ID of the currently set radio tool.  <a href="classMeaToolMgr.html#a8444bd73a403b9713dad6648c0922b6e">More...</a><br /></td></tr>
 <tr class="separator:a8444bd73a403b9713dad6648c0922b6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,27 +156,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>DisableCrosshairs</b>
 <tr class="memitem:a680e6456691ade5c0241d186cee22dc5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a680e6456691ade5c0241d186cee22dc5">OnMouseHook</a> (WPARAM wParam, LPARAM lParam)</td></tr>
 <tr class="memdesc:a680e6456691ade5c0241d186cee22dc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called by the OS when the mouse pointer is moved.  <a href="classMeaToolMgr.html#a680e6456691ade5c0241d186cee22dc5">More...</a><br /></td></tr>
 <tr class="separator:a680e6456691ade5c0241d186cee22dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb64da019fddd12ce64dcdb5757d4383"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#aeb64da019fddd12ce64dcdb5757d4383">SetPosition</a> (<a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> which, int pixels)</td></tr>
-<tr class="memdesc:aeb64da019fddd12ce64dcdb5757d4383"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the current radio tool.  <a href="classMeaToolMgr.html#aeb64da019fddd12ce64dcdb5757d4383">More...</a><br /></td></tr>
-<tr class="separator:aeb64da019fddd12ce64dcdb5757d4383"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0bd0695eb2c540a73935bf1f4cc0313"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ac0bd0695eb2c540a73935bf1f4cc0313">SetPosition</a> (<a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a> which, int pixels)</td></tr>
+<tr class="memdesc:ac0bd0695eb2c540a73935bf1f4cc0313"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the current radio tool.  <a href="classMeaToolMgr.html#ac0bd0695eb2c540a73935bf1f4cc0313">More...</a><br /></td></tr>
+<tr class="separator:ac0bd0695eb2c540a73935bf1f4cc0313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0d8ae59f078ee4bd06a7dc64884a768"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ab0d8ae59f078ee4bd06a7dc64884a768">SetPosition</a> (const <a class="el" href="classMeaRadioTool.html#aeaba97e21b2b7a099965f28b24d15b9f">MeaRadioTool::PointMap</a> &amp;points)</td></tr>
 <tr class="memdesc:ab0d8ae59f078ee4bd06a7dc64884a768"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the current radio tool.  <a href="classMeaToolMgr.html#ab0d8ae59f078ee4bd06a7dc64884a768">More...</a><br /></td></tr>
 <tr class="separator:ab0d8ae59f078ee4bd06a7dc64884a768"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8c3589106c6405f214156af2dba0184"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#af8c3589106c6405f214156af2dba0184">SetPositionToCursor</a> (<a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> xfield, <a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> yfield)</td></tr>
-<tr class="memdesc:af8c3589106c6405f214156af2dba0184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the specified position based on the current location of the cursor.  <a href="classMeaToolMgr.html#af8c3589106c6405f214156af2dba0184">More...</a><br /></td></tr>
-<tr class="separator:af8c3589106c6405f214156af2dba0184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe0450130f2a9c79ddf5066c45040537"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#afe0450130f2a9c79ddf5066c45040537">SetPositionToCursor</a> (<a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a> xfield, <a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a> yfield)</td></tr>
+<tr class="memdesc:afe0450130f2a9c79ddf5066c45040537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the specified position based on the current location of the cursor.  <a href="classMeaToolMgr.html#afe0450130f2a9c79ddf5066c45040537">More...</a><br /></td></tr>
+<tr class="separator:afe0450130f2a9c79ddf5066c45040537"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20a53e8290adaa69ee044a02d90fd18d"><td class="memItemLeft" align="right" valign="top">const POINT &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a20a53e8290adaa69ee044a02d90fd18d">GetPosition</a> () const</td></tr>
 <tr class="memdesc:a20a53e8290adaa69ee044a02d90fd18d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a representative position from the current radio tool.  <a href="classMeaToolMgr.html#a20a53e8290adaa69ee044a02d90fd18d">More...</a><br /></td></tr>
 <tr class="separator:a20a53e8290adaa69ee044a02d90fd18d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addcf8c25ed5c363a20dc0f9dbb540dd9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#addcf8c25ed5c363a20dc0f9dbb540dd9">GetPosition</a> (<a class="el" href="classMeaPositionLogMgr_1_1Position.html">MeaPositionLogMgr::Position</a> &amp;position) const</td></tr>
-<tr class="memdesc:addcf8c25ed5c363a20dc0f9dbb540dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current radio tool's position as a position object.  <a href="classMeaToolMgr.html#addcf8c25ed5c363a20dc0f9dbb540dd9">More...</a><br /></td></tr>
-<tr class="separator:addcf8c25ed5c363a20dc0f9dbb540dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d9ef93c92642c5d86f4efa018753c37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a9d9ef93c92642c5d86f4efa018753c37">IncPosition</a> (<a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> which)</td></tr>
-<tr class="memdesc:a9d9ef93c92642c5d86f4efa018753c37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the specified position field.  <a href="classMeaToolMgr.html#a9d9ef93c92642c5d86f4efa018753c37">More...</a><br /></td></tr>
-<tr class="separator:a9d9ef93c92642c5d86f4efa018753c37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08d315fb7045773d1bc0e6577288c6df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a08d315fb7045773d1bc0e6577288c6df">DecPosition</a> (<a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a> which)</td></tr>
-<tr class="memdesc:a08d315fb7045773d1bc0e6577288c6df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the specified position field.  <a href="classMeaToolMgr.html#a08d315fb7045773d1bc0e6577288c6df">More...</a><br /></td></tr>
-<tr class="separator:a08d315fb7045773d1bc0e6577288c6df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a83552f51ab6e3571ed7d3dff672a6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a4a83552f51ab6e3571ed7d3dff672a6e">RecordPosition</a> (<a class="el" href="classMeaPosition.html">MeaPosition</a> &amp;position) const</td></tr>
+<tr class="memdesc:a4a83552f51ab6e3571ed7d3dff672a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Records the current radio tool's position as a position object.  <a href="classMeaToolMgr.html#a4a83552f51ab6e3571ed7d3dff672a6e">More...</a><br /></td></tr>
+<tr class="separator:a4a83552f51ab6e3571ed7d3dff672a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5010058d558ac7aa674e0e580868c908"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a5010058d558ac7aa674e0e580868c908">IncPosition</a> (<a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a> which)</td></tr>
+<tr class="memdesc:a5010058d558ac7aa674e0e580868c908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the specified position field.  <a href="classMeaToolMgr.html#a5010058d558ac7aa674e0e580868c908">More...</a><br /></td></tr>
+<tr class="separator:a5010058d558ac7aa674e0e580868c908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f000eefcaa71c23c50623f66419b8e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a6f000eefcaa71c23c50623f66419b8e1">DecPosition</a> (<a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a> which)</td></tr>
+<tr class="memdesc:a6f000eefcaa71c23c50623f66419b8e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the specified position field.  <a href="classMeaToolMgr.html#a6f000eefcaa71c23c50623f66419b8e1">More...</a><br /></td></tr>
+<tr class="separator:a6f000eefcaa71c23c50623f66419b8e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adae5ecb4b99e4d1281a539967b45b425"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#adae5ecb4b99e4d1281a539967b45b425">HasRegion</a> () const</td></tr>
 <tr class="memdesc:adae5ecb4b99e4d1281a539967b45b425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the current radio tool has a rectangular region that can be captured.  <a href="classMeaToolMgr.html#adae5ecb4b99e4d1281a539967b45b425">More...</a><br /></td></tr>
 <tr class="separator:adae5ecb4b99e4d1281a539967b45b425"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -188,52 +195,57 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>DisableCrosshairs</b>
 <tr class="memitem:a0dd0c68e2f3794c063cc0d6f489fd3eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a0dd0c68e2f3794c063cc0d6f489fd3eb">UpdateScreenInfo</a> (const POINT &amp;pos)</td></tr>
 <tr class="memdesc:a0dd0c68e2f3794c063cc0d6f489fd3eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the display of the screen size and resolution based on the screen containing the specified point.  <a href="classMeaToolMgr.html#a0dd0c68e2f3794c063cc0d6f489fd3eb">More...</a><br /></td></tr>
 <tr class="separator:a0dd0c68e2f3794c063cc0d6f489fd3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a72ad5b0588812f5905d1e73fc85420"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a5a72ad5b0588812f5905d1e73fc85420">ShowXY1</a> (const POINT &amp;point, const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;cpoint)</td></tr>
-<tr class="memdesc:a5a72ad5b0588812f5905d1e73fc85420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified point in the X1/Y1 fields of the data display and on the rulers, if they are visible.  <a href="classMeaToolMgr.html#a5a72ad5b0588812f5905d1e73fc85420">More...</a><br /></td></tr>
-<tr class="separator:a5a72ad5b0588812f5905d1e73fc85420"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e2128e87c7fdf0dc724b754dbabba52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a9e2128e87c7fdf0dc724b754dbabba52">ShowXY2</a> (const POINT &amp;point, const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;cpoint)</td></tr>
-<tr class="memdesc:a9e2128e87c7fdf0dc724b754dbabba52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified point in the X2/Y2 fields of the data display and on the rulers, if they are visible.  <a href="classMeaToolMgr.html#a9e2128e87c7fdf0dc724b754dbabba52">More...</a><br /></td></tr>
-<tr class="separator:a9e2128e87c7fdf0dc724b754dbabba52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a504426e8f460bc204f1a2c2bfe7533fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a504426e8f460bc204f1a2c2bfe7533fe">ShowXYV</a> (const POINT &amp;point, const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;cpoint)</td></tr>
-<tr class="memdesc:a504426e8f460bc204f1a2c2bfe7533fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified point in the XV/YV fields of the data display and on the rulers, if they are visible.  <a href="classMeaToolMgr.html#a504426e8f460bc204f1a2c2bfe7533fe">More...</a><br /></td></tr>
-<tr class="separator:a504426e8f460bc204f1a2c2bfe7533fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27d63b63bca36002a91e3b135a4d8cc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a27d63b63bca36002a91e3b135a4d8cc1">ShowWH</a> (const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;size)</td></tr>
-<tr class="memdesc:a27d63b63bca36002a91e3b135a4d8cc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified size in the width and height fields of the data display.  <a href="classMeaToolMgr.html#a27d63b63bca36002a91e3b135a4d8cc1">More...</a><br /></td></tr>
-<tr class="separator:a27d63b63bca36002a91e3b135a4d8cc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78c25670fb96daa5d5f479b030dbf1a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a78c25670fb96daa5d5f479b030dbf1a6">ShowDistance</a> (const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;size)</td></tr>
-<tr class="memdesc:a78c25670fb96daa5d5f479b030dbf1a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a distance calculated from the specified size in the distance field of the data display.  <a href="classMeaToolMgr.html#a78c25670fb96daa5d5f479b030dbf1a6">More...</a><br /></td></tr>
-<tr class="separator:a78c25670fb96daa5d5f479b030dbf1a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52dd6b8dfec8a4a8577c94be3b8de96e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a52dd6b8dfec8a4a8577c94be3b8de96e">ShowXY1</a> (const POINT &amp;point, const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;cpoint)</td></tr>
+<tr class="memdesc:a52dd6b8dfec8a4a8577c94be3b8de96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified point in the X1/Y1 fields of the data display and on the rulers, if they are visible.  <a href="classMeaToolMgr.html#a52dd6b8dfec8a4a8577c94be3b8de96e">More...</a><br /></td></tr>
+<tr class="separator:a52dd6b8dfec8a4a8577c94be3b8de96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5537b69679b40d032035af5fc43ee23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ae5537b69679b40d032035af5fc43ee23">ShowXY2</a> (const POINT &amp;point, const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;cpoint)</td></tr>
+<tr class="memdesc:ae5537b69679b40d032035af5fc43ee23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified point in the X2/Y2 fields of the data display and on the rulers, if they are visible.  <a href="classMeaToolMgr.html#ae5537b69679b40d032035af5fc43ee23">More...</a><br /></td></tr>
+<tr class="separator:ae5537b69679b40d032035af5fc43ee23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50a27a5341cc7e68938b59917ed154dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a50a27a5341cc7e68938b59917ed154dd">ShowXYV</a> (const POINT &amp;point, const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;cpoint)</td></tr>
+<tr class="memdesc:a50a27a5341cc7e68938b59917ed154dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified point in the XV/YV fields of the data display and on the rulers, if they are visible.  <a href="classMeaToolMgr.html#a50a27a5341cc7e68938b59917ed154dd">More...</a><br /></td></tr>
+<tr class="separator:a50a27a5341cc7e68938b59917ed154dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515cfa6f02e269be5e7f139dac80dbc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a515cfa6f02e269be5e7f139dac80dbc6">ShowWH</a> (const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;size)</td></tr>
+<tr class="memdesc:a515cfa6f02e269be5e7f139dac80dbc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified size in the width and height fields of the data display.  <a href="classMeaToolMgr.html#a515cfa6f02e269be5e7f139dac80dbc6">More...</a><br /></td></tr>
+<tr class="separator:a515cfa6f02e269be5e7f139dac80dbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48620b851663d77bf89035e39f6a4cca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a48620b851663d77bf89035e39f6a4cca">ShowDistance</a> (const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;size)</td></tr>
+<tr class="memdesc:a48620b851663d77bf89035e39f6a4cca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays a distance calculated from the specified size in the distance field of the data display.  <a href="classMeaToolMgr.html#a48620b851663d77bf89035e39f6a4cca">More...</a><br /></td></tr>
+<tr class="separator:a48620b851663d77bf89035e39f6a4cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c6d73e7c171704e9a570131db891714"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a4c6d73e7c171704e9a570131db891714">ShowDistance</a> (double dist)</td></tr>
 <tr class="memdesc:a4c6d73e7c171704e9a570131db891714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified value in the distance field of the data display.  <a href="classMeaToolMgr.html#a4c6d73e7c171704e9a570131db891714">More...</a><br /></td></tr>
 <tr class="separator:a4c6d73e7c171704e9a570131db891714"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac47d0b00b1502c3fe3147ddfb3309a14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ac47d0b00b1502c3fe3147ddfb3309a14">ShowAngle</a> (double angle)</td></tr>
 <tr class="memdesc:ac47d0b00b1502c3fe3147ddfb3309a14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified angle in the angle field of the data display.  <a href="classMeaToolMgr.html#ac47d0b00b1502c3fe3147ddfb3309a14">More...</a><br /></td></tr>
 <tr class="separator:ac47d0b00b1502c3fe3147ddfb3309a14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6c8df9ebd4d6cd228bb9f9d13e34cf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ad6c8df9ebd4d6cd228bb9f9d13e34cf7">ShowAspect</a> (const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;size)</td></tr>
-<tr class="memdesc:ad6c8df9ebd4d6cd228bb9f9d13e34cf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the aspect ratio of the specified size in the aspect ratio field of the data display.  <a href="classMeaToolMgr.html#ad6c8df9ebd4d6cd228bb9f9d13e34cf7">More...</a><br /></td></tr>
-<tr class="separator:ad6c8df9ebd4d6cd228bb9f9d13e34cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36f102b4779a5b1e2c579c01f7479ffb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a36f102b4779a5b1e2c579c01f7479ffb">ShowRectArea</a> (const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;size)</td></tr>
-<tr class="memdesc:a36f102b4779a5b1e2c579c01f7479ffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the rectangular area calculated from the specified width and height in the area field of the data display.  <a href="classMeaToolMgr.html#a36f102b4779a5b1e2c579c01f7479ffb">More...</a><br /></td></tr>
-<tr class="separator:a36f102b4779a5b1e2c579c01f7479ffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab93a8894c8a062ac58412f0891b5779b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ab93a8894c8a062ac58412f0891b5779b">ShowAspect</a> (const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;size)</td></tr>
+<tr class="memdesc:ab93a8894c8a062ac58412f0891b5779b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the aspect ratio of the specified size in the aspect ratio field of the data display.  <a href="classMeaToolMgr.html#ab93a8894c8a062ac58412f0891b5779b">More...</a><br /></td></tr>
+<tr class="separator:ab93a8894c8a062ac58412f0891b5779b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb42bae1423a7f921eb1d7f11736596f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#aeb42bae1423a7f921eb1d7f11736596f">ShowRectArea</a> (const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;size)</td></tr>
+<tr class="memdesc:aeb42bae1423a7f921eb1d7f11736596f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the rectangular area calculated from the specified width and height in the area field of the data display.  <a href="classMeaToolMgr.html#aeb42bae1423a7f921eb1d7f11736596f">More...</a><br /></td></tr>
+<tr class="separator:aeb42bae1423a7f921eb1d7f11736596f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb9ca0dc738580283063474386dd0a9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#aeb9ca0dc738580283063474386dd0a9f">ShowCircleArea</a> (double radius)</td></tr>
 <tr class="memdesc:aeb9ca0dc738580283063474386dd0a9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the area of a circle with the specified radius in the area field of the data display.  <a href="classMeaToolMgr.html#aeb9ca0dc738580283063474386dd0a9f">More...</a><br /></td></tr>
 <tr class="separator:aeb9ca0dc738580283063474386dd0a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e463dd2b14417daa3ab665ca34813c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a7e463dd2b14417daa3ab665ca34813c8">ShowScreenName</a> (const CString &amp;name)</td></tr>
 <tr class="memdesc:a7e463dd2b14417daa3ab665ca34813c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the name of the current screen.  <a href="classMeaToolMgr.html#a7e463dd2b14417daa3ab665ca34813c8">More...</a><br /></td></tr>
 <tr class="separator:a7e463dd2b14417daa3ab665ca34813c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab58ac797d1cb598b8fda508b657a3240"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ab58ac797d1cb598b8fda508b657a3240">ShowScreenWH</a> (const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;size)</td></tr>
-<tr class="memdesc:ab58ac797d1cb598b8fda508b657a3240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified width and height in the appropriate screen fields.  <a href="classMeaToolMgr.html#ab58ac797d1cb598b8fda508b657a3240">More...</a><br /></td></tr>
-<tr class="separator:ab58ac797d1cb598b8fda508b657a3240"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad550822797edf0b24b59b1c8dad8314e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ad550822797edf0b24b59b1c8dad8314e">ShowScreenRes</a> (const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;res)</td></tr>
-<tr class="memdesc:ad550822797edf0b24b59b1c8dad8314e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified resolution in the appropriate screen fields.  <a href="classMeaToolMgr.html#ad550822797edf0b24b59b1c8dad8314e">More...</a><br /></td></tr>
-<tr class="separator:ad550822797edf0b24b59b1c8dad8314e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93a31ef095b68e7ec9e0026c57cec699"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a93a31ef095b68e7ec9e0026c57cec699">ShowScreenWH</a> (const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;size)</td></tr>
+<tr class="memdesc:a93a31ef095b68e7ec9e0026c57cec699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified width and height in the appropriate screen fields.  <a href="classMeaToolMgr.html#a93a31ef095b68e7ec9e0026c57cec699">More...</a><br /></td></tr>
+<tr class="separator:a93a31ef095b68e7ec9e0026c57cec699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4f60b15c1403d26cf2a0c4ecb0f734"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a2c4f60b15c1403d26cf2a0c4ecb0f734">ShowScreenRes</a> (const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;res)</td></tr>
+<tr class="memdesc:a2c4f60b15c1403d26cf2a0c4ecb0f734"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified resolution in the appropriate screen fields.  <a href="classMeaToolMgr.html#a2c4f60b15c1403d26cf2a0c4ecb0f734">More...</a><br /></td></tr>
+<tr class="separator:a2c4f60b15c1403d26cf2a0c4ecb0f734"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab81d33183af740f90b2d39da2ea1a6b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#ab81d33183af740f90b2d39da2ea1a6b2">ShowCalButton</a> (bool show)</td></tr>
 <tr class="memdesc:ab81d33183af740f90b2d39da2ea1a6b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays or hides the screen calibration button.  <a href="classMeaToolMgr.html#ab81d33183af740f90b2d39da2ea1a6b2">More...</a><br /></td></tr>
 <tr class="separator:ab81d33183af740f90b2d39da2ea1a6b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMeaSingleton__T"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMeaSingleton__T')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T&lt; MeaToolMgr &gt;</a></td></tr>
-<tr class="memitem:ab5ff6e6054becb1c98156f6a64eb8de0 inherit pub_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#ab5ff6e6054becb1c98156f6a64eb8de0">~MeaSingleton_T</a> ()</td></tr>
-<tr class="memdesc:ab5ff6e6054becb1c98156f6a64eb8de0 inherit pub_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the Singleton.  <a href="classMeaSingleton__T.html#ab5ff6e6054becb1c98156f6a64eb8de0">More...</a><br /></td></tr>
-<tr class="separator:ab5ff6e6054becb1c98156f6a64eb8de0 inherit pub_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe2d7bbfbb064494f05184e60b360e4f inherit pub_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top"><a id="abe2d7bbfbb064494f05184e60b360e4f" name="abe2d7bbfbb064494f05184e60b360e4f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaSingleton_T</b> (const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; <a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &gt; &amp;src)=delete</td></tr>
+<tr class="memdesc:abe2d7bbfbb064494f05184e60b360e4f inherit pub_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons have no copy semantics. <br /></td></tr>
+<tr class="separator:abe2d7bbfbb064494f05184e60b360e4f inherit pub_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45ad47775641fc1cfb44f04fbbdc608 inherit pub_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top"><a id="af45ad47775641fc1cfb44f04fbbdc608" name="af45ad47775641fc1cfb44f04fbbdc608"></a>
+<a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; <a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; <a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &gt; &amp;src)=delete</td></tr>
+<tr class="memdesc:af45ad47775641fc1cfb44f04fbbdc608 inherit pub_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons have no assignment semantics. <br /></td></tr>
+<tr class="separator:af45ad47775641fc1cfb44f04fbbdc608 inherit pub_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -248,16 +260,6 @@ Private Types</h2></td></tr>
 typedef std::map&lt; CString, <a class="el" href="classMeaTool.html">MeaTool</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ToolsMap</b></td></tr>
 <tr class="memdesc:a3e36053929d7ef05715fb4614c3ecbab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps a tool name to the tool object. <br /></td></tr>
 <tr class="separator:a3e36053929d7ef05715fb4614c3ecbab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a1fc6d0267b7441e939d742c7111938c3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaToolMgr.html#a1fc6d0267b7441e939d742c7111938c3">MeaToolMgr</a> (const <a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &amp;)</td></tr>
-<tr class="memdesc:a1fc6d0267b7441e939d742c7111938c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managers are singletons.  <a href="classMeaToolMgr.html#a1fc6d0267b7441e939d742c7111938c3">More...</a><br /></td></tr>
-<tr class="separator:a1fc6d0267b7441e939d742c7111938c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa8070fe67464aed47b312eb029be46e"><td class="memItemLeft" align="right" valign="top"><a id="aaa8070fe67464aed47b312eb029be46e" name="aaa8070fe67464aed47b312eb029be46e"></a>
-<a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &amp;)</td></tr>
-<tr class="memdesc:aaa8070fe67464aed47b312eb029be46e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Purposely undefined. <br /></td></tr>
-<tr class="separator:aaa8070fe67464aed47b312eb029be46e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -322,63 +324,21 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_crosshairsEnabled</
 <tr class="memdesc:a70060199d176fc422823904dbebb663c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Origin marker. <br /></td></tr>
 <tr class="separator:a70060199d176fc422823904dbebb663c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a011494a447a445124d903305a3fa9b5d"><td class="memItemLeft" align="right" valign="top"><a id="a011494a447a445124d903305a3fa9b5d" name="a011494a447a445124d903305a3fa9b5d"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaSingleton_T&lt; MeaToolMgr &gt;</b></td></tr>
-<tr class="separator:a011494a447a445124d903305a3fa9b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_static_methods_classMeaSingleton__T"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_classMeaSingleton__T')"><img src="closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T&lt; MeaToolMgr &gt;</a></td></tr>
 <tr class="memitem:a99867d7e6fbd4e6a7f3cacf12648bab2 inherit pub_static_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">Instance</a> ()</td></tr>
 <tr class="memdesc:a99867d7e6fbd4e6a7f3cacf12648bab2 inherit pub_static_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">The first time this method is called, a instance of the Singleton object is created and returned.  <a href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">More...</a><br /></td></tr>
 <tr class="separator:a99867d7e6fbd4e6a7f3cacf12648bab2 inherit pub_static_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a188121bb7e8addf897fd59e06159dcb4 inherit pub_static_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a188121bb7e8addf897fd59e06159dcb4">DestroyInstance</a> ()</td></tr>
-<tr class="memdesc:a188121bb7e8addf897fd59e06159dcb4 inherit pub_static_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the Singleton object is no longer needed, it must be destroyed using this method.  <a href="classMeaSingleton__T.html#a188121bb7e8addf897fd59e06159dcb4">More...</a><br /></td></tr>
-<tr class="separator:a188121bb7e8addf897fd59e06159dcb4 inherit pub_static_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68eb6955739fdfd98a81d744fa9cc438 inherit pub_static_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a68eb6955739fdfd98a81d744fa9cc438">IsDestroyed</a> ()</td></tr>
-<tr class="memdesc:a68eb6955739fdfd98a81d744fa9cc438 inherit pub_static_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the Singleton object has been destroyed.  <a href="classMeaSingleton__T.html#a68eb6955739fdfd98a81d744fa9cc438">More...</a><br /></td></tr>
-<tr class="separator:a68eb6955739fdfd98a81d744fa9cc438 inherit pub_static_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classMeaSingleton__T"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classMeaSingleton__T')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T&lt; MeaToolMgr &gt;</a></td></tr>
-<tr class="memitem:a59ecb351351d10ee5608e644c3d07b7e inherit pro_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a59ecb351351d10ee5608e644c3d07b7e">MeaSingleton_T</a> ()</td></tr>
-<tr class="memdesc:a59ecb351351d10ee5608e644c3d07b7e inherit pro_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Singleton object instance.  <a href="classMeaSingleton__T.html#a59ecb351351d10ee5608e644c3d07b7e">More...</a><br /></td></tr>
-<tr class="separator:a59ecb351351d10ee5608e644c3d07b7e inherit pro_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef7a769e71d8bffaa3b9b80b97eaf7fa inherit pro_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#aef7a769e71d8bffaa3b9b80b97eaf7fa">MeaSingleton_T</a> ()=default</td></tr>
+<tr class="memdesc:aef7a769e71d8bffaa3b9b80b97eaf7fa inherit pro_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Singleton object instance.  <a href="classMeaSingleton__T.html#aef7a769e71d8bffaa3b9b80b97eaf7fa">More...</a><br /></td></tr>
+<tr class="separator:aef7a769e71d8bffaa3b9b80b97eaf7fa inherit pro_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Manages the measurement tools including selection, enabling, disabling, and communicating various messages to the tools. </p>
 <p >The term "radio tool" refers to those measurement tools that are mutually exclusive (i.e. only one radio tool can be used at a time). </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1fc6d0267b7441e939d742c7111938c3" name="a1fc6d0267b7441e939d742c7111938c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fc6d0267b7441e939d742c7111938c3">&#9670;&nbsp;</a></span>MeaToolMgr()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">MeaToolMgr::MeaToolMgr </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classMeaToolMgr.html">MeaToolMgr</a> &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Managers are singletons. </p>
-<p >Purposely undefined. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="adbd2af467253df90f8647a0d4340efe3" name="adbd2af467253df90f8647a0d4340efe3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#adbd2af467253df90f8647a0d4340efe3">&#9670;&nbsp;</a></span>CrosshairsEnabled()</h2>
 
@@ -407,12 +367,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaToolMgr.html#a0de645300fce1cb11b2148d8e7609695">m_crosshairsEnabled</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a296619f8a5a8d3398e2edabc8f863a45">MeaAngleTool::EnableCrosshairs()</a>, <a class="el" href="classMeaCircleTool.html#addcbb55b1c45f8e01a30effb1d0201ac">MeaCircleTool::EnableCrosshairs()</a>, <a class="el" href="classMeaLineTool.html#a0767fe260ebe8b8d6a0dba5414ae6ae9">MeaLineTool::EnableCrosshairs()</a>, <a class="el" href="classMeaPointTool.html#a45ac67e3454c9863082fa1ad554132db">MeaPointTool::EnableCrosshairs()</a>, <a class="el" href="classMeaRectTool.html#a24830d9a7eef66bee7f5c291483d592a">MeaRectTool::EnableCrosshairs()</a>, <a class="el" href="classCChildView.html#acb1abcb7499a9f1a1c7d61769ea97703">CChildView::OnHideCrosshairs()</a>, <a class="el" href="classCChildView.html#a5309030a8d93bca818a6dfabb6dc9613">CChildView::OnUpdateFindCrosshair()</a>, and <a class="el" href="classCChildView.html#afb1381fb712258053432d431c3e0b34b">CChildView::OnUpdateHideCrosshairs()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a296619f8a5a8d3398e2edabc8f863a45">MeaAngleTool::EnableCrosshairs()</a>, <a class="el" href="classMeaCircleTool.html#addcbb55b1c45f8e01a30effb1d0201ac">MeaCircleTool::EnableCrosshairs()</a>, <a class="el" href="classMeaLineTool.html#a0767fe260ebe8b8d6a0dba5414ae6ae9">MeaLineTool::EnableCrosshairs()</a>, <a class="el" href="classMeaPointTool.html#a45ac67e3454c9863082fa1ad554132db">MeaPointTool::EnableCrosshairs()</a>, <a class="el" href="classMeaRectTool.html#a24830d9a7eef66bee7f5c291483d592a">MeaRectTool::EnableCrosshairs()</a>, <a class="el" href="classAppView.html#afc0ffc5e96725c1210f6dfe19d0852f7">AppView::OnHideCrosshairs()</a>, <a class="el" href="classAppView.html#a594073f1b9074b6c9583a2d517aaaad7">AppView::OnUpdateFindCrosshair()</a>, and <a class="el" href="classAppView.html#a8e56a248f018fc04a43f027d3babc43d">AppView::OnUpdateHideCrosshairs()</a>.</p>
 
 </div>
 </div>
-<a id="a08d315fb7045773d1bc0e6577288c6df" name="a08d315fb7045773d1bc0e6577288c6df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08d315fb7045773d1bc0e6577288c6df">&#9670;&nbsp;</a></span>DecPosition()</h2>
+<a id="a6f000eefcaa71c23c50623f66419b8e1" name="a6f000eefcaa71c23c50623f66419b8e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f000eefcaa71c23c50623f66419b8e1">&#9670;&nbsp;</a></span>DecPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -423,7 +383,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::DecPosition </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a>&#160;</td>
           <td class="paramname"><em>which</em></td><td>)</td>
           <td></td>
         </tr>
@@ -443,7 +403,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaTool.html#a5a44d849864d13d8807832092df6ab94">MeaTool::DecPosition()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
+<p class="reference">References <a class="el" href="classMeaTool.html#af01c4bce5c0b74fc0ad47275c4a2f82b">MeaTool::DecPosition()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
 </div>
 </div>
@@ -475,7 +435,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaDataDisplay.html#a4e2e0bb5981553dd2d2573007c2cff3c">MeaDataDisplay::ClearRegionData()</a>, <a class="el" href="classMeaTool.html#a1d0cb5560a03a4af05d05f53fc21aa29">MeaTool::Disable()</a>, <a class="el" href="classMeaTool.html#a6782e6a257f0127c546100447fdb63b8">MeaTool::IsEnabled()</a>, <a class="el" href="classMeaTool.html#afcef25cd1fdeb11b04b5d24ca7aad86b">MeaTool::IsRadioTool()</a>, <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaToolMgr.html#aecf7f372f33564ca04fbcbcf436f1b82">m_tools</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a66ea7b0d07c27bd139bf700b1d8363dd">ChangeRadioToolEnable()</a>, <a class="el" href="classCChildView.html#a9697bc4d097d424af9e69076ba386e92">CChildView::LoadProfile()</a>, <a class="el" href="classCChildView.html#a5b5d68885dd4dc9c3d839d05d8c4b403">CChildView::MasterReset()</a>, and <a class="el" href="classCChildView.html#a838f72c5f398cbf106b8ac3485d4a5fa">CChildView::OnDestroy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a66ea7b0d07c27bd139bf700b1d8363dd">ChangeRadioToolEnable()</a>, <a class="el" href="classAppView.html#ae8b42b18ab1e1a3c039ded1d66824995">AppView::LoadProfile()</a>, <a class="el" href="classAppView.html#a23f06790dbb3a79e8576b0d3f9dc529b">AppView::MasterReset()</a>, and <a class="el" href="classAppView.html#a6a507948dfdaa80a6b5ae7a72d4486c0">AppView::OnDestroy()</a>.</p>
 
 </div>
 </div>
@@ -513,7 +473,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaTool.html#a1d0cb5560a03a4af05d05f53fc21aa29">MeaTool::Disable()</a>, and <a class="el" href="classMeaToolMgr.html#a5e7e0b1b726f8cbfc0f9998d197c9578">FindTool()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5c7c5e0b94519969b06d294d47539fc8">CChildView::ApplyPreferences()</a>, and <a class="el" href="classCChildView.html#ae249025a9b14cb4d126796665298274d">CChildView::OnScreenGridSpacing()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#afa8eaf9324b31c2e2fa6cee442f5c2f5">AppView::ApplyPreferences()</a>, and <a class="el" href="classAppView.html#a11295464decae5c2cf63fcd6e4079ff8">AppView::OnScreenGridSpacing()</a>.</p>
 
 </div>
 </div>
@@ -552,7 +512,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaDataDisplay.html#aa6c83f67f0802c2ec927bbb4270ff38f">MeaDataDisplay::EnableRegionFields()</a>, <a class="el" href="classMeaRuler.html#ac7748ce20acd1369e23281724a106731a86f9be77bbdcd81988cb7c3fa23e2e91">MeaRuler::Ind2</a>, <a class="el" href="classMeaRuler.html#ac7748ce20acd1369e23281724a106731aabf661cb0196c1085344f3db9a0138e0">MeaRuler::Ind3</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, <a class="el" href="classMeaToolMgr.html#ab7a97843236192c77efda48d050380b4">m_rulerTool</a>, <a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2af82446ac461d1a4d4ec479da8a58bcd2">MeaX2Field</a>, <a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2af5f06f93bccfdaba2778c6abde218ccc">MeaXVField</a>, and <a class="el" href="classMeaRulerTool.html#a9a9cbac95cf3c90d05cecccc980d38ab">MeaRulerTool::SetIndicator()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaDataDisplay.html#aa6c83f67f0802c2ec927bbb4270ff38f">MeaDataDisplay::EnableRegionFields()</a>, <a class="el" href="classMeaRuler.html#ac7748ce20acd1369e23281724a106731a86f9be77bbdcd81988cb7c3fa23e2e91">MeaRuler::Ind2</a>, <a class="el" href="classMeaRuler.html#ac7748ce20acd1369e23281724a106731aabf661cb0196c1085344f3db9a0138e0">MeaRuler::Ind3</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, <a class="el" href="classMeaToolMgr.html#ab7a97843236192c77efda48d050380b4">m_rulerTool</a>, <a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6af82446ac461d1a4d4ec479da8a58bcd2">MeaX2Field</a>, <a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6af5f06f93bccfdaba2778c6abde218ccc">MeaXVField</a>, and <a class="el" href="classMeaRulerTool.html#a9a9cbac95cf3c90d05cecccc980d38ab">MeaRulerTool::SetIndicator()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#ab20332746fb5a2cc7b637635efa42e0b">MeaAngleTool::Enable()</a>, <a class="el" href="classMeaCircleTool.html#a89485f68b109fbc8a523fe93a64112fe">MeaCircleTool::Enable()</a>, <a class="el" href="classMeaCursorTool.html#adb19df1c6f8ecf8e5bd12970840c59b4">MeaCursorTool::Enable()</a>, <a class="el" href="classMeaLineTool.html#ae19f9222ed6a7b1c9f57f3b6467ed023">MeaLineTool::Enable()</a>, <a class="el" href="classMeaPointTool.html#af87a7e2901f4ad5300655e1eee72bf12">MeaPointTool::Enable()</a>, <a class="el" href="classMeaRectTool.html#a4ef593fc05d51e49f7229c9085b6ecf6">MeaRectTool::Enable()</a>, and <a class="el" href="classMeaWindowTool.html#a0a6aa1ac318a7bf123a321ee1807aa27">MeaWindowTool::Enable()</a>.</p>
 
@@ -633,7 +593,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaTool.html#ae803a77d5f1207b3972eda7c4ca6bf02">MeaTool::Enable()</a>, and <a class="el" href="classMeaToolMgr.html#a5e7e0b1b726f8cbfc0f9998d197c9578">FindTool()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5c7c5e0b94519969b06d294d47539fc8">CChildView::ApplyPreferences()</a>, <a class="el" href="classCChildView.html#a0ef18d4a8a698c574458fdc769cc54cf">CChildView::OnCreate()</a>, and <a class="el" href="classCChildView.html#ae249025a9b14cb4d126796665298274d">CChildView::OnScreenGridSpacing()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#afa8eaf9324b31c2e2fa6cee442f5c2f5">AppView::ApplyPreferences()</a>, <a class="el" href="classAppView.html#a970d1743e6a5651a6bb601ec8e2f4d6f">AppView::OnCreate()</a>, and <a class="el" href="classAppView.html#a11295464decae5c2cf63fcd6e4079ff8">AppView::OnScreenGridSpacing()</a>.</p>
 
 </div>
 </div>
@@ -670,9 +630,9 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Measurement tool with the specified name. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#aecf7f372f33564ca04fbcbcf436f1b82">m_tools</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#aecf7f372f33564ca04fbcbcf436f1b82">m_tools</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a552febd72c9d20ead410b2f1031f77cf">DisableTool()</a>, <a class="el" href="classMeaToolMgr.html#a880a7e18793f575823452db7a191fe53">EnableTool()</a>, <a class="el" href="classMeaToolMgr.html#a54d9926ab12ddcf9d5502e2686140667">IsToolEnabled()</a>, <a class="el" href="classCChildView.html#ae249025a9b14cb4d126796665298274d">CChildView::OnScreenGridSpacing()</a>, <a class="el" href="classMeaToolMgr.html#ad455481a595050df02c49f891f039e78">SetRadioTool()</a>, and <a class="el" href="classMeaToolMgr.html#aee69ed60235384a85aae6f44b4d6896e">ToggleEnableTool()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a552febd72c9d20ead410b2f1031f77cf">DisableTool()</a>, <a class="el" href="classMeaToolMgr.html#a880a7e18793f575823452db7a191fe53">EnableTool()</a>, <a class="el" href="classMeaToolMgr.html#a54d9926ab12ddcf9d5502e2686140667">IsToolEnabled()</a>, <a class="el" href="classAppView.html#a11295464decae5c2cf63fcd6e4079ff8">AppView::OnScreenGridSpacing()</a>, <a class="el" href="classMeaToolMgr.html#ad455481a595050df02c49f891f039e78">SetRadioTool()</a>, and <a class="el" href="classMeaToolMgr.html#aee69ed60235384a85aae6f44b4d6896e">ToggleEnableTool()</a>.</p>
 
 </div>
 </div>
@@ -704,7 +664,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaRadioTool.html#a4f74326a8c495af5696b4524bb1bcca4">MeaRadioTool::Flash()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a44dffe7378bd264c9527cb2aae437770">CChildView::OnFindCrosshair()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#a17c99448bb4f5a19ac9a4ddcde86caec">AppView::OnFindCrosshair()</a>.</p>
 
 </div>
 </div>
@@ -741,7 +701,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a id="a20a53e8290adaa69ee044a02d90fd18d" name="a20a53e8290adaa69ee044a02d90fd18d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20a53e8290adaa69ee044a02d90fd18d">&#9670;&nbsp;</a></span>GetPosition() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a20a53e8290adaa69ee044a02d90fd18d">&#9670;&nbsp;</a></span>GetPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -768,44 +728,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaToolMgr.html#a20a53e8290adaa69ee044a02d90fd18d">GetPosition()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a20a53e8290adaa69ee044a02d90fd18d">GetPosition()</a>, <a class="el" href="classCChildView.html#a5fd10ae63bb1ee4db22af7aeea30597f">CChildView::OnGetPosition()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#ac63effd41cda4b63f35ccc59cd549ea7">MeaPositionLogMgr::Position::Position()</a>.</p>
-
-</div>
-</div>
-<a id="addcf8c25ed5c363a20dc0f9dbb540dd9" name="addcf8c25ed5c363a20dc0f9dbb540dd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addcf8c25ed5c363a20dc0f9dbb540dd9">&#9670;&nbsp;</a></span>GetPosition() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MeaToolMgr::GetPosition </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classMeaPositionLogMgr_1_1Position.html">MeaPositionLogMgr::Position</a> &amp;&#160;</td>
-          <td class="paramname"><em>position</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the current radio tool's position as a position object. </p>
-<p >The position object contains the complete set of points that describe the location of the tool.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">position</td><td>[out] Position representing the location of the current radio tool. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="reference">References <a class="el" href="classMeaRadioTool.html#a647f2d4d9216490f40efdbdc8e4a9e8f">MeaRadioTool::GetPosition()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#a20a53e8290adaa69ee044a02d90fd18d">GetPosition()</a>, and <a class="el" href="classAppView.html#ac6ac7f0b5c3ba8bd1c9731b1b6323bc9">AppView::OnGetPosition()</a>.</p>
 
 </div>
 </div>
@@ -839,8 +762,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a1a2f2f5c76b6b3bcabb509e3890914d7" name="a1a2f2f5c76b6b3bcabb509e3890914d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a2f2f5c76b6b3bcabb509e3890914d7">&#9670;&nbsp;</a></span>GetToolName()</h2>
+<a id="ae18810d768eb7e205d0e625bc215b9fe" name="ae18810d768eb7e205d0e625bc215b9fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18810d768eb7e205d0e625bc215b9fe">&#9670;&nbsp;</a></span>GetToolName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -849,7 +772,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">LPCTSTR MeaToolMgr::GetToolName </td>
+          <td class="memname">CString MeaToolMgr::GetToolName </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -867,7 +790,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">MeaTool::GetToolName()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -899,7 +822,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaRadioTool.html#a278c87a09b9d5d0ed22396cfb6198a3a">MeaRadioTool::HasCrosshairs()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5309030a8d93bca818a6dfabb6dc9613">CChildView::OnUpdateFindCrosshair()</a>, and <a class="el" href="classCChildView.html#afb1381fb712258053432d431c3e0b34b">CChildView::OnUpdateHideCrosshairs()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#a594073f1b9074b6c9583a2d517aaaad7">AppView::OnUpdateFindCrosshair()</a>, and <a class="el" href="classAppView.html#a8e56a248f018fc04a43f027d3babc43d">AppView::OnUpdateHideCrosshairs()</a>.</p>
 
 </div>
 </div>
@@ -931,12 +854,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaRadioTool.html#a7aaa8ec1b634c60d890bf4b29eac371b">MeaRadioTool::HasRegion()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a2817cd7352fee7d4bb1a03a293c5062f">CChildView::OnCopyRegion()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#af8e640af01e559ddf4073f8cfce48df1">AppView::OnCopyRegion()</a>.</p>
 
 </div>
 </div>
-<a id="a9d9ef93c92642c5d86f4efa018753c37" name="a9d9ef93c92642c5d86f4efa018753c37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d9ef93c92642c5d86f4efa018753c37">&#9670;&nbsp;</a></span>IncPosition()</h2>
+<a id="a5010058d558ac7aa674e0e580868c908" name="a5010058d558ac7aa674e0e580868c908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5010058d558ac7aa674e0e580868c908">&#9670;&nbsp;</a></span>IncPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -947,7 +870,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::IncPosition </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a>&#160;</td>
           <td class="paramname"><em>which</em></td><td>)</td>
           <td></td>
         </tr>
@@ -967,7 +890,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaTool.html#aa4989672958ab82f89e6552d7b54489e">MeaTool::IncPosition()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
+<p class="reference">References <a class="el" href="classMeaTool.html#a86e8d9bb2ee1300d8ccd2d534e276e0e">MeaTool::IncPosition()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
 </div>
 </div>
@@ -1000,7 +923,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaToolMgr.html#a5e7e0b1b726f8cbfc0f9998d197c9578">FindTool()</a>, and <a class="el" href="classMeaTool.html#a6782e6a257f0127c546100447fdb63b8">MeaTool::IsEnabled()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a06b31bdf2049650ee1aa264431d31116">CChildView::OnPreferences()</a>, and <a class="el" href="classCChildView.html#ae249025a9b14cb4d126796665298274d">CChildView::OnScreenGridSpacing()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#a0e175c65ab8d6467dd87b4e23535911f">AppView::OnPreferences()</a>, and <a class="el" href="classAppView.html#a11295464decae5c2cf63fcd6e4079ff8">AppView::OnScreenGridSpacing()</a>.</p>
 
 </div>
 </div>
@@ -1028,9 +951,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">MeaTool::GetToolName()</a>, <a class="el" href="classMeaTool.html#afcef25cd1fdeb11b04b5d24ca7aad86b">MeaTool::IsRadioTool()</a>, <a class="el" href="classMeaToolMgr.html#a0de645300fce1cb11b2148d8e7609695">m_crosshairsEnabled</a>, <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, <a class="el" href="classMeaToolMgr.html#aecf7f372f33564ca04fbcbcf436f1b82">m_tools</a>, <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>, <a class="el" href="classMeaProfile.html#a8f0652361d3f5f578b3a18bc4d6db2f1">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#a995d6f0ef5ad4be9bbb57bbe11e68b61">MeaProfile::ReadStr()</a>, and <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">MeaTool::GetToolName()</a>, <a class="el" href="classMeaTool.html#afcef25cd1fdeb11b04b5d24ca7aad86b">MeaTool::IsRadioTool()</a>, <a class="el" href="classMeaToolMgr.html#a0de645300fce1cb11b2148d8e7609695">m_crosshairsEnabled</a>, <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, <a class="el" href="classMeaToolMgr.html#aecf7f372f33564ca04fbcbcf436f1b82">m_tools</a>, <a class="el" href="classMeaProfile.html#a651b5ed195ce204f09bce84ed74c3bbd">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#a01eaa78b2ea53f12628f321522eb644f">MeaProfile::ReadStr()</a>, and <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a9697bc4d097d424af9e69076ba386e92">CChildView::LoadProfile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#ae8b42b18ab1e1a3c039ded1d66824995">AppView::LoadProfile()</a>.</p>
 
 </div>
 </div>
@@ -1079,7 +1002,46 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, and <a class="el" href="classMeaRadioTool.html#ab554d522d160f59819cc0668d8cc7b04">MeaRadioTool::OnMouseHook()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a301ccd26fcbf87a7092a8ef6c338fca9">CChildView::OnMouseHook()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#a3916179ceabd5ab1c38a956a85528a59">AppView::OnMouseHook()</a>.</p>
+
+</div>
+</div>
+<a id="a4a83552f51ab6e3571ed7d3dff672a6e" name="a4a83552f51ab6e3571ed7d3dff672a6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a83552f51ab6e3571ed7d3dff672a6e">&#9670;&nbsp;</a></span>RecordPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeaToolMgr::RecordPosition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classMeaPosition.html">MeaPosition</a> &amp;&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Records the current radio tool's position as a position object. </p>
+<p >The position object contains the complete set of points that describe the location of the tool and the name of the tool.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>[out] Position into which to record the location of the current radio tool and its name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, and <a class="el" href="classMeaRadioTool.html#a7368e9ec404fe1d9bef42d0ace97fb67">MeaRadioTool::RecordPosition()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#aecb557255aea472d9d151233ddce7718">MeaPositionLogMgr::RecordPosition()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a100653912f3056f6565afaa3b5fc5544">MeaPositionLogMgr::ReplacePosition()</a>.</p>
 
 </div>
 </div>
@@ -1107,9 +1069,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">MeaTool::GetToolName()</a>, <a class="el" href="classMeaToolMgr.html#a0de645300fce1cb11b2148d8e7609695">m_crosshairsEnabled</a>, <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, <a class="el" href="classMeaToolMgr.html#aecf7f372f33564ca04fbcbcf436f1b82">m_tools</a>, <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#a9e92e97f35582d0a06de7a2d23ecae11">MeaProfile::WriteBool()</a>, and <a class="el" href="classMeaProfile.html#ac0db05a7d33046a0e3b62b0c44a55367">MeaProfile::WriteStr()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">MeaTool::GetToolName()</a>, <a class="el" href="classMeaToolMgr.html#a0de645300fce1cb11b2148d8e7609695">m_crosshairsEnabled</a>, <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, <a class="el" href="classMeaToolMgr.html#aecf7f372f33564ca04fbcbcf436f1b82">m_tools</a>, <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#a1a961b0651b261c571e3d8c459465d93">MeaProfile::WriteBool()</a>, and <a class="el" href="classMeaProfile.html#a37fabc7b652f047d874f42c176371fe0">MeaProfile::WriteStr()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#ab8a4c0344473815ab78864b9e90a0826">CChildView::SaveProfile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#ae07af2f2dcfc2a66bc5c22755fe7ee18">AppView::SaveProfile()</a>.</p>
 
 </div>
 </div>
@@ -1147,7 +1109,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#aff5af7c162c10755edbe58f260ded6d4">CChildView::CChildView()</a>, and <a class="el" href="classCChildView.html#a5b033b5e0a130950719a173b86418698">CChildView::~CChildView()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#ad4af2ab361d31abcf4b6c571629eca85">AppView::AppView()</a>, and <a class="el" href="classAppView.html#ac7acef420d6f6002bf64898e946e2cf8">AppView::~AppView()</a>.</p>
 
 </div>
 </div>
@@ -1187,8 +1149,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb64da019fddd12ce64dcdb5757d4383" name="aeb64da019fddd12ce64dcdb5757d4383"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb64da019fddd12ce64dcdb5757d4383">&#9670;&nbsp;</a></span>SetPosition() <span class="overload">[2/2]</span></h2>
+<a id="ac0bd0695eb2c540a73935bf1f4cc0313" name="ac0bd0695eb2c540a73935bf1f4cc0313"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0bd0695eb2c540a73935bf1f4cc0313">&#9670;&nbsp;</a></span>SetPosition() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1199,7 +1161,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::SetPosition </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a>&#160;</td>
           <td class="paramname"><em>which</em>, </td>
         </tr>
         <tr>
@@ -1231,14 +1193,14 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, and <a class="el" href="classMeaToolMgr.html#aeb64da019fddd12ce64dcdb5757d4383">SetPosition()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, and <a class="el" href="classMeaToolMgr.html#ac0bd0695eb2c540a73935bf1f4cc0313">SetPosition()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#ac6bb8240cb5130aed234b178e68d3f48">CChildView::OnDataChange()</a>, <a class="el" href="classMeaToolMgr.html#aeb64da019fddd12ce64dcdb5757d4383">SetPosition()</a>, <a class="el" href="classMeaToolMgr.html#af8c3589106c6405f214156af2dba0184">SetPositionToCursor()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#a0eb018b045045f01f67268edf9c2065e">AppView::OnDataChange()</a>, <a class="el" href="classMeaToolMgr.html#ac0bd0695eb2c540a73935bf1f4cc0313">SetPosition()</a>, <a class="el" href="classMeaToolMgr.html#afe0450130f2a9c79ddf5066c45040537">SetPositionToCursor()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
-<a id="af8c3589106c6405f214156af2dba0184" name="af8c3589106c6405f214156af2dba0184"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8c3589106c6405f214156af2dba0184">&#9670;&nbsp;</a></span>SetPositionToCursor()</h2>
+<a id="afe0450130f2a9c79ddf5066c45040537" name="afe0450130f2a9c79ddf5066c45040537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe0450130f2a9c79ddf5066c45040537">&#9670;&nbsp;</a></span>SetPositionToCursor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1246,13 +1208,13 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::SetPositionToCursor </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a>&#160;</td>
           <td class="paramname"><em>xfield</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="DataDisplay_8h.html#a138c90fe0e6c71d70af7b317ea2a0cc2">MeaFields</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a>&#160;</td>
           <td class="paramname"><em>yfield</em>&#160;</td>
         </tr>
         <tr>
@@ -1272,7 +1234,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#aeb64da019fddd12ce64dcdb5757d4383">SetPosition()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac0bd0695eb2c540a73935bf1f4cc0313">SetPosition()</a>.</p>
 
 </div>
 </div>
@@ -1308,9 +1270,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#a66ea7b0d07c27bd139bf700b1d8363dd">ChangeRadioToolEnable()</a>, <a class="el" href="classMeaToolMgr.html#a5e7e0b1b726f8cbfc0f9998d197c9578">FindTool()</a>, <a class="el" href="classMeaTool.html#afcef25cd1fdeb11b04b5d24ca7aad86b">MeaTool::IsRadioTool()</a>, <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#a66ea7b0d07c27bd139bf700b1d8363dd">ChangeRadioToolEnable()</a>, <a class="el" href="classMeaToolMgr.html#a5e7e0b1b726f8cbfc0f9998d197c9578">FindTool()</a>, <a class="el" href="classMeaTool.html#afcef25cd1fdeb11b04b5d24ca7aad86b">MeaTool::IsRadioTool()</a>, and <a class="el" href="classMeaToolMgr.html#abd7baefc249d77f73c5b977278a8a5e2">m_currentRadioTool</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a0275b28c12edd6490a9925a0547e4280">CChildView::OnRadioTool()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#abb443a0814501afb2566b2d1c6fad907">AppView::OnRadioTool()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -1382,8 +1344,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad6c8df9ebd4d6cd228bb9f9d13e34cf7" name="ad6c8df9ebd4d6cd228bb9f9d13e34cf7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6c8df9ebd4d6cd228bb9f9d13e34cf7">&#9670;&nbsp;</a></span>ShowAspect()</h2>
+<a id="ab93a8894c8a062ac58412f0891b5779b" name="ab93a8894c8a062ac58412f0891b5779b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab93a8894c8a062ac58412f0891b5779b">&#9670;&nbsp;</a></span>ShowAspect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1394,7 +1356,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::ShowAspect </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1414,7 +1376,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a9e763e76100a09601b276f9205bcc09b">MeaDataDisplay::ShowAspect()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a8ad71a7b4f28c9810e1ca5a028a489be">MeaDataDisplay::ShowAspect()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaLineTool.html#a5c5158d88e487ab1a169570e6f2233d9">MeaLineTool::Update()</a>, <a class="el" href="classMeaRectTool.html#a37c90ed4f905c4bd24673beff67d8d54">MeaRectTool::Update()</a>, and <a class="el" href="classMeaWindowTool.html#ab393858f982960f3c96f24ae03450393">MeaWindowTool::Update()</a>.</p>
 
@@ -1496,8 +1458,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a78c25670fb96daa5d5f479b030dbf1a6" name="a78c25670fb96daa5d5f479b030dbf1a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a78c25670fb96daa5d5f479b030dbf1a6">&#9670;&nbsp;</a></span>ShowDistance() <span class="overload">[1/2]</span></h2>
+<a id="a48620b851663d77bf89035e39f6a4cca" name="a48620b851663d77bf89035e39f6a4cca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48620b851663d77bf89035e39f6a4cca">&#9670;&nbsp;</a></span>ShowDistance() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1508,7 +1470,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::ShowDistance </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1528,7 +1490,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a91154622bd1a76a3a4f4fbdfec5a97e9">MeaDataDisplay::ShowDistance()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#aad7a7209f1796fcdeba77304f4914cd8">MeaDataDisplay::ShowDistance()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaCircleTool.html#aa03c5fefaea1c4d1d8adc9d32ed039a7">MeaCircleTool::Update()</a>, <a class="el" href="classMeaLineTool.html#a5c5158d88e487ab1a169570e6f2233d9">MeaLineTool::Update()</a>, <a class="el" href="classMeaRectTool.html#a37c90ed4f905c4bd24673beff67d8d54">MeaRectTool::Update()</a>, and <a class="el" href="classMeaWindowTool.html#ab393858f982960f3c96f24ae03450393">MeaWindowTool::Update()</a>.</p>
 
@@ -1566,12 +1528,12 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a91154622bd1a76a3a4f4fbdfec5a97e9">MeaDataDisplay::ShowDistance()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#aad7a7209f1796fcdeba77304f4914cd8">MeaDataDisplay::ShowDistance()</a>.</p>
 
 </div>
 </div>
-<a id="a36f102b4779a5b1e2c579c01f7479ffb" name="a36f102b4779a5b1e2c579c01f7479ffb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36f102b4779a5b1e2c579c01f7479ffb">&#9670;&nbsp;</a></span>ShowRectArea()</h2>
+<a id="aeb42bae1423a7f921eb1d7f11736596f" name="aeb42bae1423a7f921eb1d7f11736596f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb42bae1423a7f921eb1d7f11736596f">&#9670;&nbsp;</a></span>ShowRectArea()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1582,7 +1544,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::ShowRectArea </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1602,7 +1564,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#af5aa6f5cd3200d64f779881c53d02d53">MeaDataDisplay::ShowRectArea()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a086e1b04d0014dc49aff070112fb2657">MeaDataDisplay::ShowRectArea()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaLineTool.html#a5c5158d88e487ab1a169570e6f2233d9">MeaLineTool::Update()</a>, <a class="el" href="classMeaRectTool.html#a37c90ed4f905c4bd24673beff67d8d54">MeaRectTool::Update()</a>, and <a class="el" href="classMeaWindowTool.html#ab393858f982960f3c96f24ae03450393">MeaWindowTool::Update()</a>.</p>
 
@@ -1646,8 +1608,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad550822797edf0b24b59b1c8dad8314e" name="ad550822797edf0b24b59b1c8dad8314e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad550822797edf0b24b59b1c8dad8314e">&#9670;&nbsp;</a></span>ShowScreenRes()</h2>
+<a id="a2c4f60b15c1403d26cf2a0c4ecb0f734" name="a2c4f60b15c1403d26cf2a0c4ecb0f734"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4f60b15c1403d26cf2a0c4ecb0f734">&#9670;&nbsp;</a></span>ShowScreenRes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1658,7 +1620,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::ShowScreenRes </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;&#160;</td>
           <td class="paramname"><em>res</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1678,14 +1640,14 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#ada64d1246bfe095a3362354ef429ac86">MeaDataDisplay::ShowScreenRes()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a41e42c557f038cb14a1a42c6409240d6">MeaDataDisplay::ShowScreenRes()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaScreenTool.html#aea1f796423b0556d777bc1f80126a54d">MeaScreenTool::Update()</a>.</p>
 
 </div>
 </div>
-<a id="ab58ac797d1cb598b8fda508b657a3240" name="ab58ac797d1cb598b8fda508b657a3240"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab58ac797d1cb598b8fda508b657a3240">&#9670;&nbsp;</a></span>ShowScreenWH()</h2>
+<a id="a93a31ef095b68e7ec9e0026c57cec699" name="a93a31ef095b68e7ec9e0026c57cec699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93a31ef095b68e7ec9e0026c57cec699">&#9670;&nbsp;</a></span>ShowScreenWH()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1696,7 +1658,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::ShowScreenWH </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1716,14 +1678,14 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a464cc2e0cf4d929a8da8e21cb0f45c35">MeaDataDisplay::ShowScreenWH()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a74cd355386524034a21a49a7e2853638">MeaDataDisplay::ShowScreenWH()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaScreenTool.html#aea1f796423b0556d777bc1f80126a54d">MeaScreenTool::Update()</a>.</p>
 
 </div>
 </div>
-<a id="a27d63b63bca36002a91e3b135a4d8cc1" name="a27d63b63bca36002a91e3b135a4d8cc1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27d63b63bca36002a91e3b135a4d8cc1">&#9670;&nbsp;</a></span>ShowWH()</h2>
+<a id="a515cfa6f02e269be5e7f139dac80dbc6" name="a515cfa6f02e269be5e7f139dac80dbc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515cfa6f02e269be5e7f139dac80dbc6">&#9670;&nbsp;</a></span>ShowWH()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1734,7 +1696,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaToolMgr::ShowWH </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;&#160;</td>
           <td class="paramname"><em>size</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1754,14 +1716,14 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a20d1c7ff6604455569279c828329eb4b">MeaDataDisplay::ShowWH()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, and <a class="el" href="classMeaDataDisplay.html#a1f0b902a310ec5e3ab7e7dcb1adb0253">MeaDataDisplay::ShowWH()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaCircleTool.html#aa03c5fefaea1c4d1d8adc9d32ed039a7">MeaCircleTool::Update()</a>, <a class="el" href="classMeaLineTool.html#a5c5158d88e487ab1a169570e6f2233d9">MeaLineTool::Update()</a>, <a class="el" href="classMeaRectTool.html#a37c90ed4f905c4bd24673beff67d8d54">MeaRectTool::Update()</a>, and <a class="el" href="classMeaWindowTool.html#ab393858f982960f3c96f24ae03450393">MeaWindowTool::Update()</a>.</p>
 
 </div>
 </div>
-<a id="a5a72ad5b0588812f5905d1e73fc85420" name="a5a72ad5b0588812f5905d1e73fc85420"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a72ad5b0588812f5905d1e73fc85420">&#9670;&nbsp;</a></span>ShowXY1()</h2>
+<a id="a52dd6b8dfec8a4a8577c94be3b8de96e" name="a52dd6b8dfec8a4a8577c94be3b8de96e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52dd6b8dfec8a4a8577c94be3b8de96e">&#9670;&nbsp;</a></span>ShowXY1()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1778,7 +1740,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>cpoint</em>&#160;</td>
         </tr>
         <tr>
@@ -1803,14 +1765,14 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, <a class="el" href="classMeaToolMgr.html#ab7a97843236192c77efda48d050380b4">m_rulerTool</a>, <a class="el" href="classMeaRulerTool.html#a9a9cbac95cf3c90d05cecccc980d38ab">MeaRulerTool::SetIndicator()</a>, and <a class="el" href="classMeaDataDisplay.html#ac9c08bd76dc9ec8be0430bd95a3b41ed">MeaDataDisplay::ShowXY1()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, <a class="el" href="classMeaToolMgr.html#ab7a97843236192c77efda48d050380b4">m_rulerTool</a>, <a class="el" href="classMeaRulerTool.html#a9a9cbac95cf3c90d05cecccc980d38ab">MeaRulerTool::SetIndicator()</a>, and <a class="el" href="classMeaDataDisplay.html#ab76d33b49ace0f77ee397722c328217c">MeaDataDisplay::ShowXY1()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#ab16414dfdb2e2c237f2500a709c2974c">MeaAngleTool::Update()</a>, <a class="el" href="classMeaCircleTool.html#aa03c5fefaea1c4d1d8adc9d32ed039a7">MeaCircleTool::Update()</a>, <a class="el" href="classMeaCursorTool.html#a8e65943be4f68cdcbdea4fe15462e64d">MeaCursorTool::Update()</a>, <a class="el" href="classMeaLineTool.html#a5c5158d88e487ab1a169570e6f2233d9">MeaLineTool::Update()</a>, <a class="el" href="classMeaPointTool.html#a73b15f428d30c7da40eb53cc7b5753d2">MeaPointTool::Update()</a>, <a class="el" href="classMeaRectTool.html#a37c90ed4f905c4bd24673beff67d8d54">MeaRectTool::Update()</a>, and <a class="el" href="classMeaWindowTool.html#ab393858f982960f3c96f24ae03450393">MeaWindowTool::Update()</a>.</p>
 
 </div>
 </div>
-<a id="a9e2128e87c7fdf0dc724b754dbabba52" name="a9e2128e87c7fdf0dc724b754dbabba52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e2128e87c7fdf0dc724b754dbabba52">&#9670;&nbsp;</a></span>ShowXY2()</h2>
+<a id="ae5537b69679b40d032035af5fc43ee23" name="ae5537b69679b40d032035af5fc43ee23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5537b69679b40d032035af5fc43ee23">&#9670;&nbsp;</a></span>ShowXY2()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1827,7 +1789,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>cpoint</em>&#160;</td>
         </tr>
         <tr>
@@ -1852,14 +1814,14 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, <a class="el" href="classMeaToolMgr.html#ab7a97843236192c77efda48d050380b4">m_rulerTool</a>, <a class="el" href="classMeaRulerTool.html#a9a9cbac95cf3c90d05cecccc980d38ab">MeaRulerTool::SetIndicator()</a>, and <a class="el" href="classMeaDataDisplay.html#ac427d88dae3c1a174d2ba152ae7a6465">MeaDataDisplay::ShowXY2()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, <a class="el" href="classMeaToolMgr.html#ab7a97843236192c77efda48d050380b4">m_rulerTool</a>, <a class="el" href="classMeaRulerTool.html#a9a9cbac95cf3c90d05cecccc980d38ab">MeaRulerTool::SetIndicator()</a>, and <a class="el" href="classMeaDataDisplay.html#a53f029815ea6d05849028164096fdb97">MeaDataDisplay::ShowXY2()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#ab16414dfdb2e2c237f2500a709c2974c">MeaAngleTool::Update()</a>, <a class="el" href="classMeaLineTool.html#a5c5158d88e487ab1a169570e6f2233d9">MeaLineTool::Update()</a>, <a class="el" href="classMeaRectTool.html#a37c90ed4f905c4bd24673beff67d8d54">MeaRectTool::Update()</a>, and <a class="el" href="classMeaWindowTool.html#ab393858f982960f3c96f24ae03450393">MeaWindowTool::Update()</a>.</p>
 
 </div>
 </div>
-<a id="a504426e8f460bc204f1a2c2bfe7533fe" name="a504426e8f460bc204f1a2c2bfe7533fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a504426e8f460bc204f1a2c2bfe7533fe">&#9670;&nbsp;</a></span>ShowXYV()</h2>
+<a id="a50a27a5341cc7e68938b59917ed154dd" name="a50a27a5341cc7e68938b59917ed154dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50a27a5341cc7e68938b59917ed154dd">&#9670;&nbsp;</a></span>ShowXYV()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1876,7 +1838,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>cpoint</em>&#160;</td>
         </tr>
         <tr>
@@ -1901,7 +1863,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, <a class="el" href="classMeaToolMgr.html#ab7a97843236192c77efda48d050380b4">m_rulerTool</a>, <a class="el" href="classMeaRulerTool.html#a9a9cbac95cf3c90d05cecccc980d38ab">MeaRulerTool::SetIndicator()</a>, and <a class="el" href="classMeaDataDisplay.html#a6d5e2b2aeab3fbb86aa8ec2645614e51">MeaDataDisplay::ShowXYV()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaToolMgr.html#ac74f2615c1ed3a196bdc622f26ba9c78">m_dataDisplay</a>, <a class="el" href="classMeaToolMgr.html#ab7a97843236192c77efda48d050380b4">m_rulerTool</a>, <a class="el" href="classMeaRulerTool.html#a9a9cbac95cf3c90d05cecccc980d38ab">MeaRulerTool::SetIndicator()</a>, and <a class="el" href="classMeaDataDisplay.html#a08a735f6836a4dae79d9179154e4db2c">MeaDataDisplay::ShowXYV()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#ab16414dfdb2e2c237f2500a709c2974c">MeaAngleTool::Update()</a>, and <a class="el" href="classMeaCircleTool.html#aa03c5fefaea1c4d1d8adc9d32ed039a7">MeaCircleTool::Update()</a>.</p>
 
@@ -1973,7 +1935,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaTool.html#a1d0cb5560a03a4af05d05f53fc21aa29">MeaTool::Disable()</a>, <a class="el" href="classMeaTool.html#ae803a77d5f1207b3972eda7c4ca6bf02">MeaTool::Enable()</a>, <a class="el" href="classMeaToolMgr.html#a5e7e0b1b726f8cbfc0f9998d197c9578">FindTool()</a>, and <a class="el" href="classMeaTool.html#a6782e6a257f0127c546100447fdb63b8">MeaTool::IsEnabled()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a71653134f15e66901a7ceffabd642f8a">CChildView::OnRuler()</a>, and <a class="el" href="classCChildView.html#a1a2e5f34fd9b1b28c383448064c9c669">CChildView::OnScreenGrid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#abf33bc2a7431a1fd7fb2db1233bc5d58">AppView::OnRuler()</a>, and <a class="el" href="classAppView.html#a804c06ae6f57f097851ef9aeb15624c8">AppView::OnScreenGrid()</a>.</p>
 
 </div>
 </div>
@@ -2050,7 +2012,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaToolMgr.html#aecf7f372f33564ca04fbcbcf436f1b82">m_tools</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5c7c5e0b94519969b06d294d47539fc8">CChildView::ApplyPreferences()</a>, <a class="el" href="classCChildView.html#a9697bc4d097d424af9e69076ba386e92">CChildView::LoadProfile()</a>, <a class="el" href="classCChildView.html#a5b5d68885dd4dc9c3d839d05d8c4b403">CChildView::MasterReset()</a>, <a class="el" href="classCChildView.html#a97fd2756f57a00e5ed4a546d261cfcf2">CChildView::OnAngles()</a>, <a class="el" href="classCChildView.html#aa954d91cc47f47e6d5fcf18cc95d8513">CChildView::OnCustomUnits()</a>, <a class="el" href="classCChildView.html#ac17e6762daad83224122997f71bc8e14">CChildView::OnInvertY()</a>, <a class="el" href="classCChildView.html#a86cd8d235ad84c382a39c24fca59a6dc">CChildView::OnOrigin()</a>, <a class="el" href="classCChildView.html#a11d8090eed1f77e80264d300ea97fbdf">CChildView::OnResetOrigin()</a>, <a class="el" href="classCChildView.html#aa9e9907c0ece3ece9b345608031dc2ce">CChildView::OnUnits()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#afa8eaf9324b31c2e2fa6cee442f5c2f5">AppView::ApplyPreferences()</a>, <a class="el" href="classAppView.html#ae8b42b18ab1e1a3c039ded1d66824995">AppView::LoadProfile()</a>, <a class="el" href="classAppView.html#a23f06790dbb3a79e8576b0d3f9dc529b">AppView::MasterReset()</a>, <a class="el" href="classAppView.html#ab1f6ba8f113353257d62780d320a0ff3">AppView::OnAngles()</a>, <a class="el" href="classAppView.html#a70caa5a301c8105887a91fc47fdd65df">AppView::OnCustomUnits()</a>, <a class="el" href="classAppView.html#a536c9779e9875fe3c58bc4c07beec2ff">AppView::OnInvertY()</a>, <a class="el" href="classAppView.html#a9552c4ac614a1b8c913100c5878ff045">AppView::OnOrigin()</a>, <a class="el" href="classAppView.html#ac0ecfd7c4408243381c38ad3c66d151d">AppView::OnResetOrigin()</a>, <a class="el" href="classAppView.html#a177fee063a6974fa632f9e8636f90357">AppView::OnUnits()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>

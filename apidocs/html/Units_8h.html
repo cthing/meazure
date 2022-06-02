@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_bc938a4d3b5b2577c3702f153eb19715.html">units</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -50,33 +50,26 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for the units manager and its associated units classes.  
+<p>Header file for the units classes.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;math.h&gt;</code><br />
-<code>#include &lt;list&gt;</code><br />
-<code>#include &lt;map&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
-<code>#include &quot;<a class="el" href="Label_8h_source.html">Label.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Profile_8h_source.html">Profile.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Singleton_8h_source.html">Singleton.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="Utils_8h_source.html">Utils.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;<a class="el" href="ScreenProvider_8h_source.html">meazure/ui/ScreenProvider.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="Profile_8h_source.html">meazure/profile/Profile.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="Geometry_8h_source.html">meazure/utilities/Geometry.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Units.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="Units_8h__incl.png" border="0" usemap="#aUnits_8h" alt=""/></div>
 <map name="aUnits_8h" id="aUnits_8h">
-<area shape="rect" title="Header file for the units manager and its associated units classes." alt="" coords="198,5,261,32"/>
-<area shape="rect" title=" " alt="" coords="146,155,209,181"/>
-<area shape="rect" title=" " alt="" coords="26,80,65,107"/>
-<area shape="rect" title=" " alt="" coords="89,80,135,107"/>
-<area shape="rect" title=" " alt="" coords="160,80,216,107"/>
-<area shape="rect" href="Label_8h.html" title="Header file for the label control." alt="" coords="240,80,304,107"/>
-<area shape="rect" href="Profile_8h.html" title="Profile base class header file." alt="" coords="328,80,397,107"/>
-<area shape="rect" href="Singleton_8h.html" title="Mix&#45;in class for the Singleton pattern." alt="" coords="506,80,593,107"/>
-<area shape="rect" href="Utils_8h.html" title="Miscellaneous utility methods." alt="" coords="421,80,480,107"/>
-<area shape="rect" href="MeaAssert_8h.html" title="Defines the MeaAssert macro to override assert if necessary." alt="" coords="503,155,599,181"/>
-<area shape="rect" title=" " alt="" coords="516,229,585,256"/>
-<area shape="rect" title=" " alt="" coords="421,155,478,181"/>
+<area shape="rect" title="Header file for the units classes." alt="" coords="214,5,277,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,61,107"/>
+<area shape="rect" href="ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="86,80,274,107"/>
+<area shape="rect" href="Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="217,155,407,181"/>
+<area shape="rect" href="Profile_8h.html" title="Profile base class header file." alt="" coords="350,80,511,107"/>
+<area shape="rect" title=" " alt="" coords="146,155,193,181"/>
+<area shape="rect" title=" " alt="" coords="303,304,361,331"/>
+<area shape="rect" title=" " alt="" coords="276,229,348,256"/>
+<area shape="rect" href="NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="372,229,479,256"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -84,32 +77,41 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="Units_8h__dep__incl.png" border="0" usemap="#aUnits_8hdep" alt=""/></div>
 <map name="aUnits_8hdep" id="aUnits_8hdep">
-<area shape="rect" title="Header file for the units manager and its associated units classes." alt="" coords="420,5,483,32"/>
-<area shape="rect" href="CustomUnitsPrefs_8h.html" title="Custom measurement units property page header file." alt="" coords="133,155,271,181"/>
-<area shape="rect" href="DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="932,80,1035,107"/>
-<area shape="rect" href="DataWin_8h.html" title="Header file for a popup data display window." alt="" coords="411,229,494,256"/>
-<area shape="rect" href="Layout_8h.html" title="Header file for window layout utilities." alt="" coords="463,155,535,181"/>
-<area shape="rect" href="PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="514,80,637,107"/>
-<area shape="rect" href="PrecisionPrefs_8h.html" title="Display precision property page header file." alt="" coords="42,80,159,107"/>
-<area shape="rect" href="Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="5,379,108,405"/>
-<area shape="rect" href="ChildView_8h.html" title="Header file for the application view." alt="" coords="1341,453,1431,480"/>
-<area shape="rect" href="MainFrm_8h.html" title="Header file for the application frame class." alt="" coords="1344,528,1428,555"/>
-<area shape="rect" href="Tool_8h.html" title="Header file for the tool base class." alt="" coords="1057,155,1115,181"/>
-<area shape="rect" href="ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="807,379,885,405"/>
-<area shape="rect" href="GridTool_8h.html" title="Grid overlay tool header file." alt="" coords="1156,229,1237,256"/>
-<area shape="rect" href="OriginTool_8h.html" title="Origin marker tool header file." alt="" coords="1041,229,1131,256"/>
-<area shape="rect" href="RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="530,229,621,256"/>
-<area shape="rect" href="RulerTool_8h.html" title="Ruler measurement tool header file." alt="" coords="1261,229,1348,256"/>
-<area shape="rect" href="ScreenTool_8h.html" title="Screen information tool header file." alt="" coords="918,229,1017,256"/>
-<area shape="rect" href="AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="517,304,607,331"/>
-<area shape="rect" href="CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="857,304,947,331"/>
-<area shape="rect" href="CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="632,304,727,331"/>
-<area shape="rect" href="LineTool_8h.html" title="Line measurement tool header file." alt="" coords="751,304,832,331"/>
-<area shape="rect" href="PointTool_8h.html" title="Point measurement tool header file." alt="" coords="171,304,257,331"/>
-<area shape="rect" href="RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="281,304,365,331"/>
-<area shape="rect" href="WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="389,304,492,331"/>
-<area shape="rect" href="ToolsPrefs_8h.html" title="Tool property page header file." alt="" coords="52,304,147,331"/>
-<area shape="rect" href="Circle_8h.html" title="Circle graphic header file." alt="" coords="705,229,771,256"/>
+<area shape="rect" title="Header file for the units classes." alt="" coords="1297,5,1359,32"/>
+<area shape="rect" href="CustomUnitsPrefs_8h.html" title="Custom measurement units property page header file." alt="" coords="5,229,144,256"/>
+<area shape="rect" href="Layout_8h.html" title="Header file for window layout utilities." alt="" coords="1643,155,1715,181"/>
+<area shape="rect" href="PositionDesktop_8h.html" title="Position context information." alt="" coords="1443,229,1571,256"/>
+<area shape="rect" href="PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="1825,453,1948,480"/>
+<area shape="rect" href="PrecisionPrefs_8h.html" title="Display precision property page header file." alt="" coords="625,80,743,107"/>
+<area shape="rect" href="UnitsLabels_8h.html" title="Header file for the units classes." alt="" coords="1213,80,1315,107"/>
+<area shape="rect" href="UnitsMgr_8h.html" title="Header file for the units manager." alt="" coords="1133,155,1219,181"/>
+<area shape="rect" href="UnitsProvider_8h.html" title="Interface providing measurement units information." alt="" coords="1339,80,1448,107"/>
+<area shape="rect" href="Preferences_8h.html" title="Program preferences property sheet header file." alt="" coords="177,528,279,555"/>
+<area shape="rect" href="AppView_8h.html" title="Header file for the application view." alt="" coords="186,603,270,629"/>
+<area shape="rect" href="AppFrame_8h.html" title="Header file for the application frame class." alt="" coords="181,677,275,704"/>
+<area shape="rect" href="Position_8h.html" title="Represents a tool position." alt="" coords="1431,304,1511,331"/>
+<area shape="rect" href="AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="953,453,1044,480"/>
+<area shape="rect" href="ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="959,528,1038,555"/>
+<area shape="rect" href="CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="1288,453,1379,480"/>
+<area shape="rect" href="CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="1530,453,1625,480"/>
+<area shape="rect" href="LineTool_8h.html" title="Line measurement tool header file." alt="" coords="847,453,929,480"/>
+<area shape="rect" href="PointTool_8h.html" title="Point measurement tool header file." alt="" coords="1069,453,1155,480"/>
+<area shape="rect" href="PositionCollection_8h.html" title="Represents a collection of logged positions." alt="" coords="1686,379,1823,405"/>
+<area shape="rect" href="RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="1267,379,1357,405"/>
+<area shape="rect" href="RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="1179,453,1263,480"/>
+<area shape="rect" href="WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="1403,453,1506,480"/>
+<area shape="rect" href="DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="390,229,493,256"/>
+<area shape="rect" href="Tool_8h.html" title="Header file for the tool base class." alt="" coords="570,304,627,331"/>
+<area shape="rect" href="GridTool_8h.html" title="Grid overlay tool header file." alt="" coords="673,379,754,405"/>
+<area shape="rect" href="OriginTool_8h.html" title="Origin marker tool header file." alt="" coords="779,379,869,405"/>
+<area shape="rect" href="RulerTool_8h.html" title="Ruler measurement tool header file." alt="" coords="438,379,525,405"/>
+<area shape="rect" href="ScreenTool_8h.html" title="Screen information tool header file." alt="" coords="549,379,648,405"/>
+<area shape="rect" href="CrossHair_8h.html" title="Crosshair graphic header file." alt="" coords="944,379,1035,405"/>
+<area shape="rect" href="DataWin_8h.html" title="Header file for a popup data display window." alt="" coords="1109,379,1192,405"/>
+<area shape="rect" href="PositionScreen_8h.html" title="Represents a single monitor attached to the system." alt="" coords="1446,155,1567,181"/>
+<area shape="rect" href="Ruler_8h.html" title="Ruler graphic header file." alt="" coords="450,304,513,331"/>
+<area shape="rect" href="ToolsPrefs_8h.html" title="Tool property page header file." alt="" coords="729,453,823,480"/>
+<area shape="rect" href="RulerPrefs_8h.html" title="Ruler property page header file." alt="" coords="269,379,363,405"/>
 </map>
 </div>
 </div>
@@ -155,27 +157,6 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaCustomUnits.html">MeaCustomUnits</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides linear measurements in user defined units.  <a href="classMeaCustomUnits.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsLabel.html">MeaUnitsLabel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for measurement units labels.  <a href="classMeaUnitsLabel.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaAngularUnitsLabel.html">MeaAngularUnitsLabel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">There are two categories of labels: those for angular measurements and those for linear measurements.  <a href="classMeaAngularUnitsLabel.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLinearUnitsLabel.html">MeaLinearUnitsLabel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">There are two categories of labels: those for angular measurements and those for linear measurements.  <a href="classMeaLinearUnitsLabel.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaLengthUnitsLabel.html">MeaLengthUnitsLabel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Label for length measurements.  <a href="classMeaLengthUnitsLabel.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaAreaUnitsLabel.html">MeaAreaUnitsLabel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Label for area measurements.  <a href="classMeaAreaUnitsLabel.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaResUnitsLabel.html">MeaResUnitsLabel</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Label for resolution measurements.  <a href="classMeaResUnitsLabel.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manager for all units related operations including creating the units objects and labels, specifying the current units, setting the measurement origin and setting the y-axis orientation.  <a href="classMeaUnitsMgr.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
@@ -242,7 +223,7 @@ Enumerations</h2></td></tr>
 <tr class="separator:ad18dcd2232783d2f672e48b113890ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Header file for the units manager and its associated units classes. </p>
+<div class="textblock"><p >Header file for the units classes. </p>
 </div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="af6780e392f63c2778225743126036560" name="af6780e392f63c2778225743126036560"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af6780e392f63c2778225743126036560">&#9670;&nbsp;</a></span>MeaAngularMeasurementId</h2>

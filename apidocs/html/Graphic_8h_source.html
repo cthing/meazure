@@ -39,7 +39,7 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_5fa8933a05c7c6ea1b0b07e1b4041736.html">graphics</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -124,7 +124,7 @@ $(function() {
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    ///</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">    /// @param  winBelow    [in] Window to place below this class&#39;s window</span></div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classMeaGraphic.html#ac27c9a12aefe9ca6e83d4720b67e11fa">   79</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaGraphic.html#ac27c9a12aefe9ca6e83d4720b67e11fa">SetAbove</a>(<span class="keyword">const</span> CWnd* winBelow) { SetWindowPos(winBelow, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE); }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classMeaGraphic.html#ac27c9a12aefe9ca6e83d4720b67e11fa">   79</a></span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaGraphic.html#ac27c9a12aefe9ca6e83d4720b67e11fa">SetAbove</a>(<span class="keyword">const</span> CWnd* winBelow) { <a class="code hl_function" href="namespaceMeaLayout.html#a845c5084125d5d1d420b322ec26a342d">SetWindowPos</a>(winBelow, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE); }</div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classMeaGraphic.html#acd65ca393182a337a14ff12d13e38cca">   82</a></span>    <span class="keyword">static</span> <span class="keyword">constexpr</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="classMeaGraphic.html#acd65ca393182a337a14ff12d13e38cca">kInitCoord</a> { -1000 };  <span class="comment">///&lt; An arbitrary initial coordinate for placing new graphics</span></div>
@@ -145,6 +145,7 @@ $(function() {
 <div class="ttc" id="aclassMeaGraphic_html_aad9b8c5e7d5841ec42e9b99668fc9e27"><div class="ttname"><a href="classMeaGraphic.html#aad9b8c5e7d5841ec42e9b99668fc9e27">MeaGraphic::m_parent</a></div><div class="ttdeci">const CWnd * m_parent</div><div class="ttdoc">Graphic's parent window or nullptr if graphic is a popup window.</div><div class="ttdef"><b>Definition:</b> Graphic.h:87</div></div>
 <div class="ttc" id="aclassMeaGraphic_html_ac27c9a12aefe9ca6e83d4720b67e11fa"><div class="ttname"><a href="classMeaGraphic.html#ac27c9a12aefe9ca6e83d4720b67e11fa">MeaGraphic::SetAbove</a></div><div class="ttdeci">void SetAbove(const CWnd *winBelow)</div><div class="ttdoc">Changes the z-order of the graphic window so that it if above the specified window.</div><div class="ttdef"><b>Definition:</b> Graphic.h:79</div></div>
 <div class="ttc" id="aclassMeaGraphic_html_acd65ca393182a337a14ff12d13e38cca"><div class="ttname"><a href="classMeaGraphic.html#acd65ca393182a337a14ff12d13e38cca">MeaGraphic::kInitCoord</a></div><div class="ttdeci">static constexpr int kInitCoord</div><div class="ttdoc">An arbitrary initial coordinate for placing new graphics.</div><div class="ttdef"><b>Definition:</b> Graphic.h:82</div></div>
+<div class="ttc" id="anamespaceMeaLayout_html_a845c5084125d5d1d420b322ec26a342d"><div class="ttname"><a href="namespaceMeaLayout.html#a845c5084125d5d1d420b322ec26a342d">MeaLayout::SetWindowPos</a></div><div class="ttdeci">bool SetWindowPos(const CWnd &amp;wnd, int x, int y)</div><div class="ttdoc">Sets the position of the specified window.</div><div class="ttdef"><b>Definition:</b> Layout.h:84</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1">
 <address style="align: right;"><small>Copyright 2011 C Thing Software</small></address>

@@ -87,16 +87,15 @@ Public Types</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:a25f6e2518eeffa416d88060ba6dc5352"><td class="mdescLeft">&#160;</td><td class="mdescRight">A ruler can be oriented vertically to measure along the height of the screen, or horizontally to measure along the width of the screen.  <a href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352">More...</a><br /></td></tr>
 <tr class="separator:a25f6e2518eeffa416d88060ba6dc5352"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0121e077da0ce88eb59ecf485709184"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classMeaRuler.html#ac0121e077da0ce88eb59ecf485709184a9314d75f7516e69a528ef36a600e85e2">NumIndicators</a> = 3
+<tr class="memitem:a429d97f6f76f786bc058c42400b5cbca"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="classMeaRuler.html#a429d97f6f76f786bc058c42400b5cbcaa9314d75f7516e69a528ef36a600e85e2">NumIndicators</a> = 3
  }</td></tr>
-<tr class="separator:ac0121e077da0ce88eb59ecf485709184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a429d97f6f76f786bc058c42400b5cbca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7568e2166fc7d375192cfa4a3293c041"><td class="memItemLeft" align="right" valign="top"><a id="a7568e2166fc7d375192cfa4a3293c041" name="a7568e2166fc7d375192cfa4a3293c041"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MeaRuler</b> ()</td></tr>
-<tr class="memdesc:a7568e2166fc7d375192cfa4a3293c041"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a ruler. <br /></td></tr>
-<tr class="separator:a7568e2166fc7d375192cfa4a3293c041"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ef48aec8b0b3b9f99aee8c5f4429f78"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaRuler.html#a7ef48aec8b0b3b9f99aee8c5f4429f78">MeaRuler</a> (const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;screenProvider, const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;unitsProvider)</td></tr>
+<tr class="memdesc:a7ef48aec8b0b3b9f99aee8c5f4429f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a ruler.  <a href="classMeaRuler.html#a7ef48aec8b0b3b9f99aee8c5f4429f78">More...</a><br /></td></tr>
+<tr class="separator:a7ef48aec8b0b3b9f99aee8c5f4429f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c7b44e8c50c52704c2331c8a947e85e"><td class="memItemLeft" align="right" valign="top"><a id="a2c7b44e8c50c52704c2331c8a947e85e" name="a2c7b44e8c50c52704c2331c8a947e85e"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaRuler</b> ()</td></tr>
 <tr class="memdesc:a2c7b44e8c50c52704c2331c8a947e85e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys a ruler. <br /></td></tr>
@@ -198,6 +197,14 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a192ed17df45b85ed6c0ca7fa76c6adae"><td class="memItemLeft" align="right" valign="top"><a id="a192ed17df45b85ed6c0ca7fa76c6adae" name="a192ed17df45b85ed6c0ca7fa76c6adae"></a>
+const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>m_screenProvider</b></td></tr>
+<tr class="memdesc:a192ed17df45b85ed6c0ca7fa76c6adae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Screen information provider. <br /></td></tr>
+<tr class="separator:a192ed17df45b85ed6c0ca7fa76c6adae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3f056c49f5995cb6b1f5eb1b691683d"><td class="memItemLeft" align="right" valign="top"><a id="ad3f056c49f5995cb6b1f5eb1b691683d" name="ad3f056c49f5995cb6b1f5eb1b691683d"></a>
+const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>m_unitsProvider</b></td></tr>
+<tr class="memdesc:ad3f056c49f5995cb6b1f5eb1b691683d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Units information provider. <br /></td></tr>
+<tr class="separator:ad3f056c49f5995cb6b1f5eb1b691683d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6565b2b4ebe1e136336d38e9965270f4"><td class="memItemLeft" align="right" valign="top"><a id="a6565b2b4ebe1e136336d38e9965270f4" name="a6565b2b4ebe1e136336d38e9965270f4"></a>
 COLORREF&#160;</td><td class="memItemRight" valign="bottom"><b>m_borderColor</b></td></tr>
 <tr class="memdesc:a6565b2b4ebe1e136336d38e9965270f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Color for the ruler border and tick marks. <br /></td></tr>
@@ -206,18 +213,18 @@ COLORREF&#160;</td><td class="memItemRight" valign="bottom"><b>m_borderColor</b>
 COLORREF&#160;</td><td class="memItemRight" valign="bottom"><b>m_backColor</b></td></tr>
 <tr class="memdesc:ae872312388d01c18dcd922fd107b2e0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Color for the ruler background. <br /></td></tr>
 <tr class="separator:ae872312388d01c18dcd922fd107b2e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab664a794e3f7f1426496e7e5076e196d"><td class="memItemLeft" align="right" valign="top"><a id="ab664a794e3f7f1426496e7e5076e196d" name="ab664a794e3f7f1426496e7e5076e196d"></a>
-SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>m_majorTickHeight</b></td></tr>
-<tr class="memdesc:ab664a794e3f7f1426496e7e5076e196d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the major tick marks, in pixels. <br /></td></tr>
-<tr class="separator:ab664a794e3f7f1426496e7e5076e196d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6597538bdd4d931b45a6931417711c5"><td class="memItemLeft" align="right" valign="top"><a id="ad6597538bdd4d931b45a6931417711c5" name="ad6597538bdd4d931b45a6931417711c5"></a>
-SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>m_minorTickHeight</b></td></tr>
-<tr class="memdesc:ad6597538bdd4d931b45a6931417711c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the minor tick marks, in pixels. <br /></td></tr>
-<tr class="separator:ad6597538bdd4d931b45a6931417711c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d6191a17b984be1d2ae5cfb525059c5"><td class="memItemLeft" align="right" valign="top"><a id="a5d6191a17b984be1d2ae5cfb525059c5" name="a5d6191a17b984be1d2ae5cfb525059c5"></a>
-SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>m_margin</b></td></tr>
-<tr class="memdesc:a5d6191a17b984be1d2ae5cfb525059c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height spacing between tick marks, number label and border, in pixels. <br /></td></tr>
-<tr class="separator:a5d6191a17b984be1d2ae5cfb525059c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74b631ce6078c19a074bad117073d950"><td class="memItemLeft" align="right" valign="top"><a id="a74b631ce6078c19a074bad117073d950" name="a74b631ce6078c19a074bad117073d950"></a>
+CSize&#160;</td><td class="memItemRight" valign="bottom"><b>m_majorTickHeight</b></td></tr>
+<tr class="memdesc:a74b631ce6078c19a074bad117073d950"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the major tick marks, in pixels. <br /></td></tr>
+<tr class="separator:a74b631ce6078c19a074bad117073d950"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b813c67257421866e8575ddc51b487f"><td class="memItemLeft" align="right" valign="top"><a id="a6b813c67257421866e8575ddc51b487f" name="a6b813c67257421866e8575ddc51b487f"></a>
+CSize&#160;</td><td class="memItemRight" valign="bottom"><b>m_minorTickHeight</b></td></tr>
+<tr class="memdesc:a6b813c67257421866e8575ddc51b487f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the minor tick marks, in pixels. <br /></td></tr>
+<tr class="separator:a6b813c67257421866e8575ddc51b487f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78ea4ee0ebb57e59fe8de3393df3fde2"><td class="memItemLeft" align="right" valign="top"><a id="a78ea4ee0ebb57e59fe8de3393df3fde2" name="a78ea4ee0ebb57e59fe8de3393df3fde2"></a>
+CSize&#160;</td><td class="memItemRight" valign="bottom"><b>m_margin</b></td></tr>
+<tr class="memdesc:a78ea4ee0ebb57e59fe8de3393df3fde2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height spacing between tick marks, number label and border, in pixels. <br /></td></tr>
+<tr class="separator:a78ea4ee0ebb57e59fe8de3393df3fde2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c217cbb488726ca57384f773b6e027"><td class="memItemLeft" align="right" valign="top"><a id="a41c217cbb488726ca57384f773b6e027" name="a41c217cbb488726ca57384f773b6e027"></a>
 <a class="el" href="classMeaRulerCallback.html">MeaRulerCallback</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>m_callback</b></td></tr>
 <tr class="memdesc:a41c217cbb488726ca57384f773b6e027"><td class="mdescLeft">&#160;</td><td class="mdescRight">Object to be called on ruler drag. <br /></td></tr>
@@ -254,7 +261,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>m_thk</b></td></tr>
 <tr class="memdesc:a39f40125dd0d8c99b9d3f89c295f545b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thickness of the ruler (i.e. its minor dimension), in pixels. <br /></td></tr>
 <tr class="separator:a39f40125dd0d8c99b9d3f89c295f545b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e0c79e8f6a23710bda06bc63f64ba82"><td class="memItemLeft" align="right" valign="top"><a id="a8e0c79e8f6a23710bda06bc63f64ba82" name="a8e0c79e8f6a23710bda06bc63f64ba82"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>m_indicatorLoc</b> [<a class="el" href="classMeaRuler.html#ac0121e077da0ce88eb59ecf485709184a9314d75f7516e69a528ef36a600e85e2">NumIndicators</a>]</td></tr>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_indicatorLoc</b> [<a class="el" href="classMeaRuler.html#a429d97f6f76f786bc058c42400b5cbcaa9314d75f7516e69a528ef36a600e85e2">NumIndicators</a>]</td></tr>
 <tr class="memdesc:a8e0c79e8f6a23710bda06bc63f64ba82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Location of each position indicator, in pixels. <br /></td></tr>
 <tr class="separator:a8e0c79e8f6a23710bda06bc63f64ba82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c99fac6513af232a8c3905dc2065ed7"><td class="memItemLeft" align="right" valign="top"><a id="a2c99fac6513af232a8c3905dc2065ed7" name="a2c99fac6513af232a8c3905dc2065ed7"></a>
@@ -348,8 +355,8 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 <p >Up to three position indicators can be displayed on the face of the ruler. These indicators are used by the <a class="el" href="classMeaRulerTool.html" title="Ruler measurement tool.">MeaRulerTool</a> to show the current position of crosshairs and other measurement points.</p>
 <p >The <a class="el" href="classMeaRulerTool.html" title="Ruler measurement tool.">MeaRulerTool</a> uses one vertical and one horizontal ruler per monitor. </p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
-<a id="ac0121e077da0ce88eb59ecf485709184" name="ac0121e077da0ce88eb59ecf485709184"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0121e077da0ce88eb59ecf485709184">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="a429d97f6f76f786bc058c42400b5cbca" name="a429d97f6f76f786bc058c42400b5cbca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a429d97f6f76f786bc058c42400b5cbca">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -360,7 +367,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac0121e077da0ce88eb59ecf485709184a9314d75f7516e69a528ef36a600e85e2" name="ac0121e077da0ce88eb59ecf485709184a9314d75f7516e69a528ef36a600e85e2"></a>NumIndicators&#160;</td><td class="fielddoc"><p >Maximum number of indicators. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a429d97f6f76f786bc058c42400b5cbcaa9314d75f7516e69a528ef36a600e85e2" name="a429d97f6f76f786bc058c42400b5cbcaa9314d75f7516e69a528ef36a600e85e2"></a>NumIndicators&#160;</td><td class="fielddoc"><p >Maximum number of indicators. </p>
 </td></tr>
 </table>
 
@@ -448,6 +455,46 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 
 </div>
 </div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7ef48aec8b0b3b9f99aee8c5f4429f78" name="a7ef48aec8b0b3b9f99aee8c5f4429f78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ef48aec8b0b3b9f99aee8c5f4429f78">&#9670;&nbsp;</a></span>MeaRuler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MeaRuler::MeaRuler </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;&#160;</td>
+          <td class="paramname"><em>screenProvider</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;&#160;</td>
+          <td class="paramname"><em>unitsProvider</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a ruler. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">screenProvider</td><td>[in] Screen information provider </td></tr>
+    <tr><td class="paramname">unitsProvider</td><td>[in] Units information provider </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="reference">References <a class="el" href="classMeaRuler.html#a8ce74dd3b43c7db274b2cf9b751031d5">ClearIndicator()</a>, and <a class="el" href="classMeaRuler.html#a429d97f6f76f786bc058c42400b5cbcaa9314d75f7516e69a528ef36a600e85e2">NumIndicators</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a8ce74dd3b43c7db274b2cf9b751031d5" name="a8ce74dd3b43c7db274b2cf9b751031d5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8ce74dd3b43c7db274b2cf9b751031d5">&#9670;&nbsp;</a></span>ClearIndicator()</h2>
@@ -473,9 +520,9 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaScreenMgr.html#aa35955b6e7dad2330ebb689c2d7dac5d">MeaScreenMgr::GetOffScreen()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, and <a class="el" href="classMeaRuler.html#a8e0c79e8f6a23710bda06bc63f64ba82">m_indicatorLoc</a>.</p>
+<p class="reference">References <a class="el" href="structMeaScreenProvider.html#a3c40ab3b075e535f2d0410b421a59cfa">MeaScreenProvider::GetOffScreen()</a>, <a class="el" href="classMeaRuler.html#a8e0c79e8f6a23710bda06bc63f64ba82">m_indicatorLoc</a>, and <a class="el" href="classMeaRuler.html#a192ed17df45b85ed6c0ca7fa76c6adae">m_screenProvider</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRuler.html#a7568e2166fc7d375192cfa4a3293c041">MeaRuler()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRuler.html#a7ef48aec8b0b3b9f99aee8c5f4429f78">MeaRuler()</a>.</p>
 
 </div>
 </div>
@@ -558,7 +605,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the window is created successfully. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a4452d16827b5eaf35a7029cd7111e32d">MeaUnitsMgr::ConvertToPixels()</a>, <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f">MeaGraphic::Create()</a>, <a class="el" href="classMeaLayout.html#ad8da9dc24587ddc1876627521a7b5d12">MeaLayout::DrawOpacityBackground()</a>, <a class="el" href="classMeaScreenMgr.html#a315eda9353960099ead68494ce52a340">MeaScreenMgr::GetScreenIter()</a>, <a class="el" href="classMeaScreenMgr.html#aac69c5fad41273380b6ad3896719147a">MeaScreenMgr::GetScreenRes()</a>, <a class="el" href="LayeredWindows_8h.html#a73f24e22c5ab220d8030bb996d3bcff8">HaveLayeredWindows()</a>, <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a7ef3bc4b1fa9e4cf0329fae9ad18fe04">Horizontal</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaUnitsMgr &gt;::Instance()</a>, <a class="el" href="classMeaRuler.html#a8ae95f6f319664717bf30f4d9e9ace31">kMajorTickHeight</a>, <a class="el" href="classMeaRuler.html#a4761a3511e00bb336f31fca36b10d8f4">kMargin</a>, <a class="el" href="classMeaRuler.html#a518198b10059414c9cc07f65d5ac048d">kMinMajorTickHeight</a>, <a class="el" href="classMeaRuler.html#a1fb0c3a35e6f6042ad6890ee914c5a04">kMinMargin</a>, <a class="el" href="classMeaRuler.html#a795b3eb0486325c20dd3b26ebc1ab47b">kMinMinorTickHeight</a>, <a class="el" href="classMeaRuler.html#a0e7a12f4829b0f6c491fe5a70c86743d">kMinorTickHeight</a>, <a class="el" href="classMeaRuler.html#aa9c0a1502bb0cd509a0865408762ed83">m_backBitmap</a>, <a class="el" href="classMeaRuler.html#ab6400075e6539dd0c2abdb6ade8eb197">m_backDC</a>, <a class="el" href="classMeaRuler.html#a41c217cbb488726ca57384f773b6e027">m_callback</a>, <a class="el" href="classMeaRuler.html#aad311c30d0b63dbdce824ccb255e9df7">m_fontHeight</a>, <a class="el" href="classMeaRuler.html#a645d9e587a2f8f013597968867aad54a">m_hFont</a>, <a class="el" href="classMeaRuler.html#ab664a794e3f7f1426496e7e5076e196d">m_majorTickHeight</a>, <a class="el" href="classMeaRuler.html#a5d6191a17b984be1d2ae5cfb525059c5">m_margin</a>, <a class="el" href="classMeaRuler.html#ad6597538bdd4d931b45a6931417711c5">m_minorTickHeight</a>, <a class="el" href="classMeaRuler.html#ae5d5913af65abb6072decd0c62560c97">m_orientation</a>, <a class="el" href="classMeaRuler.html#af1a505fed5b14e34ab554d6fd49fc621">m_origBackBitmap</a>, <a class="el" href="classMeaRuler.html#a0f0cbdf292bcb31badc19a04f6a38ce4">m_origRulerBitmap</a>, <a class="el" href="classMeaGraphic.html#aad9b8c5e7d5841ec42e9b99668fc9e27">MeaGraphic::m_parent</a>, <a class="el" href="classMeaRuler.html#a03e1e5d09d9f42e7dd39b80d51f7a8c4">m_rulerBitmap</a>, <a class="el" href="classMeaRuler.html#afb615928d3c30e4cc724463c7cc1c811">m_rulerDC</a>, <a class="el" href="classMeaRuler.html#a0b7253980ff3ff83414a563531f95cab">m_targetRect</a>, <a class="el" href="classMeaRuler.html#a39f40125dd0d8c99b9d3f89c295f545b">m_thk</a>, <a class="el" href="classMeaRuler.html#a95a7f964e7c7feab25666891deb109bb">m_vFont</a>, <a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996a7a5b4674d6bb1fc6909ea86928caeb97">MeaInchesId</a>, <a class="el" href="classMeaRuler.html#ab6297ae56eb7894531b6d5ccf12611c1">SetColors()</a>, <a class="el" href="classMeaRuler.html#a3bd50fc7657cf0c550906b9093d255bc">SetOpacity()</a>, <a class="el" href="classMeaRuler.html#ad73c050aac276c8df756843522965957">SetPosition()</a>, and <a class="el" href="LayeredWindows_8h.html#aadb9d3ad3a7944b83f9bf3d0df68aee7">WS_EX_LAYERED</a>.</p>
+<p class="reference">References <a class="el" href="structMeaUnitsProvider.html#a4effca62d754093cad67c2eec5feea80">MeaUnitsProvider::ConvertToPixels()</a>, <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f">MeaGraphic::Create()</a>, <a class="el" href="namespaceMeaLayout.html#a2279ccdf091ff5a5150ec64fab8854fa">MeaLayout::DrawOpacityBackground()</a>, <a class="el" href="structMeaScreenProvider.html#a54a905f0a77deffd675d11d1e125b8cf">MeaScreenProvider::GetScreenIter()</a>, <a class="el" href="structMeaScreenProvider.html#ad014c94513cc9ee2114f120725872c65">MeaScreenProvider::GetScreenRes()</a>, <a class="el" href="LayeredWindows_8h.html#a73f24e22c5ab220d8030bb996d3bcff8">HaveLayeredWindows()</a>, <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a7ef3bc4b1fa9e4cf0329fae9ad18fe04">Horizontal</a>, <a class="el" href="classMeaRuler.html#a8ae95f6f319664717bf30f4d9e9ace31">kMajorTickHeight</a>, <a class="el" href="classMeaRuler.html#a4761a3511e00bb336f31fca36b10d8f4">kMargin</a>, <a class="el" href="classMeaRuler.html#a518198b10059414c9cc07f65d5ac048d">kMinMajorTickHeight</a>, <a class="el" href="classMeaRuler.html#a1fb0c3a35e6f6042ad6890ee914c5a04">kMinMargin</a>, <a class="el" href="classMeaRuler.html#a795b3eb0486325c20dd3b26ebc1ab47b">kMinMinorTickHeight</a>, <a class="el" href="classMeaRuler.html#a0e7a12f4829b0f6c491fe5a70c86743d">kMinorTickHeight</a>, <a class="el" href="classMeaRuler.html#aa9c0a1502bb0cd509a0865408762ed83">m_backBitmap</a>, <a class="el" href="classMeaRuler.html#ab6400075e6539dd0c2abdb6ade8eb197">m_backDC</a>, <a class="el" href="classMeaRuler.html#a41c217cbb488726ca57384f773b6e027">m_callback</a>, <a class="el" href="classMeaRuler.html#aad311c30d0b63dbdce824ccb255e9df7">m_fontHeight</a>, <a class="el" href="classMeaRuler.html#a645d9e587a2f8f013597968867aad54a">m_hFont</a>, <a class="el" href="classMeaRuler.html#a74b631ce6078c19a074bad117073d950">m_majorTickHeight</a>, <a class="el" href="classMeaRuler.html#a78ea4ee0ebb57e59fe8de3393df3fde2">m_margin</a>, <a class="el" href="classMeaRuler.html#a6b813c67257421866e8575ddc51b487f">m_minorTickHeight</a>, <a class="el" href="classMeaRuler.html#ae5d5913af65abb6072decd0c62560c97">m_orientation</a>, <a class="el" href="classMeaRuler.html#af1a505fed5b14e34ab554d6fd49fc621">m_origBackBitmap</a>, <a class="el" href="classMeaRuler.html#a0f0cbdf292bcb31badc19a04f6a38ce4">m_origRulerBitmap</a>, <a class="el" href="classMeaGraphic.html#aad9b8c5e7d5841ec42e9b99668fc9e27">MeaGraphic::m_parent</a>, <a class="el" href="classMeaRuler.html#a03e1e5d09d9f42e7dd39b80d51f7a8c4">m_rulerBitmap</a>, <a class="el" href="classMeaRuler.html#afb615928d3c30e4cc724463c7cc1c811">m_rulerDC</a>, <a class="el" href="classMeaRuler.html#a192ed17df45b85ed6c0ca7fa76c6adae">m_screenProvider</a>, <a class="el" href="classMeaRuler.html#a0b7253980ff3ff83414a563531f95cab">m_targetRect</a>, <a class="el" href="classMeaRuler.html#a39f40125dd0d8c99b9d3f89c295f545b">m_thk</a>, <a class="el" href="classMeaRuler.html#ad3f056c49f5995cb6b1f5eb1b691683d">m_unitsProvider</a>, <a class="el" href="classMeaRuler.html#a95a7f964e7c7feab25666891deb109bb">m_vFont</a>, <a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996a7a5b4674d6bb1fc6909ea86928caeb97">MeaInchesId</a>, <a class="el" href="classMeaRuler.html#ab6297ae56eb7894531b6d5ccf12611c1">SetColors()</a>, <a class="el" href="classMeaRuler.html#a3bd50fc7657cf0c550906b9093d255bc">SetOpacity()</a>, <a class="el" href="classMeaRuler.html#ad73c050aac276c8df756843522965957">SetPosition()</a>, <a class="el" href="namespaceMeaLayout.html#a845c5084125d5d1d420b322ec26a342d">MeaLayout::SetWindowPos()</a>, and <a class="el" href="LayeredWindows_8h.html#aadb9d3ad3a7944b83f9bf3d0df68aee7">WS_EX_LAYERED</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaRulerPrefs.html#aae268d3e204c25a22edf5ecfe8da49bc">MeaRulerPrefs::OnInitDialog()</a>.</p>
 
@@ -607,7 +654,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a7ef3bc4b1fa9e4cf0329fae9ad18fe04">Horizontal</a>, <a class="el" href="classMeaRuler.html#a6565b2b4ebe1e136336d38e9965270f4">m_borderColor</a>, <a class="el" href="classMeaRuler.html#a8e0c79e8f6a23710bda06bc63f64ba82">m_indicatorLoc</a>, <a class="el" href="classMeaRuler.html#ae5d5913af65abb6072decd0c62560c97">m_orientation</a>, <a class="el" href="classMeaLayout.html#aad6241c59c5f20981457c7d34f1092d1">MeaLayout::ScreenToClientX()</a>, and <a class="el" href="classMeaLayout.html#ab7199f3f61d3d8e9499f97cbba84347d">MeaLayout::ScreenToClientY()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a7ef3bc4b1fa9e4cf0329fae9ad18fe04">Horizontal</a>, <a class="el" href="classMeaRuler.html#a6565b2b4ebe1e136336d38e9965270f4">m_borderColor</a>, <a class="el" href="classMeaRuler.html#a8e0c79e8f6a23710bda06bc63f64ba82">m_indicatorLoc</a>, <a class="el" href="classMeaRuler.html#ae5d5913af65abb6072decd0c62560c97">m_orientation</a>, <a class="el" href="namespaceMeaLayout.html#ab599dde68d97c5c5cc16cee48aa4f955">MeaLayout::ScreenToClientX()</a>, and <a class="el" href="namespaceMeaLayout.html#abd7ed3a450398b934b98b9ccd397fde5">MeaLayout::ScreenToClientY()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaRuler.html#a8915065687385b2a40fc91718622067f">DrawRuler()</a>, and <a class="el" href="classMeaRuler.html#a83809fea461a0fb003131014593dcdb7">SetIndicator()</a>.</p>
 
@@ -645,7 +692,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="structFSIZE.html#a0a8fae8d3c42f2ca26b78685ce561a67">FSIZE::cx</a>, <a class="el" href="structFSIZE.html#a202a5eea3bb25b7cb901562fa170be73">FSIZE::cy</a>, <a class="el" href="classMeaRuler.html#a3f8dde99f9d2bcfbb8fa8cb75fecc849">DrawIndicator()</a>, <a class="el" href="classMeaUnitsMgr.html#a9f90584a12e9be699e796ecf9d3efb85">MeaUnitsMgr::Format()</a>, <a class="el" href="classMeaUnitsMgr.html#adef9de536ccfccee70f81f4af52f18be">MeaUnitsMgr::GetLinearUnits()</a>, <a class="el" href="classMeaLinearUnits.html#ae4d6cff1c84f4dc10666186a02acdadf">MeaLinearUnits::GetMajorTickCount()</a>, <a class="el" href="classMeaLinearUnits.html#a7ee3f3c8f86e663005d9098aad5a2c0b">MeaLinearUnits::GetMinorIncr()</a>, <a class="el" href="classMeaScreenMgr.html#a7350b7437fab6fa98fc6ca498f97d652">MeaScreenMgr::GetVirtualRect()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaUnitsMgr &gt;::Instance()</a>, <a class="el" href="classMeaColors.html#a4718fa42b1ff7cbe6a2fcaf5be973baa">MeaColors::InterpolateColor()</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fda35b5f0dbf7dbe3b08a7f78a131707ac5">Left</a>, <a class="el" href="classMeaRuler.html#ae872312388d01c18dcd922fd107b2e0e">m_backColor</a>, <a class="el" href="classMeaRuler.html#a6565b2b4ebe1e136336d38e9965270f4">m_borderColor</a>, <a class="el" href="classMeaRuler.html#a645d9e587a2f8f013597968867aad54a">m_hFont</a>, <a class="el" href="classMeaRuler.html#a4d8a2d63ac95dedcf420b4d7e2bea46f">m_labelPosition</a>, <a class="el" href="classMeaRuler.html#ab664a794e3f7f1426496e7e5076e196d">m_majorTickHeight</a>, <a class="el" href="classMeaRuler.html#a5d6191a17b984be1d2ae5cfb525059c5">m_margin</a>, <a class="el" href="classMeaRuler.html#ad6597538bdd4d931b45a6931417711c5">m_minorTickHeight</a>, <a class="el" href="classMeaRuler.html#a95a7f964e7c7feab25666891deb109bb">m_vFont</a>, <a class="el" href="Units_8h.html#ad18dcd2232783d2f672e48b113890deda8b9c214ce10744cac4243510c81649e2">MeaConvertX</a>, <a class="el" href="Units_8h.html#ad18dcd2232783d2f672e48b113890deda5910c3febf4aa2d49660d116986735bb">MeaConvertY</a>, <a class="el" href="Units_8h.html#a21478f3f6dfa97e9013b005d6b3455d4a5f5d64d6eaf8771a3ac185a4aaf733dd">MeaX</a>, <a class="el" href="Units_8h.html#a21478f3f6dfa97e9013b005d6b3455d4a333a632b6c9fcaa236a744d5fa48aff8">MeaY</a>, <a class="el" href="classMeaRuler.html#ac0121e077da0ce88eb59ecf485709184a9314d75f7516e69a528ef36a600e85e2">NumIndicators</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fda8b6ea6d116ac65d59e1b823b6d7b2ab0">Right</a>, <a class="el" href="classMeaLayout.html#aad6241c59c5f20981457c7d34f1092d1">MeaLayout::ScreenToClientX()</a>, <a class="el" href="classMeaLayout.html#ab7199f3f61d3d8e9499f97cbba84347d">MeaLayout::ScreenToClientY()</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fdac2abcf7683c657adc2ff835a06308317">Top</a>, and <a class="el" href="classMeaLinearUnits.html#a6e6dd745026d19baa89053a6f2b64522">MeaLinearUnits::UnconvertCoord()</a>.</p>
+<p class="reference">References <a class="el" href="structMeaFSize.html#a638f5d9683b29587bae544a93aecbff7">MeaFSize::cx</a>, <a class="el" href="structMeaFSize.html#ae08cae7baa6f2d78b89e554f25fada3c">MeaFSize::cy</a>, <a class="el" href="classMeaRuler.html#a3f8dde99f9d2bcfbb8fa8cb75fecc849">DrawIndicator()</a>, <a class="el" href="structMeaUnitsProvider.html#a1fbb8bc8d4bd9c5138be8df474575824">MeaUnitsProvider::Format()</a>, <a class="el" href="structMeaUnitsProvider.html#a013f682c3bdc58b69841eb103b08154e">MeaUnitsProvider::GetLinearUnits()</a>, <a class="el" href="structMeaUnitsProvider.html#ac01feb594e118b1cc112184507891177">MeaUnitsProvider::GetMajorTickCount()</a>, <a class="el" href="structMeaUnitsProvider.html#abd75f2fc172f8811cc748d77ebf624f6">MeaUnitsProvider::GetMinorIncr()</a>, <a class="el" href="structMeaScreenProvider.html#a107a0e73724d4a862bb96fe036d1f1fd">MeaScreenProvider::GetVirtualRect()</a>, <a class="el" href="namespaceMeaColors.html#a4718fa42b1ff7cbe6a2fcaf5be973baa">MeaColors::InterpolateColor()</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fda35b5f0dbf7dbe3b08a7f78a131707ac5">Left</a>, <a class="el" href="classMeaRuler.html#ae872312388d01c18dcd922fd107b2e0e">m_backColor</a>, <a class="el" href="classMeaRuler.html#a6565b2b4ebe1e136336d38e9965270f4">m_borderColor</a>, <a class="el" href="classMeaRuler.html#a645d9e587a2f8f013597968867aad54a">m_hFont</a>, <a class="el" href="classMeaRuler.html#a4d8a2d63ac95dedcf420b4d7e2bea46f">m_labelPosition</a>, <a class="el" href="classMeaRuler.html#a74b631ce6078c19a074bad117073d950">m_majorTickHeight</a>, <a class="el" href="classMeaRuler.html#a78ea4ee0ebb57e59fe8de3393df3fde2">m_margin</a>, <a class="el" href="classMeaRuler.html#a6b813c67257421866e8575ddc51b487f">m_minorTickHeight</a>, <a class="el" href="classMeaRuler.html#a192ed17df45b85ed6c0ca7fa76c6adae">m_screenProvider</a>, <a class="el" href="classMeaRuler.html#ad3f056c49f5995cb6b1f5eb1b691683d">m_unitsProvider</a>, <a class="el" href="classMeaRuler.html#a95a7f964e7c7feab25666891deb109bb">m_vFont</a>, <a class="el" href="Units_8h.html#ad18dcd2232783d2f672e48b113890deda8b9c214ce10744cac4243510c81649e2">MeaConvertX</a>, <a class="el" href="Units_8h.html#ad18dcd2232783d2f672e48b113890deda5910c3febf4aa2d49660d116986735bb">MeaConvertY</a>, <a class="el" href="Units_8h.html#a21478f3f6dfa97e9013b005d6b3455d4a5f5d64d6eaf8771a3ac185a4aaf733dd">MeaX</a>, <a class="el" href="Units_8h.html#a21478f3f6dfa97e9013b005d6b3455d4a333a632b6c9fcaa236a744d5fa48aff8">MeaY</a>, <a class="el" href="classMeaRuler.html#a429d97f6f76f786bc058c42400b5cbcaa9314d75f7516e69a528ef36a600e85e2">NumIndicators</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fda8b6ea6d116ac65d59e1b823b6d7b2ab0">Right</a>, <a class="el" href="namespaceMeaLayout.html#ab599dde68d97c5c5cc16cee48aa4f955">MeaLayout::ScreenToClientX()</a>, <a class="el" href="namespaceMeaLayout.html#abd7ed3a450398b934b98b9ccd397fde5">MeaLayout::ScreenToClientY()</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fdac2abcf7683c657adc2ff835a06308317">Top</a>, and <a class="el" href="classMeaLinearUnits.html#a6e6dd745026d19baa89053a6f2b64522">MeaLinearUnits::UnconvertCoord()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaRuler.html#a4b022e2190f766c3f5af35dfe6c6e435">OnPaint()</a>.</p>
 
@@ -701,7 +748,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="structMeaRulerCallback_1_1RulerInfo.html#a46692f2cd3958f9eeab8fe701fd89af8">MeaRulerCallback::RulerInfo::flags</a>, <a class="el" href="structMeaRulerCallback_1_1RulerInfo.html#aab750148a7dad4e056447794adf2a0af">MeaRulerCallback::RulerInfo::id</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaScreenMgr.html#aead99180b1b49478edb3afa226277d85">MeaScreenMgr::LimitPosition()</a>, <a class="el" href="classMeaGraphic.html#a7d5e5cfd64462ac7dd21d655be01d3d0">MeaGraphic::m_id</a>, <a class="el" href="classMeaRuler.html#ae5d5913af65abb6072decd0c62560c97">m_orientation</a>, <a class="el" href="classMeaRuler.html#a05b1cf8efcf5704478d2695b058e1926">m_pointerOffset</a>, <a class="el" href="structMeaRulerCallback_1_1RulerInfo.html#a1e1bb7b26e9111ff75c15326e8ae6893">MeaRulerCallback::RulerInfo::position</a>, <a class="el" href="structMeaRulerCallback_1_1RulerInfo.html#a400caf27e70de156fe5c24aff1080ba1">MeaRulerCallback::RulerInfo::ruler</a>, and <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a506f225ec5c35a9e0e6c0a1118571795">Vertical</a>.</p>
+<p class="reference">References <a class="el" href="structMeaRulerCallback_1_1RulerInfo.html#a46692f2cd3958f9eeab8fe701fd89af8">MeaRulerCallback::RulerInfo::flags</a>, <a class="el" href="structMeaRulerCallback_1_1RulerInfo.html#aab750148a7dad4e056447794adf2a0af">MeaRulerCallback::RulerInfo::id</a>, <a class="el" href="structMeaScreenProvider.html#a6c2b44c68ac104e37421dede14fc9891">MeaScreenProvider::LimitPosition()</a>, <a class="el" href="classMeaGraphic.html#a7d5e5cfd64462ac7dd21d655be01d3d0">MeaGraphic::m_id</a>, <a class="el" href="classMeaRuler.html#ae5d5913af65abb6072decd0c62560c97">m_orientation</a>, <a class="el" href="classMeaRuler.html#a05b1cf8efcf5704478d2695b058e1926">m_pointerOffset</a>, <a class="el" href="classMeaRuler.html#a192ed17df45b85ed6c0ca7fa76c6adae">m_screenProvider</a>, <a class="el" href="structMeaRulerCallback_1_1RulerInfo.html#a1e1bb7b26e9111ff75c15326e8ae6893">MeaRulerCallback::RulerInfo::position</a>, <a class="el" href="structMeaRulerCallback_1_1RulerInfo.html#a400caf27e70de156fe5c24aff1080ba1">MeaRulerCallback::RulerInfo::ruler</a>, and <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a506f225ec5c35a9e0e6c0a1118571795">Vertical</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaRuler.html#ae623242970b91a077db1bb1854394bb0">OnMouseMove()</a>.</p>
 
@@ -1078,7 +1125,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fdae3017fa9b7351ae974493ce50fe08fcc">Bottom</a>, <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a7ef3bc4b1fa9e4cf0329fae9ad18fe04">Horizontal</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fda35b5f0dbf7dbe3b08a7f78a131707ac5">Left</a>, <a class="el" href="classMeaRuler.html#a4d8a2d63ac95dedcf420b4d7e2bea46f">m_labelPosition</a>, <a class="el" href="classMeaRuler.html#ae5d5913af65abb6072decd0c62560c97">m_orientation</a>, <a class="el" href="classMeaRuler.html#a38ae4e6ce87dec34084383d64cde48d0">m_position</a>, <a class="el" href="classMeaRuler.html#a0b7253980ff3ff83414a563531f95cab">m_targetRect</a>, <a class="el" href="classMeaRuler.html#a39f40125dd0d8c99b9d3f89c295f545b">m_thk</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fda8b6ea6d116ac65d59e1b823b6d7b2ab0">Right</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fdac2abcf7683c657adc2ff835a06308317">Top</a>, and <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a506f225ec5c35a9e0e6c0a1118571795">Vertical</a>.</p>
+<p class="reference">References <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fdae3017fa9b7351ae974493ce50fe08fcc">Bottom</a>, <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a7ef3bc4b1fa9e4cf0329fae9ad18fe04">Horizontal</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fda35b5f0dbf7dbe3b08a7f78a131707ac5">Left</a>, <a class="el" href="classMeaRuler.html#a4d8a2d63ac95dedcf420b4d7e2bea46f">m_labelPosition</a>, <a class="el" href="classMeaRuler.html#ae5d5913af65abb6072decd0c62560c97">m_orientation</a>, <a class="el" href="classMeaRuler.html#a38ae4e6ce87dec34084383d64cde48d0">m_position</a>, <a class="el" href="classMeaRuler.html#a0b7253980ff3ff83414a563531f95cab">m_targetRect</a>, <a class="el" href="classMeaRuler.html#a39f40125dd0d8c99b9d3f89c295f545b">m_thk</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fda8b6ea6d116ac65d59e1b823b6d7b2ab0">Right</a>, <a class="el" href="namespaceMeaLayout.html#a845c5084125d5d1d420b322ec26a342d">MeaLayout::SetWindowPos()</a>, <a class="el" href="classMeaRuler.html#a5e4668d7352004021c23d3e1cb0364fdac2abcf7683c657adc2ff835a06308317">Top</a>, and <a class="el" href="classMeaRuler.html#a25f6e2518eeffa416d88060ba6dc5352a506f225ec5c35a9e0e6c0a1118571795">Vertical</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaRuler.html#a673f1ac35b78a04d9b1f76590aa08e98">Create()</a>, <a class="el" href="classMeaRulerPrefs.html#aae268d3e204c25a22edf5ecfe8da49bc">MeaRulerPrefs::OnInitDialog()</a>, and <a class="el" href="classMeaRulerTool.html#a7c49f2b07c6eb97154bf2533ab09914d">MeaRulerTool::OnRulerMove()</a>.</p>
 

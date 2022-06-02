@@ -43,9 +43,8 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-types">Private Types</a> &#124;
-<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="classMeaUnitsMgr-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">MeaUnitsMgr Class Reference</div></div>
 </div><!--header-->
@@ -54,19 +53,29 @@ $(function() {
 <p>Manager for all units related operations including creating the units objects and labels, specifying the current units, setting the measurement origin and setting the y-axis orientation.  
  <a href="classMeaUnitsMgr.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Units_8h_source.html">Units.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="UnitsMgr_8h_source.html">UnitsMgr.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MeaUnitsMgr:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMeaUnitsMgr__inherit__graph.png" border="0" usemap="#aMeaUnitsMgr_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMeaUnitsMgr_inherit__map" id="aMeaUnitsMgr_inherit__map">
-<area shape="rect" title="Manager for all units related operations including creating the units objects and labels,..." alt="" coords="47,95,146,121"/>
-<area shape="rect" href="classMeaSingleton__T.html" title=" " alt="" coords="5,5,188,47"/>
+<area shape="rect" title="Manager for all units related operations including creating the units objects and labels,..." alt="" coords="105,95,204,121"/>
+<area shape="rect" href="structMeaUnitsProvider.html" title="Interface for units related information." alt="" coords="5,13,128,39"/>
+<area shape="rect" href="classMeaSingleton__T.html" title=" " alt="" coords="153,5,335,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a9a2116c56dc7146a53aac07d44e58cfd"><td class="memItemLeft" align="right" valign="top"><a id="a9a2116c56dc7146a53aac07d44e58cfd" name="a9a2116c56dc7146a53aac07d44e58cfd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaUnitsMgr</b> (token)</td></tr>
+<tr class="separator:a9a2116c56dc7146a53aac07d44e58cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7494c83bf9a1ccc02dd80234270ae21"><td class="memItemLeft" align="right" valign="top"><a id="aa7494c83bf9a1ccc02dd80234270ae21" name="aa7494c83bf9a1ccc02dd80234270ae21"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaUnitsMgr</b> (const <a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &amp;)=delete</td></tr>
+<tr class="separator:aa7494c83bf9a1ccc02dd80234270ae21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2707aa81ff0ffa7ae6b4c2da1aeb8e13"><td class="memItemLeft" align="right" valign="top"><a id="a2707aa81ff0ffa7ae6b4c2da1aeb8e13" name="a2707aa81ff0ffa7ae6b4c2da1aeb8e13"></a>
+<a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &amp;)=delete</td></tr>
+<tr class="separator:a2707aa81ff0ffa7ae6b4c2da1aeb8e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c339c3f19f5bdcc1c4a6301ae7de60c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile</a> (<a class="el" href="classMeaProfile.html">MeaProfile</a> &amp;profile)</td></tr>
 <tr class="memdesc:a4c339c3f19f5bdcc1c4a6301ae7de60c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Persists the state of the units manager to the specified profile object.  <a href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">More...</a><br /></td></tr>
 <tr class="separator:a4c339c3f19f5bdcc1c4a6301ae7de60c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -88,24 +97,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af49b843236ba9af34eae0ea32d84be9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#af49b843236ba9af34eae0ea32d84be9c">SetAngularUnits</a> (LPCTSTR unitsStr)</td></tr>
 <tr class="memdesc:af49b843236ba9af34eae0ea32d84be9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current angular measurement units based on the specified units identifier string (e.g.  <a href="classMeaUnitsMgr.html#af49b843236ba9af34eae0ea32d84be9c">More...</a><br /></td></tr>
 <tr class="separator:af49b843236ba9af34eae0ea32d84be9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adef9de536ccfccee70f81f4af52f18be"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaLinearUnits.html">MeaLinearUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#adef9de536ccfccee70f81f4af52f18be">GetLinearUnits</a> ()</td></tr>
-<tr class="memdesc:adef9de536ccfccee70f81f4af52f18be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current linear measurement units.  <a href="classMeaUnitsMgr.html#adef9de536ccfccee70f81f4af52f18be">More...</a><br /></td></tr>
-<tr class="separator:adef9de536ccfccee70f81f4af52f18be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae478d7f34ae4d19ba27f67d2b7e8eaa0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaLinearUnits.html">MeaLinearUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#ae478d7f34ae4d19ba27f67d2b7e8eaa0">GetLinearUnits</a> (const CString &amp;unitsStr)</td></tr>
-<tr class="memdesc:ae478d7f34ae4d19ba27f67d2b7e8eaa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the linear measurement units object corresponding to the specified identifier string (e.g.  <a href="classMeaUnitsMgr.html#ae478d7f34ae4d19ba27f67d2b7e8eaa0">More...</a><br /></td></tr>
-<tr class="separator:ae478d7f34ae4d19ba27f67d2b7e8eaa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac12e7785546602fb7857483768c7fcb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaLinearUnits.html">MeaLinearUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#ac12e7785546602fb7857483768c7fcb2">GetLinearUnits</a> () const override</td></tr>
+<tr class="memdesc:ac12e7785546602fb7857483768c7fcb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current linear measurement units.  <a href="classMeaUnitsMgr.html#ac12e7785546602fb7857483768c7fcb2">More...</a><br /></td></tr>
+<tr class="separator:ac12e7785546602fb7857483768c7fcb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a1a0bc279789a5435153c9fb1250e7e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaLinearUnits.html">MeaLinearUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a2a1a0bc279789a5435153c9fb1250e7e">GetLinearUnits</a> (const CString &amp;unitsStr) const override</td></tr>
+<tr class="memdesc:a2a1a0bc279789a5435153c9fb1250e7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the linear measurement units object corresponding to the specified identifier string (e.g.  <a href="classMeaUnitsMgr.html#a2a1a0bc279789a5435153c9fb1250e7e">More...</a><br /></td></tr>
+<tr class="separator:a2a1a0bc279789a5435153c9fb1250e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1c537fc4dd0dd53106109dd419b8cda"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996">MeaLinearUnitsId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#ab1c537fc4dd0dd53106109dd419b8cda">GetLinearUnitsId</a> () const</td></tr>
 <tr class="memdesc:ab1c537fc4dd0dd53106109dd419b8cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the identifier for the current linear measurement units.  <a href="classMeaUnitsMgr.html#ab1c537fc4dd0dd53106109dd419b8cda">More...</a><br /></td></tr>
 <tr class="separator:ab1c537fc4dd0dd53106109dd419b8cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac41ae45ca95f81d849538bccddabf94c"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#ac41ae45ca95f81d849538bccddabf94c">GetLinearUnitsStr</a> () const</td></tr>
 <tr class="memdesc:ac41ae45ca95f81d849538bccddabf94c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the identifier string for the current linear measurement units (e.g.  <a href="classMeaUnitsMgr.html#ac41ae45ca95f81d849538bccddabf94c">More...</a><br /></td></tr>
 <tr class="separator:ac41ae45ca95f81d849538bccddabf94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20f4d4451afa67dbb25b68a920264edc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaAngularUnits.html">MeaAngularUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a20f4d4451afa67dbb25b68a920264edc">GetAngularUnits</a> ()</td></tr>
-<tr class="memdesc:a20f4d4451afa67dbb25b68a920264edc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current angular measurement units.  <a href="classMeaUnitsMgr.html#a20f4d4451afa67dbb25b68a920264edc">More...</a><br /></td></tr>
-<tr class="separator:a20f4d4451afa67dbb25b68a920264edc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85cac0dbac7d6dbf309ffbaa13254e16"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaAngularUnits.html">MeaAngularUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a85cac0dbac7d6dbf309ffbaa13254e16">GetAngularUnits</a> (const CString &amp;unitsStr)</td></tr>
-<tr class="memdesc:a85cac0dbac7d6dbf309ffbaa13254e16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the angular measurement units object corresponding to the specified identifier string (e.g.  <a href="classMeaUnitsMgr.html#a85cac0dbac7d6dbf309ffbaa13254e16">More...</a><br /></td></tr>
-<tr class="separator:a85cac0dbac7d6dbf309ffbaa13254e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae87c5e21d8f17e1a358207d492ce6940"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaAngularUnits.html">MeaAngularUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#ae87c5e21d8f17e1a358207d492ce6940">GetAngularUnits</a> () const override</td></tr>
+<tr class="memdesc:ae87c5e21d8f17e1a358207d492ce6940"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current angular measurement units.  <a href="classMeaUnitsMgr.html#ae87c5e21d8f17e1a358207d492ce6940">More...</a><br /></td></tr>
+<tr class="separator:ae87c5e21d8f17e1a358207d492ce6940"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18f5298df7edf554a37c6cdbe0ca0943"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaAngularUnits.html">MeaAngularUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a18f5298df7edf554a37c6cdbe0ca0943">GetAngularUnits</a> (const CString &amp;unitsStr) const override</td></tr>
+<tr class="memdesc:a18f5298df7edf554a37c6cdbe0ca0943"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the angular measurement units object corresponding to the specified identifier string (e.g.  <a href="classMeaUnitsMgr.html#a18f5298df7edf554a37c6cdbe0ca0943">More...</a><br /></td></tr>
+<tr class="separator:a18f5298df7edf554a37c6cdbe0ca0943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b23c345b61b32b8085c7c54d7966690"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Units_8h.html#a0ee39b4e0140209b5bc59e1468cd2bf6">MeaAngularUnitsId</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a5b23c345b61b32b8085c7c54d7966690">GetAngularUnitsId</a> () const</td></tr>
 <tr class="memdesc:a5b23c345b61b32b8085c7c54d7966690"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the identifier for the current angular measurement units.  <a href="classMeaUnitsMgr.html#a5b23c345b61b32b8085c7c54d7966690">More...</a><br /></td></tr>
 <tr class="separator:a5b23c345b61b32b8085c7c54d7966690"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,18 +145,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aae41d0c68a3202397dc7e91c8ad4dd72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#aae41d0c68a3202397dc7e91c8ad4dd72">SetInvertY</a> (bool invertY) const</td></tr>
 <tr class="memdesc:aae41d0c68a3202397dc7e91c8ad4dd72"><td class="mdescLeft">&#160;</td><td class="mdescRight">By default, the Windows coordinate system is inverted from the typical Cartesian coordinate system in that the origin is located in the upper left corner of the primary screen and the positive y-axis points downward.  <a href="classMeaUnitsMgr.html#aae41d0c68a3202397dc7e91c8ad4dd72">More...</a><br /></td></tr>
 <tr class="separator:aae41d0c68a3202397dc7e91c8ad4dd72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a312005a6ff20f0c1222f0d149937e671"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a312005a6ff20f0c1222f0d149937e671">GetInvertY</a> () const</td></tr>
-<tr class="memdesc:a312005a6ff20f0c1222f0d149937e671"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the orientation of the y-axis.  <a href="classMeaUnitsMgr.html#a312005a6ff20f0c1222f0d149937e671">More...</a><br /></td></tr>
-<tr class="separator:a312005a6ff20f0c1222f0d149937e671"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a702e0d5337b183f9f24cdde1b28e07c5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a702e0d5337b183f9f24cdde1b28e07c5">IsInvertY</a> () const override</td></tr>
+<tr class="memdesc:a702e0d5337b183f9f24cdde1b28e07c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the orientation of the y-axis.  <a href="classMeaUnitsMgr.html#a702e0d5337b183f9f24cdde1b28e07c5">More...</a><br /></td></tr>
+<tr class="separator:a702e0d5337b183f9f24cdde1b28e07c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7545cee0b84ec02eddc3bcd0e8206c0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a7545cee0b84ec02eddc3bcd0e8206c0e">SetOrigin</a> (const POINT &amp;origin) const</td></tr>
 <tr class="memdesc:a7545cee0b84ec02eddc3bcd0e8206c0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Moves the origin of the coordinate system to the specified point.  <a href="classMeaUnitsMgr.html#a7545cee0b84ec02eddc3bcd0e8206c0e">More...</a><br /></td></tr>
 <tr class="separator:a7545cee0b84ec02eddc3bcd0e8206c0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7282a25a181e22823f5378b3ddc13d82"><td class="memItemLeft" align="right" valign="top">const POINT &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a7282a25a181e22823f5378b3ddc13d82">GetOrigin</a> () const</td></tr>
-<tr class="memdesc:a7282a25a181e22823f5378b3ddc13d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the location of the origin of the coordinate system.  <a href="classMeaUnitsMgr.html#a7282a25a181e22823f5378b3ddc13d82">More...</a><br /></td></tr>
-<tr class="separator:a7282a25a181e22823f5378b3ddc13d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa56e3a4d13df186fec7855dc55478e4f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFSIZE.html">FSIZE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#aa56e3a4d13df186fec7855dc55478e4f">GetWidthHeight</a> (const POINT &amp;p1, const POINT &amp;p2) const</td></tr>
-<tr class="memdesc:aa56e3a4d13df186fec7855dc55478e4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses the current linear measurement units to convert the two specified points from pixels to the current units, and then calculates the width and height of the rectangle formed by the two points.  <a href="classMeaUnitsMgr.html#aa56e3a4d13df186fec7855dc55478e4f">More...</a><br /></td></tr>
-<tr class="separator:aa56e3a4d13df186fec7855dc55478e4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb54eafe0a2f93e861d7700e9d7b7a8a"><td class="memItemLeft" align="right" valign="top">const POINT &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#adb54eafe0a2f93e861d7700e9d7b7a8a">GetOrigin</a> () const override</td></tr>
+<tr class="memdesc:adb54eafe0a2f93e861d7700e9d7b7a8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the location of the origin of the coordinate system.  <a href="classMeaUnitsMgr.html#adb54eafe0a2f93e861d7700e9d7b7a8a">More...</a><br /></td></tr>
+<tr class="separator:adb54eafe0a2f93e861d7700e9d7b7a8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b1b04981051d2da2f51960d0c1b6614"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMeaFSize.html">MeaFSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a8b1b04981051d2da2f51960d0c1b6614">GetWidthHeight</a> (const POINT &amp;p1, const POINT &amp;p2) const override</td></tr>
+<tr class="memdesc:a8b1b04981051d2da2f51960d0c1b6614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses the current linear measurement units to convert the two specified points from pixels to the current units, and then calculates the width and height of the rectangle formed by the two points.  <a href="classMeaUnitsMgr.html#a8b1b04981051d2da2f51960d0c1b6614">More...</a><br /></td></tr>
+<tr class="separator:a8b1b04981051d2da2f51960d0c1b6614"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a4d7df04f3478222d4bf16279119182"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaLengthUnitsLabel.html">MeaLengthUnitsLabel</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a0a4d7df04f3478222d4bf16279119182">NewLengthUnitsLabel</a> ()</td></tr>
 <tr class="memdesc:a0a4d7df04f3478222d4bf16279119182"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new length measurement units label object.  <a href="classMeaUnitsMgr.html#a0a4d7df04f3478222d4bf16279119182">More...</a><br /></td></tr>
 <tr class="separator:a0a4d7df04f3478222d4bf16279119182"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,40 +172,105 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a035d14788e87b7c97ac37a1e7b5b7ee4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a035d14788e87b7c97ac37a1e7b5b7ee4">DeleteUnitsLabel</a> (<a class="el" href="classMeaUnitsLabel.html">MeaUnitsLabel</a> *label)</td></tr>
 <tr class="memdesc:a035d14788e87b7c97ac37a1e7b5b7ee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the specified measurement units label.  <a href="classMeaUnitsMgr.html#a035d14788e87b7c97ac37a1e7b5b7ee4">More...</a><br /></td></tr>
 <tr class="separator:a035d14788e87b7c97ac37a1e7b5b7ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3316f0a7358f8559839f027cea871c6e"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a3316f0a7358f8559839f027cea871c6e">FormatConvertAngle</a> (double angle) const</td></tr>
-<tr class="memdesc:a3316f0a7358f8559839f027cea871c6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified angle to the current angular units and formats the result for display.  <a href="classMeaUnitsMgr.html#a3316f0a7358f8559839f027cea871c6e">More...</a><br /></td></tr>
-<tr class="separator:a3316f0a7358f8559839f027cea871c6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f90584a12e9be699e796ecf9d3efb85"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a9f90584a12e9be699e796ecf9d3efb85">Format</a> (<a class="el" href="Units_8h.html#a21478f3f6dfa97e9013b005d6b3455d4">MeaLinearMeasurementId</a> id, double value) const</td></tr>
-<tr class="memdesc:a9f90584a12e9be699e796ecf9d3efb85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the specified linear measurement value for display.  <a href="classMeaUnitsMgr.html#a9f90584a12e9be699e796ecf9d3efb85">More...</a><br /></td></tr>
-<tr class="separator:a9f90584a12e9be699e796ecf9d3efb85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace996e73e084639559bcee578014678c"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#ace996e73e084639559bcee578014678c">Format</a> (<a class="el" href="Units_8h.html#af6780e392f63c2778225743126036560">MeaAngularMeasurementId</a> id, double value) const</td></tr>
-<tr class="memdesc:ace996e73e084639559bcee578014678c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the specified angular measurement value for display.  <a href="classMeaUnitsMgr.html#ace996e73e084639559bcee578014678c">More...</a><br /></td></tr>
-<tr class="separator:ace996e73e084639559bcee578014678c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82e9abe00b169fadb0a79fee4e3288bb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFPOINT.html">FPOINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a82e9abe00b169fadb0a79fee4e3288bb">ConvertCoord</a> (const POINT &amp;pos) const</td></tr>
-<tr class="memdesc:a82e9abe00b169fadb0a79fee4e3288bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified coordinate from pixels to the desired units.  <a href="classMeaUnitsMgr.html#a82e9abe00b169fadb0a79fee4e3288bb">More...</a><br /></td></tr>
-<tr class="separator:a82e9abe00b169fadb0a79fee4e3288bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a021429cd80cc0eec7d001cbbee7606bc"><td class="memItemLeft" align="right" valign="top">POINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a021429cd80cc0eec7d001cbbee7606bc">UnconvertCoord</a> (const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;pos) const</td></tr>
-<tr class="memdesc:a021429cd80cc0eec7d001cbbee7606bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts from the current units to pixels.  <a href="classMeaUnitsMgr.html#a021429cd80cc0eec7d001cbbee7606bc">More...</a><br /></td></tr>
-<tr class="separator:a021429cd80cc0eec7d001cbbee7606bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b8aacabc749c0e12fbfee65a8c44770"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFPOINT.html">FPOINT</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a7b8aacabc749c0e12fbfee65a8c44770">ConvertPos</a> (const POINT &amp;pos) const</td></tr>
-<tr class="memdesc:a7b8aacabc749c0e12fbfee65a8c44770"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified position from pixels to the desired units.  <a href="classMeaUnitsMgr.html#a7b8aacabc749c0e12fbfee65a8c44770">More...</a><br /></td></tr>
-<tr class="separator:a7b8aacabc749c0e12fbfee65a8c44770"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a382138ed3ff0fb291550f07cc13174ee"><td class="memItemLeft" align="right" valign="top">POINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a382138ed3ff0fb291550f07cc13174ee">UnconvertPos</a> (const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;pos) const</td></tr>
-<tr class="memdesc:a382138ed3ff0fb291550f07cc13174ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts from the current units to pixels.  <a href="classMeaUnitsMgr.html#a382138ed3ff0fb291550f07cc13174ee">More...</a><br /></td></tr>
-<tr class="separator:a382138ed3ff0fb291550f07cc13174ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa585d9907ab7e4ba7404cd6e0152c763"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFSIZE.html">FSIZE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#aa585d9907ab7e4ba7404cd6e0152c763">ConvertRes</a> (const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;res) const</td></tr>
-<tr class="memdesc:aa585d9907ab7e4ba7404cd6e0152c763"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified resolution in pixels/inch to the desired units.  <a href="classMeaUnitsMgr.html#aa585d9907ab7e4ba7404cd6e0152c763">More...</a><br /></td></tr>
-<tr class="separator:aa585d9907ab7e4ba7404cd6e0152c763"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e540873c8dbd9f7c26fb46464c12e4c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a2e540873c8dbd9f7c26fb46464c12e4c">ConvertAngle</a> (double angle) const</td></tr>
-<tr class="memdesc:a2e540873c8dbd9f7c26fb46464c12e4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified angle value from its native radians to the desired units.  <a href="classMeaUnitsMgr.html#a2e540873c8dbd9f7c26fb46464c12e4c">More...</a><br /></td></tr>
-<tr class="separator:a2e540873c8dbd9f7c26fb46464c12e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4452d16827b5eaf35a7029cd7111e32d"><td class="memItemLeft" align="right" valign="top">SIZE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a4452d16827b5eaf35a7029cd7111e32d">ConvertToPixels</a> (<a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996">MeaLinearUnitsId</a> id, const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;res, double value, int minPixels) const</td></tr>
-<tr class="memdesc:a4452d16827b5eaf35a7029cd7111e32d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified value from the specified units to pixels.  <a href="classMeaUnitsMgr.html#a4452d16827b5eaf35a7029cd7111e32d">More...</a><br /></td></tr>
-<tr class="separator:a4452d16827b5eaf35a7029cd7111e32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71a25cfa7abd7a3dd5623b7028ccab7a"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a71a25cfa7abd7a3dd5623b7028ccab7a">FormatConvertAngle</a> (double angle) const override</td></tr>
+<tr class="memdesc:a71a25cfa7abd7a3dd5623b7028ccab7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified angle to the current angular units and formats the result for display.  <a href="classMeaUnitsMgr.html#a71a25cfa7abd7a3dd5623b7028ccab7a">More...</a><br /></td></tr>
+<tr class="separator:a71a25cfa7abd7a3dd5623b7028ccab7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa42c578759181e916424d41c17f32819"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#aa42c578759181e916424d41c17f32819">Format</a> (<a class="el" href="Units_8h.html#a21478f3f6dfa97e9013b005d6b3455d4">MeaLinearMeasurementId</a> id, double value) const override</td></tr>
+<tr class="memdesc:aa42c578759181e916424d41c17f32819"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the specified linear measurement value for display.  <a href="classMeaUnitsMgr.html#aa42c578759181e916424d41c17f32819">More...</a><br /></td></tr>
+<tr class="separator:aa42c578759181e916424d41c17f32819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68008cd5286a8e58988599c58cc0de69"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a68008cd5286a8e58988599c58cc0de69">Format</a> (<a class="el" href="Units_8h.html#af6780e392f63c2778225743126036560">MeaAngularMeasurementId</a> id, double value) const override</td></tr>
+<tr class="memdesc:a68008cd5286a8e58988599c58cc0de69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the specified angular measurement value for display.  <a href="classMeaUnitsMgr.html#a68008cd5286a8e58988599c58cc0de69">More...</a><br /></td></tr>
+<tr class="separator:a68008cd5286a8e58988599c58cc0de69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16be790f58e750265e13222a7ed9e4ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMeaFPoint.html">MeaFPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a16be790f58e750265e13222a7ed9e4ea">ConvertCoord</a> (const POINT &amp;pos) const override</td></tr>
+<tr class="memdesc:a16be790f58e750265e13222a7ed9e4ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified coordinate from pixels to the desired units.  <a href="classMeaUnitsMgr.html#a16be790f58e750265e13222a7ed9e4ea">More...</a><br /></td></tr>
+<tr class="separator:a16be790f58e750265e13222a7ed9e4ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af89d3c957c38af122637e9676d5baf7d"><td class="memItemLeft" align="right" valign="top">POINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#af89d3c957c38af122637e9676d5baf7d">UnconvertCoord</a> (const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;pos) const</td></tr>
+<tr class="memdesc:af89d3c957c38af122637e9676d5baf7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts from the current units to pixels.  <a href="classMeaUnitsMgr.html#af89d3c957c38af122637e9676d5baf7d">More...</a><br /></td></tr>
+<tr class="separator:af89d3c957c38af122637e9676d5baf7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d969b104f4a454c60711a7a2679b376"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMeaFPoint.html">MeaFPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a9d969b104f4a454c60711a7a2679b376">ConvertPos</a> (const POINT &amp;pos) const override</td></tr>
+<tr class="memdesc:a9d969b104f4a454c60711a7a2679b376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified position from pixels to the desired units.  <a href="classMeaUnitsMgr.html#a9d969b104f4a454c60711a7a2679b376">More...</a><br /></td></tr>
+<tr class="separator:a9d969b104f4a454c60711a7a2679b376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a468405ad999c3bd9be72644ab2279f74"><td class="memItemLeft" align="right" valign="top">POINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a468405ad999c3bd9be72644ab2279f74">UnconvertPos</a> (const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;pos) const override</td></tr>
+<tr class="memdesc:a468405ad999c3bd9be72644ab2279f74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts from the current units to pixels.  <a href="classMeaUnitsMgr.html#a468405ad999c3bd9be72644ab2279f74">More...</a><br /></td></tr>
+<tr class="separator:a468405ad999c3bd9be72644ab2279f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae209db4be32d3ae46ec76c6145bcbd1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMeaFSize.html">MeaFSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#ae209db4be32d3ae46ec76c6145bcbd1b">ConvertRes</a> (const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;res) const override</td></tr>
+<tr class="memdesc:ae209db4be32d3ae46ec76c6145bcbd1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified resolution in pixels/inch to the desired units.  <a href="classMeaUnitsMgr.html#ae209db4be32d3ae46ec76c6145bcbd1b">More...</a><br /></td></tr>
+<tr class="separator:ae209db4be32d3ae46ec76c6145bcbd1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8409df354271c1c252313552b54c050"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#ac8409df354271c1c252313552b54c050">ConvertAngle</a> (double angle) const override</td></tr>
+<tr class="memdesc:ac8409df354271c1c252313552b54c050"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified angle value from its native radians to the desired units.  <a href="classMeaUnitsMgr.html#ac8409df354271c1c252313552b54c050">More...</a><br /></td></tr>
+<tr class="separator:ac8409df354271c1c252313552b54c050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c3184480be69d744982dd8a0e869702"><td class="memItemLeft" align="right" valign="top">SIZE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a8c3184480be69d744982dd8a0e869702">ConvertToPixels</a> (<a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996">MeaLinearUnitsId</a> id, const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;res, double value, int minPixels) const override</td></tr>
+<tr class="memdesc:a8c3184480be69d744982dd8a0e869702"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified value from the specified units to pixels.  <a href="classMeaUnitsMgr.html#a8c3184480be69d744982dd8a0e869702">More...</a><br /></td></tr>
+<tr class="separator:a8c3184480be69d744982dd8a0e869702"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82433a5366ba149efb703f95eb6fcf02"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a82433a5366ba149efb703f95eb6fcf02">GetMajorTickCount</a> () const override</td></tr>
+<tr class="memdesc:a82433a5366ba149efb703f95eb6fcf02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of minor ticks to display before a major tick mark is displayed on the measurement rulers.  <a href="classMeaUnitsMgr.html#a82433a5366ba149efb703f95eb6fcf02">More...</a><br /></td></tr>
+<tr class="separator:a82433a5366ba149efb703f95eb6fcf02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acba1b148e3541339cdee69c62c36ade5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMeaFSize.html">MeaFSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#acba1b148e3541339cdee69c62c36ade5">GetMinorIncr</a> (const RECT &amp;rect) const override</td></tr>
+<tr class="memdesc:acba1b148e3541339cdee69c62c36ade5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the increment between minor tick marks on the measurement rulers.  <a href="classMeaUnitsMgr.html#acba1b148e3541339cdee69c62c36ade5">More...</a><br /></td></tr>
+<tr class="separator:acba1b148e3541339cdee69c62c36ade5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a013f682c3bdc58b69841eb103b08154e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classMeaLinearUnits.html">MeaLinearUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a013f682c3bdc58b69841eb103b08154e">GetLinearUnits</a> () const =0</td></tr>
+<tr class="memdesc:a013f682c3bdc58b69841eb103b08154e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current linear measurement units.  <a href="structMeaUnitsProvider.html#a013f682c3bdc58b69841eb103b08154e">More...</a><br /></td></tr>
+<tr class="separator:a013f682c3bdc58b69841eb103b08154e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9c81c767d10446819aaedd673806173"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classMeaLinearUnits.html">MeaLinearUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#ad9c81c767d10446819aaedd673806173">GetLinearUnits</a> (const CString &amp;unitsStr) const =0</td></tr>
+<tr class="memdesc:ad9c81c767d10446819aaedd673806173"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the linear measurement units object corresponding to the specified identifier string (e.g.  <a href="structMeaUnitsProvider.html#ad9c81c767d10446819aaedd673806173">More...</a><br /></td></tr>
+<tr class="separator:ad9c81c767d10446819aaedd673806173"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a1ef8dc701029bc26702575d3ef3687"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classMeaAngularUnits.html">MeaAngularUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a3a1ef8dc701029bc26702575d3ef3687">GetAngularUnits</a> () const =0</td></tr>
+<tr class="memdesc:a3a1ef8dc701029bc26702575d3ef3687"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current angular measurement units.  <a href="structMeaUnitsProvider.html#a3a1ef8dc701029bc26702575d3ef3687">More...</a><br /></td></tr>
+<tr class="separator:a3a1ef8dc701029bc26702575d3ef3687"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d2edf3f0b977053453bcb97541e76b0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classMeaAngularUnits.html">MeaAngularUnits</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a4d2edf3f0b977053453bcb97541e76b0">GetAngularUnits</a> (const CString &amp;unitsStr) const =0</td></tr>
+<tr class="memdesc:a4d2edf3f0b977053453bcb97541e76b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the angular measurement units object corresponding to the specified identifier string (e.g.  <a href="structMeaUnitsProvider.html#a4d2edf3f0b977053453bcb97541e76b0">More...</a><br /></td></tr>
+<tr class="separator:a4d2edf3f0b977053453bcb97541e76b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1e7713e14f9c7e378014b82baae3528"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#ae1e7713e14f9c7e378014b82baae3528">IsInvertY</a> () const =0</td></tr>
+<tr class="memdesc:ae1e7713e14f9c7e378014b82baae3528"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the orientation of the y-axis.  <a href="structMeaUnitsProvider.html#ae1e7713e14f9c7e378014b82baae3528">More...</a><br /></td></tr>
+<tr class="separator:ae1e7713e14f9c7e378014b82baae3528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872ed4e3aabb2638a7173ba1b3d2e51d"><td class="memItemLeft" align="right" valign="top">virtual const POINT &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a872ed4e3aabb2638a7173ba1b3d2e51d">GetOrigin</a> () const =0</td></tr>
+<tr class="memdesc:a872ed4e3aabb2638a7173ba1b3d2e51d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the location of the origin of the coordinate system.  <a href="structMeaUnitsProvider.html#a872ed4e3aabb2638a7173ba1b3d2e51d">More...</a><br /></td></tr>
+<tr class="separator:a872ed4e3aabb2638a7173ba1b3d2e51d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7eca8cde7955b07b0c9405e305b5ab9a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structMeaFSize.html">MeaFSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a7eca8cde7955b07b0c9405e305b5ab9a">GetWidthHeight</a> (const POINT &amp;p1, const POINT &amp;p2) const =0</td></tr>
+<tr class="memdesc:a7eca8cde7955b07b0c9405e305b5ab9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uses the current linear measurement units to convert the two specified points from pixels to the current units, and then calculates the width and height of the rectangle formed by the two points.  <a href="structMeaUnitsProvider.html#a7eca8cde7955b07b0c9405e305b5ab9a">More...</a><br /></td></tr>
+<tr class="separator:a7eca8cde7955b07b0c9405e305b5ab9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bca97fe86adf81f812018707de4df04"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a5bca97fe86adf81f812018707de4df04">FormatConvertAngle</a> (double angle) const =0</td></tr>
+<tr class="memdesc:a5bca97fe86adf81f812018707de4df04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified angle to the current angular units and formats the result for display.  <a href="structMeaUnitsProvider.html#a5bca97fe86adf81f812018707de4df04">More...</a><br /></td></tr>
+<tr class="separator:a5bca97fe86adf81f812018707de4df04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fbb8bc8d4bd9c5138be8df474575824"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a1fbb8bc8d4bd9c5138be8df474575824">Format</a> (<a class="el" href="Units_8h.html#a21478f3f6dfa97e9013b005d6b3455d4">MeaLinearMeasurementId</a> id, double value) const =0</td></tr>
+<tr class="memdesc:a1fbb8bc8d4bd9c5138be8df474575824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the specified linear measurement value for display.  <a href="structMeaUnitsProvider.html#a1fbb8bc8d4bd9c5138be8df474575824">More...</a><br /></td></tr>
+<tr class="separator:a1fbb8bc8d4bd9c5138be8df474575824"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7d15e3f071c614f0e124b996f4595ba"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#ac7d15e3f071c614f0e124b996f4595ba">Format</a> (<a class="el" href="Units_8h.html#af6780e392f63c2778225743126036560">MeaAngularMeasurementId</a> id, double value) const =0</td></tr>
+<tr class="memdesc:ac7d15e3f071c614f0e124b996f4595ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Formats the specified angular measurement value for display.  <a href="structMeaUnitsProvider.html#ac7d15e3f071c614f0e124b996f4595ba">More...</a><br /></td></tr>
+<tr class="separator:ac7d15e3f071c614f0e124b996f4595ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08ca88eb66d5f95241ca74a710bbde9f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structMeaFPoint.html">MeaFPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a08ca88eb66d5f95241ca74a710bbde9f">ConvertCoord</a> (const POINT &amp;pos) const =0</td></tr>
+<tr class="memdesc:a08ca88eb66d5f95241ca74a710bbde9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified coordinate from pixels to the desired units.  <a href="structMeaUnitsProvider.html#a08ca88eb66d5f95241ca74a710bbde9f">More...</a><br /></td></tr>
+<tr class="separator:a08ca88eb66d5f95241ca74a710bbde9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f962e5a7b63cbffbf50f0656f778e8a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structMeaFPoint.html">MeaFPoint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a4f962e5a7b63cbffbf50f0656f778e8a">ConvertPos</a> (const POINT &amp;pos) const =0</td></tr>
+<tr class="memdesc:a4f962e5a7b63cbffbf50f0656f778e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified position from pixels to the desired units.  <a href="structMeaUnitsProvider.html#a4f962e5a7b63cbffbf50f0656f778e8a">More...</a><br /></td></tr>
+<tr class="separator:a4f962e5a7b63cbffbf50f0656f778e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9fd235175f230cfa597d9c01a1ab1ab"><td class="memItemLeft" align="right" valign="top">virtual POINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#ab9fd235175f230cfa597d9c01a1ab1ab">UnconvertPos</a> (const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;pos) const =0</td></tr>
+<tr class="memdesc:ab9fd235175f230cfa597d9c01a1ab1ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts from the current units to pixels.  <a href="structMeaUnitsProvider.html#ab9fd235175f230cfa597d9c01a1ab1ab">More...</a><br /></td></tr>
+<tr class="separator:ab9fd235175f230cfa597d9c01a1ab1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacb3e0cbfb5e9080c301f4bed6d9589d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structMeaFSize.html">MeaFSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#aacb3e0cbfb5e9080c301f4bed6d9589d">ConvertRes</a> (const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;res) const =0</td></tr>
+<tr class="memdesc:aacb3e0cbfb5e9080c301f4bed6d9589d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified resolution in pixels/inch to the desired units.  <a href="structMeaUnitsProvider.html#aacb3e0cbfb5e9080c301f4bed6d9589d">More...</a><br /></td></tr>
+<tr class="separator:aacb3e0cbfb5e9080c301f4bed6d9589d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a587c5442568050894df60f447eb04104"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a587c5442568050894df60f447eb04104">ConvertAngle</a> (double angle) const =0</td></tr>
+<tr class="memdesc:a587c5442568050894df60f447eb04104"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified angle value from its native radians to the desired units.  <a href="structMeaUnitsProvider.html#a587c5442568050894df60f447eb04104">More...</a><br /></td></tr>
+<tr class="separator:a587c5442568050894df60f447eb04104"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4effca62d754093cad67c2eec5feea80"><td class="memItemLeft" align="right" valign="top">virtual SIZE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#a4effca62d754093cad67c2eec5feea80">ConvertToPixels</a> (<a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996">MeaLinearUnitsId</a> id, const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;res, double value, int minPixels) const =0</td></tr>
+<tr class="memdesc:a4effca62d754093cad67c2eec5feea80"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified value from the specified units to pixels.  <a href="structMeaUnitsProvider.html#a4effca62d754093cad67c2eec5feea80">More...</a><br /></td></tr>
+<tr class="separator:a4effca62d754093cad67c2eec5feea80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac01feb594e118b1cc112184507891177"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#ac01feb594e118b1cc112184507891177">GetMajorTickCount</a> () const =0</td></tr>
+<tr class="memdesc:ac01feb594e118b1cc112184507891177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of minor ticks to display before a major tick mark is displayed on the measurement rulers.  <a href="structMeaUnitsProvider.html#ac01feb594e118b1cc112184507891177">More...</a><br /></td></tr>
+<tr class="separator:ac01feb594e118b1cc112184507891177"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd75f2fc172f8811cc748d77ebf624f6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structMeaFSize.html">MeaFSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaUnitsProvider.html#abd75f2fc172f8811cc748d77ebf624f6">GetMinorIncr</a> (const RECT &amp;rect) const =0</td></tr>
+<tr class="memdesc:abd75f2fc172f8811cc748d77ebf624f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the increment between minor tick marks on the measurement rulers.  <a href="structMeaUnitsProvider.html#abd75f2fc172f8811cc748d77ebf624f6">More...</a><br /></td></tr>
+<tr class="separator:abd75f2fc172f8811cc748d77ebf624f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMeaSingleton__T"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMeaSingleton__T')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T&lt; MeaUnitsMgr &gt;</a></td></tr>
-<tr class="memitem:ab5ff6e6054becb1c98156f6a64eb8de0 inherit pub_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#ab5ff6e6054becb1c98156f6a64eb8de0">~MeaSingleton_T</a> ()</td></tr>
-<tr class="memdesc:ab5ff6e6054becb1c98156f6a64eb8de0 inherit pub_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the Singleton.  <a href="classMeaSingleton__T.html#ab5ff6e6054becb1c98156f6a64eb8de0">More...</a><br /></td></tr>
-<tr class="separator:ab5ff6e6054becb1c98156f6a64eb8de0 inherit pub_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe2d7bbfbb064494f05184e60b360e4f inherit pub_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top"><a id="abe2d7bbfbb064494f05184e60b360e4f" name="abe2d7bbfbb064494f05184e60b360e4f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaSingleton_T</b> (const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; <a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &gt; &amp;src)=delete</td></tr>
+<tr class="memdesc:abe2d7bbfbb064494f05184e60b360e4f inherit pub_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons have no copy semantics. <br /></td></tr>
+<tr class="separator:abe2d7bbfbb064494f05184e60b360e4f inherit pub_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af45ad47775641fc1cfb44f04fbbdc608 inherit pub_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top"><a id="af45ad47775641fc1cfb44f04fbbdc608" name="af45ad47775641fc1cfb44f04fbbdc608"></a>
+<a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; <a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; <a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &gt; &amp;src)=delete</td></tr>
+<tr class="memdesc:af45ad47775641fc1cfb44f04fbbdc608 inherit pub_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons have no assignment semantics. <br /></td></tr>
+<tr class="separator:af45ad47775641fc1cfb44f04fbbdc608 inherit pub_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -235,17 +309,6 @@ typedef std::list&lt; <a class="el" href="classMeaLinearUnitsLabel.html">MeaLine
 typedef std::list&lt; <a class="el" href="classMeaAngularUnitsLabel.html">MeaAngularUnitsLabel</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>AngularLabelsList</b></td></tr>
 <tr class="memdesc:a08fc6936ab264c9202a05e811c956c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of all angular units labels. <br /></td></tr>
 <tr class="separator:a08fc6936ab264c9202a05e811c956c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:a2d4fdb0504c166d1aee0ab294b271024"><td class="memItemLeft" align="right" valign="top"><a id="a2d4fdb0504c166d1aee0ab294b271024" name="a2d4fdb0504c166d1aee0ab294b271024"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MeaUnitsMgr</b> (const <a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &amp;)</td></tr>
-<tr class="memdesc:a2d4fdb0504c166d1aee0ab294b271024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managers do not have copy semantics so this method is purposely undefined. <br /></td></tr>
-<tr class="separator:a2d4fdb0504c166d1aee0ab294b271024"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7952609fa3da58c85fdc5628004f5a8"><td class="memItemLeft" align="right" valign="top"><a id="ae7952609fa3da58c85fdc5628004f5a8" name="ae7952609fa3da58c85fdc5628004f5a8"></a>
-<a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &amp;)</td></tr>
-<tr class="memdesc:ae7952609fa3da58c85fdc5628004f5a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Managers do not have assignment semantics so this method is purposely undefined. <br /></td></tr>
-<tr class="separator:ae7952609fa3da58c85fdc5628004f5a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -317,12 +380,28 @@ Private Attributes</h2></td></tr>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_haveWarned</b></td></tr>
 <tr class="memdesc:a9cfb29ffa6e86a1f5f2688a6a60b08f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the user has already been warned about using the operating system reported resolution. <br /></td></tr>
 <tr class="separator:a9cfb29ffa6e86a1f5f2688a6a60b08f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a096f02a394986a5d1e84b8dd73ef9180"><td class="memItemLeft" align="right" valign="top"><a id="a096f02a394986a5d1e84b8dd73ef9180" name="a096f02a394986a5d1e84b8dd73ef9180"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>m_majorTickCount</b></td></tr>
+<tr class="memdesc:a096f02a394986a5d1e84b8dd73ef9180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of minor ruler tick marks between major tick marks. <br /></td></tr>
+<tr class="separator:a096f02a394986a5d1e84b8dd73ef9180"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a525d1af57d1477f03c44b4370660e1e7"><td class="memItemLeft" align="right" valign="top"><a id="a525d1af57d1477f03c44b4370660e1e7" name="a525d1af57d1477f03c44b4370660e1e7"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaSingleton_T&lt; MeaUnitsMgr &gt;</b></td></tr>
-<tr class="separator:a525d1af57d1477f03c44b4370660e1e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a73fcb347ebb865b02f6b895b095c961f"><td class="memItemLeft" align="right" valign="top">static const double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaUnitsMgr.html#a73fcb347ebb865b02f6b895b095c961f">kTickIncrements</a> [] = { 10.0, 25.0, 50.0, 75.0, 100.0 }</td></tr>
+<tr class="memdesc:a73fcb347ebb865b02f6b895b095c961f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ruler tick increments.  <a href="classMeaUnitsMgr.html#a73fcb347ebb865b02f6b895b095c961f">More...</a><br /></td></tr>
+<tr class="separator:a73fcb347ebb865b02f6b895b095c961f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae71752f6693e053850353ebb5c0546a7"><td class="memItemLeft" align="right" valign="top"><a id="ae71752f6693e053850353ebb5c0546a7" name="ae71752f6693e053850353ebb5c0546a7"></a>
+static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kNumTickIncrements</b> = sizeof(<a class="el" href="classMeaUnitsMgr.html#a73fcb347ebb865b02f6b895b095c961f">kTickIncrements</a>) / sizeof(*<a class="el" href="classMeaUnitsMgr.html#a73fcb347ebb865b02f6b895b095c961f">kTickIncrements</a>)</td></tr>
+<tr class="memdesc:ae71752f6693e053850353ebb5c0546a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of tick mark increments in the kTickIncrements array. <br /></td></tr>
+<tr class="separator:ae71752f6693e053850353ebb5c0546a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a647fd468642add513d5c435087aff7"><td class="memItemLeft" align="right" valign="top"><a id="a5a647fd468642add513d5c435087aff7" name="a5a647fd468642add513d5c435087aff7"></a>
+static const int&#160;</td><td class="memItemRight" valign="bottom"><b>kMinSepPixels</b> = 5</td></tr>
+<tr class="memdesc:a5a647fd468642add513d5c435087aff7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum separation between ruler tick marks, in pixels. <br /></td></tr>
+<tr class="separator:a5a647fd468642add513d5c435087aff7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab78159d97a49aae14ab541210aeff896"><td class="memItemLeft" align="right" valign="top"><a id="ab78159d97a49aae14ab541210aeff896" name="ab78159d97a49aae14ab541210aeff896"></a>
+static const double&#160;</td><td class="memItemRight" valign="bottom"><b>kMinSepInches</b> = 0.1</td></tr>
+<tr class="memdesc:ab78159d97a49aae14ab541210aeff896"><td class="mdescLeft">&#160;</td><td class="mdescRight">Minimum separation between ruler tick marks, in inches. <br /></td></tr>
+<tr class="separator:ab78159d97a49aae14ab541210aeff896"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -330,22 +409,16 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a99867d7e6fbd4e6a7f3cacf12648bab2 inherit pub_static_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classMeaUnitsMgr.html">MeaUnitsMgr</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">Instance</a> ()</td></tr>
 <tr class="memdesc:a99867d7e6fbd4e6a7f3cacf12648bab2 inherit pub_static_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">The first time this method is called, a instance of the Singleton object is created and returned.  <a href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">More...</a><br /></td></tr>
 <tr class="separator:a99867d7e6fbd4e6a7f3cacf12648bab2 inherit pub_static_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a188121bb7e8addf897fd59e06159dcb4 inherit pub_static_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a188121bb7e8addf897fd59e06159dcb4">DestroyInstance</a> ()</td></tr>
-<tr class="memdesc:a188121bb7e8addf897fd59e06159dcb4 inherit pub_static_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the Singleton object is no longer needed, it must be destroyed using this method.  <a href="classMeaSingleton__T.html#a188121bb7e8addf897fd59e06159dcb4">More...</a><br /></td></tr>
-<tr class="separator:a188121bb7e8addf897fd59e06159dcb4 inherit pub_static_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68eb6955739fdfd98a81d744fa9cc438 inherit pub_static_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a68eb6955739fdfd98a81d744fa9cc438">IsDestroyed</a> ()</td></tr>
-<tr class="memdesc:a68eb6955739fdfd98a81d744fa9cc438 inherit pub_static_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the Singleton object has been destroyed.  <a href="classMeaSingleton__T.html#a68eb6955739fdfd98a81d744fa9cc438">More...</a><br /></td></tr>
-<tr class="separator:a68eb6955739fdfd98a81d744fa9cc438 inherit pub_static_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classMeaSingleton__T"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classMeaSingleton__T')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T&lt; MeaUnitsMgr &gt;</a></td></tr>
-<tr class="memitem:a59ecb351351d10ee5608e644c3d07b7e inherit pro_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#a59ecb351351d10ee5608e644c3d07b7e">MeaSingleton_T</a> ()</td></tr>
-<tr class="memdesc:a59ecb351351d10ee5608e644c3d07b7e inherit pro_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Singleton object instance.  <a href="classMeaSingleton__T.html#a59ecb351351d10ee5608e644c3d07b7e">More...</a><br /></td></tr>
-<tr class="separator:a59ecb351351d10ee5608e644c3d07b7e inherit pro_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef7a769e71d8bffaa3b9b80b97eaf7fa inherit pro_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaSingleton__T.html#aef7a769e71d8bffaa3b9b80b97eaf7fa">MeaSingleton_T</a> ()=default</td></tr>
+<tr class="memdesc:aef7a769e71d8bffaa3b9b80b97eaf7fa inherit pro_methods_classMeaSingleton__T"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a Singleton object instance.  <a href="classMeaSingleton__T.html#aef7a769e71d8bffaa3b9b80b97eaf7fa">More...</a><br /></td></tr>
+<tr class="separator:aef7a769e71d8bffaa3b9b80b97eaf7fa inherit pro_methods_classMeaSingleton__T"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Manager for all units related operations including creating the units objects and labels, specifying the current units, setting the measurement origin and setting the y-axis orientation. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2e540873c8dbd9f7c26fb46464c12e4c" name="a2e540873c8dbd9f7c26fb46464c12e4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2e540873c8dbd9f7c26fb46464c12e4c">&#9670;&nbsp;</a></span>ConvertAngle()</h2>
+<a id="ac8409df354271c1c252313552b54c050" name="ac8409df354271c1c252313552b54c050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8409df354271c1c252313552b54c050">&#9670;&nbsp;</a></span>ConvertAngle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -363,7 +436,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -377,14 +450,16 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Angle value converted to the desired units. </dd></dl>
 
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a587c5442568050894df60f447eb04104">MeaUnitsProvider</a>.</p>
+
 <p class="reference">References <a class="el" href="classMeaAngularUnits.html#a3c319491e4ffa3d782eb019e70425877">MeaAngularUnits::ConvertAngle()</a>, and <a class="el" href="classMeaUnitsMgr.html#afb4f74511ed5f4d62aa366811e31d178">m_currentAngularUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a3316f0a7358f8559839f027cea871c6e">FormatConvertAngle()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a5a1b6b9535bdc9e2dfced5daed3d386f">MeaPositionLogMgr::Position::RecordAngle()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a71a25cfa7abd7a3dd5623b7028ccab7a">FormatConvertAngle()</a>.</p>
 
 </div>
 </div>
-<a id="a82e9abe00b169fadb0a79fee4e3288bb" name="a82e9abe00b169fadb0a79fee4e3288bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82e9abe00b169fadb0a79fee4e3288bb">&#9670;&nbsp;</a></span>ConvertCoord()</h2>
+<a id="a16be790f58e750265e13222a7ed9e4ea" name="a16be790f58e750265e13222a7ed9e4ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16be790f58e750265e13222a7ed9e4ea">&#9670;&nbsp;</a></span>ConvertCoord()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -393,7 +468,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structFPOINT.html">FPOINT</a> MeaUnitsMgr::ConvertCoord </td>
+          <td class="memname"><a class="el" href="structMeaFPoint.html">MeaFPoint</a> MeaUnitsMgr::ConvertCoord </td>
           <td>(</td>
           <td class="paramtype">const POINT &amp;&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
@@ -402,7 +477,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -417,14 +492,16 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Coordinates converted from pixels to the desired units. The conversion takes into account the location of the origin and the orientation of the y-axis. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaLinearUnits.html#a2ec29f2bfa840db8ef2f675e75958f8a">MeaLinearUnits::ConvertCoord()</a>, and <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a08ca88eb66d5f95241ca74a710bbde9f">MeaUnitsProvider</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a498db3517090c5a441c444793d91e49d">MeaAngleTool::GetPosition()</a>, <a class="el" href="classMeaCircleTool.html#a25a0ec52aea6497db93b480506d89317">MeaCircleTool::GetPosition()</a>, <a class="el" href="classMeaLineTool.html#a9c53845f823786ad30d45a8602eb00c8">MeaLineTool::GetPosition()</a>, <a class="el" href="classMeaRectTool.html#a57ab9720ec74cfa83614903796c288b8">MeaRectTool::GetPosition()</a>, <a class="el" href="classMeaWindowTool.html#a290d696a6989f56408307f8b5084e0e7">MeaWindowTool::GetPosition()</a>, <a class="el" href="classMeaUnitsMgr.html#aa56e3a4d13df186fec7855dc55478e4f">GetWidthHeight()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a1b6c4c19827cdb7a442b5fc62f263ba2">MeaPositionLogMgr::Screen::Screen()</a>, <a class="el" href="classMeaAngleTool.html#ab16414dfdb2e2c237f2500a709c2974c">MeaAngleTool::Update()</a>, <a class="el" href="classMeaCircleTool.html#aa03c5fefaea1c4d1d8adc9d32ed039a7">MeaCircleTool::Update()</a>, <a class="el" href="classMeaCursorTool.html#a8e65943be4f68cdcbdea4fe15462e64d">MeaCursorTool::Update()</a>, <a class="el" href="classMeaLineTool.html#a5c5158d88e487ab1a169570e6f2233d9">MeaLineTool::Update()</a>, <a class="el" href="classMeaPointTool.html#a73b15f428d30c7da40eb53cc7b5753d2">MeaPointTool::Update()</a>, <a class="el" href="classMeaRectTool.html#a37c90ed4f905c4bd24673beff67d8d54">MeaRectTool::Update()</a>, <a class="el" href="classMeaWindowTool.html#ab393858f982960f3c96f24ae03450393">MeaWindowTool::Update()</a>, and <a class="el" href="classMeaAngleTool.html#a1e5ce35de5886ec6c12afc0aefe4a5fb">MeaAngleTool::UpdateBisector()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaLinearUnits.html#afd0b3468ed6232c82c8b4df94e3a777c">MeaLinearUnits::ConvertCoord()</a>, and <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a8b1b04981051d2da2f51960d0c1b6614">GetWidthHeight()</a>.</p>
 
 </div>
 </div>
-<a id="a7b8aacabc749c0e12fbfee65a8c44770" name="a7b8aacabc749c0e12fbfee65a8c44770"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b8aacabc749c0e12fbfee65a8c44770">&#9670;&nbsp;</a></span>ConvertPos()</h2>
+<a id="a9d969b104f4a454c60711a7a2679b376" name="a9d969b104f4a454c60711a7a2679b376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d969b104f4a454c60711a7a2679b376">&#9670;&nbsp;</a></span>ConvertPos()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -433,7 +510,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structFPOINT.html">FPOINT</a> MeaUnitsMgr::ConvertPos </td>
+          <td class="memname"><a class="el" href="structMeaFPoint.html">MeaFPoint</a> MeaUnitsMgr::ConvertPos </td>
           <td>(</td>
           <td class="paramtype">const POINT &amp;&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
@@ -442,7 +519,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -457,14 +534,16 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Position converted from pixels to the desired units. The conversion does not take into account the location of the origin nor does it compensate for the orientation of the y-axis. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaLinearUnits.html#a857498b5c3b5eaad15bce8501fec71f7">MeaLinearUnits::ConvertPos()</a>, and <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a4f962e5a7b63cbffbf50f0656f778e8a">MeaUnitsProvider</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaAngleTool.html#a0a10cb7be690ef187e86dd354b6dc491">MeaAngleTool::LoadProfile()</a>, <a class="el" href="classMeaCircleTool.html#a8bf4c885e105fed707613131cdbd324e">MeaCircleTool::LoadProfile()</a>, <a class="el" href="classMeaLineTool.html#a2cc8a6627b634589f5f33024c13c3dc0">MeaLineTool::LoadProfile()</a>, <a class="el" href="classMeaPointTool.html#ad362516a301c431c817a511662db54d6">MeaPointTool::LoadProfile()</a>, <a class="el" href="classMeaRectTool.html#a66e4bb403166289f39d30a2a680f5cdb">MeaRectTool::LoadProfile()</a>, <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>, <a class="el" href="classMeaAngleTool.html#a0116715644b6e33a3b87cb4bf0641790">MeaAngleTool::SaveProfile()</a>, <a class="el" href="classMeaCircleTool.html#a3639cd7447de3d70f0601f19e5b4d766">MeaCircleTool::SaveProfile()</a>, <a class="el" href="classMeaLineTool.html#a749988ce5fb7f6d0d377cd5620100b6f">MeaLineTool::SaveProfile()</a>, <a class="el" href="classMeaPointTool.html#a09eacd522e2bddb0bf8739a6e5bbb696">MeaPointTool::SaveProfile()</a>, and <a class="el" href="classMeaRectTool.html#a9a336c9ad05fb05a6338edf9facc0833">MeaRectTool::SaveProfile()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaLinearUnits.html#aeec17d03be242b565b50fc5424b606f3">MeaLinearUnits::ConvertPos()</a>, and <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>.</p>
 
 </div>
 </div>
-<a id="aa585d9907ab7e4ba7404cd6e0152c763" name="aa585d9907ab7e4ba7404cd6e0152c763"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa585d9907ab7e4ba7404cd6e0152c763">&#9670;&nbsp;</a></span>ConvertRes()</h2>
+<a id="ae209db4be32d3ae46ec76c6145bcbd1b" name="ae209db4be32d3ae46ec76c6145bcbd1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae209db4be32d3ae46ec76c6145bcbd1b">&#9670;&nbsp;</a></span>ConvertRes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -473,16 +552,16 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structFSIZE.html">FSIZE</a> MeaUnitsMgr::ConvertRes </td>
+          <td class="memname"><a class="el" href="structMeaFSize.html">MeaFSize</a> MeaUnitsMgr::ConvertRes </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;&#160;</td>
           <td class="paramname"><em>res</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -496,14 +575,14 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Resolution converted from pixels/inch to the desired units. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaLinearUnits.html#a5ad004a25e9cfb2e3a3d95efdc9ac139">MeaLinearUnits::ConvertRes()</a>, and <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#aacb3e0cbfb5e9080c301f4bed6d9589d">MeaUnitsProvider</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1Screen.html#a1b6c4c19827cdb7a442b5fc62f263ba2">MeaPositionLogMgr::Screen::Screen()</a>, and <a class="el" href="classMeaScreenTool.html#aea1f796423b0556d777bc1f80126a54d">MeaScreenTool::Update()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaLinearUnits.html#a051d56f0d115b7b4afb4a6af426d3c57">MeaLinearUnits::ConvertRes()</a>, and <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
 
 </div>
 </div>
-<a id="a4452d16827b5eaf35a7029cd7111e32d" name="a4452d16827b5eaf35a7029cd7111e32d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4452d16827b5eaf35a7029cd7111e32d">&#9670;&nbsp;</a></span>ConvertToPixels()</h2>
+<a id="a8c3184480be69d744982dd8a0e869702" name="a8c3184480be69d744982dd8a0e869702"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c3184480be69d744982dd8a0e869702">&#9670;&nbsp;</a></span>ConvertToPixels()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -520,7 +599,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="structFSIZE.html">FSIZE</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;&#160;</td>
           <td class="paramname"><em>res</em>, </td>
         </tr>
         <tr>
@@ -543,7 +622,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -561,9 +640,11 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>X and Y pixel values. </dd></dl>
 
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a4effca62d754093cad67c2eec5feea80">MeaUnitsProvider</a>.</p>
+
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRuler.html#a673f1ac35b78a04d9b1f76590aa08e98">MeaRuler::Create()</a>, <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">MeaCrossHair::Create()</a>, <a class="el" href="classMeaLayout.html#ad8da9dc24587ddc1876627521a7b5d12">MeaLayout::DrawOpacityBackground()</a>, <a class="el" href="classMeaLinearUnits.html#a7ee3f3c8f86e663005d9098aad5a2c0b">MeaLinearUnits::GetMinorIncr()</a>, and <a class="el" href="classMeaOriginTool.html#a5877486bcbf1392f8b780e2390c01aff">MeaOriginTool::Update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#acba1b148e3541339cdee69c62c36ade5">GetMinorIncr()</a>.</p>
 
 </div>
 </div>
@@ -591,14 +672,14 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a8c10819cabe572e6a715a246d1c3455d">m_angularLabelsList</a>, <a class="el" href="classMeaUnitsMgr.html#a524fa1364809581a51d132c87047fbd1">m_linearLabelsList</a>, and <a class="el" href="MeaAssert_8h.html#a2bbb95fb90b8342c2c48f57b92251657">MeaAssert</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a8c10819cabe572e6a715a246d1c3455d">m_angularLabelsList</a>, and <a class="el" href="classMeaUnitsMgr.html#a524fa1364809581a51d132c87047fbd1">m_linearLabelsList</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaDataDisplay_1_1DataItem.html#a0d64b1660dd6d242dc81b54aec2c1f79">MeaDataDisplay::DataItem::~DataItem()</a>.</p>
 
 </div>
 </div>
-<a id="ace996e73e084639559bcee578014678c" name="ace996e73e084639559bcee578014678c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace996e73e084639559bcee578014678c">&#9670;&nbsp;</a></span>Format() <span class="overload">[1/2]</span></h2>
+<a id="a68008cd5286a8e58988599c58cc0de69" name="a68008cd5286a8e58988599c58cc0de69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68008cd5286a8e58988599c58cc0de69">&#9670;&nbsp;</a></span>Format() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -626,7 +707,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -641,12 +722,14 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>String containing the formatted measurement data. </dd></dl>
 
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#ac7d15e3f071c614f0e124b996f4595ba">MeaUnitsProvider</a>.</p>
+
 <p class="reference">References <a class="el" href="classMeaAngularUnits.html#aa7c827790ee6327ac6850912e64610e7">MeaAngularUnits::Format()</a>, and <a class="el" href="classMeaUnitsMgr.html#afb4f74511ed5f4d62aa366811e31d178">m_currentAngularUnits</a>.</p>
 
 </div>
 </div>
-<a id="a9f90584a12e9be699e796ecf9d3efb85" name="a9f90584a12e9be699e796ecf9d3efb85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f90584a12e9be699e796ecf9d3efb85">&#9670;&nbsp;</a></span>Format() <span class="overload">[2/2]</span></h2>
+<a id="aa42c578759181e916424d41c17f32819" name="aa42c578759181e916424d41c17f32819"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa42c578759181e916424d41c17f32819">&#9670;&nbsp;</a></span>Format() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -674,7 +757,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -689,14 +772,16 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>String containing the formatted measurement data. </dd></dl>
 
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a1fbb8bc8d4bd9c5138be8df474575824">MeaUnitsProvider</a>.</p>
+
 <p class="reference">References <a class="el" href="classMeaLinearUnits.html#a0c14e75c0dee4d39fb2f4c0bcb7f01bb">MeaLinearUnits::Format()</a>, and <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaDataWin.html#a7585099488bf2fc35a7b3adab35c9cd9">MeaDataWin::CalcWidth()</a>, <a class="el" href="classMeaRuler.html#a8915065687385b2a40fc91718622067f">MeaRuler::DrawRuler()</a>, <a class="el" href="classMeaUnitsMgr.html#a3316f0a7358f8559839f027cea871c6e">FormatConvertAngle()</a>, <a class="el" href="classMeaDataWin.html#a67922ff6a6cbe98e4c3d8a5ef66559e1">MeaDataWin::ShowDistance()</a>, <a class="el" href="classMeaDataDisplay.html#ada64d1246bfe095a3362354ef429ac86">MeaDataDisplay::ShowScreenRes()</a>, <a class="el" href="classMeaDataDisplay.html#a464cc2e0cf4d929a8da8e21cb0f45c35">MeaDataDisplay::ShowScreenWH()</a>, <a class="el" href="classMeaDataDisplay.html#a20d1c7ff6604455569279c828329eb4b">MeaDataDisplay::ShowWH()</a>, <a class="el" href="classMeaDataWin.html#a2c9bdf7777afb8beffebf10ea85d0e88">MeaDataWin::ShowWH()</a>, <a class="el" href="classMeaDataWin.html#a12bf99a3c8da6284a0e3199f3c4299de">MeaDataWin::ShowXY()</a>, <a class="el" href="classMeaDataDisplay.html#ac9c08bd76dc9ec8be0430bd95a3b41ed">MeaDataDisplay::ShowXY1()</a>, <a class="el" href="classMeaDataDisplay.html#ac427d88dae3c1a174d2ba152ae7a6465">MeaDataDisplay::ShowXY2()</a>, and <a class="el" href="classMeaDataDisplay.html#a6d5e2b2aeab3fbb86aa8ec2645614e51">MeaDataDisplay::ShowXYV()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a71a25cfa7abd7a3dd5623b7028ccab7a">FormatConvertAngle()</a>, <a class="el" href="classMeaDataDisplay.html#a41e42c557f038cb14a1a42c6409240d6">MeaDataDisplay::ShowScreenRes()</a>, <a class="el" href="classMeaDataDisplay.html#a74cd355386524034a21a49a7e2853638">MeaDataDisplay::ShowScreenWH()</a>, <a class="el" href="classMeaDataDisplay.html#a1f0b902a310ec5e3ab7e7dcb1adb0253">MeaDataDisplay::ShowWH()</a>, <a class="el" href="classMeaDataDisplay.html#ab76d33b49ace0f77ee397722c328217c">MeaDataDisplay::ShowXY1()</a>, <a class="el" href="classMeaDataDisplay.html#a53f029815ea6d05849028164096fdb97">MeaDataDisplay::ShowXY2()</a>, and <a class="el" href="classMeaDataDisplay.html#a08a735f6836a4dae79d9179154e4db2c">MeaDataDisplay::ShowXYV()</a>.</p>
 
 </div>
 </div>
-<a id="a3316f0a7358f8559839f027cea871c6e" name="a3316f0a7358f8559839f027cea871c6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3316f0a7358f8559839f027cea871c6e">&#9670;&nbsp;</a></span>FormatConvertAngle()</h2>
+<a id="a71a25cfa7abd7a3dd5623b7028ccab7a" name="a71a25cfa7abd7a3dd5623b7028ccab7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71a25cfa7abd7a3dd5623b7028ccab7a">&#9670;&nbsp;</a></span>FormatConvertAngle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -714,7 +799,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -728,9 +813,9 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>String containing the converted and formatted angle data. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a2e540873c8dbd9f7c26fb46464c12e4c">ConvertAngle()</a>, <a class="el" href="classMeaUnitsMgr.html#a9f90584a12e9be699e796ecf9d3efb85">Format()</a>, and <a class="el" href="Units_8h.html#af6780e392f63c2778225743126036560a9f1b5850f822f95edbdfd9684cb8bd8b">MeaA</a>.</p>
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a5bca97fe86adf81f812018707de4df04">MeaUnitsProvider</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaDataWin.html#a7585099488bf2fc35a7b3adab35c9cd9">MeaDataWin::CalcWidth()</a>, and <a class="el" href="classMeaDataWin.html#a485d49787ee5350f02dbb3805e68dba7">MeaDataWin::ShowAngle()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#ac8409df354271c1c252313552b54c050">ConvertAngle()</a>, <a class="el" href="classMeaUnitsMgr.html#aa42c578759181e916424d41c17f32819">Format()</a>, and <a class="el" href="Units_8h.html#af6780e392f63c2778225743126036560a9f1b5850f822f95edbdfd9684cb8bd8b">MeaA</a>.</p>
 
 </div>
 </div>
@@ -808,12 +893,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a15f4633cf62665a5df0de0527b23cf93">m_angularUnitsMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a06b31bdf2049650ee1aa264431d31116">CChildView::OnPreferences()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#a0e175c65ab8d6467dd87b4e23535911f">AppView::OnPreferences()</a>.</p>
 
 </div>
 </div>
-<a id="a20f4d4451afa67dbb25b68a920264edc" name="a20f4d4451afa67dbb25b68a920264edc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20f4d4451afa67dbb25b68a920264edc">&#9670;&nbsp;</a></span>GetAngularUnits() <span class="overload">[1/2]</span></h2>
+<a id="ae87c5e21d8f17e1a358207d492ce6940" name="ae87c5e21d8f17e1a358207d492ce6940"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae87c5e21d8f17e1a358207d492ce6940">&#9670;&nbsp;</a></span>GetAngularUnits() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -825,12 +910,12 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname"><a class="el" href="classMeaAngularUnits.html">MeaAngularUnits</a> * MeaUnitsMgr::GetAngularUnits </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -838,14 +923,16 @@ Additional Inherited Members</h2></td></tr>
 <p>Returns the current angular measurement units. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current angular units. </dd></dl>
 
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a3a1ef8dc701029bc26702575d3ef3687">MeaUnitsProvider</a>.</p>
+
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#afb4f74511ed5f4d62aa366811e31d178">m_currentAngularUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#a1f6d0ffa04c9c8a24c3c7e67d97a1135">MeaPositionLogMgr::DesktopInfo::SetAngularUnits()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>.</p>
 
 </div>
 </div>
-<a id="a85cac0dbac7d6dbf309ffbaa13254e16" name="a85cac0dbac7d6dbf309ffbaa13254e16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85cac0dbac7d6dbf309ffbaa13254e16">&#9670;&nbsp;</a></span>GetAngularUnits() <span class="overload">[2/2]</span></h2>
+<a id="a18f5298df7edf554a37c6cdbe0ca0943" name="a18f5298df7edf554a37c6cdbe0ca0943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18f5298df7edf554a37c6cdbe0ca0943">&#9670;&nbsp;</a></span>GetAngularUnits() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -858,12 +945,12 @@ Additional Inherited Members</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const CString &amp;&#160;</td>
           <td class="paramname"><em>unitsStr</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -877,6 +964,8 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Angular measurement units object. </dd></dl>
+
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a4d2edf3f0b977053453bcb97541e76b0">MeaUnitsProvider</a>.</p>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a15f4633cf62665a5df0de0527b23cf93">m_angularUnitsMap</a>.</p>
 
@@ -910,7 +999,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaAngularUnits.html#ae98c1fbc727999229682d4235c47e165">MeaAngularUnits::GetUnitsId()</a>, and <a class="el" href="classMeaUnitsMgr.html#afb4f74511ed5f4d62aa366811e31d178">m_currentAngularUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPrecisionPrefs.html#a0fc5e0f7f1537daa3831d4a8f248ab58">MeaPrecisionPrefs::OnInitDialog()</a>, and <a class="el" href="classCChildView.html#a2dfe49887b52dfa3ce4d294d7f3988d5">CChildView::OnUpdateAngles()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPrecisionPrefs.html#a0fc5e0f7f1537daa3831d4a8f248ab58">MeaPrecisionPrefs::OnInitDialog()</a>, and <a class="el" href="classAppView.html#ad66294439582e4c153d74f6950387e72">AppView::OnUpdateAngles()</a>.</p>
 
 </div>
 </div>
@@ -943,7 +1032,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#a4276828acc47e7293b1d23561ef50bae">MeaUnits::GetUnitsStr()</a>, and <a class="el" href="classMeaUnitsMgr.html#afb4f74511ed5f4d62aa366811e31d178">m_currentAngularUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -976,39 +1065,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#ad491cae3ff4ca184a3094a190d2d88dd">m_customUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5c7c5e0b94519969b06d294d47539fc8">CChildView::ApplyPreferences()</a>, <a class="el" href="classCChildView.html#a06b31bdf2049650ee1aa264431d31116">CChildView::OnPreferences()</a>, <a class="el" href="classCChildView.html#acbe080a74e1b6c3afd04a5ff488b6dac">CChildView::OnUpdateCustomUnits()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
-
-</div>
-</div>
-<a id="a312005a6ff20f0c1222f0d149937e671" name="a312005a6ff20f0c1222f0d149937e671"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a312005a6ff20f0c1222f0d149937e671">&#9670;&nbsp;</a></span>GetInvertY()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MeaUnitsMgr::GetInvertY </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns the orientation of the y-axis. </p>
-<dl class="section return"><dt>Returns</dt><dd>If <b>true</b> is returned, the origin of the coordinate system is located at the lower left of the primary screen, and the positive y-axis is pointing upward. If <b>false</b> is returned, the origin is located at the upper left corner and the positive y-axis is pointing down. Note that the actual location of the origin is determined by the SetOrigin method. </dd></dl>
-
-<p class="reference">References <a class="el" href="classMeaLinearUnits.html#a9918d3605af2cda47f3a96fb1cd3fa73">MeaLinearUnits::GetInvertY()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>, <a class="el" href="classMeaOriginTool.html#a5877486bcbf1392f8b780e2390c01aff">MeaOriginTool::Update()</a>, and <a class="el" href="classMeaAngleTool.html#a1e5ce35de5886ec6c12afc0aefe4a5fb">MeaAngleTool::UpdateBisector()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#afa8eaf9324b31c2e2fa6cee442f5c2f5">AppView::ApplyPreferences()</a>, <a class="el" href="classAppView.html#a0e175c65ab8d6467dd87b4e23535911f">AppView::OnPreferences()</a>, <a class="el" href="classAppView.html#a86d634bcca9a4f1c421819b5d447c1de">AppView::OnUpdateCustomUnits()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -1086,12 +1143,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a06b31bdf2049650ee1aa264431d31116">CChildView::OnPreferences()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#a0e175c65ab8d6467dd87b4e23535911f">AppView::OnPreferences()</a>.</p>
 
 </div>
 </div>
-<a id="adef9de536ccfccee70f81f4af52f18be" name="adef9de536ccfccee70f81f4af52f18be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adef9de536ccfccee70f81f4af52f18be">&#9670;&nbsp;</a></span>GetLinearUnits() <span class="overload">[1/2]</span></h2>
+<a id="ac12e7785546602fb7857483768c7fcb2" name="ac12e7785546602fb7857483768c7fcb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac12e7785546602fb7857483768c7fcb2">&#9670;&nbsp;</a></span>GetLinearUnits() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1103,12 +1160,12 @@ Additional Inherited Members</h2></td></tr>
           <td class="memname"><a class="el" href="classMeaLinearUnits.html">MeaLinearUnits</a> * MeaUnitsMgr::GetLinearUnits </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1116,14 +1173,16 @@ Additional Inherited Members</h2></td></tr>
 <p>Returns the current linear measurement units. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current linear units. </dd></dl>
 
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a013f682c3bdc58b69841eb103b08154e">MeaUnitsProvider</a>.</p>
+
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>, <a class="el" href="classMeaDataDisplay.html#ab69cb4e3f11379eda72564de94ee217c">MeaDataDisplay::CreateScreenSection()</a>, <a class="el" href="classMeaRuler.html#a8915065687385b2a40fc91718622067f">MeaRuler::DrawRuler()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#ae8d2e3eaefaf9a31d49acef1eb885270">MeaPositionLogMgr::DesktopInfo::SetLinearUnits()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>, and <a class="el" href="classMeaDataDisplay.html#ab69cb4e3f11379eda72564de94ee217c">MeaDataDisplay::CreateScreenSection()</a>.</p>
 
 </div>
 </div>
-<a id="ae478d7f34ae4d19ba27f67d2b7e8eaa0" name="ae478d7f34ae4d19ba27f67d2b7e8eaa0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae478d7f34ae4d19ba27f67d2b7e8eaa0">&#9670;&nbsp;</a></span>GetLinearUnits() <span class="overload">[2/2]</span></h2>
+<a id="a2a1a0bc279789a5435153c9fb1250e7e" name="a2a1a0bc279789a5435153c9fb1250e7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a1a0bc279789a5435153c9fb1250e7e">&#9670;&nbsp;</a></span>GetLinearUnits() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1136,12 +1195,12 @@ Additional Inherited Members</h2></td></tr>
           <td>(</td>
           <td class="paramtype">const CString &amp;&#160;</td>
           <td class="paramname"><em>unitsStr</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1155,6 +1214,8 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Linear measurement units object. </dd></dl>
+
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#ad9c81c767d10446819aaedd673806173">MeaUnitsProvider</a>.</p>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>.</p>
 
@@ -1188,7 +1249,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaLinearUnits.html#a7fb36041fe83c3987687c6dc2616d980">MeaLinearUnits::GetUnitsId()</a>, and <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5c7c5e0b94519969b06d294d47539fc8">CChildView::ApplyPreferences()</a>, <a class="el" href="classMeaPrecisionPrefs.html#a0fc5e0f7f1537daa3831d4a8f248ab58">MeaPrecisionPrefs::OnInitDialog()</a>, <a class="el" href="classCChildView.html#acbe080a74e1b6c3afd04a5ff488b6dac">CChildView::OnUpdateCustomUnits()</a>, and <a class="el" href="classCChildView.html#a60ee0a70ce4cf478fff02fd4b6f17d46">CChildView::OnUpdateUnits()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#afa8eaf9324b31c2e2fa6cee442f5c2f5">AppView::ApplyPreferences()</a>, <a class="el" href="classMeaPrecisionPrefs.html#a0fc5e0f7f1537daa3831d4a8f248ab58">MeaPrecisionPrefs::OnInitDialog()</a>, <a class="el" href="classAppView.html#a86d634bcca9a4f1c421819b5d447c1de">AppView::OnUpdateCustomUnits()</a>, and <a class="el" href="classAppView.html#a9acc9bdbb0ee31150c64d11600eab6f2">AppView::OnUpdateUnits()</a>.</p>
 
 </div>
 </div>
@@ -1221,12 +1282,83 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnits.html#a4276828acc47e7293b1d23561ef50bae">MeaUnits::GetUnitsStr()</a>, and <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
-<a id="a7282a25a181e22823f5378b3ddc13d82" name="a7282a25a181e22823f5378b3ddc13d82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7282a25a181e22823f5378b3ddc13d82">&#9670;&nbsp;</a></span>GetOrigin()</h2>
+<a id="a82433a5366ba149efb703f95eb6fcf02" name="a82433a5366ba149efb703f95eb6fcf02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82433a5366ba149efb703f95eb6fcf02">&#9670;&nbsp;</a></span>GetMajorTickCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MeaUnitsMgr::GetMajorTickCount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the number of minor ticks to display before a major tick mark is displayed on the measurement rulers. </p>
+<dl class="section return"><dt>Returns</dt><dd>Number of minor tick marks to display before displaying a major tick mark. </dd></dl>
+
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#ac01feb594e118b1cc112184507891177">MeaUnitsProvider</a>.</p>
+
+<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a096f02a394986a5d1e84b8dd73ef9180">m_majorTickCount</a>.</p>
+
+</div>
+</div>
+<a id="acba1b148e3541339cdee69c62c36ade5" name="acba1b148e3541339cdee69c62c36ade5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acba1b148e3541339cdee69c62c36ade5">&#9670;&nbsp;</a></span>GetMinorIncr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMeaFSize.html">MeaFSize</a> MeaUnitsMgr::GetMinorIncr </td>
+          <td>(</td>
+          <td class="paramtype">const RECT &amp;&#160;</td>
+          <td class="paramname"><em>rect</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the increment between minor tick marks on the measurement rulers. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rect</td><td>[in] Rectangle in screen coordinates, used to determine the current screen resolution.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Increment for the minor tick marks, in the current units. </dd></dl>
+
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#abd75f2fc172f8811cc748d77ebf624f6">MeaUnitsProvider</a>.</p>
+
+<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a8c3184480be69d744982dd8a0e869702">ConvertToPixels()</a>, <a class="el" href="structMeaFSize.html#a638f5d9683b29587bae544a93aecbff7">MeaFSize::cx</a>, <a class="el" href="structMeaFSize.html#ae08cae7baa6f2d78b89e554f25fada3c">MeaFSize::cy</a>, <a class="el" href="Geometry_8h.html#ab32255903c6ddd224e3991a4b3b3bb51">floor()</a>, <a class="el" href="classMeaLinearUnits.html#a9bc93a5e9135f5e5c0290399c8af05aa">MeaLinearUnits::FromPixels()</a>, <a class="el" href="classMeaScreenMgr.html#ab0b7c089fc911278ff79ade76718c2f2">MeaScreenMgr::GetScreenIter()</a>, <a class="el" href="classMeaScreenMgr.html#aa01b425cc7e541406f59936a21e004ef">MeaScreenMgr::GetScreenRes()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaUnitsMgr.html#ab78159d97a49aae14ab541210aeff896">kMinSepInches</a>, <a class="el" href="classMeaUnitsMgr.html#a5a647fd468642add513d5c435087aff7">kMinSepPixels</a>, <a class="el" href="classMeaUnitsMgr.html#ae71752f6693e053850353ebb5c0546a7">kNumTickIncrements</a>, <a class="el" href="classMeaUnitsMgr.html#a73fcb347ebb865b02f6b895b095c961f">kTickIncrements</a>, <a class="el" href="Geometry_8h.html#a9b6f12fe98d25ce1423dd9f3c0c551ae">log10()</a>, <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>, and <a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996a7a5b4674d6bb1fc6909ea86928caeb97">MeaInchesId</a>.</p>
+
+</div>
+</div>
+<a id="adb54eafe0a2f93e861d7700e9d7b7a8a" name="adb54eafe0a2f93e861d7700e9d7b7a8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb54eafe0a2f93e861d7700e9d7b7a8a">&#9670;&nbsp;</a></span>GetOrigin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1243,7 +1375,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1251,20 +1383,25 @@ Additional Inherited Members</h2></td></tr>
 <p>Returns the location of the origin of the coordinate system. </p>
 <dl class="section return"><dt>Returns</dt><dd>Location of the origin of the coordinate system, in pixels. </dd></dl>
 
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a872ed4e3aabb2638a7173ba1b3d2e51d">MeaUnitsProvider</a>.</p>
+
 <p class="reference">References <a class="el" href="classMeaLinearUnits.html#a8bc7ca945815a19373cf8dadc8bcc5c8">MeaLinearUnits::GetOrigin()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaOriginTool.html#ae837b265292e22f40c25752df9d63cc4">MeaOriginTool::GetPosition()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>, <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>, and <a class="el" href="classMeaOriginTool.html#a5877486bcbf1392f8b780e2390c01aff">MeaOriginTool::Update()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
-<a id="aa56e3a4d13df186fec7855dc55478e4f" name="aa56e3a4d13df186fec7855dc55478e4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa56e3a4d13df186fec7855dc55478e4f">&#9670;&nbsp;</a></span>GetWidthHeight()</h2>
+<a id="a8b1b04981051d2da2f51960d0c1b6614" name="a8b1b04981051d2da2f51960d0c1b6614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b1b04981051d2da2f51960d0c1b6614">&#9670;&nbsp;</a></span>GetWidthHeight()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structFSIZE.html">FSIZE</a> MeaUnitsMgr::GetWidthHeight </td>
+          <td class="memname"><a class="el" href="structMeaFSize.html">MeaFSize</a> MeaUnitsMgr::GetWidthHeight </td>
           <td>(</td>
           <td class="paramtype">const POINT &amp;&#160;</td>
           <td class="paramname"><em>p1</em>, </td>
@@ -1281,6 +1418,11 @@ Additional Inherited Members</h2></td></tr>
           <td></td><td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Uses the current linear measurement units to convert the two specified points from pixels to the current units, and then calculates the width and height of the rectangle formed by the two points. </p>
@@ -1293,9 +1435,43 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The width and height of the rectangle formed by the two specified points converted to the current linear measurement units. Regardless of the relative locations of the two points, the width and height are always positive. In addition, the width and height are inclusive (e.g. p1.x = 1, p2.x = 3, width = p2.x - p1.x + 1 = 3). </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a82e9abe00b169fadb0a79fee4e3288bb">ConvertCoord()</a>, <a class="el" href="structFSIZE.html#a0a8fae8d3c42f2ca26b78685ce561a67">FSIZE::cx</a>, <a class="el" href="structFSIZE.html#a202a5eea3bb25b7cb901562fa170be73">FSIZE::cy</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaUnitsMgr &gt;::Instance()</a>, <a class="el" href="structFPOINT.html#a41fede8094cd08b30ad44f43c3951853">FPOINT::x</a>, and <a class="el" href="structFPOINT.html#a0d29bc935c0ad24e0c77cea027158ade">FPOINT::y</a>.</p>
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#a7eca8cde7955b07b0c9405e305b5ab9a">MeaUnitsProvider</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaDataWin.html#a7585099488bf2fc35a7b3adab35c9cd9">MeaDataWin::CalcWidth()</a>, <a class="el" href="classMeaCircleTool.html#a25a0ec52aea6497db93b480506d89317">MeaCircleTool::GetPosition()</a>, <a class="el" href="classMeaLineTool.html#a9c53845f823786ad30d45a8602eb00c8">MeaLineTool::GetPosition()</a>, <a class="el" href="classMeaRectTool.html#a57ab9720ec74cfa83614903796c288b8">MeaRectTool::GetPosition()</a>, <a class="el" href="classMeaWindowTool.html#a290d696a6989f56408307f8b5084e0e7">MeaWindowTool::GetPosition()</a>, <a class="el" href="classMeaPositionLogMgr_1_1DesktopInfo.html#acc225d9a8c04e5709ed5f4d69ccb48bd">MeaPositionLogMgr::DesktopInfo::Init()</a>, <a class="el" href="classMeaCircleTool.html#aa03c5fefaea1c4d1d8adc9d32ed039a7">MeaCircleTool::Update()</a>, <a class="el" href="classMeaLineTool.html#a5c5158d88e487ab1a169570e6f2233d9">MeaLineTool::Update()</a>, <a class="el" href="classMeaRectTool.html#a37c90ed4f905c4bd24673beff67d8d54">MeaRectTool::Update()</a>, <a class="el" href="classMeaScreenTool.html#aea1f796423b0556d777bc1f80126a54d">MeaScreenTool::Update()</a>, and <a class="el" href="classMeaWindowTool.html#ab393858f982960f3c96f24ae03450393">MeaWindowTool::Update()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a16be790f58e750265e13222a7ed9e4ea">ConvertCoord()</a>, <a class="el" href="structMeaFPoint.html#ad8c60df5fa10c313df7a3e3ca8dfdbd5">MeaFPoint::x</a>, and <a class="el" href="structMeaFPoint.html#a1f14e2b8d7d418afe04c931e2d713b47">MeaFPoint::y</a>.</p>
+
+</div>
+</div>
+<a id="a702e0d5337b183f9f24cdde1b28e07c5" name="a702e0d5337b183f9f24cdde1b28e07c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a702e0d5337b183f9f24cdde1b28e07c5">&#9670;&nbsp;</a></span>IsInvertY()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MeaUnitsMgr::IsInvertY </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the orientation of the y-axis. </p>
+<dl class="section return"><dt>Returns</dt><dd>If <b>true</b> is returned, the origin of the coordinate system is located at the lower left of the primary screen, and the positive y-axis is pointing upward. If <b>false</b> is returned, the origin is located at the upper left corner and the positive y-axis is pointing down. Note that the actual location of the origin is determined by the SetOrigin method. </dd></dl>
+
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#ae1e7713e14f9c7e378014b82baae3528">MeaUnitsProvider</a>.</p>
+
+<p class="reference">References <a class="el" href="classMeaLinearUnits.html#a25b445c0ad9811803501ff799b997087">MeaLinearUnits::IsInvertY()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#a4c339c3f19f5bdcc1c4a6301ae7de60c">SaveProfile()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -1323,9 +1499,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaProfile.html#a873ccfaf491ab4172563e73a179b89e2">MeaProfile::GetVersion()</a>, <a class="el" href="classMeaUnitsMgr.html#a45401b652e95ab20ebb267cbe462c6db">kDefAngularUnits</a>, <a class="el" href="classMeaUnitsMgr.html#a52c4d8bde2502bc74f9a96495f49ed13">kDefInvertY</a>, <a class="el" href="classMeaUnitsMgr.html#ab61a448b620059fe75f61b58a726fdc2">kDefLinearUnits</a>, <a class="el" href="classMeaUnitsMgr.html#a15f4633cf62665a5df0de0527b23cf93">m_angularUnitsMap</a>, <a class="el" href="classMeaUnitsMgr.html#a9cfb29ffa6e86a1f5f2688a6a60b08f3">m_haveWarned</a>, <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>, <a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996a81bbdf9a06e78e8dc3389abdc07a9a44">MeaPixelsId</a>, <a class="el" href="classMeaProfile.html#a8f0652361d3f5f578b3a18bc4d6db2f1">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#a9d3b43bec7463e24ed05405f5120f5d0">MeaProfile::ReadDbl()</a>, <a class="el" href="classMeaProfile.html#ac21af58df0802d2617a4c56bf8459fd3">MeaProfile::ReadInt()</a>, <a class="el" href="classMeaProfile.html#a995d6f0ef5ad4be9bbb57bbe11e68b61">MeaProfile::ReadStr()</a>, <a class="el" href="classMeaUnitsMgr.html#a506d3983f1bc9078fbf0a1dea535f65f">SetAngularUnits()</a>, <a class="el" href="classMeaUnitsMgr.html#aae41d0c68a3202397dc7e91c8ad4dd72">SetInvertY()</a>, <a class="el" href="classMeaUnitsMgr.html#a32a6cc54394a6da69554bf9fe9e2249c">SetLinearUnits()</a>, <a class="el" href="classMeaUnitsMgr.html#a7545cee0b84ec02eddc3bcd0e8206c0e">SetOrigin()</a>, <a class="el" href="classMeaUnitsMgr.html#a382138ed3ff0fb291550f07cc13174ee">UnconvertPos()</a>, <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>, <a class="el" href="structFPOINT.html#a41fede8094cd08b30ad44f43c3951853">FPOINT::x</a>, and <a class="el" href="structFPOINT.html#a0d29bc935c0ad24e0c77cea027158ade">FPOINT::y</a>.</p>
+<p class="reference">References <a class="el" href="classMeaProfile.html#ad679c733d14b8e7fa135bd2cf89a42ce">MeaProfile::GetVersion()</a>, <a class="el" href="classMeaUnitsMgr.html#a45401b652e95ab20ebb267cbe462c6db">kDefAngularUnits</a>, <a class="el" href="classMeaUnitsMgr.html#a52c4d8bde2502bc74f9a96495f49ed13">kDefInvertY</a>, <a class="el" href="classMeaUnitsMgr.html#ab61a448b620059fe75f61b58a726fdc2">kDefLinearUnits</a>, <a class="el" href="classMeaUnitsMgr.html#a15f4633cf62665a5df0de0527b23cf93">m_angularUnitsMap</a>, <a class="el" href="classMeaUnitsMgr.html#a9cfb29ffa6e86a1f5f2688a6a60b08f3">m_haveWarned</a>, <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>, <a class="el" href="Units_8h.html#aebb20a558ab1e474ddec5be5d5823996a81bbdf9a06e78e8dc3389abdc07a9a44">MeaPixelsId</a>, <a class="el" href="classMeaProfile.html#a651b5ed195ce204f09bce84ed74c3bbd">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#a1bce381a1a2e38719413f6fa3d1ac0a1">MeaProfile::ReadDbl()</a>, <a class="el" href="classMeaProfile.html#abd21e0a2e04aa91056d8e69b0d17c675">MeaProfile::ReadInt()</a>, <a class="el" href="classMeaProfile.html#a01eaa78b2ea53f12628f321522eb644f">MeaProfile::ReadStr()</a>, <a class="el" href="classMeaUnitsMgr.html#a506d3983f1bc9078fbf0a1dea535f65f">SetAngularUnits()</a>, <a class="el" href="classMeaUnitsMgr.html#aae41d0c68a3202397dc7e91c8ad4dd72">SetInvertY()</a>, <a class="el" href="classMeaUnitsMgr.html#a32a6cc54394a6da69554bf9fe9e2249c">SetLinearUnits()</a>, <a class="el" href="classMeaUnitsMgr.html#a7545cee0b84ec02eddc3bcd0e8206c0e">SetOrigin()</a>, <a class="el" href="classMeaUnitsMgr.html#a468405ad999c3bd9be72644ab2279f74">UnconvertPos()</a>, <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>, <a class="el" href="structMeaFPoint.html#ad8c60df5fa10c313df7a3e3ca8dfdbd5">MeaFPoint::x</a>, and <a class="el" href="structMeaFPoint.html#a1f14e2b8d7d418afe04c931e2d713b47">MeaFPoint::y</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a9697bc4d097d424af9e69076ba386e92">CChildView::LoadProfile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#ae8b42b18ab1e1a3c039ded1d66824995">AppView::LoadProfile()</a>.</p>
 
 </div>
 </div>
@@ -1349,7 +1525,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a45401b652e95ab20ebb267cbe462c6db">kDefAngularUnits</a>, <a class="el" href="classMeaUnitsMgr.html#a7f246e241fe2cbb70e024d33aab034d9">kDefHaveWarned</a>, <a class="el" href="classMeaUnitsMgr.html#a52c4d8bde2502bc74f9a96495f49ed13">kDefInvertY</a>, <a class="el" href="classMeaUnitsMgr.html#ab61a448b620059fe75f61b58a726fdc2">kDefLinearUnits</a>, <a class="el" href="classMeaUnitsMgr.html#a15f4633cf62665a5df0de0527b23cf93">m_angularUnitsMap</a>, <a class="el" href="classMeaUnitsMgr.html#a9cfb29ffa6e86a1f5f2688a6a60b08f3">m_haveWarned</a>, <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>, <a class="el" href="classMeaUnitsMgr.html#a506d3983f1bc9078fbf0a1dea535f65f">SetAngularUnits()</a>, <a class="el" href="classMeaUnitsMgr.html#aae41d0c68a3202397dc7e91c8ad4dd72">SetInvertY()</a>, <a class="el" href="classMeaUnitsMgr.html#a32a6cc54394a6da69554bf9fe9e2249c">SetLinearUnits()</a>, and <a class="el" href="classMeaUnitsMgr.html#a7545cee0b84ec02eddc3bcd0e8206c0e">SetOrigin()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5b5d68885dd4dc9c3d839d05d8c4b403">CChildView::MasterReset()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#a23f06790dbb3a79e8576b0d3f9dc529b">AppView::MasterReset()</a>.</p>
 
 </div>
 </div>
@@ -1473,9 +1649,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a7b8aacabc749c0e12fbfee65a8c44770">ConvertPos()</a>, <a class="el" href="classMeaUtils.html#abbfadc87cd7ae877af4088917fb73dce">MeaUtils::DblToStr()</a>, <a class="el" href="classMeaUnitsMgr.html#adf35670e33f9f4964bffcc5c19cc1c74">GetAngularUnitsStr()</a>, <a class="el" href="classMeaUnitsMgr.html#a312005a6ff20f0c1222f0d149937e671">GetInvertY()</a>, <a class="el" href="classMeaUnitsMgr.html#ac41ae45ca95f81d849538bccddabf94c">GetLinearUnitsStr()</a>, <a class="el" href="classMeaUnitsMgr.html#a7282a25a181e22823f5378b3ddc13d82">GetOrigin()</a>, <a class="el" href="classMeaUnitsMgr.html#a15f4633cf62665a5df0de0527b23cf93">m_angularUnitsMap</a>, <a class="el" href="classMeaUnitsMgr.html#a9cfb29ffa6e86a1f5f2688a6a60b08f3">m_haveWarned</a>, <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>, <a class="el" href="classMeaProfile.html#adfdf29a69c5b2e4fe7f7bb222cfcd2e3">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#a9e92e97f35582d0a06de7a2d23ecae11">MeaProfile::WriteBool()</a>, <a class="el" href="classMeaProfile.html#ac0db05a7d33046a0e3b62b0c44a55367">MeaProfile::WriteStr()</a>, <a class="el" href="structFPOINT.html#a41fede8094cd08b30ad44f43c3951853">FPOINT::x</a>, and <a class="el" href="structFPOINT.html#a0d29bc935c0ad24e0c77cea027158ade">FPOINT::y</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a9d969b104f4a454c60711a7a2679b376">ConvertPos()</a>, <a class="el" href="classMeaUnitsMgr.html#adf35670e33f9f4964bffcc5c19cc1c74">GetAngularUnitsStr()</a>, <a class="el" href="classMeaUnitsMgr.html#ac41ae45ca95f81d849538bccddabf94c">GetLinearUnitsStr()</a>, <a class="el" href="classMeaUnitsMgr.html#adb54eafe0a2f93e861d7700e9d7b7a8a">GetOrigin()</a>, <a class="el" href="classMeaUnitsMgr.html#a702e0d5337b183f9f24cdde1b28e07c5">IsInvertY()</a>, <a class="el" href="classMeaUnitsMgr.html#a15f4633cf62665a5df0de0527b23cf93">m_angularUnitsMap</a>, <a class="el" href="classMeaUnitsMgr.html#a9cfb29ffa6e86a1f5f2688a6a60b08f3">m_haveWarned</a>, <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>, <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#a1a961b0651b261c571e3d8c459465d93">MeaProfile::WriteBool()</a>, <a class="el" href="classMeaProfile.html#a37fabc7b652f047d874f42c176371fe0">MeaProfile::WriteStr()</a>, <a class="el" href="structMeaFPoint.html#ad8c60df5fa10c313df7a3e3ca8dfdbd5">MeaFPoint::x</a>, and <a class="el" href="structMeaFPoint.html#a1f14e2b8d7d418afe04c931e2d713b47">MeaFPoint::y</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#ab8a4c0344473815ab78864b9e90a0826">CChildView::SaveProfile()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#ae07af2f2dcfc2a66bc5c22755fe7ee18">AppView::SaveProfile()</a>.</p>
 
 </div>
 </div>
@@ -1524,7 +1700,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a15f4633cf62665a5df0de0527b23cf93">m_angularUnitsMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5c7c5e0b94519969b06d294d47539fc8">CChildView::ApplyPreferences()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#afa8eaf9324b31c2e2fa6cee442f5c2f5">AppView::ApplyPreferences()</a>.</p>
 
 </div>
 </div>
@@ -1583,7 +1759,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a8c10819cabe572e6a715a246d1c3455d">m_angularLabelsList</a>, <a class="el" href="classMeaUnitsMgr.html#a15f4633cf62665a5df0de0527b23cf93">m_angularUnitsMap</a>, and <a class="el" href="classMeaUnitsMgr.html#afb4f74511ed5f4d62aa366811e31d178">m_currentAngularUnits</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>, <a class="el" href="classMeaUnitsMgr.html#ac6af5ed6b83d906149859394b3f1350f">MasterReset()</a>, <a class="el" href="classCChildView.html#a97fd2756f57a00e5ed4a546d261cfcf2">CChildView::OnAngles()</a>, <a class="el" href="classMeaUnitsMgr.html#af49b843236ba9af34eae0ea32d84be9c">SetAngularUnits()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>, <a class="el" href="classMeaUnitsMgr.html#ac6af5ed6b83d906149859394b3f1350f">MasterReset()</a>, <a class="el" href="classAppView.html#ab1f6ba8f113353257d62780d320a0ff3">AppView::OnAngles()</a>, <a class="el" href="classMeaUnitsMgr.html#af49b843236ba9af34eae0ea32d84be9c">SetAngularUnits()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -1622,7 +1798,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaLinearUnits.html#aa9efeea7de9f781fbee36091acf053ff">MeaLinearUnits::SetInvertY()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>, <a class="el" href="classMeaUnitsMgr.html#ac6af5ed6b83d906149859394b3f1350f">MasterReset()</a>, <a class="el" href="classCChildView.html#ac17e6762daad83224122997f71bc8e14">CChildView::OnInvertY()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>, <a class="el" href="classMeaUnitsMgr.html#ac6af5ed6b83d906149859394b3f1350f">MasterReset()</a>, <a class="el" href="classAppView.html#a536c9779e9875fe3c58bc4c07beec2ff">AppView::OnInvertY()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -1672,7 +1848,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5c7c5e0b94519969b06d294d47539fc8">CChildView::ApplyPreferences()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#afa8eaf9324b31c2e2fa6cee442f5c2f5">AppView::ApplyPreferences()</a>.</p>
 
 </div>
 </div>
@@ -1729,9 +1905,9 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaScreenMgr.html#ad60f69d68296d70d248e948de7b64b20">MeaScreenMgr::AnyOSRes()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>, <a class="el" href="classMeaUnitsMgr.html#a9cfb29ffa6e86a1f5f2688a6a60b08f3">m_haveWarned</a>, <a class="el" href="classMeaUnitsMgr.html#a524fa1364809581a51d132c87047fbd1">m_linearLabelsList</a>, <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>, <a class="el" href="Messages_8h.html#a362999053001832642b2e0ec9233ea4ea262a4ec68f529f4ecd2615ff239b6850">MeaShowCalPrefsMsg</a>, <a class="el" href="classMeaLinearUnits.html#ad92196abf05acb35db5b6ec07b742f48">MeaLinearUnits::RequiresRes()</a>, and <a class="el" href="classMeaScreenMgr.html#aae513d07e8202f81c5a0bd04041e768f">MeaScreenMgr::SizeChanged()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaScreenMgr.html#a7b0df795ad7879d3af0b92d312773f68">MeaScreenMgr::AnyOSRes()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>, <a class="el" href="classMeaUnitsMgr.html#a9cfb29ffa6e86a1f5f2688a6a60b08f3">m_haveWarned</a>, <a class="el" href="classMeaUnitsMgr.html#a524fa1364809581a51d132c87047fbd1">m_linearLabelsList</a>, <a class="el" href="classMeaUnitsMgr.html#a3662c440b668ef06e85b6b34a48f0632">m_linearUnitsMap</a>, <a class="el" href="Messages_8h.html#a362999053001832642b2e0ec9233ea4ea262a4ec68f529f4ecd2615ff239b6850">MeaShowCalPrefsMsg</a>, <a class="el" href="classMeaLinearUnits.html#ad92196abf05acb35db5b6ec07b742f48">MeaLinearUnits::RequiresRes()</a>, and <a class="el" href="classMeaScreenMgr.html#aae513d07e8202f81c5a0bd04041e768f">MeaScreenMgr::SizeChanged()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classCChildView.html#a5c7c5e0b94519969b06d294d47539fc8">CChildView::ApplyPreferences()</a>, <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>, <a class="el" href="classMeaUnitsMgr.html#ac6af5ed6b83d906149859394b3f1350f">MasterReset()</a>, <a class="el" href="classCChildView.html#aa954d91cc47f47e6d5fcf18cc95d8513">CChildView::OnCustomUnits()</a>, <a class="el" href="classCChildView.html#aa9e9907c0ece3ece9b345608031dc2ce">CChildView::OnUnits()</a>, <a class="el" href="classMeaUnitsMgr.html#a056d8b9e36870646304e02775c503d5a">SetLinearUnits()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classAppView.html#afa8eaf9324b31c2e2fa6cee442f5c2f5">AppView::ApplyPreferences()</a>, <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>, <a class="el" href="classMeaUnitsMgr.html#ac6af5ed6b83d906149859394b3f1350f">MasterReset()</a>, <a class="el" href="classAppView.html#a70caa5a301c8105887a91fc47fdd65df">AppView::OnCustomUnits()</a>, <a class="el" href="classAppView.html#a177fee063a6974fa632f9e8636f90357">AppView::OnUnits()</a>, <a class="el" href="classMeaUnitsMgr.html#a056d8b9e36870646304e02775c503d5a">SetLinearUnits()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -1770,12 +1946,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaLinearUnits.html#ac316554b924608fcae91b5c72937ef72">MeaLinearUnits::SetOrigin()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>, <a class="el" href="classMeaUnitsMgr.html#ac6af5ed6b83d906149859394b3f1350f">MasterReset()</a>, <a class="el" href="classCChildView.html#a86cd8d235ad84c382a39c24fca59a6dc">CChildView::OnOrigin()</a>, <a class="el" href="classCChildView.html#a11d8090eed1f77e80264d300ea97fbdf">CChildView::OnResetOrigin()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>, <a class="el" href="classMeaUnitsMgr.html#ac6af5ed6b83d906149859394b3f1350f">MasterReset()</a>, <a class="el" href="classAppView.html#a9552c4ac614a1b8c913100c5878ff045">AppView::OnOrigin()</a>, <a class="el" href="classAppView.html#ac0ecfd7c4408243381c38ad3c66d151d">AppView::OnResetOrigin()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
-<a id="a021429cd80cc0eec7d001cbbee7606bc" name="a021429cd80cc0eec7d001cbbee7606bc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a021429cd80cc0eec7d001cbbee7606bc">&#9670;&nbsp;</a></span>UnconvertCoord()</h2>
+<a id="af89d3c957c38af122637e9676d5baf7d" name="af89d3c957c38af122637e9676d5baf7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af89d3c957c38af122637e9676d5baf7d">&#9670;&nbsp;</a></span>UnconvertCoord()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1786,7 +1962,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">POINT MeaUnitsMgr::UnconvertCoord </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -1810,12 +1986,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>, and <a class="el" href="classMeaLinearUnits.html#a6e6dd745026d19baa89053a6f2b64522">MeaLinearUnits::UnconvertCoord()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#adcf614684c32616d3c3e1340aabd8e4d">MeaDataDisplay::OnFieldEntry()</a>, and <a class="el" href="classMeaPositionLogMgr_1_1Position.html#a44e340ee9fd67ced9899e3eaff3b9bc4">MeaPositionLogMgr::Position::Show()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#adcf614684c32616d3c3e1340aabd8e4d">MeaDataDisplay::OnFieldEntry()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
-<a id="a382138ed3ff0fb291550f07cc13174ee" name="a382138ed3ff0fb291550f07cc13174ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a382138ed3ff0fb291550f07cc13174ee">&#9670;&nbsp;</a></span>UnconvertPos()</h2>
+<a id="a468405ad999c3bd9be72644ab2279f74" name="a468405ad999c3bd9be72644ab2279f74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a468405ad999c3bd9be72644ab2279f74">&#9670;&nbsp;</a></span>UnconvertPos()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1826,14 +2002,14 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">POINT MeaUnitsMgr::UnconvertPos </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structFPOINT.html">FPOINT</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMeaFPoint.html">MeaFPoint</a> &amp;&#160;</td>
           <td class="paramname"><em>pos</em></td><td>)</td>
           <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1848,15 +2024,45 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Position converted from the current units to pixels. The conversion does not take into account the location of the origin nor the orientation of the y-axis. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>, and <a class="el" href="classMeaLinearUnits.html#a98b021b136fa085f17d1cde85c8072a5">MeaLinearUnits::UnconvertPos()</a>.</p>
+<p>Implements <a class="el" href="structMeaUnitsProvider.html#ab9fd235175f230cfa597d9c01a1ab1ab">MeaUnitsProvider</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>, <a class="el" href="classMeaAngleTool.html#a0a10cb7be690ef187e86dd354b6dc491">MeaAngleTool::LoadProfile()</a>, <a class="el" href="classMeaCircleTool.html#a8bf4c885e105fed707613131cdbd324e">MeaCircleTool::LoadProfile()</a>, <a class="el" href="classMeaLineTool.html#a2cc8a6627b634589f5f33024c13c3dc0">MeaLineTool::LoadProfile()</a>, <a class="el" href="classMeaPointTool.html#ad362516a301c431c817a511662db54d6">MeaPointTool::LoadProfile()</a>, and <a class="el" href="classMeaRectTool.html#a66e4bb403166289f39d30a2a680f5cdb">MeaRectTool::LoadProfile()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaUnitsMgr.html#ade16eeda0b306f81d3b6c8db0c4e48ca">m_currentLinearUnits</a>, and <a class="el" href="classMeaLinearUnits.html#a5307168888ed89bbdbfdbfbf61e89e23">MeaLinearUnits::UnconvertPos()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#abab7067a3b9ce526dc6a93e53741c594">LoadProfile()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a73fcb347ebb865b02f6b895b095c961f" name="a73fcb347ebb865b02f6b895b095c961f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73fcb347ebb865b02f6b895b095c961f">&#9670;&nbsp;</a></span>kTickIncrements</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const double MeaUnitsMgr::kTickIncrements = { 10.0, 25.0, 50.0, 75.0, 100.0 }</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ruler tick increments. </p>
+<p >The order of magnitude of these values is adjusted based on the units. </p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaUnitsMgr.html#acba1b148e3541339cdee69c62c36ade5">GetMinorIncr()</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="Units_8h_source.html">Units.h</a></li>
-<li>Units.cpp</li>
+<li><a class="el" href="UnitsMgr_8h_source.html">UnitsMgr.h</a></li>
+<li>UnitsMgr.cpp</li>
 </ul>
 </div><!-- contents -->
 <hr size="1">

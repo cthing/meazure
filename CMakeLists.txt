@@ -12,6 +12,12 @@ endif()
 
 set(CMAKE_BUILD_TYPE Release)
 
+set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
+set(APP_DIR "${SRC_DIR}/meazure")
+set(TEST_DIR "${SRC_DIR}/test")
+set(SUPPORT_DIR "${PROJECT_SOURCE_DIR}/support")
+set(TOOLS_DIR "${SUPPORT_DIR}/tools")
+
 enable_testing()
 
 set(CMAKE_CXX_STANDARD 17)
@@ -30,12 +36,6 @@ find_package(HTMLHelp REQUIRED)
 find_package(PythonInterp REQUIRED)
 
 find_program(CMAKE_LINT_PROGRAM "cmake-lint")
-
-set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
-set(APP_DIR "${SRC_DIR}/meazure")
-set(TEST_DIR "${SRC_DIR}/test")
-set(SUPPORT_DIR "${PROJECT_SOURCE_DIR}/support")
-set(TOOLS_DIR "${SUPPORT_DIR}/tools")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /WX /W4")
 
@@ -60,6 +60,6 @@ add_subdirectory(src)
 if(CMAKE_LINT_PROGRAM)
     file(GLOB_RECURSE BUILD_FILES CMakeLists.txt)
     add_custom_target(cmakelint
-                      COMMAND ${CMAKE_LINT_PROGRAM} ${BUILD_FILES} --config ${PROJECT_SOURCE_DIR}/cmake-lint-config.py
+                      COMMAND ${CMAKE_LINT_PROGRAM} ${BUILD_FILES} --config ${SUPPORT_DIR}/cmake-lint/config.py
                       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
 endif()

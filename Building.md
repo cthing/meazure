@@ -70,15 +70,16 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
     cmake -G "Visual Studio 17 2022" -A x64 ..
     ```
 
+    **NOTE:** The first time the generator command is run, the Conan package manager will download and build the
+    library dependencies (e.g. Boost). This can take a long time especially for the Visual Studio solution and will
+    produce a significant amount of output.
+
 16. To build Meazure using the command line, run the following command from the `build-nmake`
     directory:
     ```
     nmake
     ```
     The results are available in the `build-nmake/Release` directory.
-
-    **NOTE:** The first time Meazure is built, the Conan package manager will download and build the library
-    dependencies (e.g. Boost). This can take a long time and will produce a significant amount of output.
 
 17. To load Meazure into Visual Studio, open the `Meazure.sln` file
     in the `build-vs` directory.

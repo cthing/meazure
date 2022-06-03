@@ -8,6 +8,8 @@ else()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHa")
 endif()
 
+get_property(BOOST_INCLUDE_DIRS TARGET Boost::boost PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+
 # Builds and adds the specified test runner program to the list of unit tests to run.
 #
 # runner - Name of the test runner source file without the .cpp extension
@@ -21,7 +23,7 @@ macro(ADD_MEAZURE_TEST runner reuse)
     else()
         target_precompile_headers(${runner} REUSE_FROM ${reuse})
     endif()
-    target_include_directories(${runner} PRIVATE ${SRC_DIR} ${Boost_INCLUDE_DIRS} "${CMAKE_BINARY_DIR}/src")
+    target_include_directories(${runner} PRIVATE ${SRC_DIR} ${BOOST_INCLUDE_DIRS} "${CMAKE_BINARY_DIR}/src")
     target_link_libraries(${runner} Boost::unit_test_framework "version.lib" libexpat)
     set_target_properties(${runner} PROPERTIES LINK_FLAGS "/SUBSYSTEM:CONSOLE")
     add_test(${runner} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${runner})

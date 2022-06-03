@@ -22,33 +22,20 @@ set(TEST_DIR "${SRC_DIR}/test")
 set(SUPPORT_DIR "${PROJECT_SOURCE_DIR}/support")
 set(TOOLS_DIR "${SUPPORT_DIR}/tools")
 
-list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
-list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
-
 enable_testing()
 
-include(${SUPPORT_DIR}/conan/conan.cmake)
+include(${SUPPORT_DIR}/conan/cthing-conan.cmake)
 
-conan_cmake_configure(REQUIRES boost/1.79.0
-                      GENERATORS cmake_find_package cmake_find_package_multi)
+conan_cmake_configure(REQUIRES boost/1.79.0 GENERATORS ${CTHING_CONAN_GENERATOR})
 
-get_property(IS_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
-if(IS_MULTI_CONFIG)
-    foreach(type ${CMAKE_CONFIGURATION_TYPES})
-        conan_cmake_autodetect(settings BUILD_TYPE ${type})
-        conan_cmake_install(PATH_OR_REFERENCE . BUILD missing REMOTE conancenter SETTINGS ${settings})
-    endforeach()
-else()
-    conan_cmake_autodetect(settings)
-    conan_cmake_install(PATH_OR_REFERENCE . BUILD missing REMOTE conancenter SETTINGS ${settings})
-endif()
+CTHING_CONAN_INSTALL()
 
 set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 set(Boost_NO_WARN_NEW_VERSIONS ON)
 
-find_package(Boost COMPONENTS date_time unit_test_framework REQUIRED)
+find_package(Boost COMPONENTS date_time unit_test_framework REQUIRED ${CTHING_FIND_PACKAGE_OPT})
 find_package(MFC REQUIRED)
 find_package(HTMLHelp REQUIRED)
 find_package(PythonInterp REQUIRED)

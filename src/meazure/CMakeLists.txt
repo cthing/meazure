@@ -210,12 +210,14 @@ else()
     configure_file(${SUPPORT_DIR}/dtd/PositionLog1.dtd ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/dtd/PositionLog1.dtd COPYONLY)
 endif()
 
+get_property(BOOST_INCLUDE_DIRS TARGET Boost::boost PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+
 add_executable(Meazure WIN32 ${MEAZURE_SRCS})
 add_dependencies(Meazure apphelp libexpat hooks)
 target_precompile_headers(Meazure PRIVATE pch.h)
 target_link_libraries(Meazure PRIVATE libexpat hooks version.lib ${HTML_HELP_LIBRARY})
 target_include_directories(Meazure PRIVATE
-                           ${Boost_INCLUDE_DIRS}
+                           ${BOOST_INCLUDE_DIRS}
                            "${CMAKE_SOURCE_DIR}/src"
                            "${CMAKE_CURRENT_BINARY_DIR}")
 set_target_properties(Meazure PROPERTIES LINK_FLAGS "/MANIFEST")

@@ -194,18 +194,13 @@ void MeaXMLNode::Dump() const {
 //*************************************************************************
 
 
-void MeaXMLParserHandler::StartElementHandler(const CString& /* container */,
-                                              const CString& /* elementName */,
-                                              const MeaXMLAttributes& /* attrs */) {}
+void MeaXMLParserHandler::StartElementHandler(const CString&, const CString&, const MeaXMLAttributes&) {}
 
-void MeaXMLParserHandler::EndElementHandler(const CString& /* container */,
-                                            const CString& /* elementName */) {}
+void MeaXMLParserHandler::EndElementHandler(const CString&, const CString&) {}
 
-void MeaXMLParserHandler::CharacterDataHandler(const CString& /* container */,
-                                               const CString& /* data */) {}
+void MeaXMLParserHandler::CharacterDataHandler(const CString&, const CString&) {}
 
-void MeaXMLParserHandler::ParseEntity(MeaXMLParser& /*parser*/,
-                                      const CString& /*pathname*/) {}
+void MeaXMLParserHandler::ParseEntity(MeaXMLParser&, const CString&) {}
 
 CString MeaXMLParserHandler::GetFilePathname() {
     return _T("");
@@ -217,8 +212,8 @@ CString MeaXMLParserHandler::GetFilePathname() {
 //*************************************************************************
 
 
-CString MeaXMLParser::m_homeURL1(_T("https://www.cthing.com/"));
-CString MeaXMLParser::m_homeURL2(_T("http://www.cthing.com/"));
+const CString MeaXMLParser::m_homeURL1(_T("https://www.cthing.com/"));
+const CString MeaXMLParser::m_homeURL2(_T("http://www.cthing.com/"));
 MeaXMLParserHandler MeaXMLParser::m_noopHandler;
 
 

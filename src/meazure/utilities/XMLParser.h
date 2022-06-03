@@ -279,17 +279,7 @@ private:
 /// events. This is classic SAX parsing behavior. The class contains noop
 /// implementations for the method.
 ///
-class MeaXMLParserHandler {
-
-public:
-    /// Empty constructor for the handler class. This class should be
-    /// thought of more as an interface than as an instantiable class.
-    ///
-    MeaXMLParserHandler() {}
-
-    /// Empty destructor for the handler class.
-    ///
-    virtual ~MeaXMLParserHandler() {}
+struct MeaXMLParserHandler {
 
     /// Called when a new element is opened (e.g. &lt;foo&gt; or &lt;foo/&gt;).
     ///
@@ -543,8 +533,8 @@ private:
 
 
     static MeaXMLParserHandler m_noopHandler;   ///< Do nothing handler when only building a DOM
-    static CString m_homeURL1;                  ///< URL for cthing.com
-    static CString m_homeURL2;                  ///< URL for cthing.com
+    static const CString m_homeURL1;            ///< URL for cthing.com
+    static const CString m_homeURL2;            ///< URL for cthing.com
 
     XML_Parser m_parser;                    ///< The expat XML parser.
     bool m_isSubParser;                     ///< Indicates whether this is an external entity sub-parser.

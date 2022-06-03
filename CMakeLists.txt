@@ -34,8 +34,8 @@ conan_cmake_configure(REQUIRES boost/1.79.0
 
 get_property(IS_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
 if(IS_MULTI_CONFIG)
-    foreach(TYPE ${CMAKE_CONFIGURATION_TYPES})
-        conan_cmake_autodetect(settings BUILD_TYPE ${TYPE})
+    foreach(type ${CMAKE_CONFIGURATION_TYPES})
+        conan_cmake_autodetect(settings BUILD_TYPE ${type})
         conan_cmake_install(PATH_OR_REFERENCE . BUILD missing REMOTE conancenter SETTINGS ${settings})
     endforeach()
 else()

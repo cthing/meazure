@@ -69,6 +69,7 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
     - Use precompiled headers to greatly reduce build time
     - Use namespaces for static utility classes
     - Refactoring, renaming, and reorganizing of class functionality for testability and clarity
+    - Use the [Conan C/C++ Package Manager](https://conan.io/) for library dependencies (e.g. Boost)
  
 ### Changes 3.0.1 to 3.0.2
 

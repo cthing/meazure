@@ -12,19 +12,37 @@ endif()
 
 set(CMAKE_BUILD_TYPE Release)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
 set(APP_DIR "${SRC_DIR}/meazure")
 set(TEST_DIR "${SRC_DIR}/test")
 set(SUPPORT_DIR "${PROJECT_SOURCE_DIR}/support")
 set(TOOLS_DIR "${SUPPORT_DIR}/tools")
 
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
+list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
+
 enable_testing()
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+include(${SUPPORT_DIR}/conan/conan.cmake)
 
-set(BOOST_ROOT "C:/Program Files/boost/boost_1_79_0")
+conan_cmake_configure(REQUIRES boost/1.79.0
+                      GENERATORS cmake_find_package cmake_find_package_multi)
+
+get_property(IS_MULTI_CONFIG GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)
+if(IS_MULTI_CONFIG)
+    foreach(TYPE ${CMAKE_CONFIGURATION_TYPES})
+        conan_cmake_autodetect(settings BUILD_TYPE ${TYPE})
+        conan_cmake_install(PATH_OR_REFERENCE . BUILD missing REMOTE conancenter SETTINGS ${settings})
+    endforeach()
+else()
+    conan_cmake_autodetect(settings)
+    conan_cmake_install(PATH_OR_REFERENCE . BUILD missing REMOTE conancenter SETTINGS ${settings})
+endif()
+
 set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
@@ -41,14 +59,14 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /WX /W4")
 
 add_compile_definitions(_MBCS)
 
-if(CMAKE_BUILD_TOOL MATCHES "nmake")
-    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR}/${CMAKE_BUILD_TYPE})
-    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR}/${CMAKE_BUILD_TYPE})
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR}/${CMAKE_BUILD_TYPE})
-else()
+if(IS_MULTI_CONFIG)
     set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR})
     set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR})
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR})
+else()
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR}/${CMAKE_BUILD_TYPE})
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${Meazure_BINARY_DIR}/${CMAKE_BUILD_TYPE})
 endif()
 
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")

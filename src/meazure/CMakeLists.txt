@@ -218,5 +218,4 @@ target_include_directories(Meazure PRIVATE
                            ${Boost_INCLUDE_DIRS}
                            "${CMAKE_SOURCE_DIR}/src"
                            "${CMAKE_CURRENT_BINARY_DIR}")
-target_link_directories(Meazure PRIVATE ${Boost_LIBRARY_DIRS})
 set_target_properties(Meazure PROPERTIES LINK_FLAGS "/MANIFEST")

@@ -60,75 +60,78 @@ public:
     ///
     MeaXMLAttributes();
 
-    /// Copy constructor. A deep copy of the specified attribute object
-    /// is performed.
+    /// Copy constructor. A deep copy of the specified attribute object is performed.
     ///
     /// @param attrs    [in] XML attribute object instance to copy.
     ///
     MeaXMLAttributes(const MeaXMLAttributes& attrs) { Assign(attrs); }
 
-    /// Destroys an instance of the XML attributes class.
-    ///
-    virtual ~MeaXMLAttributes();
-
     /// Performs a deep assignment of the specified XML attribute object.
     ///
     /// @param attrs    [in] XML attribute object to assign to this.
-    ///
     /// @return this
     ///
     MeaXMLAttributes& operator=(const MeaXMLAttributes& attrs) { return Assign(attrs); }
 
+    /// Indicates whether there are any attributes present.
+    ///
+    /// @return <b>true</b> if there are no attributes.
+    ///
+    bool IsEmpty() const { return m_attributeMap.empty(); }
+
     /// Returns the value of the specified attribute as a string.
+    /// 
     /// @param name         [in] Attribute name.
     /// @param value        [out] Attribute value as a string.
     /// @param isDefault    [out] <b>true</b> if the value is the DTD default.
     /// @return <b>true</b> if the attribute is found.
+    /// 
     bool GetValueStr(LPCTSTR name, CString& value, bool& isDefault) const;
 
     /// Returns the value of the specified attribute converted to an integer.
+    /// 
     /// @param name         [in] Attribute name.
     /// @param value        [out] Attribute value as an integer.
     /// @param isDefault    [out] <b>true</b> if the value is the DTD default.
     /// @return <b>true</b> if the attribute is found.
+    /// 
     bool GetValueInt(LPCTSTR name, int& value, bool& isDefault) const;
 
     /// Returns the value of the specified attribute converted to a double.
+    /// 
     /// @param name         [in] Attribute name.
     /// @param value        [out] Attribute value as a double.
     /// @param isDefault    [out] <b>true</b> if the value is the DTD default.
     /// @return <b>true</b> if the attribute is found.
+    /// 
     bool GetValueDbl(LPCTSTR name, double& value, bool& isDefault) const;
 
     /// Returns the value of the specified attribute converted to a boolean.
+    /// 
     /// @param name         [in] Attribute name.
     /// @param value        [out] Attribute value as a boolean. This parameter
     ///                     is set to <b>true</b> if the attribute contains the
     ///                     string "true" or "1". <b>false</b> is returned otherwise.
     /// @param isDefault    [out] <b>true</b> if the value is the DTD default.
     /// @return <b>true</b> if the attribute is found.
+    /// 
     bool GetValueBool(LPCTSTR name, bool& value, bool& isDefault) const;
 
-    /// Performs a deep copy assignment of the specified attribute object
-    /// to this.
+    /// Performs a deep copy assignment of the specified attribute object to this.
     ///
     /// @param attrs        [in] Attribute object to assign to this.
-    ///
     /// @return this
     ///
     MeaXMLAttributes& Assign(const MeaXMLAttributes& attrs);
 
 protected:
-    /// Constructs an instance of the class based on the specified
-    /// attributes provided by the expat parser.
+    /// Constructs an instance of the class based on the specified attributes provided by the expat parser.
     ///
-    /// @param atts         [in] Array of attribute name/value pairs from expat.
-    ///                     In the array the name is followed by the value which
-    ///                     is then followed by another name and so on until a
+    /// @param atts         [in] Array of attribute name/value pairs from expat. In the array the name is
+    ///                     followed by the value which is then followed by another name and so on until a
     ///                     nullptr is encountered.
-    /// @param numSpecified [in] Number of attributes in the array that have been
-    ///                     explicitly specified versus set by default from the DTD.
-    ///                     The atts array is organized such that the explicitly
+    /// @param numSpecified [in] Number of attributes in the array that have been explicitly specified versus
+    ///                     set by default from the DTD. The atts array is organized such that the explicitly
     ///                     specified attributes come first.
     ///
     MeaXMLAttributes(const XML_Char** atts, int numSpecified);
@@ -184,11 +187,12 @@ public:
     virtual ~MeaXMLNode();
 
     /// Returns the type of the node.
+    /// 
     /// @return Node type.
+    /// 
     Type GetType() const { return m_type; }
 
-    /// Returns the data for the node. The data returned
-    /// depends on the node type:
+    /// Returns the data for the node. The data returned depends on the node type:
     ///
     /// <table cellspacing="0" cellpadding="3">
     /// <tr><th>Node Type</th><th>GetData() Return</th></tr>
@@ -206,14 +210,23 @@ public:
     ///
     CString GetChildData() const;
 
-    /// Returns the attributes associated with the node if it
-    /// is of type Element.
+    /// Returns the attributes associated with the node if it is of type Element.
+    /// 
     /// @return Attributes associated with the node.
+    /// 
     const MeaXMLAttributes& GetAttributes() const { return m_attributes; }
 
+    /// Indicates whether there are any attributes associated with the node if it is of type Element.
+    ///
+    /// @return <b>true</b> if the node has attributes.
+    ///
+    bool HasAttributes() const { return !m_attributes.IsEmpty(); }
+
     /// Performs a deep copy assignment of the specified node to this.
+    /// 
     /// @param node     [in] DOM node to assign to this.
     /// @return this
+    /// 
     MeaXMLNode& operator=(const MeaXMLNode& node) { return Assign(node); }
 
     /// Adds the specified DOM node as a child of this node.
@@ -227,8 +240,10 @@ public:
     }
 
     /// Performs a deep copy assignment of the specified node to this.
+    /// 
     /// @param node     [in] DOM node to assign to this.
     /// @return this
+    /// 
     MeaXMLNode& Assign(const MeaXMLNode& node);
 
     /// Returns a constant iterator over the children of this node.
@@ -237,13 +252,10 @@ public:
     ///
     NodeIter_c GetChildIter() const { return m_children.begin(); }
 
-    /// Indicates whether the specified iterator has reached the end
-    /// of the list of children nodes.
+    /// Indicates whether the specified iterator has reached the end of the list of children nodes.
     ///
     /// @param iter     [in] Constant iter to test.
-    ///
-    /// @return <b>true</b> if the iterator has reached the end of the
-    ///         list of children nodes.
+    /// @return <b>true</b> if the iterator has reached the end of the list of children nodes.
     ///
     bool AtEnd(const NodeIter_c& iter) const { return iter == m_children.end(); }
 
@@ -255,8 +267,7 @@ public:
 #endif
 
 private:
-    /// Sets the specified node as the parent for this node. This
-    /// allows moving up the node hierarchy to the root.
+    /// Sets the specified node as the parent for this node. This allows moving up the node hierarchy to the root.
     ///
     /// @param parent   [in] Node to set as the parent of this.
     ///
@@ -268,7 +279,25 @@ private:
     MeaXMLAttributes m_attributes;  ///< Attributes associated with an element node.
     NodeList m_children;            ///< Children of this node.
     MeaXMLNode* m_parent;           ///< Parent of this node.
+
+    friend MeaXMLParser;
 };
+
+
+inline std::ostream& operator<<(std::ostream& os, const MeaXMLNode::Type& type) {
+    switch (type) {
+    case MeaXMLNode::Type::Element:
+        os << "Element";
+        break;
+    case MeaXMLNode::Type::Data:
+        os << "Data";
+        break;
+    default:
+        os << "Unknown";
+        break;
+    }
+    return os;
+}
 
 
 /// Mix-in class for XML parser callback methods. A class that wants XML
@@ -287,7 +316,7 @@ struct MeaXMLParserHandler {
     /// @param elementName  [in] Name of the element being opened.
     /// @param attrs        [in] Attributes associated with the element.
     ///
-    virtual void StartElementHandler(const CString& container, const CString& elementName, 
+    virtual void StartElement(const CString& container, const CString& elementName, 
                                      const MeaXMLAttributes& attrs);
 
     /// Called when an element is closed (e.g. &lt;/foo&gt; or &lt;foo/&gt;).
@@ -295,18 +324,17 @@ struct MeaXMLParserHandler {
     /// @param container    [in] Parent element.
     /// @param elementName  [in] Name of the element being closed.
     ///
-    virtual void EndElementHandler(const CString& container, const CString& elementName);
+    virtual void EndElement(const CString& container, const CString& elementName);
 
     /// Called for all character data encountered between elements.
     /// Note that this method will be called for all character data
     /// including whitespace between consecutive elements. The DTD must
     /// must be used to determine what whitespace is relevant.
     ///
-    /// @param container    [in] Name of the closest open element containing
-    ///                     the character data.
+    /// @param container    [in] Name of the closest open element containing the character data.
     /// @param data         [in] Character data.
     ///
-    virtual void CharacterDataHandler(const CString& container, const CString& data);
+    virtual void CharacterData(const CString& container, const CString& data);
 
     /// Called to parse an external entity.
     ///
@@ -314,6 +342,24 @@ struct MeaXMLParserHandler {
     /// @param pathname [in] Pathname of the external entity.
     ///
     virtual void ParseEntity(MeaXMLParser& parser, const CString& pathname);
+
+    /// Called when there is a parsing error (e.g. syntax, structure).
+    /// 
+    /// @param error     [in] Error message
+    /// @param pathname  [in] Pathname of the file containing the error
+    /// @param line      [in] Line number on which the error occurred (1 based)
+    /// @param column    [in] Column number in which the error occurred (1 based)
+    ///
+    virtual void ParsingError(const CString& error, const CString& pathname, int line, int column);
+
+    /// Called when there is a validation error (e.g. unknown element).
+    /// 
+    /// @param error     [in] Error message
+    /// @param pathname  [in] Pathname of the file containing the error
+    /// @param line      [in] Line number on which the error occurred (1 based)
+    /// @param column    [in] Column number in which the error occurred (1 based)
+    ///
+    virtual void ValidationError(const CString& error, const CString& pathname, int line, int column);
 
     /// Returns the pathname of the currently parsed file.
     ///
@@ -353,8 +399,7 @@ public:
     /// should instantiate an XML sub-parser using this constructor and passing
     /// the parent parser provided by the callback method.
     ///
-    /// @param parentParser     [in] Parent parser for the external entity
-    ///                         sub-parser.
+    /// @param parentParser     [in] Parent parser for the external entity sub-parser.
     ///
     MeaXMLParser(const MeaXMLParser& parentParser);
 
@@ -394,7 +439,7 @@ public:
     /// 
     /// @param content  [in] XML content to parse
     ///  
-    void ParseString(CString& content);
+    void ParseString(LPCTSTR content);
 
     /// If a DOM was constructed, this method returns its root node.
     ///
@@ -409,13 +454,12 @@ public:
     ///
     /// @return String in ACP encoding.
     ///
-    static CString FromUTF8(const XML_Char* str);
+    static CString FromUTF8(LPCTSTR str);
 
     /// Convenience method for converting the specified string from
     /// ACP encoding to UTF-8 encoding.
     ///
     /// @param str      [in] String in ACP encoding.
-    ///
     /// @return String in UTF8 encoding.
     ///
     static CString ToUTF8(const CString& str);
@@ -427,7 +471,6 @@ public:
     /// to UTF-8.
     ///
     /// @param str      [in] String to encode.
-    ///
     /// @return XML encoded string.
     ///
     static CString Encode(const CString& str);
@@ -471,13 +514,10 @@ private:
     ///
     /// @param parser       [in] this
     /// @param context      [in] Expat internal parsing state.
-    /// @param base         [in] Base path for the entity previously set by the
-    ///                     SetBasePath method.
+    /// @param base         [in] Base path for the entity previously set by the SetBasePath method.
     /// @param systemId     [in] The XML system identifier for the entity.
-    /// @param publicId     [in] The XML public identifier for the entity. This
-    ///                     parameter will be nullptr if no public identifier was
-    ///                     specified for the entity.
-    ///
+    /// @param publicId     [in] The XML public identifier for the entity. This parameter will be nullptr
+    ///                     if no public identifier was specified for the entity.
     /// @return The value 1, to indicate that the entity has been successfully
     ///         parsed and parsing of the remainder of the XML file should continue.
     ///
@@ -491,14 +531,12 @@ private:
     /// @param doctypeName  [in] Document element name.
     /// @param sysid        [in] The XML system identifier for the DTD.
     /// @param pubid        [in] The public identifier for the DTD, or nullptr if none.
-    /// @param has_internal_subset  [in] Non-zero if an internal DTD subset has
-    ///                     been specified.
+    /// @param has_internal_subset  [in] Non-zero if an internal DTD subset has been specified.
     ///
     static void DoctypeDeclHandler(void* userData, const XML_Char* doctypeName, const XML_Char* sysid,
                                         const XML_Char* pubid, int has_internal_subset);
 
-    /// Called by the underlying expat parser when a DTD element declaration is
-    /// encountered.
+    /// Called by the underlying expat parser when a DTD element declaration is encountered.
     ///
     /// @param userData     [in] this
     /// @param name         [in] Name of the element being declared.
@@ -506,8 +544,7 @@ private:
     ///
     static void ElementDeclHandler(void* userData, const XML_Char* name, XML_Content* model);
 
-    /// Called by the underlying expat parser when a DTD attribute declaration is
-    /// encountered.
+    /// Called by the underlying expat parser when a DTD attribute declaration is encountered.
     ///
     /// @param userData     [in] this
     /// @param elname       [in] Name of the element whose attribute is being declared.
@@ -519,8 +556,7 @@ private:
     static void AttributeDeclHandler(void* userData, const XML_Char* elname, const XML_Char* attname,
                                      const XML_Char* att_type, const XML_Char* dflt, int isrequired);
 
-    /// Called when an XML parsing error occurs. Queries
-    /// the parser to determine the error and displays a dialog
+    /// Called when an XML parsing error occurs. Queries the parser to determine the error and displays a dialog
     /// with a description of the problem.
     ///
     void HandleParserError();

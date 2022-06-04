@@ -606,8 +606,7 @@ void MeaPositionLogMgr::Write(int indentLevel, LPCTSTR format, ...) {
     m_stdioFile.WriteString(indent + MeaXMLParser::ToUTF8(str));
 }
 
-void MeaPositionLogMgr::ParseEntity(MeaXMLParser& parser,
-                            const CString& pathname) {
+void MeaPositionLogMgr::ParseEntity(MeaXMLParser& parser, const CString& pathname) {
     CFile entityFile;
     CFileException fe;
 

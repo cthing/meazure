@@ -137,7 +137,7 @@ public:
     /// @param elementName  [in] Name of the element.
     /// @param attrs        [in] Attributes for the element.
     ///
-    virtual void StartElementHandler(const CString& container, const CString& elementName, 
+    virtual void StartElement(const CString& container, const CString& elementName, 
                                      const MeaXMLAttributes& attrs) override;
 
     /// Called when the XML parser encounters character data.
@@ -145,7 +145,7 @@ public:
     /// @param container    [in] Name of the element containing the character data.
     /// @param data         [in] Character data.
     ///
-    virtual void CharacterDataHandler(const CString& container, const CString& data) override;
+    virtual void CharacterData(const CString& container, const CString& data) override;
 
     /// Called when the XML parser needs to parse an external entity.
     ///

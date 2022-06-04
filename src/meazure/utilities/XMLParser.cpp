@@ -48,10 +48,7 @@ MeaXMLAttributes::MeaXMLAttributes(const XML_Char** atts, int numSpecified) {
     }
 }
 
-MeaXMLAttributes::~MeaXMLAttributes() {}
-
-bool MeaXMLAttributes::GetValueStr(LPCTSTR name, CString& value,
-                                   bool& isDefault) const {
+bool MeaXMLAttributes::GetValueStr(LPCTSTR name, CString& value, bool& isDefault) const {
     std::map<CString, AttributeValue>::const_iterator iter;
 
     iter = m_attributeMap.find(name);
@@ -63,8 +60,7 @@ bool MeaXMLAttributes::GetValueStr(LPCTSTR name, CString& value,
     return false;
 }
 
-bool MeaXMLAttributes::GetValueInt(LPCTSTR name, int& value,
-                                   bool& isDefault) const {
+bool MeaXMLAttributes::GetValueInt(LPCTSTR name, int& value, bool& isDefault) const {
     std::map<CString, AttributeValue>::const_iterator iter;
 
     iter = m_attributeMap.find(name);
@@ -76,8 +72,7 @@ bool MeaXMLAttributes::GetValueInt(LPCTSTR name, int& value,
     return false;
 }
 
-bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value,
-                                   bool& isDefault) const {
+bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value, bool& isDefault) const {
     std::map<CString, AttributeValue>::const_iterator iter;
 
     iter = m_attributeMap.find(name);
@@ -89,13 +84,12 @@ bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value,
     return false;
 }
 
-bool MeaXMLAttributes::GetValueBool(LPCTSTR name, bool& value,
-                                    bool& isDefault) const {
+bool MeaXMLAttributes::GetValueBool(LPCTSTR name, bool& value, bool& isDefault) const {
     std::map<CString, AttributeValue>::const_iterator iter;
 
     iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
-        CString vstr = (*iter).second.value;
+        const CString& vstr = (*iter).second.value;
         value = (vstr == _T("true") || vstr == _T("1"));
         isDefault = (*iter).second.isDefault;
         return true;
@@ -116,13 +110,12 @@ MeaXMLAttributes& MeaXMLAttributes::Assign(const MeaXMLAttributes& attrs) {
 
 MeaXMLNode::MeaXMLNode() : m_type(Type::Unknown), m_parent(nullptr) {}
 
-MeaXMLNode::MeaXMLNode(const CString& elementName,
-                       const MeaXMLAttributes& attrs) : m_type(Type::Element),
+MeaXMLNode::MeaXMLNode(const CString& elementName, const MeaXMLAttributes& attrs) : m_type(Type::Element),
     m_data(elementName), m_attributes(attrs),
     m_parent(nullptr) {}
 
-MeaXMLNode::MeaXMLNode(const CString& data) : m_type(Type::Data), m_data(data),
-m_parent(nullptr) {}
+MeaXMLNode::MeaXMLNode(const CString& data) :
+    m_type(Type::Data), m_data(data), m_parent(nullptr) {}
 
 MeaXMLNode::~MeaXMLNode() {
     try {
@@ -148,9 +141,7 @@ MeaXMLNode& MeaXMLNode::Assign(const MeaXMLNode& node) {
 CString MeaXMLNode::GetChildData() const {
     CString data;
 
-    for (MeaXMLNode::NodeIter_c iter = GetChildIter(); !AtEnd(iter); ++iter) {
-        MeaXMLNode* node = *iter;
-
+    for (const MeaXMLNode* node : m_children) {
         if (node->GetType() == MeaXMLNode::Type::Data) {
             data += node->GetData();
         }
@@ -194,13 +185,31 @@ void MeaXMLNode::Dump() const {
 //*************************************************************************
 
 
-void MeaXMLParserHandler::StartElementHandler(const CString&, const CString&, const MeaXMLAttributes&) {}
+void MeaXMLParserHandler::StartElement(const CString&, const CString&, const MeaXMLAttributes&) {}
 
-void MeaXMLParserHandler::EndElementHandler(const CString&, const CString&) {}
+void MeaXMLParserHandler::EndElement(const CString&, const CString&) {}
 
-void MeaXMLParserHandler::CharacterDataHandler(const CString&, const CString&) {}
+void MeaXMLParserHandler::CharacterData(const CString&, const CString&) {}
 
 void MeaXMLParserHandler::ParseEntity(MeaXMLParser&, const CString&) {}
+
+void MeaXMLParserHandler::ParsingError(const CString& error, const CString& pathname, int line, int column) {
+    CString title(reinterpret_cast<LPCSTR>(IDS_MEA_PARSER_TITLE));
+    CString msg;
+
+    msg.Format(IDS_MEA_PARSER_MSG, static_cast<LPCTSTR>(pathname), line, column, static_cast<LPCTSTR>(error));
+    MessageBox(*AfxGetMainWnd(), msg, title, MB_OK | MB_ICONERROR);
+}
+
+void MeaXMLParserHandler::ValidationError(const CString& error, const CString& pathname, int line, int column) {
+    CString title(reinterpret_cast<LPCSTR>(IDS_MEA_VALIDATION_TITLE));
+    CString msg;
+
+    msg.Format(IDS_MEA_VALIDATION_MSG, static_cast<LPCTSTR>(pathname), line, column, static_cast<LPCTSTR>(error));
+    MessageBox(*AfxGetMainWnd(), msg, title, MB_OK | MB_ICONERROR);
+
+    throw MeaXMLParserException();
+}
 
 CString MeaXMLParserHandler::GetFilePathname() {
     return _T("");
@@ -226,14 +235,13 @@ MeaXMLParser::MeaXMLParser(MeaXMLParserHandler* handler, bool buildDOM) :
     m_haveDTD(false),
     m_context(nullptr),
     m_buildDOM(buildDOM),
-    m_dom(nullptr) {
-    // Create the XML parser and set its handlers.
-    //
-    m_pathnameStack = new PathnameStack;
-    m_elementStack = new ElementStack;
-    m_nodeStack = new NodeStack;
+    m_dom(nullptr),
+    m_pathnameStack(new PathnameStack),
+    m_elementStack(new ElementStack),
+    m_nodeStack(new NodeStack),
+    m_parser(XML_ParserCreate(nullptr)),
+    m_validator(new ev::Validator(this)) {
 
-    m_parser = XML_ParserCreate(nullptr);
     assert(m_parser != nullptr);
 
     XML_SetUserData(m_parser, this);
@@ -247,10 +255,6 @@ MeaXMLParser::MeaXMLParser(MeaXMLParserHandler* handler, bool buildDOM) :
     XML_SetElementHandler(m_parser, StartElementHandler, EndElementHandler);
     XML_SetElementDeclHandler(m_parser, ElementDeclHandler);
     XML_SetAttlistDeclHandler(m_parser, AttributeDeclHandler);
-
-    // Create the validator.
-    //
-    m_validator = new ev::Validator(this);
 }
 
 MeaXMLParser::MeaXMLParser(const MeaXMLParser& parentParser) :
@@ -265,8 +269,8 @@ MeaXMLParser::MeaXMLParser(const MeaXMLParser& parentParser) :
     m_buildDOM(parentParser.m_buildDOM),
     m_dom(parentParser.m_dom),
     m_nodeStack(parentParser.m_nodeStack) {
-    m_parser = XML_ExternalEntityParserCreate(parentParser.m_parser,
-                                                m_context, nullptr);
+
+    m_parser = XML_ExternalEntityParserCreate(parentParser.m_parser, m_context, nullptr);
     assert(m_parser != nullptr);
 
     XML_SetUserData(m_parser, this);
@@ -299,15 +303,16 @@ void MeaXMLParser::ParseBuffer(int len, bool isFinal) {
     }
 }
 
-void MeaXMLParser::ParseString(CString& content) {
-    UINT numBytes = content.GetLength() * sizeof(TCHAR);
+void MeaXMLParser::ParseString(LPCTSTR content) {
+    assert(content != nullptr);
+
+    int numBytes = static_cast<int>(strlen(content));
     void* buf = GetBuffer(numBytes);
-    std::memcpy(buf, content.GetBuffer(), numBytes);
+    std::memcpy(buf, content, numBytes);
     ParseBuffer(numBytes, true);
 }
 
-void MeaXMLParser::StartElementHandler(void* userData, const XML_Char* elementName,
-                                        const XML_Char** attrs) {
+void MeaXMLParser::StartElementHandler(void* userData, const XML_Char* elementName, const XML_Char** attrs) {
     MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
 
     if (ps->m_haveDTD) {
@@ -317,9 +322,10 @@ void MeaXMLParser::StartElementHandler(void* userData, const XML_Char* elementNa
     MeaXMLAttributes attributes(attrs, XML_GetSpecifiedAttributeCount(ps->m_parser));
     CString name(FromUTF8(elementName));
     CString container;
-    if (!ps->m_elementStack->empty())
+    if (!ps->m_elementStack->empty()) {
         container = ps->m_elementStack->top();
-    ps->m_handler->StartElementHandler(container, name, attributes);
+    }
+    ps->m_handler->StartElement(container, name, attributes);
     ps->m_elementStack->push(name);
 
     if (ps->m_buildDOM) {
@@ -337,8 +343,9 @@ void MeaXMLParser::StartElementHandler(void* userData, const XML_Char* elementNa
 void MeaXMLParser::EndElementHandler(void* userData, const XML_Char* elementName) {
     MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
 
-    if (ps->m_haveDTD)
+    if (ps->m_haveDTD) {
         ps->m_validator->EndElement(ps->m_parser);
+    }
 
     CString name(FromUTF8(elementName));
     assert(!ps->m_elementStack->empty());
@@ -347,7 +354,7 @@ void MeaXMLParser::EndElementHandler(void* userData, const XML_Char* elementName
     if (!ps->m_elementStack->empty()) {
         container = ps->m_elementStack->top();
     }
-    ps->m_handler->EndElementHandler(container, name);
+    ps->m_handler->EndElement(container, name);
 
     if (ps->m_buildDOM && !ps->m_nodeStack->empty()) {
         ps->m_nodeStack->pop();
@@ -366,7 +373,7 @@ void MeaXMLParser::CharacterDataHandler(void* userData, const XML_Char* s, int l
     }
     if (!container.IsEmpty() && ps->m_validator->IsMixed(container)) {
         CString data(s, len);
-        ps->m_handler->CharacterDataHandler(container, data);
+        ps->m_handler->CharacterData(container, data);
 
         if (ps->m_buildDOM && !ps->m_nodeStack->empty()) {
             ps->m_nodeStack->top()->AddChild(new MeaXMLNode(data));
@@ -375,10 +382,10 @@ void MeaXMLParser::CharacterDataHandler(void* userData, const XML_Char* s, int l
 }
 
 int MeaXMLParser::ExternalEntityRefHandler(XML_Parser parser,
-                                        const XML_Char* context,
-                                        const XML_Char* /*base*/,
-                                        const XML_Char* systemId,
-                                        const XML_Char* /*publicId*/) {
+                                           const XML_Char* context,
+                                           const XML_Char* /*base*/,
+                                           const XML_Char* systemId,
+                                           const XML_Char* /*publicId*/) {
     if (systemId != nullptr) {
         MeaXMLParser* ps = reinterpret_cast<MeaXMLParser*>(parser);
         CString sysId(FromUTF8(systemId));
@@ -412,192 +419,52 @@ int MeaXMLParser::ExternalEntityRefHandler(XML_Parser parser,
 }
 
 void MeaXMLParser::DoctypeDeclHandler(void* userData,
-                                        const XML_Char* doctypeName,
-                                        const XML_Char* /*sysid*/,
-                                        const XML_Char* /*pubid*/,
-                                        int /*has_internal_subset*/) {
+                                      const XML_Char* doctypeName,
+                                      const XML_Char* /*sysid*/,
+                                      const XML_Char* /*pubid*/,
+                                      int /*has_internal_subset*/) {
     MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
 
     ps->m_haveDTD = true;
     ps->m_validator->SetDocumentElement(doctypeName);
 }
 
-void MeaXMLParser::ElementDeclHandler(void* userData,
-                                        const XML_Char* name,
-                                        XML_Content* model) {
+void MeaXMLParser::ElementDeclHandler(void* userData, const XML_Char* name, XML_Content* model) {
     MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
     ps->m_validator->AddElementDecl(name, model);
     XML_FreeContentModel(ps->m_parser, model);
 }
 
 void MeaXMLParser::AttributeDeclHandler(void* userData,
-                                     const XML_Char* elname,
-                                     const XML_Char* attname,
-                                     const XML_Char* att_type,
-                                     const XML_Char* dflt,
-                                     int isrequired) {
+                                        const XML_Char* elname,
+                                        const XML_Char* attname,
+                                        const XML_Char* att_type,
+                                        const XML_Char* dflt,
+                                        int isrequired) {
     MeaXMLParser* ps = static_cast<MeaXMLParser*>(userData);
     ps->m_validator->AddAttributeDecl(elname, attname,
                                      att_type, dflt, isrequired);
 }
 
 void MeaXMLParser::HandleParserError() {
-    CString title(reinterpret_cast<LPCSTR>(IDS_MEA_PARSER_TITLE));
-    CString msg, errorMsg;
+    CString msg(XML_ErrorString(XML_GetErrorCode(m_parser)));
     CString pathname(m_pathnameStack->empty() ? m_handler->GetFilePathname() : m_pathnameStack->top());
+    int line = XML_GetCurrentLineNumber(m_parser);
+    int column = XML_GetCurrentColumnNumber(m_parser) + 1;
 
-    msg.Format(IDS_MEA_PARSER_MSG,
-                static_cast<LPCTSTR>(pathname),
-                XML_GetCurrentLineNumber(m_parser),
-                XML_GetCurrentColumnNumber(m_parser) + 1);
-
-    switch (XML_GetErrorCode(m_parser)) {
-    case XML_ERROR_NONE:
-        return;
-    case XML_ERROR_NO_MEMORY:
-        errorMsg.LoadString(IDS_MEA_NO_MEMORY);
-        break;
-    case XML_ERROR_SYNTAX:
-        errorMsg.LoadString(IDS_MEA_SYNTAX);
-        break;
-    case XML_ERROR_NO_ELEMENTS:
-        errorMsg.LoadString(IDS_MEA_NO_ELEMENTS);
-        break;
-    case XML_ERROR_INVALID_TOKEN:
-        errorMsg.LoadString(IDS_MEA_INVALID_TOKEN);
-        break;
-    case XML_ERROR_UNCLOSED_TOKEN:
-        errorMsg.LoadString(IDS_MEA_UNCLOSED_TOKEN);
-        break;
-    case XML_ERROR_PARTIAL_CHAR:
-        errorMsg.LoadString(IDS_MEA_PARTIAL_CHAR);
-        break;
-    case XML_ERROR_TAG_MISMATCH:
-        errorMsg.LoadString(IDS_MEA_TAG_MISMATCH);
-        break;
-    case XML_ERROR_DUPLICATE_ATTRIBUTE:
-        errorMsg.LoadString(IDS_MEA_DUPLICATE_ATTRIBUTE);
-        break;
-    case XML_ERROR_JUNK_AFTER_DOC_ELEMENT:
-        errorMsg.LoadString(IDS_MEA_DOC_ELEMENT);
-        break;
-    case XML_ERROR_PARAM_ENTITY_REF:
-        errorMsg.LoadString(IDS_MEA_ENTITY_REF);
-        break;
-    case XML_ERROR_UNDEFINED_ENTITY:
-        errorMsg.LoadString(IDS_MEA_UNDEFINED_ENTITY);
-        break;
-    case XML_ERROR_RECURSIVE_ENTITY_REF:
-        errorMsg.LoadString(IDS_MEA_RECURSIVE_ENTITY_REF);
-        break;
-    case XML_ERROR_ASYNC_ENTITY:
-        errorMsg.LoadString(IDS_MEA_ASYNC_ENTITY);
-        break;
-    case XML_ERROR_BAD_CHAR_REF:
-        errorMsg.LoadString(IDS_MEA_BAD_CHAR_REF);
-        break;
-    case XML_ERROR_BINARY_ENTITY_REF:
-        errorMsg.LoadString(IDS_MEA_BINARY_ENTITY_REF);
-        break;
-    case XML_ERROR_ATTRIBUTE_EXTERNAL_ENTITY_REF:
-        errorMsg.LoadString(IDS_MEA_ATTRIBUTE_EXTERNAL_ENTITY_REF);
-        break;
-    case XML_ERROR_MISPLACED_XML_PI:
-        errorMsg.LoadString(IDS_MEA_MISPLACED_XML_PI);
-        break;
-    case XML_ERROR_UNKNOWN_ENCODING:
-        errorMsg.LoadString(IDS_MEA_UNKNOWN_ENCODING);
-        break;
-    case XML_ERROR_INCORRECT_ENCODING:
-        errorMsg.LoadString(IDS_MEA_INCORRECT_ENCODING);
-        break;
-    case XML_ERROR_UNCLOSED_CDATA_SECTION:
-        errorMsg.LoadString(IDS_MEA_UNCLOSED_CDATA_SECTION);
-        break;
-    case XML_ERROR_EXTERNAL_ENTITY_HANDLING:
-        errorMsg.LoadString(IDS_MEA_EXTERNAL_ENTITY_HANDLING);
-        break;
-    case XML_ERROR_NOT_STANDALONE:
-        errorMsg.LoadString(IDS_MEA_NOT_STANDALONE);
-        break;
-    case XML_ERROR_UNEXPECTED_STATE:
-        errorMsg.LoadString(IDS_MEA_UNEXPECTED_STATE);
-        break;
-    case XML_ERROR_ENTITY_DECLARED_IN_PE:
-        errorMsg.LoadString(IDS_MEA_ENTITY_DECLARED_IN_PE);
-        break;
-    case XML_ERROR_FEATURE_REQUIRES_XML_DTD:
-    case XML_ERROR_CANT_CHANGE_FEATURE_ONCE_PARSING:
-        return;
-    }
-
-    MessageBox(*AfxGetMainWnd(), msg + errorMsg, title, MB_OK | MB_ICONERROR);
+    m_handler->ParsingError(msg, pathname, line, column);
 }
 
 void MeaXMLParser::HandleValidationError(const ev::ValidationError& error) {
-    CString title(reinterpret_cast<LPCSTR>(IDS_MEA_VALIDATION_TITLE));
-    CString msg, errorMsg;
+    CString msg(error.GetMessage());
+    CString pathname(m_handler->GetFilePathname());
+    int line = error.GetLineNumber();
+    int column = error.GetCharacterPosition() + 1;
 
-    msg.Format(IDS_MEA_VALIDATION_MSG, static_cast<LPCTSTR>(m_handler->GetFilePathname()),
-                error.GetLineNumber(), error.GetCharacterPosition() + 1);
-
-    switch (error.GetCode()) {
-    case ev::ValidationError::MultipleDocumentElements:
-        errorMsg.Format(IDS_MEA_MULTIPLE_DOCUMENT_ELEMENTS, error.GetCurrentElement());
-        break;
-    case ev::ValidationError::MultipleTopLevelElements:
-        errorMsg.Format(IDS_MEA_MULTIPLE_TOP_LEVEL_ELEMENTS, error.GetCurrentElement());
-        break;
-    case ev::ValidationError::InvalidDocumentElement:
-        errorMsg.Format(IDS_MEA_INVALID_DOCUMENT_ELEMENT, error.GetCurrentElement());
-        break;
-    case ev::ValidationError::UndeclaredElement:
-        errorMsg.Format(IDS_MEA_UNDECLARED_ELEMENT, error.GetCurrentElement());
-        break;
-    case ev::ValidationError::UndeclaredAttribute:
-        errorMsg.Format(IDS_MEA_UNDECLARED_ATTRIBUTE, error.GetCurrentElement(), error.GetContainingElement());
-        break;
-    case ev::ValidationError::InvalidElement:
-        errorMsg.Format(IDS_MEA_INVALID_ELEMENT, error.GetCurrentElement(), error.GetContainingElement());
-        break;
-    case ev::ValidationError::NoCharacterData:
-        errorMsg.Format(IDS_MEA_NO_CHARACTER_DATA, error.GetCurrentElement());
-        break;
-    case ev::ValidationError::UncontainedCharacterData:
-        errorMsg.LoadString(IDS_MEA_UNCONTAINED_CHARACTER_DATA);
-        break;
-    case ev::ValidationError::MismatchedFixedValue:
-        errorMsg.Format(IDS_MEA_MISMATCHED_FIXED_VALUE, error.GetCurrentElement(), error.GetContainingElement());
-        break;
-    case ev::ValidationError::MissingRequiredAttribute:
-        errorMsg.Format(IDS_MEA_MISSING_REQUIRED_ATTRIBUTE, error.GetCurrentElement(), error.GetContainingElement());
-        break;
-    case ev::ValidationError::BadAttributeValue:
-        errorMsg.Format(IDS_MEA_BAD_ATTRIBUTE_VALUE, error.GetCurrentElement(), error.GetContainingElement());
-        break;
-    case ev::ValidationError::DuplicateId:
-        errorMsg.Format(IDS_MEA_DUPLICATE_ID, error.GetCurrentElement(), error.GetContainingElement());
-        break;
-    case ev::ValidationError::UndeclaredNotation:
-        errorMsg.Format(IDS_MEA_UNDECLARED_NOTATION, error.GetCurrentElement(), error.GetContainingElement());
-        break;
-    case ev::ValidationError::UndeclaredEntity:
-        errorMsg.Format(IDS_MEA_UNDECLARED_ENTITY, error.GetCurrentElement(), error.GetContainingElement());
-        break;
-    case ev::ValidationError::IdNotFound:
-        errorMsg.Format(IDS_MEA_ID_NOT_FOUND, error.GetCurrentElement());
-        break;
-    case ev::ValidationError::InvalidElementPattern:
-        errorMsg.Format(IDS_MEA_INVALID_ELEMENT_PATTERN, error.GetCurrentElement());
-        break;
-    }
-
-    MessageBox(*AfxGetMainWnd(), msg + errorMsg, title, MB_OK | MB_ICONERROR);
-
-    throw MeaXMLParserException();
+    m_handler->ValidationError(msg, pathname, line, column);
 }
 
-CString MeaXMLParser::FromUTF8(const XML_Char* str) {
+CString MeaXMLParser::FromUTF8(LPCTSTR str) {
 #ifdef XML_UNICODE
     return str;
 #else

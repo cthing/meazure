@@ -82,5 +82,6 @@ ADD_MEAZURE_TEST(StringUtilsTest ColorsTest ${APP_DIR}/utilities/StringUtils.cpp
 ADD_MEAZURE_TEST(TimeStampTest ColorsTest ${APP_DIR}/utilities/TimeStamp.cpp)
 ADD_MEAZURE_TEST(UnitsTest ColorsTest ${APP_DIR}/units/Units.cpp)
 ADD_MEAZURE_TEST(VersionInfoTest ColorsTest ${APP_DIR}/VersionInfo.cpp)
+ADD_MEAZURE_TEST(XMLParserTest ColorsTest ${APP_DIR}/utilities/XMLParser.cpp ${APP_DIR}/utilities/exval.cpp)
 
 target_link_libraries(FileProfileTest libexpat)

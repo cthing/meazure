@@ -187,7 +187,7 @@ void MeaFileProfile::ParseFile() {
     parser.ParseBuffer(count, true);
 }
 
-void MeaFileProfile::StartElementHandler(const CString& container,
+void MeaFileProfile::StartElement(const CString& container,
                                          const CString& elementName,
                                          const MeaXMLAttributes& attrs) {
     bool isDefault;
@@ -203,7 +203,7 @@ void MeaFileProfile::StartElementHandler(const CString& container,
     }
 }
 
-void MeaFileProfile::CharacterDataHandler(const CString& container,
+void MeaFileProfile::CharacterData(const CString& container,
                                           const CString& data) {
     if (container == _T("title")) {
         m_title += data;

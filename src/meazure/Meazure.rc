@@ -930,73 +930,13 @@ BEGIN
     IDS_MEA_NO_LOAD_LOG     "Could not load position log file\n%s"
     IDS_MEA_ASK_SAVE        "Positions have been recorded but have not yet been saved. \n\nSave these positions?"
     IDS_MEA_VALIDATION_TITLE "File Validation Error"
-    IDS_MEA_VALIDATION_MSG  "There is a format error in the file:\n%s\nLine: %d\nCharacter: %d\n\n"
-    IDS_MEA_MULTIPLE_DOCUMENT_ELEMENTS 
-                            "The document element '%s' occurs more\nthan once as a top level element."
-    IDS_MEA_MULTIPLE_TOP_LEVEL_ELEMENTS 
-                            "There are multiple top level element '%s'."
-    IDS_MEA_INVALID_DOCUMENT_ELEMENT 
-                            "The top level element '%s' does not match\nthe element specified in the DOCTYPE declaration."
-    IDS_MEA_UNDECLARED_ELEMENT 
-                            "The element '%s' is not recognized. The\nelement has not been declared in the DTD."
-    IDS_MEA_UNDECLARED_ATTRIBUTE 
-                            "The attribute '%s' for element '%s'\nis not recognized. The attribute has not been declared in the DTD."
-    IDS_MEA_INVALID_ELEMENT "The element '%s' is not allowed within a '%s' element."
-    IDS_MEA_NO_CHARACTER_DATA "The element '%s' cannot contain text."
-    IDS_MEA_UNCONTAINED_CHARACTER_DATA 
-                            "Text outside of a containing element is not allowed."
-    IDS_MEA_MISMATCHED_FIXED_VALUE 
-                            "The value for attribute '%s' in element '%s'\ncannot be changed."
-    IDS_MEA_MISSING_REQUIRED_ATTRIBUTE 
-                            "The required attribute '%s' is missing in element '%s'."
+    IDS_MEA_VALIDATION_MSG  "There is a format error in the file:\n%s\n\nLine: %d\nCharacter: %d\nError: %s"
 END
 
 STRINGTABLE
 BEGIN
-    IDS_MEA_BAD_ATTRIBUTE_VALUE 
-                            "The value of the attribute '%s' in element '%s'\nis not allowed."
-    IDS_MEA_DUPLICATE_ID    "The ID value within the same document for attribute '%s' in element '%s'\nis not unique within the document."
-    IDS_MEA_UNDECLARED_NOTATION 
-                            "Unrecognized notation in attribute '%s'\nin element '%s'."
-    IDS_MEA_UNDECLARED_ENTITY 
-                            "Unrecognized entity in attribute '%s'\nin element '%s'."
-    IDS_MEA_ID_NOT_FOUND    "Unable to find an ID corresponding\nto the IDREF '%s'."
-    IDS_MEA_INVALID_ELEMENT_PATTERN 
-                            "The element sequence is not allowed by the\ncontaining element '%s'."
     IDS_MEA_PARSER_TITLE    "File Parser Error"
-    IDS_MEA_PARSER_MSG      "There was an error while parsing the file:\n%s\nLine: %d\nCharacter: %d\n\n"
-    IDS_MEA_NO_MEMORY       "Out of memory while parsing the file."
-    IDS_MEA_SYNTAX          "Syntax error while parsing the file."
-    IDS_MEA_NO_ELEMENTS     "Element not found."
-    IDS_MEA_INVALID_TOKEN   "File is not well formed XML,\nthere was an invalid token"
-    IDS_MEA_UNCLOSED_TOKEN  "A token was not closed."
-    IDS_MEA_PARTIAL_CHAR    "Encountered a partial character."
-    IDS_MEA_TAG_MISMATCH    "Mismatched tag."
-    IDS_MEA_DUPLICATE_ATTRIBUTE "A duplicate attribute was encountered."
-END
-
-STRINGTABLE
-BEGIN
-    IDS_MEA_DOC_ELEMENT     "Unrecognizable content following the document element."
-    IDS_MEA_ENTITY_REF      "Illegal parameter entity reference."
-    IDS_MEA_UNDEFINED_ENTITY "Undefined entity."
-    IDS_MEA_RECURSIVE_ENTITY_REF "Recursive entity reference."
-    IDS_MEA_ASYNC_ENTITY    "Asynchronous entity."
-    IDS_MEA_BAD_CHAR_REF    "Reference to invalid character number."
-    IDS_MEA_BINARY_ENTITY_REF "Reference to a binary entity."
-    IDS_MEA_ATTRIBUTE_EXTERNAL_ENTITY_REF 
-                            "Reference to an external entity in attribute."
-    IDS_MEA_MISPLACED_XML_PI 
-                            "XML declaration is not at the start of the external entity."
-    IDS_MEA_UNKNOWN_ENCODING "Unrecognized encoding."
-    IDS_MEA_INCORRECT_ENCODING 
-                            "Encoding specified in the XML declaration is incorrect."
-    IDS_MEA_UNCLOSED_CDATA_SECTION "Unclosed CDATA section."
-    IDS_MEA_EXTERNAL_ENTITY_HANDLING 
-                            "Error in processing external entity reference."
-    IDS_MEA_NOT_STANDALONE  "The document is not standalone."
-    IDS_MEA_UNEXPECTED_STATE "Unexpected parser state - parser bug."
-    IDS_MEA_ENTITY_DECLARED_IN_PE "Entity declared in a parameter entity."
+    IDS_MEA_PARSER_MSG      "There was an error while parsing the file:\n%s\n\nLine: %d\nCharacter: %d\nError: %s"
 END
 
 STRINGTABLE

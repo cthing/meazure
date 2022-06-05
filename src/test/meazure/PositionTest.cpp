@@ -209,11 +209,10 @@ BOOST_FIXTURE_TEST_CASE(TestSaveLoad, TestFixture) {
     CString idStr;
     CString toolStr;
     CString dateStr;
-    bool def;
 
-    positionNode->GetAttributes().GetValueStr(_T("desktopRef"), idStr, def);
-    positionNode->GetAttributes().GetValueStr(_T("tool"), toolStr, def);
-    positionNode->GetAttributes().GetValueStr(_T("date"), dateStr, def);
+    positionNode->GetAttributes().GetValueStr(_T("desktopRef"), idStr);
+    positionNode->GetAttributes().GetValueStr(_T("tool"), toolStr);
+    positionNode->GetAttributes().GetValueStr(_T("date"), dateStr);
 
     MeaPositionDesktopRef ref2(&counter, idStr);
     MeaPosition position2(ref2, toolStr, dateStr);

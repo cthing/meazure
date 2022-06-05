@@ -96,23 +96,17 @@ BOOST_AUTO_TEST_CASE(TestParserHandlerNoValidation) {
                 elem4Start = true;
                 BOOST_TEST(container == _T("elem2"));
                 
-                bool isDefault1;
                 CString value1;
-                BOOST_TEST(attrs.GetValueStr(_T("attr1"), value1, isDefault1));
+                BOOST_TEST(attrs.GetValueStr(_T("attr1"), value1));
                 BOOST_TEST(value1 == _T("abc"));
-                BOOST_TEST(!isDefault1);
 
-                bool isDefault2;
                 int value2;
-                BOOST_TEST(attrs.GetValueInt(_T("attr2"), value2, isDefault2));
+                BOOST_TEST(attrs.GetValueInt(_T("attr2"), value2));
                 BOOST_TEST(value2 == 1);
-                BOOST_TEST(!isDefault2);
 
-                bool isDefault3;
                 double value3;
-                BOOST_TEST(attrs.GetValueDbl(_T("attr3"), value3, isDefault3));
+                BOOST_TEST(attrs.GetValueDbl(_T("attr3"), value3));
                 BOOST_TEST(value3 == 2.5, tt::tolerance(FLT_EPSILON));
-                BOOST_TEST(!isDefault3);
             } else {
                 BOOST_FAIL("Unexpected start element " + elementName);
             }
@@ -218,23 +212,17 @@ BOOST_AUTO_TEST_CASE(TestDOMNoValidation) {
 
     const MeaXMLAttributes& attrs = elem4->GetAttributes();
 
-    bool isDefault1;
     CString value1;
-    BOOST_TEST(attrs.GetValueStr(_T("attr1"), value1, isDefault1));
+    BOOST_TEST(attrs.GetValueStr(_T("attr1"), value1));
     BOOST_TEST(value1 == _T("abc"));
-    BOOST_TEST(!isDefault1);
 
-    bool isDefault2;
     int value2;
-    BOOST_TEST(attrs.GetValueInt(_T("attr2"), value2, isDefault2));
+    BOOST_TEST(attrs.GetValueInt(_T("attr2"), value2));
     BOOST_TEST(value2 == 1);
-    BOOST_TEST(!isDefault2);
 
-    bool isDefault3;
     double value3;
-    BOOST_TEST(attrs.GetValueDbl(_T("attr3"), value3, isDefault3));
+    BOOST_TEST(attrs.GetValueDbl(_T("attr3"), value3));
     BOOST_TEST(value3 == 2.5, tt::tolerance(FLT_EPSILON));
-    BOOST_TEST(!isDefault3);
 }
 
 BOOST_AUTO_TEST_CASE(TestValidationInternalDTD) {

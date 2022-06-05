@@ -506,9 +506,8 @@ void MeaPositionLogMgr::ProcessInfoNode(const MeaXMLNode* infoNode) {
 
 void MeaPositionLogMgr::ProcessDesktopNode(const MeaXMLNode* desktopNode) {
     CString valueStr;
-    bool def;
 
-    desktopNode->GetAttributes().GetValueStr(_T("id"), valueStr, def);
+    desktopNode->GetAttributes().GetValueStr(_T("id"), valueStr);
 
     try {
         MeaPositionDesktop desktopInfo(valueStr, MeaUnitsMgr::Instance(), MeaScreenMgr::Instance());
@@ -530,11 +529,10 @@ void MeaPositionLogMgr::ProcessPositionNode(const MeaXMLNode* positionNode) {
     CString idStr;
     CString toolStr;
     CString dateStr;
-    bool def;
 
-    positionNode->GetAttributes().GetValueStr(_T("desktopRef"), idStr, def);
-    positionNode->GetAttributes().GetValueStr(_T("tool"), toolStr, def);
-    positionNode->GetAttributes().GetValueStr(_T("date"), dateStr, def);
+    positionNode->GetAttributes().GetValueStr(_T("desktopRef"), idStr);
+    positionNode->GetAttributes().GetValueStr(_T("tool"), toolStr);
+    positionNode->GetAttributes().GetValueStr(_T("date"), dateStr);
 
     try {
         MeaPositionDesktopRef desktopRef(this, idStr);

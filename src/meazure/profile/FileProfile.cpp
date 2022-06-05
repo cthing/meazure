@@ -190,15 +190,13 @@ void MeaFileProfile::ParseFile() {
 void MeaFileProfile::StartElement(const CString& container,
                                          const CString& elementName,
                                          const MeaXMLAttributes& attrs) {
-    bool isDefault;
-
     if (elementName == _T("profile")) {
         int value;
-        attrs.GetValueInt(_T("version"), value, isDefault);
+        attrs.GetValueInt(_T("version"), value);
         m_readVersion = value;
     } else if ((container == _T("data")) || (m_readVersion == 1)) {
         CString value;
-        attrs.GetValueStr(_T("value"), value, isDefault);
+        attrs.GetValueStr(_T("value"), value);
         m_valueMap[elementName] = value;
     }
 }

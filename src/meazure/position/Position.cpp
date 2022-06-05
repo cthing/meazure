@@ -126,8 +126,6 @@ void MeaPosition::RecordCircleArea(double radius) {
 }
 
 void MeaPosition::Load(const MeaXMLNode* positionNode) {
-    bool def;
-
     for (MeaXMLNode::NodeIter_c iter = positionNode->GetChildIter(); !positionNode->AtEnd(iter); ++iter) {
         MeaXMLNode* node = *iter;
 
@@ -142,9 +140,9 @@ void MeaPosition::Load(const MeaXMLNode* positionNode) {
                     if ((pointNode->GetType() == MeaXMLNode::Type::Element) && (pointNode->GetData() == _T("point"))) {
                         CString name;
                         MeaFPoint pt;
-                        attrs.GetValueStr(_T("name"), name, def);
-                        attrs.GetValueDbl(_T("x"), pt.x, def);
-                        attrs.GetValueDbl(_T("y"), pt.y, def);
+                        attrs.GetValueStr(_T("name"), name);
+                        attrs.GetValueDbl(_T("x"), pt.x);
+                        attrs.GetValueDbl(_T("y"), pt.y);
                         AddPoint(name, pt);
                     }
                 }
@@ -155,19 +153,19 @@ void MeaPosition::Load(const MeaXMLNode* positionNode) {
 
                     if (pointNode->GetType() == MeaXMLNode::Type::Element) {
                         if (pointNode->GetData() == _T("width")) {
-                            attrs.GetValueDbl(_T("value"), m_width, def);
+                            attrs.GetValueDbl(_T("value"), m_width);
                             m_fieldMask |= MeaWidthField;
                         } else if (pointNode->GetData() == _T("height")) {
-                            attrs.GetValueDbl(_T("value"), m_height, def);
+                            attrs.GetValueDbl(_T("value"), m_height);
                             m_fieldMask |= MeaHeightField;
                         } else if (pointNode->GetData() == _T("distance")) {
-                            attrs.GetValueDbl(_T("value"), m_distance, def);
+                            attrs.GetValueDbl(_T("value"), m_distance);
                             m_fieldMask |= MeaDistanceField;
                         } else if (pointNode->GetData() == _T("area")) {
-                            attrs.GetValueDbl(_T("value"), m_area, def);
+                            attrs.GetValueDbl(_T("value"), m_area);
                             m_fieldMask |= MeaAreaField;
                         } else if (pointNode->GetData() == _T("angle")) {
-                            attrs.GetValueDbl(_T("value"), m_angle, def);
+                            attrs.GetValueDbl(_T("value"), m_angle);
                             m_fieldMask |= MeaAngleField;
                         }
                     }

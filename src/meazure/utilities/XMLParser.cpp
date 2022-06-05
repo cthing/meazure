@@ -31,67 +31,46 @@
 
 MeaXMLAttributes::MeaXMLAttributes() {}
 
-MeaXMLAttributes::MeaXMLAttributes(const XML_Char** atts, int numSpecified) {
+MeaXMLAttributes::MeaXMLAttributes(const XML_Char** atts) {
     assert(atts != nullptr);
 
-    // Run through the atts and insert them in the map. Also mark
-    // which attributes are set by default versus  having been
-    // explicitly specified.
-    //
-    numSpecified *= 2;
     for (int i = 0; atts[i] != nullptr; i += 2) {
-        AttributeValue v;
-
-        v.value = MeaXMLParser::FromUTF8(atts[i + 1]);
-        v.isDefault = (i >= numSpecified);
-        m_attributeMap[MeaXMLParser::FromUTF8(atts[i])] = v;
+        m_attributeMap[MeaXMLParser::FromUTF8(atts[i])] = MeaXMLParser::FromUTF8(atts[i + 1]);
     }
 }
 
-bool MeaXMLAttributes::GetValueStr(LPCTSTR name, CString& value, bool& isDefault) const {
-    std::map<CString, AttributeValue>::const_iterator iter;
-
-    iter = m_attributeMap.find(name);
+bool MeaXMLAttributes::GetValueStr(LPCTSTR name, CString& value) const {
+    AttributeMap::const_iterator iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
-        value = (*iter).second.value;
-        isDefault = (*iter).second.isDefault;
+        value = (*iter).second;
         return true;
     }
     return false;
 }
 
-bool MeaXMLAttributes::GetValueInt(LPCTSTR name, int& value, bool& isDefault) const {
-    std::map<CString, AttributeValue>::const_iterator iter;
-
-    iter = m_attributeMap.find(name);
+bool MeaXMLAttributes::GetValueInt(LPCTSTR name, int& value) const {
+    AttributeMap::const_iterator iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
-        value = _ttoi((*iter).second.value);
-        isDefault = (*iter).second.isDefault;
+        value = _ttoi((*iter).second);
         return true;
     }
     return false;
 }
 
-bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value, bool& isDefault) const {
-    std::map<CString, AttributeValue>::const_iterator iter;
-
-    iter = m_attributeMap.find(name);
+bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value) const {
+    AttributeMap::const_iterator iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
-        value = _tcstod((*iter).second.value, nullptr);
-        isDefault = (*iter).second.isDefault;
+        value = _tcstod((*iter).second, nullptr);
         return true;
     }
     return false;
 }
 
-bool MeaXMLAttributes::GetValueBool(LPCTSTR name, bool& value, bool& isDefault) const {
-    std::map<CString, AttributeValue>::const_iterator iter;
-
-    iter = m_attributeMap.find(name);
+bool MeaXMLAttributes::GetValueBool(LPCTSTR name, bool& value) const {
+    AttributeMap::const_iterator iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
-        const CString& vstr = (*iter).second.value;
+        const CString& vstr = (*iter).second;
         value = (vstr == _T("true") || vstr == _T("1"));
-        isDefault = (*iter).second.isDefault;
         return true;
     }
     return false;
@@ -319,7 +298,7 @@ void MeaXMLParser::StartElementHandler(void* userData, const XML_Char* elementNa
         ps->m_validator->StartElement(ps->m_parser, elementName, attrs);
     }
 
-    MeaXMLAttributes attributes(attrs, XML_GetSpecifiedAttributeCount(ps->m_parser));
+    MeaXMLAttributes attributes(attrs);
     CString name(FromUTF8(elementName));
     CString container;
     if (!ps->m_elementStack->empty()) {

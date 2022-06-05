@@ -42,10 +42,9 @@ MeaPositionScreen::MeaPositionScreen(const MeaScreenProvider::ScreenIter& screen
 
 void MeaPositionScreen::Load(const MeaXMLNode* screenNode) {
     CString valueStr;
-    bool def;
 
-    screenNode->GetAttributes().GetValueBool(_T("primary"), m_primary, def);
-    screenNode->GetAttributes().GetValueStr(_T("desc"), m_desc, def);
+    screenNode->GetAttributes().GetValueBool(_T("primary"), m_primary);
+    screenNode->GetAttributes().GetValueStr(_T("desc"), m_desc);
 
     for (MeaXMLNode::NodeIter_c iter = screenNode->GetChildIter(); !screenNode->AtEnd(iter); ++iter) {
         MeaXMLNode* node = *iter;
@@ -53,14 +52,14 @@ void MeaPositionScreen::Load(const MeaXMLNode* screenNode) {
 
         if (node->GetType() == MeaXMLNode::Type::Element) {
             if (node->GetData() == _T("rect")) {
-                attrs.GetValueDbl(_T("top"), m_rect.top, def);
-                attrs.GetValueDbl(_T("bottom"), m_rect.bottom, def);
-                attrs.GetValueDbl(_T("left"), m_rect.left, def);
-                attrs.GetValueDbl(_T("right"), m_rect.right, def);
+                attrs.GetValueDbl(_T("top"), m_rect.top);
+                attrs.GetValueDbl(_T("bottom"), m_rect.bottom);
+                attrs.GetValueDbl(_T("left"), m_rect.left);
+                attrs.GetValueDbl(_T("right"), m_rect.right);
             } else if (node->GetData() == _T("resolution")) {
-                attrs.GetValueDbl(_T("x"), m_res.cx, def);
-                attrs.GetValueDbl(_T("y"), m_res.cy, def);
-                attrs.GetValueBool(_T("manual"), m_manualRes, def);
+                attrs.GetValueDbl(_T("x"), m_res.cx);
+                attrs.GetValueDbl(_T("y"), m_res.cy);
+                attrs.GetValueBool(_T("manual"), m_manualRes);
             }
         }
     }

@@ -72,7 +72,6 @@ void MeaPositionDesktop::SetAngularUnits(const CString& unitsStr) {
 
 void MeaPositionDesktop::Load(const MeaXMLNode* desktopNode) {
     CString valueStr;
-    bool def;
 
     for (MeaXMLNode::NodeIter_c iter = desktopNode->GetChildIter(); !desktopNode->AtEnd(iter); ++iter) {
         MeaXMLNode* node = *iter;
@@ -80,22 +79,22 @@ void MeaPositionDesktop::Load(const MeaXMLNode* desktopNode) {
 
         if (node->GetType() == MeaXMLNode::Type::Element) {
             if (node->GetData() == _T("units")) {
-                attrs.GetValueStr(_T("length"), valueStr, def);
+                attrs.GetValueStr(_T("length"), valueStr);
                 SetLinearUnits(valueStr);
-                attrs.GetValueStr(_T("angle"), valueStr, def);
+                attrs.GetValueStr(_T("angle"), valueStr);
                 SetAngularUnits(valueStr);
             } else if (node->GetData() == _T("customUnits")) {
-                attrs.GetValueStr(_T("name"), m_customName, def);
-                attrs.GetValueStr(_T("abbrev"), m_customAbbrev, def);
-                attrs.GetValueStr(_T("scaleBasis"), m_customBasisStr, def);
-                attrs.GetValueDbl(_T("scaleFactor"), m_customFactor, def);
+                attrs.GetValueStr(_T("name"), m_customName);
+                attrs.GetValueStr(_T("abbrev"), m_customAbbrev);
+                attrs.GetValueStr(_T("scaleBasis"), m_customBasisStr);
+                attrs.GetValueDbl(_T("scaleFactor"), m_customFactor);
             } else if (node->GetData() == _T("origin")) {
-                attrs.GetValueDbl(_T("xoffset"), m_origin.x, def);
-                attrs.GetValueDbl(_T("yoffset"), m_origin.y, def);
-                attrs.GetValueBool(_T("invertY"), m_invertY, def);
+                attrs.GetValueDbl(_T("xoffset"), m_origin.x);
+                attrs.GetValueDbl(_T("yoffset"), m_origin.y);
+                attrs.GetValueBool(_T("invertY"), m_invertY);
             } else if (node->GetData() == _T("size")) {
-                attrs.GetValueDbl(_T("x"), m_size.cx, def);
-                attrs.GetValueDbl(_T("y"), m_size.cy, def);
+                attrs.GetValueDbl(_T("x"), m_size.cx);
+                attrs.GetValueDbl(_T("y"), m_size.cy);
             } else if (node->GetData() == _T("screens")) {
                 m_screens.clear();
                 for (MeaXMLNode::NodeIter_c screenIter = node->GetChildIter();
@@ -157,7 +156,6 @@ void MeaPositionDesktop::LoadCustomPrecisions(const MeaXMLNode* displayPrecision
     typedef std::map<CString, int> PrecisionMap;
     typedef PrecisionMap::const_iterator PrecisionIter;
 
-    bool def;
     PrecisionMap precMap;
 
     for (MeaXMLNode::NodeIter_c measurementIter = displayPrecisionNode->GetChildIter();
@@ -169,8 +167,8 @@ void MeaPositionDesktop::LoadCustomPrecisions(const MeaXMLNode* displayPrecision
             CString name;
             int places;
 
-            attrs.GetValueStr(_T("name"), name, def);
-            attrs.GetValueInt(_T("decimalPlaces"), places, def);
+            attrs.GetValueStr(_T("name"), name);
+            attrs.GetValueInt(_T("decimalPlaces"), places);
 
             precMap[name] = places;
         }

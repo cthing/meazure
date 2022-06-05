@@ -43,18 +43,6 @@ class MeaXMLParserException {};
 class MeaXMLAttributes {
     friend class MeaXMLParser;
 
-protected:
-    /// Represents an attribute value.
-    ///
-    struct AttributeValue {
-
-        AttributeValue() : isDefault(false) {}
-
-        CString value;      ///< The value of the attribute
-        bool    isDefault;  ///< <b>true</b> means that the value is set from the DTD default;
-                            ///< <b>false</b> means that the value explicitly specified in the XML file.
-    };
-
 public:
     /// Constructs an empty instance of the XML attributes class.
     ///
@@ -83,28 +71,25 @@ public:
     /// 
     /// @param name         [in] Attribute name.
     /// @param value        [out] Attribute value as a string.
-    /// @param isDefault    [out] <b>true</b> if the value is the DTD default.
     /// @return <b>true</b> if the attribute is found.
     /// 
-    bool GetValueStr(LPCTSTR name, CString& value, bool& isDefault) const;
+    bool GetValueStr(LPCTSTR name, CString& value) const;
 
     /// Returns the value of the specified attribute converted to an integer.
     /// 
     /// @param name         [in] Attribute name.
     /// @param value        [out] Attribute value as an integer.
-    /// @param isDefault    [out] <b>true</b> if the value is the DTD default.
     /// @return <b>true</b> if the attribute is found.
     /// 
-    bool GetValueInt(LPCTSTR name, int& value, bool& isDefault) const;
+    bool GetValueInt(LPCTSTR name, int& value) const;
 
     /// Returns the value of the specified attribute converted to a double.
     /// 
     /// @param name         [in] Attribute name.
     /// @param value        [out] Attribute value as a double.
-    /// @param isDefault    [out] <b>true</b> if the value is the DTD default.
     /// @return <b>true</b> if the attribute is found.
     /// 
-    bool GetValueDbl(LPCTSTR name, double& value, bool& isDefault) const;
+    bool GetValueDbl(LPCTSTR name, double& value) const;
 
     /// Returns the value of the specified attribute converted to a boolean.
     /// 
@@ -112,10 +97,9 @@ public:
     /// @param value        [out] Attribute value as a boolean. This parameter
     ///                     is set to <b>true</b> if the attribute contains the
     ///                     string "true" or "1". <b>false</b> is returned otherwise.
-    /// @param isDefault    [out] <b>true</b> if the value is the DTD default.
     /// @return <b>true</b> if the attribute is found.
     /// 
-    bool GetValueBool(LPCTSTR name, bool& value, bool& isDefault) const;
+    bool GetValueBool(LPCTSTR name, bool& value) const;
 
     /// Performs a deep copy assignment of the specified attribute object to this.
     ///
@@ -125,18 +109,17 @@ public:
     MeaXMLAttributes& Assign(const MeaXMLAttributes& attrs);
 
 protected:
+    typedef std::map<CString, CString> AttributeMap;
+
     /// Constructs an instance of the class based on the specified attributes provided by the expat parser.
     ///
     /// @param atts         [in] Array of attribute name/value pairs from expat. In the array the name is
     ///                     followed by the value which is then followed by another name and so on until a
     ///                     nullptr is encountered.
-    /// @param numSpecified [in] Number of attributes in the array that have been explicitly specified versus
-    ///                     set by default from the DTD. The atts array is organized such that the explicitly
-    ///                     specified attributes come first.
     ///
-    MeaXMLAttributes(const XML_Char** atts, int numSpecified);
+    MeaXMLAttributes(const XML_Char** atts);
 
-    std::map<CString, AttributeValue> m_attributeMap;     ///< Maps attribute names to their values.
+    AttributeMap m_attributeMap;     ///< Maps attribute names to their values.
 };
 
 

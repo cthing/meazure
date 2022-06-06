@@ -19,7 +19,7 @@ foreach(redist_file ${REDIST_FILES})
     endif()
     set(DEST_REDIST_FILES ${DEST_REDIST_FILES} ${DEST_REDIST_FILE})
     add_custom_command(OUTPUT ${DEST_REDIST_FILE}
-                       COMMAND ${CMAKE_COMMAND} -E copy ${REDIST_FILE} ${DEST_REDIST_FILE})
+                       COMMAND ${CMAKE_COMMAND} -E copy ${redist_file} ${DEST_REDIST_FILE})
 endforeach()
 
 add_custom_target(redist DEPENDS ${DEST_REDIST_FILES})

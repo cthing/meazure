@@ -22,6 +22,7 @@
 #include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
 #include <meazure/position/Position.h>
+#include <meazure/xml/XMLParser.h>
 #include "mocks/MockScreenProvider.h"
 #include "mocks/MockUnitsProvider.h"
 #include "mocks/MockPositionLogWriter.h"

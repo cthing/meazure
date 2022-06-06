@@ -17,24 +17,20 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/// @file
+/// @brief Header file for writing XML files.
+
 #pragma once
 
-#include <meazure/utilities/StringUtils.h>
 
+namespace MeaXMLWriter {
 
-class MockPositionLogWriter : public MeaPositionLogWriter {
-public:
-    void Write(int indentLevel, LPCTSTR format, ...) override {
-        CString indent(_T(' '), indentLevel * 4);
-        CString str;
-        va_list args;
-
-        va_start(args, format);
-        str.FormatV(format, args);
-        va_end(args);
-
-        contents += MeaStringUtils::ACPtoUTF8(str);
-    }
-
-    CString contents;
-};
+    /// Replaces all occurrences of '&', '<', '>', '"', and "'" with the corresponding character entities. Attribute
+    /// values and character data (i.e. text between start/end elements) must be encoded. This method should be called
+    /// <b>before</b> converting the string to UTF-8.
+    ///
+    /// @param str      [in] String to encode.
+    /// @return XML encoded string.
+    ///
+    CString Encode(const CString& str);
+}

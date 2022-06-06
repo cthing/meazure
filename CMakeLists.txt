@@ -26,7 +26,10 @@ enable_testing()
 
 include(${SUPPORT_DIR}/conan/cthing-conan.cmake)
 
-conan_cmake_configure(REQUIRES boost/1.79.0 GENERATORS ${CTHING_CONAN_GENERATOR})
+conan_cmake_configure(REQUIRES
+                      boost/1.79.0
+                      xerces-c/3.2.3
+                      GENERATORS ${CTHING_CONAN_GENERATOR})
 
 CTHING_CONAN_INSTALL()
 
@@ -36,6 +39,7 @@ set(Boost_USE_STATIC_RUNTIME OFF)
 set(Boost_NO_WARN_NEW_VERSIONS ON)
 
 find_package(Boost COMPONENTS date_time unit_test_framework REQUIRED ${CTHING_FIND_PACKAGE_OPT})
+find_package(XercesC REQUIRED ${CTHING_FIND_PACKAGE_OPT})
 find_package(MFC REQUIRED)
 find_package(HTMLHelp REQUIRED)
 find_package(PythonInterp REQUIRED)

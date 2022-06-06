@@ -21,28 +21,26 @@
 #include "FileProfile.h"
 #include <meazure/VersionInfo.h>
 #include <meazure/utilities/TimeStamp.h>
+#include <meazure/utilities/StringUtils.h>
+#include <meazure/xml/XMLWriter.h>
 #include <cassert>
 
 
 MeaFileProfile::MeaFileProfile(LPCTSTR pathname, Mode mode) :
-    MeaProfile(),
-    MeaXMLParserHandler(),
     m_mode(mode),
     m_readVersion(1) {
     CFileException fe;
 
-    UINT flags = (m_mode == ProfRead) ? CFile::modeRead : (CFile::modeCreate | CFile::modeWrite);
-
-    if (m_stdioFile.Open(pathname, flags, &fe) == FALSE) {
-        AfxThrowFileException(fe.m_cause, fe.m_lOsError, pathname);
-    }
-
     m_title.Format(_T("%s Profile File"), static_cast<LPCTSTR>(AfxGetAppName()));
 
     if (m_mode == ProfWrite) {
+        if (m_stdioFile.Open(pathname, CFile::modeCreate | CFile::modeWrite, &fe) == FALSE) {
+            AfxThrowFileException(fe.m_cause, fe.m_lOsError, pathname);
+        }
+
         WriteFileStart();
     } else {
-        ParseFile();
+        ParseFile(pathname);
     }
 }
 
@@ -50,9 +48,8 @@ MeaFileProfile::~MeaFileProfile() {
     try {
         if (m_mode == ProfWrite) {
             WriteFileEnd();
+            m_stdioFile.Close();
         }
-
-        m_stdioFile.Close();
     } catch (...) {
         assert(false);
     }
@@ -87,7 +84,7 @@ void MeaFileProfile::Write(int indentLevel, LPCTSTR format, ...) {
     str.FormatV(format, args);
     va_end(args);
 
-    m_stdioFile.WriteString(indent + MeaXMLParser::ToUTF8(str));
+    m_stdioFile.WriteString(indent + MeaStringUtils::ACPtoUTF8(str));
 }
 
 bool MeaFileProfile::ReadBool(LPCTSTR key, bool defaultValue) {
@@ -141,7 +138,7 @@ int MeaFileProfile::GetVersion() {
 }
 
 void MeaFileProfile::WriteFileStart() {
-    Write(0, _T("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n"));
+    Write(0, _T("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"));
     Write(0, _T("<profile version=\"%d\">\n"), MeaVersionInfo::Instance().GetProfileFileMajor());
 
     TCHAR nameBuffer[MAX_COMPUTERNAME_LENGTH + 1];
@@ -149,7 +146,7 @@ void MeaFileProfile::WriteFileStart() {
     GetComputerName(nameBuffer, &size);
 
     Write(1, _T("<info>\n"));
-    Write(2, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(m_title)));
+    Write(2, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLWriter::Encode(m_title)));
     Write(2, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaTimeStamp::Make(time(nullptr))));
     Write(2, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
           static_cast<LPCTSTR>(AfxGetAppName()),
@@ -165,31 +162,13 @@ void MeaFileProfile::WriteFileEnd() {
     Write(0, _T("</profile>\n"));
 }
 
-void MeaFileProfile::ParseFile() {
+void MeaFileProfile::ParseFile(LPCTSTR pathname) {
     MeaXMLParser parser(this);
-
-    // Set the base path on the parser.
-    //
-    TCHAR drive[_MAX_PATH], path[_MAX_DIR];
-
-    _tsplitpath_s(m_stdioFile.GetFilePath(), drive, _MAX_PATH, path, _MAX_DIR, nullptr, 0, nullptr, 0);
-    _tcscat_s(drive, _MAX_PATH, path);
-    parser.SetBasePath(drive);
-
-    // Read the contents of the file into a parsing buffer.
-    //
-    int size = static_cast<int>(m_stdioFile.GetLength());
-    void* buf = parser.GetBuffer(size);
-    UINT count = m_stdioFile.Read(buf, size);
-
-    // Parse the file
-    //
-    parser.ParseBuffer(count, true);
+    parser.ParseFile(pathname);
 }
 
-void MeaFileProfile::StartElement(const CString& container,
-                                         const CString& elementName,
-                                         const MeaXMLAttributes& attrs) {
+void MeaFileProfile::StartElement(const CString& container, const CString& elementName,
+                                  const MeaXMLAttributes& attrs) {
     if (elementName == _T("profile")) {
         int value;
         attrs.GetValueInt(_T("version"), value);
@@ -206,30 +185,6 @@ void MeaFileProfile::CharacterData(const CString& container,
     if (container == _T("title")) {
         m_title += data;
     }
-}
-
-void MeaFileProfile::ParseEntity(MeaXMLParser& parser,
-                                 const CString& pathname) {
-    CFile entityFile;
-    CFileException fe;
-
-    if (!entityFile.Open(pathname, CFile::modeRead, &fe)) {
-        AfxThrowFileException(fe.m_cause, fe.m_lOsError, pathname);
-    }
-
-    MeaXMLParser entityParser(parser);
-
-    // Read the contents of the entity file into a parsing buffer.
-    //
-    int size = static_cast<int>(entityFile.GetLength());
-    void* buf = entityParser.GetBuffer(size);
-    UINT count = entityFile.Read(buf, size);
-
-    // Parse the entity file
-    //
-    entityParser.ParseBuffer(count, true);
-
-    entityFile.Close();
 }
 
 CString MeaFileProfile::GetFilePathname() {

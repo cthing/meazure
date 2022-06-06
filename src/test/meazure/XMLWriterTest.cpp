@@ -17,24 +17,14 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#pragma once
+#include "pch.h"
+#define BOOST_TEST_MODULE XMLWriterTest
+#include "GlobalFixture.h"
+#include <boost/test/unit_test.hpp>
+#include <meazure/xml/XMLWriter.h>
 
-#include <meazure/utilities/StringUtils.h>
-
-
-class MockPositionLogWriter : public MeaPositionLogWriter {
-public:
-    void Write(int indentLevel, LPCTSTR format, ...) override {
-        CString indent(_T(' '), indentLevel * 4);
-        CString str;
-        va_list args;
-
-        va_start(args, format);
-        str.FormatV(format, args);
-        va_end(args);
-
-        contents += MeaStringUtils::ACPtoUTF8(str);
-    }
-
-    CString contents;
-};
+BOOST_AUTO_TEST_CASE(TestEncode) {
+    BOOST_TEST(MeaXMLWriter::Encode("") == _T(""));
+    BOOST_TEST(MeaXMLWriter::Encode("Hello world") == _T("Hello world"));
+    BOOST_TEST(MeaXMLWriter::Encode("a & b < c > d 'e' \"f\"") == _T("a &amp; b &lt; c &gt; d &apos;e&apos; &quot;f&quot;"));
+}

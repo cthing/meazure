@@ -23,7 +23,7 @@
 #pragma once
 
 #include "Profile.h"
-#include <meazure/utilities/XMLParser.h>
+#include <meazure/xml/XMLParser.h>
 #include <map>
 
 
@@ -137,8 +137,8 @@ public:
     /// @param elementName  [in] Name of the element.
     /// @param attrs        [in] Attributes for the element.
     ///
-    virtual void StartElement(const CString& container, const CString& elementName, 
-                                     const MeaXMLAttributes& attrs) override;
+    virtual void StartElement(const CString& container, const CString& elementName,
+                              const MeaXMLAttributes& attrs) override;
 
     /// Called when the XML parser encounters character data.
     ///
@@ -146,13 +146,6 @@ public:
     /// @param data         [in] Character data.
     ///
     virtual void CharacterData(const CString& container, const CString& data) override;
-
-    /// Called when the XML parser needs to parse an external entity.
-    ///
-    /// @param parser   [in] XML parser.
-    /// @param pathname [in] Pathname of the external entity to open and parse.
-    ///
-    virtual void ParseEntity(MeaXMLParser& parser, const CString& pathname) override;
 
     /// Obtains the pathname of the profile file represented by an instance
     /// of this class.
@@ -180,8 +173,10 @@ private:
     void WriteFileEnd();
 
     /// Supervises the parsing of the XML profile file.
+    /// 
+    /// @param pathname  [in] Profile file to parse
     ///
-    void ParseFile();
+    void ParseFile(LPCTSTR pathname);
 
 
     CStdioFile m_stdioFile;     ///< File object representing the profile.

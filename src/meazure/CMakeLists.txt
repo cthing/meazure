@@ -165,8 +165,6 @@ set(TOOL_SRCS
 source_group(Tools FILES ${TOOL_SRCS})
 
 set(UTILITY_SRCS
-    utilities/exval.cpp
-    utilities/exval.h
     utilities/Geometry.h
     utilities/GUID.cpp
     utilities/GUID.h
@@ -181,10 +179,16 @@ set(UTILITY_SRCS
     utilities/Timer.h
     utilities/TimeStamp.cpp
     utilities/TimeStamp.h
-    utilities/XMLParser.cpp
-    utilities/XMLParser.h
 )
 source_group(Utilities FILES ${UTILITY_SRCS})
+
+set(XML_SRCS
+    xml/XMLParser.cpp
+    xml/XMLParser.h
+    xml/XMLWriter.cpp
+    xml/XMLWriter.h
+)
+source_group(XML FILES ${XML_SRCS})
 
 set(MEAZURE_SRCS
     ${TOP_SRCS}
@@ -196,6 +200,7 @@ set(MEAZURE_SRCS
     ${UNITS_SRCS}
     ${POSITION_SRCS}
     ${UTILITY_SRCS}
+    ${XML_SRCS}
 )
 
 # Replace the version variables with the actual values from the project version.
@@ -211,13 +216,15 @@ else()
 endif()
 
 get_property(BOOST_INCLUDE_DIRS TARGET Boost::boost PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
+get_property(XERCES_INCLUDE_DIRS TARGET XercesC::XercesC PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
 
 add_executable(Meazure WIN32 ${MEAZURE_SRCS})
-add_dependencies(Meazure apphelp libexpat hooks)
+add_dependencies(Meazure apphelp hooks)
 target_precompile_headers(Meazure PRIVATE pch.h)
-target_link_libraries(Meazure PRIVATE libexpat hooks version.lib ${HTML_HELP_LIBRARY})
+target_link_libraries(Meazure PRIVATE hooks XercesC::XercesC version.lib ${HTML_HELP_LIBRARY})
 target_include_directories(Meazure PRIVATE
                            ${BOOST_INCLUDE_DIRS}
+                           ${XERCES_INCLUDE_DIRS}
                            "${CMAKE_SOURCE_DIR}/src"
                            "${CMAKE_CURRENT_BINARY_DIR}")
 set_target_properties(Meazure PROPERTIES LINK_FLAGS "/MANIFEST")

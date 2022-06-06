@@ -101,3 +101,13 @@ BOOST_AUTO_TEST_CASE(TestCRLFtoLF) {
     BOOST_TEST(MeaStringUtils::CRLFtoLF(_T("\r\nHello\n\r\nWorld\n")) == _T("\nHello\n\nWorld\n"));
     BOOST_TEST(MeaStringUtils::LFtoCRLF(_T("")) == _T(""));
 }
+
+boost::test_tools::assertion_result IsANSI(boost::unit_test::test_unit_id) {
+    return GetACP() == 1252;
+}
+
+BOOST_AUTO_TEST_CASE(TestACPtoUTF8, *boost::unit_test::precondition(IsANSI)) {
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(CString()) == u8"");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(CString(_T("Hello world"))) == u8"Hello world");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(CString(_T("\x99\x85"))) == u8"\u2122\u2026");
+}

@@ -77,4 +77,13 @@ namespace MeaStringUtils {
     /// @return Converted string.
     ///
     CString CRLFtoLF(CString str);
+
+    /// Converts a string encoded in the active code page (ACP) to a string in UTF-8 encoding.
+    /// 
+    /// @param str  [in] String to covert to UTF-8 encoding. If _UNICODE is defined, the
+    ///     string in converted from wide characters to UTF-8. If _UNICODE is not defined,
+    ///     the string is converted from the ACP to UTF-8.
+    /// @return The specified string converted to UTF-8 encoding.
+    /// 
+    CStringA ACPtoUTF8(const CString& str);
 };

@@ -30,10 +30,10 @@
 #include <meazure/units/Units.h>
 #include <meazure/units/UnitsProvider.h>
 #include <meazure/utilities/Geometry.h>
-#include <meazure/utilities/XMLParser.h>
 #include <meazure/utilities/GUID.h>
 #include <meazure/utilities/Singleton.h>
 #include <meazure/utilities/NumericUtils.h>
+#include <meazure/xml/XMLParser.h>
 #include <meazure/ui/ScreenMgr.h>
 #include <meazure/ui/ScreenProvider.h>
 #include <list>
@@ -46,15 +46,15 @@ class MeaPositionLogDlg;
 class MeaPositionLogObserver;
 
 
-/// Manages the recording, saving and loading of tool positions. The
-/// positions are saved to an XML format file.
+/// Manages the recording, saving and loading of tool positions. The positions are saved to an XML format file.
 ///
-class MeaPositionLogMgr : public MeaXMLParserHandler, public MeaPositionDesktopRefCounter, public MeaPositionLogWriter,
+class MeaPositionLogMgr :
+    public MeaXMLParserHandler,
+    public MeaPositionDesktopRefCounter,
+    public MeaPositionLogWriter,
     public MeaSingleton_T<MeaPositionLogMgr> {
 
 public:
-
-
     MeaPositionLogMgr(token);
     ~MeaPositionLogMgr();
 
@@ -173,13 +173,12 @@ public:
     ///
     void MasterReset();
 
-    /// Called during the XML parsing of the log file, to parse an
-    /// external entity such as a DTD.
+    /// Called to resolve an external entity (e.g. DTD).
     ///
-    /// @param parser       [in] XML parser.
-    /// @param pathname     [in] Pathname of the external entity.
+    /// @param pathname [in] Pathname of the external entity.
+    /// @return Input source for the external entity.
     ///
-    virtual void ParseEntity(MeaXMLParser& parser, const CString& pathname) override;
+    virtual xercesc::InputSource* ResolveEntity(const CString& pathname) override;
 
     /// Returns the pathname of the currently parsed log file.
     ///

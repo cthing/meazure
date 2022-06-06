@@ -29,6 +29,7 @@
 #include <meazure/units/Units.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/GUID.h>
+#include <meazure/xml/XMLParser.h>
 #include <iostream>
 
 

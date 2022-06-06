@@ -29,11 +29,13 @@
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/StringUtils.h>
+#include <meazure/xml/XMLWriter.h>
+#include <xercesc/framework/LocalFileInputSource.hpp>
 #include <cassert>
 
 
 MeaPositionLogMgr::MeaPositionLogMgr(token) :
-    MeaXMLParserHandler(), MeaSingleton_T<MeaPositionLogMgr>(),
+    MeaSingleton_T<MeaPositionLogMgr>(),
     m_observer(nullptr),
     m_saveDialog(nullptr),
     m_loadDialog(nullptr),
@@ -398,52 +400,36 @@ bool MeaPositionLogMgr::Load(LPCTSTR pathname) {
     m_initialDir += dir;
 
     //
-    // Load the positions
+    // Delete old positions.
     //
-    if (Open(m_pathname, CFile::modeRead)) {
-        //
-        // Delete old positions.
-        //
-        ClearPositions();
+    ClearPositions();
 
+    //
+    // Parse the contents of the log file
+    //
+    MeaXMLParser parser(this, true);
+
+    try {
+        parser.ParseFile(m_pathname);
+        status = true;
+    } catch (MeaXMLParserException&) {
+        // Handled by the parser.
+    } catch (...) {
+        CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_INVALID_LOGFILE));
+        MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
+    }
+
+    if (status) {
         //
-        // Parse the contents of the log file
+        // Process the log file DOM
         //
-        MeaXMLParser parser(this, true);
+        ProcessDOM(parser.GetDOM());
 
-        try {
-            UINT numBytes;
+        m_modified = false;
 
-            do {
-                void* buf = parser.GetBuffer(kChunkSize);
-                numBytes = m_stdioFile.Read(buf, kChunkSize);
-                parser.ParseBuffer(numBytes, numBytes == 0);
-            } while (numBytes > 0);
-
-            status = true;
-        } catch (MeaXMLParserException&) {
-            // Handled by the parser.
-        } catch (...) {
-            CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_INVALID_LOGFILE));
-            MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
+        if (m_observer != nullptr) {
+            m_observer->LogLoaded();
         }
-
-        Close();
-
-        if (status) {
-            //
-            // Process the log file DOM
-            //
-            ProcessDOM(parser.GetDOM());
-
-            m_modified = false;
-
-            if (m_observer != nullptr) {
-                m_observer->LogLoaded();
-            }
-        }
-    } else {
-        m_pathname.Empty();
     }
 
     return status;
@@ -558,7 +544,7 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) {
 
     Write(indent, _T("<info>\n"));
     indent++;
-    Write(indent, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_title))));
+    Write(indent, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLWriter::Encode(MeaStringUtils::CRLFtoLF(m_title))));
     Write(indent, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaTimeStamp::Make(time(nullptr))));
     Write(indent, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
           static_cast<LPCTSTR>(AfxGetAppName()),
@@ -566,7 +552,7 @@ void MeaPositionLogMgr::WriteInfoSection(int indent) {
           MeaVersionInfo::Instance().GetProductBuild());
     Write(indent, _T("<machine name=\"%s\"/>\n"), nameBuffer);
     if (!m_desc.IsEmpty()) {
-        Write(indent, _T("<desc>%s</desc>\n"), static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
+        Write(indent, _T("<desc>%s</desc>\n"), static_cast<LPCTSTR>(MeaXMLWriter::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
     }
     indent--;
     Write(indent, _T("</info>\n"));
@@ -601,30 +587,12 @@ void MeaPositionLogMgr::Write(int indentLevel, LPCTSTR format, ...) {
     str.FormatV(format, args);
     va_end(args);
 
-    m_stdioFile.WriteString(indent + MeaXMLParser::ToUTF8(str));
+    m_stdioFile.WriteString(indent + MeaStringUtils::ACPtoUTF8(str));
 }
 
-void MeaPositionLogMgr::ParseEntity(MeaXMLParser& parser, const CString& pathname) {
-    CFile entityFile;
-    CFileException fe;
-
-    if (!entityFile.Open(pathname, CFile::modeRead, &fe)) {
-        AfxThrowFileException(fe.m_cause, fe.m_lOsError, pathname);
-    }
-
-    MeaXMLParser entityParser(parser);
-
-    // Read the contents of the entity file into a parsing buffer.
-    //
-    int size = static_cast<int>(entityFile.GetLength());
-    void* buf = entityParser.GetBuffer(size);
-    UINT count = entityFile.Read(buf, size);
-
-    // Parse the entity file
-    //
-    entityParser.ParseBuffer(count, true);
-
-    entityFile.Close();
+xercesc::InputSource* MeaPositionLogMgr::ResolveEntity(const CString& pathname) {
+    CStringW widePathname(pathname);
+    return new xercesc::LocalFileInputSource(reinterpret_cast<const XMLCh* const>(static_cast<PCWSTR>(widePathname)));
 }
 
 CString MeaPositionLogMgr::GetFilePathname() {

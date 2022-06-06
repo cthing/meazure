@@ -15,8 +15,8 @@
 <!ENTITY % Number   "CDATA">        <!-- Integer or real -->
 <!ENTITY % Boolean  "(true|false)">
 <!ENTITY % String   "CDATA">
-<!ENTITY % GUID     "ID">           <!-- 128-bit unique ID (MS implementation) -->
-<!ENTITY % GUIDRef  "IDREF">        <!-- Reference to a GUID -->
+<!ENTITY % GUID     "NMTOKEN">      <!-- 128-bit unique ID (MS implementation) -->
+<!ENTITY % GUIDRef  "NMTOKEN">      <!-- Reference to a GUID -->
 <!ENTITY % Date     "CDATA">        <!-- UTC timestamp in ISO 8601 format, yyyy-mm-ddThh:mm:ssZ -->
 
 <!-- ===================== Document element ========================= -->

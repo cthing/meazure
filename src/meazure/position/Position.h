@@ -25,7 +25,7 @@
 #include "PositionDesktop.h"
 #include "PositionLogWriter.h"
 #include <meazure/utilities/Geometry.h>
-#include <meazure/utilities/XMLParser.h>
+#include <meazure/xml/XMLParser.h>
 
 
 /// Represents a tool position. A position object references the desktop information that provides its environment.

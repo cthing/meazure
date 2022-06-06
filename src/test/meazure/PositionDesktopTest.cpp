@@ -24,6 +24,7 @@
 #include <meazure/position/PositionDesktop.h>
 #include <meazure/units/Units.h>
 #include <meazure/utilities/GUID.h>
+#include <meazure/xml/XMLParser.h>
 #include "mocks/MockScreenProvider.h"
 #include "mocks/MockUnitsProvider.h"
 #include "mocks/MockPositionLogWriter.h"

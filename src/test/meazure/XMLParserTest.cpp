@@ -21,19 +21,18 @@
 #define BOOST_TEST_MODULE XMLParserTest
 #include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
-#include <meazure/utilities/XMLParser.h>
+#include <meazure/xml/XMLParser.h>
+#include <xercesc/framework/MemBufInputSource.hpp>
 #include <float.h>
 #include <stdlib.h>
 
 namespace tt = boost::test_tools;
 
-BOOST_TEST_DONT_PRINT_LOG_VALUE(MeaXMLNode)
-
 
 LPCTSTR xml1 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 <elem1>
     <elem2>
-        <elem3>Test XML Data</elem3>
+        <elem3>Test XML Data Meazure&#x2122;</elem3>
         <elem4 attr1="abc" attr2="1" attr3="2.5" attr4="true"/>
     </elem2>
 </elem1>
@@ -72,6 +71,7 @@ LPCTSTR xml5 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 BOOST_AUTO_TEST_CASE(TestParserHandlerNoValidation) {
 
     struct TestHandler : public MeaXMLParserHandler {
+        CString charData;
         bool elem1Start = false;
         bool elem1End = false;
         bool elem2Start = false;
@@ -81,8 +81,8 @@ BOOST_AUTO_TEST_CASE(TestParserHandlerNoValidation) {
         bool elem4Start = false;
         bool elem4End = false;
 
-        void StartElement(const CString& container, const CString& elementName,
-                                 const MeaXMLAttributes& attrs) override {
+        void StartElement(const CString& container, const CString& elementName, 
+                          const MeaXMLAttributes& attrs) override {
             if (elementName == _T("elem1")) {
                 elem1Start = true;
                 BOOST_TEST(container.IsEmpty());
@@ -133,24 +133,36 @@ BOOST_AUTO_TEST_CASE(TestParserHandlerNoValidation) {
         void CharacterData(const CString& container, const CString& data) override {
             BOOST_TEST(container.GetLength() > 0);
             BOOST_TEST(data.GetLength() > 0);
+
+            CString cleanStr(data);
+            cleanStr.Trim();
+            if (cleanStr.GetLength() > 0) {
+                charData += cleanStr;
+            }
         }
 
-        void ParseEntity(MeaXMLParser&, const CString& pathname) override {
+        xercesc::InputSource* ResolveEntity(const CString& pathname) override {
             BOOST_TEST(pathname.IsEmpty());
+            return nullptr;
         }
 
-        void ParsingError(const CString& error, const CString&, int, int) override {
-            BOOST_FAIL(error);
+        void ParsingError(const CString& error, const CString&, int line, int column) override {
+            CString msg;
+            msg.Format("%s (%d, %d)", static_cast<LPCTSTR>(error), line, column);
+            BOOST_FAIL(msg);
         }
 
-        void ValidationError(const CString& error, const CString&, int, int) override {
-            BOOST_FAIL(error);
+        void ValidationError(const CString& error, const CString&, int line, int column) override {
+            CString msg;
+            msg.Format("%s (%d, %d)", static_cast<LPCTSTR>(error), line, column);
+            BOOST_FAIL(msg);
         }
     } testHandler;
 
     MeaXMLParser parser(&testHandler);
     parser.ParseString(xml1);
 
+    BOOST_TEST(testHandler.charData == _T("Test XML Data Meazure\x99"));
     BOOST_TEST(testHandler.elem1Start);
     BOOST_TEST(testHandler.elem1End);
     BOOST_TEST(testHandler.elem2Start);
@@ -198,7 +210,7 @@ BOOST_AUTO_TEST_CASE(TestDOMNoValidation) {
     const MeaXMLNode* elem3 = *children++;
     BOOST_TEST(elem3->GetData() == _T("elem3"));
     BOOST_TEST(!elem3->HasAttributes());
-    BOOST_TEST(elem3->GetChildData() == _T("Test XML Data"));
+    BOOST_TEST(elem3->GetChildData() == _T("Test XML Data Meazure\x99"));
 
     // elem4
     while ((*children)->GetType() != MeaXMLNode::Type::Element) {
@@ -231,8 +243,7 @@ BOOST_AUTO_TEST_CASE(TestValidationInternalDTD) {
         bool elem1Start = false;
         bool elem1End = false;
 
-        void StartElement(const CString& container, const CString& elementName,
-                                 const MeaXMLAttributes&) override {
+        void StartElement(const CString& container, const CString& elementName, const MeaXMLAttributes&) override {
             if (elementName == _T("elem1")) {
                 elem1Start = true;
                 BOOST_TEST(container.IsEmpty());
@@ -250,8 +261,9 @@ BOOST_AUTO_TEST_CASE(TestValidationInternalDTD) {
             }
         }
 
-        void ParseEntity(MeaXMLParser&, const CString& pathname) override {
+        xercesc::InputSource* ResolveEntity(const CString& pathname) override {
             BOOST_TEST(pathname.IsEmpty());
+            return nullptr;
         }
 
         void ParsingError(const CString& error, const CString&, int, int) override {
@@ -275,17 +287,22 @@ BOOST_AUTO_TEST_CASE(TestValidationExternalDTD) {
     struct TestHandler : public MeaXMLParserHandler {
         bool hadEntity = false;
 
-        void ParseEntity(MeaXMLParser& parser, const CString& pathname) override {
+        xercesc::InputSource* ResolveEntity(const CString& pathname) override {
             hadEntity = true;
 
             TCHAR fname[_MAX_FNAME], ext[_MAX_EXT];
             _tsplitpath_s(pathname, nullptr, 0, nullptr, 0, fname, _MAX_FNAME, ext, _MAX_EXT);
 
+
             BOOST_TEST(CString(fname) == _T("test"));
             BOOST_TEST(CString(ext) == _T(".dtd"));
 
-            MeaXMLParser entityParser(parser);
-            entityParser.ParseString(_T("<!ELEMENT elem1 (#PCDATA)>"));
+            LPCSTR dtd = u8"<!ELEMENT elem1 (#PCDATA)>";
+            std::size_t numBytes = strlen(dtd);
+            xercesc::MemBufInputSource* source = new xercesc::MemBufInputSource(reinterpret_cast<const XMLByte*>(dtd),
+                                                                                numBytes, "DTD");
+
+            return source;
         }
 
         void ParsingError(const CString& error, const CString&, int, int) override {
@@ -312,7 +329,7 @@ BOOST_AUTO_TEST_CASE(TestParsingError) {
         void ParsingError(const CString& error, const CString& pathname, int line, int column) override {
             hadError = true;
 
-            BOOST_TEST(error == _T("mismatched tag"));
+            BOOST_TEST(error == _T("expected end of tag 'elem2'"));
             BOOST_TEST(pathname.IsEmpty());
             BOOST_TEST(line == 6);
             BOOST_TEST(column == 3);
@@ -341,12 +358,10 @@ BOOST_AUTO_TEST_CASE(TestValidationError) {
         void ValidationError(const CString& error, const CString& pathname, int line, int column) override {
             hadError = true;
 
-            BOOST_TEST(error == _T("Element 'elem2' not declared in DTD"));
+            BOOST_TEST(error == _T("no declaration found for element 'elem2'"));
             BOOST_TEST(pathname.IsEmpty());
             BOOST_TEST(line == 6);
-            BOOST_TEST(column == 5);
-
-            throw MeaXMLParserException();
+            BOOST_TEST(column == 11);
         }
     } testHandler;
 
@@ -354,26 +369,4 @@ BOOST_AUTO_TEST_CASE(TestValidationError) {
     BOOST_CHECK_THROW(parser.ParseString(xml4), MeaXMLParserException);
 
     BOOST_TEST(testHandler.hadError);
-}
-
-BOOST_AUTO_TEST_CASE(TestEncode) {
-    BOOST_TEST(MeaXMLParser::Encode("") == _T(""));
-    BOOST_TEST(MeaXMLParser::Encode("Hello world") == _T("Hello world"));
-    BOOST_TEST(MeaXMLParser::Encode("a & b < c > d 'e' \"f\"") == _T("a &amp; b &lt; c &gt; d &apos;e&apos; &quot;f&quot;"));
-}
-
-boost::test_tools::assertion_result IsANSI(boost::unit_test::test_unit_id) {
-    return GetACP() == 1252;
-}
-
-BOOST_AUTO_TEST_CASE(TestFromUTF8, * boost::unit_test::precondition(IsANSI)) {
-    BOOST_TEST(MeaXMLParser::FromUTF8(_T("")) == _T(""));
-    BOOST_TEST(MeaXMLParser::FromUTF8(_T("Hello world")) == _T("Hello world"));
-    BOOST_TEST(MeaXMLParser::FromUTF8(_T(u8"\u2122\u2026")) == _T("\x99\x85"));
-}
-
-BOOST_AUTO_TEST_CASE(TestToUTF8, * boost::unit_test::precondition(IsANSI)) {
-    BOOST_TEST(MeaXMLParser::ToUTF8(CString()) == _T(""));
-    BOOST_TEST(MeaXMLParser::ToUTF8(CString(_T("Hello world"))) == _T("Hello world"));
-    BOOST_TEST(MeaXMLParser::ToUTF8(CString(_T("\x99\x85"))) == _T(u8"\u2122\u2026"));
 }

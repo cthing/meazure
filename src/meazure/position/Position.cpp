@@ -22,6 +22,7 @@
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/TimeStamp.h>
 #include <meazure/utilities/StringUtils.h>
+#include <meazure/xml/XMLWriter.h>
 #include <meazure/ui/DataFieldId.h>
 
 
@@ -183,7 +184,7 @@ void MeaPosition::Save(MeaPositionLogWriter& writer, int indent) const {
     indent++;
     if (!m_desc.IsEmpty()) {
         writer.Write(indent, _T("<desc>%s</desc>\n"),
-                     static_cast<LPCTSTR>(MeaXMLParser::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
+                     static_cast<LPCTSTR>(MeaXMLWriter::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
     }
 
     writer.Write(indent, _T("<points>\n"));

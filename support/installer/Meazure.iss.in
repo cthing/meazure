@@ -50,7 +50,6 @@ Source: "{#SupportDir}\redist\hhupd.exe";   DestDir: "{tmp}"; Components: core; 
 Source: "{#BuildDir}\Meazure.exe";          DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "{#BuildDir}\Meazure.chm";          DestDir: "{app}"; Components: help; Flags: ignoreversion
 Source: "{#BuildDir}\Hooks.dll";            DestDir: "{app}"; Components: core; Flags: ignoreversion
-Source: "{#BuildDir}\libexpat.dll";         DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "{#ProjectDir}\LICENSE";            DestDir: "{app}"; DestName: "LICENSE.txt"; Components: core; Flags: ignoreversion
 Source: "{#ProjectDir}\README.md";          DestDir: "{app}"; DestName: "README.txt"; Components: core; Flags: ignoreversion
 ; DTD files

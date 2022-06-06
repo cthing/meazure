@@ -97,7 +97,7 @@ void MeaPositionDesktop::Load(const MeaXMLNode* desktopNode) {
                 attrs.GetValueDbl(_T("y"), m_size.cy);
             } else if (node->GetData() == _T("screens")) {
                 m_screens.clear();
-                for (MeaXMLNode::NodeIter_c screenIter = node->GetChildIter();
+                for (MeaXMLNode::NodeIter_c screenIter = node->GetChildIter(); 
                      !node->AtEnd(screenIter); ++screenIter) {
                     MeaPositionScreen screen;
                     screen.Load(*screenIter);

@@ -109,3 +109,26 @@ CString MeaStringUtils::CRLFtoLF(CString str) {
     conv.Replace(_T("\r\n"), _T("\n"));
     return conv;
 }
+
+CStringA MeaStringUtils::ACPtoUTF8(const CString& str) {
+    CStringA utf8Str;
+
+#ifdef _UNICODE
+    int numWideChars = str.GetLength();
+    int numBytes = WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(str), numWideChars, nullptr, 0,
+                                         nullptr, nullptr);
+    WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(str), numWideChars,
+                        utf8Str.GetBufferSetLength(numBytes), numBytes, nullptr, nullptr);
+#else
+    CStringW wideStr(str);
+
+    int numWideChars = wideStr.GetLength();
+    int numBytes = WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(wideStr), numWideChars, nullptr, 0,
+                                       nullptr, nullptr);
+    WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(wideStr), numWideChars,
+                        utf8Str.GetBufferSetLength(numBytes), numBytes, nullptr, nullptr);
+#endif
+    utf8Str.ReleaseBuffer();
+
+    return utf8Str;
+}

@@ -25,7 +25,7 @@
 #include "PositionLogWriter.h"
 #include <meazure/units/UnitsProvider.h>
 #include <meazure/ui/ScreenProvider.h>
-#include <meazure/utilities/XMLParser.h>
+#include <meazure/xml/XMLParser.h>
 #include <meazure/utilities/Geometry.h>
 
 

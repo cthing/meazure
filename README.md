@@ -62,14 +62,21 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 - A more readable font is used for all dialogs
 
+- Fix: Position log DTD defined the type for the desktop identifier and its references as ID and IDREF respectively.
+  This was incorrect because the identifier is a GUID, which can start with a number and that is not allowed for an
+  ID. The type has been changed to NMTOKEN, which allows a leading digit. Because the type is a superset of ID and
+  to support backward compatibility, the name and version of the DTD has not been changed.
+
 - Internal improvements
     - Migrated codesbase to C++17
     - Reorganized source code into subfolders
     - Increased unit test coverage
     - Use precompiled headers to greatly reduce build time
     - Use namespaces for static utility classes
-    - Refactoring, renaming, and reorganizing of class functionality for testability and clarity
+    - Extensive refactoring, renaming, and reorganizing of class functionality for testability and clarity
     - Use the [Conan C/C++ Package Manager](https://conan.io/) for library dependencies (e.g. Boost)
+    - Migrate to [Xerces C++ XML parser and validator](https://xerces.apache.org/xerces-c/) from old expat and
+      homegrown validator
  
 ### Changes 3.0.1 to 3.0.2
 

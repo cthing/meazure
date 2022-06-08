@@ -24,19 +24,19 @@
 #include <meazure/utilities/StringUtils.h>
 #include <meazure/xml/XMLWriter.h>
 #include <cassert>
+#include <cstring>
 
 
 MeaFileProfile::MeaFileProfile(LPCTSTR pathname, Mode mode) :
+    m_pathname(pathname),
     m_mode(mode),
     m_readVersion(1) {
-    CFileException fe;
 
     m_title.Format(_T("%s Profile File"), static_cast<LPCTSTR>(AfxGetAppName()));
 
     if (m_mode == ProfWrite) {
-        if (m_stdioFile.Open(pathname, CFile::modeCreate | CFile::modeWrite, &fe) == FALSE) {
-            AfxThrowFileException(fe.m_cause, fe.m_lOsError, pathname);
-        }
+        m_writeStream.exceptions(std::ios::failbit | std::ios::badbit);
+        m_writeStream.open(MeaStringUtils::ACPtoUTF8(m_pathname), std::ios::out | std::ios::trunc);
 
         WriteFileStart();
     } else {
@@ -45,13 +45,16 @@ MeaFileProfile::MeaFileProfile(LPCTSTR pathname, Mode mode) :
 }
 
 MeaFileProfile::~MeaFileProfile() {
-    try {
-        if (m_mode == ProfWrite) {
+    if (m_mode == ProfWrite) {
+        try {
             WriteFileEnd();
-            m_stdioFile.Close();
+            
+            if (m_writeStream.is_open()) {
+                m_writeStream.close();
+            }
+        } catch (...) {
+            assert(false);
         }
-    } catch (...) {
-        assert(false);
     }
 }
 
@@ -84,7 +87,7 @@ void MeaFileProfile::Write(int indentLevel, LPCTSTR format, ...) {
     str.FormatV(format, args);
     va_end(args);
 
-    m_stdioFile.WriteString(indent + MeaStringUtils::ACPtoUTF8(str));
+    m_writeStream << indent << MeaStringUtils::ACPtoUTF8(str);
 }
 
 bool MeaFileProfile::ReadBool(LPCTSTR key, bool defaultValue) {
@@ -188,5 +191,5 @@ void MeaFileProfile::CharacterData(const CString& container,
 }
 
 CString MeaFileProfile::GetFilePathname() {
-    return m_stdioFile.GetFilePath();
+    return m_pathname;
 }

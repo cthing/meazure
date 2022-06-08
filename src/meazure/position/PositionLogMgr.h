@@ -39,6 +39,7 @@
 #include <list>
 #include <map>
 #include <stdexcept>
+#include <fstream>
 
 
 class MeaPositionSaveDlg;
@@ -241,19 +242,6 @@ private:
     /// 
     void WritePositionsSection(MeaPositionLogWriter& writer, int indent);
 
-    /// Opens the specified position log file either for reading or writing.
-    ///
-    /// @param pathname     [in] Pathname of position log file to open.
-    /// @param mode         [in] one of CFile::modeRead or CFile::modeWrite | CFile::modeCreate
-    ///
-    /// @return <b>true</b> if file opened successfully.
-    ///
-    bool Open(const CString& pathname, UINT mode);
-
-    /// Closes the currently open position log file.
-    ///
-    void Close() { m_stdioFile.Close(); m_stdioOpen = false; }
-
     /// Printf-like method for writing to a position log file.
     ///
     /// @param indentLevel      [in] Output indentation level.
@@ -323,6 +311,10 @@ private:
     ///
     void ClearPositions();
 
+    /// Closes the write stream if it is open and prevents any exceptions from leaking out.
+    ///
+    void Close();
+
 
     MeaPositionLogObserver* m_observer; ///< Position log manager observer.
     DesktopInfoMap m_desktopInfoMap;    ///< Desktop information objects
@@ -334,8 +326,7 @@ private:
     CString m_loadDlgTitle;             ///< Title for the file open dialog.
     CString m_initialDir;               ///< Initial directory for the file save and open dialogs.
     CString m_pathname;                 ///< Pathname of current position log file.
-    CStdioFile m_stdioFile;             ///< File pointer for an open position log file.
-    bool m_stdioOpen;                   ///< Is the position log file open.
+    std::ofstream m_writeStream;        ///< Stream for writing the position log file.
     CString m_title;                    ///< Title for the positions.
     CString m_desc;                     ///< Description of the positions.
     bool m_modified;                    ///< Have the positions been modified since last save.

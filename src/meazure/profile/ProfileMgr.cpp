@@ -25,6 +25,7 @@
 #include <meazure/xml/XMLParser.h>
 #include <cstdlib>
 #include <cassert>
+#include <fstream>
 
 
 LPCTSTR MeaProfileMgr::m_ext { _T("mea") };
@@ -158,13 +159,11 @@ void MeaProfileMgr::Save() {
             MeaFileProfile profile(pathname, MeaFileProfile::ProfWrite);
 
             static_cast<AppFrame*>(AfxGetMainWnd())->SaveProfile(profile);
-        } catch (CFileException* fe) {
-            TCHAR errStr[256];
+        } catch (const std::ofstream::failure& e) {
+            CString errStr(e.what());
             CString msg;
-            fe->GetErrorMessage(errStr, 256);
-            msg.Format(IDS_MEA_NO_SAVE_PROFILE, errStr);
+            msg.Format(IDS_MEA_NO_SAVE_PROFILE, static_cast<LPCTSTR>(errStr));
             MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
-            fe->Delete();
         }
     }
 }

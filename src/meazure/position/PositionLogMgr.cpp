@@ -41,7 +41,6 @@ MeaPositionLogMgr::MeaPositionLogMgr(token) :
     m_loadDialog(nullptr),
     m_saveDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_SAVE_LOG_DLG)),
     m_loadDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_LOAD_LOG_DLG)),
-    m_stdioOpen(false),
     m_modified(false),
     m_manageDialog(nullptr) {
     m_title.Format(_T("%s Position Log File"), static_cast<LPCTSTR>(AfxGetAppName()));
@@ -344,21 +343,31 @@ bool MeaPositionLogMgr::Save(bool askPathname) {
     //
     int indent = 0;
 
-    if (!Open(m_pathname, CFile::modeWrite | CFile::modeCreate)) {
+    m_writeStream.exceptions(std::ios::failbit | std::ios::badbit);
+    
+    try {
+        m_writeStream.open(MeaStringUtils::ACPtoUTF8(m_pathname), std::ios::out | std::ios::trunc);
+
+        Write(indent, _T("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"));
+        Write(indent, _T("<!DOCTYPE positionLog SYSTEM \"https://www.cthing.com/dtd/PositionLog1.dtd\">\n"));
+        Write(indent, _T("<positionLog version=\"%d\">\n"), MeaVersionInfo::Instance().GetLogFileMajor());
+        indent++;
+        WriteInfoSection(indent);
+        WriteDesktopsSection(indent);
+        WritePositionsSection(*this, indent);
+        indent--;
+        Write(indent, _T("</positionLog>\n"));
+
+        Close();
+    } catch (const std::ofstream::failure& e) {
+        Close();
+
+        CString errStr(e.what());
+        CString msg;
+        msg.Format(IDS_MEA_NO_SAVE_LOG, static_cast<LPCTSTR>(errStr));
+        MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
         return false;
     }
-
-    Write(indent, _T("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"));
-    Write(indent, _T("<!DOCTYPE positionLog SYSTEM \"https://www.cthing.com/dtd/PositionLog1.dtd\">\n"));
-    Write(indent, _T("<positionLog version=\"%d\">\n"), MeaVersionInfo::Instance().GetLogFileMajor());
-    indent++;
-    WriteInfoSection(indent);
-    WriteDesktopsSection(indent);
-    WritePositionsSection(*this, indent);
-    indent--;
-    Write(indent, _T("</positionLog>\n"));
-
-    Close();
 
     m_modified = false;
 
@@ -435,23 +444,14 @@ bool MeaPositionLogMgr::Load(LPCTSTR pathname) {
     return status;
 }
 
-bool MeaPositionLogMgr::Open(const CString& pathname, UINT mode) {
-    CFileException fe;
-
-    m_stdioOpen = false;
-
-    if (m_stdioFile.Open(pathname, mode, &fe) == FALSE) {
-        TCHAR errStr[256];
-        CString msg;
-        fe.GetErrorMessage(errStr, 256);
-        msg.Format(((mode & CFile::modeRead) ? IDS_MEA_NO_LOAD_LOG : IDS_MEA_NO_SAVE_LOG), errStr);
-        MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
-        return false;
+void MeaPositionLogMgr::Close() {
+    try {
+        if (m_writeStream.is_open()) {
+            m_writeStream.close();
+        }
+    } catch (...) {
+        assert(false);
     }
-
-    m_stdioOpen = true;
-
-    return true;
 }
 
 void MeaPositionLogMgr::ProcessDOM(const MeaXMLNode* dom) {
@@ -587,7 +587,7 @@ void MeaPositionLogMgr::Write(int indentLevel, LPCTSTR format, ...) {
     str.FormatV(format, args);
     va_end(args);
 
-    m_stdioFile.WriteString(indent + MeaStringUtils::ACPtoUTF8(str));
+    m_writeStream << indent << MeaStringUtils::ACPtoUTF8(str);
 }
 
 xercesc::InputSource* MeaPositionLogMgr::ResolveEntity(const CString& pathname) {
@@ -596,5 +596,5 @@ xercesc::InputSource* MeaPositionLogMgr::ResolveEntity(const CString& pathname) 
 }
 
 CString MeaPositionLogMgr::GetFilePathname() {
-    return m_stdioOpen ? m_stdioFile.GetFilePath() : m_pathname;
+    return m_pathname;
 }

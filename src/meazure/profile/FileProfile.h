@@ -25,6 +25,7 @@
 #include "Profile.h"
 #include <meazure/xml/XMLParser.h>
 #include <map>
+#include <fstream>
 
 
 /// Persists the application state to an XML file.
@@ -179,9 +180,10 @@ private:
     void ParseFile(LPCTSTR pathname);
 
 
-    CStdioFile m_stdioFile;     ///< File object representing the profile.
-    Mode m_mode;                ///< Opening mode for the profile file.
-    int m_readVersion;          ///< Profile format version number read from the profile file.
-    CString m_title;            ///< Title for the profile file.
+    CString m_pathname;             ///< Pathname of the file.
+    std::ofstream m_writeStream;    ///< Stream for writing the profile.
+    Mode m_mode;                    ///< Opening mode for the profile file.
+    int m_readVersion;              ///< Profile format version number read from the profile file.
+    CString m_title;                ///< Title for the profile file.
     std::map<CString, CString>  m_valueMap;     ///< Maps profile keys to values.
 };

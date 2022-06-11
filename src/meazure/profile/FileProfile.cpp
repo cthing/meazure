@@ -37,6 +37,7 @@ MeaFileProfile::MeaFileProfile(LPCTSTR pathname, Mode mode) :
     if (m_mode == ProfWrite) {
         m_writeStream.exceptions(std::ios::failbit | std::ios::badbit);
         m_writeStream.open(MeaStringUtils::ACPtoUTF8(m_pathname), std::ios::out | std::ios::trunc);
+        m_writer = std::make_unique<MeaXMLWriter>(m_writeStream);
 
         WriteFileStart();
     } else {
@@ -48,10 +49,6 @@ MeaFileProfile::~MeaFileProfile() {
     if (m_mode == ProfWrite) {
         try {
             WriteFileEnd();
-            
-            if (m_writeStream.is_open()) {
-                m_writeStream.close();
-            }
         } catch (...) {
             assert(false);
         }
@@ -59,35 +56,31 @@ MeaFileProfile::~MeaFileProfile() {
 }
 
 bool MeaFileProfile::WriteBool(LPCTSTR key, bool value) {
-    Write(2, _T("<%s value=\"%s\"/>\n"), key, (value ? _T("true") : _T("false")));
+    m_writer->StartElement(key)
+        .AddAttribute(_T("value"), (value ? _T("true") : _T("false")))
+        .EndElement();
     return true;
 }
 
 bool MeaFileProfile::WriteInt(LPCTSTR key, int value) {
-    Write(2, _T("<%s value=\"%d\"/>\n"), key, value);
+    m_writer->StartElement(key)
+        .AddAttribute(_T("value"), value)
+        .EndElement();
     return true;
 }
 
 bool MeaFileProfile::WriteDbl(LPCTSTR key, double value) {
-    Write(2, _T("<%s value=\"%f\"/>\n"), key, value);
+    m_writer->StartElement(key)
+        .AddAttribute(_T("value"), value)
+        .EndElement();
     return true;
 }
 
 bool MeaFileProfile::WriteStr(LPCTSTR key, LPCTSTR value) {
-    Write(2, _T("<%s value=\"%s\"/>\n"), key, value);
+    m_writer->StartElement(key)
+        .AddAttribute(_T("value"), value)
+        .EndElement();
     return true;
-}
-
-void MeaFileProfile::Write(int indentLevel, LPCTSTR format, ...) {
-    CString indent(_T(' '), indentLevel * 4);
-    CString str;
-    va_list args;
-
-    va_start(args, format);
-    str.FormatV(format, args);
-    va_end(args);
-
-    m_writeStream << indent << MeaStringUtils::ACPtoUTF8(str);
 }
 
 bool MeaFileProfile::ReadBool(LPCTSTR key, bool defaultValue) {
@@ -141,28 +134,44 @@ int MeaFileProfile::GetVersion() {
 }
 
 void MeaFileProfile::WriteFileStart() {
-    Write(0, _T("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"));
-    Write(0, _T("<profile version=\"%d\">\n"), MeaVersionInfo::Instance().GetProfileFileMajor());
+    m_writer->StartDocument();
+
+    m_writer->StartElement(_T("profile"))
+        .AddAttribute(_T("version"), MeaVersionInfo::Instance().GetProfileFileMajor());
+
+    m_writer->StartElement(_T("info"));
+
+    m_writer->StartElement(_T("title"))
+        .Characters(m_title)
+        .EndElement();
+    
+    m_writer->StartElement(_T("created"))
+        .AddAttribute(_T("date"), MeaTimeStamp::Make(time(nullptr)))
+        .EndElement();
+
+    m_writer->StartElement(_T("generator"))
+        .AddAttribute(_T("name"), AfxGetAppName())
+        .AddAttribute(_T("version"), MeaVersionInfo::Instance().GetProductVersion())
+        .AddAttribute(_T("build"), MeaVersionInfo::Instance().GetProductBuild())
+        .EndElement();
 
     TCHAR nameBuffer[MAX_COMPUTERNAME_LENGTH + 1];
     DWORD size = MAX_COMPUTERNAME_LENGTH + 1;
     GetComputerName(nameBuffer, &size);
 
-    Write(1, _T("<info>\n"));
-    Write(2, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLWriter::Encode(m_title)));
-    Write(2, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaTimeStamp::Make(time(nullptr))));
-    Write(2, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
-          static_cast<LPCTSTR>(AfxGetAppName()),
-          static_cast<LPCTSTR>(MeaVersionInfo::Instance().GetProductVersion()),
-          MeaVersionInfo::Instance().GetProductBuild());
-    Write(2, _T("<machine name=\"%s\"/>\n"), nameBuffer);
-    Write(1, _T("</info>\n"));
-    Write(1, _T("<data>\n"));
+    m_writer->StartElement(_T("machine"))
+        .AddAttribute(_T("name"), nameBuffer)
+        .EndElement();
+
+    m_writer->EndElement();         // info
+
+    m_writer->StartElement(_T("data"));
 }
 
 void MeaFileProfile::WriteFileEnd() {
-    Write(1, _T("</data>\n"));
-    Write(0, _T("</profile>\n"));
+    m_writer->EndElement();         // data
+    m_writer->EndElement();         // profile
+    m_writer->EndDocument();
 }
 
 void MeaFileProfile::ParseFile(LPCTSTR pathname) {

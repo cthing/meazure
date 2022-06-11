@@ -23,7 +23,6 @@
 #pragma once
 
 #include "PositionDesktop.h"
-#include "PositionLogWriter.h"
 #include <meazure/utilities/Geometry.h>
 #include <meazure/xml/XMLParser.h>
 
@@ -231,10 +230,8 @@ public:
     /// Saves the position in the position log file.
     ///
     /// @param writer       [in] Provides ability to write a position to the log.
-    /// @param indent       [in] Output indentation level.
-    /// @throw CFileException if there was a problem saving the position
     ///
-    void Save(MeaPositionLogWriter& writer, int indent) const;
+    void Save(MeaXMLWriter& writer) const;
 
     /// Compares the specified position information object with this to determine equality.
     ///

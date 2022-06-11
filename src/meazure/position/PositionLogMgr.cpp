@@ -29,7 +29,6 @@
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/StringUtils.h>
-#include <meazure/xml/XMLWriter.h>
 #include <xercesc/framework/LocalFileInputSource.hpp>
 #include <cassert>
 
@@ -341,23 +340,25 @@ bool MeaPositionLogMgr::Save(bool askPathname) {
     //
     // Save the positions
     //
-    int indent = 0;
-
     m_writeStream.exceptions(std::ios::failbit | std::ios::badbit);
     
     try {
         m_writeStream.open(MeaStringUtils::ACPtoUTF8(m_pathname), std::ios::out | std::ios::trunc);
 
-        Write(indent, _T("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"));
-        Write(indent, _T("<!DOCTYPE positionLog SYSTEM \"https://www.cthing.com/dtd/PositionLog1.dtd\">\n"));
-        Write(indent, _T("<positionLog version=\"%d\">\n"), MeaVersionInfo::Instance().GetLogFileMajor());
-        indent++;
-        WriteInfoSection(indent);
-        WriteDesktopsSection(indent);
-        WritePositionsSection(*this, indent);
-        indent--;
-        Write(indent, _T("</positionLog>\n"));
+        MeaXMLWriter writer(m_writeStream);
+        writer.StartDocument();
 
+        writer.Doctype(_T("positionLog"), _T("https://www.cthing.com/dtd/PositionLog1.dtd"));
+
+        writer.StartElement(_T("positionLog"))
+            .AddAttribute(_T("version"), MeaVersionInfo::Instance().GetLogFileMajor());
+
+        WriteInfoSection(writer);
+        WriteDesktopsSection(writer);
+        WritePositionsSection(writer);
+
+        writer.EndElement();        // positionLog
+        writer.EndDocument();
         Close();
     } catch (const std::ofstream::failure& e) {
         Close();
@@ -536,58 +537,49 @@ void MeaPositionLogMgr::ProcessPositionNode(const MeaXMLNode* positionNode) {
     }
 }
 
-void MeaPositionLogMgr::WriteInfoSection(int indent) {
+void MeaPositionLogMgr::WriteInfoSection(MeaXMLWriter& writer) {
     TCHAR nameBuffer[MAX_COMPUTERNAME_LENGTH + 1];
     DWORD size = MAX_COMPUTERNAME_LENGTH + 1;
 
     GetComputerName(nameBuffer, &size);
 
-    Write(indent, _T("<info>\n"));
-    indent++;
-    Write(indent, _T("<title>%s</title>\n"), static_cast<LPCTSTR>(MeaXMLWriter::Encode(MeaStringUtils::CRLFtoLF(m_title))));
-    Write(indent, _T("<created date=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaTimeStamp::Make(time(nullptr))));
-    Write(indent, _T("<generator name=\"%s\" version=\"%s\" build=\"%d\"/>\n"),
-          static_cast<LPCTSTR>(AfxGetAppName()),
-          static_cast<LPCTSTR>(MeaVersionInfo::Instance().GetProductVersion()),
-          MeaVersionInfo::Instance().GetProductBuild());
-    Write(indent, _T("<machine name=\"%s\"/>\n"), nameBuffer);
+    writer.StartElement(_T("info"));
+
+    writer.StartElement(_T("title"))
+        .Characters(m_title)
+        .EndElement();
+    writer.StartElement(_T("created"))
+        .AddAttribute(_T("date"), MeaTimeStamp::Make(time(nullptr)))
+        .EndElement();
+    writer.StartElement(_T("generator"))
+        .AddAttribute(_T("name"), AfxGetAppName())
+        .AddAttribute(_T("version"), MeaVersionInfo::Instance().GetProductVersion())
+        .AddAttribute(_T("build"), MeaVersionInfo::Instance().GetProductBuild())
+        .EndElement();
+    writer.StartElement(_T("machine"))
+        .AddAttribute(_T("name"), nameBuffer)
+        .EndElement();
     if (!m_desc.IsEmpty()) {
-        Write(indent, _T("<desc>%s</desc>\n"), static_cast<LPCTSTR>(MeaXMLWriter::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
+        writer.StartElement(_T("desc"))
+            .Characters(m_desc)
+            .EndElement();
     }
-    indent--;
-    Write(indent, _T("</info>\n"));
+    
+    writer.EndElement();    // info
 }
 
-void MeaPositionLogMgr::WriteDesktopsSection(int indent) {
-    Write(indent, _T("<desktops>\n"));
-    indent++;
-
+void MeaPositionLogMgr::WriteDesktopsSection(MeaXMLWriter& writer) {
+    writer.StartElement(_T("desktops"));
     for (const auto& refCountEntry : m_refCountMap) {
-        GetDesktopInfo(refCountEntry.first).Save(*this, indent);
+        GetDesktopInfo(refCountEntry.first).Save(writer);
     }
-
-    indent--;
-    Write(indent, _T("</desktops>\n"));
+    writer.EndElement();    // desktops
 }
 
-void MeaPositionLogMgr::WritePositionsSection(MeaPositionLogWriter& writer, int indent) {
-    Write(indent, _T("<positions>\n"));
-    indent++;
-    m_positions.Save(writer, indent);
-    indent--;
-    Write(indent, _T("</positions>\n"));
-}
-
-void MeaPositionLogMgr::Write(int indentLevel, LPCTSTR format, ...) {
-    CString indent(_T(' '), indentLevel * 4);
-    CString str;
-    va_list args;
-
-    va_start(args, format);
-    str.FormatV(format, args);
-    va_end(args);
-
-    m_writeStream << indent << MeaStringUtils::ACPtoUTF8(str);
+void MeaPositionLogMgr::WritePositionsSection(MeaXMLWriter& writer) {
+    writer.StartElement(_T("positions"));
+    m_positions.Save(writer);
+    writer.EndElement();    // positions
 }
 
 xercesc::InputSource* MeaPositionLogMgr::ResolveEntity(const CString& pathname) {

@@ -27,6 +27,13 @@
 namespace bt = boost::unit_test;
 
 
+BOOST_AUTO_TEST_CASE(TestIntToStr) {
+    BOOST_TEST(MeaStringUtils::IntToStr(0) == _T("0"));
+    BOOST_TEST(MeaStringUtils::IntToStr(10) == _T("10"));
+    BOOST_TEST(MeaStringUtils::IntToStr(+10) == _T("10"));
+    BOOST_TEST(MeaStringUtils::IntToStr(-10) == _T("-10"));
+}
+
 BOOST_AUTO_TEST_CASE(TestDblToStr) {
     BOOST_TEST(MeaStringUtils::DblToStr(123.456) == _T("123.456"));
     BOOST_TEST(MeaStringUtils::DblToStr(-123.456) == _T("-123.456"));
@@ -106,8 +113,27 @@ boost::test_tools::assertion_result IsANSI(boost::unit_test::test_unit_id) {
     return GetACP() == 1252;
 }
 
-BOOST_AUTO_TEST_CASE(TestACPtoUTF8, *boost::unit_test::precondition(IsANSI)) {
+BOOST_AUTO_TEST_CASE(TestACPtoUTF8String, *boost::unit_test::precondition(IsANSI)) {
     BOOST_TEST(MeaStringUtils::ACPtoUTF8(CString()) == u8"");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(CString(_T("\x00"))) == u8"\u0000");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(CString(_T(" "))) == u8" ");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(CString(_T("\n"))) == u8"\n");
     BOOST_TEST(MeaStringUtils::ACPtoUTF8(CString(_T("Hello world"))) == u8"Hello world");
     BOOST_TEST(MeaStringUtils::ACPtoUTF8(CString(_T("\x99\x85"))) == u8"\u2122\u2026");
+
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(nullptr) == u8"");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T("")) == u8"");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T("\x00")) == u8"\u0000");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T(" ")) == u8" ");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T("Hello world")) == u8"Hello world");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T("\x99\x85")) == u8"\u2122\u2026");
+}
+
+BOOST_AUTO_TEST_CASE(TestACPtoUTF8Char, *boost::unit_test::precondition(IsANSI)) {
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T('\0')) == u8"\u0000");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T(' ')) == u8" ");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T('\n')) == u8"\n");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T('H')) == u8"H");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T('\x99')) == u8"\u2122");
+    BOOST_TEST(MeaStringUtils::ACPtoUTF8(_T('\x85')) == u8"\u2026");
 }

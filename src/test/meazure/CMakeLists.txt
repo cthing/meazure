@@ -71,6 +71,7 @@ ADD_MEAZURE_TEST(PositionCollectionTest ColorsTest
 ADD_MEAZURE_TEST(PositionDesktopTest ColorsTest
                  ${APP_DIR}/units/Units.cpp
                  ${APP_DIR}/xml/XMLParser.cpp
+                 ${APP_DIR}/xml/XMLWriter.cpp
                  ${APP_DIR}/utilities/GUID.cpp
                  ${APP_DIR}/utilities/StringUtils.cpp
                  ${APP_DIR}/position/PositionDesktop.cpp
@@ -78,6 +79,7 @@ ADD_MEAZURE_TEST(PositionDesktopTest ColorsTest
 ADD_MEAZURE_TEST(PositionScreenTest ColorsTest
                  ${APP_DIR}/units/Units.cpp
                  ${APP_DIR}/xml/XMLParser.cpp
+                 ${APP_DIR}/xml/XMLWriter.cpp
                  ${APP_DIR}/utilities/StringUtils.cpp
                  ${APP_DIR}/position/PositionScreen.cpp)
 ADD_MEAZURE_TEST(RegistryProfileTest ColorsTest ${APP_DIR}/profile/RegistryProfile.cpp ${APP_DIR}/VersionInfo.cpp)
@@ -87,4 +89,4 @@ ADD_MEAZURE_TEST(TimeStampTest ColorsTest ${APP_DIR}/utilities/TimeStamp.cpp)
 ADD_MEAZURE_TEST(UnitsTest ColorsTest ${APP_DIR}/units/Units.cpp)
 ADD_MEAZURE_TEST(VersionInfoTest ColorsTest ${APP_DIR}/VersionInfo.cpp)
 ADD_MEAZURE_TEST(XMLParserTest ColorsTest ${APP_DIR}/xml/XMLParser.cpp)
-ADD_MEAZURE_TEST(XMLWriterTest ColorsTest ${APP_DIR}/xml/XMLWriter.cpp)
+ADD_MEAZURE_TEST(XMLWriterTest ColorsTest ${APP_DIR}/xml/XMLWriter.cpp ${APP_DIR}/utilities/StringUtils.cpp)

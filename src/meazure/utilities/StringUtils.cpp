@@ -19,7 +19,14 @@
 
 #include <meazure/pch.h>
 #include "StringUtils.h"
+#include <iostream>
 
+
+CString MeaStringUtils::IntToStr(int value) {
+    CString numStr;
+    numStr.Format("%d", value);
+    return numStr;
+}
 
 CString MeaStringUtils::DblToStr(double value) {
     CString numStr;
@@ -111,24 +118,94 @@ CString MeaStringUtils::CRLFtoLF(CString str) {
 }
 
 CStringA MeaStringUtils::ACPtoUTF8(const CString& str) {
+    return ACPtoUTF8(static_cast<PCTSTR>(str), str.GetLength());
+}
+
+CStringA MeaStringUtils::ACPtoUTF8(PCTSTR str, std::size_t len) {
     CStringA utf8Str;
 
+    if (str == nullptr || len == 0) {
+        return utf8Str;
+    }
+
+    std::size_t strLen = (len == SIZE_MAX) ? _tcslen(str) : len;
+    if (strLen == 0) {
+        return utf8Str;
+    }
+
 #ifdef _UNICODE
-    int numWideChars = str.GetLength();
-    int numBytes = WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(str), numWideChars, nullptr, 0,
-                                         nullptr, nullptr);
-    WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(str), numWideChars,
-                        utf8Str.GetBufferSetLength(numBytes), numBytes, nullptr, nullptr);
+    int numBytes = WideCharToMultiByte(CP_UTF8, 0, str, strLen, nullptr, 0, nullptr, nullptr);
+    if (numBytes > 0) {
+        WideCharToMultiByte(CP_UTF8, 0, str, strLen, utf8Str.GetBuffer(numBytes), numBytes, nullptr, nullptr);
+        utf8Str.ReleaseBufferSetLength(numBytes);
+    } else {
+        DWORD errorCode = GetLastError();
+        if (GetConsoleWindow() != nullptr) {
+            std::cerr << "Could not convert wide character to UTF-8. Error code " << errorCode << '\n';
+        }
+    }
 #else
-    CStringW wideStr(str);
+    CStringW wideStr(str, static_cast<int>(strLen));
 
     int numWideChars = wideStr.GetLength();
     int numBytes = WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(wideStr), numWideChars, nullptr, 0,
                                        nullptr, nullptr);
-    WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(wideStr), numWideChars,
-                        utf8Str.GetBufferSetLength(numBytes), numBytes, nullptr, nullptr);
+    if (numBytes > 0) {
+        WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(wideStr), numWideChars,
+                            utf8Str.GetBuffer(numBytes), numBytes, nullptr, nullptr);
+        utf8Str.ReleaseBufferSetLength(numBytes);
+    } else {
+        DWORD errorCode = GetLastError();
+        if (GetConsoleWindow() != nullptr) {
+            std::cerr << "Could not convert wide character to UTF-8. Error code " << errorCode << '\n';
+        }
+    }
 #endif
-    utf8Str.ReleaseBuffer();
 
     return utf8Str;
+}
+
+CStringA MeaStringUtils::ACPtoUTF8(TCHAR ch) {
+
+#ifdef _UNICODE
+    if (ch > '\u001F' && ch < '\u007F') {
+        return CStringA(&ch, 1);
+    }
+
+    CStringA utf8Str;
+
+    int numBytes = WideCharToMultiByte(CP_UTF8, 0, &ch, 1, nullptr, 0, nullptr, nullptr);
+    if (numBytes > 0) {
+        WideCharToMultiByte(CP_UTF8, 0, &ch, 1, utf8Str.GetBuffer(numBytes), numBytes, nullptr, nullptr);
+        utf8Str.ReleaseBufferSetLength(numBytes);
+    } else {
+        DWORD errorCode = GetLastError();
+        if (GetConsoleWindow() != nullptr) {
+            std::cerr << "Could not convert wide character to UTF-8. Error code " << errorCode << '\n';
+        }
+    }
+
+    return utf8Str;
+#else
+    if (ch > '\x1F' && ch < '\x7F') {
+        return CStringA(&ch, 1);
+    }
+
+    CStringW wideStr(&ch, 1);
+    CStringA utf8Str;
+
+    int numBytes = WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(wideStr), 1, nullptr, 0, nullptr, nullptr);
+    if (numBytes > 0) {
+        WideCharToMultiByte(CP_UTF8, 0, static_cast<PCWSTR>(wideStr), 1, utf8Str.GetBuffer(numBytes), numBytes,
+                            nullptr, nullptr);
+        utf8Str.ReleaseBufferSetLength(numBytes);
+    } else {
+        DWORD errorCode = GetLastError();
+        if (GetConsoleWindow() != nullptr) {
+            std::cerr << "Could not convert wide character to UTF-8. Error code " << errorCode << '\n';
+        }
+    }
+
+    return utf8Str;
+#endif
 }

@@ -24,7 +24,9 @@
 
 #include "Profile.h"
 #include <meazure/xml/XMLParser.h>
+#include <meazure/xml/XMLWriter.h>
 #include <map>
+#include <memory>
 #include <fstream>
 
 
@@ -156,15 +158,6 @@ public:
     virtual CString GetFilePathname() override;
 
 private:
-    /// Printf style method that writes the specified values using the
-    /// specified format and indentation level.
-    ///
-    /// @param indentLevel      [in] Indentation level for the output.
-    /// @param format           [in] Printf-style format string for the output.
-    /// @param ...              [in] Items to write to the file.
-    ///
-    void Write(int indentLevel, LPCTSTR format, ...);
-
     /// Writes the XML boilerplate at the start of the XML profile file.
     ///
     void WriteFileStart();
@@ -180,8 +173,12 @@ private:
     void ParseFile(LPCTSTR pathname);
 
 
+    typedef std::unique_ptr<MeaXMLWriter> MeaXMLWriterPtr;
+
+
     CString m_pathname;             ///< Pathname of the file.
-    std::ofstream m_writeStream;    ///< Stream for writing the profile.
+    std::ofstream m_writeStream;    ///< Output stream for the profile.
+    MeaXMLWriterPtr m_writer;       ///< Writer for the profile.
     Mode m_mode;                    ///< Opening mode for the profile file.
     int m_readVersion;              ///< Profile format version number read from the profile file.
     CString m_title;                ///< Title for the profile file.

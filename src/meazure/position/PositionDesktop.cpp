@@ -111,45 +111,50 @@ void MeaPositionDesktop::Load(const MeaXMLNode* desktopNode) {
     }
 }
 
-void MeaPositionDesktop::Save(MeaPositionLogWriter& writer, int indent) const {
-    writer.Write(indent, _T("<desktop id=\"%s\">\n"), static_cast<LPCTSTR>(m_id.ToString()));
-    indent++;
-    writer.Write(indent, _T("<units length=\"%s\" angle=\"%s\"/>\n"),
-        static_cast<LPCTSTR>(m_linearUnits->GetUnitsStr()),
-        static_cast<LPCTSTR>(m_angularUnits->GetUnitsStr()));
+void MeaPositionDesktop::Save(MeaXMLWriter& writer) const {
+    writer.StartElement(_T("desktop"))
+        .AddAttribute(_T("id"), m_id.ToString());
+
+    writer.StartElement(_T("units"))
+        .AddAttribute(_T("length"), m_linearUnits->GetUnitsStr())
+        .AddAttribute(_T("angle"), m_angularUnits->GetUnitsStr())
+        .EndElement();
 
     if (m_linearUnits->GetUnitsId() == MeaCustomId) {
-        writer.Write(indent, _T("<customUnits name=\"%s\" abbrev=\"%s\" scaleBasis=\"%s\" scaleFactor=\"%f\"/>\n"),
-                     static_cast<LPCTSTR>(m_customName),
-                     static_cast<LPCTSTR>(m_customAbbrev),
-                     static_cast<LPCTSTR>(m_customBasisStr), m_customFactor);
+        writer.StartElement(_T("customUnits"))
+            .AddAttribute(_T("name"), m_customName)
+            .AddAttribute(_T("abbrev"), m_customAbbrev)
+            .AddAttribute(_T("scaleBasis"), m_customBasisStr)
+            .AddAttribute(_T("scaleFactor"), m_customFactor)
+            .EndElement();
     }
 
-    writer.Write(indent, _T("<origin xoffset=\"%s\" yoffset=\"%s\" invertY=\"%s\"/>\n"),
-                 static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_origin.x)),
-                 static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_origin.y)),
-                 (m_invertY ? _T("true") : _T("false")));
-    writer.Write(indent, _T("<size x=\"%s\" y=\"%s\"/>\n"),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_size.cx)),
-              static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_size.cy)));
+    writer.StartElement(_T("origin"))
+        .AddAttribute(_T("xoffset"), m_origin.x)
+        .AddAttribute(_T("yoffset"), m_origin.y)
+        .AddAttribute(_T("invertY"), (m_invertY ? _T("true") : _T("false")))
+        .EndElement();
 
-    writer.Write(indent, _T("<screens>\n"));
-    indent++;
+    writer.StartElement(_T("size"))
+        .AddAttribute(_T("x"), m_size.cx)
+        .AddAttribute(_T("y"), m_size.cy)
+        .EndElement();
+
+    writer.StartElement(_T("screens"));
     for (const auto& screen : m_screens) {
-        screen.Save(writer, indent);
+        screen.Save(writer);
     }
-    indent--;
-    writer.Write(indent, _T("</screens>\n"));
+    writer.EndElement();        // screens
 
     if (m_linearUnits->GetUnitsId() == MeaCustomId) {
-        writer.Write(indent, _T("<displayPrecisions>\n"));
-        indent++;
-        SaveCustomPrecisions(writer, indent);
-        indent--;
-        writer.Write(indent, _T("</displayPrecisions>\n"));
+        writer.StartElement(_T("displayPrecisions"));
+        SaveCustomPrecisions(writer);
+        writer.EndElement();    // displayPrecisions
     }
-    indent--;
-    writer.Write(indent, _T("</desktop>\n"));
+
+
+
+    writer.EndElement();        // desktop
 }
 
 void MeaPositionDesktop::LoadCustomPrecisions(const MeaXMLNode* displayPrecisionNode) {
@@ -187,18 +192,21 @@ void MeaPositionDesktop::LoadCustomPrecisions(const MeaXMLNode* displayPrecision
     }
 }
 
-void MeaPositionDesktop::SaveCustomPrecisions(MeaPositionLogWriter& writer, int indent) const {
+void MeaPositionDesktop::SaveCustomPrecisions(MeaXMLWriter& writer) const {
     const MeaUnits::DisplayPrecisionNames& precisionNames = m_linearUnits->GetDisplayPrecisionNames();
     unsigned int i;
 
-    writer.Write(indent, _T("<displayPrecision units=\"%s\">\n"), static_cast<LPCTSTR>(m_linearUnits->GetUnitsStr()));
-    indent++;
+    writer.StartElement(_T("displayPrecision"))
+        .AddAttribute(_T("units"), m_linearUnits->GetUnitsStr());
+
     for (i = 0; i < m_customPrecisions.size(); i++) {
-        writer.Write(indent, _T("<measurement name=\"%s\" decimalPlaces=\"%d\"/>\n"),
-                     static_cast<LPCTSTR>(precisionNames[i]), m_customPrecisions[i]);
+        writer.StartElement(_T("measurement"))
+            .AddAttribute(_T("name"), precisionNames[i])
+            .AddAttribute(_T("decimalPlaces"), m_customPrecisions[i])
+            .EndElement();
     }
-    indent--;
-    writer.Write(indent, _T("</displayPrecision>\n"));
+
+    writer.EndElement();        // displayPrecision
 }
 
 

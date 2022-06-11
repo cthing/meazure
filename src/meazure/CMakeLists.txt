@@ -80,7 +80,6 @@ set(POSITION_SRCS
     position/PositionSaveDlg.h
     position/PositionScreen.cpp
     position/PositionScreen.h
-    position/PositionLogWriter.h
 )
 source_group(Position FILES ${POSITION_SRCS})
 

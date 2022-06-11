@@ -23,12 +23,13 @@
 #include <boost/test/unit_test.hpp>
 #include <meazure/position/Position.h>
 #include <meazure/xml/XMLParser.h>
+#include <meazure/xml/XMLWriter.h>
 #include "mocks/MockScreenProvider.h"
 #include "mocks/MockUnitsProvider.h"
-#include "mocks/MockPositionLogWriter.h"
 #include "mocks/MockPositionDesktopRefCounter.h"
 #include <regex>
 #include <float.h>
+#include <fstream>
 
 namespace tt = boost::test_tools;
 
@@ -199,11 +200,14 @@ BOOST_FIXTURE_TEST_CASE(TestSaveLoad, TestFixture) {
     position1.RecordAngle(12.0);
     position1.RecordCircleArea(3.2);
 
-    MockPositionLogWriter writer;
-    position1.Save(writer, 1);
+    std::ostringstream stream;
+    MeaXMLWriter writer(stream);
+    writer.StartDocument();
+    position1.Save(writer);
+    writer.EndDocument();
 
     MeaXMLParser parser;
-    parser.ParseString(writer.contents);
+    parser.ParseString(stream.str().c_str());
 
     const MeaXMLNode* positionNode = parser.GetDOM();
 

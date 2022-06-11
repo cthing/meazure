@@ -23,7 +23,7 @@
 #pragma once
 
 #include "Position.h"
-#include "PositionLogWriter.h"
+#include <meazure/xml/XMLWriter.h>
 #include <map>
 
 
@@ -92,10 +92,8 @@ public:
     /// Saves all positions in the collection to the log file.
     ///
     /// @param writer       [in] Provides ability to write a position to the log.
-    /// @param indent       [in] Output indentation level.
-    /// @throws CFileException if there was a problem saving the position
     ///
-    void Save(MeaPositionLogWriter& writer, int indent) const;
+    void Save(MeaXMLWriter& writer) const;
 
 private:
     typedef std::map<int, MeaPosition*> PositionMap;       ///< Maps indices to position objects.

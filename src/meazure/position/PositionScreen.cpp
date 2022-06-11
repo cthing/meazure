@@ -19,7 +19,6 @@
 
 #include <meazure/pch.h>
 #include "PositionScreen.h"
-#include <meazure/utilities/StringUtils.h>
 
 
 MeaPositionScreen::MeaPositionScreen(const MeaScreenProvider::ScreenIter& screenIter,
@@ -65,19 +64,23 @@ void MeaPositionScreen::Load(const MeaXMLNode* screenNode) {
     }
 }
 
-void MeaPositionScreen::Save(MeaPositionLogWriter& writer, int indent) const {
-    writer.Write(indent, _T("<screen desc=\"%s\" primary=\"%s\">\n"), static_cast<LPCTSTR>(m_desc),
-                 (m_primary ? _T("true") : _T("false")));
-    indent++;
-    writer.Write(indent, _T("<rect top=\"%s\" bottom=\"%s\" left=\"%s\" right=\"%s\"/>\n"),
-                 static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.top)),
-                 static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.bottom)),
-                 static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.left)),
-                 static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_rect.right)));
-    writer.Write(indent, _T("<resolution x=\"%s\" y=\"%s\" manual=\"%s\"/>\n"),
-                 static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_res.cx)),
-                 static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_res.cy)),
-                 (m_manualRes ? _T("true") : _T("false")));
-    indent--;
-    writer.Write(indent, _T("</screen>\n"));
+void MeaPositionScreen::Save(MeaXMLWriter& writer) const {
+    writer.StartElement(_T("screen"))
+        .AddAttribute(_T("desc"), m_desc)
+        .AddAttribute(_T("primary"), (m_primary ? _T("true") : _T("false")));
+
+    writer.StartElement(_T("rect"))
+        .AddAttribute(_T("top"), m_rect.top)
+        .AddAttribute(_T("bottom"), m_rect.bottom)
+        .AddAttribute(_T("left"), m_rect.left)
+        .AddAttribute(_T("right"), m_rect.right)
+        .EndElement();
+
+    writer.StartElement(_T("resolution"))
+        .AddAttribute(_T("x"), m_res.cx)
+        .AddAttribute(_T("y"), m_res.cy)
+        .AddAttribute(_T("manual"), (m_manualRes ? _T("true") : _T("false")))
+        .EndElement();
+
+    writer.EndElement();        // screen
 }

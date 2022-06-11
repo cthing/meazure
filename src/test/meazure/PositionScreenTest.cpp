@@ -23,9 +23,10 @@
 #include <boost/test/unit_test.hpp>
 #include <meazure/position/PositionScreen.h>
 #include <meazure/xml/XMLParser.h>
+#include <meazure/xml/XMLWriter.h>
 #include "mocks/MockScreenProvider.h"
 #include "mocks/MockUnitsProvider.h"
-#include "mocks/MockPositionLogWriter.h"
+#include <fstream>
 
 
 BOOST_TEST_DONT_PRINT_LOG_VALUE(MeaPositionScreen)
@@ -92,11 +93,14 @@ BOOST_FIXTURE_TEST_CASE(TestEquality, TestFixture) {
 BOOST_FIXTURE_TEST_CASE(TestSaveLoad, TestFixture) {
     MeaPositionScreen screen1(screenProvider.GetScreenIter(), unitsProvider, screenProvider);
 
-    MockPositionLogWriter writer;
-    screen1.Save(writer, 1);
+    std::ostringstream stream;
+    MeaXMLWriter writer(stream);
+    writer.StartDocument();
+    screen1.Save(writer);
+    writer.EndDocument();
 
     MeaXMLParser parser;
-    parser.ParseString(writer.contents);
+    parser.ParseString(stream.str().c_str());
 
     const MeaXMLNode* screenNode = parser.GetDOM();
     MeaPositionScreen screen2(screenProvider.GetScreenIter(), unitsProvider, screenProvider);

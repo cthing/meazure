@@ -22,10 +22,10 @@
 
 #pragma once
 
-#include "PositionLogWriter.h"
 #include <meazure/units/UnitsProvider.h>
 #include <meazure/ui/ScreenProvider.h>
 #include <meazure/xml/XMLParser.h>
+#include <meazure/xml/XMLWriter.h>
 #include <meazure/utilities/Geometry.h>
 
 
@@ -63,10 +63,8 @@ public:
     /// Saves the screen information
     ///
     /// @param writer   [in] Provides ability to write a position to the log.
-    /// @param indent   [in] Output indentation level.
-    /// @throw CFileException if there was a problem saving the file
     ///
-    void Save(MeaPositionLogWriter& writer, int indent) const;
+    void Save(MeaXMLWriter& writer) const;
 
     /// Assignment operator for a screen object. Makes
     /// a deep copy of the object.

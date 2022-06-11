@@ -22,11 +22,12 @@
 #include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
 #include <meazure/position/PositionCollection.h>
+#include <meazure/xml/XMLWriter.h>
 #include "mocks/MockScreenProvider.h"
 #include "mocks/MockUnitsProvider.h"
-#include "mocks/MockPositionLogWriter.h"
 #include "mocks/MockPositionDesktopRefCounter.h"
 #include <stdexcept>
+#include <fstream>
 
 
 BOOST_TEST_DONT_PRINT_LOG_VALUE(MeaPosition)
@@ -167,7 +168,7 @@ BOOST_FIXTURE_TEST_CASE(TestExceptions, TestFixture) {
 
     BOOST_CHECK_THROW(positions.Set(10, position3), std::out_of_range);
     BOOST_CHECK_THROW(positions.Get(10), std::out_of_range);
-    BOOST_CHECK_THROW(positions.Delete (10), std::out_of_range);
+    BOOST_CHECK_THROW(positions.Delete(10), std::out_of_range);
 }
 
 BOOST_FIXTURE_TEST_CASE(TestSave, TestFixture) {
@@ -177,8 +178,13 @@ BOOST_FIXTURE_TEST_CASE(TestSave, TestFixture) {
     positions.Add(position1);
     positions.Add(position2);
 
-    MockPositionLogWriter writer;
-    positions.Save(writer, 1);
+    std::ostringstream stream;
+    MeaXMLWriter writer(stream);
+    writer.StartDocument();
+    writer.StartElement(_T("test"));
+    positions.Save(writer);
+    writer.EndElement();
+    writer.EndDocument();
 
-    BOOST_TEST(writer.contents.Find(_T("<position ")) >= 0);
+    BOOST_TEST(CString(stream.str().c_str()).Find(_T("<position ")) >= 0);
 }

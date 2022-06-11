@@ -176,48 +176,43 @@ void MeaPosition::Load(const MeaXMLNode* positionNode) {
     }
 }
 
-void MeaPosition::Save(MeaPositionLogWriter& writer, int indent) const {
-    writer.Write(indent, _T("<position desktopRef=\"%s\" tool=\"%s\" date=\"%s\">\n"),
-                 static_cast<LPCTSTR>(m_desktopRef.ToString()),
-                 static_cast<LPCTSTR>(m_toolName),
-                 static_cast<LPCTSTR>(m_timestamp));
-    indent++;
+void MeaPosition::Save(MeaXMLWriter& writer) const {
+    writer.StartElement(_T("position"))
+        .AddAttribute(_T("desktopRef"), m_desktopRef.ToString())
+        .AddAttribute(_T("tool"), m_toolName)
+        .AddAttribute(_T("date"), m_timestamp);
+
     if (!m_desc.IsEmpty()) {
-        writer.Write(indent, _T("<desc>%s</desc>\n"),
-                     static_cast<LPCTSTR>(MeaXMLWriter::Encode(MeaStringUtils::CRLFtoLF(m_desc))));
+        writer.StartElement(_T("desc")).Characters(m_desc).EndElement();
     }
 
-    writer.Write(indent, _T("<points>\n"));
-    indent++;
+    writer.StartElement(_T("points"));
     for (const auto& pointEntry : m_points) {
-        writer.Write(indent, _T("<point name=\"%s\" x=\"%s\" y=\"%s\"/>\n"),
-                     static_cast<LPCTSTR>(pointEntry.first),
-                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.x)),
-                     static_cast<LPCTSTR>(MeaStringUtils::DblToStr(pointEntry.second.y)));
+        writer.StartElement(_T("point"))
+            .AddAttribute(_T("name"), pointEntry.first)
+            .AddAttribute(_T("x"), pointEntry.second.x)
+            .AddAttribute(_T("y"), pointEntry.second.y)
+            .EndElement();
     }
-    indent--;
-    writer.Write(indent, _T("</points>\n"));
+    writer.EndElement();        // points
 
-    writer.Write(indent, _T("<properties>\n"));
-    indent++;
+    writer.StartElement(_T("properties"));
     if (m_fieldMask & MeaWidthField) {
-        writer.Write(indent, _T("<width value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_width)));
+        writer.StartElement(_T("width")).AddAttribute(_T("value"), m_width).EndElement();
     }
     if (m_fieldMask & MeaHeightField) {
-        writer.Write(indent, _T("<height value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_height)));
+        writer.StartElement(_T("height")).AddAttribute(_T("value"), m_height).EndElement();
     }
     if (m_fieldMask & MeaDistanceField) {
-        writer.Write(indent, _T("<distance value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_distance)));
+        writer.StartElement(_T("distance")).AddAttribute(_T("value"), m_distance).EndElement();
     }
     if (m_fieldMask & MeaAreaField) {
-        writer.Write(indent, _T("<area value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_area)));
+        writer.StartElement(_T("area")).AddAttribute(_T("value"), m_area).EndElement();
     }
     if (m_fieldMask & MeaAngleField) {
-        writer.Write(indent, _T("<angle value=\"%s\"/>\n"), static_cast<LPCTSTR>(MeaStringUtils::DblToStr(m_angle)));
+        writer.StartElement(_T("angle")).AddAttribute(_T("value"), m_angle).EndElement();
     }
-    indent--;
-    writer.Write(indent, _T("</properties>\n"));
+    writer.EndElement();        // properties
 
-    indent--;
-    writer.Write(indent, _T("</position>\n"));
+    writer.EndElement();        // position
 }

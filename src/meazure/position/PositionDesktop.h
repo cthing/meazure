@@ -23,13 +23,13 @@
 #pragma once
 
 #include "PositionScreen.h"
-#include "PositionLogWriter.h"
 #include <meazure/units/UnitsProvider.h>
 #include <meazure/ui/ScreenProvider.h>
 #include <meazure/units/Units.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/GUID.h>
 #include <meazure/xml/XMLParser.h>
+#include <meazure/xml/XMLWriter.h>
 #include <iostream>
 
 
@@ -138,10 +138,8 @@ public:
     /// Saves the desktop information
     ///
     /// @param writer       [in] Provides ability to write a position to the log.
-    /// @param indent       [in] Output indentation level.
-    /// @throw CFileException is there was a problem saving the information
     ///
-    void Save(MeaPositionLogWriter& writer, int indent) const;
+    void Save(MeaXMLWriter& writer) const;
 
     /// Compares the specified desktop information object with this to determine equality.
     ///
@@ -224,10 +222,8 @@ private:
     /// Saves the display precisions for custom units
     ///
     /// @param writer       [in] Provides ability to write a position to the log.
-    /// @param indent       [in] Output indentation level.
-    /// @throws CFileException if there was a problem saving the information
     ///
-    void SaveCustomPrecisions(MeaPositionLogWriter& writer, int indent) const;
+    void SaveCustomPrecisions(MeaXMLWriter& writer) const;
 
 
     const MeaUnitsProvider* m_unitsProvider;    ///< Units information object

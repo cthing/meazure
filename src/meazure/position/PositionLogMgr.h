@@ -26,7 +26,6 @@
 #include "PositionCollection.h"
 #include "PositionScreen.h"
 #include "PositionDesktop.h"
-#include "PositionLogWriter.h"
 #include <meazure/units/Units.h>
 #include <meazure/units/UnitsProvider.h>
 #include <meazure/utilities/Geometry.h>
@@ -34,6 +33,7 @@
 #include <meazure/utilities/Singleton.h>
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/xml/XMLParser.h>
+#include <meazure/xml/XMLWriter.h>
 #include <meazure/ui/ScreenMgr.h>
 #include <meazure/ui/ScreenProvider.h>
 #include <list>
@@ -52,7 +52,6 @@ class MeaPositionLogObserver;
 class MeaPositionLogMgr :
     public MeaXMLParserHandler,
     public MeaPositionDesktopRefCounter,
-    public MeaPositionLogWriter,
     public MeaSingleton_T<MeaPositionLogMgr> {
 
 public:
@@ -223,33 +222,22 @@ private:
     void ManageDlgDestroyed() { m_manageDialog = nullptr; }
 
     /// Writes the general information section of the position log file.
-    /// @param indent       [in] Output indentation level.
-    /// @throws CFileException if there was a problem writing the information
     /// 
-    void WriteInfoSection(int indent);
+    /// @param writer       [in] XML file writer.
+    /// 
+    void WriteInfoSection(MeaXMLWriter& writer);
 
     /// Writes the desktop information section of the position log file.
-    /// @param indent       [in] Output indentation level.
-    /// @throws CFileException if there was a problem writing the information
     /// 
-    void WriteDesktopsSection(int indent);
+    /// @param writer       [in] XML file writer.
+    /// 
+    void WriteDesktopsSection(MeaXMLWriter& writer);
 
     /// Writes the positions section of the position log file.
     /// 
-    /// @param writer       [in] Provides ability to write a position to the log.
-    /// @param indent       [in] Output indentation level.
-    /// @throws CFileException if there was a problem writing the information
+    /// @param writer       [in] XML file writer.
     /// 
-    void WritePositionsSection(MeaPositionLogWriter& writer, int indent);
-
-    /// Printf-like method for writing to a position log file.
-    ///
-    /// @param indentLevel      [in] Output indentation level.
-    /// @param format           [in] Printf-style format string.
-    /// @param ...              [in] Items to write to the file.
-    /// @throws CFileException if there was a problem writing the information
-    ///
-    void Write(int indentLevel, LPCTSTR format, ...) override;
+    void WritePositionsSection(MeaXMLWriter& writer);
 
     /// Handles the top level elements of the log file DOM and
     /// supervises the processing of the lower level elements.

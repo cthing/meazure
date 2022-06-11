@@ -85,8 +85,8 @@ void MeaPositionCollection::DeleteAll() {
     m_posMap.clear();
 }
 
-void MeaPositionCollection::Save(MeaPositionLogWriter& writer, int indent) const {
+void MeaPositionCollection::Save(MeaXMLWriter& writer) const {
     for (const auto& posEntry : m_posMap) {
-        posEntry.second->Save(writer, indent);
+        posEntry.second->Save(writer);
     }
 }

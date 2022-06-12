@@ -61,11 +61,10 @@ Inheritance diagram for MeaPositionLogMgr:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMeaPositionLogMgr__inherit__graph.png" border="0" usemap="#aMeaPositionLogMgr_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMeaPositionLogMgr_inherit__map" id="aMeaPositionLogMgr_inherit__map">
-<area shape="rect" title="Manages the recording, saving and loading of tool positions." alt="" coords="260,81,397,108"/>
-<area shape="rect" href="classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="31,5,186,32"/>
+<area shape="rect" title="Manages the recording, saving and loading of tool positions." alt="" coords="260,56,397,83"/>
+<area shape="rect" href="structMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="31,5,186,32"/>
 <area shape="rect" href="structMeaPositionDesktopRefCounter.html" title="Interface for a class that implements reference counting of desktop information objects." alt="" coords="5,56,212,83"/>
-<area shape="rect" href="structMeaPositionLogWriter.html" title="Interface for classes that provide the ability to write to the position log file." alt="" coords="33,107,184,133"/>
-<area shape="rect" href="classMeaSingleton__T.html" title=" " alt="" coords="9,158,208,199"/>
+<area shape="rect" href="classMeaSingleton__T.html" title=" " alt="" coords="9,107,208,149"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -136,44 +135,40 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>ManagePositions</b> (
 void&#160;</td><td class="memItemRight" valign="bottom"><b>MasterReset</b> ()</td></tr>
 <tr class="memdesc:add722853eaa5b11c22a3e30860e12d71"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the position manager to its default state. <br /></td></tr>
 <tr class="separator:add722853eaa5b11c22a3e30860e12d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addd3882873059363d59e2831f4d4de9c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">ParseEntity</a> (<a class="el" href="classMeaXMLParser.html">MeaXMLParser</a> &amp;parser, const CString &amp;pathname) override</td></tr>
-<tr class="memdesc:addd3882873059363d59e2831f4d4de9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called during the XML parsing of the log file, to parse an external entity such as a DTD.  <a href="classMeaPositionLogMgr.html#addd3882873059363d59e2831f4d4de9c">More...</a><br /></td></tr>
-<tr class="separator:addd3882873059363d59e2831f4d4de9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d3a05a2480b889b2151118ce26733f4"><td class="memItemLeft" align="right" valign="top">virtual xercesc::InputSource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a0d3a05a2480b889b2151118ce26733f4">ResolveEntity</a> (const CString &amp;pathname) override</td></tr>
+<tr class="memdesc:a0d3a05a2480b889b2151118ce26733f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to resolve an external entity (e.g.  <a href="classMeaPositionLogMgr.html#a0d3a05a2480b889b2151118ce26733f4">More...</a><br /></td></tr>
+<tr class="separator:a0d3a05a2480b889b2151118ce26733f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30f63f448713041c02f75e612db9fc24"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a30f63f448713041c02f75e612db9fc24">GetFilePathname</a> () override</td></tr>
 <tr class="memdesc:a30f63f448713041c02f75e612db9fc24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pathname of the currently parsed log file.  <a href="classMeaPositionLogMgr.html#a30f63f448713041c02f75e612db9fc24">More...</a><br /></td></tr>
 <tr class="separator:a30f63f448713041c02f75e612db9fc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classMeaXMLParserHandler"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMeaXMLParserHandler')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMeaXMLParserHandler.html">MeaXMLParserHandler</a></td></tr>
-<tr class="memitem:a737f134c93bedbcb0ba1a7c1207bd65d inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a737f134c93bedbcb0ba1a7c1207bd65d">MeaXMLParserHandler</a> ()</td></tr>
-<tr class="memdesc:a737f134c93bedbcb0ba1a7c1207bd65d inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty constructor for the handler class.  <a href="classMeaXMLParserHandler.html#a737f134c93bedbcb0ba1a7c1207bd65d">More...</a><br /></td></tr>
-<tr class="separator:a737f134c93bedbcb0ba1a7c1207bd65d inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6794c45d47408af9c0bf1a5beeba9db8 inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top"><a id="a6794c45d47408af9c0bf1a5beeba9db8" name="a6794c45d47408af9c0bf1a5beeba9db8"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaXMLParserHandler</b> ()</td></tr>
-<tr class="memdesc:a6794c45d47408af9c0bf1a5beeba9db8 inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty destructor for the handler class. <br /></td></tr>
-<tr class="separator:a6794c45d47408af9c0bf1a5beeba9db8 inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c86673265898145c0cb204b1ac5bfce inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a4c86673265898145c0cb204b1ac5bfce">StartElementHandler</a> (const CString &amp;container, const CString &amp;elementName, const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;attrs)</td></tr>
-<tr class="memdesc:a4c86673265898145c0cb204b1ac5bfce inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a new element is opened (e.g.  <a href="classMeaXMLParserHandler.html#a4c86673265898145c0cb204b1ac5bfce">More...</a><br /></td></tr>
-<tr class="separator:a4c86673265898145c0cb204b1ac5bfce inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12aaafef6efa14379b6bfc1939de926d inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a12aaafef6efa14379b6bfc1939de926d">EndElementHandler</a> (const CString &amp;container, const CString &amp;elementName)</td></tr>
-<tr class="memdesc:a12aaafef6efa14379b6bfc1939de926d inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an element is closed (e.g.  <a href="classMeaXMLParserHandler.html#a12aaafef6efa14379b6bfc1939de926d">More...</a><br /></td></tr>
-<tr class="separator:a12aaafef6efa14379b6bfc1939de926d inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dee0e51126066e1ca3cc6edb2c7bfa7 inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a7dee0e51126066e1ca3cc6edb2c7bfa7">CharacterDataHandler</a> (const CString &amp;container, const CString &amp;data)</td></tr>
-<tr class="memdesc:a7dee0e51126066e1ca3cc6edb2c7bfa7 inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called for all character data encountered between elements.  <a href="classMeaXMLParserHandler.html#a7dee0e51126066e1ca3cc6edb2c7bfa7">More...</a><br /></td></tr>
-<tr class="separator:a7dee0e51126066e1ca3cc6edb2c7bfa7 inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cd57112d84a6381f9b540da59bb6cfa inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a4cd57112d84a6381f9b540da59bb6cfa">ParseEntity</a> (<a class="el" href="classMeaXMLParser.html">MeaXMLParser</a> &amp;parser, const CString &amp;pathname)</td></tr>
-<tr class="memdesc:a4cd57112d84a6381f9b540da59bb6cfa inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to parse an external entity.  <a href="classMeaXMLParserHandler.html#a4cd57112d84a6381f9b540da59bb6cfa">More...</a><br /></td></tr>
-<tr class="separator:a4cd57112d84a6381f9b540da59bb6cfa inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">GetFilePathname</a> ()</td></tr>
-<tr class="memdesc:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pathname of the currently parsed file.  <a href="classMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">More...</a><br /></td></tr>
-<tr class="separator:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_structMeaXMLParserHandler"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_structMeaXMLParserHandler')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="structMeaXMLParserHandler.html">MeaXMLParserHandler</a></td></tr>
+<tr class="memitem:a11471c6795ad236519669fef5b699670 inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a11471c6795ad236519669fef5b699670">StartElement</a> (const CString &amp;container, const CString &amp;elementName, const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;attrs)</td></tr>
+<tr class="memdesc:a11471c6795ad236519669fef5b699670 inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a new element is opened (e.g.  <a href="structMeaXMLParserHandler.html#a11471c6795ad236519669fef5b699670">More...</a><br /></td></tr>
+<tr class="separator:a11471c6795ad236519669fef5b699670 inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dae3b1f50e60491616c40bbfc14bdbb inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a2dae3b1f50e60491616c40bbfc14bdbb">EndElement</a> (const CString &amp;container, const CString &amp;elementName)</td></tr>
+<tr class="memdesc:a2dae3b1f50e60491616c40bbfc14bdbb inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an element is closed (e.g.  <a href="structMeaXMLParserHandler.html#a2dae3b1f50e60491616c40bbfc14bdbb">More...</a><br /></td></tr>
+<tr class="separator:a2dae3b1f50e60491616c40bbfc14bdbb inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1812adea51f7db58e7fbbcccb0ae8978 inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a1812adea51f7db58e7fbbcccb0ae8978">CharacterData</a> (const CString &amp;container, const CString &amp;data)</td></tr>
+<tr class="memdesc:a1812adea51f7db58e7fbbcccb0ae8978 inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called for all character data encountered between elements.  <a href="structMeaXMLParserHandler.html#a1812adea51f7db58e7fbbcccb0ae8978">More...</a><br /></td></tr>
+<tr class="separator:a1812adea51f7db58e7fbbcccb0ae8978 inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe1abbb56037cd6854f913c2f478769f inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual xercesc::InputSource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#abe1abbb56037cd6854f913c2f478769f">ResolveEntity</a> (const CString &amp;pathname)</td></tr>
+<tr class="memdesc:abe1abbb56037cd6854f913c2f478769f inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to resolve an external entity (e.g.  <a href="structMeaXMLParserHandler.html#abe1abbb56037cd6854f913c2f478769f">More...</a><br /></td></tr>
+<tr class="separator:abe1abbb56037cd6854f913c2f478769f inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b518766079aecd70fc820b3ac081afd inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a9b518766079aecd70fc820b3ac081afd">ParsingError</a> (const CString &amp;error, const CString &amp;pathname, int line, int column)</td></tr>
+<tr class="memdesc:a9b518766079aecd70fc820b3ac081afd inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when there is a parsing error (e.g.  <a href="structMeaXMLParserHandler.html#a9b518766079aecd70fc820b3ac081afd">More...</a><br /></td></tr>
+<tr class="separator:a9b518766079aecd70fc820b3ac081afd inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8748452c34402ec8870af29d6601f2a2 inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a8748452c34402ec8870af29d6601f2a2">ValidationError</a> (const CString &amp;error, const CString &amp;pathname, int line, int column)</td></tr>
+<tr class="memdesc:a8748452c34402ec8870af29d6601f2a2 inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when there is a validation error (e.g.  <a href="structMeaXMLParserHandler.html#a8748452c34402ec8870af29d6601f2a2">More...</a><br /></td></tr>
+<tr class="separator:a8748452c34402ec8870af29d6601f2a2 inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">GetFilePathname</a> ()</td></tr>
+<tr class="memdesc:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pathname of the currently parsed file.  <a href="structMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">More...</a><br /></td></tr>
+<tr class="separator:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f48cef2b1a900bc7417d8d8c62d24c6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaPositionDesktopRefCounter.html#a5f48cef2b1a900bc7417d8d8c62d24c6">AddDesktopRef</a> (const <a class="el" href="classMeaGUID.html">MeaGUID</a> &amp;id)=0</td></tr>
 <tr class="memdesc:a5f48cef2b1a900bc7417d8d8c62d24c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increments the reference count for the specified desktop information object.  <a href="structMeaPositionDesktopRefCounter.html#a5f48cef2b1a900bc7417d8d8c62d24c6">More...</a><br /></td></tr>
 <tr class="separator:a5f48cef2b1a900bc7417d8d8c62d24c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf98ee63f3d32200ae403ffcdb300553"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaPositionDesktopRefCounter.html#abf98ee63f3d32200ae403ffcdb300553">ReleaseDesktopRef</a> (const <a class="el" href="classMeaGUID.html">MeaGUID</a> &amp;id)=0</td></tr>
 <tr class="memdesc:abf98ee63f3d32200ae403ffcdb300553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the reference count for the specified desktop information object.  <a href="structMeaPositionDesktopRefCounter.html#abf98ee63f3d32200ae403ffcdb300553">More...</a><br /></td></tr>
 <tr class="separator:abf98ee63f3d32200ae403ffcdb300553"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85171feac4ffc1b9ba05dcda7f85046f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaPositionLogWriter.html#a85171feac4ffc1b9ba05dcda7f85046f">Write</a> (int indentLevel, LPCTSTR format,...)=0</td></tr>
-<tr class="memdesc:a85171feac4ffc1b9ba05dcda7f85046f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Printf-like method for writing to a position log file.  <a href="structMeaPositionLogWriter.html#a85171feac4ffc1b9ba05dcda7f85046f">More...</a><br /></td></tr>
-<tr class="separator:a85171feac4ffc1b9ba05dcda7f85046f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classMeaSingleton__T"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMeaSingleton__T')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T&lt; MeaPositionLogMgr &gt;</a></td></tr>
 <tr class="memitem:abe2d7bbfbb064494f05184e60b360e4f inherit pub_methods_classMeaSingleton__T"><td class="memItemLeft" align="right" valign="top"><a id="abe2d7bbfbb064494f05184e60b360e4f" name="abe2d7bbfbb064494f05184e60b360e4f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>MeaSingleton_T</b> (const <a class="el" href="classMeaSingleton__T.html">MeaSingleton_T</a>&lt; <a class="el" href="classMeaPositionLogMgr.html">MeaPositionLogMgr</a> &gt; &amp;src)=delete</td></tr>
@@ -217,25 +212,15 @@ Private Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ManageDlgDestroyed</b> ()</td></tr>
 <tr class="memdesc:a02d7e5f25d1c7a56a81ba2e8f62d2e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the position management dialog is destroyed. <br /></td></tr>
 <tr class="separator:a02d7e5f25d1c7a56a81ba2e8f62d2e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac89b0465a8e18bf9cbc4e890acf7b47c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">WriteInfoSection</a> (int indent)</td></tr>
-<tr class="memdesc:ac89b0465a8e18bf9cbc4e890acf7b47c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the general information section of the position log file.  <a href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">More...</a><br /></td></tr>
-<tr class="separator:ac89b0465a8e18bf9cbc4e890acf7b47c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a38e27d5c9ad65d3b6d56438a1cf17d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">WriteDesktopsSection</a> (int indent)</td></tr>
-<tr class="memdesc:a6a38e27d5c9ad65d3b6d56438a1cf17d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the desktop information section of the position log file.  <a href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">More...</a><br /></td></tr>
-<tr class="separator:a6a38e27d5c9ad65d3b6d56438a1cf17d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a302d36331b9b0b926ada0a377899d372"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a302d36331b9b0b926ada0a377899d372">WritePositionsSection</a> (<a class="el" href="structMeaPositionLogWriter.html">MeaPositionLogWriter</a> &amp;writer, int indent)</td></tr>
-<tr class="memdesc:a302d36331b9b0b926ada0a377899d372"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the positions section of the position log file.  <a href="classMeaPositionLogMgr.html#a302d36331b9b0b926ada0a377899d372">More...</a><br /></td></tr>
-<tr class="separator:a302d36331b9b0b926ada0a377899d372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61e20de9dfc50b108122f7e055be4049"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a61e20de9dfc50b108122f7e055be4049">Open</a> (const CString &amp;pathname, UINT mode)</td></tr>
-<tr class="memdesc:a61e20de9dfc50b108122f7e055be4049"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the specified position log file either for reading or writing.  <a href="classMeaPositionLogMgr.html#a61e20de9dfc50b108122f7e055be4049">More...</a><br /></td></tr>
-<tr class="separator:a61e20de9dfc50b108122f7e055be4049"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd917a79b4595cfa8847fc81da86452e"><td class="memItemLeft" align="right" valign="top"><a id="acd917a79b4595cfa8847fc81da86452e" name="acd917a79b4595cfa8847fc81da86452e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
-<tr class="memdesc:acd917a79b4595cfa8847fc81da86452e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the currently open position log file. <br /></td></tr>
-<tr class="separator:acd917a79b4595cfa8847fc81da86452e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12aa39f9cd600e33ad90d103d8dfdde4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a12aa39f9cd600e33ad90d103d8dfdde4">Write</a> (int indentLevel, LPCTSTR format,...) override</td></tr>
-<tr class="memdesc:a12aa39f9cd600e33ad90d103d8dfdde4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Printf-like method for writing to a position log file.  <a href="classMeaPositionLogMgr.html#a12aa39f9cd600e33ad90d103d8dfdde4">More...</a><br /></td></tr>
-<tr class="separator:a12aa39f9cd600e33ad90d103d8dfdde4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a431b0152d4a1cab49a49a58a10d1bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a5a431b0152d4a1cab49a49a58a10d1bf">WriteInfoSection</a> (<a class="el" href="classMeaXMLWriter.html">MeaXMLWriter</a> &amp;writer)</td></tr>
+<tr class="memdesc:a5a431b0152d4a1cab49a49a58a10d1bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the general information section of the position log file.  <a href="classMeaPositionLogMgr.html#a5a431b0152d4a1cab49a49a58a10d1bf">More...</a><br /></td></tr>
+<tr class="separator:a5a431b0152d4a1cab49a49a58a10d1bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90fae9cd00ec14b070f505a4c7212cb5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a90fae9cd00ec14b070f505a4c7212cb5">WriteDesktopsSection</a> (<a class="el" href="classMeaXMLWriter.html">MeaXMLWriter</a> &amp;writer)</td></tr>
+<tr class="memdesc:a90fae9cd00ec14b070f505a4c7212cb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the desktop information section of the position log file.  <a href="classMeaPositionLogMgr.html#a90fae9cd00ec14b070f505a4c7212cb5">More...</a><br /></td></tr>
+<tr class="separator:a90fae9cd00ec14b070f505a4c7212cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74d8bece18dcdc8f0789f4e00524bdf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#a74d8bece18dcdc8f0789f4e00524bdf5">WritePositionsSection</a> (<a class="el" href="classMeaXMLWriter.html">MeaXMLWriter</a> &amp;writer)</td></tr>
+<tr class="memdesc:a74d8bece18dcdc8f0789f4e00524bdf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the positions section of the position log file.  <a href="classMeaPositionLogMgr.html#a74d8bece18dcdc8f0789f4e00524bdf5">More...</a><br /></td></tr>
+<tr class="separator:a74d8bece18dcdc8f0789f4e00524bdf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc4dfa263d70e3671fe9c62cfccfb1a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">ProcessDOM</a> (const <a class="el" href="classMeaXMLNode.html">MeaXMLNode</a> *dom)</td></tr>
 <tr class="memdesc:abc4dfa263d70e3671fe9c62cfccfb1a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the top level elements of the log file DOM and supervises the processing of the lower level elements.  <a href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">More...</a><br /></td></tr>
 <tr class="separator:abc4dfa263d70e3671fe9c62cfccfb1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,6 +249,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ClearPositions</b> ()</td></tr>
 <tr class="memdesc:aad3aac03ce439efddc9366d65137881a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs the actual work or deleting all positions. <br /></td></tr>
 <tr class="separator:aad3aac03ce439efddc9366d65137881a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd917a79b4595cfa8847fc81da86452e"><td class="memItemLeft" align="right" valign="top"><a id="acd917a79b4595cfa8847fc81da86452e" name="acd917a79b4595cfa8847fc81da86452e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Close</b> ()</td></tr>
+<tr class="memdesc:acd917a79b4595cfa8847fc81da86452e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the write stream if it is open and prevents any exceptions from leaking out. <br /></td></tr>
+<tr class="separator:acd917a79b4595cfa8847fc81da86452e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -307,14 +296,10 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_initialDir</b></
 CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_pathname</b></td></tr>
 <tr class="memdesc:a4693f811e85da98708718696e27fb644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pathname of current position log file. <br /></td></tr>
 <tr class="separator:a4693f811e85da98708718696e27fb644"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb43ea708522b335a17e9fa4ec66fd62"><td class="memItemLeft" align="right" valign="top"><a id="abb43ea708522b335a17e9fa4ec66fd62" name="abb43ea708522b335a17e9fa4ec66fd62"></a>
-CStdioFile&#160;</td><td class="memItemRight" valign="bottom"><b>m_stdioFile</b></td></tr>
-<tr class="memdesc:abb43ea708522b335a17e9fa4ec66fd62"><td class="mdescLeft">&#160;</td><td class="mdescRight">File pointer for an open position log file. <br /></td></tr>
-<tr class="separator:abb43ea708522b335a17e9fa4ec66fd62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71c4f5757cb4c8810db9d9dcdef331b9"><td class="memItemLeft" align="right" valign="top"><a id="a71c4f5757cb4c8810db9d9dcdef331b9" name="a71c4f5757cb4c8810db9d9dcdef331b9"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_stdioOpen</b></td></tr>
-<tr class="memdesc:a71c4f5757cb4c8810db9d9dcdef331b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the position log file open. <br /></td></tr>
-<tr class="separator:a71c4f5757cb4c8810db9d9dcdef331b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa98fabaea578e870c89fce81ee15606f"><td class="memItemLeft" align="right" valign="top"><a id="aa98fabaea578e870c89fce81ee15606f" name="aa98fabaea578e870c89fce81ee15606f"></a>
+std::ofstream&#160;</td><td class="memItemRight" valign="bottom"><b>m_writeStream</b></td></tr>
+<tr class="memdesc:aa98fabaea578e870c89fce81ee15606f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stream for writing the position log file. <br /></td></tr>
+<tr class="separator:aa98fabaea578e870c89fce81ee15606f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15c1c035bc10f3d84d24f5aa810239b3"><td class="memItemLeft" align="right" valign="top"><a id="a15c1c035bc10f3d84d24f5aa810239b3" name="a15c1c035bc10f3d84d24f5aa810239b3"></a>
 CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_title</b></td></tr>
 <tr class="memdesc:a15c1c035bc10f3d84d24f5aa810239b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Title for the positions. <br /></td></tr>
@@ -532,7 +517,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#a2ddf1e054fa5956965dbe3b3c57eb8da">m_desktopInfoMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">ShowPosition()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">WriteDesktopsSection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">ShowPosition()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a90fae9cd00ec14b070f505a4c7212cb5">WriteDesktopsSection()</a>.</p>
 
 </div>
 </div>
@@ -562,9 +547,9 @@ Additional Inherited Members</h2></td></tr>
 <p>Returns the pathname of the currently parsed log file. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pathname of the currently parsed position log file. </dd></dl>
 
-<p>Reimplemented from <a class="el" href="classMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">MeaXMLParserHandler</a>.</p>
+<p>Reimplemented from <a class="el" href="structMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">MeaXMLParserHandler</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#a4693f811e85da98708718696e27fb644">m_pathname</a>, <a class="el" href="classMeaPositionLogMgr.html#abb43ea708522b335a17e9fa4ec66fd62">m_stdioFile</a>, and <a class="el" href="classMeaPositionLogMgr.html#a71c4f5757cb4c8810db9d9dcdef331b9">m_stdioOpen</a>.</p>
+<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#a4693f811e85da98708718696e27fb644">m_pathname</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogDlg.html#a5e75a2cda8aa71489c329b739d8d833d">MeaPositionLogDlg::SetDlgTitle()</a>.</p>
 
@@ -705,7 +690,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if loaded, false if canceled or unable to load. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#aad3aac03ce439efddc9366d65137881a">ClearPositions()</a>, <a class="el" href="classMeaPositionLogMgr.html#acd917a79b4595cfa8847fc81da86452e">Close()</a>, <a class="el" href="classMeaPositionLogMgr.html#a039a016c27960840e1d654594596c753">CreateLoadDialog()</a>, <a class="el" href="classMeaXMLParser.html#a1f4cf48c0323d326f1d07b7821291682">MeaXMLParser::GetBuffer()</a>, <a class="el" href="classMeaXMLParser.html#ab259166ebb2b56f3c65f496102cd3170">MeaXMLParser::GetDOM()</a>, <a class="el" href="classMeaPositionLogMgr.html#a11232e8ac0fdc5fc8fc1a26896b1a027">kChunkSize</a>, <a class="el" href="classMeaPositionLogObserver.html#af8cf656633afea7e468df02f297e8368">MeaPositionLogObserver::LogLoaded()</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#a94c3a36423923356e519edd17fb8aa70">m_modified</a>, <a class="el" href="classMeaPositionLogMgr.html#a6005dd07efc9aeff8b67891c04c1a59e">m_observer</a>, <a class="el" href="classMeaPositionLogMgr.html#a4693f811e85da98708718696e27fb644">m_pathname</a>, <a class="el" href="classMeaPositionLogMgr.html#abb43ea708522b335a17e9fa4ec66fd62">m_stdioFile</a>, <a class="el" href="classMeaPositionLogMgr.html#a61e20de9dfc50b108122f7e055be4049">Open()</a>, <a class="el" href="classMeaXMLParser.html#abfccdb01a460b4e54663b6bc41a01094">MeaXMLParser::ParseBuffer()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a93e285a1383370369efdf593e59b6400">SaveIfModified()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#aad3aac03ce439efddc9366d65137881a">ClearPositions()</a>, <a class="el" href="classMeaPositionLogMgr.html#a039a016c27960840e1d654594596c753">CreateLoadDialog()</a>, <a class="el" href="classMeaXMLParser.html#ab259166ebb2b56f3c65f496102cd3170">MeaXMLParser::GetDOM()</a>, <a class="el" href="classMeaPositionLogObserver.html#af8cf656633afea7e468df02f297e8368">MeaPositionLogObserver::LogLoaded()</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#a94c3a36423923356e519edd17fb8aa70">m_modified</a>, <a class="el" href="classMeaPositionLogMgr.html#a6005dd07efc9aeff8b67891c04c1a59e">m_observer</a>, <a class="el" href="classMeaPositionLogMgr.html#a4693f811e85da98708718696e27fb644">m_pathname</a>, <a class="el" href="classMeaXMLParser.html#adfade56e5d47a1bcad9cef9c78bc4db4">MeaXMLParser::ParseFile()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a93e285a1383370369efdf593e59b6400">SaveIfModified()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogDlg.html#a010bbc6a3fdd5d70db07d82006c0aace">MeaPositionLogDlg::OnLoadPositions()</a>.</p>
 
@@ -773,105 +758,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a61e20de9dfc50b108122f7e055be4049" name="a61e20de9dfc50b108122f7e055be4049"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61e20de9dfc50b108122f7e055be4049">&#9670;&nbsp;</a></span>Open()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MeaPositionLogMgr::Open </td>
-          <td>(</td>
-          <td class="paramtype">const CString &amp;&#160;</td>
-          <td class="paramname"><em>pathname</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT&#160;</td>
-          <td class="paramname"><em>mode</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Opens the specified position log file either for reading or writing. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pathname</td><td>[in] Pathname of position log file to open. </td></tr>
-    <tr><td class="paramname">mode</td><td>[in] one of CFile::modeRead or CFile::modeWrite | CFile::modeCreate</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><b>true</b> if file opened successfully. </dd></dl>
-
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#abb43ea708522b335a17e9fa4ec66fd62">m_stdioFile</a>, and <a class="el" href="classMeaPositionLogMgr.html#a71c4f5757cb4c8810db9d9dcdef331b9">m_stdioOpen</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a4588ad32348d85956aa347a689c2fafb">Load()</a>, and <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
-
-</div>
-</div>
-<a id="addd3882873059363d59e2831f4d4de9c" name="addd3882873059363d59e2831f4d4de9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addd3882873059363d59e2831f4d4de9c">&#9670;&nbsp;</a></span>ParseEntity()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MeaPositionLogMgr::ParseEntity </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classMeaXMLParser.html">MeaXMLParser</a> &amp;&#160;</td>
-          <td class="paramname"><em>parser</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const CString &amp;&#160;</td>
-          <td class="paramname"><em>pathname</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Called during the XML parsing of the log file, to parse an external entity such as a DTD. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">parser</td><td>[in] XML parser. </td></tr>
-    <tr><td class="paramname">pathname</td><td>[in] Pathname of the external entity. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Reimplemented from <a class="el" href="classMeaXMLParserHandler.html#a4cd57112d84a6381f9b540da59bb6cfa">MeaXMLParserHandler</a>.</p>
-
-<p class="reference">References <a class="el" href="classMeaXMLParser.html#a1f4cf48c0323d326f1d07b7821291682">MeaXMLParser::GetBuffer()</a>, and <a class="el" href="classMeaXMLParser.html#abfccdb01a460b4e54663b6bc41a01094">MeaXMLParser::ParseBuffer()</a>.</p>
-
-</div>
-</div>
 <a id="abce3cf55871eecd3321c585cfcbed2d8" name="abce3cf55871eecd3321c585cfcbed2d8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abce3cf55871eecd3321c585cfcbed2d8">&#9670;&nbsp;</a></span>ProcessDesktopNode()</h2>
 
@@ -904,7 +790,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLNode.html#afffc27214a4338d7dc7431f3b35dabe8">MeaXMLNode::GetAttributes()</a>, <a class="el" href="classMeaPositionDesktop.html#ad22aedc63feca35b1a1e4791dcaabd2c">MeaPositionDesktop::GetId()</a>, <a class="el" href="classMeaXMLAttributes.html#af491f85de23ef823f76b512d17e7ec5c">MeaXMLAttributes::GetValueStr()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaUnitsMgr &gt;::Instance()</a>, <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2ddf1e054fa5956965dbe3b3c57eb8da">m_desktopInfoMap</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLNode.html#afffc27214a4338d7dc7431f3b35dabe8">MeaXMLNode::GetAttributes()</a>, <a class="el" href="classMeaPositionDesktop.html#ad22aedc63feca35b1a1e4791dcaabd2c">MeaPositionDesktop::GetId()</a>, <a class="el" href="classMeaXMLAttributes.html#a23dfdc8528b9b01c1e899fa4bfefae14">MeaXMLAttributes::GetValueStr()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaUnitsMgr &gt;::Instance()</a>, <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2ddf1e054fa5956965dbe3b3c57eb8da">m_desktopInfoMap</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">ProcessDOM()</a>.</p>
 
@@ -1018,7 +904,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaPositionCollection.html#a04177768955276e4f7a7d13c878a0005">MeaPositionCollection::Add()</a>, <a class="el" href="classMeaXMLNode.html#afffc27214a4338d7dc7431f3b35dabe8">MeaXMLNode::GetAttributes()</a>, <a class="el" href="classMeaXMLAttributes.html#af491f85de23ef823f76b512d17e7ec5c">MeaXMLAttributes::GetValueStr()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, and <a class="el" href="classMeaPositionLogMgr.html#ae1fa6ff32de6f514b09c5778a2c0a81c">m_positions</a>.</p>
+<p class="reference">References <a class="el" href="classMeaPositionCollection.html#a04177768955276e4f7a7d13c878a0005">MeaPositionCollection::Add()</a>, <a class="el" href="classMeaXMLNode.html#afffc27214a4338d7dc7431f3b35dabe8">MeaXMLNode::GetAttributes()</a>, <a class="el" href="classMeaXMLAttributes.html#a23dfdc8528b9b01c1e899fa4bfefae14">MeaXMLAttributes::GetValueStr()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, and <a class="el" href="classMeaPositionLogMgr.html#ae1fa6ff32de6f514b09c5778a2c0a81c">m_positions</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">ProcessDOM()</a>.</p>
 
@@ -1124,6 +1010,44 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a0d3a05a2480b889b2151118ce26733f4" name="a0d3a05a2480b889b2151118ce26733f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d3a05a2480b889b2151118ce26733f4">&#9670;&nbsp;</a></span>ResolveEntity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">xercesc::InputSource * MeaPositionLogMgr::ResolveEntity </td>
+          <td>(</td>
+          <td class="paramtype">const CString &amp;&#160;</td>
+          <td class="paramname"><em>pathname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called to resolve an external entity (e.g. </p>
+<p >DTD).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pathname</td><td>[in] Pathname of the external entity. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Input source for the external entity. </dd></dl>
+
+<p>Reimplemented from <a class="el" href="structMeaXMLParserHandler.html#abe1abbb56037cd6854f913c2f478769f">MeaXMLParserHandler</a>.</p>
+
+</div>
+</div>
 <a id="acf0eeda1254ee2c9914d6919f78cf450" name="acf0eeda1254ee2c9914d6919f78cf450"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acf0eeda1254ee2c9914d6919f78cf450">&#9670;&nbsp;</a></span>Save()</h2>
 
@@ -1149,7 +1073,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if saved, false if canceled or unable to save. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#acd917a79b4595cfa8847fc81da86452e">Close()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc687d773efcb793dc60f51cc2c94415">CreateSaveDialog()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaVersionInfo &gt;::Instance()</a>, <a class="el" href="classMeaPositionLogObserver.html#a82500eef0fbc46935680ac6753031499">MeaPositionLogObserver::LogSaved()</a>, <a class="el" href="classMeaPositionLogMgr.html#a5eb87729e0cad3a7022a98c59c046400">m_desc</a>, <a class="el" href="classMeaPositionSaveDlg.html#ac9cfa8af43b87b60620fb80aa4f8b912">MeaPositionSaveDlg::m_desc</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#a94c3a36423923356e519edd17fb8aa70">m_modified</a>, <a class="el" href="classMeaPositionLogMgr.html#a6005dd07efc9aeff8b67891c04c1a59e">m_observer</a>, <a class="el" href="classMeaPositionLogMgr.html#a4693f811e85da98708718696e27fb644">m_pathname</a>, <a class="el" href="classMeaPositionLogMgr.html#a15c1c035bc10f3d84d24f5aa810239b3">m_title</a>, <a class="el" href="classMeaPositionSaveDlg.html#a60a16c8ca44ed113712d5c57be590af0">MeaPositionSaveDlg::m_title</a>, <a class="el" href="classMeaPositionLogMgr.html#a61e20de9dfc50b108122f7e055be4049">Open()</a>, <a class="el" href="classMeaPositionLogMgr.html#a12aa39f9cd600e33ad90d103d8dfdde4">Write()</a>, <a class="el" href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">WriteDesktopsSection()</a>, <a class="el" href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">WriteInfoSection()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a302d36331b9b0b926ada0a377899d372">WritePositionsSection()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLWriter.html#ae51a6f32b52e3154da3774ef9e0809cf">MeaXMLWriter::AddAttribute()</a>, <a class="el" href="classMeaPositionLogMgr.html#acd917a79b4595cfa8847fc81da86452e">Close()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc687d773efcb793dc60f51cc2c94415">CreateSaveDialog()</a>, <a class="el" href="classMeaXMLWriter.html#a5186afc7c10e8666328320534710d9cd">MeaXMLWriter::Doctype()</a>, <a class="el" href="classMeaXMLWriter.html#a9a251079068c9cae6a35b894965d6b5e">MeaXMLWriter::EndDocument()</a>, <a class="el" href="classMeaXMLWriter.html#a28e1c36655a6b0221ce2c40d30e7c585">MeaXMLWriter::EndElement()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaVersionInfo &gt;::Instance()</a>, <a class="el" href="classMeaPositionLogObserver.html#a82500eef0fbc46935680ac6753031499">MeaPositionLogObserver::LogSaved()</a>, <a class="el" href="classMeaPositionLogMgr.html#a5eb87729e0cad3a7022a98c59c046400">m_desc</a>, <a class="el" href="classMeaPositionSaveDlg.html#ac9cfa8af43b87b60620fb80aa4f8b912">MeaPositionSaveDlg::m_desc</a>, <a class="el" href="classMeaPositionLogMgr.html#a457d21403a6976375a98888761aff46c">m_initialDir</a>, <a class="el" href="classMeaPositionLogMgr.html#a94c3a36423923356e519edd17fb8aa70">m_modified</a>, <a class="el" href="classMeaPositionLogMgr.html#a6005dd07efc9aeff8b67891c04c1a59e">m_observer</a>, <a class="el" href="classMeaPositionLogMgr.html#a4693f811e85da98708718696e27fb644">m_pathname</a>, <a class="el" href="classMeaPositionLogMgr.html#a15c1c035bc10f3d84d24f5aa810239b3">m_title</a>, <a class="el" href="classMeaPositionSaveDlg.html#a60a16c8ca44ed113712d5c57be590af0">MeaPositionSaveDlg::m_title</a>, <a class="el" href="classMeaPositionLogMgr.html#aa98fabaea578e870c89fce81ee15606f">m_writeStream</a>, <a class="el" href="classMeaXMLWriter.html#a43abb58ba39ed4b583c2d5ad22bc5195">MeaXMLWriter::StartDocument()</a>, <a class="el" href="classMeaXMLWriter.html#ad923f06d90132e273fba8ed3d40f6de0">MeaXMLWriter::StartElement()</a>, <a class="el" href="classMeaPositionLogMgr.html#a90fae9cd00ec14b070f505a4c7212cb5">WriteDesktopsSection()</a>, <a class="el" href="classMeaPositionLogMgr.html#a5a431b0152d4a1cab49a49a58a10d1bf">WriteInfoSection()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a74d8bece18dcdc8f0789f4e00524bdf5">WritePositionsSection()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogDlg.html#ace7fab7af15f924ab5b76b18cbc4d4e1">MeaPositionLogDlg::OnSavePositions()</a>, <a class="el" href="classAppView.html#a493f0a631be098f26c8716c08c4356cd">AppView::OnSavePositions()</a>, <a class="el" href="classMeaPositionLogDlg.html#a01119a2f037625403028fdf6e5afd139">MeaPositionLogDlg::OnSavePositionsAs()</a>, <a class="el" href="classAppView.html#a7ddb1fea42a8510e8c78420afbc8e473">AppView::OnSavePositionsAs()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a93e285a1383370369efdf593e59b6400">SaveIfModified()</a>.</p>
 
@@ -1278,72 +1202,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a12aa39f9cd600e33ad90d103d8dfdde4" name="a12aa39f9cd600e33ad90d103d8dfdde4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a12aa39f9cd600e33ad90d103d8dfdde4">&#9670;&nbsp;</a></span>Write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MeaPositionLogMgr::Write </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>indentLevel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">private</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Printf-like method for writing to a position log file. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">indentLevel</td><td>[in] Output indentation level. </td></tr>
-    <tr><td class="paramname">format</td><td>[in] Printf-style format string. </td></tr>
-    <tr><td class="paramname">...</td><td>[in] Items to write to the file. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">CFileException</td><td>if there was a problem writing the information </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Implements <a class="el" href="structMeaPositionLogWriter.html#a85171feac4ffc1b9ba05dcda7f85046f">MeaPositionLogWriter</a>.</p>
-
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#abb43ea708522b335a17e9fa4ec66fd62">m_stdioFile</a>, and <a class="el" href="classMeaXMLParser.html#ac7b4dbaeae7f758b2b173844d0b7c828">MeaXMLParser::ToUTF8()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>, <a class="el" href="classMeaPositionLogMgr.html#a6a38e27d5c9ad65d3b6d56438a1cf17d">WriteDesktopsSection()</a>, <a class="el" href="classMeaPositionLogMgr.html#ac89b0465a8e18bf9cbc4e890acf7b47c">WriteInfoSection()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a302d36331b9b0b926ada0a377899d372">WritePositionsSection()</a>.</p>
-
-</div>
-</div>
-<a id="a6a38e27d5c9ad65d3b6d56438a1cf17d" name="a6a38e27d5c9ad65d3b6d56438a1cf17d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a38e27d5c9ad65d3b6d56438a1cf17d">&#9670;&nbsp;</a></span>WriteDesktopsSection()</h2>
+<a id="a90fae9cd00ec14b070f505a4c7212cb5" name="a90fae9cd00ec14b070f505a4c7212cb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90fae9cd00ec14b070f505a4c7212cb5">&#9670;&nbsp;</a></span>WriteDesktopsSection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1354,8 +1214,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaPositionLogMgr::WriteDesktopsSection </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>indent</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classMeaXMLWriter.html">MeaXMLWriter</a> &amp;&#160;</td>
+          <td class="paramname"><em>writer</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1369,25 +1229,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Writes the desktop information section of the position log file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">indent</td><td>[in] Output indentation level. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">CFileException</td><td>if there was a problem writing the information </td></tr>
+    <tr><td class="paramname">writer</td><td>[in] XML file writer. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#adce1824deaa8b4f76a5144fdb5969e2e">GetDesktopInfo()</a>, <a class="el" href="classMeaPositionLogMgr.html#a53b23eeeaad76916fe01b16eb9a39c8e">m_refCountMap</a>, <a class="el" href="classMeaPositionDesktop.html#a4b748d7df47ad99b0017f0926edf7db5">MeaPositionDesktop::Save()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a12aa39f9cd600e33ad90d103d8dfdde4">Write()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLWriter.html#a28e1c36655a6b0221ce2c40d30e7c585">MeaXMLWriter::EndElement()</a>, <a class="el" href="classMeaPositionLogMgr.html#adce1824deaa8b4f76a5144fdb5969e2e">GetDesktopInfo()</a>, <a class="el" href="classMeaPositionLogMgr.html#a53b23eeeaad76916fe01b16eb9a39c8e">m_refCountMap</a>, <a class="el" href="classMeaPositionDesktop.html#a9315748f0b1b4c36282f3e43320ccf34">MeaPositionDesktop::Save()</a>, and <a class="el" href="classMeaXMLWriter.html#ad923f06d90132e273fba8ed3d40f6de0">MeaXMLWriter::StartElement()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
 
 </div>
 </div>
-<a id="ac89b0465a8e18bf9cbc4e890acf7b47c" name="ac89b0465a8e18bf9cbc4e890acf7b47c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac89b0465a8e18bf9cbc4e890acf7b47c">&#9670;&nbsp;</a></span>WriteInfoSection()</h2>
+<a id="a5a431b0152d4a1cab49a49a58a10d1bf" name="a5a431b0152d4a1cab49a49a58a10d1bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a431b0152d4a1cab49a49a58a10d1bf">&#9670;&nbsp;</a></span>WriteInfoSection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1398,8 +1252,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaPositionLogMgr::WriteInfoSection </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>indent</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classMeaXMLWriter.html">MeaXMLWriter</a> &amp;&#160;</td>
+          <td class="paramname"><em>writer</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1413,25 +1267,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Writes the general information section of the position log file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">indent</td><td>[in] Output indentation level. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">CFileException</td><td>if there was a problem writing the information </td></tr>
+    <tr><td class="paramname">writer</td><td>[in] XML file writer. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLParser.html#a0bbba1bedee036deb08d1b8fbb8a135e">MeaXMLParser::Encode()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaVersionInfo &gt;::Instance()</a>, <a class="el" href="classMeaPositionLogMgr.html#a5eb87729e0cad3a7022a98c59c046400">m_desc</a>, <a class="el" href="classMeaPositionLogMgr.html#a15c1c035bc10f3d84d24f5aa810239b3">m_title</a>, and <a class="el" href="classMeaPositionLogMgr.html#a12aa39f9cd600e33ad90d103d8dfdde4">Write()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLWriter.html#ae51a6f32b52e3154da3774ef9e0809cf">MeaXMLWriter::AddAttribute()</a>, <a class="el" href="classMeaXMLWriter.html#ae484599cde2866785c127424806861bd">MeaXMLWriter::Characters()</a>, <a class="el" href="classMeaXMLWriter.html#a28e1c36655a6b0221ce2c40d30e7c585">MeaXMLWriter::EndElement()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaVersionInfo &gt;::Instance()</a>, <a class="el" href="classMeaPositionLogMgr.html#a5eb87729e0cad3a7022a98c59c046400">m_desc</a>, <a class="el" href="classMeaPositionLogMgr.html#a15c1c035bc10f3d84d24f5aa810239b3">m_title</a>, and <a class="el" href="classMeaXMLWriter.html#ad923f06d90132e273fba8ed3d40f6de0">MeaXMLWriter::StartElement()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
 
 </div>
 </div>
-<a id="a302d36331b9b0b926ada0a377899d372" name="a302d36331b9b0b926ada0a377899d372"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a302d36331b9b0b926ada0a377899d372">&#9670;&nbsp;</a></span>WritePositionsSection()</h2>
+<a id="a74d8bece18dcdc8f0789f4e00524bdf5" name="a74d8bece18dcdc8f0789f4e00524bdf5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74d8bece18dcdc8f0789f4e00524bdf5">&#9670;&nbsp;</a></span>WritePositionsSection()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1442,19 +1290,9 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void MeaPositionLogMgr::WritePositionsSection </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMeaPositionLogWriter.html">MeaPositionLogWriter</a> &amp;&#160;</td>
-          <td class="paramname"><em>writer</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="classMeaXMLWriter.html">MeaXMLWriter</a> &amp;&#160;</td>
+          <td class="paramname"><em>writer</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>indent</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -1467,19 +1305,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Writes the positions section of the position log file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">writer</td><td>[in] Provides ability to write a position to the log. </td></tr>
-    <tr><td class="paramname">indent</td><td>[in] Output indentation level. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname">CFileException</td><td>if there was a problem writing the information </td></tr>
+    <tr><td class="paramname">writer</td><td>[in] XML file writer. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaPositionLogMgr.html#ae1fa6ff32de6f514b09c5778a2c0a81c">m_positions</a>, <a class="el" href="classMeaPositionCollection.html#a0f9f2217ce16136e855894ac1fff131a">MeaPositionCollection::Save()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a12aa39f9cd600e33ad90d103d8dfdde4">Write()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLWriter.html#a28e1c36655a6b0221ce2c40d30e7c585">MeaXMLWriter::EndElement()</a>, <a class="el" href="classMeaPositionLogMgr.html#ae1fa6ff32de6f514b09c5778a2c0a81c">m_positions</a>, <a class="el" href="classMeaPositionCollection.html#a76c5ca633d8c0be40b96acace050dd20">MeaPositionCollection::Save()</a>, and <a class="el" href="classMeaXMLWriter.html#ad923f06d90132e273fba8ed3d40f6de0">MeaXMLWriter::StartElement()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#acf0eeda1254ee2c9914d6919f78cf450">Save()</a>.</p>
 

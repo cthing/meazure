@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structMeaGUID_1_1less.html" title="Used by the STL to perform ordering of MeaGUID objects in collections." alt="" coords="5,5,116,32"/>
+<area shape="rect" id="node1" href="$structMeaScreenProvider.html" title="Provides information on the display monitor(s)." alt="" coords="35,5,169,32"/>
+<area shape="rect" id="node2" href="$classMeaScreenMgr.html" title="Provides information on the display monitor(s)." alt="" coords="247,35,357,61"/>
+<area shape="rect" id="node3" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,57,199,98"/>
 </map>

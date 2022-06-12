@@ -40,11 +40,11 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-types">Protected Types</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
-<a href="#friends">Friends</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMeaXMLAttributes-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">MeaXMLAttributes Class Reference</div></div>
 </div><!--header-->
@@ -55,62 +55,61 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="XMLParser_8h_source.html">XMLParser.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLAttributes_1_1AttributeValue.html">AttributeValue</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an attribute value.  <a href="structMeaXMLAttributes_1_1AttributeValue.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7ef8856e737580450eb1c297dafbc246"><td class="memItemLeft" align="right" valign="top"><a id="a7ef8856e737580450eb1c297dafbc246" name="a7ef8856e737580450eb1c297dafbc246"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLAttributes</b> ()</td></tr>
-<tr class="memdesc:a7ef8856e737580450eb1c297dafbc246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an empty instance of the XML attributes class. <br /></td></tr>
-<tr class="separator:a7ef8856e737580450eb1c297dafbc246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5ed752f87abc1607df74d1ab3433412"><td class="memItemLeft" align="right" valign="top"><a id="ac5ed752f87abc1607df74d1ab3433412" name="ac5ed752f87abc1607df74d1ab3433412"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLAttributes</b> ()=default</td></tr>
+<tr class="memdesc:ac5ed752f87abc1607df74d1ab3433412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an empty instance of the XML attributes class. <br /></td></tr>
+<tr class="separator:ac5ed752f87abc1607df74d1ab3433412"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63816326d9522266529957bfc73a237e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a63816326d9522266529957bfc73a237e">MeaXMLAttributes</a> (const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;attrs)</td></tr>
 <tr class="memdesc:a63816326d9522266529957bfc73a237e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor.  <a href="classMeaXMLAttributes.html#a63816326d9522266529957bfc73a237e">More...</a><br /></td></tr>
 <tr class="separator:a63816326d9522266529957bfc73a237e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a661e7ac4476f5910839021d5ac213c0f"><td class="memItemLeft" align="right" valign="top"><a id="a661e7ac4476f5910839021d5ac213c0f" name="a661e7ac4476f5910839021d5ac213c0f"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaXMLAttributes</b> ()</td></tr>
-<tr class="memdesc:a661e7ac4476f5910839021d5ac213c0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys an instance of the XML attributes class. <br /></td></tr>
-<tr class="separator:a661e7ac4476f5910839021d5ac213c0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af879b490f09369a153a9bc44d12106c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#af879b490f09369a153a9bc44d12106c5">operator=</a> (const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;attrs)</td></tr>
 <tr class="memdesc:af879b490f09369a153a9bc44d12106c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a deep assignment of the specified XML attribute object.  <a href="classMeaXMLAttributes.html#af879b490f09369a153a9bc44d12106c5">More...</a><br /></td></tr>
 <tr class="separator:af879b490f09369a153a9bc44d12106c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af491f85de23ef823f76b512d17e7ec5c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#af491f85de23ef823f76b512d17e7ec5c">GetValueStr</a> (LPCTSTR name, CString &amp;value, bool &amp;isDefault) const</td></tr>
-<tr class="memdesc:af491f85de23ef823f76b512d17e7ec5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the specified attribute as a string.  <a href="classMeaXMLAttributes.html#af491f85de23ef823f76b512d17e7ec5c">More...</a><br /></td></tr>
-<tr class="separator:af491f85de23ef823f76b512d17e7ec5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77324832cd8bc3e6f76047919a50cf2e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a77324832cd8bc3e6f76047919a50cf2e">GetValueInt</a> (LPCTSTR name, int &amp;value, bool &amp;isDefault) const</td></tr>
-<tr class="memdesc:a77324832cd8bc3e6f76047919a50cf2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the specified attribute converted to an integer.  <a href="classMeaXMLAttributes.html#a77324832cd8bc3e6f76047919a50cf2e">More...</a><br /></td></tr>
-<tr class="separator:a77324832cd8bc3e6f76047919a50cf2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60ee91b25b830c9fa2fb8ce2477958f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a60ee91b25b830c9fa2fb8ce2477958f0">GetValueDbl</a> (LPCTSTR name, double &amp;value, bool &amp;isDefault) const</td></tr>
-<tr class="memdesc:a60ee91b25b830c9fa2fb8ce2477958f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the specified attribute converted to a double.  <a href="classMeaXMLAttributes.html#a60ee91b25b830c9fa2fb8ce2477958f0">More...</a><br /></td></tr>
-<tr class="separator:a60ee91b25b830c9fa2fb8ce2477958f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9623eeafcf51754ebae291d853683f5d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a9623eeafcf51754ebae291d853683f5d">GetValueBool</a> (LPCTSTR name, bool &amp;value, bool &amp;isDefault) const</td></tr>
-<tr class="memdesc:a9623eeafcf51754ebae291d853683f5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the specified attribute converted to a boolean.  <a href="classMeaXMLAttributes.html#a9623eeafcf51754ebae291d853683f5d">More...</a><br /></td></tr>
-<tr class="separator:a9623eeafcf51754ebae291d853683f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac878a0089df81896c33593102fc45619"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#ac878a0089df81896c33593102fc45619">IsEmpty</a> () const</td></tr>
+<tr class="memdesc:ac878a0089df81896c33593102fc45619"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether there are any attributes present.  <a href="classMeaXMLAttributes.html#ac878a0089df81896c33593102fc45619">More...</a><br /></td></tr>
+<tr class="separator:ac878a0089df81896c33593102fc45619"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23dfdc8528b9b01c1e899fa4bfefae14"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a23dfdc8528b9b01c1e899fa4bfefae14">GetValueStr</a> (LPCTSTR name, CString &amp;value) const</td></tr>
+<tr class="memdesc:a23dfdc8528b9b01c1e899fa4bfefae14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the specified attribute as a string.  <a href="classMeaXMLAttributes.html#a23dfdc8528b9b01c1e899fa4bfefae14">More...</a><br /></td></tr>
+<tr class="separator:a23dfdc8528b9b01c1e899fa4bfefae14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15fcafd67882bd50bea970c3d104d276"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a15fcafd67882bd50bea970c3d104d276">GetValueInt</a> (LPCTSTR name, int &amp;value) const</td></tr>
+<tr class="memdesc:a15fcafd67882bd50bea970c3d104d276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the specified attribute converted to an integer.  <a href="classMeaXMLAttributes.html#a15fcafd67882bd50bea970c3d104d276">More...</a><br /></td></tr>
+<tr class="separator:a15fcafd67882bd50bea970c3d104d276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0afc10f53b3d7f7b907ec5aed70f457d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a0afc10f53b3d7f7b907ec5aed70f457d">GetValueDbl</a> (LPCTSTR name, double &amp;value) const</td></tr>
+<tr class="memdesc:a0afc10f53b3d7f7b907ec5aed70f457d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the specified attribute converted to a double.  <a href="classMeaXMLAttributes.html#a0afc10f53b3d7f7b907ec5aed70f457d">More...</a><br /></td></tr>
+<tr class="separator:a0afc10f53b3d7f7b907ec5aed70f457d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9abf6e931c564d1cb29a149281aa504a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a9abf6e931c564d1cb29a149281aa504a">GetValueBool</a> (LPCTSTR name, bool &amp;value) const</td></tr>
+<tr class="memdesc:a9abf6e931c564d1cb29a149281aa504a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the specified attribute converted to a boolean.  <a href="classMeaXMLAttributes.html#a9abf6e931c564d1cb29a149281aa504a">More...</a><br /></td></tr>
+<tr class="separator:a9abf6e931c564d1cb29a149281aa504a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a391844ac78dca58e17009c6bb43742ca"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a391844ac78dca58e17009c6bb43742ca">Assign</a> (const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;attrs)</td></tr>
 <tr class="memdesc:a391844ac78dca58e17009c6bb43742ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a deep copy assignment of the specified attribute object to this.  <a href="classMeaXMLAttributes.html#a391844ac78dca58e17009c6bb43742ca">More...</a><br /></td></tr>
 <tr class="separator:a391844ac78dca58e17009c6bb43742ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
+Protected Types</h2></td></tr>
+<tr class="memitem:a8ca4ea9bcda9ad05f1e3a95111083bb9"><td class="memItemLeft" align="right" valign="top"><a id="a8ca4ea9bcda9ad05f1e3a95111083bb9" name="a8ca4ea9bcda9ad05f1e3a95111083bb9"></a>
+typedef std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>AttributeMap</b></td></tr>
+<tr class="separator:a8ca4ea9bcda9ad05f1e3a95111083bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:aab69767eea23f96ff88cea1128d6b8fd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#aab69767eea23f96ff88cea1128d6b8fd">MeaXMLAttributes</a> (const XML_Char **atts, int numSpecified)</td></tr>
-<tr class="memdesc:aab69767eea23f96ff88cea1128d6b8fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an instance of the class based on the specified attributes provided by the expat parser.  <a href="classMeaXMLAttributes.html#aab69767eea23f96ff88cea1128d6b8fd">More...</a><br /></td></tr>
-<tr class="separator:aab69767eea23f96ff88cea1128d6b8fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dc1c2abbf564ef42f74015c5eca1d67"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html#a6dc1c2abbf564ef42f74015c5eca1d67">MeaXMLAttributes</a> (const xercesc::AttributeList &amp;atts)</td></tr>
+<tr class="memdesc:a6dc1c2abbf564ef42f74015c5eca1d67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs an instance of the class based on the specified attributes provided by the Xerces parser.  <a href="classMeaXMLAttributes.html#a6dc1c2abbf564ef42f74015c5eca1d67">More...</a><br /></td></tr>
+<tr class="separator:a6dc1c2abbf564ef42f74015c5eca1d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aa3d63e798669c4abc94f3c1f1f28d95a"><td class="memItemLeft" align="right" valign="top"><a id="aa3d63e798669c4abc94f3c1f1f28d95a" name="aa3d63e798669c4abc94f3c1f1f28d95a"></a>
-std::map&lt; CString, <a class="el" href="structMeaXMLAttributes_1_1AttributeValue.html">AttributeValue</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_attributeMap</b></td></tr>
-<tr class="memdesc:aa3d63e798669c4abc94f3c1f1f28d95a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps attribute names to their values. <br /></td></tr>
-<tr class="separator:aa3d63e798669c4abc94f3c1f1f28d95a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac28b9920232fd312c37e1f64d9979c07"><td class="memItemLeft" align="right" valign="top"><a id="ac28b9920232fd312c37e1f64d9979c07" name="ac28b9920232fd312c37e1f64d9979c07"></a>
+AttributeMap&#160;</td><td class="memItemRight" valign="bottom"><b>m_attributeMap</b></td></tr>
+<tr class="memdesc:ac28b9920232fd312c37e1f64d9979c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps attribute names to their values. <br /></td></tr>
+<tr class="separator:ac28b9920232fd312c37e1f64d9979c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:ade57a77852b1354030eefc56506f2586"><td class="memItemLeft" align="right" valign="top"><a id="ade57a77852b1354030eefc56506f2586" name="ade57a77852b1354030eefc56506f2586"></a>
-class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td></tr>
-<tr class="separator:ade57a77852b1354030eefc56506f2586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:adfefc1ed87fe2a1eef01ea4edca2ee80"><td class="memItemLeft" align="right" valign="top"><a id="adfefc1ed87fe2a1eef01ea4edca2ee80" name="adfefc1ed87fe2a1eef01ea4edca2ee80"></a>
+friend&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td></tr>
+<tr class="separator:adfefc1ed87fe2a1eef01ea4edca2ee80"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The class contains the attributes associated with an XML start element. </p>
@@ -153,8 +152,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
 
 </div>
 </div>
-<a id="aab69767eea23f96ff88cea1128d6b8fd" name="aab69767eea23f96ff88cea1128d6b8fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab69767eea23f96ff88cea1128d6b8fd">&#9670;&nbsp;</a></span>MeaXMLAttributes() <span class="overload">[2/2]</span></h2>
+<a id="a6dc1c2abbf564ef42f74015c5eca1d67" name="a6dc1c2abbf564ef42f74015c5eca1d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dc1c2abbf564ef42f74015c5eca1d67">&#9670;&nbsp;</a></span>MeaXMLAttributes() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,19 +164,9 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
         <tr>
           <td class="memname">MeaXMLAttributes::MeaXMLAttributes </td>
           <td>(</td>
-          <td class="paramtype">const XML_Char **&#160;</td>
-          <td class="paramname"><em>atts</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const xercesc::AttributeList &amp;&#160;</td>
+          <td class="paramname"><em>atts</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>numSpecified</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -187,16 +176,15 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
 </table>
 </div><div class="memdoc">
 
-<p>Constructs an instance of the class based on the specified attributes provided by the expat parser. </p>
+<p>Constructs an instance of the class based on the specified attributes provided by the Xerces parser. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">atts</td><td>[in] Array of attribute name/value pairs from expat. In the array the name is followed by the value which is then followed by another name and so on until a nullptr is encountered. </td></tr>
-    <tr><td class="paramname">numSpecified</td><td>[in] Number of attributes in the array that have been explicitly specified versus set by default from the DTD. The atts array is organized such that the explicitly specified attributes come first. </td></tr>
+    <tr><td class="paramname">atts</td><td>[in] Attributes from Xerces. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLParser.html#a397207b267046fb6a07c943bf197c480">MeaXMLParser::FromUTF8()</a>, <a class="el" href="structMeaXMLAttributes_1_1AttributeValue.html#a7b565d2cfb00c7c4f732799b32071c56">MeaXMLAttributes::AttributeValue::isDefault</a>, <a class="el" href="classMeaXMLAttributes.html#aa3d63e798669c4abc94f3c1f1f28d95a">m_attributeMap</a>, and <a class="el" href="structMeaXMLAttributes_1_1AttributeValue.html#adb2cc0e45b9076909a9d20a3c584cfda">MeaXMLAttributes::AttributeValue::value</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#ac28b9920232fd312c37e1f64d9979c07">m_attributeMap</a>.</p>
 
 </div>
 </div>
@@ -220,20 +208,20 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
 <p>Performs a deep copy assignment of the specified attribute object to this. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attrs</td><td>[in] Attribute object to assign to this.</td></tr>
+    <tr><td class="paramname">attrs</td><td>[in] Attribute object to assign to this. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>this </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#aa3d63e798669c4abc94f3c1f1f28d95a">m_attributeMap</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#ac28b9920232fd312c37e1f64d9979c07">m_attributeMap</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaXMLAttributes.html#a63816326d9522266529957bfc73a237e">MeaXMLAttributes()</a>, and <a class="el" href="classMeaXMLAttributes.html#af879b490f09369a153a9bc44d12106c5">operator=()</a>.</p>
 
 </div>
 </div>
-<a id="a9623eeafcf51754ebae291d853683f5d" name="a9623eeafcf51754ebae291d853683f5d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9623eeafcf51754ebae291d853683f5d">&#9670;&nbsp;</a></span>GetValueBool()</h2>
+<a id="a9abf6e931c564d1cb29a149281aa504a" name="a9abf6e931c564d1cb29a149281aa504a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9abf6e931c564d1cb29a149281aa504a">&#9670;&nbsp;</a></span>GetValueBool()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,13 +236,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>isDefault</em>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -269,20 +251,19 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
   <table class="params">
     <tr><td class="paramname">name</td><td>[in] Attribute name. </td></tr>
     <tr><td class="paramname">value</td><td>[out] Attribute value as a boolean. This parameter is set to <b>true</b> if the attribute contains the string "true" or "1". <b>false</b> is returned otherwise. </td></tr>
-    <tr><td class="paramname">isDefault</td><td>[out] <b>true</b> if the value is the DTD default. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the attribute is found. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#aa3d63e798669c4abc94f3c1f1f28d95a">m_attributeMap</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#ac28b9920232fd312c37e1f64d9979c07">m_attributeMap</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, and <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>.</p>
 
 </div>
 </div>
-<a id="a60ee91b25b830c9fa2fb8ce2477958f0" name="a60ee91b25b830c9fa2fb8ce2477958f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60ee91b25b830c9fa2fb8ce2477958f0">&#9670;&nbsp;</a></span>GetValueDbl()</h2>
+<a id="a0afc10f53b3d7f7b907ec5aed70f457d" name="a0afc10f53b3d7f7b907ec5aed70f457d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0afc10f53b3d7f7b907ec5aed70f457d">&#9670;&nbsp;</a></span>GetValueDbl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -297,13 +278,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double &amp;&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>isDefault</em>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -318,20 +293,19 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
   <table class="params">
     <tr><td class="paramname">name</td><td>[in] Attribute name. </td></tr>
     <tr><td class="paramname">value</td><td>[out] Attribute value as a double. </td></tr>
-    <tr><td class="paramname">isDefault</td><td>[out] <b>true</b> if the value is the DTD default. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the attribute is found. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#aa3d63e798669c4abc94f3c1f1f28d95a">m_attributeMap</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#ac28b9920232fd312c37e1f64d9979c07">m_attributeMap</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, and <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>.</p>
 
 </div>
 </div>
-<a id="a77324832cd8bc3e6f76047919a50cf2e" name="a77324832cd8bc3e6f76047919a50cf2e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77324832cd8bc3e6f76047919a50cf2e">&#9670;&nbsp;</a></span>GetValueInt()</h2>
+<a id="a15fcafd67882bd50bea970c3d104d276" name="a15fcafd67882bd50bea970c3d104d276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15fcafd67882bd50bea970c3d104d276">&#9670;&nbsp;</a></span>GetValueInt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -346,13 +320,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int &amp;&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>isDefault</em>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -367,20 +335,19 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
   <table class="params">
     <tr><td class="paramname">name</td><td>[in] Attribute name. </td></tr>
     <tr><td class="paramname">value</td><td>[out] Attribute value as an integer. </td></tr>
-    <tr><td class="paramname">isDefault</td><td>[out] <b>true</b> if the value is the DTD default. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the attribute is found. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#aa3d63e798669c4abc94f3c1f1f28d95a">m_attributeMap</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#ac28b9920232fd312c37e1f64d9979c07">m_attributeMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, and <a class="el" href="classMeaFileProfile.html#a655d4051eede2959e242884d07a32484">MeaFileProfile::StartElementHandler()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, and <a class="el" href="classMeaFileProfile.html#acfd5dee17e1d4783429ef82a3ab73328">MeaFileProfile::StartElement()</a>.</p>
 
 </div>
 </div>
-<a id="af491f85de23ef823f76b512d17e7ec5c" name="af491f85de23ef823f76b512d17e7ec5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af491f85de23ef823f76b512d17e7ec5c">&#9670;&nbsp;</a></span>GetValueStr()</h2>
+<a id="a23dfdc8528b9b01c1e899fa4bfefae14" name="a23dfdc8528b9b01c1e899fa4bfefae14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23dfdc8528b9b01c1e899fa4bfefae14">&#9670;&nbsp;</a></span>GetValueStr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -395,13 +362,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">CString &amp;&#160;</td>
-          <td class="paramname"><em>value</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool &amp;&#160;</td>
-          <td class="paramname"><em>isDefault</em>&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -416,15 +377,46 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
   <table class="params">
     <tr><td class="paramname">name</td><td>[in] Attribute name. </td></tr>
     <tr><td class="paramname">value</td><td>[out] Attribute value as a string. </td></tr>
-    <tr><td class="paramname">isDefault</td><td>[out] <b>true</b> if the value is the DTD default. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the attribute is found. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#aa3d63e798669c4abc94f3c1f1f28d95a">m_attributeMap</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#ac28b9920232fd312c37e1f64d9979c07">m_attributeMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>, <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#abce3cf55871eecd3321c585cfcbed2d8">MeaPositionLogMgr::ProcessDesktopNode()</a>, <a class="el" href="classMeaPositionLogMgr.html#a24a89d7c1eb5c0d264d7f7970e047f40">MeaPositionLogMgr::ProcessPositionNode()</a>, and <a class="el" href="classMeaFileProfile.html#a655d4051eede2959e242884d07a32484">MeaFileProfile::StartElementHandler()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>, <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#abce3cf55871eecd3321c585cfcbed2d8">MeaPositionLogMgr::ProcessDesktopNode()</a>, <a class="el" href="classMeaPositionLogMgr.html#a24a89d7c1eb5c0d264d7f7970e047f40">MeaPositionLogMgr::ProcessPositionNode()</a>, and <a class="el" href="classMeaFileProfile.html#acfd5dee17e1d4783429ef82a3ab73328">MeaFileProfile::StartElement()</a>.</p>
+
+</div>
+</div>
+<a id="ac878a0089df81896c33593102fc45619" name="ac878a0089df81896c33593102fc45619"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac878a0089df81896c33593102fc45619">&#9670;&nbsp;</a></span>IsEmpty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MeaXMLAttributes::IsEmpty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indicates whether there are any attributes present. </p>
+<dl class="section return"><dt>Returns</dt><dd><b>true</b> if there are no attributes. </dd></dl>
+
+<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#ac28b9920232fd312c37e1f64d9979c07">m_attributeMap</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classMeaXMLNode.html#a625f97f3693bed61ae09a184469ab23c">MeaXMLNode::HasAttributes()</a>.</p>
 
 </div>
 </div>
@@ -455,7 +447,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLParser</b></td
 <p>Performs a deep assignment of the specified XML attribute object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attrs</td><td>[in] XML attribute object to assign to this.</td></tr>
+    <tr><td class="paramname">attrs</td><td>[in] XML attribute object to assign to this. </td></tr>
   </table>
   </dd>
 </dl>

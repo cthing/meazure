@@ -1,4 +1,6 @@
 <map id="MeaXMLParser" name="MeaXMLParser">
-<area shape="rect" id="node1" title="Provides SAX style XML parsing." alt="" coords="23,80,134,107"/>
-<area shape="rect" id="node2" href="$classev_1_1IValidationHandler.html" title="An application class mixin inherits from the IValidationHandler interface and overrides the HandleVal..." alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node1" title="Provides SAX style XML parsing." alt="" coords="233,80,343,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,184,32"/>
+<area shape="rect" id="node3" title=" " alt="" coords="209,5,367,32"/>
+<area shape="rect" id="node4" title=" " alt="" coords="391,5,539,32"/>
 </map>

@@ -62,7 +62,7 @@ class MeaXMLWriter {
 public:
     /// Creates an XML writer that writes to the specified writer.
     ///
-    /// @param out      [in] Output destination or {@code null} to use the standard output.
+    /// @param out      [in] Output destination.
     ///
     MeaXMLWriter(std::ostream& out) : m_out(out) {
         Reset();
@@ -188,17 +188,17 @@ protected:
     ///
     virtual void WriteQuoted(PCTSTR str);
 
-    /// Writes the specified string to the output escaping the '&', '<', '>', and quote characters using the
-    /// standard XML escape sequences. Control characters and characters outside the ASCII range are escaped using a
-    /// numeric character reference. Invalid XML control characters are written as "ctrl-nnnn".
+    /// Writes the specified string to the output escaping the XML special characters using the standard XML escape
+    /// sequences. Control characters and characters outside the ASCII range are escaped using a numeric character
+    /// reference. Invalid XML control characters are written as "ctrl-nnnn".
     ///
     /// @param str   [in] String to escape and write
     /// 
     virtual void WriteEscaped(PCTSTR str);
 
-    /// Writes the specified character to the output escaping the '&', '<', '>', and quote characters using the
-    /// standard XML escape sequences. Control characters and characters outside the ASCII range are escaped using a
-    /// numeric character reference. Invalid XML control characters are written as "ctrl-nnnn".
+    /// Writes the specified character to the output escaping the special characters using the standard XML escape
+    /// sequences. Control characters and characters outside the ASCII range are escaped using a numeric character
+    /// reference. Invalid XML control characters are written as "ctrl-nnnn".
     ///
     /// @param ch   [in] Character to escape and write
     /// 
@@ -229,7 +229,7 @@ protected:
 
     /// Writes the specified UTF-8 literal character without any escaping or conversion.
     /// 
-    /// @param str  [in] UTF-8 literal character to write
+    /// @param ch  [in] UTF-8 literal character to write
     /// 
     virtual void WriteUTF8Literal(char ch);
 
@@ -296,10 +296,10 @@ private:
     /// @param event    [in] Writing event whose string representation is to be returned
     /// @return String representation of the specified event.
     ///
-    static PCSTR GetEventName(Event state);
+    static PCSTR GetEventName(Event event);
 
 
-    static const char* kIndent;                     ///< String for each level of indentation
+    static const char* kIndent;     ///< String for each level of indentation
 
 
     std::ostream& m_out;            ///< Output stream to write the XML

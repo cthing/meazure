@@ -42,6 +42,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-types">Private Types</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classMeaFileProfile-members.html">List of all members</a>  </div>
@@ -60,7 +61,7 @@ Inheritance diagram for MeaFileProfile:</div>
 <map name="aMeaFileProfile_inherit__map" id="aMeaFileProfile_inherit__map">
 <area shape="rect" title="Persists the application state to an XML file." alt="" coords="65,80,169,107"/>
 <area shape="rect" href="classMeaProfile.html" title="Base class for the persisting the application state to either the Registry or a file." alt="" coords="5,5,88,32"/>
-<area shape="rect" href="classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="112,5,267,32"/>
+<area shape="rect" href="structMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="112,5,267,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -114,15 +115,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaFileProfile</b
 <tr class="memitem:a8d3d05886e0c171e8224a9ab2f490b7f"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaFileProfile.html#a8d3d05886e0c171e8224a9ab2f490b7f">GetVersion</a> () override</td></tr>
 <tr class="memdesc:a8d3d05886e0c171e8224a9ab2f490b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the profile format version number.  <a href="classMeaFileProfile.html#a8d3d05886e0c171e8224a9ab2f490b7f">More...</a><br /></td></tr>
 <tr class="separator:a8d3d05886e0c171e8224a9ab2f490b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a655d4051eede2959e242884d07a32484"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaFileProfile.html#a655d4051eede2959e242884d07a32484">StartElementHandler</a> (const CString &amp;container, const CString &amp;elementName, const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;attrs) override</td></tr>
-<tr class="memdesc:a655d4051eede2959e242884d07a32484"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the XML parser encounters the start of an element.  <a href="classMeaFileProfile.html#a655d4051eede2959e242884d07a32484">More...</a><br /></td></tr>
-<tr class="separator:a655d4051eede2959e242884d07a32484"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5737018852077f25c82ae4570d95fe30"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaFileProfile.html#a5737018852077f25c82ae4570d95fe30">CharacterDataHandler</a> (const CString &amp;container, const CString &amp;data) override</td></tr>
-<tr class="memdesc:a5737018852077f25c82ae4570d95fe30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the XML parser encounters character data.  <a href="classMeaFileProfile.html#a5737018852077f25c82ae4570d95fe30">More...</a><br /></td></tr>
-<tr class="separator:a5737018852077f25c82ae4570d95fe30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a291d697a73d4541146dd4cce73346815"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaFileProfile.html#a291d697a73d4541146dd4cce73346815">ParseEntity</a> (<a class="el" href="classMeaXMLParser.html">MeaXMLParser</a> &amp;parser, const CString &amp;pathname) override</td></tr>
-<tr class="memdesc:a291d697a73d4541146dd4cce73346815"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the XML parser needs to parse an external entity.  <a href="classMeaFileProfile.html#a291d697a73d4541146dd4cce73346815">More...</a><br /></td></tr>
-<tr class="separator:a291d697a73d4541146dd4cce73346815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfd5dee17e1d4783429ef82a3ab73328"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaFileProfile.html#acfd5dee17e1d4783429ef82a3ab73328">StartElement</a> (const CString &amp;container, const CString &amp;elementName, const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;attrs) override</td></tr>
+<tr class="memdesc:acfd5dee17e1d4783429ef82a3ab73328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the XML parser encounters the start of an element.  <a href="classMeaFileProfile.html#acfd5dee17e1d4783429ef82a3ab73328">More...</a><br /></td></tr>
+<tr class="separator:acfd5dee17e1d4783429ef82a3ab73328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d0a7e43ac50bfa8938004306f2a3c26"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaFileProfile.html#a4d0a7e43ac50bfa8938004306f2a3c26">CharacterData</a> (const CString &amp;container, const CString &amp;data) override</td></tr>
+<tr class="memdesc:a4d0a7e43ac50bfa8938004306f2a3c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the XML parser encounters character data.  <a href="classMeaFileProfile.html#a4d0a7e43ac50bfa8938004306f2a3c26">More...</a><br /></td></tr>
+<tr class="separator:a4d0a7e43ac50bfa8938004306f2a3c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5b8d385a4861a258ae9d8db9321a8fb8"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaFileProfile.html#a5b8d385a4861a258ae9d8db9321a8fb8">GetFilePathname</a> () override</td></tr>
 <tr class="memdesc:a5b8d385a4861a258ae9d8db9321a8fb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the pathname of the profile file represented by an instance of this class.  <a href="classMeaFileProfile.html#a5b8d385a4861a258ae9d8db9321a8fb8">More...</a><br /></td></tr>
 <tr class="separator:a5b8d385a4861a258ae9d8db9321a8fb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,35 +154,37 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaFileProfile</b
 <tr class="memitem:ad679c733d14b8e7fa135bd2cf89a42ce"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaProfile.html#ad679c733d14b8e7fa135bd2cf89a42ce">GetVersion</a> ()=0</td></tr>
 <tr class="memdesc:ad679c733d14b8e7fa135bd2cf89a42ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the profile format version number.  <a href="classMeaProfile.html#ad679c733d14b8e7fa135bd2cf89a42ce">More...</a><br /></td></tr>
 <tr class="separator:ad679c733d14b8e7fa135bd2cf89a42ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classMeaXMLParserHandler"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMeaXMLParserHandler')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMeaXMLParserHandler.html">MeaXMLParserHandler</a></td></tr>
-<tr class="memitem:a737f134c93bedbcb0ba1a7c1207bd65d inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a737f134c93bedbcb0ba1a7c1207bd65d">MeaXMLParserHandler</a> ()</td></tr>
-<tr class="memdesc:a737f134c93bedbcb0ba1a7c1207bd65d inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty constructor for the handler class.  <a href="classMeaXMLParserHandler.html#a737f134c93bedbcb0ba1a7c1207bd65d">More...</a><br /></td></tr>
-<tr class="separator:a737f134c93bedbcb0ba1a7c1207bd65d inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6794c45d47408af9c0bf1a5beeba9db8 inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top"><a id="a6794c45d47408af9c0bf1a5beeba9db8" name="a6794c45d47408af9c0bf1a5beeba9db8"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaXMLParserHandler</b> ()</td></tr>
-<tr class="memdesc:a6794c45d47408af9c0bf1a5beeba9db8 inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empty destructor for the handler class. <br /></td></tr>
-<tr class="separator:a6794c45d47408af9c0bf1a5beeba9db8 inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c86673265898145c0cb204b1ac5bfce inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a4c86673265898145c0cb204b1ac5bfce">StartElementHandler</a> (const CString &amp;container, const CString &amp;elementName, const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;attrs)</td></tr>
-<tr class="memdesc:a4c86673265898145c0cb204b1ac5bfce inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a new element is opened (e.g.  <a href="classMeaXMLParserHandler.html#a4c86673265898145c0cb204b1ac5bfce">More...</a><br /></td></tr>
-<tr class="separator:a4c86673265898145c0cb204b1ac5bfce inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a12aaafef6efa14379b6bfc1939de926d inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a12aaafef6efa14379b6bfc1939de926d">EndElementHandler</a> (const CString &amp;container, const CString &amp;elementName)</td></tr>
-<tr class="memdesc:a12aaafef6efa14379b6bfc1939de926d inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an element is closed (e.g.  <a href="classMeaXMLParserHandler.html#a12aaafef6efa14379b6bfc1939de926d">More...</a><br /></td></tr>
-<tr class="separator:a12aaafef6efa14379b6bfc1939de926d inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dee0e51126066e1ca3cc6edb2c7bfa7 inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a7dee0e51126066e1ca3cc6edb2c7bfa7">CharacterDataHandler</a> (const CString &amp;container, const CString &amp;data)</td></tr>
-<tr class="memdesc:a7dee0e51126066e1ca3cc6edb2c7bfa7 inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called for all character data encountered between elements.  <a href="classMeaXMLParserHandler.html#a7dee0e51126066e1ca3cc6edb2c7bfa7">More...</a><br /></td></tr>
-<tr class="separator:a7dee0e51126066e1ca3cc6edb2c7bfa7 inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4cd57112d84a6381f9b540da59bb6cfa inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#a4cd57112d84a6381f9b540da59bb6cfa">ParseEntity</a> (<a class="el" href="classMeaXMLParser.html">MeaXMLParser</a> &amp;parser, const CString &amp;pathname)</td></tr>
-<tr class="memdesc:a4cd57112d84a6381f9b540da59bb6cfa inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to parse an external entity.  <a href="classMeaXMLParserHandler.html#a4cd57112d84a6381f9b540da59bb6cfa">More...</a><br /></td></tr>
-<tr class="separator:a4cd57112d84a6381f9b540da59bb6cfa inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_classMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">GetFilePathname</a> ()</td></tr>
-<tr class="memdesc:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_classMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pathname of the currently parsed file.  <a href="classMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">More...</a><br /></td></tr>
-<tr class="separator:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_classMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_structMeaXMLParserHandler"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_structMeaXMLParserHandler')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="structMeaXMLParserHandler.html">MeaXMLParserHandler</a></td></tr>
+<tr class="memitem:a11471c6795ad236519669fef5b699670 inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a11471c6795ad236519669fef5b699670">StartElement</a> (const CString &amp;container, const CString &amp;elementName, const <a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a> &amp;attrs)</td></tr>
+<tr class="memdesc:a11471c6795ad236519669fef5b699670 inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when a new element is opened (e.g.  <a href="structMeaXMLParserHandler.html#a11471c6795ad236519669fef5b699670">More...</a><br /></td></tr>
+<tr class="separator:a11471c6795ad236519669fef5b699670 inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dae3b1f50e60491616c40bbfc14bdbb inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a2dae3b1f50e60491616c40bbfc14bdbb">EndElement</a> (const CString &amp;container, const CString &amp;elementName)</td></tr>
+<tr class="memdesc:a2dae3b1f50e60491616c40bbfc14bdbb inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when an element is closed (e.g.  <a href="structMeaXMLParserHandler.html#a2dae3b1f50e60491616c40bbfc14bdbb">More...</a><br /></td></tr>
+<tr class="separator:a2dae3b1f50e60491616c40bbfc14bdbb inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1812adea51f7db58e7fbbcccb0ae8978 inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a1812adea51f7db58e7fbbcccb0ae8978">CharacterData</a> (const CString &amp;container, const CString &amp;data)</td></tr>
+<tr class="memdesc:a1812adea51f7db58e7fbbcccb0ae8978 inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called for all character data encountered between elements.  <a href="structMeaXMLParserHandler.html#a1812adea51f7db58e7fbbcccb0ae8978">More...</a><br /></td></tr>
+<tr class="separator:a1812adea51f7db58e7fbbcccb0ae8978 inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe1abbb56037cd6854f913c2f478769f inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual xercesc::InputSource *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#abe1abbb56037cd6854f913c2f478769f">ResolveEntity</a> (const CString &amp;pathname)</td></tr>
+<tr class="memdesc:abe1abbb56037cd6854f913c2f478769f inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to resolve an external entity (e.g.  <a href="structMeaXMLParserHandler.html#abe1abbb56037cd6854f913c2f478769f">More...</a><br /></td></tr>
+<tr class="separator:abe1abbb56037cd6854f913c2f478769f inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b518766079aecd70fc820b3ac081afd inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a9b518766079aecd70fc820b3ac081afd">ParsingError</a> (const CString &amp;error, const CString &amp;pathname, int line, int column)</td></tr>
+<tr class="memdesc:a9b518766079aecd70fc820b3ac081afd inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when there is a parsing error (e.g.  <a href="structMeaXMLParserHandler.html#a9b518766079aecd70fc820b3ac081afd">More...</a><br /></td></tr>
+<tr class="separator:a9b518766079aecd70fc820b3ac081afd inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8748452c34402ec8870af29d6601f2a2 inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#a8748452c34402ec8870af29d6601f2a2">ValidationError</a> (const CString &amp;error, const CString &amp;pathname, int line, int column)</td></tr>
+<tr class="memdesc:a8748452c34402ec8870af29d6601f2a2 inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when there is a validation error (e.g.  <a href="structMeaXMLParserHandler.html#a8748452c34402ec8870af29d6601f2a2">More...</a><br /></td></tr>
+<tr class="separator:a8748452c34402ec8870af29d6601f2a2 inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_structMeaXMLParserHandler"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">GetFilePathname</a> ()</td></tr>
+<tr class="memdesc:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_structMeaXMLParserHandler"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the pathname of the currently parsed file.  <a href="structMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">More...</a><br /></td></tr>
+<tr class="separator:adcfd74e0fcd6a228bc4988ed1132fea1 inherit pub_methods_structMeaXMLParserHandler"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-types" name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:aca4055d74023929fb966d1f8500082ea"><td class="memItemLeft" align="right" valign="top"><a id="aca4055d74023929fb966d1f8500082ea" name="aca4055d74023929fb966d1f8500082ea"></a>
+typedef std::unique_ptr&lt; <a class="el" href="classMeaXMLWriter.html">MeaXMLWriter</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>MeaXMLWriterPtr</b></td></tr>
+<tr class="separator:aca4055d74023929fb966d1f8500082ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a4a5e605b049b47c537d0226ab39a1420"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaFileProfile.html#a4a5e605b049b47c537d0226ab39a1420">Write</a> (int indentLevel, LPCTSTR format,...)</td></tr>
-<tr class="memdesc:a4a5e605b049b47c537d0226ab39a1420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Printf style method that writes the specified values using the specified format and indentation level.  <a href="classMeaFileProfile.html#a4a5e605b049b47c537d0226ab39a1420">More...</a><br /></td></tr>
-<tr class="separator:a4a5e605b049b47c537d0226ab39a1420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc11d8f22ba9ff8d0fe20f91e782318b"><td class="memItemLeft" align="right" valign="top"><a id="adc11d8f22ba9ff8d0fe20f91e782318b" name="adc11d8f22ba9ff8d0fe20f91e782318b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>WriteFileStart</b> ()</td></tr>
 <tr class="memdesc:adc11d8f22ba9ff8d0fe20f91e782318b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the XML boilerplate at the start of the XML profile file. <br /></td></tr>
@@ -193,17 +193,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>WriteFileStart</b> ()
 void&#160;</td><td class="memItemRight" valign="bottom"><b>WriteFileEnd</b> ()</td></tr>
 <tr class="memdesc:a9791df6c7644f30c89525b154bc822f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the XML boilerplate at the end of the XML profile file. <br /></td></tr>
 <tr class="separator:a9791df6c7644f30c89525b154bc822f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2754ddab58ae7078fb3322646f3adf42"><td class="memItemLeft" align="right" valign="top"><a id="a2754ddab58ae7078fb3322646f3adf42" name="a2754ddab58ae7078fb3322646f3adf42"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ParseFile</b> ()</td></tr>
-<tr class="memdesc:a2754ddab58ae7078fb3322646f3adf42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supervises the parsing of the XML profile file. <br /></td></tr>
-<tr class="separator:a2754ddab58ae7078fb3322646f3adf42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61428cbc37cc0ef99ea341036551698d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaFileProfile.html#a61428cbc37cc0ef99ea341036551698d">ParseFile</a> (LPCTSTR pathname)</td></tr>
+<tr class="memdesc:a61428cbc37cc0ef99ea341036551698d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supervises the parsing of the XML profile file.  <a href="classMeaFileProfile.html#a61428cbc37cc0ef99ea341036551698d">More...</a><br /></td></tr>
+<tr class="separator:a61428cbc37cc0ef99ea341036551698d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a64af04152dd50c6ecc36dc2d7e05ec51"><td class="memItemLeft" align="right" valign="top"><a id="a64af04152dd50c6ecc36dc2d7e05ec51" name="a64af04152dd50c6ecc36dc2d7e05ec51"></a>
-CStdioFile&#160;</td><td class="memItemRight" valign="bottom"><b>m_stdioFile</b></td></tr>
-<tr class="memdesc:a64af04152dd50c6ecc36dc2d7e05ec51"><td class="mdescLeft">&#160;</td><td class="mdescRight">File object representing the profile. <br /></td></tr>
-<tr class="separator:a64af04152dd50c6ecc36dc2d7e05ec51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc3f331a5e09073294bc0ba2e9f5fd7c"><td class="memItemLeft" align="right" valign="top"><a id="acc3f331a5e09073294bc0ba2e9f5fd7c" name="acc3f331a5e09073294bc0ba2e9f5fd7c"></a>
+CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_pathname</b></td></tr>
+<tr class="memdesc:acc3f331a5e09073294bc0ba2e9f5fd7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pathname of the file. <br /></td></tr>
+<tr class="separator:acc3f331a5e09073294bc0ba2e9f5fd7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2046c700c920392e0d51611e477684a0"><td class="memItemLeft" align="right" valign="top"><a id="a2046c700c920392e0d51611e477684a0" name="a2046c700c920392e0d51611e477684a0"></a>
+std::ofstream&#160;</td><td class="memItemRight" valign="bottom"><b>m_writeStream</b></td></tr>
+<tr class="memdesc:a2046c700c920392e0d51611e477684a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output stream for the profile. <br /></td></tr>
+<tr class="separator:a2046c700c920392e0d51611e477684a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab17b3c33e892fc1587d65c926b1f739f"><td class="memItemLeft" align="right" valign="top"><a id="ab17b3c33e892fc1587d65c926b1f739f" name="ab17b3c33e892fc1587d65c926b1f739f"></a>
+MeaXMLWriterPtr&#160;</td><td class="memItemRight" valign="bottom"><b>m_writer</b></td></tr>
+<tr class="memdesc:ab17b3c33e892fc1587d65c926b1f739f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writer for the profile. <br /></td></tr>
+<tr class="separator:ab17b3c33e892fc1587d65c926b1f739f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c8d02ad5546eb9e5edfbc70b1e2a595"><td class="memItemLeft" align="right" valign="top"><a id="a2c8d02ad5546eb9e5edfbc70b1e2a595" name="a2c8d02ad5546eb9e5edfbc70b1e2a595"></a>
 <a class="el" href="classMeaFileProfile.html#a30b80f946686c4caae64a5179f8ddc3c">Mode</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_mode</b></td></tr>
 <tr class="memdesc:a2c8d02ad5546eb9e5edfbc70b1e2a595"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opening mode for the profile file. <br /></td></tr>
@@ -283,13 +290,13 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaFileProfile.html#a2c8d02ad5546eb9e5edfbc70b1e2a595">m_mode</a>, <a class="el" href="classMeaFileProfile.html#a64af04152dd50c6ecc36dc2d7e05ec51">m_stdioFile</a>, <a class="el" href="classMeaFileProfile.html#af515892612d1716f70e1c49072e901b7">m_title</a>, <a class="el" href="classMeaFileProfile.html#a2754ddab58ae7078fb3322646f3adf42">ParseFile()</a>, <a class="el" href="classMeaFileProfile.html#a30b80f946686c4caae64a5179f8ddc3cae5c26bcaea786e367eda10edeeabe6f6">ProfRead</a>, <a class="el" href="classMeaFileProfile.html#a30b80f946686c4caae64a5179f8ddc3ca09df99ab18f19f961c7f53a1e2b9c053">ProfWrite</a>, and <a class="el" href="classMeaFileProfile.html#adc11d8f22ba9ff8d0fe20f91e782318b">WriteFileStart()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaFileProfile.html#a2c8d02ad5546eb9e5edfbc70b1e2a595">m_mode</a>, <a class="el" href="classMeaFileProfile.html#acc3f331a5e09073294bc0ba2e9f5fd7c">m_pathname</a>, <a class="el" href="classMeaFileProfile.html#af515892612d1716f70e1c49072e901b7">m_title</a>, <a class="el" href="classMeaFileProfile.html#ab17b3c33e892fc1587d65c926b1f739f">m_writer</a>, <a class="el" href="classMeaFileProfile.html#a2046c700c920392e0d51611e477684a0">m_writeStream</a>, <a class="el" href="classMeaFileProfile.html#a61428cbc37cc0ef99ea341036551698d">ParseFile()</a>, <a class="el" href="classMeaFileProfile.html#a30b80f946686c4caae64a5179f8ddc3ca09df99ab18f19f961c7f53a1e2b9c053">ProfWrite</a>, and <a class="el" href="classMeaFileProfile.html#adc11d8f22ba9ff8d0fe20f91e782318b">WriteFileStart()</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5737018852077f25c82ae4570d95fe30" name="a5737018852077f25c82ae4570d95fe30"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5737018852077f25c82ae4570d95fe30">&#9670;&nbsp;</a></span>CharacterDataHandler()</h2>
+<a id="a4d0a7e43ac50bfa8938004306f2a3c26" name="a4d0a7e43ac50bfa8938004306f2a3c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d0a7e43ac50bfa8938004306f2a3c26">&#9670;&nbsp;</a></span>CharacterData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -298,7 +305,7 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MeaFileProfile::CharacterDataHandler </td>
+          <td class="memname">void MeaFileProfile::CharacterData </td>
           <td>(</td>
           <td class="paramtype">const CString &amp;&#160;</td>
           <td class="paramname"><em>container</em>, </td>
@@ -331,7 +338,7 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="classMeaXMLParserHandler.html#a7dee0e51126066e1ca3cc6edb2c7bfa7">MeaXMLParserHandler</a>.</p>
+<p>Reimplemented from <a class="el" href="structMeaXMLParserHandler.html#a1812adea51f7db58e7fbbcccb0ae8978">MeaXMLParserHandler</a>.</p>
 
 <p class="reference">References <a class="el" href="classMeaFileProfile.html#af515892612d1716f70e1c49072e901b7">m_title</a>.</p>
 
@@ -363,9 +370,9 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
 <p>Obtains the pathname of the profile file represented by an instance of this class. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pathname of the profile file. </dd></dl>
 
-<p>Reimplemented from <a class="el" href="classMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">MeaXMLParserHandler</a>.</p>
+<p>Reimplemented from <a class="el" href="structMeaXMLParserHandler.html#adcfd74e0fcd6a228bc4988ed1132fea1">MeaXMLParserHandler</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaFileProfile.html#a64af04152dd50c6ecc36dc2d7e05ec51">m_stdioFile</a>.</p>
+<p class="reference">References <a class="el" href="classMeaFileProfile.html#acc3f331a5e09073294bc0ba2e9f5fd7c">m_pathname</a>.</p>
 
 </div>
 </div>
@@ -401,8 +408,8 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
 
 </div>
 </div>
-<a id="a291d697a73d4541146dd4cce73346815" name="a291d697a73d4541146dd4cce73346815"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a291d697a73d4541146dd4cce73346815">&#9670;&nbsp;</a></span>ParseEntity()</h2>
+<a id="a61428cbc37cc0ef99ea341036551698d" name="a61428cbc37cc0ef99ea341036551698d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61428cbc37cc0ef99ea341036551698d">&#9670;&nbsp;</a></span>ParseFile()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -411,42 +418,31 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MeaFileProfile::ParseEntity </td>
+          <td class="memname">void MeaFileProfile::ParseFile </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classMeaXMLParser.html">MeaXMLParser</a> &amp;&#160;</td>
-          <td class="paramname"><em>parser</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramname"><em>pathname</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const CString &amp;&#160;</td>
-          <td class="paramname"><em>pathname</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Called when the XML parser needs to parse an external entity. </p>
+<p>Supervises the parsing of the XML profile file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">parser</td><td>[in] XML parser. </td></tr>
-    <tr><td class="paramname">pathname</td><td>[in] Pathname of the external entity to open and parse. </td></tr>
+    <tr><td class="paramname">pathname</td><td>[in] Profile file to parse </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="classMeaXMLParserHandler.html#a4cd57112d84a6381f9b540da59bb6cfa">MeaXMLParserHandler</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLParser.html#adfade56e5d47a1bcad9cef9c78bc4db4">MeaXMLParser::ParseFile()</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaXMLParser.html#a1f4cf48c0323d326f1d07b7821291682">MeaXMLParser::GetBuffer()</a>, and <a class="el" href="classMeaXMLParser.html#abfccdb01a460b4e54663b6bc41a01094">MeaXMLParser::ParseBuffer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaFileProfile.html#ad02a2e4a1afb1add3737ce505f1f9c8e">MeaFileProfile()</a>.</p>
 
 </div>
 </div>
@@ -650,8 +646,8 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
 
 </div>
 </div>
-<a id="a655d4051eede2959e242884d07a32484" name="a655d4051eede2959e242884d07a32484"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a655d4051eede2959e242884d07a32484">&#9670;&nbsp;</a></span>StartElementHandler()</h2>
+<a id="acfd5dee17e1d4783429ef82a3ab73328" name="acfd5dee17e1d4783429ef82a3ab73328"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd5dee17e1d4783429ef82a3ab73328">&#9670;&nbsp;</a></span>StartElement()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -660,7 +656,7 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void MeaFileProfile::StartElementHandler </td>
+          <td class="memname">void MeaFileProfile::StartElement </td>
           <td>(</td>
           <td class="paramtype">const CString &amp;&#160;</td>
           <td class="paramname"><em>container</em>, </td>
@@ -700,9 +696,9 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="classMeaXMLParserHandler.html#a4c86673265898145c0cb204b1ac5bfce">MeaXMLParserHandler</a>.</p>
+<p>Reimplemented from <a class="el" href="structMeaXMLParserHandler.html#a11471c6795ad236519669fef5b699670">MeaXMLParserHandler</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#a77324832cd8bc3e6f76047919a50cf2e">MeaXMLAttributes::GetValueInt()</a>, <a class="el" href="classMeaXMLAttributes.html#af491f85de23ef823f76b512d17e7ec5c">MeaXMLAttributes::GetValueStr()</a>, <a class="el" href="classMeaFileProfile.html#a7a69e2a7b5db5bdc8ead5c399bff2e45">m_readVersion</a>, and <a class="el" href="classMeaFileProfile.html#acd41f4eb7c7f6e35262c2d21afbd4659">m_valueMap</a>.</p>
+<p class="reference">References <a class="el" href="classMeaXMLAttributes.html#a15fcafd67882bd50bea970c3d104d276">MeaXMLAttributes::GetValueInt()</a>, <a class="el" href="classMeaXMLAttributes.html#a23dfdc8528b9b01c1e899fa4bfefae14">MeaXMLAttributes::GetValueStr()</a>, <a class="el" href="classMeaFileProfile.html#a7a69e2a7b5db5bdc8ead5c399bff2e45">m_readVersion</a>, and <a class="el" href="classMeaFileProfile.html#acd41f4eb7c7f6e35262c2d21afbd4659">m_valueMap</a>.</p>
 
 </div>
 </div>
@@ -734,62 +730,6 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
 <dl class="section return"><dt>Returns</dt><dd>Always <b>true</b> because a file profile is only written at the user's request. </dd></dl>
 
 <p>Implements <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile</a>.</p>
-
-</div>
-</div>
-<a id="a4a5e605b049b47c537d0226ab39a1420" name="a4a5e605b049b47c537d0226ab39a1420"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a5e605b049b47c537d0226ab39a1420">&#9670;&nbsp;</a></span>Write()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MeaFileProfile::Write </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>indentLevel</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Printf style method that writes the specified values using the specified format and indentation level. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">indentLevel</td><td>[in] Indentation level for the output. </td></tr>
-    <tr><td class="paramname">format</td><td>[in] Printf-style format string for the output. </td></tr>
-    <tr><td class="paramname">...</td><td>[in] Items to write to the file. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="reference">References <a class="el" href="classMeaFileProfile.html#a64af04152dd50c6ecc36dc2d7e05ec51">m_stdioFile</a>, and <a class="el" href="classMeaXMLParser.html#ac7b4dbaeae7f758b2b173844d0b7c828">MeaXMLParser::ToUTF8()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classMeaFileProfile.html#a39ab4516f79d6496248a5d4d3f9948e5">WriteBool()</a>, <a class="el" href="classMeaFileProfile.html#aee152a3f2ff1d6f5646c6ecb38995d35">WriteDbl()</a>, <a class="el" href="classMeaFileProfile.html#a9791df6c7644f30c89525b154bc822f1">WriteFileEnd()</a>, <a class="el" href="classMeaFileProfile.html#adc11d8f22ba9ff8d0fe20f91e782318b">WriteFileStart()</a>, <a class="el" href="classMeaFileProfile.html#aa84da1a4fc3815c6eb6c4741b557d093">WriteInt()</a>, and <a class="el" href="classMeaFileProfile.html#a60665f142bc118fce13d535a7b5bcad6">WriteStr()</a>.</p>
 
 </div>
 </div>
@@ -839,7 +779,7 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
 
 <p>Implements <a class="el" href="classMeaProfile.html#a1a961b0651b261c571e3d8c459465d93">MeaProfile</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaFileProfile.html#a4a5e605b049b47c537d0226ab39a1420">Write()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaFileProfile.html#ab17b3c33e892fc1587d65c926b1f739f">m_writer</a>.</p>
 
 </div>
 </div>
@@ -889,7 +829,7 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
 
 <p>Implements <a class="el" href="classMeaProfile.html#ae0a1a14b76e3619e858f27b8390f5f2f">MeaProfile</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaFileProfile.html#a4a5e605b049b47c537d0226ab39a1420">Write()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaFileProfile.html#ab17b3c33e892fc1587d65c926b1f739f">m_writer</a>.</p>
 
 </div>
 </div>
@@ -939,7 +879,7 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
 
 <p>Implements <a class="el" href="classMeaProfile.html#a9cd4c2b9f6d30c205dde9b1c34ab0bb2">MeaProfile</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaFileProfile.html#a4a5e605b049b47c537d0226ab39a1420">Write()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaFileProfile.html#ab17b3c33e892fc1587d65c926b1f739f">m_writer</a>.</p>
 
 </div>
 </div>
@@ -989,7 +929,7 @@ std::map&lt; CString, CString &gt;&#160;</td><td class="memItemRight" valign="bo
 
 <p>Implements <a class="el" href="classMeaProfile.html#a37fabc7b652f047d874f42c176371fe0">MeaProfile</a>.</p>
 
-<p class="reference">References <a class="el" href="classMeaFileProfile.html#a4a5e605b049b47c537d0226ab39a1420">Write()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaFileProfile.html#ab17b3c33e892fc1587d65c926b1f739f">m_writer</a>.</p>
 
 </div>
 </div>

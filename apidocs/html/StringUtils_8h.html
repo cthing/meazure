@@ -51,11 +51,50 @@ $(function() {
 
 <p>String manipulation utility functions.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &lt;limits.h&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Include dependency graph for StringUtils.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="StringUtils_8h__incl.png" border="0" usemap="#aStringUtils_8h" alt=""/></div>
+<map name="aStringUtils_8h" id="aStringUtils_8h">
+<area shape="rect" title="String manipulation utility functions." alt="" coords="35,5,128,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,69,107"/>
+<area shape="rect" title=" " alt="" coords="93,80,157,107"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+This graph shows which files directly or indirectly include this file:</div>
+<div class="dyncontent">
+<div class="center"><img src="StringUtils_8h__dep__incl.png" border="0" usemap="#aStringUtils_8hdep" alt=""/></div>
+<map name="aStringUtils_8hdep" id="aStringUtils_8hdep">
+<area shape="rect" title="String manipulation utility functions." alt="" coords="185,5,279,32"/>
+<area shape="rect" href="XMLWriter_8h.html" title="Header file for writing XML files." alt="" coords="185,80,279,107"/>
+<area shape="rect" href="FileProfile_8h.html" title="File&#45;based profile header file." alt="" coords="5,155,96,181"/>
+<area shape="rect" href="PositionCollection_8h.html" title="Represents a collection of logged positions." alt="" coords="273,379,410,405"/>
+<area shape="rect" href="PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="171,453,293,480"/>
+<area shape="rect" href="PositionDesktop_8h.html" title="Position context information." alt="" coords="221,229,349,256"/>
+<area shape="rect" href="PositionScreen_8h.html" title="Represents a single monitor attached to the system." alt="" coords="171,155,293,181"/>
+<area shape="rect" href="Position_8h.html" title="Represents a tool position." alt="" coords="585,304,665,331"/>
+<area shape="rect" href="AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="664,453,755,480"/>
+<area shape="rect" href="ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="727,528,806,555"/>
+<area shape="rect" href="CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="779,453,869,480"/>
+<area shape="rect" href="CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="894,453,989,480"/>
+<area shape="rect" href="LineTool_8h.html" title="Line measurement tool header file." alt="" coords="1013,453,1094,480"/>
+<area shape="rect" href="PointTool_8h.html" title="Point measurement tool header file." alt="" coords="318,453,405,480"/>
+<area shape="rect" href="RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="688,379,779,405"/>
+<area shape="rect" href="RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="429,453,513,480"/>
+<area shape="rect" href="WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="537,453,639,480"/>
+</map>
+</div>
+</div>
 <p><a href="StringUtils_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a729e07de6f915dd24b1591789034dff1"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StringUtils_8h.html#a729e07de6f915dd24b1591789034dff1">MeaStringUtils::IntToStr</a> (int value)</td></tr>
+<tr class="memdesc:a729e07de6f915dd24b1591789034dff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified integer to a string.  <a href="StringUtils_8h.html#a729e07de6f915dd24b1591789034dff1">More...</a><br /></td></tr>
+<tr class="separator:a729e07de6f915dd24b1591789034dff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25163f104a4018eb65f91f983ec764fd"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StringUtils_8h.html#a25163f104a4018eb65f91f983ec764fd">MeaStringUtils::DblToStr</a> (double value)</td></tr>
 <tr class="memdesc:a25163f104a4018eb65f91f983ec764fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts the specified double to a string with the minimum number of decimal places.  <a href="StringUtils_8h.html#a25163f104a4018eb65f91f983ec764fd">More...</a><br /></td></tr>
 <tr class="separator:a25163f104a4018eb65f91f983ec764fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -71,10 +110,119 @@ Functions</h2></td></tr>
 <tr class="memitem:a8fbf47acc0b207449952f96cab55a644"><td class="memItemLeft" align="right" valign="top">CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StringUtils_8h.html#a8fbf47acc0b207449952f96cab55a644">MeaStringUtils::CRLFtoLF</a> (CString str)</td></tr>
 <tr class="memdesc:a8fbf47acc0b207449952f96cab55a644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts CR+LF pairs to a single LF character.  <a href="StringUtils_8h.html#a8fbf47acc0b207449952f96cab55a644">More...</a><br /></td></tr>
 <tr class="separator:a8fbf47acc0b207449952f96cab55a644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ccaa3f57d65894f5ad1a6578a765b1b"><td class="memItemLeft" align="right" valign="top">CStringA&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">MeaStringUtils::ACPtoUTF8</a> (const CString &amp;str)</td></tr>
+<tr class="memdesc:a1ccaa3f57d65894f5ad1a6578a765b1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string encoded in the active code page (ACP) to a string in UTF-8 encoding.  <a href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">More...</a><br /></td></tr>
+<tr class="separator:a1ccaa3f57d65894f5ad1a6578a765b1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ace3758de8de957588980d8b98594e8"><td class="memItemLeft" align="right" valign="top">CStringA&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StringUtils_8h.html#a8ace3758de8de957588980d8b98594e8">MeaStringUtils::ACPtoUTF8</a> (PCTSTR str, std::size_t strLen=SIZE_MAX)</td></tr>
+<tr class="memdesc:a8ace3758de8de957588980d8b98594e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string encoded in the active code page (ACP) to a string in UTF-8 encoding.  <a href="StringUtils_8h.html#a8ace3758de8de957588980d8b98594e8">More...</a><br /></td></tr>
+<tr class="separator:a8ace3758de8de957588980d8b98594e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1df7e9e2654b67e95a2d0fa4dbb43610"><td class="memItemLeft" align="right" valign="top">CStringA&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="StringUtils_8h.html#a1df7e9e2654b67e95a2d0fa4dbb43610">MeaStringUtils::ACPtoUTF8</a> (TCHAR ch)</td></tr>
+<tr class="memdesc:a1df7e9e2654b67e95a2d0fa4dbb43610"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a character encoded in the active code page (ACP) to a character in UTF-8 encoding.  <a href="StringUtils_8h.html#a1df7e9e2654b67e95a2d0fa4dbb43610">More...</a><br /></td></tr>
+<tr class="separator:a1df7e9e2654b67e95a2d0fa4dbb43610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >String manipulation utility functions. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a1ccaa3f57d65894f5ad1a6578a765b1b" name="a1ccaa3f57d65894f5ad1a6578a765b1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ccaa3f57d65894f5ad1a6578a765b1b">&#9670;&nbsp;</a></span>ACPtoUTF8() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CStringA MeaStringUtils::ACPtoUTF8 </td>
+          <td>(</td>
+          <td class="paramtype">const CString &amp;&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a string encoded in the active code page (ACP) to a string in UTF-8 encoding. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>[in] String to covert to UTF-8 encoding. If _UNICODE is defined, the string in converted from wide characters to UTF-8. If _UNICODE is not defined, the string is converted from the ACP to UTF-8. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The specified string converted to UTF-8 encoding. </dd></dl>
+
+<p class="reference">References <a class="el" href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">MeaStringUtils::ACPtoUTF8()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">MeaStringUtils::ACPtoUTF8()</a>.</p>
+
+</div>
+</div>
+<a id="a8ace3758de8de957588980d8b98594e8" name="a8ace3758de8de957588980d8b98594e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ace3758de8de957588980d8b98594e8">&#9670;&nbsp;</a></span>ACPtoUTF8() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CStringA MeaStringUtils::ACPtoUTF8 </td>
+          <td>(</td>
+          <td class="paramtype">PCTSTR&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t&#160;</td>
+          <td class="paramname"><em>strLen</em> = <code>SIZE_MAX</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a string encoded in the active code page (ACP) to a string in UTF-8 encoding. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>[in] String to covert to UTF-8 encoding. If _UNICODE is defined, the string in converted from wide characters to UTF-8. If _UNICODE is not defined, the string is converted from the ACP to UTF-8. </td></tr>
+    <tr><td class="paramname">strLen</td><td>[in] Number of characters (unicode) or bytes (mbcs) for the specified string. Default is SIZE_MAX if the length of the string is unknown. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The specified string converted to UTF-8 encoding. </dd></dl>
+
+<p class="reference">References <a class="el" href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">MeaStringUtils::ACPtoUTF8()</a>.</p>
+
+</div>
+</div>
+<a id="a1df7e9e2654b67e95a2d0fa4dbb43610" name="a1df7e9e2654b67e95a2d0fa4dbb43610"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1df7e9e2654b67e95a2d0fa4dbb43610">&#9670;&nbsp;</a></span>ACPtoUTF8() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CStringA MeaStringUtils::ACPtoUTF8 </td>
+          <td>(</td>
+          <td class="paramtype">TCHAR&#160;</td>
+          <td class="paramname"><em>ch</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts a character encoded in the active code page (ACP) to a character in UTF-8 encoding. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ch</td><td>[in] Character to covert to UTF-8 encoding. If _UNICODE is defined, the character in converted from wide characters to UTF-8. If _UNICODE is not defined, the character is converted from the ACP to UTF-8. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The specified character converted to UTF-8 encoding. </dd></dl>
+
+<p class="reference">References <a class="el" href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">MeaStringUtils::ACPtoUTF8()</a>.</p>
+
+</div>
+</div>
 <a id="a8fbf47acc0b207449952f96cab55a644" name="a8fbf47acc0b207449952f96cab55a644"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8fbf47acc0b207449952f96cab55a644">&#9670;&nbsp;</a></span>CRLFtoLF()</h2>
 
@@ -134,6 +282,37 @@ Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="StringUtils_8h.html#a25163f104a4018eb65f91f983ec764fd">MeaStringUtils::DblToStr()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="StringUtils_8h.html#a25163f104a4018eb65f91f983ec764fd">MeaStringUtils::DblToStr()</a>.</p>
+
+</div>
+</div>
+<a id="a729e07de6f915dd24b1591789034dff1" name="a729e07de6f915dd24b1591789034dff1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a729e07de6f915dd24b1591789034dff1">&#9670;&nbsp;</a></span>IntToStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CString MeaStringUtils::IntToStr </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converts the specified integer to a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>[in] Integer value to convert to a string. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>String corresponding to the integer value. </dd></dl>
+
+<p class="reference">References <a class="el" href="StringUtils_8h.html#a729e07de6f915dd24b1591789034dff1">MeaStringUtils::IntToStr()</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="StringUtils_8h.html#a729e07de6f915dd24b1591789034dff1">MeaStringUtils::IntToStr()</a>.</p>
 
 </div>
 </div>

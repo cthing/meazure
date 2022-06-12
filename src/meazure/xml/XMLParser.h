@@ -414,7 +414,7 @@ private:
     ///
     /// @param name    [in] Name of the element
     /// @param attrs   [in] Element attributes. Note that the attribute list will contain only attributes with
-    ///                explicit values (specified or defaulted). #IMPLIED attributes will be omitted.
+    ///                explicit values (specified or defaulted). IMPLIED attributes will be omitted.
     /// 
     void startElement(const XMLCh* const name, xercesc::AttributeList& attrs) override;
 

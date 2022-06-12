@@ -70,67 +70,99 @@ $(function() {
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment"></span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span>MeaStringUtils {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment"></span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">    /// Converts the specified double to a string with the</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">    /// minimum number of decimal places.</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">    /// @param value    [in] Numerical value to convert to a string.</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">    /// @return String corresponding to the double value.</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment"></span>    CString <a class="code hl_function" href="StringUtils_8h.html#a25163f104a4018eb65f91f983ec764fd">DblToStr</a>(<span class="keywordtype">double</span> value);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">    /// Tests whether the specified string is a number. For the</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">    /// purposes of this method, a number is a base 10 double</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">    /// precision floating point value.</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">    /// @param str      [in] String to test</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">    /// @param valuep   [out] Value parsed from the string. nullptr</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">    ///                 if not interested. If the return value is</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">    ///                 &lt;b&gt;false&lt;/b&gt;, valuep&#39;s value is undefined.</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">    /// @return &lt;b&gt;true&lt;/b&gt; if string represents a number.</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment"></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="StringUtils_8h.html#ae141ed319164a27d1c5605cd10ada40b">IsNumber</a>(LPCTSTR str, <span class="keywordtype">double</span>* valuep = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment"></span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">    /// Tests whether the specified string is a boolean value. For</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    /// the purpose of this method, the strings &quot;1&quot;, &quot;TRUE&quot;, &quot;true&quot;</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">    /// are boolean &lt;b&gt;true&lt;/b&gt; values, while &quot;0&quot;, &quot;FALSE&quot;, &quot;false&quot;</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">    /// are boolean &lt;b&gt;false&lt;/b&gt;.</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;limits.h&gt;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">namespace </span>MeaStringUtils {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment"></span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="comment">    /// Converts the specified integer to a string.</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="comment">    /// @param value    [in] Integer value to convert to a string.</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="comment">    /// @return String corresponding to the integer value.</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment"></span>    CString <a class="code hl_function" href="StringUtils_8h.html#a729e07de6f915dd24b1591789034dff1">IntToStr</a>(<span class="keywordtype">int</span> value);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment"></span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">    /// Converts the specified double to a string with the  minimum number of decimal places.</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment">    /// @param value    [in] Numerical value to convert to a string.</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">    /// @return String corresponding to the double value.</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment"></span>    CString <a class="code hl_function" href="StringUtils_8h.html#a25163f104a4018eb65f91f983ec764fd">DblToStr</a>(<span class="keywordtype">double</span> value);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment"></span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">    /// Tests whether the specified string is a number. For the purposes of this method, a number is a base 10 double</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">    /// precision floating point value.</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">    /// @param str      [in] String to test</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">    /// @param valuep   [out] Value parsed from the string. nullptr if not interested. If the return value is</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    ///                 &lt;b&gt;false&lt;/b&gt;, valuep&#39;s value is undefined.</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">    /// @return &lt;b&gt;true&lt;/b&gt; if string represents a number.</span></div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment">    /// @param str      [in] String to test</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">    /// @param valuep   [out] Value parsed from the string. nullptr</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">    ///                 if not interested. If the return value is</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">    ///                 &lt;b&gt;false&lt;/b&gt;, valuep&#39;s value is undefined.</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="comment"></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="StringUtils_8h.html#ae141ed319164a27d1c5605cd10ada40b">IsNumber</a>(LPCTSTR str, <span class="keywordtype">double</span>* valuep = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment"></span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">    /// Tests whether the specified string is a boolean value. For the purpose of this method, the strings &quot;1&quot;,</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">    /// &quot;TRUE&quot;, &quot;true&quot; are boolean &lt;b&gt;true&lt;/b&gt; values, while &quot;0&quot;, &quot;FALSE&quot;, &quot;false&quot; are boolean &lt;b&gt;false&lt;/b&gt;.</span></div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    /// @return &lt;b&gt;true&lt;/b&gt; if string represents a boolean value.</span></div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment"></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="StringUtils_8h.html#aede0c7a2bc9fb598925633f7aabf7c2f">IsBoolean</a>(LPCTSTR str, <span class="keywordtype">bool</span>* valuep = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment"></span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">    /// Converts standalone LF characters into a CR+LF pair.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">    /// Existing CR+LF pairs in the string are not effected.</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    /// @param str      [in] String to process.</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    /// @return Converted string.</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"></span>    CString <a class="code hl_function" href="StringUtils_8h.html#a94a9cb8e7493657e83752e0cc9b45aff">LFtoCRLF</a>(CString str);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment"></span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /// Converts CR+LF pairs to a single LF character.</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment">    /// @param str      [in] String to process.</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">    /// @return Converted string.</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment"></span>    CString <a class="code hl_function" href="StringUtils_8h.html#a8fbf47acc0b207449952f96cab55a644">CRLFtoLF</a>(CString str);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
-<div class="ttc" id="aStringUtils_8h_html_a25163f104a4018eb65f91f983ec764fd"><div class="ttname"><a href="StringUtils_8h.html#a25163f104a4018eb65f91f983ec764fd">MeaStringUtils::DblToStr</a></div><div class="ttdeci">CString DblToStr(double value)</div><div class="ttdoc">Converts the specified double to a string with the minimum number of decimal places.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:24</div></div>
-<div class="ttc" id="aStringUtils_8h_html_a8fbf47acc0b207449952f96cab55a644"><div class="ttname"><a href="StringUtils_8h.html#a8fbf47acc0b207449952f96cab55a644">MeaStringUtils::CRLFtoLF</a></div><div class="ttdeci">CString CRLFtoLF(CString str)</div><div class="ttdoc">Converts CR+LF pairs to a single LF character.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:107</div></div>
-<div class="ttc" id="aStringUtils_8h_html_a94a9cb8e7493657e83752e0cc9b45aff"><div class="ttname"><a href="StringUtils_8h.html#a94a9cb8e7493657e83752e0cc9b45aff">MeaStringUtils::LFtoCRLF</a></div><div class="ttdeci">CString LFtoCRLF(CString str)</div><div class="ttdoc">Converts standalone LF characters into a CR+LF pair.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:87</div></div>
-<div class="ttc" id="aStringUtils_8h_html_ae141ed319164a27d1c5605cd10ada40b"><div class="ttname"><a href="StringUtils_8h.html#ae141ed319164a27d1c5605cd10ada40b">MeaStringUtils::IsNumber</a></div><div class="ttdeci">bool IsNumber(LPCTSTR str, double *valuep=nullptr)</div><div class="ttdoc">Tests whether the specified string is a number.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:38</div></div>
-<div class="ttc" id="aStringUtils_8h_html_aede0c7a2bc9fb598925633f7aabf7c2f"><div class="ttname"><a href="StringUtils_8h.html#aede0c7a2bc9fb598925633f7aabf7c2f">MeaStringUtils::IsBoolean</a></div><div class="ttdeci">bool IsBoolean(LPCTSTR str, bool *valuep=nullptr)</div><div class="ttdoc">Tests whether the specified string is a boolean value.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:61</div></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">    /// @param str      [in] String to test</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">    /// @param valuep   [out] Value parsed from the string. nullptr if not interested. If the return value is</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">    ///                 &lt;b&gt;false&lt;/b&gt;, valuep&#39;s value is undefined.</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">    /// @return &lt;b&gt;true&lt;/b&gt; if string represents a boolean value.</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment"></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="StringUtils_8h.html#aede0c7a2bc9fb598925633f7aabf7c2f">IsBoolean</a>(LPCTSTR str, <span class="keywordtype">bool</span>* valuep = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment"></span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    /// Converts standalone LF characters into a CR+LF pair. Existing CR+LF pairs in the string are not effected.</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment">    /// @param str      [in] String to process.</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">    /// @return Converted string.</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="comment"></span>    CString <a class="code hl_function" href="StringUtils_8h.html#a94a9cb8e7493657e83752e0cc9b45aff">LFtoCRLF</a>(CString str);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="comment"></span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="comment">    /// Converts CR+LF pairs to a single LF character.</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="comment">    /// @param str      [in] String to process.</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">    /// @return Converted string.</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"></span>    CString <a class="code hl_function" href="StringUtils_8h.html#a8fbf47acc0b207449952f96cab55a644">CRLFtoLF</a>(CString str);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment"></span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">    /// Converts a string encoded in the active code page (ACP) to a string in UTF-8 encoding.</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">    /// @param str  [in] String to covert to UTF-8 encoding. If _UNICODE is defined, the string in converted from</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">    ///     wide characters to UTF-8. If _UNICODE is not defined, the string is converted from the ACP to UTF-8.</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment">    /// @return The specified string converted to UTF-8 encoding.</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="comment"></span>    CStringA <a class="code hl_function" href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">ACPtoUTF8</a>(<span class="keyword">const</span> CString&amp; str);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="comment"></span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">    /// Converts a string encoded in the active code page (ACP) to a string in UTF-8 encoding.</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="comment">    /// @param str     [in] String to covert to UTF-8 encoding. If _UNICODE is defined, the string in converted from</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">    ///     wide characters to UTF-8. If _UNICODE is not defined, the string is converted from the ACP to UTF-8.</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="comment">    /// @param strLen  [in] Number of characters (unicode) or bytes (mbcs) for the specified string. Default is</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">    ///     SIZE_MAX if the length of the string is unknown.</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="comment">    /// @return The specified string converted to UTF-8 encoding.</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span><span class="comment"></span>    CStringA <a class="code hl_function" href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">ACPtoUTF8</a>(PCTSTR str, std::size_t strLen = SIZE_MAX);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment"></span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">    /// Converts a character encoded in the active code page (ACP) to a character in UTF-8 encoding.</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">    /// @param ch  [in] Character to covert to UTF-8 encoding. If _UNICODE is defined, the character in converted</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span><span class="comment">    ///     from wide characters to UTF-8. If _UNICODE is not defined, the character is converted from the ACP</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">    ///     to UTF-8.</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">    /// @return The specified character converted to UTF-8 encoding.</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">    /// </span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment"></span>    CStringA <a class="code hl_function" href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">ACPtoUTF8</a>(TCHAR ch);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>};</div>
+<div class="ttc" id="aStringUtils_8h_html_a1ccaa3f57d65894f5ad1a6578a765b1b"><div class="ttname"><a href="StringUtils_8h.html#a1ccaa3f57d65894f5ad1a6578a765b1b">MeaStringUtils::ACPtoUTF8</a></div><div class="ttdeci">CStringA ACPtoUTF8(const CString &amp;str)</div><div class="ttdoc">Converts a string encoded in the active code page (ACP) to a string in UTF-8 encoding.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:120</div></div>
+<div class="ttc" id="aStringUtils_8h_html_a25163f104a4018eb65f91f983ec764fd"><div class="ttname"><a href="StringUtils_8h.html#a25163f104a4018eb65f91f983ec764fd">MeaStringUtils::DblToStr</a></div><div class="ttdeci">CString DblToStr(double value)</div><div class="ttdoc">Converts the specified double to a string with the minimum number of decimal places.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:31</div></div>
+<div class="ttc" id="aStringUtils_8h_html_a729e07de6f915dd24b1591789034dff1"><div class="ttname"><a href="StringUtils_8h.html#a729e07de6f915dd24b1591789034dff1">MeaStringUtils::IntToStr</a></div><div class="ttdeci">CString IntToStr(int value)</div><div class="ttdoc">Converts the specified integer to a string.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:25</div></div>
+<div class="ttc" id="aStringUtils_8h_html_a8fbf47acc0b207449952f96cab55a644"><div class="ttname"><a href="StringUtils_8h.html#a8fbf47acc0b207449952f96cab55a644">MeaStringUtils::CRLFtoLF</a></div><div class="ttdeci">CString CRLFtoLF(CString str)</div><div class="ttdoc">Converts CR+LF pairs to a single LF character.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:114</div></div>
+<div class="ttc" id="aStringUtils_8h_html_a94a9cb8e7493657e83752e0cc9b45aff"><div class="ttname"><a href="StringUtils_8h.html#a94a9cb8e7493657e83752e0cc9b45aff">MeaStringUtils::LFtoCRLF</a></div><div class="ttdeci">CString LFtoCRLF(CString str)</div><div class="ttdoc">Converts standalone LF characters into a CR+LF pair.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:94</div></div>
+<div class="ttc" id="aStringUtils_8h_html_ae141ed319164a27d1c5605cd10ada40b"><div class="ttname"><a href="StringUtils_8h.html#ae141ed319164a27d1c5605cd10ada40b">MeaStringUtils::IsNumber</a></div><div class="ttdeci">bool IsNumber(LPCTSTR str, double *valuep=nullptr)</div><div class="ttdoc">Tests whether the specified string is a number.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:45</div></div>
+<div class="ttc" id="aStringUtils_8h_html_aede0c7a2bc9fb598925633f7aabf7c2f"><div class="ttname"><a href="StringUtils_8h.html#aede0c7a2bc9fb598925633f7aabf7c2f">MeaStringUtils::IsBoolean</a></div><div class="ttdeci">bool IsBoolean(LPCTSTR str, bool *valuep=nullptr)</div><div class="ttdoc">Tests whether the specified string is a boolean value.</div><div class="ttdef"><b>Definition:</b> StringUtils.cpp:68</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1">
 <address style="align: right;"><small>Copyright 2011 C Thing Software</small></address>

@@ -39,38 +39,53 @@ $(function() {
 <div id="main-nav"></div>
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_a8d373d5fc75f1ff25f008a856cb4b02.html">utilities</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_e79aa349b4395f9aa46bcba79207b81d.html">meazure</a></li><li class="navelem"><a class="el" href="dir_a42333b1e1f5971e523444b8360a3462.html">xml</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">XMLParser.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Header file for the expat XML parser wrapper and support classes.  
+<p>Header file for the Xerces XML parser wrapper and support classes.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="exval_8h_source.html">exval.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;xercesc/sax/AttributeList.hpp&gt;</code><br />
+<code>#include &lt;xercesc/sax/InputSource.hpp&gt;</code><br />
+<code>#include &lt;xercesc/sax/DocumentHandler.hpp&gt;</code><br />
+<code>#include &lt;xercesc/sax/ErrorHandler.hpp&gt;</code><br />
+<code>#include &lt;xercesc/sax/EntityResolver.hpp&gt;</code><br />
+<code>#include &lt;xercesc/sax/Locator.hpp&gt;</code><br />
+<code>#include &lt;xercesc/sax/SAXParseException.hpp&gt;</code><br />
+<code>#include &lt;xercesc/parsers/SAXParser.hpp&gt;</code><br />
+<code>#include &lt;xercesc/util/Xerces_autoconf_config.hpp&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
+<code>#include &lt;list&gt;</code><br />
 <code>#include &lt;stack&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;cassert&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for XMLParser.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="XMLParser_8h__incl.png" border="0" usemap="#aXMLParser_8h" alt=""/></div>
 <map name="aXMLParser_8h" id="aXMLParser_8h">
-<area shape="rect" title="Header file for the expat XML parser wrapper and support classes." alt="" coords="345,5,441,32"/>
-<area shape="rect" href="exval_8h.html" title="Header file for the expat compatible XML validator." alt="" coords="327,80,389,107"/>
-<area shape="rect" title=" " alt="" coords="5,155,52,181"/>
-<area shape="rect" title=" " alt="" coords="584,155,639,181"/>
-<area shape="rect" title=" " alt="" coords="465,80,531,107"/>
-<area shape="rect" title=" " alt="" coords="77,155,178,181"/>
-<area shape="rect" title=" " alt="" coords="202,155,261,181"/>
-<area shape="rect" title=" " alt="" coords="285,155,354,181"/>
-<area shape="rect" title=" " alt="" coords="378,155,418,181"/>
-<area shape="rect" title=" " alt="" coords="443,155,481,181"/>
-<area shape="rect" title=" " alt="" coords="505,155,560,181"/>
+<area shape="rect" title="Header file for the Xerces XML parser wrapper and support classes." alt="" coords="1519,5,1615,32"/>
+<area shape="rect" title=" " alt="" coords="5,87,197,114"/>
+<area shape="rect" title=" " alt="" coords="222,87,413,114"/>
+<area shape="rect" title=" " alt="" coords="437,87,662,114"/>
+<area shape="rect" title=" " alt="" coords="687,87,881,114"/>
+<area shape="rect" title=" " alt="" coords="905,87,1111,114"/>
+<area shape="rect" title=" " alt="" coords="1135,87,1300,114"/>
+<area shape="rect" title=" " alt="" coords="1325,87,1563,114"/>
+<area shape="rect" title=" " alt="" coords="1587,87,1794,114"/>
+<area shape="rect" title=" " alt="" coords="1819,80,1963,121"/>
+<area shape="rect" title=" " alt="" coords="1987,87,2034,114"/>
+<area shape="rect" title=" " alt="" coords="2058,87,2097,114"/>
+<area shape="rect" title=" " alt="" coords="2121,87,2175,114"/>
+<area shape="rect" title=" " alt="" coords="2200,87,2272,114"/>
+<area shape="rect" title=" " alt="" coords="2297,87,2362,114"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -78,22 +93,22 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="XMLParser_8h__dep__incl.png" border="0" usemap="#aXMLParser_8hdep" alt=""/></div>
 <map name="aXMLParser_8hdep" id="aXMLParser_8hdep">
-<area shape="rect" title="Header file for the expat XML parser wrapper and support classes." alt="" coords="843,5,939,32"/>
-<area shape="rect" href="FileProfile_8h.html" title="File&#45;based profile header file." alt="" coords="713,80,803,107"/>
-<area shape="rect" href="Position_8h.html" title="Represents a tool position." alt="" coords="587,229,667,256"/>
-<area shape="rect" href="PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="931,379,1054,405"/>
-<area shape="rect" href="PositionScreen_8h.html" title="Represents a single monitor attached to the system." alt="" coords="881,80,1003,107"/>
-<area shape="rect" href="AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="351,379,442,405"/>
-<area shape="rect" href="ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="415,453,493,480"/>
-<area shape="rect" href="CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="466,379,557,405"/>
-<area shape="rect" href="CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="581,379,676,405"/>
-<area shape="rect" href="LineTool_8h.html" title="Line measurement tool header file." alt="" coords="700,379,781,405"/>
-<area shape="rect" href="PointTool_8h.html" title="Point measurement tool header file." alt="" coords="5,379,92,405"/>
-<area shape="rect" href="PositionCollection_8h.html" title="Represents a collection of logged positions." alt="" coords="817,304,955,331"/>
-<area shape="rect" href="RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="443,304,534,331"/>
-<area shape="rect" href="RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="116,379,200,405"/>
-<area shape="rect" href="WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="224,379,327,405"/>
-<area shape="rect" href="PositionDesktop_8h.html" title="Position context information." alt="" coords="878,155,1006,181"/>
+<area shape="rect" title="Header file for the Xerces XML parser wrapper and support classes." alt="" coords="835,5,931,32"/>
+<area shape="rect" href="FileProfile_8h.html" title="File&#45;based profile header file." alt="" coords="702,80,793,107"/>
+<area shape="rect" href="Position_8h.html" title="Represents a tool position." alt="" coords="577,229,657,256"/>
+<area shape="rect" href="PositionLogMgr_8h.html" title="Header file for position recording, saving and loading manager." alt="" coords="921,379,1043,405"/>
+<area shape="rect" href="PositionDesktop_8h.html" title="Position context information." alt="" coords="867,155,995,181"/>
+<area shape="rect" href="PositionScreen_8h.html" title="Represents a single monitor attached to the system." alt="" coords="921,80,1043,107"/>
+<area shape="rect" href="AngleTool_8h.html" title="Angle measurement tool header file." alt="" coords="575,379,666,405"/>
+<area shape="rect" href="ToolMgr_8h.html" title="Header file for the measurement tool manager." alt="" coords="401,453,480,480"/>
+<area shape="rect" href="CircleTool_8h.html" title="Circle measurement tool header file." alt="" coords="690,379,781,405"/>
+<area shape="rect" href="CursorTool_8h.html" title="Cursor position measurement tool header file." alt="" coords="5,379,100,405"/>
+<area shape="rect" href="LineTool_8h.html" title="Line measurement tool header file." alt="" coords="124,379,205,405"/>
+<area shape="rect" href="PointTool_8h.html" title="Point measurement tool header file." alt="" coords="229,379,316,405"/>
+<area shape="rect" href="PositionCollection_8h.html" title="Represents a collection of logged positions." alt="" coords="807,304,944,331"/>
+<area shape="rect" href="RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="341,304,431,331"/>
+<area shape="rect" href="RectTool_8h.html" title="Rectangle measurement tool header file." alt="" coords="340,379,424,405"/>
+<area shape="rect" href="WindowTool_8h.html" title="Window measurement tool header file." alt="" coords="448,379,551,405"/>
 </map>
 </div>
 </div>
@@ -107,21 +122,24 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLAttributes.html">MeaXMLAttributes</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The class contains the attributes associated with an XML start element.  <a href="classMeaXMLAttributes.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLAttributes_1_1AttributeValue.html">MeaXMLAttributes::AttributeValue</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an attribute value.  <a href="structMeaXMLAttributes_1_1AttributeValue.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLNode.html">MeaXMLNode</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A node in the XML DOM.  <a href="classMeaXMLNode.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParserHandler.html">MeaXMLParserHandler</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mix-in class for XML parser callback methods.  <a href="classMeaXMLParserHandler.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaXMLParserHandler.html">MeaXMLParserHandler</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mix-in class for XML parser callback methods.  <a href="structMeaXMLParserHandler.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLParser.html">MeaXMLParser</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provides SAX style XML parsing.  <a href="classMeaXMLParser.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a90b9c74166e6a2d0a6a5481385d49035"><td class="memItemLeft" align="right" valign="top"><a id="a90b9c74166e6a2d0a6a5481385d49035" name="a90b9c74166e6a2d0a6a5481385d49035"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;os, const <a class="el" href="classMeaXMLNode.html#a5c946d37dc271fffd129686f040f4462">MeaXMLNode::Type</a> &amp;type)</td></tr>
+<tr class="separator:a90b9c74166e6a2d0a6a5481385d49035"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Header file for the expat XML parser wrapper and support classes. </p>
+<div class="textblock"><p >Header file for the Xerces XML parser wrapper and support classes. </p>
 </div></div><!-- contents -->
 <hr size="1">
 <address style="align: right;"><small>Copyright 2011 C Thing Software</small></address>

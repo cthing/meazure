@@ -1,7 +1,6 @@
 <map id="MeaPositionLogMgr" name="MeaPositionLogMgr">
-<area shape="rect" id="node1" title="Manages the recording, saving and loading of tool positions." alt="" coords="260,81,397,108"/>
-<area shape="rect" id="node2" href="$classMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="31,5,186,32"/>
+<area shape="rect" id="node1" title="Manages the recording, saving and loading of tool positions." alt="" coords="260,56,397,83"/>
+<area shape="rect" id="node2" href="$structMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="31,5,186,32"/>
 <area shape="rect" id="node3" href="$structMeaPositionDesktopRefCounter.html" title="Interface for a class that implements reference counting of desktop information objects." alt="" coords="5,56,212,83"/>
-<area shape="rect" id="node4" href="$structMeaPositionLogWriter.html" title="Interface for classes that provide the ability to write to the position log file." alt="" coords="33,107,184,133"/>
-<area shape="rect" id="node5" href="$classMeaSingleton__T.html" title=" " alt="" coords="9,158,208,199"/>
+<area shape="rect" id="node4" href="$classMeaSingleton__T.html" title=" " alt="" coords="9,107,208,149"/>
 </map>

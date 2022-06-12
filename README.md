@@ -77,6 +77,7 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
     - Use the [Conan C/C++ Package Manager](https://conan.io/) for library dependencies (e.g. Boost)
     - Migrate to [Xerces C++ XML parser and validator](https://xerces.apache.org/xerces-c/) from old expat and
       homegrown validator
+    - Migrate to a central XML writer class for writing the profile and position log files
  
 ### Changes 3.0.1 to 3.0.2
 

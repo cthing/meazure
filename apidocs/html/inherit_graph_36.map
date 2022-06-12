@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classMeaPositionDesktop.html" title="Represents all information of interest about the system at the time a position is recorded." alt="" coords="5,5,148,32"/>
+<area shape="rect" id="node1" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,5,193,47"/>
+<area shape="rect" id="node2" href="$classMeaProfileMgr.html" title="Manages the saving and loading of profile files." alt="" coords="241,13,347,39"/>
 </map>

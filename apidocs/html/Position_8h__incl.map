@@ -1,27 +1,35 @@
 <map id="Position.h" name="Position.h">
-<area shape="rect" id="node1" title="Represents a tool position." alt="" coords="313,5,393,32"/>
-<area shape="rect" id="node2" href="$PositionDesktop_8h.html" title="Position context information." alt="" coords="440,80,568,107"/>
-<area shape="rect" id="node4" href="$PositionLogWriter_8h.html" title="Interface for classes that provide the ability to write to the position log file." alt="" coords="45,229,181,256"/>
-<area shape="rect" id="node10" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="63,453,252,480"/>
-<area shape="rect" id="node15" href="$XMLParser_8h.html" title="Header file for the expat XML parser wrapper and support classes." alt="" coords="1171,229,1365,256"/>
-<area shape="rect" id="node3" href="$PositionScreen_8h.html" title="Represents a single monitor attached to the system." alt="" coords="345,155,466,181"/>
-<area shape="rect" id="node5" href="$UnitsProvider_8h.html" title="Interface providing measurement units information." alt="" coords="205,229,400,256"/>
-<area shape="rect" id="node6" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="298,304,361,331"/>
-<area shape="rect" id="node8" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="461,379,649,405"/>
-<area shape="rect" id="node12" title=" " alt="" coords="1392,528,1464,555"/>
-<area shape="rect" id="node25" href="$GUID_8h.html" title="Header file for a class representing a globally unique identifier." alt="" coords="1027,155,1189,181"/>
-<area shape="rect" id="node7" title=" " alt="" coords="195,379,251,405"/>
-<area shape="rect" id="node14" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="275,379,437,405"/>
-<area shape="rect" id="node9" title=" " alt="" coords="935,453,982,480"/>
-<area shape="rect" id="node11" title=" " alt="" coords="128,603,187,629"/>
-<area shape="rect" id="node13" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="149,528,256,555"/>
-<area shape="rect" id="node16" href="$exval_8h.html" title="Header file for the expat compatible XML validator." alt="" coords="993,304,1055,331"/>
-<area shape="rect" id="node22" title=" " alt="" coords="1285,379,1339,405"/>
-<area shape="rect" id="node24" title=" " alt="" coords="1209,304,1274,331"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1076,379,1177,405"/>
-<area shape="rect" id="node18" title=" " alt="" coords="1201,379,1260,405"/>
-<area shape="rect" id="node19" title=" " alt="" coords="724,379,793,405"/>
-<area shape="rect" id="node20" title=" " alt="" coords="817,379,857,405"/>
-<area shape="rect" id="node21" title=" " alt="" coords="882,379,921,405"/>
-<area shape="rect" id="node23" title=" " alt="" coords="997,379,1051,405"/>
+<area shape="rect" id="node1" title="Represents a tool position." alt="" coords="583,5,663,32"/>
+<area shape="rect" id="node2" href="$PositionDesktop_8h.html" title="Position context information." alt="" coords="559,80,687,107"/>
+<area shape="rect" id="node9" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="331,468,520,495"/>
+<area shape="rect" id="node14" href="$XMLParser_8h.html" title="Header file for the Xerces XML parser wrapper and support classes." alt="" coords="1913,229,2088,256"/>
+<area shape="rect" id="node3" href="$PositionScreen_8h.html" title="Represents a single monitor attached to the system." alt="" coords="464,155,585,181"/>
+<area shape="rect" id="node4" href="$UnitsProvider_8h.html" title="Interface providing measurement units information." alt="" coords="194,229,388,256"/>
+<area shape="rect" id="node5" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="176,311,238,338"/>
+<area shape="rect" id="node7" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="514,393,702,420"/>
+<area shape="rect" id="node11" title=" " alt="" coords="3271,543,3343,569"/>
+<area shape="rect" id="node27" href="$XMLWriter_8h.html" title="Header file for writing XML files." alt="" coords="740,229,912,256"/>
+<area shape="rect" id="node33" href="$GUID_8h.html" title="Header file for a class representing a globally unique identifier." alt="" coords="2623,155,2786,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="44,393,100,420"/>
+<area shape="rect" id="node13" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="176,393,337,420"/>
+<area shape="rect" id="node8" title=" " alt="" coords="1096,468,1142,495"/>
+<area shape="rect" id="node10" title=" " alt="" coords="396,617,455,644"/>
+<area shape="rect" id="node12" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="418,543,524,569"/>
+<area shape="rect" id="node15" title=" " alt="" coords="1222,311,1414,338"/>
+<area shape="rect" id="node16" title=" " alt="" coords="1438,311,1629,338"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1653,311,1878,338"/>
+<area shape="rect" id="node18" title=" " alt="" coords="1903,311,2098,338"/>
+<area shape="rect" id="node19" title=" " alt="" coords="2122,311,2327,338"/>
+<area shape="rect" id="node20" title=" " alt="" coords="2351,311,2516,338"/>
+<area shape="rect" id="node21" title=" " alt="" coords="2541,311,2780,338"/>
+<area shape="rect" id="node22" title=" " alt="" coords="2804,311,3010,338"/>
+<area shape="rect" id="node23" title=" " alt="" coords="3035,304,3179,345"/>
+<area shape="rect" id="node24" title=" " alt="" coords="1108,311,1146,338"/>
+<area shape="rect" id="node25" title=" " alt="" coords="1029,311,1084,338"/>
+<area shape="rect" id="node26" title=" " alt="" coords="3204,311,3269,338"/>
+<area shape="rect" id="node28" href="$StringUtils_8h.html" title="String manipulation utility functions." alt="" coords="799,304,954,345"/>
+<area shape="rect" id="node31" title=" " alt="" coords="616,311,681,338"/>
+<area shape="rect" id="node32" title=" " alt="" coords="706,311,775,338"/>
+<area shape="rect" id="node29" title=" " alt="" coords="867,393,931,420"/>
+<area shape="rect" id="node30" title=" " alt="" coords="779,393,843,420"/>
 </map>

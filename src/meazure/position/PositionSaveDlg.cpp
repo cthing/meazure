@@ -35,9 +35,9 @@ BEGIN_MESSAGE_MAP(MeaPositionSaveDlg, CFileDialog)
 END_MESSAGE_MAP()
 
 
-MeaPositionSaveDlg::MeaPositionSaveDlg(LPCTSTR lpszDefExt,
-                                       LPCTSTR lpszFileName,
-                                       LPCTSTR lpszFilter,
+MeaPositionSaveDlg::MeaPositionSaveDlg(PCTSTR lpszDefExt,
+                                       PCTSTR lpszFileName,
+                                       PCTSTR lpszFilter,
                                        CWnd* pParentWnd) : CFileDialog(FALSE,
                                        lpszDefExt, lpszFileName,
                                        OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT |

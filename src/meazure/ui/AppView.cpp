@@ -600,7 +600,7 @@ void AppView::OnUpdateCustomUnits(CCmdUI* pCmdUI) {
         pCmdUI->SetText(customUnits->GetName());
         pCmdUI->Enable(TRUE);
     } else {
-        CString label(reinterpret_cast<LPCSTR>(IDS_MEA_CUSTOM_MENU));
+        CString label(reinterpret_cast<PCSTR>(IDS_MEA_CUSTOM_MENU));
         pCmdUI->SetText(label);
         pCmdUI->Enable(FALSE);
     }

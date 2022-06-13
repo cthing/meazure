@@ -444,7 +444,7 @@ private:
         ///
         /// @param text     [in] Text to display.
         ///
-        void SetText(LPCTSTR text) {
+        void SetText(PCTSTR text) {
             m_field.SetWindowText(text);
         }
 

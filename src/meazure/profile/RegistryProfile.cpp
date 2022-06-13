@@ -35,35 +35,35 @@ MeaRegistryProfile::MeaRegistryProfile(MeaRegistryProvider& registry) : MeaProfi
 
 MeaRegistryProfile::~MeaRegistryProfile() {}
 
-bool MeaRegistryProfile::WriteBool(LPCTSTR key, bool value) {
+bool MeaRegistryProfile::WriteBool(PCTSTR key, bool value) {
     return m_registry.WriteInt(m_saveVersion, key, value) == TRUE;
 }
 
-bool MeaRegistryProfile::WriteInt(LPCTSTR key, int value) {
+bool MeaRegistryProfile::WriteInt(PCTSTR key, int value) {
     return m_registry.WriteInt(m_saveVersion, key, value) == TRUE;
 }
 
-bool MeaRegistryProfile::WriteDbl(LPCTSTR key, double value) {
+bool MeaRegistryProfile::WriteDbl(PCTSTR key, double value) {
     CString vstr;
 
     vstr.Format(_T("%f"), value);
     return m_registry.WriteString(m_saveVersion, key, vstr) == TRUE;
 }
 
-bool MeaRegistryProfile::WriteStr(LPCTSTR key, LPCTSTR value) {
+bool MeaRegistryProfile::WriteStr(PCTSTR key, PCTSTR value) {
     return m_registry.WriteString(m_saveVersion, key, value) == TRUE;
 }
 
-bool MeaRegistryProfile::ReadBool(LPCTSTR key, bool defaultValue) {
+bool MeaRegistryProfile::ReadBool(PCTSTR key, bool defaultValue) {
     return m_registry.GetInt(m_loadVersion, key, defaultValue) != 0;
 }
 
-UINT MeaRegistryProfile::ReadInt(LPCTSTR key, int defaultValue) {
+UINT MeaRegistryProfile::ReadInt(PCTSTR key, int defaultValue) {
     return m_registry.GetInt(m_loadVersion, key, defaultValue);
 }
 
 
-double MeaRegistryProfile::ReadDbl(LPCTSTR key, double defaultValue) {
+double MeaRegistryProfile::ReadDbl(PCTSTR key, double defaultValue) {
     CString str = m_registry.GetString(m_loadVersion, key, _T(""));
     if (str.IsEmpty()) {
         return defaultValue;
@@ -71,7 +71,7 @@ double MeaRegistryProfile::ReadDbl(LPCTSTR key, double defaultValue) {
     return atof(str);
 }
 
-CString MeaRegistryProfile::ReadStr(LPCTSTR key, LPCTSTR defaultValue) {
+CString MeaRegistryProfile::ReadStr(PCTSTR key, PCTSTR defaultValue) {
     return m_registry.GetString(m_loadVersion, key, defaultValue);
 }
 
@@ -83,7 +83,7 @@ int MeaRegistryProfile::GetVersion() {
     return atoi(m_loadVersion);
 }
 
-bool MeaRegistryProfile::HaveVersionKey(LPCTSTR version) const {
+bool MeaRegistryProfile::HaveVersionKey(PCTSTR version) const {
     CString key;
     HKEY hKey;
 

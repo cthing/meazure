@@ -265,7 +265,7 @@ LRESULT AppFrame::OnCopyData(WPARAM /*wParam*/, LPARAM lParam) {
         return FALSE;
     }
 
-    CString cmdLineFile(reinterpret_cast<LPCTSTR>(cds->lpData));
+    CString cmdLineFile(reinterpret_cast<PCTSTR>(cds->lpData));
     m_wndView.LoadStartupFile(cmdLineFile);
 
     return TRUE;
@@ -391,7 +391,7 @@ bool AppFrame::OpenUrl(int urlId) {
 
     if (reinterpret_cast<INT_PTR>(h) <= 32) {
         CString msg;
-        msg.Format(IDS_MEA_NOEXEC, static_cast<LPCTSTR>(url));
+        msg.Format(IDS_MEA_NOEXEC, static_cast<PCTSTR>(url));
         MessageBox(msg, nullptr, MB_OK | MB_ICONERROR);
         return false;
     }

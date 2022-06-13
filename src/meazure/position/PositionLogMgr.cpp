@@ -38,11 +38,11 @@ MeaPositionLogMgr::MeaPositionLogMgr(token) :
     m_observer(nullptr),
     m_saveDialog(nullptr),
     m_loadDialog(nullptr),
-    m_saveDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_SAVE_LOG_DLG)),
-    m_loadDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_LOAD_LOG_DLG)),
+    m_saveDlgTitle(reinterpret_cast<PCSTR>(IDS_MEA_SAVE_LOG_DLG)),
+    m_loadDlgTitle(reinterpret_cast<PCSTR>(IDS_MEA_LOAD_LOG_DLG)),
     m_modified(false),
     m_manageDialog(nullptr) {
-    m_title.Format(_T("%s Position Log File"), static_cast<LPCTSTR>(AfxGetAppName()));
+    m_title.Format(_T("%s Position Log File"), static_cast<PCTSTR>(AfxGetAppName()));
 }
 
 MeaPositionLogMgr::~MeaPositionLogMgr() {
@@ -59,13 +59,13 @@ MeaPositionLogMgr::~MeaPositionLogMgr() {
 
 void MeaPositionLogMgr::SaveProfile(MeaProfile& profile) const {
     if (!profile.UserInitiated()) {
-        profile.WriteStr(_T("LastLogDir"), static_cast<LPCTSTR>(m_initialDir));
+        profile.WriteStr(_T("LastLogDir"), static_cast<PCTSTR>(m_initialDir));
     }
 }
 
 void MeaPositionLogMgr::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
-        m_initialDir = profile.ReadStr(_T("LastLogDir"), static_cast<LPCTSTR>(m_initialDir));
+        m_initialDir = profile.ReadStr(_T("LastLogDir"), static_cast<PCTSTR>(m_initialDir));
     }
 }
 
@@ -278,7 +278,7 @@ void MeaPositionLogMgr::ReleaseDesktopRef(const MeaGUID& id) {
     }
 }
 
-bool MeaPositionLogMgr::IsPositionFile(LPCTSTR filename) {
+bool MeaPositionLogMgr::IsPositionFile(PCTSTR filename) {
     TCHAR ext[_MAX_EXT];
     int i = 0;
 
@@ -365,7 +365,7 @@ bool MeaPositionLogMgr::Save(bool askPathname) {
 
         CString errStr(e.what());
         CString msg;
-        msg.Format(IDS_MEA_NO_SAVE_LOG, static_cast<LPCTSTR>(errStr));
+        msg.Format(IDS_MEA_NO_SAVE_LOG, static_cast<PCTSTR>(errStr));
         MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
         return false;
     }
@@ -379,7 +379,7 @@ bool MeaPositionLogMgr::Save(bool askPathname) {
     return true;
 }
 
-bool MeaPositionLogMgr::Load(LPCTSTR pathname) {
+bool MeaPositionLogMgr::Load(PCTSTR pathname) {
     // If there is a modified set of positions, ask the user if
     // they should be saved before loading a new set.
     //
@@ -425,7 +425,7 @@ bool MeaPositionLogMgr::Load(LPCTSTR pathname) {
     } catch (MeaXMLParserException&) {
         // Handled by the parser.
     } catch (...) {
-        CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_INVALID_LOGFILE));
+        CString msg(reinterpret_cast<PCSTR>(IDS_MEA_INVALID_LOGFILE));
         MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
     }
 
@@ -507,7 +507,7 @@ void MeaPositionLogMgr::ProcessDesktopNode(const MeaXMLNode* desktopNode) {
         ex->Delete();
 
         CString msg;
-        msg.Format(IDS_MEA_INVALID_DESKTOPID, static_cast<LPCTSTR>(valueStr));
+        msg.Format(IDS_MEA_INVALID_DESKTOPID, static_cast<PCTSTR>(valueStr));
         MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
     }
 }
@@ -532,7 +532,7 @@ void MeaPositionLogMgr::ProcessPositionNode(const MeaXMLNode* positionNode) {
         ex->Delete();
 
         CString msg;
-        msg.Format(IDS_MEA_INVALID_DESKTOPREF, static_cast<LPCTSTR>(idStr));
+        msg.Format(IDS_MEA_INVALID_DESKTOPREF, static_cast<PCTSTR>(idStr));
         MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
     }
 }

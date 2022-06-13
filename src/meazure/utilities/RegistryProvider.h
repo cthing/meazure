@@ -36,7 +36,7 @@ struct MeaRegistryProvider {
     /// @param value    [in] Contains the value to be written.
     /// @return TRUE if successful; otherwise FALSE.
     /// 
-    virtual BOOL WriteInt(LPCTSTR section, LPCTSTR entry, int value) = 0;
+    virtual BOOL WriteInt(PCTSTR section, PCTSTR entry, int value) = 0;
 
     /// Write the specified string into the specified section of the application's registry.
     /// 
@@ -49,7 +49,7 @@ struct MeaRegistryProvider {
     ///     the <b>entry</b> parameter is deleted.
     /// @return TRUE if successful; otherwise FALSE.
     /// 
-    virtual BOOL WriteString(LPCTSTR section, LPCTSTR entry, LPCTSTR value) = 0;
+    virtual BOOL WriteString(PCTSTR section, PCTSTR entry, PCTSTR value) = 0;
 
     /// Retrieves the value of an integer from an entry within a specified section of the application's registry.
     /// 
@@ -60,7 +60,7 @@ struct MeaRegistryProvider {
     ///     return value is the value of the <b>defaultValue</b> parameter if the function does not find the entry.
     ///     The return value is 0 if the value that corresponds to the specified entry is not an integer.
     /// 
-    virtual UINT GetInt(LPCTSTR section, LPCTSTR entry, int defaultValue) = 0;
+    virtual UINT GetInt(PCTSTR section, PCTSTR entry, int defaultValue) = 0;
 
     /// Retrieves the string associated with an entry within the specified section in the application's registry.
     /// 
@@ -72,13 +72,13 @@ struct MeaRegistryProvider {
     ///     string cannot be found. The maximum string length supported by the framework is <b>_MAX_PATH</b>. If
     ///     <b>defaultValue</b> is NULL, the return value is an empty string.
     /// 
-    virtual CString GetString(LPCTSTR section, LPCTSTR entry, LPCTSTR defaultValue) = 0;
+    virtual CString GetString(PCTSTR section, PCTSTR entry, PCTSTR defaultValue) = 0;
 
     /// Determines where, in the registry or INI file, application profile settings are stored
     ///
     /// @return Application registry key.
     /// 
-    virtual LPCTSTR GetKeyName() = 0;
+    virtual PCTSTR GetKeyName() = 0;
 
     /// Opens the specified registry key. Note that key names are not case sensitive.
     /// 
@@ -89,7 +89,7 @@ struct MeaRegistryProvider {
     /// @param result      [in] A pointer to a variable that receives a handle to the opened key
     /// @return If the function succeeds, the return value is <b>ERROR_SUCCESS</b>.
     /// 
-    virtual LSTATUS OpenKey(HKEY key, LPCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) = 0;
+    virtual LSTATUS OpenKey(HKEY key, PCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) = 0;
 
     /// Closes a handle to the specified registry key.
     /// 

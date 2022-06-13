@@ -54,7 +54,7 @@ public:
     /// @param unitsProvider    [in] Units information and conversion provider
     /// @param screenProvider   [in] Screen information provider
     ///
-    explicit MeaPositionDesktop(LPCTSTR guidStr, const MeaUnitsProvider& unitsProvider,
+    explicit MeaPositionDesktop(PCTSTR guidStr, const MeaUnitsProvider& unitsProvider,
                                 const MeaScreenProvider& screenProvider);
 
     /// Constructs a desktop information object as a copy of the specified object.
@@ -107,7 +107,7 @@ public:
 
     /// Sets a unique ID for this object.
     /// @param guidStr      [in] GUID ID to set for this object.
-    void SetId(LPCTSTR guidStr) { m_id = guidStr; }
+    void SetId(PCTSTR guidStr) { m_id = guidStr; }
 
     /// Returns the name for custom units.
     /// @return Name for custom units.

@@ -90,7 +90,7 @@ BOOL App::InitInstance() {
             COPYDATASTRUCT cds;
             cds.cbData = ID_MEA_COPYDATA;
             cds.dwData = (static_cast<std::size_t>(cmdLineInfo.m_strFileName.GetLength()) + 1) * sizeof(TCHAR);
-            cds.lpData = reinterpret_cast<PVOID>(const_cast<LPTSTR>(static_cast<LPCTSTR>(cmdLineInfo.m_strFileName)));
+            cds.lpData = reinterpret_cast<PVOID>(const_cast<PTSTR>(static_cast<PCTSTR>(cmdLineInfo.m_strFileName)));
             ::SendMessage(g_meaMainWnd, WM_COPYDATA, 0, reinterpret_cast<LPARAM>(&cds));
         }
 
@@ -369,7 +369,7 @@ bool CAboutDlg::OpenUrl(int urlId) {
 
     if (reinterpret_cast<INT_PTR>(h) <= 32) {
         CString msg;
-        msg.Format(IDS_MEA_NOEXEC, static_cast<LPCTSTR>(url));
+        msg.Format(IDS_MEA_NOEXEC, static_cast<PCTSTR>(url));
         MessageBox(msg, nullptr, MB_OK | MB_ICONERROR);
         return false;
     }

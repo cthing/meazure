@@ -45,5 +45,5 @@ public:
     /// @param flag     [in] TRUE if param is a switch, FALSE if it is a parameter.
     /// @param last     [in] TRUE if last item on the command line.
     ///
-    virtual void ParseParam(LPCTSTR param, BOOL flag, BOOL last) override;
+    virtual void ParseParam(PCTSTR param, BOOL flag, BOOL last) override;
 };

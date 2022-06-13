@@ -27,12 +27,12 @@
 #include <cstring>
 
 
-MeaFileProfile::MeaFileProfile(LPCTSTR pathname, Mode mode) :
+MeaFileProfile::MeaFileProfile(PCTSTR pathname, Mode mode) :
     m_pathname(pathname),
     m_mode(mode),
     m_readVersion(1) {
 
-    m_title.Format(_T("%s Profile File"), static_cast<LPCTSTR>(AfxGetAppName()));
+    m_title.Format(_T("%s Profile File"), static_cast<PCTSTR>(AfxGetAppName()));
 
     if (m_mode == ProfWrite) {
         m_writeStream.exceptions(std::ios::failbit | std::ios::badbit);
@@ -55,35 +55,35 @@ MeaFileProfile::~MeaFileProfile() {
     }
 }
 
-bool MeaFileProfile::WriteBool(LPCTSTR key, bool value) {
+bool MeaFileProfile::WriteBool(PCTSTR key, bool value) {
     m_writer->StartElement(key)
         .AddAttribute(_T("value"), (value ? _T("true") : _T("false")))
         .EndElement();
     return true;
 }
 
-bool MeaFileProfile::WriteInt(LPCTSTR key, int value) {
+bool MeaFileProfile::WriteInt(PCTSTR key, int value) {
     m_writer->StartElement(key)
         .AddAttribute(_T("value"), value)
         .EndElement();
     return true;
 }
 
-bool MeaFileProfile::WriteDbl(LPCTSTR key, double value) {
+bool MeaFileProfile::WriteDbl(PCTSTR key, double value) {
     m_writer->StartElement(key)
         .AddAttribute(_T("value"), value)
         .EndElement();
     return true;
 }
 
-bool MeaFileProfile::WriteStr(LPCTSTR key, LPCTSTR value) {
+bool MeaFileProfile::WriteStr(PCTSTR key, PCTSTR value) {
     m_writer->StartElement(key)
         .AddAttribute(_T("value"), value)
         .EndElement();
     return true;
 }
 
-bool MeaFileProfile::ReadBool(LPCTSTR key, bool defaultValue) {
+bool MeaFileProfile::ReadBool(PCTSTR key, bool defaultValue) {
     std::map<CString, CString>::const_iterator iter;
 
     iter = m_valueMap.find(key);
@@ -95,7 +95,7 @@ bool MeaFileProfile::ReadBool(LPCTSTR key, bool defaultValue) {
     return defaultValue;
 }
 
-UINT MeaFileProfile::ReadInt(LPCTSTR key, int defaultValue) {
+UINT MeaFileProfile::ReadInt(PCTSTR key, int defaultValue) {
     std::map<CString, CString>::const_iterator iter;
 
     iter = m_valueMap.find(key);
@@ -105,7 +105,7 @@ UINT MeaFileProfile::ReadInt(LPCTSTR key, int defaultValue) {
     return defaultValue;
 }
 
-double MeaFileProfile::ReadDbl(LPCTSTR key, double defaultValue) {
+double MeaFileProfile::ReadDbl(PCTSTR key, double defaultValue) {
     std::map<CString, CString>::const_iterator iter;
 
     iter = m_valueMap.find(key);
@@ -115,7 +115,7 @@ double MeaFileProfile::ReadDbl(LPCTSTR key, double defaultValue) {
     return defaultValue;
 }
 
-CString MeaFileProfile::ReadStr(LPCTSTR key, LPCTSTR defaultValue) {
+CString MeaFileProfile::ReadStr(PCTSTR key, PCTSTR defaultValue) {
     std::map<CString, CString>::const_iterator iter;
 
     iter = m_valueMap.find(key);
@@ -174,7 +174,7 @@ void MeaFileProfile::WriteFileEnd() {
     m_writer->EndDocument();
 }
 
-void MeaFileProfile::ParseFile(LPCTSTR pathname) {
+void MeaFileProfile::ParseFile(PCTSTR pathname) {
     MeaXMLParser parser(this);
     parser.ParseFile(pathname);
 }

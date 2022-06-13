@@ -47,7 +47,7 @@ MeaXMLAttributes::MeaXMLAttributes(const xercesc::AttributeList& atts) {
     }
 }
 
-bool MeaXMLAttributes::GetValueStr(LPCTSTR name, CString& value) const {
+bool MeaXMLAttributes::GetValueStr(PCTSTR name, CString& value) const {
     AttributeMap::const_iterator iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
         value = (*iter).second;
@@ -56,7 +56,7 @@ bool MeaXMLAttributes::GetValueStr(LPCTSTR name, CString& value) const {
     return false;
 }
 
-bool MeaXMLAttributes::GetValueInt(LPCTSTR name, int& value) const {
+bool MeaXMLAttributes::GetValueInt(PCTSTR name, int& value) const {
     AttributeMap::const_iterator iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
         value = _ttoi((*iter).second);
@@ -65,7 +65,7 @@ bool MeaXMLAttributes::GetValueInt(LPCTSTR name, int& value) const {
     return false;
 }
 
-bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value) const {
+bool MeaXMLAttributes::GetValueDbl(PCTSTR name, double& value) const {
     AttributeMap::const_iterator iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
         value = _tcstod((*iter).second, nullptr);
@@ -74,7 +74,7 @@ bool MeaXMLAttributes::GetValueDbl(LPCTSTR name, double& value) const {
     return false;
 }
 
-bool MeaXMLAttributes::GetValueBool(LPCTSTR name, bool& value) const {
+bool MeaXMLAttributes::GetValueBool(PCTSTR name, bool& value) const {
     AttributeMap::const_iterator iter = m_attributeMap.find(name);
     if (iter != m_attributeMap.end()) {
         const CString& vstr = (*iter).second;
@@ -201,29 +201,29 @@ xercesc::InputSource* MeaXMLParserHandler::ResolveEntity(const CString&) {
 }
 
 void MeaXMLParserHandler::ParsingError(const CString& error, const CString& pathname, int line, int column) {
-    CString title(reinterpret_cast<LPCSTR>(IDS_MEA_PARSER_TITLE));
+    CString title(reinterpret_cast<PCSTR>(IDS_MEA_PARSER_TITLE));
     CString msg;
     
     if (GetConsoleWindow() == nullptr) {
-        msg.Format(IDS_MEA_PARSER_MSG, static_cast<LPCTSTR>(pathname), line, column, static_cast<LPCTSTR>(error));
+        msg.Format(IDS_MEA_PARSER_MSG, static_cast<PCTSTR>(pathname), line, column, static_cast<PCTSTR>(error));
         MessageBox(*AfxGetMainWnd(), msg, title, MB_OK | MB_ICONERROR);
     } else {
-        msg.Format(_T("XML format error in %s (%d, %d): %s"), static_cast<LPCTSTR>(pathname), line, column,
-                   static_cast<LPCTSTR>(error));
+        msg.Format(_T("XML format error in %s (%d, %d): %s"), static_cast<PCTSTR>(pathname), line, column,
+                   static_cast<PCTSTR>(error));
         std::cerr << msg << _T('\n');
     }
 }
 
 void MeaXMLParserHandler::ValidationError(const CString& error, const CString& pathname, int line, int column) {
-    CString title(reinterpret_cast<LPCSTR>(IDS_MEA_VALIDATION_TITLE));
+    CString title(reinterpret_cast<PCSTR>(IDS_MEA_VALIDATION_TITLE));
     CString msg;
 
     if (GetConsoleWindow() == nullptr) {
-        msg.Format(IDS_MEA_VALIDATION_MSG, static_cast<LPCTSTR>(pathname), line, column, static_cast<LPCTSTR>(error));
+        msg.Format(IDS_MEA_VALIDATION_MSG, static_cast<PCTSTR>(pathname), line, column, static_cast<PCTSTR>(error));
         MessageBox(*AfxGetMainWnd(), msg, title, MB_OK | MB_ICONERROR);
     } else {
-        msg.Format(_T("XML validation error in %s (%d, %d): %s"), static_cast<LPCTSTR>(pathname), line, column,
-                   static_cast<LPCTSTR>(error));
+        msg.Format(_T("XML validation error in %s (%d, %d): %s"), static_cast<PCTSTR>(pathname), line, column,
+                   static_cast<PCTSTR>(error));
         std::cerr << msg << _T('\n');
     }
 
@@ -274,11 +274,11 @@ MeaXMLParser::~MeaXMLParser() {
     }
 }
 
-void MeaXMLParser::ParseFile(LPCTSTR pathname) {
+void MeaXMLParser::ParseFile(PCTSTR pathname) {
     m_parser->parse(pathname);
 }
 
-void MeaXMLParser::ParseString(LPCTSTR content) {
+void MeaXMLParser::ParseString(PCTSTR content) {
     assert(content != nullptr);
 
 #ifdef _UNICODE

@@ -27,7 +27,7 @@ MeaGraphic::~MeaGraphic() {
     m_parent = nullptr;
 }
 
-bool MeaGraphic::Create(LPCTSTR classname, const SIZE& size, const CWnd* parent, UINT id) {
+bool MeaGraphic::Create(PCTSTR classname, const SIZE& size, const CWnd* parent, UINT id) {
     m_id = id;
     m_parent = parent;
 

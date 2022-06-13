@@ -51,52 +51,52 @@ public:
     /// @param key      [in] Profile key to write
     /// @param value    [in] Boolean value for the key
     ///
-    virtual bool WriteBool(LPCTSTR key, bool value) override;
+    virtual bool WriteBool(PCTSTR key, bool value) override;
 
     /// Writes an integer value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Integer value for the key
     ///
-    virtual bool WriteInt(LPCTSTR key, int value) override;
+    virtual bool WriteInt(PCTSTR key, int value) override;
 
     /// Writes a double value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] Double value for the key
     ///
-    virtual bool WriteDbl(LPCTSTR key, double value) override;
+    virtual bool WriteDbl(PCTSTR key, double value) override;
 
     /// Writes a string value to the specified key.
     ///
     /// @param key      [in] Profile key to write
     /// @param value    [in] String value for the key
     ///
-    virtual bool WriteStr(LPCTSTR key, LPCTSTR value) override;
+    virtual bool WriteStr(PCTSTR key, PCTSTR value) override;
 
     /// Reads a boolean value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual bool ReadBool(LPCTSTR key, bool defaultValue) override;
+    virtual bool ReadBool(PCTSTR key, bool defaultValue) override;
 
     /// Reads an unsigned integer value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual UINT ReadInt(LPCTSTR key, int defaultValue) override;
+    virtual UINT ReadInt(PCTSTR key, int defaultValue) override;
 
     /// Reads a double value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual double ReadDbl(LPCTSTR key, double defaultValue) override;
+    virtual double ReadDbl(PCTSTR key, double defaultValue) override;
 
     /// Reads a string value from the specified key.
     ///
     /// @param key              [in] Profile key to read
     /// @param defaultValue     [in] Default value to use if the key is not found in the profile.
-    virtual CString ReadStr(LPCTSTR key, LPCTSTR defaultValue) override;
+    virtual CString ReadStr(PCTSTR key, PCTSTR defaultValue) override;
 
     /// Indicates whether the profile is being written at
     /// the user's request (i.e. a file profile).
@@ -122,7 +122,7 @@ private:
     ///
     /// @return <b>true</b> if key exists.
     ///
-    bool HaveVersionKey(LPCTSTR version) const;
+    bool HaveVersionKey(PCTSTR version) const;
 
 
     MeaRegistryProvider& m_registry;    ///< Access to the Windows Registry

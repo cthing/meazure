@@ -39,12 +39,12 @@ bool operator==(const POINT& lhs, const POINT& rhs) {
 
 const MeaUnits::DisplayPrecisionNames linearPrecisionNames { "x", "y", "w", "h", "d", "area", "rx", "ry" };
 
-void VerifyUnitsId(MeaAngularUnits& units, MeaAngularUnitsId unitsId, LPCTSTR unitsStr) {
+void VerifyUnitsId(MeaAngularUnits& units, MeaAngularUnitsId unitsId, PCTSTR unitsStr) {
     BOOST_TEST(units.GetUnitsStr() == unitsStr);
     BOOST_TEST(units.GetUnitsId() == unitsId);
 }
 
-void VerifyUnitsId(MeaLinearUnits& units, MeaLinearUnitsId unitsId, LPCTSTR unitsStr) {
+void VerifyUnitsId(MeaLinearUnits& units, MeaLinearUnitsId unitsId, PCTSTR unitsStr) {
     BOOST_TEST(units.GetUnitsStr() == unitsStr);
     BOOST_TEST(units.GetUnitsId() == unitsId);
 }
@@ -64,11 +64,11 @@ void VerifyPrecisions(MeaUnits& units, const MeaUnits::DisplayPrecisions& defaul
     BOOST_TEST(units.GetDisplayPrecisionNames() == names);
 }
 
-void VerifyFormat(MeaAngularUnits& units, double value, LPCTSTR valueStr) {
+void VerifyFormat(MeaAngularUnits& units, double value, PCTSTR valueStr) {
     BOOST_TEST(units.Format(MeaA, value) == valueStr);
 }
 
-void VerifyFormat(MeaLinearUnits& units, MeaLinearMeasurementId measurementId, double value, LPCTSTR valueStr) {
+void VerifyFormat(MeaLinearUnits& units, MeaLinearMeasurementId measurementId, double value, PCTSTR valueStr) {
     BOOST_TEST(units.Format(measurementId, value) == valueStr);
 }
 

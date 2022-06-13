@@ -136,7 +136,7 @@ LRESULT MeaNumberField::OnPaste(WPARAM, LPARAM) {
 
             CString buffer;
 
-            LPTSTR str = buffer.GetBufferSetLength(static_cast<int>(::GlobalSize(hmem)));
+            PTSTR str = buffer.GetBufferSetLength(static_cast<int>(::GlobalSize(hmem)));
             sf.Read(str, static_cast<UINT>(::GlobalSize(hmem)));
             ::GlobalUnlock(hmem);
             buffer.ReleaseBuffer();
@@ -153,7 +153,7 @@ LRESULT MeaNumberField::OnPaste(WPARAM, LPARAM) {
     return TRUE;
 }
 
-bool MeaNumberField::IsValid(LPCTSTR str, int len) const {
+bool MeaNumberField::IsValid(PCTSTR str, int len) const {
     TCHAR ch;
     int i, j;
 

@@ -27,7 +27,7 @@
 //*************************************************************************
 
 
-MeaUnits::MeaUnits(LPCTSTR unitsStr) : m_unitsStr(unitsStr) {}
+MeaUnits::MeaUnits(PCTSTR unitsStr) : m_unitsStr(unitsStr) {}
 
 MeaUnits::~MeaUnits() {}
 
@@ -50,8 +50,8 @@ void MeaUnits::SavePrecision(MeaProfile& profile) {
         CString tag;
 
         tag.Format(_T("Precision-%s-%s"),
-                    static_cast<LPCTSTR>(m_displayPrecisionNames[i]),
-                    static_cast<LPCTSTR>(m_unitsStr));
+                    static_cast<PCTSTR>(m_displayPrecisionNames[i]),
+                    static_cast<PCTSTR>(m_unitsStr));
         profile.WriteInt(tag, m_displayPrecisions[i]);
     }
 }
@@ -63,8 +63,8 @@ void MeaUnits::LoadPrecision(MeaProfile& profile) {
         CString tag;
 
         tag.Format(_T("Precision-%s-%s"),
-                    static_cast<LPCTSTR>(m_displayPrecisionNames[i]),
-                    static_cast<LPCTSTR>(m_unitsStr));
+                    static_cast<PCTSTR>(m_displayPrecisionNames[i]),
+                    static_cast<PCTSTR>(m_unitsStr));
         m_displayPrecisions[i] = profile.ReadInt(tag, m_displayPrecisions[i]);
     }
 }
@@ -79,7 +79,7 @@ void MeaUnits::MasterReset() {
 //*************************************************************************
 
 
-MeaAngularUnits::MeaAngularUnits(MeaAngularUnitsId unitsId, LPCTSTR unitsStr) :
+MeaAngularUnits::MeaAngularUnits(MeaAngularUnitsId unitsId, PCTSTR unitsStr) :
     MeaUnits(unitsStr), m_unitsId(unitsId) {
     AddPrecisionName(_T("angle"));      // MeaA
 }
@@ -131,7 +131,7 @@ bool MeaLinearUnits::m_invertY = false;
 CPoint MeaLinearUnits::m_originOffset;
 
 
-MeaLinearUnits::MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr, const MeaScreenProvider& screenProvider) :
+MeaLinearUnits::MeaLinearUnits(MeaLinearUnitsId unitsId, PCTSTR unitsStr, const MeaScreenProvider& screenProvider) :
     MeaUnits(unitsStr), m_unitsId(unitsId), m_screenProvider(screenProvider), m_majorTickCount(10) {
     AddPrecisionName(_T("x"));      // MeaX
     AddPrecisionName(_T("y"));      // MeaY

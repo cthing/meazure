@@ -82,7 +82,7 @@ public:
     /// @param value        [out] Attribute value as a string.
     /// @return <b>true</b> if the attribute is found.
     /// 
-    bool GetValueStr(LPCTSTR name, CString& value) const;
+    bool GetValueStr(PCTSTR name, CString& value) const;
 
     /// Returns the value of the specified attribute converted to an integer.
     /// 
@@ -90,7 +90,7 @@ public:
     /// @param value        [out] Attribute value as an integer.
     /// @return <b>true</b> if the attribute is found.
     /// 
-    bool GetValueInt(LPCTSTR name, int& value) const;
+    bool GetValueInt(PCTSTR name, int& value) const;
 
     /// Returns the value of the specified attribute converted to a double.
     /// 
@@ -98,7 +98,7 @@ public:
     /// @param value        [out] Attribute value as a double.
     /// @return <b>true</b> if the attribute is found.
     /// 
-    bool GetValueDbl(LPCTSTR name, double& value) const;
+    bool GetValueDbl(PCTSTR name, double& value) const;
 
     /// Returns the value of the specified attribute converted to a boolean.
     /// 
@@ -107,7 +107,7 @@ public:
     ///                     attribute contains the string "true" or "1". <b>false</b> is returned otherwise.
     /// @return <b>true</b> if the attribute is found.
     /// 
-    bool GetValueBool(LPCTSTR name, bool& value) const;
+    bool GetValueBool(PCTSTR name, bool& value) const;
 
     /// Performs a deep copy assignment of the specified attribute object to this.
     ///
@@ -359,13 +359,13 @@ public:
     /// 
     /// @param pathname  [in] XML file to parse
     /// 
-    void ParseFile(LPCTSTR pathname);
+    void ParseFile(PCTSTR pathname);
 
     /// Parses the specified XML cotent.
     /// 
     /// @param content   [in] String of XML content to parse
     ///  
-    void ParseString(LPCTSTR content);
+    void ParseString(PCTSTR content);
 
     /// If a DOM was constructed, this method returns its root node.
     ///

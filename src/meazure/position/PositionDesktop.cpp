@@ -25,7 +25,7 @@
 MeaPositionDesktop::MeaPositionDesktop(const MeaUnitsProvider& unitsProvider, const MeaScreenProvider& screenProvider) :
     MeaPositionDesktop(nullptr, unitsProvider, screenProvider) {}
 
-MeaPositionDesktop::MeaPositionDesktop(LPCTSTR guidStr, const MeaUnitsProvider& unitsProvider,
+MeaPositionDesktop::MeaPositionDesktop(PCTSTR guidStr, const MeaUnitsProvider& unitsProvider,
                                        const MeaScreenProvider& screenProvider) :
     m_unitsProvider(&unitsProvider),
     m_id(guidStr),

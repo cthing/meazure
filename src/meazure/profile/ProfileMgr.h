@@ -60,7 +60,7 @@ public:
     ///
     /// @param pathname     [in] Profile pathname.
     ///
-    void Load(LPCTSTR pathname) const;
+    void Load(PCTSTR pathname) const;
 
     /// Displays the file save dialog and saves the
     /// selected profile file.
@@ -91,11 +91,11 @@ public:
     ///
     /// @return <b>true</b> if the specified file is a profile file.
     ///
-    static bool IsProfileFile(LPCTSTR filename);
+    static bool IsProfileFile(PCTSTR filename);
 
 private:
-    static LPCTSTR m_ext;       ///< Profile file suffix.
-    static LPCTSTR m_filter;    ///< File dialog filter string.
+    static PCTSTR m_ext;       ///< Profile file suffix.
+    static PCTSTR m_filter;    ///< File dialog filter string.
 
     CFileDialog* m_saveDialog;  ///< Profile file save dialog.
     CFileDialog* m_loadDialog;  ///< Profile file open dialog.

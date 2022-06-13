@@ -58,7 +58,7 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool Create(LPCTSTR classname, const SIZE& size, const CWnd* parent, UINT id = 0xFFFF);
+    bool Create(PCTSTR classname, const SIZE& size, const CWnd* parent, UINT id = 0xFFFF);
 
     /// Displays the graphic. Call the Create() method prior
     /// to calling this method for the first time.

@@ -41,8 +41,8 @@ public:
     /// @param pParentWnd       [in] A pointer to the file dialog-box object’s
     ///                         parent or owner window.
     ///
-    explicit MeaPositionSaveDlg(LPCTSTR lpszDefExt = nullptr, LPCTSTR lpszFileName = nullptr,
-                                LPCTSTR lpszFilter = nullptr, CWnd* pParentWnd = nullptr);
+    explicit MeaPositionSaveDlg(PCTSTR lpszDefExt = nullptr, PCTSTR lpszFileName = nullptr,
+                                PCTSTR lpszFilter = nullptr, CWnd* pParentWnd = nullptr);
 
     /// Destroys a position log file dialog.
     ///

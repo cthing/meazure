@@ -221,7 +221,7 @@ void MeaUnitsMgr::SetLinearUnits(MeaLinearUnitsId unitsId) {
     }
 }
 
-void MeaUnitsMgr::SetLinearUnits(LPCTSTR unitsStr) {
+void MeaUnitsMgr::SetLinearUnits(PCTSTR unitsStr) {
     for (const auto& unitsEntry : m_linearUnitsMap) {
         if (unitsEntry.second->GetUnitsStr() == unitsStr) {
             SetLinearUnits(unitsEntry.first);
@@ -241,7 +241,7 @@ void MeaUnitsMgr::SetAngularUnits(MeaAngularUnitsId unitsId) {
     }
 }
 
-void MeaUnitsMgr::SetAngularUnits(LPCTSTR unitsStr) {
+void MeaUnitsMgr::SetAngularUnits(PCTSTR unitsStr) {
     for (const auto& unitsEntry : m_angularUnitsMap) {
         if (unitsEntry.second->GetUnitsStr() == unitsStr) {
             SetAngularUnits(unitsEntry.first);

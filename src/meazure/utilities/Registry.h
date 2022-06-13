@@ -28,17 +28,17 @@
 class MeaRegistry : public MeaRegistryProvider {
 
 public:
-    BOOL WriteInt(LPCTSTR section, LPCTSTR entry, int value) override;
+    BOOL WriteInt(PCTSTR section, PCTSTR entry, int value) override;
 
-    BOOL WriteString(LPCTSTR section, LPCTSTR entry, LPCTSTR value) override;
+    BOOL WriteString(PCTSTR section, PCTSTR entry, PCTSTR value) override;
 
-    UINT GetInt(LPCTSTR section, LPCTSTR entry, int defaultValue) override;
+    UINT GetInt(PCTSTR section, PCTSTR entry, int defaultValue) override;
 
-    CString GetString(LPCTSTR section, LPCTSTR entry, LPCTSTR defaultValue) override;
+    CString GetString(PCTSTR section, PCTSTR entry, PCTSTR defaultValue) override;
 
-    LPCTSTR GetKeyName() override;
+    PCTSTR GetKeyName() override;
 
-    LSTATUS OpenKey(HKEY key, LPCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) override;
+    LSTATUS OpenKey(HKEY key, PCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) override;
 
     LSTATUS CloseKey(HKEY key) override;
 };

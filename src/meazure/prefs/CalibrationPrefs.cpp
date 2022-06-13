@@ -424,7 +424,7 @@ void MeaCalibrationPrefs::UpdateCurrentScreen() {
     CWnd* frame = GetDlgItem(IDC_CALRES_TITLE);
     if (frame != nullptr) {
         CString title;
-        title.Format(IDS_MEA_CALRES_TITLE, static_cast<LPCTSTR>(m_screenProvider.GetScreenName(m_currentIter)));
+        title.Format(IDS_MEA_CALRES_TITLE, static_cast<PCTSTR>(m_screenProvider.GetScreenName(m_currentIter)));
         frame->SetWindowText(title);
 
         MeaPreferences* sheet = static_cast<MeaPreferences*>(GetParent());

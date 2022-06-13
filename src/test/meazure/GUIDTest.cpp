@@ -72,7 +72,7 @@ BOOST_AUTO_TEST_CASE(TestCopyCtor) {
 }
 
 BOOST_AUTO_TEST_CASE(TestStringCtor) {
-    LPCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
+    PCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
     GUID guid1;
     guid1.Data1 = 0x6B29FC40;
     guid1.Data2 = 0xCA47;
@@ -130,7 +130,7 @@ BOOST_AUTO_TEST_CASE(TestAssignOperatorMeaGUID) {
 }
 
 BOOST_AUTO_TEST_CASE(TestAssignOperatorString) {
-    LPCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
+    PCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
     GUID guid1;
     guid1.Data1 = 0x6B29FC40;
     guid1.Data2 = 0xCA47;
@@ -170,7 +170,7 @@ BOOST_AUTO_TEST_CASE(TestAssignMeaGUID) {
 }
 
 BOOST_AUTO_TEST_CASE(TestAssignString) {
-    LPCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
+    PCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
     GUID guid1;
     guid1.Data1 = 0x6B29FC40;
     guid1.Data2 = 0xCA47;

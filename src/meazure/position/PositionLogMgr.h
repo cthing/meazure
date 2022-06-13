@@ -121,7 +121,7 @@ public:
     ///
     /// @return <b>true</b> if loaded, false if canceled or unable to load.
     ///
-    bool Load(LPCTSTR pathname = nullptr);
+    bool Load(PCTSTR pathname = nullptr);
 
     /// Saves the recorded positions to a log file.
     ///
@@ -193,7 +193,7 @@ public:
     ///
     /// @return <b>true</b> if the specified file is a position log file.
     ///
-    static bool IsPositionFile(LPCTSTR filename);
+    static bool IsPositionFile(PCTSTR filename);
 
 private:
     typedef std::map<MeaGUID, MeaPositionDesktop, MeaGUID::less> DesktopInfoMap;   ///< Maps GUID to a desktop information object.
@@ -201,8 +201,8 @@ private:
 
 
     static constexpr int kChunkSize { 1024 };       ///< Log file parsing buffer allocation increment.
-    static constexpr LPCTSTR kExt { _T("mpl") };    ///< Log file suffix.
-    static constexpr LPCTSTR kFilter { _T("Meazure Position Log Files (*.mpl)|*.mpl|All Files (*.*)|*.*||") };  ///< File dialog filter string.
+    static constexpr PCTSTR kExt { _T("mpl") };    ///< Log file suffix.
+    static constexpr PCTSTR kFilter { _T("Meazure Position Log Files (*.mpl)|*.mpl|All Files (*.*)|*.*||") };  ///< File dialog filter string.
 
 
     /// Constructs a file save dialog tailored to saving position log files.

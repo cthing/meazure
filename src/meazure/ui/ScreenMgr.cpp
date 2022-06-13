@@ -154,7 +154,7 @@ public:
     ///
     /// @param name     [in] Name for the screen.
     ///
-    void SetName(LPCTSTR name) { m_name = name; }
+    void SetName(PCTSTR name) { m_name = name; }
 
     /// Returns the descriptive name for the screen.
     ///

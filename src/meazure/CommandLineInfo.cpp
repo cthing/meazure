@@ -26,7 +26,7 @@ MeaCommandLineInfo::MeaCommandLineInfo() : CCommandLineInfo() {}
 
 MeaCommandLineInfo::~MeaCommandLineInfo() {}
 
-void MeaCommandLineInfo::ParseParam(LPCTSTR param, BOOL flag, BOOL last) {
+void MeaCommandLineInfo::ParseParam(PCTSTR param, BOOL flag, BOOL last) {
     if (flag && (_tcscmp(param, _T("nl")) == 0)) {
         g_enableLayeredWindows = FALSE;
     }

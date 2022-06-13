@@ -43,7 +43,7 @@ public:
     ///
     /// @param msg      [in] Message to be displayed during idle.
     ///
-    void SetIdleMessage(LPCTSTR msg);
+    void SetIdleMessage(PCTSTR msg);
 
 protected:
     /// Called when the status bar is created. This method sets

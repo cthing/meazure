@@ -21,27 +21,27 @@
 #include "Registry.h"
 
 
-BOOL MeaRegistry::WriteInt(LPCTSTR section, LPCTSTR entry, int value) {
+BOOL MeaRegistry::WriteInt(PCTSTR section, PCTSTR entry, int value) {
     return AfxGetApp()->WriteProfileInt(section, entry, value);
 }
 
-BOOL MeaRegistry::WriteString(LPCTSTR section, LPCTSTR entry, LPCTSTR value) {
+BOOL MeaRegistry::WriteString(PCTSTR section, PCTSTR entry, PCTSTR value) {
     return AfxGetApp()->WriteProfileString(section, entry, value);
 }
 
-UINT MeaRegistry::GetInt(LPCTSTR section, LPCTSTR entry, int defaultValue) {
+UINT MeaRegistry::GetInt(PCTSTR section, PCTSTR entry, int defaultValue) {
     return AfxGetApp()->GetProfileInt(section, entry, defaultValue);
 }
 
-CString MeaRegistry::GetString(LPCTSTR section, LPCTSTR entry, LPCTSTR defaultValue) {
+CString MeaRegistry::GetString(PCTSTR section, PCTSTR entry, PCTSTR defaultValue) {
     return AfxGetApp()->GetProfileString(section, entry, defaultValue);
 }
 
-LPCTSTR MeaRegistry::GetKeyName() {
+PCTSTR MeaRegistry::GetKeyName() {
     return AfxGetApp()->m_pszRegistryKey;
 }
 
-LSTATUS MeaRegistry::OpenKey(HKEY key, LPCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) {
+LSTATUS MeaRegistry::OpenKey(HKEY key, PCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) {
     return ::RegOpenKeyEx(key, subKey, options, samDesired, result);
 }
 

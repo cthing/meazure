@@ -39,8 +39,8 @@ public:
     static constexpr bool kDefHaveWarned { false };             ///< Indicates whether the user has
                                                                 ///< already been warned about using the
                                                                 ///< operating system reported resolution.
-    static constexpr LPCTSTR kDefLinearUnits { _T("px") };      ///< Default units for linear measurements.
-    static constexpr LPCTSTR kDefAngularUnits { _T("deg") };    ///< Default units for angular measurements.
+    static constexpr PCTSTR kDefLinearUnits { _T("px") };       ///< Default units for linear measurements.
+    static constexpr PCTSTR kDefAngularUnits { _T("deg") };     ///< Default units for angular measurements.
     static constexpr bool kDefInvertY { false };                ///< Default orientation of the y-axis.
 
 
@@ -83,7 +83,7 @@ public:
     ///
     /// @param unitsStr     [in] Measurement units identifier string (e.g. "in").
     ///
-    void SetLinearUnits(LPCTSTR unitsStr);
+    void SetLinearUnits(PCTSTR unitsStr);
 
     /// Sets the current angular measurement units based on the specified
     /// units identifier.
@@ -97,7 +97,7 @@ public:
     ///
     /// @param unitsStr     [in] Measurement units identifier.
     ///
-    void SetAngularUnits(LPCTSTR unitsStr);
+    void SetAngularUnits(PCTSTR unitsStr);
 
     /// Returns the current linear measurement units.
     ///

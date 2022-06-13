@@ -31,31 +31,31 @@ public:
         reset();
     }
 
-    BOOL WriteInt(LPCTSTR section, LPCTSTR entry, int value) override {
+    BOOL WriteInt(PCTSTR section, PCTSTR entry, int value) override {
         m_writeIntCount++;
         return m_writeInt(section, entry, value);
     }
 
-    BOOL WriteString(LPCTSTR section, LPCTSTR entry, LPCTSTR value) override {
+    BOOL WriteString(PCTSTR section, PCTSTR entry, PCTSTR value) override {
         m_writeStringCount++;
         return m_writeString(section, entry, value);
     }
 
-    UINT GetInt(LPCTSTR section, LPCTSTR entry, int defaultValue) override {
+    UINT GetInt(PCTSTR section, PCTSTR entry, int defaultValue) override {
         m_getIntCount++;
         return m_getInt(section, entry, defaultValue);
     }
 
-    CString GetString(LPCTSTR section, LPCTSTR entry, LPCTSTR defaultValue) override {
+    CString GetString(PCTSTR section, PCTSTR entry, PCTSTR defaultValue) override {
         m_getStringCount++;
         return m_getString(section, entry, defaultValue);
     }
 
-    LPCTSTR GetKeyName() override {
+    PCTSTR GetKeyName() override {
         return _T("cthing");
     }
 
-    LSTATUS OpenKey(HKEY key, LPCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) override {
+    LSTATUS OpenKey(HKEY key, PCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) override {
         m_openKeyCount++;
         return m_openKey(key, subKey, options, samDesired, result);
     }
@@ -73,23 +73,23 @@ public:
         m_openKeyCount = 0;
         m_closeKeyCount = 0;
 
-        m_writeInt = [](LPCTSTR, LPCTSTR, int) {
+        m_writeInt = [](PCTSTR, PCTSTR, int) {
             BOOST_FAIL("WriteInt callback not provided");
             return TRUE;
         };
-        m_writeString = [](LPCTSTR, LPCTSTR, LPCTSTR) {
+        m_writeString = [](PCTSTR, PCTSTR, PCTSTR) {
             BOOST_FAIL("WriteString callback not provided");
             return TRUE;
         };
-        m_getInt = [](LPCTSTR, LPCTSTR, int) {
+        m_getInt = [](PCTSTR, PCTSTR, int) {
             BOOST_FAIL("GetInt callback not provided");
             return 0;
         };
-        m_getString = [](LPCTSTR, LPCTSTR, LPCTSTR) {
+        m_getString = [](PCTSTR, PCTSTR, PCTSTR) {
             BOOST_FAIL("GetString callback not provided");
             return _T("");
         };
-        m_openKey = [](HKEY, LPCTSTR, DWORD, REGSAM, PHKEY) {
+        m_openKey = [](HKEY, PCTSTR, DWORD, REGSAM, PHKEY) {
             BOOST_FAIL("OpenKey callback not provided");
             return ERROR_SUCCESS;
         };
@@ -98,19 +98,19 @@ public:
             return ERROR_SUCCESS;
         };
 
-        m_writeIntNoop = [](LPCTSTR, LPCTSTR, int) {
+        m_writeIntNoop = [](PCTSTR, PCTSTR, int) {
             return TRUE;
         };
-        m_writeStringNoop = [](LPCTSTR, LPCTSTR, LPCTSTR) {
+        m_writeStringNoop = [](PCTSTR, PCTSTR, PCTSTR) {
             return TRUE;
         };
-        m_getIntNoop = [](LPCTSTR, LPCTSTR, int) {
+        m_getIntNoop = [](PCTSTR, PCTSTR, int) {
             return 0;
         };
-        m_getStringNoop = [](LPCTSTR, LPCTSTR, LPCTSTR) {
+        m_getStringNoop = [](PCTSTR, PCTSTR, PCTSTR) {
             return _T("");
         };
-        m_openKeyNoop = [](HKEY, LPCTSTR, DWORD, REGSAM, PHKEY) {
+        m_openKeyNoop = [](HKEY, PCTSTR, DWORD, REGSAM, PHKEY) {
             return ERROR_SUCCESS;
         };
         m_closeKeyNoop = [](HKEY) {
@@ -126,17 +126,17 @@ public:
     int m_openKeyCount;
     int m_closeKeyCount;
 
-    std::function<BOOL(LPCTSTR, LPCTSTR, int)> m_writeInt;
-    std::function<BOOL(LPCTSTR, LPCTSTR, LPCTSTR)> m_writeString;
-    std::function<UINT(LPCTSTR, LPCTSTR, int)> m_getInt;
-    std::function<CString(LPCTSTR, LPCTSTR, LPCTSTR)> m_getString;
-    std::function<LSTATUS(HKEY, LPCTSTR, DWORD, REGSAM, PHKEY)> m_openKey;
+    std::function<BOOL(PCTSTR, PCTSTR, int)> m_writeInt;
+    std::function<BOOL(PCTSTR, PCTSTR, PCTSTR)> m_writeString;
+    std::function<UINT(PCTSTR, PCTSTR, int)> m_getInt;
+    std::function<CString(PCTSTR, PCTSTR, PCTSTR)> m_getString;
+    std::function<LSTATUS(HKEY, PCTSTR, DWORD, REGSAM, PHKEY)> m_openKey;
     std::function<LSTATUS(HKEY)> m_closeKey;
 
-    std::function<BOOL(LPCTSTR, LPCTSTR, int)> m_writeIntNoop;
-    std::function<BOOL(LPCTSTR, LPCTSTR, LPCTSTR)> m_writeStringNoop;
-    std::function<UINT(LPCTSTR, LPCTSTR, int)> m_getIntNoop;
-    std::function<CString(LPCTSTR, LPCTSTR, LPCTSTR)> m_getStringNoop;
-    std::function<LSTATUS(HKEY, LPCTSTR, DWORD, REGSAM, PHKEY)> m_openKeyNoop;
+    std::function<BOOL(PCTSTR, PCTSTR, int)> m_writeIntNoop;
+    std::function<BOOL(PCTSTR, PCTSTR, PCTSTR)> m_writeStringNoop;
+    std::function<UINT(PCTSTR, PCTSTR, int)> m_getIntNoop;
+    std::function<CString(PCTSTR, PCTSTR, PCTSTR)> m_getStringNoop;
+    std::function<LSTATUS(HKEY, PCTSTR, DWORD, REGSAM, PHKEY)> m_openKeyNoop;
     std::function<LSTATUS(HKEY)> m_closeKeyNoop;
 };

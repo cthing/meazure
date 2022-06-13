@@ -79,7 +79,7 @@ bool MeaUnitsLabel::SetSize() {
 CString MeaUnitsLabel::ConstructLabel(int unitsId) const {
     CString labelStr;
 
-    labelStr.Format(m_format, static_cast<LPCTSTR>(m_labelsRef.at(unitsId)));
+    labelStr.Format(m_format, static_cast<PCTSTR>(m_labelsRef.at(unitsId)));
     return labelStr;
 }
 

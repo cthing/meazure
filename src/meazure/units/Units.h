@@ -184,14 +184,14 @@ protected:
     ///
     /// @param unitsStr     [in] Name for the units.
     ///
-    explicit MeaUnits(LPCTSTR unitsStr);
+    explicit MeaUnits(PCTSTR unitsStr);
 
     /// Adds the specified identifying name to the list of
     /// precision names.
     ///
     /// @param name     [in] Identifying name for the precision.
     ///
-    void AddPrecisionName(LPCTSTR name) {
+    void AddPrecisionName(PCTSTR name) {
         m_displayPrecisionNames.push_back(name);
     }
 
@@ -257,7 +257,7 @@ protected:
     /// @param unitsId      [in] Identifier for the angular units.
     /// @param unitsStr     [in] Name for the units.
     ///
-    MeaAngularUnits(MeaAngularUnitsId unitsId, LPCTSTR unitsStr);
+    MeaAngularUnits(MeaAngularUnitsId unitsId, PCTSTR unitsStr);
 
 private:
     MeaAngularUnitsId m_unitsId;  ///< Identifier for the units.
@@ -517,7 +517,7 @@ protected:
     /// @param unitsStr       [in] Name for the units.
     /// @param screenProvider [in] Screen information provider
     ///
-    MeaLinearUnits(MeaLinearUnitsId unitsId, LPCTSTR unitsStr, const MeaScreenProvider& screenProvider);
+    MeaLinearUnits(MeaLinearUnitsId unitsId, PCTSTR unitsStr, const MeaScreenProvider& screenProvider);
 
     /// Returns a resolution conversion factor. For most units this is
     /// the same as the values returned by the FromPixels method. However,

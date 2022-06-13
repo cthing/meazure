@@ -21,7 +21,7 @@
 #include "GUID.h"
 
 
-MeaGUID::MeaGUID(LPCTSTR guidStr) {
+MeaGUID::MeaGUID(PCTSTR guidStr) {
     if (guidStr == nullptr) {
         HRESULT hr = CoCreateGuid(&m_guid);
         if (FAILED(hr)) {
@@ -32,7 +32,7 @@ MeaGUID::MeaGUID(LPCTSTR guidStr) {
     }
 }
 
-MeaGUID& MeaGUID::Assign(LPCTSTR guidStr) {
+MeaGUID& MeaGUID::Assign(PCTSTR guidStr) {
     if (guidStr == nullptr) {
         AfxThrowOleException(E_POINTER);
     }

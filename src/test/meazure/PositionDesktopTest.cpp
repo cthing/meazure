@@ -55,7 +55,7 @@ BOOST_FIXTURE_TEST_CASE(TestNoGuidCtor, TestFixture) {
     BOOST_TEST(!desktop.IsInvertY());
     BOOST_TEST(desktop.GetOrigin() == MeaFPoint(0.0, 0.0));
     std::regex guidRegex("[A-Fa-f\\d]{8}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{12}");
-    BOOST_TEST(std::regex_match(static_cast<LPCTSTR>(desktop.GetId().ToString()), guidRegex));
+    BOOST_TEST(std::regex_match(static_cast<PCTSTR>(desktop.GetId().ToString()), guidRegex));
     BOOST_TEST(desktop.GetCustomName() == _T(""));
     BOOST_TEST(desktop.GetCustomAbbrev() == _T(""));
     BOOST_TEST(desktop.GetCustomBasisStr() == _T(""));
@@ -131,7 +131,7 @@ BOOST_FIXTURE_TEST_CASE(TestSaveLoad, TestFixture) {
     BOOST_TEST(!desktop2.IsInvertY());
     BOOST_TEST(desktop2.GetOrigin() == MeaFPoint(2.0, 3.0));
     std::regex guidRegex("[A-Fa-f\\d]{8}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{4}-[A-Fa-f\\d]{12}");
-    BOOST_TEST(std::regex_match(static_cast<LPCTSTR>(desktop2.GetId().ToString()), guidRegex));
+    BOOST_TEST(std::regex_match(static_cast<PCTSTR>(desktop2.GetId().ToString()), guidRegex));
     BOOST_TEST(desktop2.GetCustomName() == _T(""));
     BOOST_TEST(desktop2.GetCustomAbbrev() == _T(""));
     BOOST_TEST(desktop2.GetCustomBasisStr() == _T(""));

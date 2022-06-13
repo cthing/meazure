@@ -28,16 +28,16 @@
 #include <fstream>
 
 
-LPCTSTR MeaProfileMgr::m_ext { _T("mea") };
-LPCTSTR MeaProfileMgr::m_filter { _T("Meazure Profiles (*.mea)|*.mea|All Files (*.*)|*.*||") };
+PCTSTR MeaProfileMgr::m_ext { _T("mea") };
+PCTSTR MeaProfileMgr::m_filter { _T("Meazure Profiles (*.mea)|*.mea|All Files (*.*)|*.*||") };
 
 
 MeaProfileMgr::MeaProfileMgr(token) :
     MeaSingleton_T<MeaProfileMgr>(),
     m_saveDialog(nullptr),
     m_loadDialog(nullptr),
-    m_saveDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_SAVE_PROFILE_DLG)),
-    m_loadDlgTitle(reinterpret_cast<LPCSTR>(IDS_MEA_LOAD_PROFILE_DLG)) {
+    m_saveDlgTitle(reinterpret_cast<PCSTR>(IDS_MEA_SAVE_PROFILE_DLG)),
+    m_loadDlgTitle(reinterpret_cast<PCSTR>(IDS_MEA_LOAD_PROFILE_DLG)) {
     //
     // Set the initial directory for the save/load dialogs to the Profiles
     // subfolder in the application's folder. This can be changed based on
@@ -64,13 +64,13 @@ MeaProfileMgr::~MeaProfileMgr() {
 
 void MeaProfileMgr::SaveProfile(MeaProfile& profile) const {
     if (!profile.UserInitiated()) {
-        profile.WriteStr(_T("LastProfileDir"), static_cast<LPCTSTR>(m_initialDir));
+        profile.WriteStr(_T("LastProfileDir"), static_cast<PCTSTR>(m_initialDir));
     }
 }
 
 void MeaProfileMgr::LoadProfile(MeaProfile& profile) {
     if (!profile.UserInitiated()) {
-        m_initialDir = profile.ReadStr(_T("LastProfileDir"), static_cast<LPCTSTR>(m_initialDir));
+        m_initialDir = profile.ReadStr(_T("LastProfileDir"), static_cast<PCTSTR>(m_initialDir));
     }
 }
 
@@ -117,7 +117,7 @@ void MeaProfileMgr::Load() {
     }
 }
 
-void MeaProfileMgr::Load(LPCTSTR pathname) const {
+void MeaProfileMgr::Load(PCTSTR pathname) const {
     try {
         MeaFileProfile profile(pathname, MeaFileProfile::ProfRead);
 
@@ -132,7 +132,7 @@ void MeaProfileMgr::Load(LPCTSTR pathname) const {
     } catch (MeaXMLParserException&) {
         // Handled by the parser.
     } catch (...) {
-        CString msg(reinterpret_cast<LPCSTR>(IDS_MEA_NO_PROFILE));
+        CString msg(reinterpret_cast<PCSTR>(IDS_MEA_NO_PROFILE));
         MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
     }
 }
@@ -162,13 +162,13 @@ void MeaProfileMgr::Save() {
         } catch (const std::ofstream::failure& e) {
             CString errStr(e.what());
             CString msg;
-            msg.Format(IDS_MEA_NO_SAVE_PROFILE, static_cast<LPCTSTR>(errStr));
+            msg.Format(IDS_MEA_NO_SAVE_PROFILE, static_cast<PCTSTR>(errStr));
             MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
         }
     }
 }
 
-bool MeaProfileMgr::IsProfileFile(LPCTSTR filename) {
+bool MeaProfileMgr::IsProfileFile(PCTSTR filename) {
     TCHAR ext[_MAX_EXT];
     int i = 0;
 

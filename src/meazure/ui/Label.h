@@ -49,7 +49,7 @@ public:
     ///
     /// @return <b>true</b> if the label was created successfully.
     ///
-    bool Create(LPCTSTR label, DWORD style, const POINT& topLeft, CWnd* parentWnd, UINT id = 0xffff);
+    bool Create(PCTSTR label, DWORD style, const POINT& topLeft, CWnd* parentWnd, UINT id = 0xffff);
 
     /// Creates the window for the label. To make the label visible,
     /// add the WS_VISIBLE style or call ShowWindow.

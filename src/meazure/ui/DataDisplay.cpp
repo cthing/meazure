@@ -71,7 +71,7 @@ MeaDataDisplay::~MeaDataDisplay() {}
 
 bool MeaDataDisplay::Create(const POINT& topLeft, CWnd* parentWnd) {
     CRect winRect(topLeft, CSize(5, 5));
-    LPCTSTR winClass = AfxRegisterWndClass(0, nullptr, GetSysColorBrush(COLOR_BTNFACE));
+    PCTSTR winClass = AfxRegisterWndClass(0, nullptr, GetSysColorBrush(COLOR_BTNFACE));
 
     if (!CWnd::CreateEx(WS_EX_CONTROLPARENT, winClass, _T(""), WS_CHILD | WS_VISIBLE, winRect, parentWnd, 0xFFFF)) {
         return false;

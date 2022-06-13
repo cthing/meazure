@@ -29,7 +29,7 @@
 namespace tt = boost::test_tools;
 
 
-LPCTSTR xml1 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
+PCTSTR xml1 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 <elem1>
     <elem2>
         <elem3>Test XML Data Meazure&#x2122;</elem3>
@@ -38,14 +38,14 @@ LPCTSTR xml1 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 </elem1>
 )|");
 
-LPCTSTR xml2 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
+PCTSTR xml2 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE elem1 [
   <!ELEMENT elem1 (#PCDATA)>
 ]>
 <elem1/>
 )|");
 
-LPCTSTR xml3 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
+PCTSTR xml3 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 <elem1>
     <elem2>
         <elem3>Test XML Data</elem3>
@@ -53,7 +53,7 @@ LPCTSTR xml3 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 </elem1>
 )|");
 
-LPCTSTR xml4 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
+PCTSTR xml4 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE elem1 [
   <!ELEMENT elem1 (#PCDATA)>
 ]>
@@ -62,7 +62,7 @@ LPCTSTR xml4 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 </elem1>
 )|");
 
-LPCTSTR xml5 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
+PCTSTR xml5 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE elem1 SYSTEM "https://www.cthing.com/test.dtd">
 <elem1/>
 )|");
@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_CASE(TestParserHandlerNoValidation) {
         bool elem4Start = false;
         bool elem4End = false;
 
-        void StartElement(const CString& container, const CString& elementName, 
+        void StartElement(const CString& container, const CString& elementName,  
                           const MeaXMLAttributes& attrs) override {
             if (elementName == _T("elem1")) {
                 elem1Start = true;
@@ -148,13 +148,13 @@ BOOST_AUTO_TEST_CASE(TestParserHandlerNoValidation) {
 
         void ParsingError(const CString& error, const CString&, int line, int column) override {
             CString msg;
-            msg.Format("%s (%d, %d)", static_cast<LPCTSTR>(error), line, column);
+            msg.Format("%s (%d, %d)", static_cast<PCTSTR>(error), line, column);
             BOOST_FAIL(msg);
         }
 
         void ValidationError(const CString& error, const CString&, int line, int column) override {
             CString msg;
-            msg.Format("%s (%d, %d)", static_cast<LPCTSTR>(error), line, column);
+            msg.Format("%s (%d, %d)", static_cast<PCTSTR>(error), line, column);
             BOOST_FAIL(msg);
         }
     } testHandler;
@@ -297,7 +297,7 @@ BOOST_AUTO_TEST_CASE(TestValidationExternalDTD) {
             BOOST_TEST(CString(fname) == _T("test"));
             BOOST_TEST(CString(ext) == _T(".dtd"));
 
-            LPCSTR dtd = u8"<!ELEMENT elem1 (#PCDATA)>";
+            PCSTR dtd = u8"<!ELEMENT elem1 (#PCDATA)>";
             std::size_t numBytes = strlen(dtd);
             xercesc::MemBufInputSource* source = new xercesc::MemBufInputSource(reinterpret_cast<const XMLByte*>(dtd),
                                                                                 numBytes, "DTD");

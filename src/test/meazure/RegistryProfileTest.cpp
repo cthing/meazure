@@ -39,7 +39,7 @@ struct TestFixture {
 
 
 BOOST_FIXTURE_TEST_CASE(TestCtorNoKey, TestFixture) {
-    mock.m_openKey = [](HKEY key, LPCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) {
+    mock.m_openKey = [](HKEY key, PCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) {
         CString subKey1(_T("Software\\cthing\\RegistryProfileTest\\1.0"));
         CString subKey2(_T("Software\\cthing\\RegistryProfileTest\\2.0"));
 
@@ -60,7 +60,7 @@ BOOST_FIXTURE_TEST_CASE(TestCtorNoKey, TestFixture) {
 BOOST_FIXTURE_TEST_CASE(TestCtorExistingKey, TestFixture) {
     HKEY akey = HKEY_LOCAL_MACHINE;
 
-    mock.m_openKey = [&](HKEY key, LPCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) {
+    mock.m_openKey = [&](HKEY key, PCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result) {
         BOOST_TEST(key == HKEY_CURRENT_USER);
         BOOST_TEST(subKey == CString(_T("Software\\cthing\\RegistryProfileTest\\2.0")));
         BOOST_TEST(options == static_cast<DWORD>(0));
@@ -82,7 +82,7 @@ BOOST_FIXTURE_TEST_CASE(TestCtorExistingKey, TestFixture) {
 
 BOOST_FIXTURE_TEST_CASE(TestWriteBool, TestFixture) {
     CString testKey(_T("test"));
-    mock.m_writeInt = [&](LPCTSTR section, LPCTSTR key, int value) {
+    mock.m_writeInt = [&](PCTSTR section, PCTSTR key, int value) {
         BOOST_TEST(section == CString(_T("2.0")));
         BOOST_TEST(key == testKey);
         BOOST_TEST(value);
@@ -97,7 +97,7 @@ BOOST_FIXTURE_TEST_CASE(TestWriteBool, TestFixture) {
 BOOST_FIXTURE_TEST_CASE(TestWriteInt, TestFixture) {
     CString testKey(_T("test"));
     int testValue = 17;
-    mock.m_writeInt = [&](LPCTSTR section, LPCTSTR key, int value) {
+    mock.m_writeInt = [&](PCTSTR section, PCTSTR key, int value) {
         BOOST_TEST(section == CString(_T("2.0")));
         BOOST_TEST(key == testKey);
         BOOST_TEST(value == testValue);
@@ -114,7 +114,7 @@ BOOST_FIXTURE_TEST_CASE(TestWriteDbl, TestFixture) {
     double testValue = 17.5;
     CString testValueStr;
     testValueStr.Format(_T("%f"), testValue);
-    mock.m_writeString = [&](LPCTSTR section, LPCTSTR key, LPCTSTR value) {
+    mock.m_writeString = [&](PCTSTR section, PCTSTR key, PCTSTR value) {
         BOOST_TEST(section == CString(_T("2.0")));
         BOOST_TEST(key == testKey);
         BOOST_TEST(value == testValueStr);
@@ -129,7 +129,7 @@ BOOST_FIXTURE_TEST_CASE(TestWriteDbl, TestFixture) {
 BOOST_FIXTURE_TEST_CASE(TestWriteStr, TestFixture) {
     CString testKey(_T("test"));
     CString testValue(_T("a value"));
-    mock.m_writeString = [&](LPCTSTR section, LPCTSTR key, LPCTSTR value) {
+    mock.m_writeString = [&](PCTSTR section, PCTSTR key, PCTSTR value) {
         BOOST_TEST(section == CString(_T("2.0")));
         BOOST_TEST(key == testKey);
         BOOST_TEST(value == testValue);
@@ -143,7 +143,7 @@ BOOST_FIXTURE_TEST_CASE(TestWriteStr, TestFixture) {
 
 BOOST_FIXTURE_TEST_CASE(TestReadBool, TestFixture) {
     CString testKey(_T("test"));
-    mock.m_getInt = [&](LPCTSTR section, LPCTSTR key, int defaultValue) {
+    mock.m_getInt = [&](PCTSTR section, PCTSTR key, int defaultValue) {
         BOOST_TEST(section == CString(_T("2.0")));
         BOOST_TEST(key == testKey);
         BOOST_TEST(!defaultValue);
@@ -159,7 +159,7 @@ BOOST_FIXTURE_TEST_CASE(TestReadInt, TestFixture) {
     CString testKey(_T("test"));
     int testDefault = 17;
     UINT testValue = 13;
-    mock.m_getInt = [&](LPCTSTR section, LPCTSTR key, int defaultValue) {
+    mock.m_getInt = [&](PCTSTR section, PCTSTR key, int defaultValue) {
         BOOST_TEST(section == CString(_T("2.0")));
         BOOST_TEST(key == testKey);
         BOOST_TEST(defaultValue == testDefault);
@@ -177,7 +177,7 @@ BOOST_FIXTURE_TEST_CASE(TestReadDbl, TestFixture) {
     double testValue = 13.7;
     CString testValueStr;
     testValueStr.Format(_T("%f"), testValue);
-    mock.m_getString = [&](LPCTSTR section, LPCTSTR key, LPCTSTR defaultValue) {
+    mock.m_getString = [&](PCTSTR section, PCTSTR key, PCTSTR defaultValue) {
         BOOST_TEST(section == CString(_T("2.0")));
         BOOST_TEST(key == testKey);
         BOOST_TEST(defaultValue == CString(_T("")));
@@ -195,7 +195,7 @@ BOOST_FIXTURE_TEST_CASE(TestReadDblDefault, TestFixture) {
     double testValue = 13.7;
     CString testValueStr;
     testValueStr.Format(_T("%f"), testValue);
-    mock.m_getString = [&](LPCTSTR section, LPCTSTR key, LPCTSTR defaultValue) {
+    mock.m_getString = [&](PCTSTR section, PCTSTR key, PCTSTR defaultValue) {
         BOOST_TEST(section == CString(_T("2.0")));
         BOOST_TEST(key == testKey);
         BOOST_TEST(defaultValue == CString(_T("")));
@@ -211,7 +211,7 @@ BOOST_FIXTURE_TEST_CASE(TestReeadStr, TestFixture) {
     CString testKey(_T("test"));
     CString testDefault(_T("test def"));
     CString testValue(_T("something"));
-    mock.m_getString = [&](LPCTSTR section, LPCTSTR key, LPCTSTR defaultValue) {
+    mock.m_getString = [&](PCTSTR section, PCTSTR key, PCTSTR defaultValue) {
         BOOST_TEST(section == CString(_T("2.0")));
         BOOST_TEST(key == testKey);
         BOOST_TEST(defaultValue == testDefault);

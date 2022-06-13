@@ -199,7 +199,7 @@ private:
     ///
     /// @return <b>true</b> if the specified string can be placed in the field.
     ///
-    bool IsValid(LPCTSTR str, int len) const;
+    bool IsValid(PCTSTR str, int len) const;
 
     /// Indicates whether the field has been configured to only accept integer values.
     ///

@@ -52,7 +52,7 @@ namespace MeaStringUtils {
     ///
     /// @return <b>true</b> if string represents a number.
     ///
-    bool IsNumber(LPCTSTR str, double* valuep = nullptr);
+    bool IsNumber(PCTSTR str, double* valuep = nullptr);
 
     /// Tests whether the specified string is a boolean value. For the purpose of this method, the strings "1",
     /// "TRUE", "true" are boolean <b>true</b> values, while "0", "FALSE", "false" are boolean <b>false</b>.
@@ -63,7 +63,7 @@ namespace MeaStringUtils {
     ///
     /// @return <b>true</b> if string represents a boolean value.
     ///
-    bool IsBoolean(LPCTSTR str, bool* valuep = nullptr);
+    bool IsBoolean(PCTSTR str, bool* valuep = nullptr);
 
     /// Converts standalone LF characters into a CR+LF pair. Existing CR+LF pairs in the string are not effected.
     ///

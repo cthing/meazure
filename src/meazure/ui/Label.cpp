@@ -35,7 +35,7 @@ bool MeaLabel::Create(UINT labelID, DWORD style, const POINT& topLeft, CWnd* par
     return Create(label, style, topLeft, parentWnd, id) ? true : false;
 }
 
-bool MeaLabel::Create(LPCTSTR label, DWORD style, const POINT& topLeft,
+bool MeaLabel::Create(PCTSTR label, DWORD style, const POINT& topLeft,
                       CWnd* parentWnd, UINT id) {
     // Have the parent create the window
     //

@@ -153,7 +153,7 @@ public:
     /// @param name     [in] Name to assign the point.
     /// @param pt       [in] Point to be stored in the position.
     ///
-    void AddPoint(LPCTSTR name, const MeaFPoint& pt) { m_points[name] = pt; }
+    void AddPoint(PCTSTR name, const MeaFPoint& pt) { m_points[name] = pt; }
 
     /// Records the specified point as an x1, y1 point.
     /// 

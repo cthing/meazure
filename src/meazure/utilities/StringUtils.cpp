@@ -42,9 +42,9 @@ CString MeaStringUtils::DblToStr(double value) {
     return numStr.Left(idx + 1);
 }
 
-bool MeaStringUtils::IsNumber(LPCTSTR str, double* valuep) {
+bool MeaStringUtils::IsNumber(PCTSTR str, double* valuep) {
     CString vstr(str);
-    LPTSTR endStr;
+    PTSTR endStr;
 
     vstr.TrimLeft();
     vstr.TrimRight();
@@ -65,7 +65,7 @@ bool MeaStringUtils::IsNumber(LPCTSTR str, double* valuep) {
     return true;
 }
 
-bool MeaStringUtils::IsBoolean(LPCTSTR str, bool* valuep) {
+bool MeaStringUtils::IsBoolean(PCTSTR str, bool* valuep) {
     CString vstr(str);
 
     vstr.TrimLeft();

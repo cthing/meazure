@@ -65,8 +65,8 @@ BOOST_FIXTURE_TEST_CASE(TestCtor1, TestFixture) {
 }
 
 BOOST_FIXTURE_TEST_CASE(TestCtor2, TestFixture) {
-    LPCTSTR timestamp = _T("2022 - 05 - 02T05:20 : 12Z");
-    LPCTSTR tool = _T("Tool1");
+    PCTSTR timestamp = _T("2022 - 05 - 02T05:20 : 12Z");
+    PCTSTR tool = _T("Tool1");
     MeaPosition position(ref, tool, timestamp);
 
     BOOST_TEST(position.GetToolName() == tool);
@@ -84,11 +84,11 @@ BOOST_FIXTURE_TEST_CASE(TestCtor2, TestFixture) {
 BOOST_FIXTURE_TEST_CASE(TestProperties, TestFixture) {
     MeaPosition position(ref);
 
-    LPCTSTR tool = _T("Tool2");
+    PCTSTR tool = _T("Tool2");
     position.SetToolName(tool);
     BOOST_TEST(position.GetToolName() == tool);
 
-    LPCTSTR desc = _T("Interesting position");
+    PCTSTR desc = _T("Interesting position");
     position.SetDesc(desc);
     BOOST_TEST(position.GetDesc() == desc);
 }

@@ -81,7 +81,7 @@ void MeaPositionLogDlg::SetDlgTitle() {
     }
 
     CString title;
-    title.Format(IDS_MEA_POSDLG_TITLE, static_cast<LPCTSTR>(pathname));
+    title.Format(IDS_MEA_POSDLG_TITLE, static_cast<PCTSTR>(pathname));
 
     SetWindowText(title);
 }

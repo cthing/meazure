@@ -30,9 +30,9 @@ MeaStatusBar::MeaStatusBar() : CStatusBar() {}
 
 MeaStatusBar::~MeaStatusBar() {}
 
-void MeaStatusBar::SetIdleMessage(LPCTSTR msg) {
+void MeaStatusBar::SetIdleMessage(PCTSTR msg) {
     m_idleMsg = msg;
-    SetPaneText(0, static_cast<LPCTSTR>(msg), TRUE);
+    SetPaneText(0, static_cast<PCTSTR>(msg), TRUE);
 }
 
 LRESULT MeaStatusBar::OnSetText(WPARAM, LPARAM) {

@@ -37,7 +37,7 @@ public:
     /// @param guidStr  [in] String representing a GUID (e.g. "00000000-0000-0000-0000-000000000000").
     ///     If <b>nullptr</b> is specified, a GUID is generated internally.
     ///
-    explicit MeaGUID(LPCTSTR guidStr = nullptr);
+    explicit MeaGUID(PCTSTR guidStr = nullptr);
 
     /// Constructs a GUID based on the specified GUID structure.
     ///
@@ -63,7 +63,7 @@ public:
     /// Assignment operator.
     /// @param guidStr  [in] String representing a GUID.
     /// @return This object.
-    MeaGUID& operator=(const LPCTSTR guidStr) { return Assign(guidStr); }
+    MeaGUID& operator=(const PCTSTR guidStr) { return Assign(guidStr); }
 
     /// Assignment operator.
     /// @param guid     [in] MeaGUID object.
@@ -134,7 +134,7 @@ public:
     /// Assign the specified GUID string to this.
     /// @param guidStr  [in] String representing a GUID.
     /// @return This object.
-    MeaGUID& Assign(LPCTSTR guidStr);
+    MeaGUID& Assign(PCTSTR guidStr);
 
     /// Assign the specified MeaGUID object to this.
     /// @param guid     [in] MeaGUID object to assign.

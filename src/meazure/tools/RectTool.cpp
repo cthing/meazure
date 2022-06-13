@@ -27,9 +27,6 @@
 #include <cassert>
 
 
-const CString MeaRectTool::kToolName(_T("RectTool"));
-
-
 MeaRectTool::MeaRectTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                          const MeaUnitsProvider& unitsProvider) :
     MeaRadioTool(mgr, screenProvider, unitsProvider),
@@ -430,7 +427,7 @@ void MeaRectTool::ColorsChanged() {
     m_rectangle.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-CString MeaRectTool::GetToolName() const {
+PCTSTR MeaRectTool::GetToolName() const {
     return kToolName;
 }
 

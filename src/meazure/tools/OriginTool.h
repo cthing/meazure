@@ -34,10 +34,8 @@
 class MeaOriginTool : public MeaTool {
 
 public:
-    // Defaults
+    static constexpr PCTSTR kToolName = _T("OriginTool");
     static constexpr bool kShowMarker { true }; ///< Indicates whether to show the origin marker by default
-
-    static const CString kToolName;             ///< "OriginTool"
 
 
     /// Constructs a new instance of an Origin marker tool. To use
@@ -102,9 +100,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("OriginTool").
+    /// @return Always "OriginTool". The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Called to notify the tool that the colors in the MeaColors class
     /// have been changed. The origin lines are redrawn in their new colors.

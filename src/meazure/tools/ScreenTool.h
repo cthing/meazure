@@ -31,7 +31,7 @@
 class MeaScreenTool : public MeaTool {
 
 public:
-    static const CString kToolName;     ///< "ScreenTool"
+    static constexpr PCTSTR kToolName = _T("ScreenTool");
 
     /// Constructs a new instance of the Screen information tool. To use
     /// a newly constructed Screen info tool, the Enable() method must be called.
@@ -74,9 +74,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("GridTool").
+    /// @return Always "ScreenTool". The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Provides the tool a position so that it can determine which
     /// display screen's information to provide.

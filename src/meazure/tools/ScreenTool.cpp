@@ -24,9 +24,6 @@
 #include <cassert>
 
 
-const CString MeaScreenTool::kToolName(_T("ScreenTool"));
-
-
 MeaScreenTool::MeaScreenTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                              const MeaUnitsProvider& unitsProvider) :
     MeaTool(mgr, screenProvider, unitsProvider), m_rect(0, 0, 0, 0), m_anyOSRes(true) {
@@ -87,7 +84,7 @@ void MeaScreenTool::Update(MeaUpdateReason reason) {
     }
 }
 
-CString MeaScreenTool::GetToolName() const {
+PCTSTR MeaScreenTool::GetToolName() const {
     return kToolName;
 }
 

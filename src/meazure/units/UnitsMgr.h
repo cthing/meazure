@@ -478,12 +478,17 @@ public:
     MeaFSize GetMinorIncr(const RECT& rect) const override;
 
 private:
-    static const double kTickIncrements[];  ///< Ruler tick increments. The order of magnitude of
-                                            ///< these values is adjusted based on the units.
-    static const int kNumTickIncrements;    ///< Number of tick mark increments in the
-                                            ///< kTickIncrements array.
-    static const int kMinSepPixels;         ///< Minimum separation between ruler tick marks, in pixels.
-    static const double kMinSepInches;      ///< Minimum separation between ruler tick marks, in inches.
+    /// Ruler tick increments. The order of magnitude of these values is adjusted based on the units.
+    static constexpr double kTickIncrements[] = { 10.0, 25.0, 50.0, 75.0, 100.0 };
+
+    /// Number of tick mark increments in the kTickIncrements array.
+    static constexpr int kNumTickIncrements = sizeof(kTickIncrements) / sizeof(*kTickIncrements);
+
+    /// Minimum separation between ruler tick marks, in pixels.
+    static constexpr int kMinSepPixels = 5;
+
+    ///< Minimum separation between ruler tick marks, in inches.
+    static constexpr double kMinSepInches = 0.1;
 
     typedef std::map<MeaLinearUnitsId, MeaLinearUnits*> LinearUnitsMap;     ///< Maps linear units identifiers to the corresponding linear units objects.
     typedef std::map<MeaAngularUnitsId, MeaAngularUnits*> AngularUnitsMap;  ///< Maps angular units identifiers to the corresponding angular units objects.

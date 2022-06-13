@@ -38,7 +38,7 @@
 class MeaRectTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static const CString kToolName;     ///< "RectTool"
+    static constexpr PCTSTR kToolName = _T("RectTool");
 
     /// Constructs a new instance of a Rectangle measurement tool. To use
     /// a newly constructed Rectangle tool, the Enable() method must be called.
@@ -175,9 +175,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("RectTool").
+    /// @return Always "RectTool". The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.

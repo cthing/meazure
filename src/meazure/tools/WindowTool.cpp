@@ -28,9 +28,6 @@
 #include <cassert>
 
 
-const CString MeaWindowTool::kToolName(_T("WindowTool"));
-
-
 MeaWindowTool::MeaWindowTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                              const MeaUnitsProvider& unitsProvider) :
     MeaRadioTool(mgr, screenProvider, unitsProvider),
@@ -209,7 +206,7 @@ void MeaWindowTool::RecordPosition(MeaPosition& position) const {
     position.RecordAngle(m_unitsProvider.ConvertAngle(angle));
 }
 
-CString MeaWindowTool::GetToolName() const {
+PCTSTR MeaWindowTool::GetToolName() const {
     return kToolName;
 }
 

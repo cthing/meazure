@@ -27,9 +27,6 @@
 #include <cassert>
 
 
-const CString   MeaLineTool::kToolName(_T("LineTool"));
-
-
 MeaLineTool::MeaLineTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                          const MeaUnitsProvider& unitsProvider) :
     MeaRadioTool(mgr, screenProvider, unitsProvider),
@@ -411,7 +408,7 @@ void MeaLineTool::ColorsChanged() {
     m_line.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-CString MeaLineTool::GetToolName() const {
+PCTSTR MeaLineTool::GetToolName() const {
     return kToolName;
 }
 

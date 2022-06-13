@@ -39,7 +39,7 @@
 class MeaCircleTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static const CString kToolName;     ///< "CircleTool"
+    static constexpr PCTSTR kToolName = _T("CircleTool");
 
     /// Constructs a new instance of a circle measurement tool. To use
     /// a newly constructed Circle tool, the Enable() method must be called.
@@ -176,9 +176,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("CircleTool").
+    /// @return Always "CircleTool"). The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.

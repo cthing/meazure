@@ -79,12 +79,6 @@ BOOL MeaDimWarnDlg::OnInitDialog() {
 //*************************************************************************
 
 
-const double MeaUnitsMgr::kTickIncrements[] = { 10.0, 25.0, 50.0, 75.0, 100.0 };
-const int MeaUnitsMgr::kNumTickIncrements = sizeof(kTickIncrements) / sizeof(*kTickIncrements);
-const int MeaUnitsMgr::kMinSepPixels = 5;
-const double MeaUnitsMgr::kMinSepInches = 0.1;
-
-
 MeaUnitsMgr::MeaUnitsMgr(token) :
     MeaSingleton_T<MeaUnitsMgr>(),
     m_pixelUnits(MeaScreenMgr::Instance()),

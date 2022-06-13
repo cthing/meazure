@@ -122,7 +122,7 @@ protected:
     afx_msg LRESULT OnHPTimer(WPARAM wParam, LPARAM lParam);
 
 private:
-    static const CSize  kMargin;        ///< Padding around the circle, in pixels
+    static constexpr SIZE kMargin { 1, 1 };        ///< Padding around the circle, in pixels
 
 
     /// Copy constructor is purposely undefined.

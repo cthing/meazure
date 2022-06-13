@@ -27,9 +27,6 @@
 #include <cassert>
 
 
-const CString   MeaCircleTool::kToolName(_T("CircleTool"));
-
-
 MeaCircleTool::MeaCircleTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                              const MeaUnitsProvider& unitsProvider) :
     MeaRadioTool(mgr, screenProvider, unitsProvider),
@@ -467,7 +464,7 @@ void MeaCircleTool::ColorsChanged() {
     m_line.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-CString MeaCircleTool::GetToolName() const {
+PCTSTR MeaCircleTool::GetToolName() const {
     return kToolName;
 }
 

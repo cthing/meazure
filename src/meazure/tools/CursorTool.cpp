@@ -28,9 +28,6 @@
 #include <cassert>
 
 
-const CString MeaCursorTool::kToolName(_T("CursorTool"));
-
-
 MeaCursorTool::MeaCursorTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                              const MeaUnitsProvider& unitsProvider) :
     MeaRadioTool(mgr, screenProvider, unitsProvider),
@@ -170,7 +167,7 @@ void MeaCursorTool::RecordPosition(MeaPosition& position) const {
     position.RecordXY1(m_unitsProvider.ConvertCoord(m_cursorPos));
 }
 
-CString MeaCursorTool::GetToolName() const {
+PCTSTR MeaCursorTool::GetToolName() const {
     return kToolName;
 }
 

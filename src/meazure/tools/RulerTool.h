@@ -34,10 +34,8 @@
 class MeaRulerTool : public MeaTool, public MeaRulerCallback {
 
 public:
-    // Defaults
-    //
     static constexpr bool kShowRulers { false };    ///< Indicates if the rulers are shown by default
-    static const CString kToolName;                 ///< "RulerTool"
+    static constexpr PCTSTR kToolName = _T("RulerTool");
 
     /// Constructs a new instance of the Ruler tool. To use a
     /// newly constructed Ruler tool, the Enable() method must be
@@ -92,9 +90,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("RulerTool").
+    /// @return Always "RulerTool". The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Returns the tool's current position which, for the Ruler tool,
     /// is always the position (0, 0).

@@ -24,9 +24,6 @@
 #include <cassert>
 
 
-const CString MeaOriginTool::kToolName(_T("OriginTool"));
-
-
 MeaOriginTool::MeaOriginTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                              const MeaUnitsProvider& unitsProvider) : 
     MeaTool(mgr, screenProvider, unitsProvider) {}
@@ -132,7 +129,7 @@ void MeaOriginTool::ColorsChanged() {
     m_yAxis.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-CString MeaOriginTool::GetToolName() const {
+PCTSTR MeaOriginTool::GetToolName() const {
     return kToolName;
 }
 

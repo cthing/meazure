@@ -38,7 +38,7 @@
 class MeaLineTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static const CString kToolName;     ///< "LineTool"
+    static constexpr PCTSTR kToolName = _T("LineTool");
 
     /// Constructs a new instance of a line measurement tool. To use
     /// a newly constructed Line tool, the Enable() method must be called.
@@ -160,9 +160,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("LineTool").
+    /// @return Always "LineTool". The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.

@@ -33,7 +33,7 @@
 class MeaCursorTool : public MeaRadioTool {
 
 public:
-    static const CString kToolName;     ///< "CursorTool"
+    static constexpr PCTSTR kToolName = _T("CursorTool");
 
     /// Constructs a new instance of a cursor position measurement tool.
     /// To use a newly constructed Cursor tool, the Enable() method must
@@ -97,9 +97,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("CursorTool").
+    /// @return Always "CursorTool". The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.

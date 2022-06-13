@@ -28,9 +28,6 @@
 #include <cassert>
 
 
-const CString   MeaAngleTool::kToolName(_T("AngleTool"));
-
-
 MeaAngleTool::MeaAngleTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                            const MeaUnitsProvider& unitsProvider) :
     MeaRadioTool(mgr, screenProvider, unitsProvider),
@@ -508,7 +505,7 @@ void MeaAngleTool::ColorsChanged() {
     m_lineB.SetColor(MeaColors::Get(MeaColors::LineFore));
 }
 
-CString MeaAngleTool::GetToolName() const {
+PCTSTR MeaAngleTool::GetToolName() const {
     return kToolName;
 }
 

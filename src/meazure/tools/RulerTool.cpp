@@ -23,9 +23,6 @@
 #include <cassert>
 
 
-const CString   MeaRulerTool::kToolName(_T("RulerTool"));
-
-
 MeaRulerTool::MeaRulerTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                            const MeaUnitsProvider& unitsProvider) :
     MeaTool(mgr, screenProvider, unitsProvider), MeaRulerCallback() {
@@ -176,7 +173,7 @@ void MeaRulerTool::Update(MeaUpdateReason reason) {
     }
 }
 
-CString MeaRulerTool::GetToolName() const {
+PCTSTR MeaRulerTool::GetToolName() const {
     return kToolName;
 }
 

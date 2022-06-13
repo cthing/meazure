@@ -27,8 +27,6 @@
 #include <functional>
 
 
-const CSize MeaLine::kMargin(5, 5);
-
 int* MeaLine::m_varr = nullptr;
 
 

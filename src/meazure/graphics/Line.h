@@ -127,7 +127,7 @@ private:
     };
 
 
-    static const CSize  kMargin;    ///< Padding around line bounding rectangle, in pixels
+    static constexpr SIZE kMargin { 5, 5 };    ///< Padding around line bounding rectangle, in pixels
 
 
     /// Copy constructor is purposely undefined.

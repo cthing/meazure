@@ -27,9 +27,6 @@
 #include <cassert>
 
 
-const CString MeaPointTool::kToolName(_T("PointTool"));
-
-
 MeaPointTool::MeaPointTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                            const MeaUnitsProvider& unitsProvider) :
     MeaRadioTool(mgr, screenProvider, unitsProvider),
@@ -274,7 +271,7 @@ void MeaPointTool::ColorsChanged() {
     m_dataWin.SetOpacity(MeaColors::GetA(MeaColors::CrossHairOpacity));
 }
 
-CString MeaPointTool::GetToolName() const {
+PCTSTR MeaPointTool::GetToolName() const {
     return kToolName;
 }
 

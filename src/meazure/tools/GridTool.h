@@ -140,15 +140,13 @@ private:
 class MeaGridTool : public MeaTool {
 
 public:
-    // Defaults
-    //
+    static constexpr PCTSTR kToolName = _T("GridTool");
     static constexpr int kDefMinSpacing { 10 };         ///< Minimum allowable grid spacing in pixels
     static constexpr int kDefMaxSpacing { 4000 };       ///< Maximum allowable grid spacing in pixels
     static constexpr int kDefDefaultSpacing { 100 };    ///< Default grid spacing in pixels
     static constexpr bool kDefGrid { false };           ///< Default grid display state
     static constexpr bool kDefLinked { true };          ///< Default spacing link state
 
-    static const CString kToolName;                     ///< "GridTool"
 
     /// Constructs a new instance of the Grid overlay tool. To use
     /// a newly constructed Grid tool, the Enable() method must be called.
@@ -210,9 +208,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("GridTool").
+    /// @return Always "GridTool". The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Returns the tool's current position which, for the Grid tool,
     /// is always the position (0, 0).

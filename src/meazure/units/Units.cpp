@@ -509,9 +509,6 @@ MeaFSize MeaMillimeterUnits::FromPixels(const MeaFSize& res) const {
 // MeaCustomUnits
 //*************************************************************************
 
-const double MeaCustomUnits::kDefScaleFactor = 1.0;
-const MeaCustomUnits::ScaleBasis MeaCustomUnits::kDefScaleBasis = MeaCustomUnits::PixelBasis;
-
 
 MeaCustomUnits::MeaCustomUnits(const MeaScreenProvider& screenProvider, ChangeLabelFunc changeLabelFunc) :
     MeaLinearUnits(MeaCustomId, _T("custom"), screenProvider),

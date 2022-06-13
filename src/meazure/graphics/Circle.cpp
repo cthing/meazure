@@ -26,9 +26,6 @@
 #include <functional>
 
 
- // Padding around circle
-const CSize MeaCircle::kMargin(1, 1);
-
 int* MeaCircle::m_varr { nullptr };
 
 

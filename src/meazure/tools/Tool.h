@@ -119,9 +119,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool
+    /// @return Name of the tool. Will never be nullptr and the memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const = 0;
+    virtual PCTSTR GetToolName() const = 0;
 
     /// Persists the state of the tool to the specified profile object.
     /// This base class implementation does nothing.

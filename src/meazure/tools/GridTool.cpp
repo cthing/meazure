@@ -24,9 +24,6 @@
 #include <cassert>
 
 
-const CString MeaGridTool::kToolName(_T("GridTool"));
-
-
 MeaGridTool::MeaGridTool(MeaToolMgr& mgr, const MeaScreenProvider& screenProvider,
                          const MeaUnitsProvider& unitsProvider) :
     MeaTool(mgr, screenProvider, unitsProvider),
@@ -140,7 +137,7 @@ void MeaGridTool::UpdateV() {
     }
 }
 
-CString MeaGridTool::GetToolName() const {
+PCTSTR MeaGridTool::GetToolName() const {
     return kToolName;
 }
 

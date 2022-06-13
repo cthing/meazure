@@ -40,7 +40,7 @@
 class MeaAngleTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static const CString kToolName;     ///< "AngleTool"
+    static constexpr PCTSTR kToolName = _T("AngleTool");
 
     /// Constructs a new instance of an angle measurement tool. To use
     /// a newly constructed Angle tool, the Enable() method must be called.
@@ -162,9 +162,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("AngleTool").
+    /// @return Always "AngleTool". The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.

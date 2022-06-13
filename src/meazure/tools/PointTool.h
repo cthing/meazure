@@ -34,7 +34,7 @@
 class MeaPointTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static const CString kToolName;     ///< "PointTool"
+    static constexpr PCTSTR kToolName = _T("PointTool");
 
     /// Constructs a new instance of a Point measurement tool. To use
     /// a newly constructed Point tool, the Enable() method must be called.
@@ -154,9 +154,9 @@ public:
     /// which is used to identify the tool in profiles and position
     /// logs.
     ///
-    /// @return Name of the tool ("PointTool").
+    /// @return Always "PointTool". The memory for the string is owned by the tool.
     ///
-    virtual CString GetToolName() const override;
+    virtual PCTSTR GetToolName() const override;
 
     /// Returns a resource ID for the string used to label this
     /// tool on the data display.

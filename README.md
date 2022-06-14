@@ -62,6 +62,9 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 - A more readable font is used for all dialogs
 
+- Fix: The Position log save dialog once again displays a text fields for specifying a title and description for
+  the log file.
+
 - Fix: Position log DTD defined the type for the desktop identifier and its references as ID and IDREF respectively.
   This was incorrect because the identifier is a GUID, which can start with a number and that is not allowed for an
   ID. The type has been changed to NMTOKEN, which allows a leading digit. Because the type is a superset of ID and

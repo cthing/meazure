@@ -173,6 +173,8 @@
 #define IDC_MEA_ORIGIN_MARKER           1178
 #define IDC_MASTER_RESET                1179
 #define IDC_CONTRIBUTE                  1182
+#define IDC_LOG_TITLE_LABEL             1183
+#define IDC_LOG_DESC_LABEL              1184
 #define ID_MEA_CURSOR                   32771
 #define ID_MEA_POINT                    32772
 #define ID_MEA_LINE                     32773
@@ -406,7 +408,7 @@
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        168
 #define _APS_NEXT_COMMAND_VALUE         32852
-#define _APS_NEXT_CONTROL_VALUE         1183
+#define _APS_NEXT_CONTROL_VALUE         1185
 #define _APS_NEXT_SYMED_VALUE           129
 #endif
 #endif

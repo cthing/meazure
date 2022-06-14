@@ -724,13 +724,17 @@
 1. Enter descriptions for a number of the positions
 1. Press the ***Save*** button
 1. Verify that the Position save dialog is displayed
-1. Enter a description for the positions and a filename
+1. Enter a filename
+1. Enter a title for the positions
+1. Enter a description for the positions
 1. Save the positions
 1. Close the position management dialog
 1. Close the Meazure program
 1. Examine the saved file and verify that its contents are valid XML and have valid data
 1. Run the Meazure program
 1. On the ***File*** menu select the ***Load Positions*** item
+1. Verify that the title is the one specified when the log file was saved
+1. Verify that the description is the one specified when the log file was saved
 1. Verify that the Position Management dialog is displayed and that the positions correspond 
    to those originally saved
 1. Verify that the positions recorded using the Cursor Tool are now displayed using the Point Tool

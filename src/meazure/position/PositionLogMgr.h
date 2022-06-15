@@ -26,6 +26,7 @@
 #include "PositionCollection.h"
 #include "PositionScreen.h"
 #include "PositionDesktop.h"
+#include "PositionProvider.h"
 #include <meazure/units/Units.h>
 #include <meazure/units/UnitsProvider.h>
 #include <meazure/utilities/Geometry.h>
@@ -52,6 +53,7 @@ class MeaPositionLogObserver;
 class MeaPositionLogMgr :
     public MeaXMLParserHandler,
     public MeaPositionDesktopRefCounter,
+    public MeaPositionProvider,
     public MeaSingleton_T<MeaPositionLogMgr> {
 
 public:
@@ -94,11 +96,11 @@ public:
     ///
     unsigned int NumPositions() const { return m_positions.Size(); }
 
-    /// Indicates if new positions have been recorded or the information
-    /// associated with a position has changed since the last time the
-    /// positions were saved in the log file.
-    ///
-    bool IsModified() const { return m_modified; }
+    /// Returns the recorded positions.
+    /// 
+    /// @return Recorded positions.
+    ///  
+    const MeaPositionCollection& GetPositions() const override { return m_positions; }
 
     /// Returns the position object at the specified index.
     ///
@@ -106,7 +108,25 @@ public:
     ///
     /// @return Position at the specified index.
     ///
-    MeaPosition& GetPosition(int posIndex) { return m_positions.Get(posIndex); }
+    MeaPosition& GetPosition(int posIndex) const { return m_positions.Get(posIndex); }
+
+    /// Returns the title for the position log.
+    /// 
+    /// @return Title for the position log.
+    ///  
+    const CString& GetTitle() const override { return m_title; }
+
+    /// Returns the description for the position log.
+    /// 
+    /// @return Description for the position log.
+    ///  
+    const CString& GetDescription() const override { return m_desc; }
+
+    /// Indicates if new positions have been recorded or the information
+    /// associated with a position has changed since the last time the
+    /// positions were saved in the log file.
+    ///
+    bool IsModified() const { return m_modified; }
 
     /// Works with the tool manager to set the radio tool and
     /// its position based on the specified position in the list.
@@ -195,11 +215,30 @@ public:
     ///
     static bool IsPositionFile(PCTSTR filename);
 
+    /// Returns the URL for the current position log file DTD.
+    /// 
+    /// @return Position log DTD URL.
+    /// 
+    PCTSTR GetCurrentDtdUrl() const override { return kCurrentDtdUrl; }
+
+    /// Returns a list of desktop information objects that are currently referenced by recorded positions.
+    /// 
+    /// @return List of desktop information objects.
+    PositionDesktops GetReferencedDesktops() const override {
+        PositionDesktops desktops;
+        for (const auto& refCountEntry : m_refCountMap) {
+            const MeaPositionDesktop& desktop = GetDesktopInfo(refCountEntry.first);
+            desktops.push_back(desktop);
+        }
+        return desktops;
+    }
+
 private:
-    typedef std::map<MeaGUID, MeaPositionDesktop, MeaGUID::less> DesktopInfoMap;   ///< Maps GUID to a desktop information object.
-    typedef std::map<MeaGUID, int, MeaGUID::less> RefCountMap;              ///< Maps a GUID to a reference count.
+    typedef std::map<MeaGUID, MeaPositionDesktop, MeaGUID::less> DesktopInfoMap; ///< Maps GUID to a desktop information object.
+    typedef std::map<MeaGUID, int, MeaGUID::less> RefCountMap;                   ///< Maps a GUID to a reference count.
 
 
+    static constexpr PCTSTR kCurrentDtdUrl = _T("https://www.cthing.com/dtd/PositionLog1.dtd");
     static constexpr int kChunkSize { 1024 };       ///< Log file parsing buffer allocation increment.
     static constexpr PCTSTR kExt { _T("mpl") };    ///< Log file suffix.
     static constexpr PCTSTR kFilter { _T("Meazure Position Log Files (*.mpl)|*.mpl|All Files (*.*)|*.*||") };  ///< File dialog filter string.
@@ -220,24 +259,6 @@ private:
     /// Called when the position management dialog is destroyed.
     ///
     void ManageDlgDestroyed() { m_manageDialog = nullptr; }
-
-    /// Writes the general information section of the position log file.
-    /// 
-    /// @param writer       [in] XML file writer.
-    /// 
-    void WriteInfoSection(MeaXMLWriter& writer);
-
-    /// Writes the desktop information section of the position log file.
-    /// 
-    /// @param writer       [in] XML file writer.
-    /// 
-    void WriteDesktopsSection(MeaXMLWriter& writer);
-
-    /// Writes the positions section of the position log file.
-    /// 
-    /// @param writer       [in] XML file writer.
-    /// 
-    void WritePositionsSection(MeaXMLWriter& writer);
 
     /// Handles the top level elements of the log file DOM and
     /// supervises the processing of the lower level elements.
@@ -277,7 +298,7 @@ private:
     ///
     /// @return Desktop information object corresponding to the ID.
     ///
-    MeaPositionDesktop& GetDesktopInfo(const MeaGUID& id);
+    const MeaPositionDesktop& GetDesktopInfo(const MeaGUID& id) const;
 
     /// Increments the reference count for the specified desktop
     /// information object.
@@ -307,7 +328,7 @@ private:
     MeaPositionLogObserver* m_observer; ///< Position log manager observer.
     DesktopInfoMap m_desktopInfoMap;    ///< Desktop information objects
     RefCountMap m_refCountMap;          ///< Desktop information object reference count.
-    MeaPositionCollection m_positions;              ///< Recorded positions.
+    MeaPositionCollection m_positions;  ///< Recorded positions.
     MeaPositionSaveDlg* m_saveDialog;   ///< Position log file save dialog.
     CFileDialog* m_loadDialog;          ///< Position log file open dialog.
     CString m_saveDlgTitle;             ///< Title for the file save dialog.

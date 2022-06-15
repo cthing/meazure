@@ -44,7 +44,7 @@ void MeaPositionCollection::Set(int posIndex, MeaPosition* position) {
     (*iter).second = position;
 }
 
-MeaPosition& MeaPositionCollection::Get(int posIndex) {
+MeaPosition& MeaPositionCollection::Get(int posIndex) const {
     PositionMap::const_iterator iter = m_posMap.find(posIndex);
     if (iter == m_posMap.end()) {
         throw std::out_of_range("Positions::Get posIndex out of range");

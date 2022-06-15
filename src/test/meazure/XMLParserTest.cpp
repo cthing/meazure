@@ -67,6 +67,16 @@ PCTSTR xml5 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
 <elem1/>
 )|");
 
+PCTSTR xml6 = _T(R"|(<?xml version="1.0" encoding="UTF-8"?>
+<elem1>
+    <elem2>
+        <elem3>Test XML Data Meazure&#x2122;</elem3>
+        <elem4 attr1="abc" attr2="1" attr3="2.5" attr4="true"/>
+        <elem4 attr1="def"/>
+    </elem2>
+</elem1>
+)|");
+
 
 BOOST_AUTO_TEST_CASE(TestParserHandlerNoValidation) {
 
@@ -175,7 +185,7 @@ BOOST_AUTO_TEST_CASE(TestParserHandlerNoValidation) {
 
 BOOST_AUTO_TEST_CASE(TestDOMNoValidation) {
     MeaXMLParser parser;
-    parser.ParseString(xml1);
+    parser.ParseString(xml6);
 
     const MeaXMLNode* elem1 = parser.GetDOM();
     BOOST_TEST(elem1);
@@ -198,6 +208,8 @@ BOOST_AUTO_TEST_CASE(TestDOMNoValidation) {
     BOOST_TEST(elem2->GetData() == _T("elem2"));
     BOOST_TEST(!elem2->HasAttributes());
 
+    BOOST_TEST(elem2->FindChildElements(_T("elem4")).size() == 2);
+
     children = elem2->GetChildIter();
     BOOST_TEST(!elem2->AtEnd(children));
 
@@ -207,18 +219,13 @@ BOOST_AUTO_TEST_CASE(TestDOMNoValidation) {
         BOOST_TEST(!elem1->AtEnd(children));
     }
 
-    const MeaXMLNode* elem3 = *children++;
+    const MeaXMLNode* elem3 = *children;
     BOOST_TEST(elem3->GetData() == _T("elem3"));
     BOOST_TEST(!elem3->HasAttributes());
     BOOST_TEST(elem3->GetChildData() == _T("Test XML Data Meazure\x99"));
 
     // elem4
-    while ((*children)->GetType() != MeaXMLNode::Type::Element) {
-        children++;
-        BOOST_TEST(!elem1->AtEnd(children));
-    }
-
-    const MeaXMLNode* elem4 = *children++;
+    const MeaXMLNode* elem4 = elem2->FindChildElement(_T("elem4"));
     BOOST_TEST(elem4->GetData() == _T("elem4"));
     BOOST_TEST(elem4->HasAttributes());
 

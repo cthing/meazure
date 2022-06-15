@@ -76,6 +76,19 @@ ADD_MEAZURE_TEST(PositionDesktopTest ColorsTest
                  ${APP_DIR}/utilities/StringUtils.cpp
                  ${APP_DIR}/position/PositionDesktop.cpp
                  ${APP_DIR}/position/PositionScreen.cpp)
+ADD_MEAZURE_TEST(PositionLogWriterTest ColorsTest
+                 ${APP_DIR}/position/PositionLogWriter.cpp
+                 ${APP_DIR}/position/PositionDesktop.cpp
+                 ${APP_DIR}/position/PositionScreen.cpp
+                 ${APP_DIR}/position/Position.cpp
+                 ${APP_DIR}/position/PositionCollection.cpp
+                 ${APP_DIR}/units/Units.cpp
+                 ${APP_DIR}/xml/XMLParser.cpp
+                 ${APP_DIR}/xml/XMLWriter.cpp
+                 ${APP_DIR}/utilities/GUID.cpp
+                 ${APP_DIR}/utilities/TimeStamp.cpp
+                 ${APP_DIR}/utilities/StringUtils.cpp
+                 ${APP_DIR}/VersionInfo.cpp)
 ADD_MEAZURE_TEST(PositionScreenTest ColorsTest
                  ${APP_DIR}/units/Units.cpp
                  ${APP_DIR}/xml/XMLParser.cpp

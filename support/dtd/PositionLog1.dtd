@@ -227,7 +227,7 @@
 
 <!--
     A position contains the points that comprise the tool location.
-    The position element always references a dekstop element that
+    The position element always references a desktop element that
     provides the context in which the position was recorded
     (e.g. resolutions). The position element also identifies the
     measurement tool whose location is being recorded.

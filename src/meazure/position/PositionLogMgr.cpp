@@ -22,10 +22,9 @@
 #include "PositionLogMgr.h"
 #include "PositionLogDlg.h"
 #include "PositionSaveDlg.h"
+#include "PositionLogWriter.h"
 #include <meazure/tools/ToolMgr.h>
 #include <meazure/tools/Tool.h>
-#include <meazure/VersionInfo.h>
-#include <meazure/utilities/TimeStamp.h>
 #include <meazure/utilities/NumericUtils.h>
 #include <meazure/utilities/Geometry.h>
 #include <meazure/utilities/StringUtils.h>
@@ -254,8 +253,8 @@ MeaPositionDesktopRef MeaPositionLogMgr::RecordDesktopInfo() {
     return MeaPositionDesktopRef(this, desktopInfo);
 }
 
-MeaPositionDesktop& MeaPositionLogMgr::GetDesktopInfo(const MeaGUID& id) {
-    DesktopInfoMap::iterator iter = m_desktopInfoMap.find(id);
+const MeaPositionDesktop& MeaPositionLogMgr::GetDesktopInfo(const MeaGUID& id) const {
+    DesktopInfoMap::const_iterator iter = m_desktopInfoMap.find(id);
     assert(iter != m_desktopInfoMap.end());  // Validator ensures this
     return (*iter).second;
 }
@@ -346,19 +345,10 @@ bool MeaPositionLogMgr::Save(bool askPathname) {
         m_writeStream.open(MeaStringUtils::ACPtoUTF8(m_pathname), std::ios::out | std::ios::trunc);
 
         MeaXMLWriter writer(m_writeStream);
-        writer.StartDocument();
+        MeaPositionLogWriter positionWriter(writer, *this);
 
-        writer.Doctype(_T("positionLog"), _T("https://www.cthing.com/dtd/PositionLog1.dtd"));
+        positionWriter.Save();
 
-        writer.StartElement(_T("positionLog"))
-            .AddAttribute(_T("version"), MeaVersionInfo::Instance().GetLogFileMajor());
-
-        WriteInfoSection(writer);
-        WriteDesktopsSection(writer);
-        WritePositionsSection(writer);
-
-        writer.EndElement();        // positionLog
-        writer.EndDocument();
         Close();
     } catch (const std::ofstream::failure& e) {
         Close();
@@ -535,51 +525,6 @@ void MeaPositionLogMgr::ProcessPositionNode(const MeaXMLNode* positionNode) {
         msg.Format(IDS_MEA_INVALID_DESKTOPREF, static_cast<PCTSTR>(idStr));
         MessageBox(*AfxGetMainWnd(), msg, nullptr, MB_OK | MB_ICONERROR);
     }
-}
-
-void MeaPositionLogMgr::WriteInfoSection(MeaXMLWriter& writer) {
-    TCHAR nameBuffer[MAX_COMPUTERNAME_LENGTH + 1];
-    DWORD size = MAX_COMPUTERNAME_LENGTH + 1;
-
-    GetComputerName(nameBuffer, &size);
-
-    writer.StartElement(_T("info"));
-
-    writer.StartElement(_T("title"))
-        .Characters(m_title)
-        .EndElement();
-    writer.StartElement(_T("created"))
-        .AddAttribute(_T("date"), MeaTimeStamp::Make(time(nullptr)))
-        .EndElement();
-    writer.StartElement(_T("generator"))
-        .AddAttribute(_T("name"), AfxGetAppName())
-        .AddAttribute(_T("version"), MeaVersionInfo::Instance().GetProductVersion())
-        .AddAttribute(_T("build"), MeaVersionInfo::Instance().GetProductBuild())
-        .EndElement();
-    writer.StartElement(_T("machine"))
-        .AddAttribute(_T("name"), nameBuffer)
-        .EndElement();
-    if (!m_desc.IsEmpty()) {
-        writer.StartElement(_T("desc"))
-            .Characters(m_desc)
-            .EndElement();
-    }
-    
-    writer.EndElement();    // info
-}
-
-void MeaPositionLogMgr::WriteDesktopsSection(MeaXMLWriter& writer) {
-    writer.StartElement(_T("desktops"));
-    for (const auto& refCountEntry : m_refCountMap) {
-        GetDesktopInfo(refCountEntry.first).Save(writer);
-    }
-    writer.EndElement();    // desktops
-}
-
-void MeaPositionLogMgr::WritePositionsSection(MeaXMLWriter& writer) {
-    writer.StartElement(_T("positions"));
-    m_positions.Save(writer);
-    writer.EndElement();    // positions
 }
 
 xercesc::InputSource* MeaPositionLogMgr::ResolveEntity(const CString& pathname) {

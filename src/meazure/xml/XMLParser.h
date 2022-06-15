@@ -135,8 +135,9 @@ protected:
 class MeaXMLNode {
 
 public:
-    typedef std::list<MeaXMLNode*>      NodeList;       ///< Represents a list of DOM nodes.
-    typedef NodeList::const_iterator    NodeIter_c;     ///< Constant iterator over the DOM nodes.
+    typedef std::list<MeaXMLNode*> NodeList;            ///< Represents a list of DOM nodes.
+    typedef std::list<const MeaXMLNode*> NodeList_c;    ///< Represents a list of DOM nodes.
+    typedef NodeList::const_iterator NodeIter_c;        ///< Constant iterator over the DOM nodes.
 
     /// Indicates the type of the DOM node.
     ///
@@ -246,6 +247,35 @@ public:
     /// @return <b>true</b> if the iterator has reached the end of the list of children nodes.
     ///
     bool AtEnd(const NodeIter_c& iter) const { return iter == m_children.end(); }
+
+    /// Attempts to find the specified child element.
+    /// 
+    /// @param elementName      [in] Name of the element to find
+    /// @return The first child element with the specified name or nullptr if not found.
+    /// 
+    const MeaXMLNode* FindChildElement(PCTSTR elementName) const {
+        for (const MeaXMLNode* node : m_children) {
+            if (node->GetType() == Type::Element && node->GetData() == elementName) {
+                return node;
+            }
+        }
+        return nullptr;
+    }
+
+    /// Attempts to find the specified child elements.
+    /// 
+    /// @param elementName      [in] Name of the elements to find
+    /// @return All child elements with the specified name or an empty list if not found.
+    /// 
+    NodeList_c FindChildElements(PCTSTR elementName) const {
+        std::list<const MeaXMLNode*> nodes;
+        for (const MeaXMLNode* node : m_children) {
+            if (node->GetType() == Type::Element && node->GetData() == elementName) {
+                nodes.push_back(node);
+            }
+        }
+        return nodes;
+    }
 
     friend std::ostream& operator<<(std::ostream& os, const MeaXMLNode& node);
 

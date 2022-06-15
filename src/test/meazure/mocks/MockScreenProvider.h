@@ -20,6 +20,9 @@
 #include <meazure/ui/ScreenProvider.h>
 #include <meazure/units/Units.h>
 
+class MeaScreenProvider::Screen {};
+
+
 class MockScreenProvider : public MeaScreenProvider {
 
 public:
@@ -27,6 +30,9 @@ public:
         m_center = m_rect.CenterPoint();
         m_res.cx = 96.0;
         m_res.cy = 96.0;
+
+        Screen* screen = new Screen();
+        m_screens[reinterpret_cast<HMONITOR>(10)] = screen;
     }
 
     virtual int GetNumScreens() const override {

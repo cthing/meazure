@@ -76,6 +76,9 @@ set(POSITION_SRCS
     position/PositionLogMgr.cpp
     position/PositionLogMgr.h
     position/PositionLogObserver.h
+    position/PositionLogWriter.cpp
+    position/PositionLogWriter.h
+    position/PositionProvider.h
     position/PositionSaveDlg.cpp
     position/PositionSaveDlg.h
     position/PositionScreen.cpp

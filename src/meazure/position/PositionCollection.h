@@ -73,7 +73,7 @@ public:
     ///         collection.
     /// @throws std::out_of_range if the specified position is out of bounds
     ///
-    MeaPosition& Get(int posIndex);
+    MeaPosition& Get(int posIndex) const;
 
     /// Removes the position object from the specified location in the
     /// collection and destroys the object.

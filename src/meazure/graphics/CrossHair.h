@@ -264,8 +264,8 @@ private:
         Inverted    ///< Draw the crosshair in its inverted appearance.
     };
 
-    static constexpr int kPetalLayers = { 5 };
-    static constexpr int kTotalLayers = { 4 * kPetalLayers };
+    static constexpr int kPetalLayers { 5 };
+    static constexpr int kTotalLayers { 4 * kPetalLayers };
 
     static constexpr std::array<int, kTotalLayers> MakeNumCoords() noexcept {
         std::array<int, kTotalLayers> arr {};

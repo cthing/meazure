@@ -60,8 +60,8 @@ public:
 protected:
     DECLARE_MESSAGE_MAP()
 
-    static constexpr int kFilenameComboId = 1148;   ///< Identifier of CFildDialog filename combo control.
-    static constexpr int kFilenameLabelId = 1090;   ///< Identifier of CFileDialog filename label control.
+    static constexpr int kFilenameComboId { 1148 };     ///< Identifier of CFildDialog filename combo control.
+    static constexpr int kFilenameLabelId { 1090 };     ///< Identifier of CFileDialog filename label control.
 
 
     /// Called to set the size and position of dialog items. We are using the method to properly position

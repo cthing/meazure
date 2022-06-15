@@ -813,8 +813,8 @@ public:
     };
 
 
-    static constexpr double kDefScaleFactor = 1.0;                              ///< Default scale factor.
-    static constexpr ScaleBasis kDefScaleBasis = MeaCustomUnits::PixelBasis;    ///< Default basis for the custom units.
+    static constexpr double kDefScaleFactor { 1.0 };                              ///< Default scale factor.
+    static constexpr ScaleBasis kDefScaleBasis { MeaCustomUnits::PixelBasis };    ///< Default basis for the custom units.
 
 
     /// Constructs custom units.

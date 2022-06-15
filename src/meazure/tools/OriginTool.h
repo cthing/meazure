@@ -34,7 +34,7 @@
 class MeaOriginTool : public MeaTool {
 
 public:
-    static constexpr PCTSTR kToolName = _T("OriginTool");
+    static constexpr PCTSTR kToolName { _T("OriginTool") };
     static constexpr bool kShowMarker { true }; ///< Indicates whether to show the origin marker by default
 
 

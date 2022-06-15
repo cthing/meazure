@@ -35,7 +35,7 @@ class MeaRulerTool : public MeaTool, public MeaRulerCallback {
 
 public:
     static constexpr bool kShowRulers { false };    ///< Indicates if the rulers are shown by default
-    static constexpr PCTSTR kToolName = _T("RulerTool");
+    static constexpr PCTSTR kToolName { _T("RulerTool") };
 
     /// Constructs a new instance of the Ruler tool. To use a
     /// newly constructed Ruler tool, the Enable() method must be

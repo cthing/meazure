@@ -38,7 +38,7 @@
 class MeaWindowTool : public MeaRadioTool {
 
 public:
-    static constexpr PCTSTR kToolName = _T("WindowTool");
+    static constexpr PCTSTR kToolName { _T("WindowTool") };
 
     /// Constructs a new instance of a Window measurement tool. To use
     /// a newly constructed Window tool, the Enable() method must be called.

@@ -40,7 +40,7 @@
 class MeaAngleTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static constexpr PCTSTR kToolName = _T("AngleTool");
+    static constexpr PCTSTR kToolName { _T("AngleTool") };
 
     /// Constructs a new instance of an angle measurement tool. To use
     /// a newly constructed Angle tool, the Enable() method must be called.

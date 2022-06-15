@@ -38,7 +38,7 @@
 class MeaRectTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static constexpr PCTSTR kToolName = _T("RectTool");
+    static constexpr PCTSTR kToolName { _T("RectTool") };
 
     /// Constructs a new instance of a Rectangle measurement tool. To use
     /// a newly constructed Rectangle tool, the Enable() method must be called.

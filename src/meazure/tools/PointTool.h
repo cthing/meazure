@@ -34,7 +34,7 @@
 class MeaPointTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static constexpr PCTSTR kToolName = _T("PointTool");
+    static constexpr PCTSTR kToolName { _T("PointTool") };
 
     /// Constructs a new instance of a Point measurement tool. To use
     /// a newly constructed Point tool, the Enable() method must be called.

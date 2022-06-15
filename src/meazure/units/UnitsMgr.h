@@ -479,16 +479,16 @@ public:
 
 private:
     /// Ruler tick increments. The order of magnitude of these values is adjusted based on the units.
-    static constexpr double kTickIncrements[] = { 10.0, 25.0, 50.0, 75.0, 100.0 };
+    static constexpr double kTickIncrements[] { 10.0, 25.0, 50.0, 75.0, 100.0 };
 
     /// Number of tick mark increments in the kTickIncrements array.
-    static constexpr int kNumTickIncrements = sizeof(kTickIncrements) / sizeof(*kTickIncrements);
+    static constexpr int kNumTickIncrements { sizeof(kTickIncrements) / sizeof(*kTickIncrements) };
 
     /// Minimum separation between ruler tick marks, in pixels.
-    static constexpr int kMinSepPixels = 5;
+    static constexpr int kMinSepPixels { 5 };
 
     ///< Minimum separation between ruler tick marks, in inches.
-    static constexpr double kMinSepInches = 0.1;
+    static constexpr double kMinSepInches { 0.1 };
 
     typedef std::map<MeaLinearUnitsId, MeaLinearUnits*> LinearUnitsMap;     ///< Maps linear units identifiers to the corresponding linear units objects.
     typedef std::map<MeaAngularUnitsId, MeaAngularUnits*> AngularUnitsMap;  ///< Maps angular units identifiers to the corresponding angular units objects.

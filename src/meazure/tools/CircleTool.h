@@ -39,7 +39,7 @@
 class MeaCircleTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static constexpr PCTSTR kToolName = _T("CircleTool");
+    static constexpr PCTSTR kToolName { _T("CircleTool") };
 
     /// Constructs a new instance of a circle measurement tool. To use
     /// a newly constructed Circle tool, the Enable() method must be called.

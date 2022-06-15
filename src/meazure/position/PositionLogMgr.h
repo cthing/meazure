@@ -238,7 +238,7 @@ private:
     typedef std::map<MeaGUID, int, MeaGUID::less> RefCountMap;                   ///< Maps a GUID to a reference count.
 
 
-    static constexpr PCTSTR kCurrentDtdUrl = _T("https://www.cthing.com/dtd/PositionLog1.dtd");
+    static constexpr PCTSTR kCurrentDtdUrl { _T("https://www.cthing.com/dtd/PositionLog1.dtd") };
     static constexpr int kChunkSize { 1024 };       ///< Log file parsing buffer allocation increment.
     static constexpr PCTSTR kExt { _T("mpl") };    ///< Log file suffix.
     static constexpr PCTSTR kFilter { _T("Meazure Position Log Files (*.mpl)|*.mpl|All Files (*.*)|*.*||") };  ///< File dialog filter string.

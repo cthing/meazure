@@ -33,7 +33,7 @@
 class MeaCursorTool : public MeaRadioTool {
 
 public:
-    static constexpr PCTSTR kToolName = _T("CursorTool");
+    static constexpr PCTSTR kToolName { _T("CursorTool") };
 
     /// Constructs a new instance of a cursor position measurement tool.
     /// To use a newly constructed Cursor tool, the Enable() method must

@@ -31,7 +31,7 @@
 class MeaScreenTool : public MeaTool {
 
 public:
-    static constexpr PCTSTR kToolName = _T("ScreenTool");
+    static constexpr PCTSTR kToolName { _T("ScreenTool") };
 
     /// Constructs a new instance of the Screen information tool. To use
     /// a newly constructed Screen info tool, the Enable() method must be called.

@@ -140,7 +140,7 @@ private:
 class MeaGridTool : public MeaTool {
 
 public:
-    static constexpr PCTSTR kToolName = _T("GridTool");
+    static constexpr PCTSTR kToolName { _T("GridTool") };
     static constexpr int kDefMinSpacing { 10 };         ///< Minimum allowable grid spacing in pixels
     static constexpr int kDefMaxSpacing { 4000 };       ///< Maximum allowable grid spacing in pixels
     static constexpr int kDefDefaultSpacing { 100 };    ///< Default grid spacing in pixels

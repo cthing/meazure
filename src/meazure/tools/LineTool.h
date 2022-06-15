@@ -38,7 +38,7 @@
 class MeaLineTool : public MeaRadioTool, public MeaCrossHairCallback {
 
 public:
-    static constexpr PCTSTR kToolName = _T("LineTool");
+    static constexpr PCTSTR kToolName { _T("LineTool") };
 
     /// Constructs a new instance of a line measurement tool. To use
     /// a newly constructed Line tool, the Enable() method must be called.

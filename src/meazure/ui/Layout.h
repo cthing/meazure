@@ -202,4 +202,31 @@ namespace MeaLayout {
     ///
     void DrawOpacityBackground(const CWnd& wnd, CDC& dc, const MeaScreenProvider& screenProvider,
                                const MeaUnitsProvider& unitsProvider);
+
+    /// Returns the effective screen DPI.
+    /// 
+    /// @param wnd  [in[ Window whose DPI is to be obtained
+    /// @return Effective DPI.
+    /// 
+    int GetEffectiveDPI(const CWnd& wnd);
+
+    /// Returns the screen DPI scale factor as a percentage. The scale factor is calculated as:
+    /// \f[
+    ///     scale=100 \frac{DPI_effective}{96}
+    /// \f]
+    /// 
+    /// @param wnd  [in] Window whose DPI scale factor is to be obtained 
+    /// @return Screen DPI scale factor percentage.
+    /// 
+    int GetDPIScalePercent(const CWnd& wnd);
+
+    /// Returns the screen DPI scale factor. The scale factor is calculated as:
+    /// \f[
+    ///     scale=\frac{DPI_effective}{96}
+    /// \f]
+    /// 
+    /// @param wnd  [in] Window whose DPI scale factor is to be obtained 
+    /// @return Screen DPI scale factor.
+    /// 
+    double GetDPIScaleFactor(const CWnd& wnd);
 };

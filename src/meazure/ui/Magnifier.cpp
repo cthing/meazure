@@ -63,24 +63,30 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd) {
         return false;
     }
 
+    double dpiScaleFactor = MeaLayout::GetDPIScaleFactor(*this);
+    SIZE margin = MeaGeometry::Scale(kBaseMargin, dpiScaleFactor);
+    int zoomHeight = MeaGeometry::Scale(kBaseZoomHeight, dpiScaleFactor);
+    int swatchWidth = MeaGeometry::Scale(kBaseSwatchWidth, dpiScaleFactor);
+    int zoomSpace = MeaGeometry::Scale(kBaseZoomSpace, dpiScaleFactor);
+
     //
     // Create the color display
     //
-    m_magHeight = width + kMargin.cy;
+    m_magHeight = width + margin.cy;
     if (!m_swatchLabel.Create(IDS_MEA_COLOR, SS_RIGHT | WS_VISIBLE | WS_CHILD, CPoint(0, m_magHeight), this)) {
         return false;
     }
     if (!m_swatchField.Create(WS_CHILD | WS_TABSTOP | WS_VISIBLE | ES_READONLY, CPoint(0, m_magHeight), 12, this)) {
         return false;
     }
-    m_swatchField.GetClientRect(colorRect);
+    m_swatchField.GetWindowRect(colorRect);
     if (!m_swatchWin.Create(AfxRegisterWndClass(0), _T(""), WS_CHILD | WS_VISIBLE | WS_BORDER,
-                            CRect(CPoint(0, m_magHeight), CSize(kSwatchWidth, colorRect.Height())), this, 0xFFFF)) {
+                            CRect(CPoint(0, m_magHeight), CSize(swatchWidth, colorRect.Height())), this, 0xFFFF)) {
         return false;
     }
 
-    MeaLayout::PlaceAfter(m_swatchLabel, m_swatchField, kMargin.cx / 2);
-    MeaLayout::PlaceAfter(m_swatchField, m_swatchWin, kMargin.cx);
+    MeaLayout::PlaceAfter(m_swatchLabel, m_swatchField, margin.cx / 2);
+    MeaLayout::PlaceAfter(m_swatchField, m_swatchWin, margin.cx);
 
     //
     // Create the pause button
@@ -90,13 +96,13 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd) {
     m_runStateBtn.SetToggleType(true);
     m_runStateBtn.GetClientRect(colorRect);
 
-    MeaLayout::PlaceAfter(m_swatchWin, m_runStateBtn, 3 * kMargin.cx);
+    MeaLayout::PlaceAfter(m_swatchWin, m_runStateBtn, 3 * margin.cx);
     MeaLayout::AlignCenter(m_magHeight, &m_swatchLabel, &m_swatchField, &m_swatchWin, &m_runStateBtn, nullptr);
 
     //
     // Create the zoom control
     //
-    m_magHeight += colorRect.Height() + kMargin.cy;
+    m_magHeight += colorRect.Height() + zoomSpace;
 
     if (!m_zoomLabel.Create(IDS_MEA_ZOOM, WS_CHILD | WS_VISIBLE, CPoint(0, m_magHeight), this)) {
         return false;
@@ -107,7 +113,7 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd) {
     m_zoomLabel.GetClientRect(frontRect);
     m_factorLabel.GetClientRect(rearRect);
     if (!m_zoomSlider.Create(TBS_HORZ | TBS_NOTICKS | WS_VISIBLE,
-                             CRect(frontRect.right, m_magHeight, width - rearRect.Width() - 2, m_magHeight + kZoomHeight),
+                             CRect(frontRect.right, m_magHeight, width - rearRect.Width() - 2, m_magHeight + zoomHeight),
                              this, 0xFFFF)) {
         return false;
     }
@@ -116,7 +122,7 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd) {
     MeaLayout::PlaceAfter(m_zoomSlider, m_factorLabel, 0);
     MeaLayout::AlignCenter(m_magHeight, &m_zoomLabel, &m_zoomSlider, &m_factorLabel, nullptr);
 
-    m_magHeight += kZoomHeight;
+    m_magHeight += zoomHeight;
 
     MeaLayout::SetWindowSize(*this, width, m_magHeight);
 

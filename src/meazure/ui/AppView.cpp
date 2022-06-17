@@ -141,7 +141,7 @@ END_MESSAGE_MAP()
 
 
 AppView::AppView() :
-    CWnd(), m_margin(5, 5),
+    CWnd(),
     m_enabled(true),
     m_profileMagnifierEnabled(kDefMagnifierVisible),
     m_profileScreenEnabled(kDefScreenInfoVisible),
@@ -301,6 +301,9 @@ int AppView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
         return -1;
     }
 
+    double dpiScaleFactor = MeaLayout::GetDPIScaleFactor(*this);
+    m_margin = MeaGeometry::Scale(kBaseMargin, dpiScaleFactor);
+
     if (!m_dataDisplay.Create(CPoint(m_margin.cx, m_margin.cy), this)) {
         return -1;
     }
@@ -309,8 +312,7 @@ int AppView::OnCreate(LPCREATESTRUCT lpCreateStruct) {
 
     m_dataDisplay.GetWindowRect(&rect);
 
-    if (!m_magnifier.Create(CPoint(m_margin.cx,
-                                   rect.Height() + 2 * m_margin.cy), rect.Width(), this)) {
+    if (!m_magnifier.Create(CPoint(m_margin.cx, rect.Height() + 2 * m_margin.cy), rect.Width(), this)) {
         return -1;
     }
     m_magnifier.GetWindowRect(magRect);

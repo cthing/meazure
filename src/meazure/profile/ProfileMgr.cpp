@@ -21,7 +21,7 @@
 #include "ProfileMgr.h"
 #include <meazure/resource.h>
 #include "FileProfile.h"
-#include <meazure/AppFrame.h>
+#include <meazure/ui/AppFrame.h>
 #include <meazure/xml/XMLParser.h>
 #include <cstdlib>
 #include <cassert>

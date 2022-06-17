@@ -167,7 +167,7 @@ public:
     ///
     const MeaFSize& GetScreenRes(const ScreenIter& iter) const override;
 
-    /// Indicates it the resolution for the specified screen has been set manually.
+    /// Indicates if the resolution for the specified screen has been set manually.
     ///
     /// @param iter     [in] Screen iterator pointed at the screen whose
     ///                 resolution setting is being queried.
@@ -250,12 +250,6 @@ public:
     ///         to be on a screen.
     ///
     CPoint LimitPosition(const CPoint& pt) const override;
-
-    /// Obtains the screen resolution reported by the operating system.
-    ///
-    /// @return Resolution in pixels per inch.
-    ///
-    MeaFSize GetOSScreenRes() const;
 
 private:
     /// Called by the constructor via EnumDisplayMonitors.

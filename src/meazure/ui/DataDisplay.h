@@ -202,7 +202,7 @@ public:
     ///
     int GetHeight(MeaSection section) const {
         return ((section == MeaRegionSection) ?
-            m_regionSectionRect.Height() : m_screenSectionRect.Height() + kSectionSpacing);
+            m_regionSectionRect.Height() : m_screenSectionRect.Height() + m_sectionSpacing);
     }
 
     /// Displays the specified X1, Y1 coordinates.
@@ -528,7 +528,7 @@ private:
         }
 
     private:
-        static constexpr int kSpinWidth { 17 };     ///< Width for the spin control, in pixels.
+        static constexpr int kBaseSpinWidth { 17 };     ///< Width for the spin control, in pixels.
 
         MeaLabel m_titleLabel;          ///< Left side label for the data item.
         MeaNumberField m_field;         ///< Data item's text field.
@@ -540,10 +540,10 @@ private:
 
     typedef std::set<MeaNumberField*>   Fields;     ///< A set of numerical text fields.
 
-    static constexpr RECT kMargin { 7, 17, 7, 7 };          ///< Margins for the sections, in pixels.
-    static constexpr SIZE kControlSpacing { 7, 5 };         ///< Horizontal and vertical spacing for the controls in a data item, in pixels.
-    static constexpr int kSectionSpacing { 3 };             ///< Vertical spacing between sections, in pixels.
-    static constexpr int kLabelSpacing { 3 };               ///< Spacing between labels and their text fields, in pixels.
+    static constexpr RECT kBaseMargin { 7, 17, 7, 7 };      ///< Margins for the sections, in pixels.
+    static constexpr SIZE kBaseControlSpacing { 7, 5 };     ///< Horizontal and vertical spacing for the controls in a data item, in pixels.
+    static constexpr int kBaseSectionSpacing { 3 };         ///< Vertical spacing between sections, in pixels.
+    static constexpr int kBaseLabelSpacing { 3 };           ///< Spacing between labels and their text fields, in pixels.
     static constexpr unsigned int kLengthChars { 6 };       ///< Number of visible and allowable characters for length fields.
     static constexpr int kAngleChars { 6 };                 ///< Number of visible and allowable characters for the angle field.
     static constexpr int kAspectChars { 17 };               ///< Number of visible and allowable characters for the aspect ratio field.
@@ -573,6 +573,10 @@ private:
                                         ///< section is shown based on the user preferences.
     bool m_regionSectionEnabled;        ///< Indicates if the measurement tool display is shown.
     bool m_screenSectionEnabled;        ///< Indicates if the screen information section is shown.
+    RECT m_margin;                      ///< Margins for the sections scaled for effective DPI, in pixels.
+    SIZE m_controlSpacing;              ///< Spacing for data item control scaled for effective DPI, in pixels.
+    int m_sectionSpacing;               ///< Vertical spacing between sections scaled for effective DPI, in pixels.
+    int m_labelSpacing;                 ///< Spacing between labels and text fields scaled for effective DPI, in pixels.
     CRect m_regionSectionRect;          ///< Rectangle containing the measurement tool display section.
     CRect m_screenSectionRect;          ///< Rectangle containing the screen information section.
     DataItem m_x1;                      ///< X1 coordinate data item.

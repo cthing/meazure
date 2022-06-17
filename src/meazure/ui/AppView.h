@@ -493,6 +493,9 @@ protected:
     DECLARE_MESSAGE_MAP()
 
 private:
+    static constexpr SIZE kBaseMargin { 5, 5 };     ///< Vertical and horizontal margins around major sections.
+
+
     /// Determines the desired width of the application menu.
     ///
     /// @return Pixel width to fit all menu items in one row.
@@ -558,7 +561,7 @@ private:
     ///
     void ViewMagnifier(bool enable);
 
-    CSize m_margin;                 ///< Vertical and horizontal margins around major sections.
+    CSize m_margin;                 ///< Margins around major sections scaled by effective DPI.
     bool m_enabled;                 ///< Used in determining margins when the application is collapsed.
     bool m_profileMagnifierEnabled; ///< Indicates if the stored user preference is to show the magnifier window.
     bool m_profileScreenEnabled;    ///< Indicates if the stored user preference is to show

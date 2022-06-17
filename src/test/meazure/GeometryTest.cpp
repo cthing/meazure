@@ -31,7 +31,34 @@ namespace bt = boost::unit_test;
 namespace tt = boost::test_tools;
 namespace bdata = boost::unit_test::data;
 
-BOOST_TEST_DONT_PRINT_LOG_VALUE(POINT)
+
+bool operator==(const POINT& lhs, const POINT& rhs) {
+    return lhs.x == rhs.x && lhs.y == rhs.y;
+}
+
+bool operator==(const SIZE& lhs, const SIZE& rhs) {
+    return lhs.cx == rhs.cx && lhs.cy == rhs.cy;
+}
+
+bool operator==(const RECT& lhs, const RECT& rhs) {
+    return lhs.top == rhs.top && lhs.bottom == rhs.bottom && lhs.left == rhs.left && lhs.right == rhs.right;
+}
+
+std::ostream& operator<<(std::ostream& os, const POINT& point) {
+    os << '(' << point.x << ',' << point.y << ')';
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const SIZE& size) {
+    os << '(' << size.cx << ',' << size.cy << ')';
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const RECT& rect) {
+    os << '(' << rect.left << ',' << rect.top << ',' << rect.right << ',' << rect.bottom << ')';
+    return os;
+}
+
 
 
 BOOST_AUTO_TEST_SUITE(MeaFSizeTests, *bt::tolerance(FLT_EPSILON))
@@ -232,6 +259,30 @@ BOOST_AUTO_TEST_SUITE_END()
 
 
 BOOST_AUTO_TEST_SUITE(GeometryTests, *bt::tolerance(FLT_EPSILON))
+
+BOOST_DATA_TEST_CASE(TestScaleRect,
+                     bdata::make({ RECT{1, 2, 3, 4},  RECT{1, 2, 3, 4}, RECT{0, 0, 0, 0},  RECT{1, 2, 3, 4} }) ^
+                     bdata::make({ RECT{3, 5, 8, 10}, RECT{1, 2, 3, 4}, RECT{0, 0, 0, 0 }, RECT{0, 0, 0, 0} }) ^
+                     bdata::make({ 2.5,               1.0,              7.0,               0.0 }),
+                     original, scaled, scaleFactor) {
+    BOOST_TEST(MeaGeometry::Scale(original, scaleFactor) == scaled);
+}
+
+BOOST_DATA_TEST_CASE(TestScaleSize,
+                     bdata::make({ SIZE{1, 3}, SIZE { 1, 3 }, SIZE { 1, 3 }, SIZE { 0, 0 }, SIZE { 1, 3 } }) ^
+                     bdata::make({ SIZE{2, 6}, SIZE{3, 8}, SIZE{1, 3}, SIZE{0, 0}, SIZE{0, 0} }) ^
+                     bdata::make({ 2.0,        2.5,        1.0,        7.0,        0.0 }),
+                     original, scaled, scaleFactor) {
+    BOOST_TEST(MeaGeometry::Scale(original, scaleFactor) == scaled);
+}
+
+BOOST_DATA_TEST_CASE(TestScaleInt,
+                     bdata::make({ 1,   1,   1,   0,   1 }) ^
+                     bdata::make({ 2,   3,   1,   0,   0 }) ^
+                     bdata::make({ 2.0, 2.5, 1.0, 7.0, 0.0 }),
+                     original, scaled, scaleFactor) {
+    BOOST_TEST(MeaGeometry::Scale(original, scaleFactor) == scaled);
+}
 
 BOOST_DATA_TEST_CASE(TestCalcLengthCoords,
                      bdata::make({ 0.0, 1.0,                0.5,                 -1.0 }) ^

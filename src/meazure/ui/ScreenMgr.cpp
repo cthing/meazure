@@ -34,23 +34,17 @@ public:
     /// Constructs a display screen object.
     ///
     /// @param mgr      [in] Parent manager.
+    /// @param monitor  [in] Monitor represented by this screen.
     /// @param rect     [in] Rectangle representing the screen, in pixels.
     ///                 In multiple monitor environments, the screen rectangle
     ///                 can have negative coordinates.
     ///
-    Screen(MeaScreenMgr& mgr, LPCRECT rect) :
-        m_mgr(mgr),
+    Screen(LPCRECT rect) :
         m_rect(rect),
         m_useManualRes(MeaScreenMgr::kDefUseManualRes),
         m_calInInches(MeaScreenMgr::kDefCalInInches),
         m_primary(false) {
         m_center = m_rect.CenterPoint();
-
-        m_currentRes.cx = 0.0;
-        m_currentRes.cy = 0.0;
-
-        m_manualRes.cx = 0.0;
-        m_manualRes.cy = 0.0;
     }
 
     /// Destroys a display screen object.
@@ -87,10 +81,10 @@ public:
         }
 
         if (m_manualRes.cx < DBL_EPSILON || m_manualRes.cy < DBL_EPSILON) {
-            m_manualRes = m_mgr.GetOSScreenRes();
+            m_manualRes = m_osRes;
         }
 
-        m_currentRes = m_useManualRes ? m_manualRes : m_mgr.GetOSScreenRes();
+        m_currentRes = m_useManualRes ? m_manualRes : m_osRes;
     }
 
     /// Obtains the currently set manual screen resolution, if set.
@@ -164,7 +158,29 @@ public:
     CString GetName() const { return m_name; }
 
 private:
-    MeaScreenMgr& m_mgr;    ///< Parent manager.
+    /// Obtains the screen resolution reported by the operating system.
+    ///
+    /// @return Resolution in pixels per inch.
+    ///
+    static MeaFSize GetOSScreenRes() {
+        MeaFSize res;
+
+        HDC dc = ::GetDC(nullptr);
+        if (dc != nullptr) {
+            res.cx = static_cast<double>(::GetDeviceCaps(dc, LOGPIXELSX));
+            res.cy = static_cast<double>(::GetDeviceCaps(dc, LOGPIXELSY));
+            ::ReleaseDC(nullptr, dc);
+        } else {
+            res.cx = static_cast<double>(USER_DEFAULT_SCREEN_DPI);
+            res.cy = static_cast<double>(USER_DEFAULT_SCREEN_DPI);
+        }
+
+        return res;
+    }
+
+
+    static inline const MeaFSize m_osRes = GetOSScreenRes();    ///< DPI reported by the operating system.
+
     CRect m_rect;           ///< Screen rectangle.
     CPoint m_center;        ///< Center point of the screen.
     MeaFSize m_currentRes;  ///< Current screen resolution, pixels per inch.
@@ -402,17 +418,6 @@ bool MeaScreenMgr::IsManualRes(const ScreenIter& iter) const {
     return (*iter).second->IsManualRes();
 }
 
-MeaFSize MeaScreenMgr::GetOSScreenRes() const {
-    MeaFSize res;
-
-    HDC dc = ::GetDC(nullptr);
-    res.cx = static_cast<double>(::GetDeviceCaps(dc, LOGPIXELSX));
-    res.cy = static_cast<double>(::GetDeviceCaps(dc, LOGPIXELSY));
-    ::ReleaseDC(nullptr, dc);
-
-    return res;
-}
-
 bool MeaScreenMgr::AnyOSRes() const {
     for (const auto& screenEntry : m_screens) {
         if (!screenEntry.second->IsManualRes()) {
@@ -442,7 +447,7 @@ BOOL CALLBACK MeaScreenMgr::CreateScreens(HMONITOR hMonitor, HDC /* hdcMonitor *
                                           LPARAM userData) {
     MeaScreenMgr* mgr = reinterpret_cast<MeaScreenMgr*>(userData);
 
-    Screen* screen = new Screen(*mgr, monitorRect);
+    Screen* screen = new Screen(monitorRect);
     mgr->m_screens[hMonitor] = screen;
 
     MONITORINFO info;

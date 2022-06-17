@@ -17,14 +17,14 @@
  * with Meazure.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "pch.h"
+#include <meazure/pch.h>
 #include "AppFrame.h"
-#include "resource.h"
-#include "profile/RegistryProfile.h"
-#include "prefs/Preferences.h"
-#include "ui/Layout.h"
-#include "ui/ScreenMgr.h"
-#include "utilities/Registry.h"
+#include <meazure/resource.h>
+#include <meazure/profile/RegistryProfile.h>
+#include <meazure/prefs/Preferences.h>
+#include "Layout.h"
+#include "ScreenMgr.h"
+#include <meazure/utilities/Registry.h>
 
 
 #ifdef _DEBUG
@@ -84,27 +84,13 @@ int AppFrame::OnCreate(LPCREATESTRUCT lpCreateStruct) {
         return -1;
     }
 
-    if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP | CBRS_TOP |
-                               CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_FIXED) ||
-        !m_wndToolBar.LoadToolBar(IDR_MAINFRAME)) {
+    if (!CreateToolbar()) {
         TRACE0("Failed to create toolbar\n");
         return -1;      // fail to create
     }
 
-    m_wndToolBar.SetButtonStyle(0, TBBS_CHECKGROUP);
-    m_wndToolBar.SetButtonStyle(1, TBBS_CHECKGROUP);
-    m_wndToolBar.SetButtonStyle(2, TBBS_CHECKGROUP);
-    m_wndToolBar.SetButtonStyle(3, TBBS_CHECKGROUP);
-    m_wndToolBar.SetButtonStyle(4, TBBS_CHECKGROUP);
-    m_wndToolBar.SetButtonStyle(5, TBBS_CHECKGROUP);
-    m_wndToolBar.SetButtonStyle(6, TBBS_CHECKGROUP);
-    m_wndToolBar.SetButtonStyle(7, TBBS_SEPARATOR);
-    m_wndToolBar.SetButtonStyle(8, TBBS_CHECKBOX);
-    m_wndToolBar.SetButtonStyle(9, TBBS_CHECKBOX);
-
-    if (!m_wndStatusBar.Create(this) ||
-            !m_wndStatusBar.SetIndicators(m_indicators,
-                                          sizeof(m_indicators) / sizeof(UINT))) {
+    if (!m_wndStatusBar.Create(this) || !m_wndStatusBar.SetIndicators(m_indicators,
+                                                                      sizeof(m_indicators) / sizeof(UINT))) {
         TRACE0("Failed to create status bar\n");
         return -1;      // fail to create
     }
@@ -160,6 +146,49 @@ BOOL AppFrame::PreCreateWindow(CREATESTRUCT& cs) {
     cs.dwExStyle &= ~WS_EX_CLIENTEDGE;
     cs.lpszClass = AfxRegisterWndClass(0, 0, 0, AfxGetApp()->LoadIcon(IDR_MAINFRAME));
     return TRUE;
+}
+
+bool AppFrame::CreateToolbar() {
+    if (!m_wndToolBar.CreateEx(this, TBSTYLE_FLAT, WS_CHILD | WS_VISIBLE | WS_GROUP | WS_TABSTOP | CBRS_TOP |
+                               CBRS_TOOLTIPS | CBRS_FLYBY | CBRS_SIZE_FIXED)) {
+        return false;
+    }
+
+    constexpr int threshold100 = (100 + 125) / 2;
+    constexpr int threshold125 = (125 + 150) / 2;
+    constexpr int threshold150 = (150 + 175) / 2;
+    constexpr int threshold175 = (175 + 200) / 2;
+
+    int toolbarId;
+    int dpiScalePercent = MeaLayout::GetDPIScalePercent(m_wndToolBar);
+    if (dpiScalePercent < threshold100) {
+        toolbarId = IDR_MAINFRAME_100;
+    } else if (dpiScalePercent < threshold125) {
+        toolbarId = IDR_MAINFRAME_125;
+    } else if (dpiScalePercent < threshold150) {
+        toolbarId = IDR_MAINFRAME_150;
+    } else if (dpiScalePercent < threshold175) {
+        toolbarId = IDR_MAINFRAME_175;
+    } else {
+        toolbarId = IDR_MAINFRAME_200;
+    }
+
+    if (!m_wndToolBar.LoadToolBar(toolbarId)) {
+        return false;
+    }
+
+    m_wndToolBar.SetButtonStyle(0, TBBS_CHECKGROUP);
+    m_wndToolBar.SetButtonStyle(1, TBBS_CHECKGROUP);
+    m_wndToolBar.SetButtonStyle(2, TBBS_CHECKGROUP);
+    m_wndToolBar.SetButtonStyle(3, TBBS_CHECKGROUP);
+    m_wndToolBar.SetButtonStyle(4, TBBS_CHECKGROUP);
+    m_wndToolBar.SetButtonStyle(5, TBBS_CHECKGROUP);
+    m_wndToolBar.SetButtonStyle(6, TBBS_CHECKGROUP);
+    m_wndToolBar.SetButtonStyle(7, TBBS_SEPARATOR);
+    m_wndToolBar.SetButtonStyle(8, TBBS_CHECKBOX);
+    m_wndToolBar.SetButtonStyle(9, TBBS_CHECKBOX);
+
+    return true;
 }
 
 void AppFrame::SaveProfile(MeaProfile& profile) {

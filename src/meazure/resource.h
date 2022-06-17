@@ -13,9 +13,14 @@
 #define ID_MEA_DATAWIN_TIMER            125
 #define ID_MEA_MASTER_RESET             126
 #define IDR_MAINFRAME                   128
+#define IDR_MAINFRAME_100               128
 #define IDR_MEAZURTYPE                  129
 #define IDS_MEA_ASPECT                  129
+#define IDR_MAINFRAME_125               129
 #define IDS_MEA_ISSUE_URL               130
+#define IDR_MAINFRAME_150               130
+#define IDR_MAINFRAME_175               131
+#define IDR_MAINFRAME_200               132
 #define IDD_PREF_RULERS                 135
 #define IDD_PREF_TOOLS                  136
 #define IDB_MEA_NORMPAUSE               138

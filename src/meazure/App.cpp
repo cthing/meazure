@@ -19,7 +19,7 @@
 
 #include "pch.h"
 #include "App.h"
-#include "AppFrame.h"
+#include "ui/AppFrame.h"
 #include <htmlhelp.h>
 #include "graphics/Colors.h"
 #include "VersionInfo.h"

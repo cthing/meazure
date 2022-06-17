@@ -8,7 +8,7 @@ easily accomplished using Meazure.
 
 ## Minimum System Requirements
 
-- Windows 10
+- Windows 10 Version 1607
 - 64-bit system
 
 ## Downloading and Installation

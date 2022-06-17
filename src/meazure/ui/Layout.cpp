@@ -168,3 +168,18 @@ void MeaLayout::DrawOpacityBackground(const CWnd& wnd, CDC& dc, const MeaScreenP
         }
     }
 }
+
+int MeaLayout::GetEffectiveDPI(const CWnd& wnd) {
+    int effectiveDpi = GetDpiForWindow(wnd);
+    return (effectiveDpi > 0) ? effectiveDpi : USER_DEFAULT_SCREEN_DPI;
+}
+
+int MeaLayout::GetDPIScalePercent(const CWnd& wnd) {
+    int effectiveDpi = GetDpiForWindow(wnd);
+    return (effectiveDpi > 0) ? MulDiv(100, effectiveDpi, USER_DEFAULT_SCREEN_DPI) : 100;
+}
+
+double MeaLayout::GetDPIScaleFactor(const CWnd& wnd) {
+    double effectiveDpi = GetDpiForWindow(wnd);
+    return (effectiveDpi > 0) ? effectiveDpi / static_cast<double>(USER_DEFAULT_SCREEN_DPI) : 1.0;
+}

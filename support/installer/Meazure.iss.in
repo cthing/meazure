@@ -21,9 +21,10 @@ LicenseFile={#ProjectDir}\LICENSE
 PrivilegesRequired=admin
 UsedUserAreasWarning=no
 ArchitecturesInstallIn64BitMode=x64
+MinVersion=10.0.14393
 
 [Tasks]
-Name: "desktopicon";     Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"; MinVersion: 4,4
+Name: "desktopicon"; Description: "Create a &desktop icon"; GroupDescription: "Additional icons:"
 
 [Types]
 Name: "complete"; Description: "Complete installation"
@@ -48,8 +49,10 @@ Source: "{#BuildDir}\Microsoft.*.manifest"; DestDir: "{app}"; Components: core; 
 Source: "{#SupportDir}\redist\hhupd.exe";   DestDir: "{tmp}"; Components: core; Check: Runhhupd
 ; Core files
 Source: "{#BuildDir}\Meazure.exe";          DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "{#BuildDir}\Meazure.exe.manifest"; DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "{#BuildDir}\Meazure.chm";          DestDir: "{app}"; Components: help; Flags: ignoreversion
 Source: "{#BuildDir}\Hooks.dll";            DestDir: "{app}"; Components: core; Flags: ignoreversion
+Source: "{#BuildDir}\Hooks.dll.manifest";   DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "{#ProjectDir}\LICENSE";            DestDir: "{app}"; DestName: "LICENSE.txt"; Components: core; Flags: ignoreversion
 Source: "{#ProjectDir}\README.md";          DestDir: "{app}"; DestName: "README.txt"; Components: core; Flags: ignoreversion
 ; DTD files
@@ -76,7 +79,7 @@ Name: "{group}\Meazure";           Filename: "{app}\Meazure.exe"; Components: co
 Name: "{group}\Meazure Help";      Filename: "{app}\Meazure.chm"; Components: help
 Name: "{group}\Meazure Readme";    Filename: "{app}\README.txt";  Components: core
 Name: "{group}\Meazure License";   Filename: "{app}\LICENSE.txt"; Components: core
-Name: "{userdesktop}\Meazure";     Filename: "{app}\Meazure.exe"; MinVersion: 4,4; Tasks: desktopicon
+Name: "{userdesktop}\Meazure";     Filename: "{app}\Meazure.exe"; Tasks: desktopicon
 
 [Registry]
 ; Profile file type

@@ -77,6 +77,14 @@ bool MeaDataDisplay::Create(const POINT& topLeft, CWnd* parentWnd) {
         return false;
     }
 
+    // With the window created, scale the margin and spacing based on the effective DPI.
+    //
+    double dpiScaleFactor = MeaLayout::GetDPIScaleFactor(*this);
+    m_margin = MeaGeometry::Scale(kBaseMargin, dpiScaleFactor);
+    m_controlSpacing = MeaGeometry::Scale(kBaseControlSpacing, dpiScaleFactor);
+    m_sectionSpacing = MeaGeometry::Scale(kBaseSectionSpacing, dpiScaleFactor);
+    m_labelSpacing = MeaGeometry::Scale(kBaseLabelSpacing, dpiScaleFactor);
+
     // Create the control sections
     //
     if (!CreateRegionSection()) {
@@ -100,14 +108,9 @@ bool MeaDataDisplay::Create(const POINT& topLeft, CWnd* parentWnd) {
         m_screenSectionRect.right = m_regionSectionRect.right;
     }
 
-    MeaLayout::SetWindowSize(m_regionSection, m_regionSectionRect.Width(),
-                                m_regionSectionRect.Height());
-
-    MeaLayout::SetWindowPos(m_screenSection, 0,
-                                m_regionSectionRect.Height() + kSectionSpacing);
-
-    MeaLayout::SetWindowSize(m_screenSection, m_screenSectionRect.Width(),
-                                m_screenSectionRect.Height());
+    MeaLayout::SetWindowSize(m_regionSection, m_regionSectionRect.Width(), m_regionSectionRect.Height());
+    MeaLayout::SetWindowPos(m_screenSection, 0, m_regionSectionRect.Height() + m_sectionSpacing);
+    MeaLayout::SetWindowSize(m_screenSection, m_screenSectionRect.Width(), m_screenSectionRect.Height());
 
     SIZE winSize;
 
@@ -220,71 +223,71 @@ bool MeaDataDisplay::CreateRegionSection() {
     SIZE sectionSize;
 
     m_x1.GetField().GetWindowRect(&rect);
-    lineHeight = rect.Height() + kControlSpacing.cy;
+    lineHeight = rect.Height() + m_controlSpacing.cy;
 
-    point.x = kMargin.left;
-    point.y = kMargin.top;
+    point.x = m_margin.left;
+    point.y = m_margin.top;
 
     MeaLayout::AlignRight(point.x, &m_x1.GetTitleLabel(), &m_x2.GetTitleLabel(),
         &m_xv.GetTitleLabel(), &m_width.GetTitleLabel(),
         &m_length.GetTitleLabel(), &m_aspect.GetTitleLabel(),
         &m_area.GetTitleLabel(), nullptr);
 
-    MeaLayout::PlaceAfter(m_x1.GetTitleLabel(), m_x1.GetField(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_x1.GetTitleLabel(), m_x1.GetField(), m_labelSpacing);
     MeaLayout::PlaceAfter(m_x1.GetField(), m_x1.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_x1.GetSpin(), m_y1.GetTitleLabel(), kControlSpacing.cx);
-    MeaLayout::PlaceAfter(m_y1.GetTitleLabel(), m_y1.GetField(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_x1.GetSpin(), m_y1.GetTitleLabel(), m_controlSpacing.cx);
+    MeaLayout::PlaceAfter(m_y1.GetTitleLabel(), m_y1.GetField(), m_labelSpacing);
     MeaLayout::PlaceAfter(m_y1.GetField(), m_y1.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_y1.GetSpin(), m_y1.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_y1.GetSpin(), m_y1.GetUnitsLabel(), m_labelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_x1.GetTitleLabel(), &m_x1.GetField(), &m_x1.GetSpin(),
         &m_y1.GetTitleLabel(), &m_y1.GetField(), &m_y1.GetSpin(), &m_y1.GetUnitsLabel(), nullptr);
 
     point.y += lineHeight;
 
-    MeaLayout::PlaceAfter(m_x2.GetTitleLabel(), m_x2.GetField(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_x2.GetTitleLabel(), m_x2.GetField(), m_labelSpacing);
     MeaLayout::PlaceAfter(m_x2.GetField(), m_x2.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_x2.GetSpin(), m_y2.GetTitleLabel(), kControlSpacing.cx);
-    MeaLayout::PlaceAfter(m_y2.GetTitleLabel(), m_y2.GetField(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_x2.GetSpin(), m_y2.GetTitleLabel(), m_controlSpacing.cx);
+    MeaLayout::PlaceAfter(m_y2.GetTitleLabel(), m_y2.GetField(), m_labelSpacing);
     MeaLayout::PlaceAfter(m_y2.GetField(), m_y2.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_y2.GetSpin(), m_y2.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_y2.GetSpin(), m_y2.GetUnitsLabel(), m_labelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_x2.GetTitleLabel(), &m_x2.GetField(), &m_x2.GetSpin(),
         &m_y2.GetTitleLabel(), &m_y2.GetField(), &m_y2.GetSpin(), &m_y2.GetUnitsLabel(), nullptr);
 
     point.y += lineHeight;
 
-    MeaLayout::PlaceAfter(m_xv.GetTitleLabel(), m_xv.GetField(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_xv.GetTitleLabel(), m_xv.GetField(), m_labelSpacing);
     MeaLayout::PlaceAfter(m_xv.GetField(), m_xv.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_xv.GetSpin(), m_yv.GetTitleLabel(), kControlSpacing.cx);
-    MeaLayout::PlaceAfter(m_yv.GetTitleLabel(), m_yv.GetField(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_xv.GetSpin(), m_yv.GetTitleLabel(), m_controlSpacing.cx);
+    MeaLayout::PlaceAfter(m_yv.GetTitleLabel(), m_yv.GetField(), m_labelSpacing);
     MeaLayout::PlaceAfter(m_yv.GetField(), m_yv.GetSpin(), 0);
-    MeaLayout::PlaceAfter(m_yv.GetSpin(), m_yv.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_yv.GetSpin(), m_yv.GetUnitsLabel(), m_labelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_xv.GetTitleLabel(), &m_xv.GetField(), &m_xv.GetSpin(),
         &m_yv.GetTitleLabel(), &m_yv.GetField(), &m_yv.GetSpin(), &m_yv.GetUnitsLabel(), nullptr);
 
     point.y += lineHeight;
 
-    MeaLayout::PlaceAfter(m_width.GetTitleLabel(), m_width.GetField(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_width.GetTitleLabel(), m_width.GetField(), m_labelSpacing);
 
     MeaLayout::AlignRightTo(&m_yv.GetTitleLabel(), &m_y1.GetTitleLabel(),
         &m_y2.GetTitleLabel(), &m_height.GetTitleLabel(), nullptr);
     MeaLayout::AlignRightTo(&m_yv.GetField(), &m_y1.GetField(), &m_y2.GetField(), nullptr);
 
-    MeaLayout::PlaceAfter(m_height.GetTitleLabel(), m_height.GetField(), kLabelSpacing);
-    MeaLayout::PlaceAfter(m_height.GetField(), m_height.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_height.GetTitleLabel(), m_height.GetField(), m_labelSpacing);
+    MeaLayout::PlaceAfter(m_height.GetField(), m_height.GetUnitsLabel(), m_labelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_width.GetTitleLabel(), &m_width.GetField(),
         &m_height.GetTitleLabel(), &m_height.GetField(), &m_height.GetUnitsLabel(), nullptr);
 
     point.y += lineHeight;
 
-    MeaLayout::PlaceAfter(m_length.GetTitleLabel(), m_length.GetField(), kLabelSpacing);
-    MeaLayout::PlaceAfter(m_length.GetField(), m_length.GetUnitsLabel(), kLabelSpacing);
-    MeaLayout::PlaceAfter(m_length.GetUnitsLabel(), m_angle.GetTitleLabel(), kControlSpacing.cx);
-    MeaLayout::PlaceAfter(m_angle.GetTitleLabel(), m_angle.GetField(), kLabelSpacing);
-    MeaLayout::PlaceAfter(m_angle.GetField(), m_angle.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_length.GetTitleLabel(), m_length.GetField(), m_labelSpacing);
+    MeaLayout::PlaceAfter(m_length.GetField(), m_length.GetUnitsLabel(), m_labelSpacing);
+    MeaLayout::PlaceAfter(m_length.GetUnitsLabel(), m_angle.GetTitleLabel(), m_controlSpacing.cx);
+    MeaLayout::PlaceAfter(m_angle.GetTitleLabel(), m_angle.GetField(), m_labelSpacing);
+    MeaLayout::PlaceAfter(m_angle.GetField(), m_angle.GetUnitsLabel(), m_labelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_length.GetTitleLabel(), &m_length.GetField(),
         &m_length.GetUnitsLabel(), &m_angle.GetTitleLabel(), &m_angle.GetField(),
@@ -292,22 +295,22 @@ bool MeaDataDisplay::CreateRegionSection() {
 
     point.y += lineHeight;
 
-    MeaLayout::PlaceAfter(m_aspect.GetTitleLabel(), m_aspect.GetField(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_aspect.GetTitleLabel(), m_aspect.GetField(), m_labelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_aspect.GetTitleLabel(), &m_aspect.GetField(), nullptr);
 
     point.y += lineHeight;
 
-    MeaLayout::PlaceAfter(m_area.GetTitleLabel(), m_area.GetField(), kLabelSpacing);
-    MeaLayout::PlaceAfter(m_area.GetField(), m_area.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_area.GetTitleLabel(), m_area.GetField(), m_labelSpacing);
+    MeaLayout::PlaceAfter(m_area.GetField(), m_area.GetUnitsLabel(), m_labelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_area.GetTitleLabel(), &m_area.GetField(),
         &m_area.GetUnitsLabel(), nullptr);
 
     MeaLayout::GetBoundingSize(&sectionSize, &m_regionSection);
 
-    sectionSize.cx += kMargin.left + kMargin.right;
-    sectionSize.cy += kMargin.top + kMargin.bottom;
+    sectionSize.cx += m_margin.left + m_margin.right;
+    sectionSize.cy += m_margin.top + m_margin.bottom;
 
     MeaLayout::SetWindowSize(m_regionSection, sectionSize.cx, sectionSize.cy);
 
@@ -356,23 +359,23 @@ bool MeaDataDisplay::CreateScreenSection() {
     SIZE sectionSize;
 
     m_screenWidth.GetField().GetWindowRect(&rect);
-    lineHeight = rect.Height() + kControlSpacing.cy;
+    lineHeight = rect.Height() + m_controlSpacing.cy;
 
-    point.x = kMargin.left;
-    point.y = kMargin.top;
+    point.x = m_margin.left;
+    point.y = m_margin.top;
 
     MeaLayout::AlignRight(point.x, &m_screenWidth.GetTitleLabel(), &m_screenResX.GetTitleLabel(), nullptr);
 
-    MeaLayout::PlaceAfter(m_screenResX.GetTitleLabel(), m_screenResX.GetField(), kLabelSpacing);
-    MeaLayout::PlaceAfter(m_screenResX.GetField(), m_screenResY.GetTitleLabel(), kControlSpacing.cx);
-    MeaLayout::PlaceAfter(m_screenResY.GetTitleLabel(), m_screenResY.GetField(), kLabelSpacing);
-    MeaLayout::PlaceAfter(m_screenResY.GetField(), m_screenResY.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_screenResX.GetTitleLabel(), m_screenResX.GetField(), m_labelSpacing);
+    MeaLayout::PlaceAfter(m_screenResX.GetField(), m_screenResY.GetTitleLabel(), m_controlSpacing.cx);
+    MeaLayout::PlaceAfter(m_screenResY.GetTitleLabel(), m_screenResY.GetField(), m_labelSpacing);
+    MeaLayout::PlaceAfter(m_screenResY.GetField(), m_screenResY.GetUnitsLabel(), m_labelSpacing);
 
     MeaLayout::AlignRightTo(&m_screenResY.GetTitleLabel(), &m_screenHeight.GetTitleLabel(), nullptr);
 
-    MeaLayout::PlaceAfter(m_screenWidth.GetTitleLabel(), m_screenWidth.GetField(), kLabelSpacing);
-    MeaLayout::PlaceAfter(m_screenHeight.GetTitleLabel(), m_screenHeight.GetField(), kLabelSpacing);
-    MeaLayout::PlaceAfter(m_screenHeight.GetField(), m_screenHeight.GetUnitsLabel(), kLabelSpacing);
+    MeaLayout::PlaceAfter(m_screenWidth.GetTitleLabel(), m_screenWidth.GetField(), m_labelSpacing);
+    MeaLayout::PlaceAfter(m_screenHeight.GetTitleLabel(), m_screenHeight.GetField(), m_labelSpacing);
+    MeaLayout::PlaceAfter(m_screenHeight.GetField(), m_screenHeight.GetUnitsLabel(), m_labelSpacing);
 
     MeaLayout::AlignCenter(point.y, &m_screenWidth.GetTitleLabel(), &m_screenWidth.GetField(),
         &m_screenHeight.GetTitleLabel(), &m_screenHeight.GetField(), &m_screenHeight.GetUnitsLabel(), nullptr);
@@ -384,8 +387,8 @@ bool MeaDataDisplay::CreateScreenSection() {
 
     MeaLayout::GetBoundingSize(&sectionSize, &m_screenSection);
 
-    sectionSize.cx += kMargin.left + kMargin.right;
-    sectionSize.cy += kMargin.top + kMargin.bottom;
+    sectionSize.cx += m_margin.left + m_margin.right;
+    sectionSize.cy += m_margin.top + m_margin.bottom;
 
     MeaLayout::SetWindowSize(m_screenSection, sectionSize.cx, sectionSize.cy);
 
@@ -393,10 +396,11 @@ bool MeaDataDisplay::CreateScreenSection() {
     //
     CRect btnRect;
     m_calBtn.LoadBitmaps(IDB_MEA_WARNING, IDB_MEA_WARNING);
-    m_calBtn.Create(WS_VISIBLE, &m_screenSection, IDC_MEA_CAL_BTN, IDS_MEA_CAL_WARNING);
+    if (!m_calBtn.Create(WS_VISIBLE, &m_screenSection, IDC_MEA_CAL_BTN, IDS_MEA_CAL_WARNING)) {
+        return false;
+    }
     m_calBtn.GetWindowRect(&btnRect);
-    MeaLayout::SetWindowPos(m_calBtn, sectionSize.cx - btnRect.Width(),
-                            kMargin.top - kControlSpacing.cx);
+    MeaLayout::SetWindowPos(m_calBtn, sectionSize.cx - btnRect.Width(), m_margin.top - m_controlSpacing.cx);
 
     return true;
 }
@@ -699,9 +703,9 @@ bool MeaDataDisplay::DataItem::CreateSpinButton(CWnd* parentWnd, MeaDataFieldId 
 
     m_field.GetWindowRect(&rect);
     m_spin = new CSpinButtonCtrl();
-    bool ret = m_spin->Create(WS_CHILD | WS_VISIBLE,
-        CRect(0, rect.top, 0, rect.bottom), parentWnd, id) ? true : false;
-    MeaLayout::SetWindowSize(*m_spin, kSpinWidth, rect.Height());
+    bool ret = m_spin->Create(WS_CHILD | WS_VISIBLE, CRect(0, rect.top, 0, rect.bottom), parentWnd, id) ? true : false;
+    int spinWidth = MeaGeometry::Scale(kBaseSpinWidth, MeaLayout::GetDPIScaleFactor(*m_spin));
+    MeaLayout::SetWindowSize(*m_spin, spinWidth, rect.Height());
 
     UDACCEL uda;
     uda.nSec = 0;

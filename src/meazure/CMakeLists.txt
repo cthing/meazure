@@ -6,8 +6,6 @@ set(CMAKE_RC_FLAGS "${CMAKE_RC_FLAGS} /nologo")
 set(TOP_SRCS
     App.cpp
     App.h
-    AppFrame.cpp
-    AppFrame.h
     CommandLineInfo.cpp
     CommandLineInfo.h
     Meazure.rc
@@ -20,6 +18,8 @@ set(TOP_SRCS
 source_group(App FILES ${TOP_SRCS})
 
 set(UI_SRCS
+    ui/AppFrame.cpp
+    ui/AppFrame.h
     ui/AppView.cpp
     ui/AppView.h
     ui/ColorDialog.cpp
@@ -217,6 +217,13 @@ else()
     configure_file(${SUPPORT_DIR}/dtd/PositionLog1.dtd ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/dtd/PositionLog1.dtd COPYONLY)
 endif()
 
+# Copy the manifest to the build directory
+if (CMAKE_GENERATOR MATCHES "Visual Studio")
+    file(GENERATE OUTPUT ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/$<CONFIG>/Meazure.exe.manifest INPUT Meazure.exe.manifest)
+else()
+    configure_file(Meazure.exe.manifest ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Meazure.exe.manifest COPYONLY)
+endif()
+
 get_property(BOOST_INCLUDE_DIRS TARGET Boost::boost PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
 get_property(XERCES_INCLUDE_DIRS TARGET XercesC::XercesC PROPERTY INTERFACE_INCLUDE_DIRECTORIES)
 
@@ -229,4 +236,4 @@ target_include_directories(Meazure PRIVATE
                            ${XERCES_INCLUDE_DIRS}
                            "${CMAKE_SOURCE_DIR}/src"
                            "${CMAKE_CURRENT_BINARY_DIR}")
-set_target_properties(Meazure PROPERTIES LINK_FLAGS "/MANIFEST")
+set_target_properties(Meazure PROPERTIES LINK_FLAGS "/MANIFEST:NO")

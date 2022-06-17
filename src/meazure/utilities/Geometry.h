@@ -452,6 +452,44 @@ inline std::ostream& operator<<(std::ostream& os, const MeaFPoint& point) {
 ///
 namespace MeaGeometry {
 
+    /// Multiplies the specified value by the specified scale factor.
+    /// 
+    /// @param value        [in] Value to scale
+    /// @param scaleFactor  [in] Multiplier for the value
+    /// @return Scaled value rounded to the nearest whole number.
+    /// 
+    inline int Scale(int value, double scaleFactor) {
+        return static_cast<int>(std::round(value * scaleFactor));
+    }
+
+    /// Multiplies the top, bottom, left and right coordinates of the specified rectangle by the specified scale factor.
+    /// 
+    /// @param rect         [in] Rectangle to scale
+    /// @param scaleFactor  [in] Multiplier for each coordinate
+    /// @return Scaled rectangle with each coordinate rounded to the nearest whole number.
+    /// 
+    inline RECT Scale(const RECT& rect, double scaleFactor) {
+        return RECT {
+            Scale(rect.left, scaleFactor),
+            Scale(rect.top, scaleFactor),
+            Scale(rect.right, scaleFactor),
+            Scale(rect.bottom, scaleFactor)
+        };
+    }
+
+    /// Multiplies both dimensions of the specified size object by the specified scale factor.
+    /// 
+    /// @param size         [in] Size object to scale
+    /// @param scaleFactor  [in] Multiplier for both dimensions
+    /// @return Scaled size object with each dimension rounded to the nearest whole number.
+    /// 
+    inline SIZE Scale(const SIZE& size, double scaleFactor) {
+        return SIZE {
+            Scale(size.cx, scaleFactor),
+            Scale(size.cy, scaleFactor)
+        };
+    }
+
     /// Calculates the length corresponding to the specified x and y distances using the formula:
     /// \f[
     ///     length=\sqrt{dx^2+dy^2}

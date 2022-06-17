@@ -22,9 +22,9 @@
 
 #pragma once
 
-#include "ui/AppView.h"
-#include "profile/Profile.h"
-#include "ui/StatusBar.h"
+#include "AppView.h"
+#include <meazure/profile/Profile.h>
+#include "StatusBar.h"
 
 
 /// The frame class for the application. The application frame is the
@@ -248,6 +248,12 @@ protected:
     bool m_statusbarVisible;        ///< Indicates if the status bar is currently visible.
 
 private:
+    /// Creates the application toolbar.
+    /// 
+    /// @return <b>true</b> if toolbar successfully created.
+    ///  
+    bool CreateToolbar();
+
     /// Selects whether to show the toolbar.
     /// @param enable       [in] Indicates whether the toolbar should be visible.
     /// 

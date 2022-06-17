@@ -74,7 +74,7 @@ IDI_LOG_ICON            ICON                    "res\\Log.ico"
 // Bitmap
 //
 
-IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+IDR_MAINFRAME_100       BITMAP                  "res\\Toolbar100.bmp"
 
 IDB_MEA_NORMPAUSE       BITMAP                  "res\\PauseNormal.bmp"
 
@@ -84,13 +84,77 @@ IDB_LOGO                BITMAP                  "res\\Logo.bmp"
 
 IDB_MEA_WARNING         BITMAP                  "res\\Warning.bmp"
 
+IDR_MAINFRAME_125       BITMAP                  "res\\Toolbar125.bmp"
+
+IDR_MAINFRAME_150       BITMAP                  "res\\Toolbar150.bmp"
+
+IDR_MAINFRAME_175       BITMAP                  "res\\Toolbar175.bmp"
+
+IDR_MAINFRAME_200       BITMAP                  "res\\Toolbar200.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Toolbar
 //
 
-IDR_MAINFRAME TOOLBAR 16, 16
+IDR_MAINFRAME_100 TOOLBAR 16, 16
+BEGIN
+    BUTTON      ID_MEA_CURSOR
+    BUTTON      ID_MEA_POINT
+    BUTTON      ID_MEA_LINE
+    BUTTON      ID_MEA_RECT
+    BUTTON      ID_MEA_CIRCLE
+    BUTTON      ID_MEA_ANGLE
+    BUTTON      ID_MEA_WINDOW
+    SEPARATOR
+    BUTTON      ID_MEA_RULER
+    BUTTON      ID_MEA_SCREEN_GRID
+END
+
+IDR_MAINFRAME_125 TOOLBAR 20, 20
+BEGIN
+    BUTTON      ID_MEA_CURSOR
+    BUTTON      ID_MEA_POINT
+    BUTTON      ID_MEA_LINE
+    BUTTON      ID_MEA_RECT
+    BUTTON      ID_MEA_CIRCLE
+    BUTTON      ID_MEA_ANGLE
+    BUTTON      ID_MEA_WINDOW
+    SEPARATOR
+    BUTTON      ID_MEA_RULER
+    BUTTON      ID_MEA_SCREEN_GRID
+END
+
+IDR_MAINFRAME_150 TOOLBAR 24, 24
+BEGIN
+    BUTTON      ID_MEA_CURSOR
+    BUTTON      ID_MEA_POINT
+    BUTTON      ID_MEA_LINE
+    BUTTON      ID_MEA_RECT
+    BUTTON      ID_MEA_CIRCLE
+    BUTTON      ID_MEA_ANGLE
+    BUTTON      ID_MEA_WINDOW
+    SEPARATOR
+    BUTTON      ID_MEA_RULER
+    BUTTON      ID_MEA_SCREEN_GRID
+END
+
+IDR_MAINFRAME_175 TOOLBAR 28, 28
+BEGIN
+    BUTTON      ID_MEA_CURSOR
+    BUTTON      ID_MEA_POINT
+    BUTTON      ID_MEA_LINE
+    BUTTON      ID_MEA_RECT
+    BUTTON      ID_MEA_CIRCLE
+    BUTTON      ID_MEA_ANGLE
+    BUTTON      ID_MEA_WINDOW
+    SEPARATOR
+    BUTTON      ID_MEA_RULER
+    BUTTON      ID_MEA_SCREEN_GRID
+END
+
+IDR_MAINFRAME_200 TOOLBAR 32, 32
 BEGIN
     BUTTON      ID_MEA_CURSOR
     BUTTON      ID_MEA_POINT

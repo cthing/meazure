@@ -21,6 +21,7 @@
 #define COMPILE_THEME_STUBS
 #include "Themes.h"
 #include "ImageButton.h"
+#include "Layout.h"
 
 
 #ifdef _DEBUG
@@ -61,7 +62,9 @@ bool MeaImageButton::Create(DWORD dwStyle, CWnd* pParentWnd, UINT nID, UINT tool
 
         ::DeleteObject(bitmap);
 
-        CSize border(::GetSystemMetrics(SM_CXBORDER), ::GetSystemMetrics(SM_CYBORDER));
+        int effectiveDpi = MeaLayout::GetEffectiveDPI(*pParentWnd);
+        CSize border(::GetSystemMetricsForDpi(SM_CXBORDER, effectiveDpi),
+                     ::GetSystemMetricsForDpi(SM_CYBORDER, effectiveDpi));
         brect.InflateRect(2 * border.cx, 2 * border.cy);
     }
 

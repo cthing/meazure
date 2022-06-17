@@ -263,14 +263,15 @@ protected:
     afx_msg LRESULT OnHelpHitTest(WPARAM, LPARAM lparam);
 
 private:
-    static constexpr int kUpdateRate { 70 };    ///< Magnifier refresh rate, in milliseconds.
-    static constexpr int kZoomHeight { 22 };    ///< Height of the zoom factor slider, in pixels.
-    static constexpr SIZE kMargin { 5, 5 };     ///< Margin around the magnifier window.
-    static constexpr int kSwatchWidth { 40 };   ///< Width of the pixel color swatch, in pixels.
+    static constexpr int kUpdateRate { 70 };        ///< Magnifier refresh rate, in milliseconds.
+    static constexpr int kBaseZoomHeight { 22 };    ///< Height of the zoom factor slider, in pixels.
+    static constexpr int kBaseZoomSpace { 9 };      ///< Vertical separation between color info and zoom slider.
+    static constexpr SIZE kBaseMargin { 5, 5 };     ///< Margin around the magnifier window.
+    static constexpr int kBaseSwatchWidth { 40 };   ///< Width of the pixel color swatch, in pixels.
     static constexpr int kZoomFactorArr[] { 1, 2, 3, 4, 6, 8, 16, 32 };                 ///< Arrays of zoom factors selected by the zoom index.
     static constexpr int kMaxZoomIndex { sizeof(kZoomFactorArr) / sizeof(int) - 1 };    ///< Index of the maximum allowable zoom factor.
-    static constexpr int kMinZoomIndex { 0 };   ///< Index of the minimum allowable zoom factor.
-    static constexpr int kMinGridFactor { 6 };  ///< Minimum zoom factor below which the grid is not displayed.
+    static constexpr int kMinZoomIndex { 0 };       ///< Index of the minimum allowable zoom factor.
+    static constexpr int kMinGridFactor { 6 };      ///< Minimum zoom factor below which the grid is not displayed.
 
 
     /// Reads an appropriately sized region around the cursor and

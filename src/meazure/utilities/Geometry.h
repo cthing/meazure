@@ -177,6 +177,25 @@ struct MeaFSize {
         return MeaFSize(cx * mult, cy * mult);
     }
 
+    /// Dividies this and the specified value and returns a new size object.
+    /// \f[
+    ///     \left[ \begin{array}{c}
+    ///     f_x \\
+    ///     f_y \\
+    ///     \end{array} \right]
+    ///     = \frac{1}{div}
+    ///     \left[ \begin{array}{c}
+    ///     this_x \\
+    ///     this_y \\
+    ///     \end{array} \right]
+    /// \f]
+    /// @param div     [in] Value to divide both dimensions.
+    /// @return New object that is the division of this by the specified value.
+    /// 
+    MeaFSize operator/(double div) const {
+        return MeaFSize(cx / div, cy / div);
+    }
+
     /// Adds the specified size object to this.
     /// \f[
     ///     \left[ \begin{array}{c}

@@ -394,11 +394,21 @@ bool MeaDataDisplay::CreateScreenSection() {
 
     // Calibration warning button
     //
-    CRect btnRect;
-    m_calBtn.LoadBitmaps(IDB_MEA_WARNING, IDB_MEA_WARNING);
+    int warningImageId;
+    int scalePercent = MeaLayout::GetDPIScalePercent(*this);
+    if (scalePercent <= 125) {
+        warningImageId = IDB_MEA_WARNING_100;
+    } else if (scalePercent <= 175) {
+        warningImageId = IDB_MEA_WARNING_150;
+    } else {
+        warningImageId = IDB_MEA_WARNING_200;
+    }
+
+    m_calBtn.LoadBitmaps(warningImageId, warningImageId);
     if (!m_calBtn.Create(WS_VISIBLE, &m_screenSection, IDC_MEA_CAL_BTN, IDS_MEA_CAL_WARNING)) {
         return false;
     }
+    CRect btnRect;
     m_calBtn.GetWindowRect(&btnRect);
     MeaLayout::SetWindowPos(m_calBtn, sectionSize.cx - btnRect.Width(), m_margin.top - m_controlSpacing.cx);
 

@@ -123,14 +123,14 @@ BOOL MeaToolsPrefs::OnInitDialog() {
     sample->GetWindowRect(rect);
     ScreenToClient(rect);
 
-    m_dataWin.Create(255, IDS_MEA_X1, IDS_MEA_Y1, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, IDS_MEA_LENGTH,
-                     MeaDataWin::kNoLabelId, this);
+    m_dataWin.Create(255, IDS_MEA_X1, IDS_MEA_Y1, MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, 
+                     MeaDataWin::kNoLabelId, MeaDataWin::kNoLabelId, this);
     if (HaveLayeredWindows()) {
         m_dataWin.SetOpacity(alpha);
     }
     m_dataWin.Show();
-    m_dataWin.SetWindowPos(nullptr, rect.left, rect.top - 2, rect.Width(),
-                            MeaLayout::GetWindowHeight(m_dataWin) - 2, SWP_NOZORDER);
+    m_dataWin.SetWindowPos(nullptr, rect.left, rect.top, rect.Width(),
+                           MeaLayout::GetWindowHeight(m_dataWin), SWP_NOZORDER);
 
     // Configure the opacity slider.
     //

@@ -62,6 +62,11 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 - A more readable font is used for all dialogs
 
+- Fix: Meazure now reports the correct screen dimensions and measurements on high DPI displays (e.g. 4K display).
+  
+- Fix: Meazure accommodates screen scaling. Note that you must restart Meazure if you change the screen scaling
+  (e.g. going from 100% to 150% scaling).
+
 - Fix: The Position log save dialog once again displays a text fields for specifying a title and description for
   the log file.
 

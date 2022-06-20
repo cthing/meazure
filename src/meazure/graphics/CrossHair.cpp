@@ -94,6 +94,12 @@ bool MeaCrossHair::Create(COLORREF borderColor, COLORREF backColor,
     if (m_size.cx == 0) {
         MeaFSize res = m_screenProvider.GetScreenRes(m_screenProvider.GetScreenIter(AfxGetMainWnd()));
 
+        // When screen scaling is being used (i.e. scaling > 100%), GDI will automatically scale polygons
+        // using the effective DPI. To counteract this scaling, we will reduce the actual resolution by
+        // the screen scaling factor. That way when GDI scales up the polygons, they will be rendered at the
+        // actual DPI.
+        res = res / MeaLayout::GetDPIScaleFactor(*AfxGetMainWnd());
+
         m_size = m_unitsProvider.ConvertToPixels(MeaInchesId, res, 0.25, 25);
         m_size.cx += 1 - (m_size.cx % 2);       // Must be odd
         m_size.cy += 1 - (m_size.cy % 2);

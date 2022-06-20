@@ -126,6 +126,14 @@ BOOST_AUTO_TEST_CASE(TestMultValue) {
     BOOST_TEST(fs2.cy == 22.0);
 }
 
+BOOST_AUTO_TEST_CASE(TestDivValue) {
+    MeaFSize fs1(10.0, 12.0);
+
+    MeaFSize fs2 = fs1 / 2.0;
+    BOOST_TEST(fs2.cx == 5.0);
+    BOOST_TEST(fs2.cy == 6.0);
+}
+
 BOOST_AUTO_TEST_CASE(TestAddAssign) {
     MeaFSize fs1(10.0, 11.0);
     MeaFSize fs2(5.0, 6.0);

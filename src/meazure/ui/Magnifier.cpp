@@ -91,7 +91,20 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd) {
     //
     // Create the pause button
     //
-    m_runStateBtn.LoadBitmaps(IDB_MEA_NORMPAUSE, IDB_MEA_SELPAUSE);
+    int normalPauseImageId;
+    int selectedPauseImageId;
+    int scalePercent = MeaLayout::GetDPIScalePercent(*this);
+    if (scalePercent <= 125) {
+        normalPauseImageId = IDB_MEA_NORMPAUSE_100;
+        selectedPauseImageId = IDB_MEA_SELPAUSE_100;
+    } else if (scalePercent <= 175) {
+        normalPauseImageId = IDB_MEA_NORMPAUSE_150;
+        selectedPauseImageId = IDB_MEA_SELPAUSE_150;
+    } else {
+        normalPauseImageId = IDB_MEA_NORMPAUSE_200;
+        selectedPauseImageId = IDB_MEA_SELPAUSE_200;
+    }
+    m_runStateBtn.LoadBitmaps(normalPauseImageId, selectedPauseImageId);
     m_runStateBtn.Create(WS_VISIBLE, this, IDC_MEA_RUNSTATE, IDS_MEA_PAUSE);
     m_runStateBtn.SetToggleType(true);
     m_runStateBtn.GetClientRect(colorRect);

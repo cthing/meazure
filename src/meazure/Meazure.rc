@@ -76,13 +76,13 @@ IDI_LOG_ICON            ICON                    "res\\Log.ico"
 
 IDR_MAINFRAME_100       BITMAP                  "res\\Toolbar100.bmp"
 
-IDB_MEA_NORMPAUSE       BITMAP                  "res\\PauseNormal.bmp"
+IDB_MEA_NORMPAUSE_100   BITMAP                  "res\\PauseNormal100.bmp"
 
-IDB_MEA_SELPAUSE        BITMAP                  "res\\PauseActive.bmp"
+IDB_MEA_SELPAUSE_100    BITMAP                  "res\\PauseActive100.bmp"
 
 IDB_LOGO                BITMAP                  "res\\Logo.bmp"
 
-IDB_MEA_WARNING         BITMAP                  "res\\Warning.bmp"
+IDB_MEA_WARNING_100     BITMAP                  "res\\Warning100.bmp"
 
 IDR_MAINFRAME_125       BITMAP                  "res\\Toolbar125.bmp"
 
@@ -91,6 +91,18 @@ IDR_MAINFRAME_150       BITMAP                  "res\\Toolbar150.bmp"
 IDR_MAINFRAME_175       BITMAP                  "res\\Toolbar175.bmp"
 
 IDR_MAINFRAME_200       BITMAP                  "res\\Toolbar200.bmp"
+
+IDB_MEA_NORMPAUSE_150   BITMAP                  "res\\PauseNormal150.bmp"
+
+IDB_MEA_SELPAUSE_150    BITMAP                  "res\\PauseActive150.bmp"
+
+IDB_MEA_SELPAUSE_200    BITMAP                  "res\\PauseActive200.bmp"
+
+IDB_MEA_NORMPAUSE_200   BITMAP                  "res\\PauseNormal200.bmp"
+
+IDB_MEA_WARNING_150     BITMAP                  "res\\Warning150.bmp"
+
+IDB_MEA_WARNING_200     BITMAP                  "res\\Warning200.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

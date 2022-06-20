@@ -495,9 +495,25 @@
    frame displays ***Screen 2***
 1. Verify that the screen size for the secondary display matches that reported in the Screen 
    Information section.
+1. Close the Meazure program
+
+## High DPI Screen Scaling
+
+1. On a 4K display (i.e. 3840 x 2160 pixels) set the screen scaling to 150%
+    a. Bring up the ***Settings > System > Display*** dialog
+    a. Set the display resolution to 3840 x 2160
+    a. Set the ***Change the size of text, apps, and other items*** to 150%
+    a. Close the dialog
+1. Start the Meazure program
+1. Verify that the user interface is properly arranged with correct margins, spacing and size of elements
+1. Verify that the crosshairs are properly sized
+1. Verify that the screen dimensions and resolution are correct
+1. Select various measurement tools and verify that they are properly displayed and dragable
+1. Close the Meazure program
 
 ## Tool Preferences
 
+1. Start the Meazure program
 1. On the toolbar select the Line Tool
 1. Move the cursor over the crosshairs and verify that the crosshairs and Data windows are 
    partially transparent.

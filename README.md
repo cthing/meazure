@@ -62,6 +62,18 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 - A more readable font is used for all dialogs
 
+- Color value fixes and changes
+    - Fix: The YIQ color display now shows negative in-phase and quadrature values.
+    - Enhancement: The CMYK color space is device dependent. Therefore, any conversion between the native RGB color
+      space and CMYK is an approximation without a color profile for the target device. This version of Meazure uses
+      a more conventional formula for approximating CMYK from RGB than was used in previous versions.
+    - Enhancement: The HSL color display has changed. In previous versions of Meazure, the HSL values were normalized
+      between 0 and 240, which is unconventional and potentially confusing. In this release, the HSL values are
+      displayed conventionally with the hue value in degrees in the range [0, 360), and the saturation and lightness
+      values as percentages in the range [0, 100].
+    - Leading zeros in all formats except hexadecimal have been removed. For example, the RGB value previously
+      displayed as "010 020 255" is now displayed as "10 20 255".
+
 - Fix: Meazure now reports the correct screen dimensions and measurements on high DPI displays (e.g. 4K display).
   
 - Fix: Meazure accommodates screen scaling. Note that you must restart Meazure if you change the screen scaling

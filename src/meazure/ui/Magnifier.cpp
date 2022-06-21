@@ -393,63 +393,47 @@ void MeaMagnifier::Draw(HDC hDC) {
     switch (m_colorFmt) {
     case RGBFmt:
         colorLbl = _T("RGB:");
-        colorStr.Format(_T("%03d %03d %03d"), GetRValue(colorValue),
-            GetGValue(colorValue), GetBValue(colorValue));
+        colorStr.Format(_T("%d %d %d"), GetRValue(colorValue), GetGValue(colorValue), GetBValue(colorValue));
         break;
     case RGBHexFmt:
         colorLbl = _T("RGB:");
-        colorStr.Format(_T("#%02X%02X%02X"), GetRValue(colorValue),
-            GetGValue(colorValue), GetBValue(colorValue));
+        colorStr.Format(_T("#%02X%02X%02X"), GetRValue(colorValue), GetGValue(colorValue), GetBValue(colorValue));
         break;
     case CMYFmt:
-        colorLbl = _T("CMY:");
-        colorStr.Format(_T("%03d %03d %03d"), 255 - GetRValue(colorValue),
-            255 - GetGValue(colorValue), 255 - GetBValue(colorValue));
+        {
+            colorLbl = _T("CMY:");
+            MeaColors::CMY cmy = MeaColors::RGBtoCMY(colorValue);
+            colorStr.Format(_T("%d %d %d"), cmy.cyan, cmy.magenta, cmy.yellow);
+        }
         break;
     case CMYKFmt:
-    {
-        int c = 255 - GetRValue(colorValue);
-        int m = 255 - GetGValue(colorValue);
-        int y = 255 - GetBValue(colorValue);
-        int k = min(c, min(m, y));
-        colorLbl = _T("CMYK:");
-        colorStr.Format(_T("%03d %03d %03d %03d"), c - k, m - k, y - k, k);
-    }
-    break;
+        {
+            colorLbl = _T("CMYK:");
+            MeaColors::CMYK cmyk = MeaColors::RGBtoCMYK(colorValue);
+            colorStr.Format(_T("%d %d %d %d"), cmyk.cyan, cmyk.magenta, cmyk.yellow, cmyk.black);
+        }
+        break;
     case HSLFmt:
-    {
-        MeaColors::HSL hsl = MeaColors::RGBtoHSL(colorValue);
-        colorLbl = _T("HSL:");
-        colorStr.Format(_T("%03.0f %03.0f %03.0f"),
-            240.0 * hsl.hue,
-            240.0 * hsl.saturation,
-            240.0 * hsl.lightness);
-    }
-    break;
+        {
+            colorLbl = _T("HSL:");
+            MeaColors::HSL hsl = MeaColors::RGBtoHSL(colorValue);
+            colorStr.Format(_T("%d %d %d"), hsl.hue, hsl.saturation, hsl.lightness);
+        }
+        break;
     case YCbCrFmt:
-    {
-        double r = GetRValue(colorValue);
-        double g = GetGValue(colorValue);
-        double b = GetBValue(colorValue);
-        double y = 0.257 * r + 0.504 * g + 0.098 * b + 16.0;
-        double cb = -0.148 * r - 0.291 * g + 0.439 * b + 128.0;
-        double cr = 0.439 * r - 0.368 * g - 0.071 * b + 128.0;
-        colorLbl = _T("YCbCr:");
-        colorStr.Format(_T("%03.0f %03.0f %03.0f"), y, cb, cr);
-    }
-    break;
+        {
+            colorLbl = _T("YCbCr:");
+            MeaColors::YCbCr ycbcr = MeaColors::RGBtoYCbCr(colorValue);
+            colorStr.Format(_T("%d %d %d"), ycbcr.y, ycbcr.cb, ycbcr.cr);
+        }
+        break;
     case YIQFmt:
-    {
-        double r = GetRValue(colorValue);
-        double g = GetGValue(colorValue);
-        double b = GetBValue(colorValue);
-        double y = 0.299 * r + 0.587 * g + 0.114 * b;
-        double i = 0.596 * r - 0.275 * g - 0.321 * b;
-        double q = 0.212 * r - 0.523 * g + 0.311 * b;
-        colorLbl = _T("YIQ:");
-        colorStr.Format(_T("%03.0f %03.0f %03.0f"), y, (i < 0.0) ? 0.0 : i, (q < 0.0) ? 0.0 : q);
-    }
-    break;
+        {
+            colorLbl = _T("YIQ:");
+            MeaColors::YIQ yiq = MeaColors::RGBtoYIQ(colorValue);
+            colorStr.Format(_T("%d %d %d"), yiq.y, yiq.i, yiq.q);
+        }
+        break;
     default:
         assert(false);
         break;

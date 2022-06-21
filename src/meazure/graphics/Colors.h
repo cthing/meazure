@@ -25,22 +25,79 @@
 #include <meazure/profile/Profile.h>
 #include <map>
 
+// wingdi.h defines a CMYK macro.
+#ifdef CMYK
+#undef CMYK
+#endif
+
 
 /// A color style sheet class that provides the colors and opacities used
 /// by the crosshairs, lines and other graphic elements.
 ///
 namespace MeaColors {
 
+    /// Represents a color in the Cyan-Magenta-Yellow color space.
+    /// All values are in the range [0, 255].
+    ///
+    struct CMY {
+        int cyan;
+        int magenta;
+        int yellow;
+
+        CMY() : cyan(0), magenta(0), yellow(0) {}
+        CMY(int c, int m, int y) : cyan(c), magenta(m), yellow(y) {}
+    };
+
+    /// Represents a color in the Cyan-Magenta-Yellow-Black color space. By convention, the letter "K" represents
+    /// the black component. All value are in the range [0, 255].
+    /// 
+    struct CMYK {
+        int cyan;
+        int magenta;
+        int yellow;
+        int black;
+
+        CMYK() : cyan(0), magenta(0), yellow(0), black(0) {}
+        CMYK(int c, int m, int y, int k) : cyan(c), magenta(m), yellow(y), black(k) {}
+    };
+
     /// Represents a color in the Hue-Saturation-Lightness color space.
-    /// All values are between 0.0 and 1.0.
+    /// Hue values are in degrees in the range [0, 360). Saturation and
+    /// lightness values are percentages in the range [0, 100].
     ///
     struct HSL {
-        double hue;
-        double saturation;
-        double lightness;
+        int hue;
+        int saturation;
+        int lightness;
 
-        HSL() : hue(0.0), saturation(0.0), lightness(0.0) {}
-        HSL(double h, double s, double l) : hue(h), saturation(s), lightness(l) {}
+        HSL() : hue(0), saturation(0), lightness(0) {}
+        HSL(int h, int s, int l) : hue(h), saturation(s), lightness(l) {}
+    };
+
+    /// Represents a color in the Luminance (Y), Blue-Difference (Cb) and Red-Difference (Cr) chrominance color
+    /// space. Luminance values are in the range [16, 235]. Blue-Difference and Red-Difference chroma values are
+    /// in the range [16, 240].
+    /// 
+    struct YCbCr {
+        int y;
+        int cb;
+        int cr;
+
+        YCbCr() : y(0), cb(0), cr(0) {}
+        YCbCr(int luma, int blueChroma, int redChroma) : y(luma), cb(blueChroma), cr(redChroma) {}
+    };
+
+    /// Represents a color in the Luminance (Y), In-phase (I) and Quadrature (Q) chrominance color space. Luminance
+    /// values are in the range [0, 255]. In-phase values are in the range [-152, 152] and quadrature values are in
+    /// the range [-133, 133].
+    /// 
+    struct YIQ {
+        int y;
+        int i;
+        int q;
+
+        YIQ() : y(0), i(0), q(0) {}
+        YIQ(int luma, int inphase, int quadrature) : y(luma), i(inphase), q(quadrature) {}
     };
 
 
@@ -93,7 +150,7 @@ namespace MeaColors {
     /// @param item     [in] Item whose opacity is to be set.
     /// @param opacity  [in] Opacity to set, where 0 is completely transparent and 255 is completely opaque.
     /// 
-    void SetA(Item item, BYTE opacity);
+    void SetA(Item item, std::uint8_t opacity);
 
     /// Returns the color of the specified item.
     /// 
@@ -107,28 +164,28 @@ namespace MeaColors {
     /// @param item     [in] Item whose color component is desired.
     /// @return Red color component of the specified item.
     /// 
-    BYTE GetR(Item item);
+    std::uint8_t GetR(Item item);
 
     /// Returns the value of the green color component of the specified item.
     /// 
     /// @param item     [in] Item whose color component is desired.
     /// @return Green color component of the specified item.
     /// 
-    BYTE GetG(Item item);
+    std::uint8_t GetG(Item item);
 
     /// Returns the value of the blue color component of the specified item.
     /// 
     /// @param item     [in] Item whose color component is desired.
     /// @return Blue color component of the specified item.
     /// 
-    BYTE GetB(Item item);
+    std::uint8_t GetB(Item item);
 
     /// Returns the opacity of the specified item.
     /// 
     /// @param item     [in] Item whose opacity is desired.
     /// @return Opacity of the specified item, where 0 is completely transparent and 255 is completely opaque.
     /// 
-    BYTE GetA(Item item);
+    std::uint8_t GetA(Item item);
 
     /// Returns the default color for the specified item.
     /// 
@@ -147,17 +204,45 @@ namespace MeaColors {
     ///
     COLORREF InterpolateColor(COLORREF startRGB, COLORREF endRGB, int percent);
 
+    /// Converts from the RGB color space to the CMY color space.
+    /// 
+    /// @param rgb      [in] RGB color
+    /// @return CMY color
+    /// 
+    CMY RGBtoCMY(COLORREF rgb);
+
+    /// Converts from the RGB color space to the CMYK color space.
+    /// 
+    /// @param rgb      [in] RGB color
+    /// @return CMYK color
+    /// 
+    CMYK RGBtoCMYK(COLORREF rgb);
+
     /// Converts from the RGB color space to the HSL color space.
     ///
-    /// @param rgb      [in] RGB colors as values between 0 and 255.
-    /// @return HSL colors as values between 0.0 and 1.0
+    /// @param rgb      [in] RGB color
+    /// @return HSL color
     ///
     HSL RGBtoHSL(COLORREF rgb);
 
     /// Converts from the HSL color space to the RGB color space.
     ///
-    /// @param hsl      [in] HSL colors as values between 0.0 and 1.0.
-    /// @return RGB colors as values between 0 and 255.
+    /// @param hsl      [in] HSL color.
+    /// @return RGB color
     ///
     COLORREF HSLtoRGB(const HSL& hsl);
+
+    /// Converts from the RGB color space to the Luminance (Y), Blue-Difference (Cb), Red-Difference (Cr) color space.
+    ///
+    /// @param rgb      [in] RGB color
+    /// @return YCbCr color
+    ///
+    YCbCr RGBtoYCbCr(COLORREF rgb);
+
+    /// Converts from the RGB color space to the Luminance (Y), In-phase (I), Quadrature (Q) color space.
+    /// 
+    /// @param rgb      [in] RGB color
+    /// @return YIQ color
+    /// 
+    YIQ RGBtoYIQ(COLORREF rgb);
 };

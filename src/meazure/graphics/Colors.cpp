@@ -22,6 +22,7 @@
 #include <meazure/ui/LayeredWindows.h>
 #include <meazure/utilities/NumericUtils.h>
 #include <algorithm>
+#include <cmath>
 
 // Remove Windows defines so std versions can be used.
 #undef min
@@ -81,7 +82,7 @@ void MeaColors::Set(Item item, COLORREF clr) {
     colors[item] = clr;
 }
 
-void MeaColors::SetA(Item item, BYTE opacity) {
+void MeaColors::SetA(Item item, std::uint8_t opacity) {
     colors[item] = RGB(opacity, 0, 0);
 }
 
@@ -89,19 +90,19 @@ COLORREF MeaColors::Get(Item item) {
     return colors[item];
 }
 
-BYTE MeaColors::GetR(Item item) {
+std::uint8_t MeaColors::GetR(Item item) {
     return GetRValue(colors[item]);
 }
 
-BYTE MeaColors::GetG(Item item) {
+std::uint8_t MeaColors::GetG(Item item) {
     return GetGValue(colors[item]);
 }
 
-BYTE MeaColors::GetB(Item item) {
+std::uint8_t MeaColors::GetB(Item item) {
     return GetBValue(colors[item]);
 }
 
-BYTE MeaColors::GetA(Item item) {
+std::uint8_t MeaColors::GetA(Item item) {
     return GetRValue(colors[item]);
 }
 
@@ -117,8 +118,8 @@ COLORREF MeaColors::InterpolateColor(COLORREF startRGB, COLORREF endRGB, int per
         return endRGB;
     }
 
-    auto interpolate = [](double start, double end, int percent) {
-        return start + (end - start) * percent / 100.0;
+    auto interpolate = [](int start, int end, int percent) {
+        return start + static_cast<int>(std::round((end - start) * percent / 100.0));
     };
 
     HSL startHSL = RGBtoHSL(startRGB);
@@ -131,13 +132,33 @@ COLORREF MeaColors::InterpolateColor(COLORREF startRGB, COLORREF endRGB, int per
     return HSLtoRGB(hsl);
 }
 
+MeaColors::CMY MeaColors::RGBtoCMY(COLORREF rgb) {
+    return CMY(255 - GetRValue(rgb), 255 - GetGValue(rgb), 255 - GetBValue(rgb));
+}
+
+MeaColors::CMYK MeaColors::RGBtoCMYK(COLORREF rgb) {
+    CMY cmy = RGBtoCMY(rgb);
+    int black = std::min({ cmy.cyan, cmy.magenta, cmy.yellow });
+    
+    if (black == 255) {
+        return CMYK(0, 0, 0, black);
+    }
+
+    double denom = 255.0 - black;
+    int cyan = static_cast<int>(std::round(255.0 * (cmy.cyan - black) / denom));
+    int magenta = static_cast<int>(std::round(255.0 * (cmy.magenta - black) / denom));
+    int yellow = static_cast<int>(std::round(255.0 * (cmy.yellow - black) / denom));
+
+    return CMYK(cyan, magenta, yellow, black);
+}
+
 MeaColors::HSL MeaColors::RGBtoHSL(COLORREF rgb) {
     double h, s, l;
     double r = GetRValue(rgb) / 255.0;
     double g = GetGValue(rgb) / 255.0;
     double b = GetBValue(rgb) / 255.0;
-    double cmax = std::max(r, std::max(g, b));
-    double cmin = std::min(r, std::min(g, b));
+    double cmax = std::max({ r, g, b });
+    double cmin = std::min({ r, g, b });
 
     l = (cmax + cmin) / 2.0;
     if (MeaNumericUtils::IsEqualF(cmax, cmin)) {
@@ -165,7 +186,9 @@ MeaColors::HSL MeaColors::RGBtoHSL(COLORREF rgb) {
         }
     }
 
-    return HSL(h, s, l);
+    return HSL(static_cast<int>(std::round(h * 360.0)),
+               static_cast<int>(std::round(s * 100.0)),
+               static_cast<int>(std::round(l * 100.0)));
 }
 
 /// Converts a hue to an RGB component value based on the specified weighting factors.
@@ -196,23 +219,48 @@ static double HuetoRGB(double m1, double m2, double h) {
 
 COLORREF MeaColors::HSLtoRGB(const HSL& hsl) {
     double r, g, b;
+    double h = hsl.hue / 360.0;
+    double s = hsl.saturation / 100.0;
+    double l = hsl.lightness / 100.0;
 
     if (hsl.saturation == 0.0) {
-        r = g = b = hsl.lightness;
+        r = g = b = l;
     } else {
         double m2;
 
-        if (hsl.lightness <= 0.5) {
-            m2 = hsl.lightness * (1.0 + hsl.saturation);
+        if (l <= 0.5) {
+            m2 = l * (1.0 + s);
         } else {
-            m2 = hsl.lightness + hsl.saturation - hsl.lightness * hsl.saturation;
+            m2 = l + s - l * s;
         }
-        double m1 = 2.0 * hsl.lightness - m2;
+        double m1 = 2.0 * l - m2;
 
-        r = HuetoRGB(m1, m2, hsl.hue + 1.0 / 3.0);
-        g = HuetoRGB(m1, m2, hsl.hue);
-        b = HuetoRGB(m1, m2, hsl.hue - 1.0 / 3.0);
+        r = HuetoRGB(m1, m2, h + 1.0 / 3.0);
+        g = HuetoRGB(m1, m2, h);
+        b = HuetoRGB(m1, m2, h - 1.0 / 3.0);
     }
 
-    return RGB((BYTE)(r * 255), (BYTE)(g * 255), (BYTE)(b * 255));
+    return RGB(static_cast<int>(std::round(r * 255.0)),
+               static_cast<int>(std::round(g * 255.0)),
+               static_cast<int>(std::round(b * 255.0)));
+}
+
+MeaColors::YCbCr MeaColors::RGBtoYCbCr(COLORREF rgb) {
+    double r = GetRValue(rgb);
+    double g = GetGValue(rgb);
+    double b = GetBValue(rgb);
+    int y = static_cast<int>(std::round(0.257 * r + 0.504 * g + 0.098 * b + 16.0));
+    int cb = static_cast<int>(std::round(-0.148 * r - 0.291 * g + 0.439 * b + 128.0));
+    int cr = static_cast<int>(std::round(0.439 * r - 0.368 * g - 0.071 * b + 128.0));
+    return YCbCr(y, cb, cr);
+}
+
+MeaColors::YIQ MeaColors::RGBtoYIQ(COLORREF rgb) {
+    double r = GetRValue(rgb);
+    double g = GetGValue(rgb);
+    double b = GetBValue(rgb);
+    int y = static_cast<int>(std::round(0.299 * r + 0.587 * g + 0.114 * b));
+    int i = static_cast<int>(std::round(0.596 * r - 0.275 * g - 0.321 * b));
+    int q = static_cast<int>(std::round(0.212 * r - 0.523 * g + 0.311 * b));
+    return YIQ(y, i, q);
 }

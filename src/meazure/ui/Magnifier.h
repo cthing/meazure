@@ -52,27 +52,27 @@ public:
     /// color space is in use.
     ///
     enum ColorFmt {
-        RGBFmt = 0,    ///< Red, green and blue as individual values between 0 and 255 inclusive.
-        RGBHexFmt = 1,    ///< Red, green and blue as a composite hex number of the form \#RRGGBB.
-        CMYFmt = 2,    ///< Cyan, magenta and yellow as individual values between 0 and 255 inclusive.
+        RGBFmt = 0,     ///< Red, green and blue as individual values between 0 and 255 inclusive.
+        RGBHexFmt = 1,  ///< Red, green and blue as a composite hex number of the form \#RRGGBB.
+        CMYFmt = 2,     ///< Cyan, magenta and yellow as individual values between 0 and 255 inclusive.
         CMYKFmt = 3,    ///< Cyan, magenta, yellow and black as individual values.
-        HSLFmt = 4,    ///< Hue, saturation and lightness as individual values.
-        YCbCrFmt = 5,    ///< Luminance and chrominance as individual values.
-        YIQFmt = 6     ///< Luminance, and inphase and quadrature chrominance channels.
+        HSLFmt = 4,     ///< Hue, saturation and lightness as individual values.
+        YCbCrFmt = 5,   ///< Luminance and chrominance as individual values.
+        YIQFmt = 6      ///< Luminance, and inphase and quadrature chrominance channels.
     };
 
     /// Indicates whether the magnifier is running or in freeze frame mode.
     ///
     enum class RunState {
         Run = 0,        ///< Magnifier is in real time mode.
-        Freeze = 1         ///< Magnifier is in freeze frame mode.
+        Freeze = 1      ///< Magnifier is in freeze frame mode.
     };
 
 
     static constexpr int kDefZoomIndex { 1 };                   ///< Default index for the zoom factor.
     static constexpr bool kDefShowGrid { true };                ///< Indicates whether the grid should be display by default.
     static constexpr ColorFmt kDefColorFmt { RGBFmt };          ///< Default color display format.
-    static constexpr RunState   kDefRunState { RunState::Run }; ///< Default magnifier display mode.
+    static constexpr RunState kDefRunState { RunState::Run };   ///< Default magnifier display mode.
 
 
     /// Constructs a magnifier. To use the magnifier the Create

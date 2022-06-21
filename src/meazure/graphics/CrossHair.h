@@ -192,7 +192,7 @@ public:
     ///
     /// @return TRUE if message was processed.
     ///
-    virtual BOOL PreTranslateMessage(MSG* pMsg);
+    virtual BOOL PreTranslateMessage(MSG* pMsg) override;
 
 protected:
     DECLARE_MESSAGE_MAP()

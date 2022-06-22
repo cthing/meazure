@@ -1,4 +1,4 @@
-# Meazure<sup>TM</sup> 3.0
+# Meazure<sup>TM</sup> 4.0
 
 Meazure is a tool for easily measuring and capturing portions of the screen. Tasks such as measuring the size of a window,
 capturing an image, determining the color of a pixel, and determining the screen size and resolution can all be
@@ -58,7 +58,7 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 ## Changelog
 
-### Changes 3.0.2 to 3.0.3 (unreleased)
+### Changes 3.0.2 to 4.0 (unreleased)
 
 - A more readable font is used for all dialogs
 

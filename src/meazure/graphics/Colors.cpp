@@ -159,18 +159,18 @@ MeaColors::HSL MeaColors::RGBtoHSL(COLORREF rgb) {
     double b = GetBValue(rgb) / 255.0;
     double cmax = std::max({ r, g, b });
     double cmin = std::min({ r, g, b });
+    double delta = cmax - cmin;
 
     l = (cmax + cmin) / 2.0;
-    if (MeaNumericUtils::IsEqualF(cmax, cmin)) {
+    if (MeaNumericUtils::IsZeroF(delta)) {      // Gray
+        h = 0.0;
         s = 0.0;
-        h = 0.0; // it's really undefined
-    } else {
+    } else {                                    // Chroma
         if (l < 0.5) {
-            s = (cmax - cmin) / (cmax + cmin);
+            s = delta / (cmax + cmin);
         } else {
-            s = (cmax - cmin) / (2.0 - cmax - cmin);
+            s = delta / (2.0 - cmax - cmin);
         }
-        double delta = cmax - cmin;
 
         if (MeaNumericUtils::IsEqualF(r, cmax)) {
             h = (g - b) / delta;
@@ -183,6 +183,8 @@ MeaColors::HSL MeaColors::RGBtoHSL(COLORREF rgb) {
 
         if (h < 0.0) {
             h += 1.0;
+        } else if (h > 1.0) {
+            h -= 1.0;
         }
     }
 
@@ -191,7 +193,8 @@ MeaColors::HSL MeaColors::RGBtoHSL(COLORREF rgb) {
                static_cast<int>(std::round(l * 100.0)));
 }
 
-/// Converts a hue to an RGB component value based on the specified weighting factors.
+/// Converts a hue to an RGB component value based on the specified weighting factors. See conversion of HSL to RGB at
+/// http://www.easyrgb.com/en/math.php.
 /// 
 /// @param m1       [in] Weighting factor between lightness and saturation.
 /// @param m2       [in] Weighting factor between lightness and saturation.
@@ -219,20 +222,15 @@ static double HuetoRGB(double m1, double m2, double h) {
 
 COLORREF MeaColors::HSLtoRGB(const HSL& hsl) {
     double r, g, b;
-    double h = hsl.hue / 360.0;
-    double s = hsl.saturation / 100.0;
     double l = hsl.lightness / 100.0;
 
-    if (hsl.saturation == 0.0) {
+    if (hsl.saturation == 0) {
         r = g = b = l;
     } else {
-        double m2;
+        double h = hsl.hue / 360.0;
+        double s = hsl.saturation / 100.0;
 
-        if (l <= 0.5) {
-            m2 = l * (1.0 + s);
-        } else {
-            m2 = l + s - l * s;
-        }
+        double m2 = (l <= 0.5) ? l * (1.0 + s) : l + s - l * s;
         double m1 = 2.0 * l - m2;
 
         r = HuetoRGB(m1, m2, h + 1.0 / 3.0);

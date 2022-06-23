@@ -42,31 +42,52 @@
         <span class="MenuItem">View</span> menu.
         <br clear="left">
         <ul class="BulletList">
-            <li><span class="LeadItem">RGB</span> - The color is displayed as separate red, green,
-            and blue components each as a value between 0 and 255 inclusive.</li>
-            <li><span class="LeadItem">#RRGGBB</span> - The color is displayed as a single six digit
-            hexadecimal number where the first two digits are the red component, the next two
-            digits are the green component and the last two digits are the blue component. The
-            value of each component is between 0 and 0xFF inclusive.</li>
-            <li><span class="LeadItem">CMY</span> - The color is displayed as separate cyan, magenta,
-            and yellow components each as a value between 0 and 255 inclusive.</li>
-            <li><span class="LeadItem">CMYK</span> - The color is displayed as separate cyan, magenta,
-            yellow, and black components. The value of each component is between 0 and 255 inclusive.</li>
-            <li><span class="LeadItem">HSL</span> - The color is displayed as hue, saturation, and lightness
-            values. The hue value is in degrees between 0 inclusive and 360 exclusive. The saturation and
-            lightness values are percentages between 0 and 100 inclusive.</li>
-            <li><span class="LeadItem">YCbCr</span> - The color is displayed as a luminance (Y) and two
-            chrominance values (Cb and Cr). The luminance value is between 0 and 235 inclusive. The two
-            chrominance values are between 0 and 240 inclusive.</li>
-            <li><span class="LeadItem">YIQ</span> - The color is displayed as a luminance (Y) and two
-            chrominance values (In-phase, Quadrature). This format corresponds to that used in NTSC television
-            broadcasting. The luminance value is between 0 and 255 inclusive. The in-phase value is between
-            -152 and 152 inclusive. The quadrature value is between -133 and 133 inclusive.</li>
+            <li>
+                <span class="LeadItem">RGB</span> - The color is displayed as separate red, green,
+                and blue components each as a value between 0 and 255 inclusive.
+            </li>
+            <li>
+                <span class="LeadItem">#RRGGBB</span> - The color is displayed as a single six digit
+                hexadecimal number where the first two digits are the red component, the next two
+                digits are the green component and the last two digits are the blue component. The
+                value of each component is between 0 and 0xFF inclusive.
+            </li>
+            <li>
+                <span class="LeadItem">CMY</span> - The color is displayed as separate cyan, magenta,
+                and yellow components each as a value between 0 and 255 inclusive.
+            </li>
+            <li>
+                <span class="LeadItem">CMYK</span> - The color is displayed as separate cyan, magenta,
+                yellow, and black components. The value of each component is between 0 and 255 inclusive.
+            </li>
+            <li>
+                <span class="LeadItem">HSL</span> - The color is displayed as hue, saturation, and lightness
+                values. The hue value is in degrees between 0 inclusive and 360 exclusive. The saturation and
+                lightness values are percentages between 0 and 100 inclusive.
+            </li>
+            <li>
+                <span class="LeadItem">YCbCr</span> - The color is displayed as a luminance (Y) and two
+                chrominance values (Cb and Cr). The luminance value is between 0 and 235 inclusive. The two
+                chrominance values are between 0 and 240 inclusive.
+            </li>
+            <li>
+                <span class="LeadItem">YIQ</span> - The color is displayed as a luminance (Y) and two
+                chrominance values (In-phase, Quadrature). This format corresponds to that used in NTSC television
+                broadcasting. The luminance value is between 0 and 255 inclusive. The in-phase value is between
+                -152 and 152 inclusive. The quadrature value is between -133 and 133 inclusive.
+            </li>
         </ul>
     </div>
     <div class="Para">
         The color values can be copied to the clipboard by pressing the button with the clipboard icon immediately
         to the right of the color swatch.
+    </div>
+    <div class="Para">
+        All color values are read from the screen in the RGB color space. Display of the color in formats other than
+        RGB is done using conversion formulas. The formulas used can be seen in the Meazure
+        <a href="https://github.com/cthing/meazure/blob/master/src/meazure/graphics/Colors.cpp">Colors.cpp</a> source
+        file and references for these formulas are listed in the comments in the
+        <a href="https://github.com/cthing/meazure/blob/master/src/meazure/graphics/Colors.h">Colors.h</a> source file.
     </div>
     <div class="SubSection">Zoom and Freeze</div>
     <div class="Para">

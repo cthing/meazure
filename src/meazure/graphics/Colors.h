@@ -37,7 +37,6 @@
 namespace MeaColors {
 
     /// Represents a color in the Cyan-Magenta-Yellow color space.
-    /// All values are in the range [0, 255].
     ///
     struct CMY {
         int cyan;
@@ -49,7 +48,7 @@ namespace MeaColors {
     };
 
     /// Represents a color in the Cyan-Magenta-Yellow-Black color space. By convention, the letter "K" represents
-    /// the black component. All value are in the range [0, 255].
+    /// the black component.
     /// 
     struct CMYK {
         int cyan;
@@ -61,9 +60,7 @@ namespace MeaColors {
         CMYK(int c, int m, int y, int k) : cyan(c), magenta(m), yellow(y), black(k) {}
     };
 
-    /// Represents a color in the Hue-Saturation-Lightness color space.
-    /// Hue values are in degrees in the range [0, 360). Saturation and
-    /// lightness values are percentages in the range [0, 100].
+    /// Represents a color in the Hue (H), Saturation (S), and Lightness (L) color space.
     ///
     struct HSL {
         int hue;
@@ -75,8 +72,7 @@ namespace MeaColors {
     };
 
     /// Represents a color in the Luminance (Y), Blue-Difference (Cb) and Red-Difference (Cr) chrominance color
-    /// space. Luminance values are in the range [16, 235]. Blue-Difference and Red-Difference chroma values are
-    /// in the range [16, 240].
+    /// space. See https://en.wikipedia.org/wiki/YCbCr for more information.
     /// 
     struct YCbCr {
         int y;
@@ -87,9 +83,7 @@ namespace MeaColors {
         YCbCr(int luma, int blueChroma, int redChroma) : y(luma), cb(blueChroma), cr(redChroma) {}
     };
 
-    /// Represents a color in the Luminance (Y), In-phase (I) and Quadrature (Q) chrominance color space. Luminance
-    /// values are in the range [0, 255]. In-phase values are in the range [-152, 152] and quadrature values are in
-    /// the range [-133, 133].
+    /// Represents a color in the Luminance (Y), In-phase (I) and Quadrature (Q) chrominance color space.
     /// 
     struct YIQ {
         int y;
@@ -195,7 +189,7 @@ namespace MeaColors {
     COLORREF GetDefault(Item item);
 
     /// Performs linear interpolation between the specified RGB color. The interpolation is performed in HSL space,
-    /// which provides a more visually appealing result.
+    /// which provides a more visually appealing result. The result of the interpolation is converted back to RGB.
     ///
     /// @param startRGB     [in] Starting interpolation point.
     /// @param endRGB       [in] Ending interpolation point.
@@ -204,28 +198,37 @@ namespace MeaColors {
     ///
     COLORREF InterpolateColor(COLORREF startRGB, COLORREF endRGB, int percent);
 
-    /// Converts from the RGB color space to the CMY color space.
+    /// Converts from the RGB color space to the Cyan (C), Magenta (M) and Yellow (Y) color space. The conversion is
+    /// done using the algorithm for RGB to CMY conversion presented at http://www.easyrgb.com/en/math.php. The input
+    /// and output range is [0, 255].
     /// 
     /// @param rgb      [in] RGB color
     /// @return CMY color
     /// 
     CMY RGBtoCMY(COLORREF rgb);
 
-    /// Converts from the RGB color space to the CMYK color space.
+    /// Converts from the RGB color space to the Cyan (C), Magenta (M), Yellow (Y) and Black (K) color space. The
+    /// conversion is done using the algorithm presetend at http://www.easyrgb.com/en/math.php. The input and output
+    /// range is [0, 255].
     /// 
     /// @param rgb      [in] RGB color
     /// @return CMYK color
     /// 
     CMYK RGBtoCMYK(COLORREF rgb);
 
-    /// Converts from the RGB color space to the HSL color space.
+    /// Converts from the RGB color space to the Hue (H), Saturation (S) and Lightness (L) color space. The conversion
+    /// is done using the algorithm for RGB to HSL conversion presented at http://www.easyrgb.com/en/math.php. The
+    /// input range is [0, 255]. The output range is scaled such that H values are in degrees in the range [0, 360),
+    /// and S and L values are percentages in the range [0, 100].
     ///
     /// @param rgb      [in] RGB color
     /// @return HSL color
     ///
     HSL RGBtoHSL(COLORREF rgb);
 
-    /// Converts from the HSL color space to the RGB color space.
+    /// Converts from the HSL color space to the RGB color space. The conversion is done using the algorithm for HSL
+    /// to RGB conversion presented at http://www.easyrgb.com/en/math.php. The input range is H in degrees in the
+    /// range [0, 360), and S and L as percentages in the range [0, 100]. The output range is [0, 255].
     ///
     /// @param hsl      [in] HSL color.
     /// @return RGB color
@@ -233,13 +236,19 @@ namespace MeaColors {
     COLORREF HSLtoRGB(const HSL& hsl);
 
     /// Converts from the RGB color space to the Luminance (Y), Blue-Difference (Cb), Red-Difference (Cr) color space.
+    /// The conversion is done using the ITU-R BT.601 coefficients for digital YCbCr from digital RGB with input
+    /// range [0, 255]. The output range is [16, 235] for Y, and [16, 240] for both Cb and Cr)values. See
+    /// https://en.wikipedia.org/wiki/YCbCr for more information.
     ///
     /// @param rgb      [in] RGB color
     /// @return YCbCr color
     ///
     YCbCr RGBtoYCbCr(COLORREF rgb);
 
-    /// Converts from the RGB color space to the Luminance (Y), In-phase (I), Quadrature (Q) color space.
+    /// Converts from the RGB color space to the Luminance (Y), In-phase (I), Quadrature (Q) color space. The
+    /// conversion is done using the NTSC 1953 colorimetry coefficients. The input range is [0, 255]. The output range
+    /// is [0, 255] for Y, [-152, 152] I and [-133, 133] for quadrature. See https://en.wikipedia.org/wiki/YIQ for
+    /// more information.
     /// 
     /// @param rgb      [in] RGB color
     /// @return YIQ color

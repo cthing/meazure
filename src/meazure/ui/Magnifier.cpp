@@ -25,12 +25,14 @@
 #include <meazure/graphics/Colors.h>
 #include <AfxPriv.h>
 #include <cassert>
+#include <string.h>
 
 
 BEGIN_MESSAGE_MAP(MeaMagnifier, CWnd)
     ON_WM_PAINT()
     ON_WM_HSCROLL()
     ON_BN_CLICKED(IDC_MEA_RUNSTATE, OnRunState)
+    ON_BN_CLICKED(IDC_MEA_COLOR_CLIPBOARD, OnCopyColor)
     ON_MESSAGE(MeaHPTimerMsg, OnHPTimer)
     ON_MESSAGE(WM_HELPHITTEST, OnHelpHitTest)
 END_MESSAGE_MAP()
@@ -69,7 +71,6 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd) {
     int swatchWidth = MeaGeometry::Scale(kBaseSwatchWidth, dpiScaleFactor);
     int zoomSpace = MeaGeometry::Scale(kBaseZoomSpace, dpiScaleFactor);
 
-    //
     // Create the color display
     //
     m_magHeight = width + margin.cy;
@@ -88,12 +89,27 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd) {
     MeaLayout::PlaceAfter(m_swatchLabel, m_swatchField, margin.cx / 2);
     MeaLayout::PlaceAfter(m_swatchField, m_swatchWin, margin.cx);
 
+    int scalePercent = MeaLayout::GetDPIScalePercent(*this);
+
+    // Create the clipboard button
     //
+    int clipboardImageId;
+    if (scalePercent <= 125) {
+        clipboardImageId = IDB_MEA_CLIPBOARD_100;
+    } else if (scalePercent <= 175) {
+        clipboardImageId = IDB_MEA_CLIPBOARD_150;
+    } else {
+        clipboardImageId = IDB_MEA_CLIPBOARD_200;
+    }
+    m_clipboardBtn.LoadBitmaps(clipboardImageId, clipboardImageId);
+    m_clipboardBtn.Create(WS_VISIBLE, this, IDC_MEA_COLOR_CLIPBOARD, IDS_MEA_COLOR_CLIPBOARD);
+
+    MeaLayout::PlaceAfter(m_swatchWin, m_clipboardBtn, margin.cx);
+
     // Create the pause button
     //
     int normalPauseImageId;
     int selectedPauseImageId;
-    int scalePercent = MeaLayout::GetDPIScalePercent(*this);
     if (scalePercent <= 125) {
         normalPauseImageId = IDB_MEA_NORMPAUSE_100;
         selectedPauseImageId = IDB_MEA_SELPAUSE_100;
@@ -109,10 +125,11 @@ bool MeaMagnifier::Create(const POINT& topLeft, int width, CWnd* parentWnd) {
     m_runStateBtn.SetToggleType(true);
     m_runStateBtn.GetClientRect(colorRect);
 
-    MeaLayout::PlaceAfter(m_swatchWin, m_runStateBtn, 3 * margin.cx);
-    MeaLayout::AlignCenter(m_magHeight, &m_swatchLabel, &m_swatchField, &m_swatchWin, &m_runStateBtn, nullptr);
+    MeaLayout::PlaceAfter(m_clipboardBtn, m_runStateBtn, margin.cx);
 
-    //
+    MeaLayout::AlignCenter(m_magHeight, &m_swatchLabel, &m_swatchField, &m_swatchWin, &m_runStateBtn,
+                           &m_clipboardBtn, nullptr);
+
     // Create the zoom control
     //
     m_magHeight += colorRect.Height() + zoomSpace;
@@ -451,4 +468,38 @@ void MeaMagnifier::Draw(HDC hDC) {
     CDC* dc = m_swatchWin.GetDC();
     dc->FillSolidRect(&colorRect, colorValue);
     m_swatchWin.ReleaseDC(dc);
+}
+
+void MeaMagnifier::OnCopyColor() {
+    CString colorStr;
+    m_swatchField.GetWindowText(colorStr);
+
+    if (colorStr.IsEmpty()) {
+        return;
+    }
+
+    if (!OpenClipboard()) {
+        AfxMessageBox(IDS_MEA_NO_COLOR_COPY);
+        return;
+    }
+    if (!EmptyClipboard()) {
+        CloseClipboard();
+        AfxMessageBox(IDS_MEA_NO_COLOR_COPY);
+        return;
+    }
+
+    size_t colorSize = (colorStr.GetLength() + 1) * sizeof(TCHAR);
+    HGLOBAL hData = GlobalAlloc(GMEM_MOVEABLE, colorSize);
+    memcpy_s(GlobalLock(hData), colorSize, colorStr.LockBuffer(), colorSize);
+    GlobalUnlock(hData);
+    colorStr.UnlockBuffer();
+
+    UINT uiFormat = (sizeof(TCHAR) == sizeof(WCHAR)) ? CF_UNICODETEXT : CF_TEXT;
+    if (::SetClipboardData(uiFormat, hData) == NULL) {
+        CloseClipboard();
+        AfxMessageBox(IDS_MEA_NO_COLOR_COPY);
+        return;
+    }
+
+    CloseClipboard();
 }

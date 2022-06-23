@@ -49,6 +49,8 @@ set(UI_SRCS
     ui/StatusBar.h
     ui/Swatch.cpp
     ui/Swatch.h
+    ui/TextField.cpp
+    ui/TextField.h
     ui/Themes.h
 )
 source_group(UI FILES ${UI_SRCS})

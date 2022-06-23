@@ -19,6 +19,7 @@
 
 #include <meazure/pch.h>
 #include "NumberField.h"
+#include <meazure/Messages.h>
 #include "Layout.h"
 #include <ctype.h>
 #include <afxole.h>
@@ -27,65 +28,20 @@
 int MeaNumberField::m_edgeHeight { -1 };
 
 
-BEGIN_MESSAGE_MAP(MeaNumberField, CEdit)
+BEGIN_MESSAGE_MAP(MeaNumberField, MeaTextField)
     ON_WM_CHAR()
     ON_MESSAGE(WM_PASTE, OnPaste)
-    ON_WM_KILLFOCUS()
 END_MESSAGE_MAP()
 
 
 MeaNumberField::MeaNumberField() :
-    CEdit(), m_valueType(AllValues) {
+    MeaTextField(), m_valueType(AllValues) {
     if (m_edgeHeight < 0) {
         m_edgeHeight = GetSystemMetrics(SM_CYEDGE);
     }
 }
 
 MeaNumberField::~MeaNumberField() {}
-
-bool MeaNumberField::Create(DWORD style, const POINT& topLeft,
-                      int numChars, CWnd* parentWnd, UINT id) {
-    // Have the parent create the window
-    //
-    if (!CEdit::CreateEx(WS_EX_CLIENTEDGE, _T("EDIT"), "", style,
-                         CRect(topLeft, CSize(5, 5)), parentWnd, id)) {
-        return false;
-    }
-
-    // Resize the window based on the label. First set
-    // a more appropriate font.
-    //
-    CFont* defaultFont = CFont::FromHandle(static_cast<HFONT>(GetStockObject(DEFAULT_GUI_FONT)));
-    SetFont(defaultFont, FALSE);
-
-    CDC* dc = GetDC();
-    if (dc == nullptr) {
-        return false;
-    }
-
-    // Select the new font into the DC
-    //
-    if (dc->SelectStockObject(DEFAULT_GUI_FONT) == nullptr) {
-        ReleaseDC(dc);
-        return false;
-    }
-
-    // Get the character height for the font.
-    //
-    TEXTMETRIC metrics;
-
-    if (!dc->GetTextMetrics(&metrics)) {
-        ReleaseDC(dc);
-        return false;
-    }
-
-    ReleaseDC(dc);
-
-    // Set the window to the character height and the text length.
-    //
-    return MeaLayout::SetWindowSize(*this, numChars * metrics.tmAveCharWidth * 3 / 2,
-        metrics.tmHeight + 2 * m_edgeHeight);
-}
 
 BOOL MeaNumberField::PreTranslateMessage(MSG* msg) {
     if (msg->message == WM_KEYDOWN) {
@@ -107,18 +63,9 @@ BOOL MeaNumberField::PreTranslateMessage(MSG* msg) {
     return FALSE;
 }
 
-void MeaNumberField::OnKillFocus(CWnd* win) {
-    CEdit::OnKillFocus(win);
-
-    CWnd* parent = GetParent();
-    if (parent != nullptr) {
-        parent->SendMessage(MeaFieldFocusMsg, 0, GetDlgCtrlID());
-    }
-}
-
 void MeaNumberField::OnChar(UINT nChar, UINT nRepCnt, UINT nFlags) {
     if (IsValid(reinterpret_cast<TCHAR*>(&nChar), 1)) {
-        CEdit::OnChar(nChar, nRepCnt, nFlags);
+        MeaTextField::OnChar(nChar, nRepCnt, nFlags);
     } else {
         MessageBeep(MB_OK);
     }

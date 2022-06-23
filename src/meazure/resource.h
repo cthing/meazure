@@ -20,7 +20,9 @@
 #define IDS_MEA_ISSUE_URL               130
 #define IDR_MAINFRAME_150               130
 #define IDR_MAINFRAME_175               131
+#define IDS_MEA_COLOR_CLIPBOARD         131
 #define IDR_MAINFRAME_200               132
+#define IDS_MEA_NO_COLOR_COPY           132
 #define IDD_PREF_RULERS                 135
 #define IDD_PREF_TOOLS                  136
 #define IDB_MEA_NORMPAUSE               138
@@ -50,6 +52,9 @@
 #define IDB_MEA_WARNING_200             166
 #define IDS_MEA_RELEASES_URL            167
 #define IDS_MEA_CONTRIBUTE_URL          168
+#define IDB_MEA_CLIPBOARD_100           168
+#define IDB_MEA_CLIPBOARD_150           169
+#define IDB_MEA_CLIPBOARD_200           170
 #define IDC_ORIENT_TOP                  1004
 #define IDC_ORIENT_BOTTOM               1005
 #define IDC_ORIENT_LEFT                 1006
@@ -190,6 +195,7 @@
 #define IDC_CONTRIBUTE                  1182
 #define IDC_LOG_TITLE_LABEL             1183
 #define IDC_LOG_DESC_LABEL              1184
+#define IDC_MEA_COLOR_CLIPBOARD         1185
 #define ID_MEA_CURSOR                   32771
 #define ID_MEA_POINT                    32772
 #define ID_MEA_LINE                     32773
@@ -421,7 +427,7 @@
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        168
+#define _APS_NEXT_RESOURCE_VALUE        169
 #define _APS_NEXT_COMMAND_VALUE         32852
 #define _APS_NEXT_CONTROL_VALUE         1185
 #define _APS_NEXT_SYMED_VALUE           129

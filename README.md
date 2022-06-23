@@ -64,6 +64,8 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 - Color value fixes and changes
     - Fix: The YIQ color display now shows negative in-phase and quadrature values.
+    - Enhancement: A button is now provided to copy the contents of the color field to the clipboard. The button
+      is located to the right of the color swatch.
     - Enhancement: The CMYK color space is device dependent. Therefore, any conversion between the native RGB color
       space and CMYK is an approximation without a color profile for the target device. This version of Meazure uses
       a more conventional formula for approximating CMYK from RGB than was used in previous versions.

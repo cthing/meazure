@@ -23,7 +23,7 @@
 #pragma once
 
 #include "Label.h"
-#include "NumberField.h"
+#include "TextField.h"
 #include "Themes.h"
 #include "ImageButton.h"
 #include <meazure/Messages.h>
@@ -227,7 +227,7 @@ public:
     /// @return Pointer to the color display text field if it has the
     ///         focus, and nullptr if it does not.
     ///
-    MeaNumberField* GetFieldFocus() {
+    MeaTextField* GetFieldFocus() {
         return (GetFocus() == &m_swatchField) ? &m_swatchField : nullptr;
     }
 
@@ -253,6 +253,10 @@ protected:
     /// the magnifier image or start it running again.
     ///
     afx_msg void OnRunState();
+
+    /// Called when the copy color to clipboard button is pressed.
+    ///
+    afx_msg void OnCopyColor();
 
     /// Called to display the magnifier help topic when help is requested.
     ///
@@ -290,12 +294,13 @@ private:
 
     CPoint m_curPos;                ///< Current position being magnified.
     bool m_enabled;                 ///< Indicates whether the magnifier is visible.
+    MeaImageButton m_clipboardBtn;  ///< Button to copy current color to the clipboard
     RunState m_runState;            ///< Display mode run state.
     MeaImageButton m_runStateBtn;   ///< Magnifier pause button.
     MeaTimer m_timer;               ///< Refresh timer.
     ColorFmt m_colorFmt;            ///< Pixel color display format.
     MeaLabel m_swatchLabel;         ///< Label for the pixel color swatch.
-    MeaNumberField m_swatchField;   ///< Text field to display the pixel color.
+    MeaTextField m_swatchField;     ///< Text field to display the pixel color.
     CWnd m_swatchWin;               ///< Window for the pixel color swatch.
     MeaLabel m_zoomLabel;           ///< Label for the zoom factor slider.
     CSliderCtrl m_zoomSlider;       ///< Zoom factor slider.

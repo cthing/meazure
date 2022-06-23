@@ -1289,7 +1289,7 @@ void AppView::OnUpdateCopyRegion(CCmdUI* pCmdUI) {
 
 void AppView::OnEditCopy() {
     MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
-    MeaNumberField* colorField = m_magnifier.GetFieldFocus();
+    MeaTextField* colorField = m_magnifier.GetFieldFocus();
 
     if (dataField != nullptr) {
         dataField->Copy();
@@ -1324,7 +1324,7 @@ void AppView::OnEditClear() {
 
 void AppView::OnUpdateEditCopy(CCmdUI* pCmdUI) {
     MeaNumberField* dataField = m_dataDisplay.GetFieldFocus();
-    MeaNumberField* colorField = m_magnifier.GetFieldFocus();
+    MeaTextField* colorField = m_magnifier.GetFieldFocus();
 
     pCmdUI->Enable(((dataField != nullptr) && dataField->IsTextSelected()) ||
                    ((colorField != nullptr) && colorField->IsTextSelected()));

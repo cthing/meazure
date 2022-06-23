@@ -18,18 +18,18 @@
  */
 
 /// @file
-/// @brief Header file for the text field control.
+/// @brief Header file for the number field control.
 
 #pragma once
 
-#include <meazure/Messages.h>
+#include "TextField.h"
 
 
 /// Provides a text field control that allows only numeric entries.
 /// The text field can be configured to allow any floating point value,
 /// only integer values, or only positive integer values.
 ///
-class MeaNumberField : public CEdit {
+class MeaNumberField : public MeaTextField {
 
 public:
     /// Configurations for the text field.
@@ -49,21 +49,6 @@ public:
     /// Destroys a field object.
     ///
     virtual ~MeaNumberField();
-
-    /// Creates the window for the field. To make the field visible,
-    /// add the WS_VISIBLE style or call ShowWindow.
-    ///
-    /// @param style        [in] Field styles as defined for CEdit.
-    /// @param topLeft      [in] Position of the top, left corner for the field, in pixels.
-    /// @param numChars     [in] Number of visible characters. For proportional fonts
-    ///                     the number of characters actually visible may vary from the
-    ///                     specified value.
-    /// @param parentWnd    [in] Parent window for the field.
-    /// @param id           [in] ID for the field.
-    ///
-    /// @return <b>true</b> if the field was created successfully.
-    ///
-    bool Create(DWORD style, const POINT& topLeft, int numChars, CWnd* parentWnd, UINT id = 0xFFFF);
 
     /// Configures the field with the type of value to accept.
     ///
@@ -123,16 +108,6 @@ public:
         return true;
     }
 
-    /// Indicates if the value in the field is selected.
-    ///
-    /// @return <b>true</b> if the value in the field is selected.
-    ///
-    bool IsTextSelected() const {
-        int start, end;
-        GetSel(start, end);
-        return (start != end);
-    }
-
     /// Handles the RETURN key, UP and DOWN arrow keys.
     ///
     /// @param msg      [in] Message structure.
@@ -157,14 +132,6 @@ protected:
     /// @return Always returns TRUE.
     ///
     afx_msg LRESULT OnPaste(WPARAM, LPARAM);
-
-    /// Called when the field loses keyboard focus. The parent
-    /// window is sent a MeaFieldFocusMsg message so that it can
-    /// take actions such as reading the value in the field.
-    ///
-    /// @param win      [in] Next window to receive focus.
-    /// 
-    afx_msg void OnKillFocus(CWnd* win);
 
     /// Indicates if the specified character is an acceptable sign character.
     /// Acceptable sign characters are '+' and '-' for a float and integer

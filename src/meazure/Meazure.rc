@@ -104,6 +104,12 @@ IDB_MEA_WARNING_150     BITMAP                  "res\\Warning150.bmp"
 
 IDB_MEA_WARNING_200     BITMAP                  "res\\Warning200.bmp"
 
+IDB_MEA_CLIPBOARD_100   BITMAP                  "res\\Clipboard100.bmp"
+
+IDB_MEA_CLIPBOARD_150   BITMAP                  "res\\Clipboard150.bmp"
+
+IDB_MEA_CLIPBOARD_200   BITMAP                  "res\\Clipboard200.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -775,6 +781,8 @@ BEGIN
     IDR_MAINFRAME           "Meazure"
     IDS_MEA_ASPECT          "As:"
     IDS_MEA_ISSUE_URL       "https://github.com/cthing/meazure/issues"
+    IDS_MEA_COLOR_CLIPBOARD "Copy color to clipboard"
+    IDS_MEA_NO_COLOR_COPY   "Unable to copy color to the Clipboard"
 END
 
 STRINGTABLE

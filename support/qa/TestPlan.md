@@ -620,11 +620,21 @@
 1. Verify that the magnifier window image does not change
 1. Press the ***Pause*** button again
 1. Verify that the image in the magnifier window changes as the cursor is moved
+1. Select all text in the color field
+1. Copy the text using the ***Edit*** menu ***Copy*** item
+1. Paste the contents of the clipboard into a text editor
+1. Verify the pasted text is the same as what was copied
 1. On the ***View*** menu select ***Color Format*** and ensure that ***RGB*** is selected
 1. Verify that the color values and swatch reflect the color of the pixel in the red square at the 
    center of the magnifier window
+1. Press the clipboard button next to the color swatch
+1. Past the contents of the clipboard into a text editor
+1. Verify the pasted text is the same as that shown in the color field
 1. On the ***View*** menu select ***Color Format*** and ***#RRGGBB***
 1. Verify that the color values are now reported in ***#RRGGBB*** format
+1. Press the clipboard button next to the color swatch
+1. Past the contents of the clipboard into a text editor
+1. Verify the pasted text is the same as that shown in the color field
 1. Repeat for all other color formats
 
 ## Master Reset

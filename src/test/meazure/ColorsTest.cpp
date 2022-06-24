@@ -28,6 +28,9 @@
 #include <float.h>
 
 namespace bdata = boost::unit_test::data;
+namespace bt = boost::unit_test;
+namespace tt = boost::test_tools;
+
 
 struct CMYTestData {
     int cyan;
@@ -100,6 +103,63 @@ std::ostream& operator<<(std::ostream& os, const YIQTestData& cd) {
     return os;
 }
 
+struct XYZTestData {
+    double x;
+    double y;
+    double z;
+    int red;
+    int green;
+    int blue;
+};
+std::ostream& operator<<(std::ostream& os, const XYZTestData& cd) {
+    os << '(' << cd.x << ',' << cd.y << ',' << cd.z << '):('
+        << cd.red << ',' << cd.green << ',' << cd.blue << ')';
+    return os;
+}
+
+struct LabTestData {
+    double l;
+    double a;
+    double b;
+    double x;
+    double y;
+    double z;
+};
+std::ostream& operator<<(std::ostream& os, const LabTestData& cd) {
+    os << '(' << cd.l << ',' << cd.a << ',' << cd.b << '):('
+        << cd.x << ',' << cd.y << ',' << cd.z << ')';
+    return os;
+}
+
+struct LabRGBTestData {
+    double l;
+    double a;
+    double b;
+    int red;
+    int green;
+    int blue;
+};
+std::ostream& operator<<(std::ostream& os, const LabRGBTestData& cd) {
+    os << '(' << cd.l << ',' << cd.a << ',' << cd.b << '):('
+        << cd.red << ',' << cd.green << ',' << cd.blue << ')';
+    return os;
+}
+
+struct DiffTestData {
+    double l1;
+    double a1;
+    double b1;
+    double l2;
+    double a2;
+    double b2;
+    double diff;
+};
+std::ostream& operator<<(std::ostream& os, const DiffTestData& cd) {
+    os << '(' << cd.l1 << ',' << cd.a1 << ',' << cd.b1 << ") - ("
+        << cd.l2 << ',' << cd.a2 << ',' << cd.b2 << ") = " << cd.diff;
+    return os;
+}
+
 
 BOOST_AUTO_TEST_CASE(TestCMY) {
     MeaColors::CMY cmy1;
@@ -161,6 +221,30 @@ BOOST_AUTO_TEST_CASE(TestYIQ) {
     BOOST_TEST(yiq2.y == 20);
     BOOST_TEST(yiq2.i == 30);
     BOOST_TEST(yiq2.q == 40);
+}
+
+BOOST_AUTO_TEST_CASE(TestXYZ, *bt::tolerance(DBL_EPSILON)) {
+    MeaColors::XYZ xyz1;
+    BOOST_TEST(xyz1.x == 0.0);
+    BOOST_TEST(xyz1.y == 0.0);
+    BOOST_TEST(xyz1.z == 0.0);
+
+    MeaColors::XYZ xyz2(25.0, 0.50, 7.5);
+    BOOST_TEST(xyz2.x == 25.0);
+    BOOST_TEST(xyz2.y == 0.50);
+    BOOST_TEST(xyz2.z == 7.5);
+}
+
+BOOST_AUTO_TEST_CASE(TestLab, *bt::tolerance(DBL_EPSILON)) {
+    MeaColors::Lab lab1;
+    BOOST_TEST(lab1.l == 0.0);
+    BOOST_TEST(lab1.a == 0.0);
+    BOOST_TEST(lab1.b == 0.0);
+
+    MeaColors::Lab lab2(25.0, 0.50, 7.5);
+    BOOST_TEST(lab2.l == 25.0);
+    BOOST_TEST(lab2.a == 0.50);
+    BOOST_TEST(lab2.b == 7.5);
 }
 
 BOOST_DATA_TEST_CASE(TestRGBtoCMY,
@@ -270,6 +354,75 @@ BOOST_DATA_TEST_CASE(TestRGBtoYIQ,
     BOOST_TEST(yiq.q == colorData.q);
 }
 
+BOOST_DATA_TEST_CASE(TestRGBtoXYZ,
+                     bdata::make({
+                         XYZTestData{  0.0000,   0.0000,   0.0000,   0,   0,   0 },
+                         XYZTestData{ 95.0470, 100.0000, 108.8830, 255, 255, 255 },
+                         XYZTestData{ 20.5169,  21.5861,  23.5035, 128, 128, 128 },
+                         XYZTestData{ 41.2456,  21.2673,   1.9334, 255,   0,   0 },
+                         XYZTestData{ 35.7576,  71.5152,  11.9192,   0, 255,   0 },
+                         XYZTestData{ 18.0438,   7.2175,  95.0304,   0,   0, 255 },
+                         XYZTestData{ 77.0033,  92.7825,  13.8526, 255, 255,   0 },
+                         XYZTestData{ 53.8014,  78.7327, 106.9496,   0, 255, 255 },
+                         XYZTestData{ 59.2894,  28.4848,  96.9638, 255,   0, 255 },
+                         XYZTestData{  0.6096,   0.6585,   1.3230,  10,  20,  30 },
+                         XYZTestData{ 25.5444,  28.1543,  58.7206,  90, 150, 200 },
+                         XYZTestData{ 31.2431,  24.1726,  12.6913, 200, 110,  90 },
+                         XYZTestData{ 25.6330,  47.1587,  19.8057,  20, 210, 100 },
+                     }),
+                     colorData) {
+    MeaColors::XYZ xyz = MeaColors::RGBtoXYZ(RGB(colorData.red, colorData.green, colorData.blue));
+    BOOST_TEST(std::round(10000.0 * xyz.x) / 10000.0 == colorData.x, tt::tolerance(DBL_EPSILON));
+    BOOST_TEST(std::round(10000.0 * xyz.y) / 10000.0 == colorData.y, tt::tolerance(DBL_EPSILON));
+    BOOST_TEST(std::round(10000.0 * xyz.z) / 10000.0 == colorData.z, tt::tolerance(DBL_EPSILON));
+}
+
+BOOST_DATA_TEST_CASE(TestXYZtoLab,
+                     bdata::make({
+                         LabTestData{   0.0000,   0.0000,    0.0000,  0.0000,   0.0000,   0.0000 },
+                         LabTestData{ 100.0000,   0.0000,    0.0000, 95.0470, 100.0000, 108.8830 },
+                         LabTestData{  53.5851,  -0.0002,    0.0002, 20.5169,  21.5861,  23.5035 },
+                         LabTestData{  53.2408,  80.0923,   67.2031, 41.2456,  21.2673,   1.9334 },
+                         LabTestData{  87.7347, -86.1827,   83.1793, 35.7576,  71.5152,  11.9192 },
+                         LabTestData{  32.2970,  79.1878, -107.8602, 18.0438,   7.2175,  95.0304 },
+                         LabTestData{  97.1393, -21.5536,   94.4779, 77.0033,  92.7825,  13.8526 },
+                         LabTestData{  91.1132, -48.0874,  -14.1312, 53.8014,  78.7327, 106.9496 },
+                         LabTestData{  60.3242,  98.2343,  -60.8249, 59.2894,  28.4848,  96.9638 },
+                         LabTestData{   5.9482,  -0.6671,   -8.1376,  0.6096,   0.6585,   1.3230 },
+                         LabTestData{  60.0279,  -5.0385,  -31.7121, 25.5444,  28.1543,  58.7206 },
+                         LabTestData{  56.2602,  33.6047,   26.8901, 31.2431,  24.1726,  12.6913 },
+                         LabTestData{  74.2912, -66.1455,   42.3544, 25.6330,  47.1587,  19.8057 },
+                     }),
+                     colorData) {
+    MeaColors::Lab lab = MeaColors::XYZtoLab(MeaColors::XYZ(colorData.x, colorData.y, colorData.z));
+    BOOST_TEST(std::round(10000.0 * lab.l) / 10000.0 == colorData.l, tt::tolerance(DBL_EPSILON));
+    BOOST_TEST(std::round(10000.0 * lab.a) / 10000.0 == colorData.a, tt::tolerance(DBL_EPSILON));
+    BOOST_TEST(std::round(10000.0 * lab.b) / 10000.0 == colorData.b, tt::tolerance(DBL_EPSILON));
+}
+
+BOOST_DATA_TEST_CASE(TestRGBtoLab,
+                     bdata::make({
+                         LabRGBTestData{   0.0000,   0.0000,    0.0000,   0,   0,   0 },
+                         LabRGBTestData{ 100.0000,   0.0000,    0.0000, 255, 255, 255 },
+                         LabRGBTestData{  53.5850,   0.0000,    0.0000, 128, 128, 128 },
+                         LabRGBTestData{  53.2408,  80.0925,   67.2032, 255,   0,   0 },
+                         LabRGBTestData{  87.7347, -86.1827,   83.1793,   0, 255,   0 },
+                         LabRGBTestData{  32.2970,  79.1875, -107.8602,   0,   0, 255 },
+                         LabRGBTestData{  97.1393, -21.5537,   94.4780, 255, 255,   0 },
+                         LabRGBTestData{  91.1132, -48.0875,  -14.1312,   0, 255, 255 },
+                         LabRGBTestData{  60.3242,  98.2343,  -60.8249, 255,   0, 255 },
+                         LabRGBTestData{   5.9485,  -0.6687,   -8.1374,  10,  20,  30 },
+                         LabRGBTestData{  60.0279,  -5.0388,  -31.7120,  90, 150, 200 },
+                         LabRGBTestData{  56.2602,  33.6045,   26.8902, 200, 110,  90 },
+                         LabRGBTestData{  74.2911, -66.1453,   42.3544,  20, 210, 100 },
+                     }),
+                     colorData) {
+    MeaColors::Lab lab = MeaColors::RGBtoLab(RGB(colorData.red, colorData.green, colorData.blue));
+    BOOST_TEST(std::round(10000.0 * lab.l) / 10000.0 == colorData.l, tt::tolerance(DBL_EPSILON));
+    BOOST_TEST(std::round(10000.0 * lab.a) / 10000.0 == colorData.a, tt::tolerance(DBL_EPSILON));
+    BOOST_TEST(std::round(10000.0 * lab.b) / 10000.0 == colorData.b, tt::tolerance(DBL_EPSILON));
+}
+
 BOOST_AUTO_TEST_CASE(TestInterpolateColor) {
     COLORREF color = MeaColors::InterpolateColor(RGB(0, 0, 0), RGB(255, 255, 255), 50);
     BOOST_TEST(color == RGB(128, 128, 128));
@@ -285,6 +438,51 @@ BOOST_AUTO_TEST_CASE(TestInterpolateColor) {
 
     color = MeaColors::InterpolateColor(RGB(10, 20, 30), RGB(200, 150, 100), 50);
     BOOST_TEST(color == RGB(44, 129, 44));
+}
+
+BOOST_DATA_TEST_CASE(TestColorDifferenceLab,
+                     // Test data from https://hajim.rochester.edu/ece/sites/gsharma/ciede2000/dataNprograms/ciede2000testdata.txt
+                     bdata::make({
+                         DiffTestData{ 50.0000,   2.6772, -79.7751, 50.0000,   0.0000, -82.7485,  2.0425 },
+                         DiffTestData{ 50.0000,   3.1571, -77.2803, 50.0000,   0.0000, -82.7485,  2.8615 },
+                         DiffTestData{ 50.0000,   2.8361, -74.0200, 50.0000,   0.0000, -82.7485,  3.4412 },
+                         DiffTestData{ 50.0000,  -1.3802, -84.2814, 50.0000,   0.0000, -82.7485,  1.0000 },
+                         DiffTestData{ 50.0000,  -1.1848, -84.8006, 50.0000,   0.0000, -82.7485,  1.0000 },
+                         DiffTestData{ 50.0000,  -0.9009, -85.5211, 50.0000,   0.0000, -82.7485,  1.0000 },
+                         DiffTestData{ 50.0000,   0.0000,   0.0000, 50.0000,  -1.0000,   2.0000,  2.3669 },
+                         DiffTestData{ 50.0000,  -1.0000,   2.0000, 50.0000,   0.0000,   0.0000,  2.3669 },
+                         DiffTestData{ 50.0000,   2.4900,  -0.0010, 50.0000,  -2.4900,   0.0009,  7.1792 },
+                         DiffTestData{ 50.0000,   2.4900,  -0.0010, 50.0000,  -2.4900,   0.0010,  7.1792 },
+                         DiffTestData{ 50.0000,   2.4900,  -0.0010, 50.0000,  -2.4900,   0.0011,  7.2195 },
+                         DiffTestData{ 50.0000,   2.4900,  -0.0010, 50.0000,  -2.4900,   0.0012,  7.2195 },
+                         DiffTestData{ 50.0000,  -0.0010,   2.4900, 50.0000,   0.0009,  -2.4900,  4.8045 },
+                         DiffTestData{ 50.0000,  -0.0010,   2.4900, 50.0000,   0.0010,  -2.4900,  4.8045 },
+                         DiffTestData{ 50.0000,  -0.0010,   2.4900, 50.0000,   0.0011,  -2.4900,  4.7461 },
+                         DiffTestData{ 50.0000,   2.5000,   0.0000, 50.0000,   0.0000,  -2.5000,  4.3065 },
+                         DiffTestData{ 50.0000,   2.5000,   0.0000, 73.0000,  25.0000, -18.0000, 27.1492 },
+                         DiffTestData{ 50.0000,   2.5000,   0.0000, 61.0000,  -5.0000,  29.0000, 22.8977 },
+                         DiffTestData{ 50.0000,   2.5000,   0.0000, 56.0000, -27.0000,  -3.0000, 31.9030 },
+                         DiffTestData{ 50.0000,   2.5000,   0.0000, 58.0000,  24.0000,  15.0000, 19.4535 },
+                         DiffTestData{ 50.0000,   2.5000,   0.0000, 50.0000,   3.1736,   0.5854,  1.0000 },
+                         DiffTestData{ 50.0000,   2.5000,   0.0000, 50.0000,   3.2972,   0.0000,  1.0000 },
+                         DiffTestData{ 50.0000,   2.5000,   0.0000, 50.0000,   1.8634,   0.5757,  1.0000 },
+                         DiffTestData{ 50.0000,   2.5000,   0.0000, 50.0000,   3.2592,   0.3350,  1.0000 },
+                         DiffTestData{ 60.2574, -34.0099,  36.2677, 60.4626, -34.1751,  39.4387,  1.2644 },
+                         DiffTestData{ 63.0109, -31.0961,  -5.8663, 62.8187, -29.7946,  -4.0864,  1.2630 },
+                         DiffTestData{ 61.2901,   3.7196,  -5.3901, 61.4292,   2.2480,  -4.9620,  1.8731 },
+                         DiffTestData{ 35.0831, -44.1164,   3.7933, 35.0232, -40.0716,   1.5901,  1.8645 },
+                         DiffTestData{ 22.7233,  20.0904, -46.6940, 23.0331,  14.9730, -42.5619,  2.0373 },
+                         DiffTestData{ 36.4612,  47.8580,  18.3852, 36.2715,  50.5065,  21.2231,  1.4146 },
+                         DiffTestData{ 90.8027,  -2.0831,   1.4410, 91.1528,  -1.6435,   0.0447,  1.4441 },
+                         DiffTestData{ 90.9257,  -0.5406,  -0.9208, 88.6381,  -0.8985,  -0.7239,  1.5381 },
+                         DiffTestData{ 6.7747,   -0.2908,  -2.4247,  5.8714,  -0.0985,  -2.2286,  0.6377 },
+                         DiffTestData{ 2.0776,    0.0795,  -1.1350,  0.9033,  -0.0636,  -0.5514,  0.9082 },
+                     }),
+                     colorData) {
+    MeaColors::Lab lab1(colorData.l1, colorData.a1, colorData.b1);
+    MeaColors::Lab lab2(colorData.l2, colorData.a2, colorData.b2);
+    double diff = MeaColors::ColorDifference(lab1, lab2);
+    BOOST_TEST(std::round(10000.0 * diff) / 10000.0 == colorData.diff, tt::tolerance(DBL_EPSILON));
 }
 
 BOOST_AUTO_TEST_CASE(TestColorItem) {

@@ -29,8 +29,8 @@
 ///
 namespace MeaNumericUtils {
     
-    inline const double PI = 3.141592653589793;
-    inline const double PI4 = 0.785398163397448;
+    constexpr double PI = 3.141592653589793;
+    constexpr double PI4 = 0.785398163397448;
 
     /// Tests whether the two specified floating point values are equal.
     /// 
@@ -62,5 +62,23 @@ namespace MeaNumericUtils {
     template<typename T>
     inline bool IsZeroF(T f) {
         return std::fabs(f) <= std::numeric_limits<T>::epsilon();
+    }
+
+    /// Converts the specified value in degrees to a corresponding value in radians.
+    /// 
+    /// @param deg  [in] Degree value to convert to radians
+    /// @return Value in radians
+    /// 
+    constexpr double DegToRad(double deg) {
+        return deg * PI / 180.0;
+    }
+
+    /// Converts the specified value in radians to a corresponding value in degrees.
+    /// 
+    /// @param rad  [in] Radian value to convert to degrees
+    /// @return Value in degrees
+    /// 
+    constexpr double RadToDeg(double rad) {
+        return rad * 180.0 / PI;
     }
 };

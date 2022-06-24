@@ -94,6 +94,30 @@ namespace MeaColors {
         YIQ(int luma, int inphase, int quadrature) : y(luma), i(inphase), q(quadrature) {}
     };
 
+    /// Represents a color in the CIE 1931 XYZ color space. The tristimulus values are the luminance (Y),
+    /// the blue-related (Z) and the RGB mixed (X).
+    ///
+    struct XYZ {
+        double x;
+        double y;
+        double z;
+
+        XYZ() : x(0.0), y(0.0), z(0.0) {}
+        XYZ(double xin, double yin, double zin) : x(xin), y(yin), z(zin) {}
+    };
+
+    /// Represents a color in the CIE L*a*b* color space. The values are the lightness (L*), the green-red axis
+    /// chroma (a*) and the blue yellow axis chroma (b*).
+    /// 
+    struct Lab {
+        double l;
+        double a;
+        double b;
+
+        Lab() : l(0.0), a(0.0), b(0.0) {}
+        Lab(double lstar, double astar, double bstar) : l(lstar), a(astar), b(bstar) {}
+    };
+
 
     /// Identifies the item whose color and opacity are maintained by this class.
     ///
@@ -106,6 +130,15 @@ namespace MeaColors {
         RulerBack,          ///< Ruler background color.
         RulerBorder,        ///< Ruler edge and tick mark color.
         RulerOpacity        ///< Ruler opacity.
+    };
+
+
+    /// Entry in a color matching table.
+    ///
+    struct ColorTableEntry {
+        PCTSTR name;
+        COLORREF rgb;
+        Lab lab;
     };
 
 
@@ -135,9 +168,9 @@ namespace MeaColors {
     /// Sets the specified item to the specified color.
     /// 
     /// @param item     [in] Color item to set.
-    /// @param clr      [in] Color to set.
+    /// @param color    [in] Color to set.
     /// 
-    void Set(Item item, COLORREF clr);
+    void Set(Item item, COLORREF color);
 
     /// Sets the specified item to the specified opacity.
     /// 
@@ -198,6 +231,43 @@ namespace MeaColors {
     ///
     COLORREF InterpolateColor(COLORREF startRGB, COLORREF endRGB, int percent);
 
+    /// Calculates the visual difference between the two specified colors. The difference is calculated using the
+    /// CIEDE2000 algorithm. See https://en.wikipedia.org/wiki/Color_difference#CIEDE2000,
+    /// http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE2000.html and
+    /// https://hajim.rochester.edu/ece/sites/gsharma/ciede2000/ciede2000noteCRNA.pdf.
+    /// 
+    /// @param color1   [in] First color in the difference
+    /// @param color2   [in] Second color in the difference
+    /// @return A value representing the difference between the two specified colors. The smaller the difference,
+    ///     the visually closer the two colors. The value is never negative.
+    ///
+    double ColorDifference(const Lab& color1, const Lab& color2);
+
+    /// Attempts to match the specified color against the Web basic colors (https://en.wikipedia.org/wiki/Web_colors).
+    /// The CIEDE2000 color difference algorithm is used to find the best match.
+    /// 
+    /// @param rgb      [in] Color to match
+    /// @return Closest basic web color to the specified color. Never returns nullptr.
+    ///
+    const ColorTableEntry* MatchBasicColor(COLORREF rgb);
+
+    /// Attempts to match the specified color against the Web extended colors (https://en.wikipedia.org/wiki/Web_colors).
+    /// The CIEDE2000 color difference algorithm is used to find the best match.
+    /// 
+    /// @param rgb      [in] Color to match
+    /// @return Closest extended web color to the specified color. Never returns nullptr.
+    ///
+    const ColorTableEntry* MatchExtendedColor(COLORREF rgb);
+
+    /// Attempts to match the specified color against the specified table of colors. The CIEDE2000 color difference
+    /// algorithm is used to find the best match.
+    /// 
+    /// @param table        [in] Color table to match against. Last entry must have a nullptr name.
+    /// @param rgb          [in] Color to match
+    /// @return Closest color in the table to the specified color. Return nullptr if the specified table is empty.
+    ///
+    const ColorTableEntry* MatchColor(const ColorTableEntry* table, COLORREF rgb);
+
     /// Converts from the RGB color space to the Cyan (C), Magenta (M) and Yellow (Y) color space. The conversion is
     /// done using the algorithm for RGB to CMY conversion presented at http://www.easyrgb.com/en/math.php. The input
     /// and output range is [0, 255].
@@ -208,7 +278,7 @@ namespace MeaColors {
     CMY RGBtoCMY(COLORREF rgb);
 
     /// Converts from the RGB color space to the Cyan (C), Magenta (M), Yellow (Y) and Black (K) color space. The
-    /// conversion is done using the algorithm presetend at http://www.easyrgb.com/en/math.php. The input and output
+    /// conversion is done using the algorithm presented at http://www.easyrgb.com/en/math.php. The input and output
     /// range is [0, 255].
     /// 
     /// @param rgb      [in] RGB color
@@ -254,4 +324,34 @@ namespace MeaColors {
     /// @return YIQ color
     /// 
     YIQ RGBtoYIQ(COLORREF rgb);
+
+    /// Converts from the RGB color space to the CIE 1931 XYZ color space. The conversion is done assuming inputs in
+    /// the Standard RGB color space and a D65 2 degree standard illuminant. The input range is [0, 255]. The output is
+    /// scaled by 100.0 resulting in the X range [0.0, 95.0470], Y [0.0, 100.0] and Z [0.0, 108.8830]. See
+    /// http://www.brucelindbloom.com/index.html?Math.html and http://www.easyrgb.com/en/math.php for more information.
+    /// 
+    /// @param rgb      [in] RGB color
+    /// @return XYZ color
+    /// 
+    XYZ RGBtoXYZ(COLORREF rgb);
+
+    /// Converts from the CIE 1931 XYZ color space to the CIE L*a*b* color space. The conversion is done assuming
+    /// the Standard RGB color space and a D65 2 degree standard illuminant. The inputs are scaled XYZ with ranges
+    /// X [0.0, 95.0470], Y [0.0, 100.0000] and Z [0.0, 108.8830]. The output range for L is [0.0, 100.0],
+    /// and unbound for a and b. See http://www.brucelindbloom.com/index.html?Math.html and
+    /// http://www.easyrgb.com/en/math.php for more information.
+    /// 
+    /// @param xyz      [in] XYZ color
+    /// @return L*a*b* color
+    /// 
+    Lab XYZtoLab(const XYZ& xyz);
+
+    /// Converts the specified RGB color to the CIE L*a*b* color space. This is a convenience function which converts
+    /// the RGB color to XYZ and then converts the XYZ value to Lab. See the RGBtoXYZ and XYZtoLab functions for
+    /// details on these conversions.
+    /// 
+    /// @param rgb      [in] RGB color
+    /// @return L*a*b* color
+    /// 
+    Lab RGBtoLab(COLORREF rgb);
 };

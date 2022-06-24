@@ -22,6 +22,9 @@
 #include "GlobalFixture.h"
 #include <boost/test/unit_test.hpp>
 #include <meazure/utilities/NumericUtils.h>
+#include <float.h>
+
+namespace bt = boost::unit_test;
 
 
 BOOST_AUTO_TEST_CASE(TestIsEqualF) {
@@ -48,4 +51,18 @@ BOOST_AUTO_TEST_CASE(TestIsZeroF) {
     BOOST_TEST(!MeaNumericUtils::IsZeroF(-1.0));
     BOOST_TEST(!MeaNumericUtils::IsZeroF(2.0 * std::numeric_limits<double>::epsilon()));
     BOOST_TEST(!MeaNumericUtils::IsZeroF(-2.0 * std::numeric_limits<double>::epsilon()));
+}
+
+BOOST_AUTO_TEST_CASE(TestDegToRad, *bt::tolerance(DBL_EPSILON)) {
+    BOOST_TEST(MeaNumericUtils::DegToRad(0.0) == 0.0);
+    BOOST_TEST(MeaNumericUtils::DegToRad(180.0) == MeaNumericUtils::PI);
+    BOOST_TEST(MeaNumericUtils::DegToRad(360.0) == 2.0 * MeaNumericUtils::PI);
+    BOOST_TEST(MeaNumericUtils::DegToRad(125.0) == 2.1816615649929116);
+}
+
+BOOST_AUTO_TEST_CASE(TestRadToDeg, *bt::tolerance(DBL_EPSILON)) {
+    BOOST_TEST(MeaNumericUtils::RadToDeg(0.0) == 0.0);
+    BOOST_TEST(MeaNumericUtils::RadToDeg(MeaNumericUtils::PI) == 180.0);
+    BOOST_TEST(MeaNumericUtils::RadToDeg(2.0 * MeaNumericUtils::PI) == 360.0);
+    BOOST_TEST(MeaNumericUtils::RadToDeg(2.1816615649929116) == 125.0);
 }

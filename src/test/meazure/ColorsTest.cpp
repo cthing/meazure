@@ -485,6 +485,28 @@ BOOST_DATA_TEST_CASE(TestColorDifferenceLab,
     BOOST_TEST(std::round(10000.0 * diff) / 10000.0 == colorData.diff, tt::tolerance(DBL_EPSILON));
 }
 
+BOOST_AUTO_TEST_CASE(TestMatchBasicColor) {
+    BOOST_TEST(MeaColors::MatchBasicColor(RGB(0, 0, 0))->name == _T("black"));
+    BOOST_TEST(MeaColors::MatchBasicColor(RGB(255, 0, 0))->name == _T("red"));
+    BOOST_TEST(MeaColors::MatchBasicColor(RGB(200, 0, 0))->name == _T("red"));
+    BOOST_TEST(MeaColors::MatchBasicColor(RGB(90, 90, 10))->name == _T("olive"));
+    BOOST_TEST(MeaColors::MatchBasicColor(RGB(5, 90, 10))->name == _T("green"));
+    BOOST_TEST(MeaColors::MatchBasicColor(RGB(195, 17, 210))->name == _T("fuchsia"));
+    BOOST_TEST(MeaColors::MatchBasicColor(RGB(195, 200, 230))->name == _T("silver"));
+    BOOST_TEST(MeaColors::MatchBasicColor(RGB(240, 215, 230))->name == _T("white"));
+}
+
+BOOST_AUTO_TEST_CASE(TestMatchExtendedColor) {
+    BOOST_TEST(MeaColors::MatchExtendedColor(RGB(0, 0, 0))->name == _T("black"));
+    BOOST_TEST(MeaColors::MatchExtendedColor(RGB(255, 0, 0))->name == _T("red"));
+    BOOST_TEST(MeaColors::MatchExtendedColor(RGB(135, 40, 230))->name == _T("blueviolet"));
+    BOOST_TEST(MeaColors::MatchExtendedColor(RGB(253, 155, 5))->name == _T("orange"));
+    BOOST_TEST(MeaColors::MatchExtendedColor(RGB(253, 240, 5))->name == _T("yellow"));
+    BOOST_TEST(MeaColors::MatchExtendedColor(RGB(221, 224, 215))->name == _T("gainsboro"));
+    BOOST_TEST(MeaColors::MatchExtendedColor(RGB(32, 178, 170))->name == _T("lightseagreen"));
+    BOOST_TEST(MeaColors::MatchExtendedColor(RGB(70, 210, 200))->name == _T("mediumturquoise"));
+}
+
 BOOST_AUTO_TEST_CASE(TestColorItem) {
     MeaColors::Set(MeaColors::LineFore, RGB(10, 20, 30));
     BOOST_TEST(MeaColors::Get(MeaColors::LineFore) == RGB(10, 20, 30));

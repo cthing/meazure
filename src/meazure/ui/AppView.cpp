@@ -49,7 +49,7 @@ BEGIN_MESSAGE_MAP(AppView, CWnd)
     ON_COMMAND_RANGE(ID_MEA_UNITS_PIXELS, ID_MEA_UNITS_PICAS, OnUnits)
     ON_COMMAND_RANGE(ID_MEA_DEGREES, ID_MEA_RADIANS, OnAngles)
     ON_COMMAND_RANGE(ID_MEA_CURSOR, ID_MEA_WINDOW, OnRadioTool)
-    ON_COMMAND_RANGE(ID_MEA_RGBFMT, ID_MEA_YIQFMT, OnColorFmt)
+    ON_COMMAND_RANGE(ID_MEA_RGBFMT, ID_MEA_EXTHEXFMT, OnColorFmt)
     ON_MESSAGE(MeaDataChangeMsg, OnDataChange)
     ON_MESSAGE(MeaPrefsApplyMsg, OnPrefsApply)
     ON_MESSAGE(MeaShowCalPrefsMsg, OnShowCalPrefs)
@@ -131,6 +131,10 @@ BEGIN_MESSAGE_MAP(AppView, CWnd)
     ON_UPDATE_COMMAND_UI(ID_MEA_HSLFMT, OnUpdateColorFmt)
     ON_UPDATE_COMMAND_UI(ID_MEA_YCBCRFMT, OnUpdateColorFmt)
     ON_UPDATE_COMMAND_UI(ID_MEA_YIQFMT, OnUpdateColorFmt)
+    ON_UPDATE_COMMAND_UI(ID_MEA_BASICNAMEFMT, OnUpdateColorFmt)
+    ON_UPDATE_COMMAND_UI(ID_MEA_BASICHEXFMT, OnUpdateColorFmt)
+    ON_UPDATE_COMMAND_UI(ID_MEA_EXTNAMEFMT, OnUpdateColorFmt)
+    ON_UPDATE_COMMAND_UI(ID_MEA_EXTHEXFMT, OnUpdateColorFmt)
     ON_UPDATE_COMMAND_UI(ID_MEA_UNITS_PICAS, OnUpdateUnits)
     ON_UPDATE_COMMAND_UI(ID_MEA_SAVE_POSITIONS_AS, OnUpdateSavePositions)
     ON_COMMAND(ID_MEA_UNITS_CUSTOM, OnCustomUnits)
@@ -655,6 +659,18 @@ void AppView::OnUpdateColorFmt(CCmdUI* pCmdUI) {
     case ID_MEA_YIQFMT:
         pCmdUI->SetRadio(m_magnifier.GetColorFmt() == MeaMagnifier::YIQFmt);
         break;
+    case ID_MEA_BASICNAMEFMT:
+        pCmdUI->SetRadio(m_magnifier.GetColorFmt() == MeaMagnifier::BasicNameFmt);
+        break;
+    case ID_MEA_BASICHEXFMT:
+        pCmdUI->SetRadio(m_magnifier.GetColorFmt() == MeaMagnifier::BasicHexFmt);
+        break;
+    case ID_MEA_EXTNAMEFMT:
+        pCmdUI->SetRadio(m_magnifier.GetColorFmt() == MeaMagnifier::ExtendedNameFmt);
+        break;
+    case ID_MEA_EXTHEXFMT:
+        pCmdUI->SetRadio(m_magnifier.GetColorFmt() == MeaMagnifier::ExtendedHexFmt);
+        break;
     default:
         assert(false);
         break;
@@ -683,6 +699,18 @@ void AppView::OnColorFmt(UINT nID) {
         break;
     case ID_MEA_YIQFMT:
         m_magnifier.SetColorFmt(MeaMagnifier::YIQFmt);
+        break;
+    case ID_MEA_BASICNAMEFMT:
+        m_magnifier.SetColorFmt(MeaMagnifier::BasicNameFmt);
+        break;
+    case ID_MEA_BASICHEXFMT:
+        m_magnifier.SetColorFmt(MeaMagnifier::BasicHexFmt);
+        break;
+    case ID_MEA_EXTNAMEFMT:
+        m_magnifier.SetColorFmt(MeaMagnifier::ExtendedNameFmt);
+        break;
+    case ID_MEA_EXTHEXFMT:
+        m_magnifier.SetColorFmt(MeaMagnifier::ExtendedHexFmt);
         break;
     default:
         assert(false);

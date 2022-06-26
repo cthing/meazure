@@ -76,6 +76,38 @@
                 broadcasting. The luminance value is between 0 and 255 inclusive. The in-phase value is between
                 -152 and 152 inclusive. The quadrature value is between -133 and 133 inclusive.
             </li>
+            <li>
+                <span class="LeadItem">Extended Name</span> - Displays the best match of the current color to the
+                <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords#Extended_colors">extended web colors</a>.
+                The name of the best matched extended web color is displayed and the color swatch shows that color.
+                The match is performed using the
+                <a href="https://en.wikipedia.org/wiki/Color_difference#CIEDE2000">CIEDE2000</a> color difference
+                algorithm.
+            </li>
+            <li>
+                <span class="LeadItem">Extended #RRGGBB</span> - Displays the best match of the current color to the
+                <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords#Extended_colors">extended web colors</a>.
+                The hexadecimal number representing the best matched extended web color is displayed and the color
+                swatch shows that color. The match is performed using the
+                <a href="https://en.wikipedia.org/wiki/Color_difference#CIEDE2000">CIEDE2000</a> color difference
+                algorithm.
+            </li>
+            <li>
+                <span class="LeadItem">Basic Name</span> - Displays the best match of the current color to the
+                <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords#Basic_Colors">basic web colors</a>.
+                The name of the best matched basic web color is displayed and the color swatch shows that color.
+                The match is performed using the
+                <a href="https://en.wikipedia.org/wiki/Color_difference#CIEDE2000">CIEDE2000</a> color difference
+                algorithm.
+            </li>
+            <li>
+                <span class="LeadItem">Basic #RRGGBB</span> - Displays the best match of the current color to the
+                <a href="https://www.w3.org/wiki/CSS/Properties/color/keywords#Basic_Colors">basic web colors</a>.
+                The hexadecimal number representing the best matched basic web color is displayed and the color
+                swatch shows that color. The match is performed using the
+                <a href="https://en.wikipedia.org/wiki/Color_difference#CIEDE2000">CIEDE2000</a> color difference
+                algorithm.
+            </li>
         </ul>
     </div>
     <div class="Para">
@@ -88,6 +120,7 @@
         <a href="https://github.com/cthing/meazure/blob/master/src/meazure/graphics/Colors.cpp">Colors.cpp</a> source
         file and references for these formulas are listed in the comments in the
         <a href="https://github.com/cthing/meazure/blob/master/src/meazure/graphics/Colors.h">Colors.h</a> source file.
+        For the color matching formats, the color displayed is the best match <b>not the actual color</b>.
     </div>
     <div class="SubSection">Zoom and Freeze</div>
     <div class="Para">

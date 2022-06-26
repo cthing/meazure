@@ -237,13 +237,6 @@
 #define ID_MEA_RECORD                   32820
 #define ID_MEA_SAVE_POSITIONS_AS        32821
 #define ID_MEA_MANAGE_POSITIONS         32822
-#define ID_MEA_RGBFMT                   32826
-#define ID_MEA_RGBHEXFMT                32827
-#define ID_MEA_CMYFMT                   32828
-#define ID_MEA_CMYKFMT                  32829
-#define ID_MEA_HSLFMT                   32830
-#define ID_MEA_YCBCRFMT                 32831
-#define ID_MEA_YIQFMT                   32832
 #define ID_MEA_ZOOM_IN                  32833
 #define ID_MEA_ZOOM_OUT                 32834
 #define ID_MEA_DEGREES                  32835
@@ -257,6 +250,17 @@
 #define ID_MEA_POS3                     32848
 #define ID_HELP_REPORTANISSUE           32850
 #define ID_HELP_MEAZURERELEASES         32851
+#define ID_MEA_RGBFMT                   32861
+#define ID_MEA_RGBHEXFMT                32862
+#define ID_MEA_CMYFMT                   32863
+#define ID_MEA_CMYKFMT                  32864
+#define ID_MEA_HSLFMT                   32865
+#define ID_MEA_YCBCRFMT                 32866
+#define ID_MEA_YIQFMT                   32867
+#define ID_MEA_BASICNAMEFMT             32868
+#define ID_MEA_BASICHEXFMT              32869
+#define ID_MEA_EXTNAMEFMT               32870
+#define ID_MEA_EXTHEXFMT                32871
 #define IDS_MEA_PIXELS                  61204
 #define IDS_MEA_CM                      61205
 #define IDS_MEA_MM                      61206
@@ -428,7 +432,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        169
-#define _APS_NEXT_COMMAND_VALUE         32852
+#define _APS_NEXT_COMMAND_VALUE         32872
 #define _APS_NEXT_CONTROL_VALUE         1185
 #define _APS_NEXT_SYMED_VALUE           129
 #endif

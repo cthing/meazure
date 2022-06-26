@@ -406,21 +406,25 @@ void MeaMagnifier::Draw(HDC hDC) {
     //
     TCHAR* colorLbl = _T("");
     CString colorStr;
+    COLORREF swatchColor;
 
     switch (m_colorFmt) {
     case RGBFmt:
         colorLbl = _T("RGB:");
         colorStr.Format(_T("%d %d %d"), GetRValue(colorValue), GetGValue(colorValue), GetBValue(colorValue));
+        swatchColor = colorValue;
         break;
     case RGBHexFmt:
         colorLbl = _T("RGB:");
         colorStr.Format(_T("#%02X%02X%02X"), GetRValue(colorValue), GetGValue(colorValue), GetBValue(colorValue));
+        swatchColor = colorValue;
         break;
     case CMYFmt:
         {
             colorLbl = _T("CMY:");
             MeaColors::CMY cmy = MeaColors::RGBtoCMY(colorValue);
             colorStr.Format(_T("%d %d %d"), cmy.cyan, cmy.magenta, cmy.yellow);
+            swatchColor = colorValue;
         }
         break;
     case CMYKFmt:
@@ -428,6 +432,7 @@ void MeaMagnifier::Draw(HDC hDC) {
             colorLbl = _T("CMYK:");
             MeaColors::CMYK cmyk = MeaColors::RGBtoCMYK(colorValue);
             colorStr.Format(_T("%d %d %d %d"), cmyk.cyan, cmyk.magenta, cmyk.yellow, cmyk.black);
+            swatchColor = colorValue;
         }
         break;
     case HSLFmt:
@@ -435,6 +440,7 @@ void MeaMagnifier::Draw(HDC hDC) {
             colorLbl = _T("HSL:");
             MeaColors::HSL hsl = MeaColors::RGBtoHSL(colorValue);
             colorStr.Format(_T("%d %d %d"), hsl.hue, hsl.saturation, hsl.lightness);
+            swatchColor = colorValue;
         }
         break;
     case YCbCrFmt:
@@ -442,6 +448,7 @@ void MeaMagnifier::Draw(HDC hDC) {
             colorLbl = _T("YCbCr:");
             MeaColors::YCbCr ycbcr = MeaColors::RGBtoYCbCr(colorValue);
             colorStr.Format(_T("%d %d %d"), ycbcr.y, ycbcr.cb, ycbcr.cr);
+            swatchColor = colorValue;
         }
         break;
     case YIQFmt:
@@ -449,6 +456,39 @@ void MeaMagnifier::Draw(HDC hDC) {
             colorLbl = _T("YIQ:");
             MeaColors::YIQ yiq = MeaColors::RGBtoYIQ(colorValue);
             colorStr.Format(_T("%d %d %d"), yiq.y, yiq.i, yiq.q);
+            swatchColor = colorValue;
+        }
+        break;
+    case BasicNameFmt:
+        {
+            colorLbl = _T("Basic:");
+            const MeaColors::ColorTableEntry* color = MeaColors::MatchBasicColor(colorValue);
+            colorStr = color->name;
+            swatchColor = color->rgb;
+        }
+        break;
+    case BasicHexFmt:
+        {
+            colorLbl = _T("Basic:");
+            const MeaColors::ColorTableEntry* color = MeaColors::MatchBasicColor(colorValue);
+            colorStr.Format(_T("#%02X%02X%02X"), GetRValue(color->rgb), GetGValue(color->rgb), GetBValue(color->rgb));
+            swatchColor = color->rgb;
+        }
+        break;
+    case ExtendedNameFmt:
+        {
+            colorLbl = _T("Ext:");
+            const MeaColors::ColorTableEntry* color = MeaColors::MatchExtendedColor(colorValue);
+            colorStr = color->name;
+            swatchColor = color->rgb;
+        }
+        break;
+    case ExtendedHexFmt:
+        {
+            colorLbl = _T("Ext:");
+            const MeaColors::ColorTableEntry* color = MeaColors::MatchExtendedColor(colorValue);
+            colorStr.Format(_T("#%02X%02X%02X"), GetRValue(color->rgb), GetGValue(color->rgb), GetBValue(color->rgb));
+            swatchColor = color->rgb;
         }
         break;
     default:
@@ -460,13 +500,14 @@ void MeaMagnifier::Draw(HDC hDC) {
 
     CString origStr;
     m_swatchField.GetWindowText(origStr);
-    if (origStr != colorStr)
+    if (origStr != colorStr) {
         m_swatchField.SetWindowText(colorStr);
+    }
 
     RECT colorRect;
     m_swatchWin.GetClientRect(&colorRect);
     CDC* dc = m_swatchWin.GetDC();
-    dc->FillSolidRect(&colorRect, colorValue);
+    dc->FillSolidRect(&colorRect, swatchColor);
     m_swatchWin.ReleaseDC(dc);
 }
 

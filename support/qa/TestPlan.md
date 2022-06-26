@@ -628,14 +628,27 @@
 1. Verify that the color values and swatch reflect the color of the pixel in the red square at the 
    center of the magnifier window
 1. Press the clipboard button next to the color swatch
-1. Past the contents of the clipboard into a text editor
+1. Paste the contents of the clipboard into a text editor
 1. Verify the pasted text is the same as that shown in the color field
 1. On the ***View*** menu select ***Color Format*** and ***#RRGGBB***
 1. Verify that the color values are now reported in ***#RRGGBB*** format
 1. Press the clipboard button next to the color swatch
-1. Past the contents of the clipboard into a text editor
+1. Paste the contents of the clipboard into a text editor
 1. Verify the pasted text is the same as that shown in the color field
-1. Repeat for all other color formats
+1. Repeat for all other color space formats
+1. On the ***View*** menu select ***Color Format*** and ***Extended Name***
+1. Verify that the color names are now reported
+1. Verify that the color swatch shows the matched color
+1. Press the clipboard button next to the color swatch
+1. Paste the contents of the clipboard into a text editor
+1. Verify the pasted text is the same as that shown in the color field
+1. On the ***View*** menu select ***Color Format*** and ***Extended #RRGGBB***
+1. Verify that hex colors representing the matched color are now reported
+1. Verify that the color swatch shows the matched color
+1. Press the clipboard button next to the color swatch
+1. Paste the contents of the clipboard into a text editor
+1. Verify the pasted text is the same as that shown in the color field
+1. Repeat for the Basic web color matches
 
 ## Master Reset
 

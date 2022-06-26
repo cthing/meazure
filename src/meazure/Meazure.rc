@@ -274,6 +274,11 @@ BEGIN
             MENUITEM "&H S L",                      ID_MEA_HSLFMT
             MENUITEM "&Y Cb Cr",                    ID_MEA_YCBCRFMT
             MENUITEM "Y &I Q",                      ID_MEA_YIQFMT
+            MENUITEM SEPARATOR
+            MENUITEM "&Extended Name",              ID_MEA_EXTNAMEFMT
+            MENUITEM "Extended #RRGGBB",            ID_MEA_EXTHEXFMT
+            MENUITEM "&Basic Name",                 ID_MEA_BASICNAMEFMT
+            MENUITEM "Basic #RRGGBB",               ID_MEA_BASICHEXFMT
         END
         MENUITEM SEPARATOR
         MENUITEM "Invert &Y",                   ID_MEA_INVERTY
@@ -1048,14 +1053,22 @@ BEGIN
     ID_MEA_RGBFMT           "Show color in RGB format\nShow in RGB format"
     ID_MEA_RGBHEXFMT        "Show color in hex #RRGGBB format\nShow in hex RGB format"
     ID_MEA_CMYFMT           "Show color in CMY format\nShow in CMY format"
-    ID_MEA_CMYKFMT          "Show color in CMYK format\nShow in CMYK format"
-    ID_MEA_HSLFMT           "Show color in HSL format\nShow in HSL format"
-    ID_MEA_YCBCRFMT         "Show color in YCbCr format\nShow in YCbCr format"
 END
 
 STRINGTABLE
 BEGIN
+    ID_MEA_CMYKFMT          "Show color in CMYK format\nShow in CMYK format"
+    ID_MEA_HSLFMT           "Show color in HSL format\nShow in HSL format"
+    ID_MEA_YCBCRFMT         "Show color in YCbCr format\nShow in YCbCr format"
     ID_MEA_YIQFMT           "Show color in YIQ format\nShow in YIQ format"
+    ID_MEA_BASICNAMEFMT     "Match to basic web colors\nMatch to basic web colors"
+    ID_MEA_BASICHEXFMT      "Match to basic web colors\nMatch to basic web colors"
+    ID_MEA_EXTNAMEFMT       "Match to extended web colors\nMatch to extended web colors"
+    ID_MEA_EXTHEXFMT        "Match to extended web colors\nMatch to extended web colors"
+END
+
+STRINGTABLE
+BEGIN
     ID_MEA_ZOOM_IN          "Increase the magnifier zoom\nIncrease zoom"
     ID_MEA_ZOOM_OUT         "Decrease the magnifier zoom\nDecrease zoom"
     ID_MEA_DEGREES          "Display angle in degrees\nDegrees"

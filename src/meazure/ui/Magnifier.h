@@ -52,13 +52,17 @@ public:
     /// color space is in use.
     ///
     enum ColorFmt {
-        RGBFmt = 0,     ///< Red, green and blue as individual values between 0 and 255 inclusive.
-        RGBHexFmt = 1,  ///< Red, green and blue as a composite hex number of the form \#RRGGBB.
-        CMYFmt = 2,     ///< Cyan, magenta and yellow as individual values between 0 and 255 inclusive.
-        CMYKFmt = 3,    ///< Cyan, magenta, yellow and black as individual values.
-        HSLFmt = 4,     ///< Hue, saturation and lightness as individual values.
-        YCbCrFmt = 5,   ///< Luminance and chrominance as individual values.
-        YIQFmt = 6      ///< Luminance, and inphase and quadrature chrominance channels.
+        RGBFmt = 0,             ///< Red, green and blue as individual values between 0 and 255 inclusive.
+        RGBHexFmt = 1,          ///< Red, green and blue as a composite hex number of the form \#RRGGBB.
+        CMYFmt = 2,             ///< Cyan, magenta and yellow as individual values between 0 and 255 inclusive.
+        CMYKFmt = 3,            ///< Cyan, magenta, yellow and black as individual values.
+        HSLFmt = 4,             ///< Hue, saturation and lightness as individual values.
+        YCbCrFmt = 5,           ///< Luminance and chrominance as individual values.
+        YIQFmt = 6,             ///< Luminance, and inphase and quadrature chrominance channels.
+        BasicNameFmt = 7,       ///< Match to basic web colors and display color name
+        BasicHexFmt = 8,        ///< Match to basic web colors and display color in hex
+        ExtendedNameFmt = 9,    ///< Match to extended web colors and display color name
+        ExtendedHexFmt = 10,    ///< Match to extended web colors and display color in hex
     };
 
     /// Indicates whether the magnifier is running or in freeze frame mode.

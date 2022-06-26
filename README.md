@@ -62,8 +62,10 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 - A more readable font is used for all dialogs
 
-- Color value fixes and changes
+- Color value fixes and enhancements
     - Fix: The YIQ color display now shows negative in-phase and quadrature values.
+    - Enhancement: New color spaces that match the actual color to the
+      [web basic and extended colors](https://www.w3.org/wiki/CSS/Properties/color/keywords).
     - Enhancement: A button is now provided to copy the contents of the color field to the clipboard. The button
       is located to the right of the color swatch.
     - Enhancement: The CMYK color space is device dependent. Therefore, any conversion between the native RGB color

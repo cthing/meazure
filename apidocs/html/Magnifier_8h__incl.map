@@ -1,13 +1,13 @@
 <map id="Magnifier.h" name="Magnifier.h">
-<area shape="rect" id="node1" title="Header file for the screen magnifier." alt="" coords="315,5,400,32"/>
+<area shape="rect" id="node1" title="Header file for the screen magnifier." alt="" coords="319,5,404,32"/>
 <area shape="rect" id="node2" href="$Label_8h.html" title="Header file for the label control." alt="" coords="5,80,69,107"/>
-<area shape="rect" id="node3" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="144,80,251,107"/>
-<area shape="rect" id="node4" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="117,155,264,181"/>
-<area shape="rect" id="node5" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond." alt="" coords="463,80,542,107"/>
-<area shape="rect" id="node7" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="567,80,673,107"/>
-<area shape="rect" id="node8" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="275,80,439,107"/>
-<area shape="rect" id="node11" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="698,80,859,107"/>
-<area shape="rect" id="node6" title=" " alt="" coords="467,155,551,181"/>
-<area shape="rect" id="node9" title=" " alt="" coords="289,155,354,181"/>
-<area shape="rect" id="node10" title=" " alt="" coords="378,155,443,181"/>
+<area shape="rect" id="node3" href="$TextField_8h.html" title="Header file for the text field control." alt="" coords="94,80,181,107"/>
+<area shape="rect" id="node4" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond." alt="" coords="205,80,283,107"/>
+<area shape="rect" id="node6" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="308,80,415,107"/>
+<area shape="rect" id="node7" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="373,155,520,181"/>
+<area shape="rect" id="node8" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="490,80,654,107"/>
+<area shape="rect" id="node11" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="678,80,839,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="202,155,286,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="545,155,610,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="634,155,699,181"/>
 </map>

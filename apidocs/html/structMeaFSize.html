@@ -82,6 +82,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a31756c706279cbbbd0e81ae7fb03f4b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMeaFSize.html">MeaFSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaFSize.html#a31756c706279cbbbd0e81ae7fb03f4b5">operator*</a> (double mult) const</td></tr>
 <tr class="memdesc:a31756c706279cbbbd0e81ae7fb03f4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies this and the specified value and returns a new size object.  <a href="structMeaFSize.html#a31756c706279cbbbd0e81ae7fb03f4b5">More...</a><br /></td></tr>
 <tr class="separator:a31756c706279cbbbd0e81ae7fb03f4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab562c5df7c00b929efcdbb23df14ceaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMeaFSize.html">MeaFSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaFSize.html#ab562c5df7c00b929efcdbb23df14ceaa">operator/</a> (double div) const</td></tr>
+<tr class="memdesc:ab562c5df7c00b929efcdbb23df14ceaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dividies this and the specified value and returns a new size object.  <a href="structMeaFSize.html#ab562c5df7c00b929efcdbb23df14ceaa">More...</a><br /></td></tr>
+<tr class="separator:ab562c5df7c00b929efcdbb23df14ceaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a024e810d90ea1f2b796a7f6fa28b5b30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaFSize.html#a024e810d90ea1f2b796a7f6fa28b5b30">operator+=</a> (const <a class="el" href="structMeaFSize.html">MeaFSize</a> &amp;fsize)</td></tr>
 <tr class="memdesc:a024e810d90ea1f2b796a7f6fa28b5b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the specified size object to this.  <a href="structMeaFSize.html#a024e810d90ea1f2b796a7f6fa28b5b30">More...</a><br /></td></tr>
 <tr class="separator:a024e810d90ea1f2b796a7f6fa28b5b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -214,7 +217,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>cy</b></td></tr>
 
 <p>Multiplies this and the specified object and returns a new size object. </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = \left[ \begin{array}{cc} this_x &amp; 0 \\ 0 &amp; this_y \\ \end{array} \right] \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_10.png" width="268" height="41"/>
+<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = \left[ \begin{array}{cc} this_x &amp; 0 \\ 0 &amp; this_y \\ \end{array} \right] \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_13.png" width="268" height="41"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -254,7 +257,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>cy</b></td></tr>
 
 <p>Multiplies this and the specified object and returns a new size object. </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = \left[ \begin{array}{cc} this_x &amp; 0 \\ 0 &amp; this_y \\ \end{array} \right] \left[ \begin{array}{c} size_x \\ size_y \\ \end{array} \right] \]" src="form_11.png" width="258" height="41"/>
+<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = \left[ \begin{array}{cc} this_x &amp; 0 \\ 0 &amp; this_y \\ \end{array} \right] \left[ \begin{array}{c} size_x \\ size_y \\ \end{array} \right] \]" src="form_14.png" width="258" height="41"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -294,7 +297,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>cy</b></td></tr>
 
 <p>Multiplies this and the specified value and returns a new size object. </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = mult \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] \]" src="form_12.png" width="171" height="41"/>
+<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = mult \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] \]" src="form_15.png" width="171" height="41"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -334,7 +337,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>cy</b></td></tr>
 
 <p>Multiplies the specified size object and this. </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] = \left[ \begin{array}{cc} this_x &amp; 0 \\ 0 &amp; this_y \\ \end{array} \right] \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_15.png" width="291" height="41"/>
+<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] = \left[ \begin{array}{cc} this_x &amp; 0 \\ 0 &amp; this_y \\ \end{array} \right] \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_19.png" width="291" height="41"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -374,7 +377,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>cy</b></td></tr>
 
 <p>Adds this and the specified object and returns a new size object. </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] + \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_8.png" width="234" height="41"/>
+<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] + \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_11.png" width="234" height="41"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -414,7 +417,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>cy</b></td></tr>
 
 <p>Adds this and the specified value and returns a new size object. </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] + \left[ \begin{array}{c} val \\ val \\ \end{array} \right] \]" src="form_9.png" width="210" height="41"/>
+<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] + \left[ \begin{array}{c} val \\ val \\ \end{array} \right] \]" src="form_12.png" width="210" height="41"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -454,7 +457,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>cy</b></td></tr>
 
 <p>Adds the specified size object to this. </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] = \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] + \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_13.png" width="255" height="41"/>
+<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] = \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] + \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_17.png" width="255" height="41"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -494,7 +497,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>cy</b></td></tr>
 
 <p>Subtracts the specified size object from this. </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] = \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] - \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_14.png" width="255" height="41"/>
+<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] = \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] - \left[ \begin{array}{c} fsize_x \\ fsize_y \\ \end{array} \right] \]" src="form_18.png" width="255" height="41"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -505,6 +508,46 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>cy</b></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>this object. </dd></dl>
 
 <p class="reference">References <a class="el" href="structMeaFSize.html#a638f5d9683b29587bae544a93aecbff7">cx</a>, and <a class="el" href="structMeaFSize.html#ae08cae7baa6f2d78b89e554f25fada3c">cy</a>.</p>
+
+</div>
+</div>
+<a id="ab562c5df7c00b929efcdbb23df14ceaa" name="ab562c5df7c00b929efcdbb23df14ceaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab562c5df7c00b929efcdbb23df14ceaa">&#9670;&nbsp;</a></span>operator/()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMeaFSize.html">MeaFSize</a> MeaFSize::operator/ </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>div</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dividies this and the specified value and returns a new size object. </p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\[ \left[ \begin{array}{c} f_x \\ f_y \\ \end{array} \right] = \frac{1}{div} \left[ \begin{array}{c} this_x \\ this_y \\ \end{array} \right] \]" src="form_16.png" width="164" height="41"/>
+</p>
+ <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">div</td><td>[in] Value to divide both dimensions. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New object that is the division of this by the specified value. </dd></dl>
+
+<p class="reference">References <a class="el" href="structMeaFSize.html#a638f5d9683b29587bae544a93aecbff7">cx</a>, <a class="el" href="structMeaFSize.html#ae08cae7baa6f2d78b89e554f25fada3c">cy</a>, and <a class="el" href="structMeaFSize.html#a4d327021454715bf85c2a29f6a32b93a">MeaFSize()</a>.</p>
 
 </div>
 </div>

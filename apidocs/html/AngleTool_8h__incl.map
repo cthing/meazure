@@ -1,52 +1,52 @@
 <map id="AngleTool.h" name="AngleTool.h">
-<area shape="rect" id="node1" title="Angle measurement tool header file." alt="" coords="1664,5,1755,32"/>
-<area shape="rect" id="node2" href="$RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="1581,80,1672,107"/>
-<area shape="rect" id="node25" href="$Position_8h.html" title="Represents a tool position." alt="" coords="1577,155,1759,181"/>
-<area shape="rect" id="node44" href="$CrossHair_8h.html" title="Crosshair graphic header file." alt="" coords="4231,229,4428,256"/>
-<area shape="rect" id="node47" href="$Line_8h.html" title="Line graphic header file." alt="" coords="2790,229,2954,256"/>
-<area shape="rect" id="node50" href="$DataWin_8h.html" title="Header file for a popup data display window." alt="" coords="783,304,934,331"/>
-<area shape="rect" id="node3" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="1341,155,1398,181"/>
-<area shape="rect" id="node4" title=" " alt="" coords="1357,461,1395,487"/>
-<area shape="rect" id="node5" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="488,229,659,256"/>
-<area shape="rect" id="node12" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="323,543,485,569"/>
-<area shape="rect" id="node16" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="1255,543,1443,569"/>
-<area shape="rect" id="node6" href="$DataFieldId_8h.html" title="Data field identifiers." alt="" coords="419,304,517,331"/>
-<area shape="rect" id="node7" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="93,304,200,331"/>
-<area shape="rect" id="node8" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="569,379,716,405"/>
-<area shape="rect" id="node9" href="$Label_8h.html" title="Header file for the label control." alt="" coords="541,304,605,331"/>
-<area shape="rect" id="node10" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond." alt="" coords="681,304,759,331"/>
-<area shape="rect" id="node11" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="224,304,331,331"/>
-<area shape="rect" id="node13" href="$UnitsMgr_8h.html" title="Header file for the units manager." alt="" coords="1161,304,1332,331"/>
-<area shape="rect" id="node23" title=" " alt="" coords="355,304,395,331"/>
-<area shape="rect" id="node24" title=" " alt="" coords="4098,461,4163,487"/>
-<area shape="rect" id="node14" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="1117,461,1179,487"/>
-<area shape="rect" id="node22" href="$UnitsProvider_8h.html" title="Interface providing measurement units information." alt="" coords="1069,379,1179,405"/>
-<area shape="rect" id="node15" title=" " alt="" coords="1073,543,1129,569"/>
-<area shape="rect" id="node18" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="1007,617,1196,644"/>
-<area shape="rect" id="node17" title=" " alt="" coords="1545,617,1591,644"/>
-<area shape="rect" id="node19" title=" " alt="" coords="1072,767,1131,793"/>
-<area shape="rect" id="node20" title=" " alt="" coords="4024,692,4096,719"/>
-<area shape="rect" id="node21" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="1003,692,1109,719"/>
-<area shape="rect" id="node26" href="$PositionDesktop_8h.html" title="Position context information." alt="" coords="1604,229,1732,256"/>
-<area shape="rect" id="node28" href="$XMLParser_8h.html" title="Header file for the Xerces XML parser wrapper and support classes." alt="" coords="2602,379,2777,405"/>
-<area shape="rect" id="node27" href="$PositionScreen_8h.html" title="Represents a single monitor attached to the system." alt="" coords="1509,304,1630,331"/>
-<area shape="rect" id="node39" href="$XMLWriter_8h.html" title="Header file for writing XML files." alt="" coords="1571,379,1743,405"/>
-<area shape="rect" id="node43" href="$GUID_8h.html" title="Header file for a class representing a globally unique identifier." alt="" coords="4239,617,4401,644"/>
-<area shape="rect" id="node29" title=" " alt="" coords="3780,461,3972,487"/>
-<area shape="rect" id="node30" title=" " alt="" coords="2015,461,2206,487"/>
-<area shape="rect" id="node31" title=" " alt="" coords="2230,461,2455,487"/>
-<area shape="rect" id="node32" title=" " alt="" coords="2480,461,2675,487"/>
-<area shape="rect" id="node33" title=" " alt="" coords="2699,461,2904,487"/>
-<area shape="rect" id="node34" title=" " alt="" coords="2928,461,3093,487"/>
-<area shape="rect" id="node35" title=" " alt="" coords="3118,461,3357,487"/>
-<area shape="rect" id="node36" title=" " alt="" coords="3381,461,3587,487"/>
-<area shape="rect" id="node37" title=" " alt="" coords="3612,453,3756,495"/>
-<area shape="rect" id="node38" title=" " alt="" coords="1885,461,1939,487"/>
-<area shape="rect" id="node40" href="$StringUtils_8h.html" title="String manipulation utility functions." alt="" coords="1420,453,1575,495"/>
-<area shape="rect" id="node41" title=" " alt="" coords="1599,461,1665,487"/>
-<area shape="rect" id="node42" title=" " alt="" coords="1689,461,1759,487"/>
-<area shape="rect" id="node45" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="4290,304,4369,331"/>
-<area shape="rect" id="node46" title=" " alt="" coords="4444,304,4495,331"/>
-<area shape="rect" id="node48" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="2853,304,3017,331"/>
-<area shape="rect" id="node49" title=" " alt="" coords="2902,379,2967,405"/>
+<area shape="rect" id="node1" title="Angle measurement tool header file." alt="" coords="1679,5,1769,32"/>
+<area shape="rect" id="node2" href="$RadioTool_8h.html" title="Header file for base class of tools whose use is mutually exclusive." alt="" coords="1761,80,1852,107"/>
+<area shape="rect" id="node25" href="$Position_8h.html" title="Represents a tool position." alt="" coords="1798,155,1981,181"/>
+<area shape="rect" id="node44" href="$CrossHair_8h.html" title="Crosshair graphic header file." alt="" coords="93,304,291,331"/>
+<area shape="rect" id="node47" href="$Line_8h.html" title="Line graphic header file." alt="" coords="315,304,479,331"/>
+<area shape="rect" id="node50" href="$DataWin_8h.html" title="Header file for a popup data display window." alt="" coords="1297,304,1447,331"/>
+<area shape="rect" id="node3" href="$Tool_8h.html" title="Header file for the tool base class." alt="" coords="858,155,915,181"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1677,461,1715,487"/>
+<area shape="rect" id="node5" href="$DataDisplay_8h.html" title="Header file for the data display portion of the application GUI." alt="" coords="801,229,972,256"/>
+<area shape="rect" id="node12" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="185,543,346,569"/>
+<area shape="rect" id="node16" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="1226,543,1414,569"/>
+<area shape="rect" id="node6" href="$DataFieldId_8h.html" title="Data field identifiers." alt="" coords="605,304,704,331"/>
+<area shape="rect" id="node7" href="$NumberField_8h.html" title="Header file for the number field control." alt="" coords="779,304,885,331"/>
+<area shape="rect" id="node8" href="$Label_8h.html" title="Header file for the label control." alt="" coords="909,304,973,331"/>
+<area shape="rect" id="node9" href="$Themes_8h.html" title="Stub module that dynamically supports the display Themes API found on Windows XP and beyond." alt="" coords="998,304,1077,331"/>
+<area shape="rect" id="node10" href="$ImageButton_8h.html" title="Header file for a bitmap&#45;based button." alt="" coords="1101,304,1208,331"/>
+<area shape="rect" id="node11" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="621,461,768,487"/>
+<area shape="rect" id="node13" href="$UnitsMgr_8h.html" title="Header file for the units manager." alt="" coords="1573,304,1744,331"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1232,304,1272,331"/>
+<area shape="rect" id="node24" title=" " alt="" coords="793,461,858,487"/>
+<area shape="rect" id="node14" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="1435,461,1498,487"/>
+<area shape="rect" id="node22" href="$UnitsProvider_8h.html" title="Interface providing measurement units information." alt="" coords="1584,379,1693,405"/>
+<area shape="rect" id="node15" title=" " alt="" coords="1439,543,1495,569"/>
+<area shape="rect" id="node18" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="1617,617,1807,644"/>
+<area shape="rect" id="node17" title=" " alt="" coords="1533,617,1579,644"/>
+<area shape="rect" id="node19" title=" " alt="" coords="1683,767,1741,793"/>
+<area shape="rect" id="node20" title=" " alt="" coords="4367,692,4439,719"/>
+<area shape="rect" id="node21" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="1613,692,1720,719"/>
+<area shape="rect" id="node26" href="$PositionDesktop_8h.html" title="Position context information." alt="" coords="2369,229,2497,256"/>
+<area shape="rect" id="node28" href="$XMLParser_8h.html" title="Header file for the Xerces XML parser wrapper and support classes." alt="" coords="2371,379,2546,405"/>
+<area shape="rect" id="node27" href="$PositionScreen_8h.html" title="Represents a single monitor attached to the system." alt="" coords="1999,304,2121,331"/>
+<area shape="rect" id="node39" href="$XMLWriter_8h.html" title="Header file for writing XML files." alt="" coords="3963,379,4135,405"/>
+<area shape="rect" id="node43" href="$GUID_8h.html" title="Header file for a class representing a globally unique identifier." alt="" coords="4440,617,4603,644"/>
+<area shape="rect" id="node29" title=" " alt="" coords="2555,461,2747,487"/>
+<area shape="rect" id="node30" title=" " alt="" coords="2771,461,2962,487"/>
+<area shape="rect" id="node31" title=" " alt="" coords="2986,461,3211,487"/>
+<area shape="rect" id="node32" title=" " alt="" coords="3236,461,3431,487"/>
+<area shape="rect" id="node33" title=" " alt="" coords="3455,461,3660,487"/>
+<area shape="rect" id="node34" title=" " alt="" coords="3684,461,3849,487"/>
+<area shape="rect" id="node35" title=" " alt="" coords="1893,461,2131,487"/>
+<area shape="rect" id="node36" title=" " alt="" coords="2155,461,2362,487"/>
+<area shape="rect" id="node37" title=" " alt="" coords="2387,453,2531,495"/>
+<area shape="rect" id="node38" title=" " alt="" coords="3975,461,4030,487"/>
+<area shape="rect" id="node40" href="$StringUtils_8h.html" title="String manipulation utility functions." alt="" coords="4237,453,4392,495"/>
+<area shape="rect" id="node41" title=" " alt="" coords="4054,461,4119,487"/>
+<area shape="rect" id="node42" title=" " alt="" coords="4144,461,4213,487"/>
+<area shape="rect" id="node45" href="$Graphic_8h.html" title="Graphic element base class header file." alt="" coords="257,379,335,405"/>
+<area shape="rect" id="node46" title=" " alt="" coords="131,379,181,405"/>
+<area shape="rect" id="node48" href="$Timer_8h.html" title="Header file for a high priority timer." alt="" coords="513,379,677,405"/>
+<area shape="rect" id="node49" title=" " alt="" coords="531,461,597,487"/>
 </map>

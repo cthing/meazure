@@ -62,24 +62,24 @@ Inheritance diagram for MeaRegistryProvider:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a64115733a6ded0fc9d4aaf0b53879137"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#a64115733a6ded0fc9d4aaf0b53879137">WriteInt</a> (LPCTSTR section, LPCTSTR entry, int value)=0</td></tr>
-<tr class="memdesc:a64115733a6ded0fc9d4aaf0b53879137"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the specified value into the specified section of the application's registry.  <a href="structMeaRegistryProvider.html#a64115733a6ded0fc9d4aaf0b53879137">More...</a><br /></td></tr>
-<tr class="separator:a64115733a6ded0fc9d4aaf0b53879137"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62216b3be52c07cb01fa7d5147fcad60"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#a62216b3be52c07cb01fa7d5147fcad60">WriteString</a> (LPCTSTR section, LPCTSTR entry, LPCTSTR value)=0</td></tr>
-<tr class="memdesc:a62216b3be52c07cb01fa7d5147fcad60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the specified string into the specified section of the application's registry.  <a href="structMeaRegistryProvider.html#a62216b3be52c07cb01fa7d5147fcad60">More...</a><br /></td></tr>
-<tr class="separator:a62216b3be52c07cb01fa7d5147fcad60"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a315639e1c8763be292e543c6d957f5ef"><td class="memItemLeft" align="right" valign="top">virtual UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#a315639e1c8763be292e543c6d957f5ef">GetInt</a> (LPCTSTR section, LPCTSTR entry, int defaultValue)=0</td></tr>
-<tr class="memdesc:a315639e1c8763be292e543c6d957f5ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value of an integer from an entry within a specified section of the application's registry.  <a href="structMeaRegistryProvider.html#a315639e1c8763be292e543c6d957f5ef">More...</a><br /></td></tr>
-<tr class="separator:a315639e1c8763be292e543c6d957f5ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c5c27e0dd0a61f5d8646eda9ccbcbc2"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#a0c5c27e0dd0a61f5d8646eda9ccbcbc2">GetString</a> (LPCTSTR section, LPCTSTR entry, LPCTSTR defaultValue)=0</td></tr>
-<tr class="memdesc:a0c5c27e0dd0a61f5d8646eda9ccbcbc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the string associated with an entry within the specified section in the application's registry.  <a href="structMeaRegistryProvider.html#a0c5c27e0dd0a61f5d8646eda9ccbcbc2">More...</a><br /></td></tr>
-<tr class="separator:a0c5c27e0dd0a61f5d8646eda9ccbcbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1c65f80072b2dbb0449a65057ef776d"><td class="memItemLeft" align="right" valign="top">virtual LPCTSTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#ab1c65f80072b2dbb0449a65057ef776d">GetKeyName</a> ()=0</td></tr>
-<tr class="memdesc:ab1c65f80072b2dbb0449a65057ef776d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines where, in the registry or INI file, application profile settings are stored.  <a href="structMeaRegistryProvider.html#ab1c65f80072b2dbb0449a65057ef776d">More...</a><br /></td></tr>
-<tr class="separator:ab1c65f80072b2dbb0449a65057ef776d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65dc499be96640fdf45758efc9e41dda"><td class="memItemLeft" align="right" valign="top">virtual LSTATUS&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#a65dc499be96640fdf45758efc9e41dda">OpenKey</a> (HKEY key, LPCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result)=0</td></tr>
-<tr class="memdesc:a65dc499be96640fdf45758efc9e41dda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the specified registry key.  <a href="structMeaRegistryProvider.html#a65dc499be96640fdf45758efc9e41dda">More...</a><br /></td></tr>
-<tr class="separator:a65dc499be96640fdf45758efc9e41dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae4234781e4eb9bafc997171c16ffd7e"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#aae4234781e4eb9bafc997171c16ffd7e">WriteInt</a> (PCTSTR section, PCTSTR entry, int value)=0</td></tr>
+<tr class="memdesc:aae4234781e4eb9bafc997171c16ffd7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Writes the specified value into the specified section of the application's registry.  <a href="structMeaRegistryProvider.html#aae4234781e4eb9bafc997171c16ffd7e">More...</a><br /></td></tr>
+<tr class="separator:aae4234781e4eb9bafc997171c16ffd7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5449aa895d49b658173029d0e8ae8e6"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#ad5449aa895d49b658173029d0e8ae8e6">WriteString</a> (PCTSTR section, PCTSTR entry, PCTSTR value)=0</td></tr>
+<tr class="memdesc:ad5449aa895d49b658173029d0e8ae8e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write the specified string into the specified section of the application's registry.  <a href="structMeaRegistryProvider.html#ad5449aa895d49b658173029d0e8ae8e6">More...</a><br /></td></tr>
+<tr class="separator:ad5449aa895d49b658173029d0e8ae8e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a680447b0b17e25e61b04e437754115cf"><td class="memItemLeft" align="right" valign="top">virtual UINT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#a680447b0b17e25e61b04e437754115cf">GetInt</a> (PCTSTR section, PCTSTR entry, int defaultValue)=0</td></tr>
+<tr class="memdesc:a680447b0b17e25e61b04e437754115cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value of an integer from an entry within a specified section of the application's registry.  <a href="structMeaRegistryProvider.html#a680447b0b17e25e61b04e437754115cf">More...</a><br /></td></tr>
+<tr class="separator:a680447b0b17e25e61b04e437754115cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbc5e3367f6d95dd1d1caddb48527fea"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#abbc5e3367f6d95dd1d1caddb48527fea">GetString</a> (PCTSTR section, PCTSTR entry, PCTSTR defaultValue)=0</td></tr>
+<tr class="memdesc:abbc5e3367f6d95dd1d1caddb48527fea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the string associated with an entry within the specified section in the application's registry.  <a href="structMeaRegistryProvider.html#abbc5e3367f6d95dd1d1caddb48527fea">More...</a><br /></td></tr>
+<tr class="separator:abbc5e3367f6d95dd1d1caddb48527fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa98165b23bbae6c49838876e2b7f4c99"><td class="memItemLeft" align="right" valign="top">virtual PCTSTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#aa98165b23bbae6c49838876e2b7f4c99">GetKeyName</a> ()=0</td></tr>
+<tr class="memdesc:aa98165b23bbae6c49838876e2b7f4c99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines where, in the registry or INI file, application profile settings are stored.  <a href="structMeaRegistryProvider.html#aa98165b23bbae6c49838876e2b7f4c99">More...</a><br /></td></tr>
+<tr class="separator:aa98165b23bbae6c49838876e2b7f4c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac83319deeecd57b087fdb2f1289c5fdc"><td class="memItemLeft" align="right" valign="top">virtual LSTATUS&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#ac83319deeecd57b087fdb2f1289c5fdc">OpenKey</a> (HKEY key, PCTSTR subKey, DWORD options, REGSAM samDesired, PHKEY result)=0</td></tr>
+<tr class="memdesc:ac83319deeecd57b087fdb2f1289c5fdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens the specified registry key.  <a href="structMeaRegistryProvider.html#ac83319deeecd57b087fdb2f1289c5fdc">More...</a><br /></td></tr>
+<tr class="separator:ac83319deeecd57b087fdb2f1289c5fdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41a84499db28bd4e0bc6196847210a9e"><td class="memItemLeft" align="right" valign="top">virtual LSTATUS&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaRegistryProvider.html#a41a84499db28bd4e0bc6196847210a9e">CloseKey</a> (HKEY key)=0</td></tr>
 <tr class="memdesc:a41a84499db28bd4e0bc6196847210a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes a handle to the specified registry key.  <a href="structMeaRegistryProvider.html#a41a84499db28bd4e0bc6196847210a9e">More...</a><br /></td></tr>
 <tr class="separator:a41a84499db28bd4e0bc6196847210a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,12 +122,12 @@ Public Member Functions</h2></td></tr>
 
 <p>Implemented in <a class="el" href="classMeaRegistry.html#a7debdcc41f130a0d5ba8a44ce2467675">MeaRegistry</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a80726bae86115db6b5b44c3bf5668365">MeaRegistryProfile::HaveVersionKey()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a80a9f59c197315f0b0f60735c8c654e8">MeaRegistryProfile::HaveVersionKey()</a>.</p>
 
 </div>
 </div>
-<a id="a315639e1c8763be292e543c6d957f5ef" name="a315639e1c8763be292e543c6d957f5ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a315639e1c8763be292e543c6d957f5ef">&#9670;&nbsp;</a></span>GetInt()</h2>
+<a id="a680447b0b17e25e61b04e437754115cf" name="a680447b0b17e25e61b04e437754115cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a680447b0b17e25e61b04e437754115cf">&#9670;&nbsp;</a></span>GetInt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -138,13 +138,13 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual UINT MeaRegistryProvider::GetInt </td>
           <td>(</td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>section</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>entry</em>, </td>
         </tr>
         <tr>
@@ -177,14 +177,14 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The integer value of the string that follows the specified entry if the function is successful. The return value is the value of the <b>defaultValue</b> parameter if the function does not find the entry. The return value is 0 if the value that corresponds to the specified entry is not an integer. </dd></dl>
 
-<p>Implemented in <a class="el" href="classMeaRegistry.html#a6d6257260957e1b51872c9380b7fba18">MeaRegistry</a>.</p>
+<p>Implemented in <a class="el" href="classMeaRegistry.html#a8f3f059597b81fab6d7b1c5a601cd616">MeaRegistry</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a3b4729c873bf26fdf4c228a6c1154462">MeaRegistryProfile::ReadBool()</a>, and <a class="el" href="classMeaRegistryProfile.html#ac735f359b27c13a9b30951c63ba441eb">MeaRegistryProfile::ReadInt()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a59fd0e15ddd9df7f88a6fbda6af953e6">MeaRegistryProfile::ReadBool()</a>, and <a class="el" href="classMeaRegistryProfile.html#a76ed7db8e0a7d2da792fb1fcf9135820">MeaRegistryProfile::ReadInt()</a>.</p>
 
 </div>
 </div>
-<a id="ab1c65f80072b2dbb0449a65057ef776d" name="ab1c65f80072b2dbb0449a65057ef776d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1c65f80072b2dbb0449a65057ef776d">&#9670;&nbsp;</a></span>GetKeyName()</h2>
+<a id="aa98165b23bbae6c49838876e2b7f4c99" name="aa98165b23bbae6c49838876e2b7f4c99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa98165b23bbae6c49838876e2b7f4c99">&#9670;&nbsp;</a></span>GetKeyName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -193,7 +193,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual LPCTSTR MeaRegistryProvider::GetKeyName </td>
+          <td class="memname">virtual PCTSTR MeaRegistryProvider::GetKeyName </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -209,14 +209,14 @@ Public Member Functions</h2></td></tr>
 <p>Determines where, in the registry or INI file, application profile settings are stored. </p>
 <dl class="section return"><dt>Returns</dt><dd>Application registry key. </dd></dl>
 
-<p>Implemented in <a class="el" href="classMeaRegistry.html#abb26fc13ad92b7667d00c81b9188c136">MeaRegistry</a>.</p>
+<p>Implemented in <a class="el" href="classMeaRegistry.html#afcf6f94d760ecd33daf097b6b439033d">MeaRegistry</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a80726bae86115db6b5b44c3bf5668365">MeaRegistryProfile::HaveVersionKey()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a80a9f59c197315f0b0f60735c8c654e8">MeaRegistryProfile::HaveVersionKey()</a>.</p>
 
 </div>
 </div>
-<a id="a0c5c27e0dd0a61f5d8646eda9ccbcbc2" name="a0c5c27e0dd0a61f5d8646eda9ccbcbc2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c5c27e0dd0a61f5d8646eda9ccbcbc2">&#9670;&nbsp;</a></span>GetString()</h2>
+<a id="abbc5e3367f6d95dd1d1caddb48527fea" name="abbc5e3367f6d95dd1d1caddb48527fea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbc5e3367f6d95dd1d1caddb48527fea">&#9670;&nbsp;</a></span>GetString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -227,19 +227,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual CString MeaRegistryProvider::GetString </td>
           <td>(</td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>section</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>entry</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>defaultValue</em>&#160;</td>
         </tr>
         <tr>
@@ -266,14 +266,14 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The return value is the string from the application's registry entry or <b>defaultValue</b> if the string cannot be found. The maximum string length supported by the framework is <b>_MAX_PATH</b>. If <b>defaultValue</b> is NULL, the return value is an empty string. </dd></dl>
 
-<p>Implemented in <a class="el" href="classMeaRegistry.html#ac8c2a4794a65c8ce4e89b2030188ac68">MeaRegistry</a>.</p>
+<p>Implemented in <a class="el" href="classMeaRegistry.html#a60c74e7e29151835e46e42788844e3cb">MeaRegistry</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a9424ca1bda311dffac31e47384134bcb">MeaRegistryProfile::ReadDbl()</a>, and <a class="el" href="classMeaRegistryProfile.html#aab3cbffcb73129379ac3d84354adc429">MeaRegistryProfile::ReadStr()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#aef34616681f269e55fd99fdadacf0b59">MeaRegistryProfile::ReadDbl()</a>, and <a class="el" href="classMeaRegistryProfile.html#a001669631f20510c718f35b7473c46d2">MeaRegistryProfile::ReadStr()</a>.</p>
 
 </div>
 </div>
-<a id="a65dc499be96640fdf45758efc9e41dda" name="a65dc499be96640fdf45758efc9e41dda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a65dc499be96640fdf45758efc9e41dda">&#9670;&nbsp;</a></span>OpenKey()</h2>
+<a id="ac83319deeecd57b087fdb2f1289c5fdc" name="ac83319deeecd57b087fdb2f1289c5fdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac83319deeecd57b087fdb2f1289c5fdc">&#9670;&nbsp;</a></span>OpenKey()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -290,7 +290,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>subKey</em>, </td>
         </tr>
         <tr>
@@ -338,14 +338,14 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If the function succeeds, the return value is <b>ERROR_SUCCESS</b>. </dd></dl>
 
-<p>Implemented in <a class="el" href="classMeaRegistry.html#a58e1bd103272ae60c23ab170df89fe6f">MeaRegistry</a>.</p>
+<p>Implemented in <a class="el" href="classMeaRegistry.html#a7747f9370e89e44dc9ead1c4accfeb38">MeaRegistry</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a80726bae86115db6b5b44c3bf5668365">MeaRegistryProfile::HaveVersionKey()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a80a9f59c197315f0b0f60735c8c654e8">MeaRegistryProfile::HaveVersionKey()</a>.</p>
 
 </div>
 </div>
-<a id="a64115733a6ded0fc9d4aaf0b53879137" name="a64115733a6ded0fc9d4aaf0b53879137"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64115733a6ded0fc9d4aaf0b53879137">&#9670;&nbsp;</a></span>WriteInt()</h2>
+<a id="aae4234781e4eb9bafc997171c16ffd7e" name="aae4234781e4eb9bafc997171c16ffd7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae4234781e4eb9bafc997171c16ffd7e">&#9670;&nbsp;</a></span>WriteInt()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -356,13 +356,13 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual BOOL MeaRegistryProvider::WriteInt </td>
           <td>(</td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>section</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>entry</em>, </td>
         </tr>
         <tr>
@@ -395,14 +395,14 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if successful; otherwise FALSE. </dd></dl>
 
-<p>Implemented in <a class="el" href="classMeaRegistry.html#abd56824aa16115a5734f0edec8257615">MeaRegistry</a>.</p>
+<p>Implemented in <a class="el" href="classMeaRegistry.html#a157fbf965ab632b3e38f0467b62835b2">MeaRegistry</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a319e355f25fcf875ea0f09392fd7a9d8">MeaRegistryProfile::WriteBool()</a>, and <a class="el" href="classMeaRegistryProfile.html#a3054a3e96bc4c512e8ea762060f021eb">MeaRegistryProfile::WriteInt()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a2b1f3604c16eaa914da99b11281e9c61">MeaRegistryProfile::WriteBool()</a>, and <a class="el" href="classMeaRegistryProfile.html#a6a773f65caf655997d1ccf13128f1e84">MeaRegistryProfile::WriteInt()</a>.</p>
 
 </div>
 </div>
-<a id="a62216b3be52c07cb01fa7d5147fcad60" name="a62216b3be52c07cb01fa7d5147fcad60"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62216b3be52c07cb01fa7d5147fcad60">&#9670;&nbsp;</a></span>WriteString()</h2>
+<a id="ad5449aa895d49b658173029d0e8ae8e6" name="ad5449aa895d49b658173029d0e8ae8e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5449aa895d49b658173029d0e8ae8e6">&#9670;&nbsp;</a></span>WriteString()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -413,19 +413,19 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">virtual BOOL MeaRegistryProvider::WriteString </td>
           <td>(</td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>section</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>entry</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -452,9 +452,9 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if successful; otherwise FALSE. </dd></dl>
 
-<p>Implemented in <a class="el" href="classMeaRegistry.html#a36a4aea98ebdf0cfe58ca7b4e121f102">MeaRegistry</a>.</p>
+<p>Implemented in <a class="el" href="classMeaRegistry.html#a0d0f7093fa0a8edcbbca66ccb71274dd">MeaRegistry</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a5344d41266097b6607402892ba817554">MeaRegistryProfile::WriteDbl()</a>, and <a class="el" href="classMeaRegistryProfile.html#a7b854a585d8feff111ba2e3a0cafa96e">MeaRegistryProfile::WriteStr()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaRegistryProfile.html#a8d2eddc4a67326f653981f654b1d919e">MeaRegistryProfile::WriteDbl()</a>, and <a class="el" href="classMeaRegistryProfile.html#a22f31c2c9d84b4a5d0c13a32e11c811b">MeaRegistryProfile::WriteStr()</a>.</p>
 
 </div>
 </div>

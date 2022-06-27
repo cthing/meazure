@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structMeaSingleton__T_1_1token.html" title="Allows the derived class constructor to be public but restricts creation to this class." alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node1" href="$structMeaScreenProvider.html" title="Provides information on the display monitor(s)." alt="" coords="35,5,169,32"/>
+<area shape="rect" id="node2" href="$classMeaScreenMgr.html" title="Provides information on the display monitor(s)." alt="" coords="247,35,357,61"/>
+<area shape="rect" id="node3" href="$classMeaSingleton__T.html" title=" " alt="" coords="5,57,199,98"/>
 </map>

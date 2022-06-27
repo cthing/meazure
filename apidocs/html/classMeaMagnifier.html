@@ -82,6 +82,14 @@ Public Types</h2></td></tr>
 &#160;&#160;<a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a485e1ea16cf1172f3b5640351aff6aa1">YCbCrFmt</a> = 5
 , <br />
 &#160;&#160;<a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a1ce00fe685158488ee3b7fa45f816eaa">YIQFmt</a> = 6
+, <br />
+&#160;&#160;<a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a3b489377bd889bdbee4a7e317db4f22a">BasicNameFmt</a> = 7
+, <br />
+&#160;&#160;<a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a6130d92edb30c9a1569e5701b00bb4f8">BasicHexFmt</a> = 8
+, <br />
+&#160;&#160;<a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a5bea7723b695947f1c06d434a7875b25">ExtendedNameFmt</a> = 9
+, <br />
+&#160;&#160;<a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8ad8fad816880bc3bd24e70eff7f7bfdaa">ExtendedHexFmt</a> = 10
 <br />
  }</td></tr>
 <tr class="memdesc:a757df10e90dec67d272ba205ffa36da8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The magnifier displays the color of the pixel at the center of the window.  <a href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8">More...</a><br /></td></tr>
@@ -171,9 +179,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>Update</b> ()</td></t
 <tr class="memitem:a308440d84f027f9590b539cba5cca6f5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaMagnifier.html#a308440d84f027f9590b539cba5cca6f5">IsShowGrid</a> () const</td></tr>
 <tr class="memdesc:a308440d84f027f9590b539cba5cca6f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the magnifier grid is displayed.  <a href="classMeaMagnifier.html#a308440d84f027f9590b539cba5cca6f5">More...</a><br /></td></tr>
 <tr class="separator:a308440d84f027f9590b539cba5cca6f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26a3bf8c575c271637f1663d8ed5110f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaNumberField.html">MeaNumberField</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaMagnifier.html#a26a3bf8c575c271637f1663d8ed5110f">GetFieldFocus</a> ()</td></tr>
-<tr class="memdesc:a26a3bf8c575c271637f1663d8ed5110f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the pixel color display text field if it has the keyboard focus, and nullptr if it does not.  <a href="classMeaMagnifier.html#a26a3bf8c575c271637f1663d8ed5110f">More...</a><br /></td></tr>
-<tr class="separator:a26a3bf8c575c271637f1663d8ed5110f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10ed7f27e8876742f609637f11093f87"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaTextField.html">MeaTextField</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaMagnifier.html#a10ed7f27e8876742f609637f11093f87">GetFieldFocus</a> ()</td></tr>
+<tr class="memdesc:a10ed7f27e8876742f609637f11093f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a pointer to the pixel color display text field if it has the keyboard focus, and nullptr if it does not.  <a href="classMeaMagnifier.html#a10ed7f27e8876742f609637f11093f87">More...</a><br /></td></tr>
+<tr class="separator:a10ed7f27e8876742f609637f11093f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -211,6 +219,10 @@ afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><b>OnHScroll</b>
 afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><b>OnRunState</b> ()</td></tr>
 <tr class="memdesc:a18481329a96fb2a3e2bac252d32c7145"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the pause button is toggled to either freeze the magnifier image or start it running again. <br /></td></tr>
 <tr class="separator:a18481329a96fb2a3e2bac252d32c7145"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac007ee0b44237f91633308f7ffc0cc6f"><td class="memItemLeft" align="right" valign="top"><a id="ac007ee0b44237f91633308f7ffc0cc6f" name="ac007ee0b44237f91633308f7ffc0cc6f"></a>
+afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><b>OnCopyColor</b> ()</td></tr>
+<tr class="memdesc:ac007ee0b44237f91633308f7ffc0cc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the copy color to clipboard button is pressed. <br /></td></tr>
+<tr class="separator:ac007ee0b44237f91633308f7ffc0cc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a846a40617992a1203210f91dc55317eb"><td class="memItemLeft" align="right" valign="top">afx_msg LRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaMagnifier.html#a846a40617992a1203210f91dc55317eb">OnHelpHitTest</a> (WPARAM, LPARAM lparam)</td></tr>
 <tr class="memdesc:a846a40617992a1203210f91dc55317eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to display the magnifier help topic when help is requested.  <a href="classMeaMagnifier.html#a846a40617992a1203210f91dc55317eb">More...</a><br /></td></tr>
 <tr class="separator:a846a40617992a1203210f91dc55317eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -234,6 +246,10 @@ CPoint&#160;</td><td class="memItemRight" valign="bottom"><b>m_curPos</b></td></
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_enabled</b></td></tr>
 <tr class="memdesc:a89f7d6aeaaa6e6429c5f79804ae99283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the magnifier is visible. <br /></td></tr>
 <tr class="separator:a89f7d6aeaaa6e6429c5f79804ae99283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d8ddd89b2ad23b18ec1f2845045c2c8"><td class="memItemLeft" align="right" valign="top"><a id="a7d8ddd89b2ad23b18ec1f2845045c2c8" name="a7d8ddd89b2ad23b18ec1f2845045c2c8"></a>
+<a class="el" href="classMeaImageButton.html">MeaImageButton</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_clipboardBtn</b></td></tr>
+<tr class="memdesc:a7d8ddd89b2ad23b18ec1f2845045c2c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button to copy current color to the clipboard. <br /></td></tr>
+<tr class="separator:a7d8ddd89b2ad23b18ec1f2845045c2c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a75bdd5af33d59f5e26330b3b295e6457"><td class="memItemLeft" align="right" valign="top"><a id="a75bdd5af33d59f5e26330b3b295e6457" name="a75bdd5af33d59f5e26330b3b295e6457"></a>
 <a class="el" href="classMeaMagnifier.html#a83ade6f6f1e34c33d711737aebec74dc">RunState</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_runState</b></td></tr>
 <tr class="memdesc:a75bdd5af33d59f5e26330b3b295e6457"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display mode run state. <br /></td></tr>
@@ -254,10 +270,10 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>m_enabled</b></td></t
 <a class="el" href="classMeaLabel.html">MeaLabel</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_swatchLabel</b></td></tr>
 <tr class="memdesc:a30959407ab97de6fc072595b1d82446f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Label for the pixel color swatch. <br /></td></tr>
 <tr class="separator:a30959407ab97de6fc072595b1d82446f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73ee1c8e94a6b1534df2dd8b925b7caa"><td class="memItemLeft" align="right" valign="top"><a id="a73ee1c8e94a6b1534df2dd8b925b7caa" name="a73ee1c8e94a6b1534df2dd8b925b7caa"></a>
-<a class="el" href="classMeaNumberField.html">MeaNumberField</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_swatchField</b></td></tr>
-<tr class="memdesc:a73ee1c8e94a6b1534df2dd8b925b7caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text field to display the pixel color. <br /></td></tr>
-<tr class="separator:a73ee1c8e94a6b1534df2dd8b925b7caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9ba6a09ad030652e10041e6722ec79"><td class="memItemLeft" align="right" valign="top"><a id="a3a9ba6a09ad030652e10041e6722ec79" name="a3a9ba6a09ad030652e10041e6722ec79"></a>
+<a class="el" href="classMeaTextField.html">MeaTextField</a>&#160;</td><td class="memItemRight" valign="bottom"><b>m_swatchField</b></td></tr>
+<tr class="memdesc:a3a9ba6a09ad030652e10041e6722ec79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Text field to display the pixel color. <br /></td></tr>
+<tr class="separator:a3a9ba6a09ad030652e10041e6722ec79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7392265f21c6f6d8331972bec4d025f5"><td class="memItemLeft" align="right" valign="top"><a id="a7392265f21c6f6d8331972bec4d025f5" name="a7392265f21c6f6d8331972bec4d025f5"></a>
 CWnd&#160;</td><td class="memItemRight" valign="bottom"><b>m_swatchWin</b></td></tr>
 <tr class="memdesc:a7392265f21c6f6d8331972bec4d025f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Window for the pixel color swatch. <br /></td></tr>
@@ -293,18 +309,22 @@ Static Private Attributes</h2></td></tr>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kUpdateRate</b> { 70 }</td></tr>
 <tr class="memdesc:a25ff563e99f226a10a9fc7e5cd1c0d7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Magnifier refresh rate, in milliseconds. <br /></td></tr>
 <tr class="separator:a25ff563e99f226a10a9fc7e5cd1c0d7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad35cffb5a6f405faad6418ec9e2239ee"><td class="memItemLeft" align="right" valign="top"><a id="ad35cffb5a6f405faad6418ec9e2239ee" name="ad35cffb5a6f405faad6418ec9e2239ee"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kZoomHeight</b> { 22 }</td></tr>
-<tr class="memdesc:ad35cffb5a6f405faad6418ec9e2239ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the zoom factor slider, in pixels. <br /></td></tr>
-<tr class="separator:ad35cffb5a6f405faad6418ec9e2239ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a021a9a0b78f6425890c228a7a0ea4ddd"><td class="memItemLeft" align="right" valign="top"><a id="a021a9a0b78f6425890c228a7a0ea4ddd" name="a021a9a0b78f6425890c228a7a0ea4ddd"></a>
-static constexpr SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>kMargin</b> { 5, 5 }</td></tr>
-<tr class="memdesc:a021a9a0b78f6425890c228a7a0ea4ddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Margin around the magnifier window. <br /></td></tr>
-<tr class="separator:a021a9a0b78f6425890c228a7a0ea4ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4599eac35afa42de4894b1d14f028930"><td class="memItemLeft" align="right" valign="top"><a id="a4599eac35afa42de4894b1d14f028930" name="a4599eac35afa42de4894b1d14f028930"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kSwatchWidth</b> { 40 }</td></tr>
-<tr class="memdesc:a4599eac35afa42de4894b1d14f028930"><td class="mdescLeft">&#160;</td><td class="mdescRight">Width of the pixel color swatch, in pixels. <br /></td></tr>
-<tr class="separator:a4599eac35afa42de4894b1d14f028930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3ffbc5f2e559696b64ca10372aad527"><td class="memItemLeft" align="right" valign="top"><a id="ad3ffbc5f2e559696b64ca10372aad527" name="ad3ffbc5f2e559696b64ca10372aad527"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kBaseZoomHeight</b> { 22 }</td></tr>
+<tr class="memdesc:ad3ffbc5f2e559696b64ca10372aad527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Height of the zoom factor slider, in pixels. <br /></td></tr>
+<tr class="separator:ad3ffbc5f2e559696b64ca10372aad527"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b28015bb880d0ff9a849cadaac97e7f"><td class="memItemLeft" align="right" valign="top"><a id="a4b28015bb880d0ff9a849cadaac97e7f" name="a4b28015bb880d0ff9a849cadaac97e7f"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kBaseZoomSpace</b> { 9 }</td></tr>
+<tr class="memdesc:a4b28015bb880d0ff9a849cadaac97e7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertical separation between color info and zoom slider. <br /></td></tr>
+<tr class="separator:a4b28015bb880d0ff9a849cadaac97e7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dad7a8640cf5b2a72be584bf392ba9c"><td class="memItemLeft" align="right" valign="top"><a id="a2dad7a8640cf5b2a72be584bf392ba9c" name="a2dad7a8640cf5b2a72be584bf392ba9c"></a>
+static constexpr SIZE&#160;</td><td class="memItemRight" valign="bottom"><b>kBaseMargin</b> { 5, 5 }</td></tr>
+<tr class="memdesc:a2dad7a8640cf5b2a72be584bf392ba9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Margin around the magnifier window. <br /></td></tr>
+<tr class="separator:a2dad7a8640cf5b2a72be584bf392ba9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54955e847fcd4252b96350327d0004f0"><td class="memItemLeft" align="right" valign="top"><a id="a54955e847fcd4252b96350327d0004f0" name="a54955e847fcd4252b96350327d0004f0"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kBaseSwatchWidth</b> { 40 }</td></tr>
+<tr class="memdesc:a54955e847fcd4252b96350327d0004f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Width of the pixel color swatch, in pixels. <br /></td></tr>
+<tr class="separator:a54955e847fcd4252b96350327d0004f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bd94166f94290559f62bd57bf62b874"><td class="memItemLeft" align="right" valign="top"><a id="a9bd94166f94290559f62bd57bf62b874" name="a9bd94166f94290559f62bd57bf62b874"></a>
 static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kZoomFactorArr</b> [] { 1, 2, 3, 4, 6, 8, 16, 32 }</td></tr>
 <tr class="memdesc:a9bd94166f94290559f62bd57bf62b874"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arrays of zoom factors selected by the zoom index. <br /></td></tr>
@@ -355,6 +375,14 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kMinG
 <tr><td class="fieldname"><a id="a757df10e90dec67d272ba205ffa36da8a485e1ea16cf1172f3b5640351aff6aa1" name="a757df10e90dec67d272ba205ffa36da8a485e1ea16cf1172f3b5640351aff6aa1"></a>YCbCrFmt&#160;</td><td class="fielddoc"><p >Luminance and chrominance as individual values. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a757df10e90dec67d272ba205ffa36da8a1ce00fe685158488ee3b7fa45f816eaa" name="a757df10e90dec67d272ba205ffa36da8a1ce00fe685158488ee3b7fa45f816eaa"></a>YIQFmt&#160;</td><td class="fielddoc"><p >Luminance, and inphase and quadrature chrominance channels. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a757df10e90dec67d272ba205ffa36da8a3b489377bd889bdbee4a7e317db4f22a" name="a757df10e90dec67d272ba205ffa36da8a3b489377bd889bdbee4a7e317db4f22a"></a>BasicNameFmt&#160;</td><td class="fielddoc"><p >Match to basic web colors and display color name. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a757df10e90dec67d272ba205ffa36da8a6130d92edb30c9a1569e5701b00bb4f8" name="a757df10e90dec67d272ba205ffa36da8a6130d92edb30c9a1569e5701b00bb4f8"></a>BasicHexFmt&#160;</td><td class="fielddoc"><p >Match to basic web colors and display color in hex. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a757df10e90dec67d272ba205ffa36da8a5bea7723b695947f1c06d434a7875b25" name="a757df10e90dec67d272ba205ffa36da8a5bea7723b695947f1c06d434a7875b25"></a>ExtendedNameFmt&#160;</td><td class="fielddoc"><p >Match to extended web colors and display color name. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a757df10e90dec67d272ba205ffa36da8ad8fad816880bc3bd24e70eff7f7bfdaa" name="a757df10e90dec67d272ba205ffa36da8ad8fad816880bc3bd24e70eff7f7bfdaa"></a>ExtendedHexFmt&#160;</td><td class="fielddoc"><p >Match to extended web colors and display color in hex. </p>
 </td></tr>
 </table>
 
@@ -557,7 +585,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kMinG
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if the window was created successfully. </dd></dl>
 
-<p class="reference">References <a class="el" href="namespaceMeaLayout.html#ae4104f88fa65ffa6cb5dca951115725d">MeaLayout::AlignCenter()</a>, <a class="el" href="classMeaTimer.html#af905a0692c7ed51c127cbeba209afb63">MeaTimer::Create()</a>, <a class="el" href="classMeaImageButton.html#a98cb1af6161df20ea7314e85aa45540f">MeaImageButton::Create()</a>, <a class="el" href="classMeaNumberField.html#ac3bade5f69f4b78da3324a74f083b3cf">MeaNumberField::Create()</a>, <a class="el" href="classMeaLabel.html#adadea599605655defb9e3fbeede63a13">MeaLabel::Create()</a>, <a class="el" href="classMeaMagnifier.html#a021a9a0b78f6425890c228a7a0ea4ddd">kMargin</a>, <a class="el" href="classMeaMagnifier.html#ac694c3c450009612d9561ee67b48a4aa">kMaxZoomIndex</a>, <a class="el" href="classMeaMagnifier.html#a472fb8a29dc84316498b281ebdafacb3">kMinZoomIndex</a>, <a class="el" href="classMeaMagnifier.html#a4599eac35afa42de4894b1d14f028930">kSwatchWidth</a>, <a class="el" href="classMeaMagnifier.html#ad35cffb5a6f405faad6418ec9e2239ee">kZoomHeight</a>, <a class="el" href="classMeaImageButton.html#a4154483300ac663d7c55679ee7a48b7e">MeaImageButton::LoadBitmaps()</a>, <a class="el" href="classMeaMagnifier.html#a8ec05457e656f814beacca2ba726240c">m_factorLabel</a>, <a class="el" href="classMeaMagnifier.html#abe6f1036cf4b5dc9cebcd4d8a7e8ee1b">m_magHeight</a>, <a class="el" href="classMeaMagnifier.html#a060a7d460564cb00be84a17df7ea441c">m_runStateBtn</a>, <a class="el" href="classMeaMagnifier.html#a73ee1c8e94a6b1534df2dd8b925b7caa">m_swatchField</a>, <a class="el" href="classMeaMagnifier.html#a30959407ab97de6fc072595b1d82446f">m_swatchLabel</a>, <a class="el" href="classMeaMagnifier.html#a7392265f21c6f6d8331972bec4d025f5">m_swatchWin</a>, <a class="el" href="classMeaMagnifier.html#acf05cb34a0520814c78b7113b6f67ba4">m_timer</a>, <a class="el" href="classMeaMagnifier.html#aa071f24294c4717b0b510d19b51544f4">m_zoomLabel</a>, <a class="el" href="classMeaMagnifier.html#a8795cf7fd795b2172d68503b5f38509e">m_zoomSlider</a>, <a class="el" href="classMeaMagnifier.html#a0fb64d78f0bba2e5759c7c925b435246">OnHPTimer()</a>, <a class="el" href="namespaceMeaLayout.html#afc6ffe7c239499b64d97d1e87bc481ab">MeaLayout::PlaceAfter()</a>, <a class="el" href="classMeaImageButton.html#a0b74a5c332a370d55ec32a31be695f6e">MeaImageButton::SetToggleType()</a>, and <a class="el" href="namespaceMeaLayout.html#a9bab32271cf38973c6bc5bea4557aa74">MeaLayout::SetWindowSize()</a>.</p>
+<p class="reference">References <a class="el" href="namespaceMeaLayout.html#ae4104f88fa65ffa6cb5dca951115725d">MeaLayout::AlignCenter()</a>, <a class="el" href="classMeaTimer.html#af905a0692c7ed51c127cbeba209afb63">MeaTimer::Create()</a>, <a class="el" href="classMeaImageButton.html#a98cb1af6161df20ea7314e85aa45540f">MeaImageButton::Create()</a>, <a class="el" href="classMeaTextField.html#a802342642a909e0e629d3acbdbe7e76c">MeaTextField::Create()</a>, <a class="el" href="classMeaLabel.html#a77112300d3c164cade66cb6061476720">MeaLabel::Create()</a>, <a class="el" href="namespaceMeaLayout.html#a200b6c260a28b1dc7a8f16f533363562">MeaLayout::GetDPIScaleFactor()</a>, <a class="el" href="namespaceMeaLayout.html#a105d1ba9160f51ab3e3eebefb5772c75">MeaLayout::GetDPIScalePercent()</a>, <a class="el" href="classMeaMagnifier.html#a2dad7a8640cf5b2a72be584bf392ba9c">kBaseMargin</a>, <a class="el" href="classMeaMagnifier.html#a54955e847fcd4252b96350327d0004f0">kBaseSwatchWidth</a>, <a class="el" href="classMeaMagnifier.html#ad3ffbc5f2e559696b64ca10372aad527">kBaseZoomHeight</a>, <a class="el" href="classMeaMagnifier.html#a4b28015bb880d0ff9a849cadaac97e7f">kBaseZoomSpace</a>, <a class="el" href="classMeaMagnifier.html#ac694c3c450009612d9561ee67b48a4aa">kMaxZoomIndex</a>, <a class="el" href="classMeaMagnifier.html#a472fb8a29dc84316498b281ebdafacb3">kMinZoomIndex</a>, <a class="el" href="classMeaImageButton.html#a4154483300ac663d7c55679ee7a48b7e">MeaImageButton::LoadBitmaps()</a>, <a class="el" href="classMeaMagnifier.html#a7d8ddd89b2ad23b18ec1f2845045c2c8">m_clipboardBtn</a>, <a class="el" href="classMeaMagnifier.html#a8ec05457e656f814beacca2ba726240c">m_factorLabel</a>, <a class="el" href="classMeaMagnifier.html#abe6f1036cf4b5dc9cebcd4d8a7e8ee1b">m_magHeight</a>, <a class="el" href="classMeaMagnifier.html#a060a7d460564cb00be84a17df7ea441c">m_runStateBtn</a>, <a class="el" href="classMeaMagnifier.html#a3a9ba6a09ad030652e10041e6722ec79">m_swatchField</a>, <a class="el" href="classMeaMagnifier.html#a30959407ab97de6fc072595b1d82446f">m_swatchLabel</a>, <a class="el" href="classMeaMagnifier.html#a7392265f21c6f6d8331972bec4d025f5">m_swatchWin</a>, <a class="el" href="classMeaMagnifier.html#acf05cb34a0520814c78b7113b6f67ba4">m_timer</a>, <a class="el" href="classMeaMagnifier.html#aa071f24294c4717b0b510d19b51544f4">m_zoomLabel</a>, <a class="el" href="classMeaMagnifier.html#a8795cf7fd795b2172d68503b5f38509e">m_zoomSlider</a>, <a class="el" href="classMeaMagnifier.html#a0fb64d78f0bba2e5759c7c925b435246">OnHPTimer()</a>, <a class="el" href="namespaceMeaLayout.html#afc6ffe7c239499b64d97d1e87bc481ab">MeaLayout::PlaceAfter()</a>, <a class="el" href="namespaceMeaGeometry.html#a6bb9750e4fb41fff8e1a8b39be40faa1">MeaGeometry::Scale()</a>, <a class="el" href="classMeaImageButton.html#a0b74a5c332a370d55ec32a31be695f6e">MeaImageButton::SetToggleType()</a>, and <a class="el" href="namespaceMeaLayout.html#a9bab32271cf38973c6bc5bea4557aa74">MeaLayout::SetWindowSize()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classAppView.html#a970d1743e6a5651a6bb601ec8e2f4d6f">AppView::OnCreate()</a>.</p>
 
@@ -595,7 +623,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kMinG
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a25fe6574c69c8e31593d0695cce3a695">CMYFmt</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8aef89f73b91e5cea24cf0cedf230139e4">CMYKFmt</a>, <a class="el" href="classMeaScreenMgr.html#ab0b7c089fc911278ff79ade76718c2f2">MeaScreenMgr::GetScreenIter()</a>, <a class="el" href="classMeaScreenMgr.html#a91993e03ff5bcfa678fe5610e377263b">MeaScreenMgr::GetScreenRect()</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a4d3b470633cdb03b58dc58aba657a0c6">HSLFmt</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaMagnifier.html#a5bf6f99b972c333e93b0ab731e8e1287">kMinGridFactor</a>, <a class="el" href="classMeaMagnifier.html#a9bd94166f94290559f62bd57bf62b874">kZoomFactorArr</a>, <a class="el" href="classMeaMagnifier.html#a0e5be0b1142fb176f261cd44d0e5d69f">m_colorFmt</a>, <a class="el" href="classMeaMagnifier.html#a49e653446232e4ac7948c8ca753011d5">m_curPos</a>, <a class="el" href="classMeaMagnifier.html#a75bdd5af33d59f5e26330b3b295e6457">m_runState</a>, <a class="el" href="classMeaMagnifier.html#a62fdf875bd22d7f177efebf339f4386a">m_showGrid</a>, <a class="el" href="classMeaMagnifier.html#a73ee1c8e94a6b1534df2dd8b925b7caa">m_swatchField</a>, <a class="el" href="classMeaMagnifier.html#a30959407ab97de6fc072595b1d82446f">m_swatchLabel</a>, <a class="el" href="classMeaMagnifier.html#a7392265f21c6f6d8331972bec4d025f5">m_swatchWin</a>, <a class="el" href="classMeaMagnifier.html#aebe5c0d782cd36f03d51d002a5f8e4b9">m_zoomIndex</a>, <a class="el" href="Messages_8h.html#a362999053001832642b2e0ec9233ea4ea8f6e3416f7f07ecf83cfaf47af301564">MeaGetPositionMsg</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a1d61068845f702501f93a7b11c5adf25">RGBFmt</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a16ce1ad4c7474c42c36b4da8eeb5c59a">RGBHexFmt</a>, <a class="el" href="namespaceMeaColors.html#ad39ef1f7f4747eb594193d5fb9d0f668">MeaColors::RGBtoHSL()</a>, <a class="el" href="classMeaMagnifier.html#a83ade6f6f1e34c33d711737aebec74dcac5301693c4e792bcd5a479ef38fb8f8d">Run</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a485e1ea16cf1172f3b5640351aff6aa1">YCbCrFmt</a>, and <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a1ce00fe685158488ee3b7fa45f816eaa">YIQFmt</a>.</p>
+<p class="reference">References <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a6130d92edb30c9a1569e5701b00bb4f8">BasicHexFmt</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a3b489377bd889bdbee4a7e317db4f22a">BasicNameFmt</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a25fe6574c69c8e31593d0695cce3a695">CMYFmt</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8aef89f73b91e5cea24cf0cedf230139e4">CMYKFmt</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8ad8fad816880bc3bd24e70eff7f7bfdaa">ExtendedHexFmt</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a5bea7723b695947f1c06d434a7875b25">ExtendedNameFmt</a>, <a class="el" href="classMeaScreenMgr.html#ab0b7c089fc911278ff79ade76718c2f2">MeaScreenMgr::GetScreenIter()</a>, <a class="el" href="classMeaScreenMgr.html#a91993e03ff5bcfa678fe5610e377263b">MeaScreenMgr::GetScreenRect()</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a4d3b470633cdb03b58dc58aba657a0c6">HSLFmt</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classMeaMagnifier.html#a5bf6f99b972c333e93b0ab731e8e1287">kMinGridFactor</a>, <a class="el" href="classMeaMagnifier.html#a9bd94166f94290559f62bd57bf62b874">kZoomFactorArr</a>, <a class="el" href="classMeaMagnifier.html#a0e5be0b1142fb176f261cd44d0e5d69f">m_colorFmt</a>, <a class="el" href="classMeaMagnifier.html#a49e653446232e4ac7948c8ca753011d5">m_curPos</a>, <a class="el" href="classMeaMagnifier.html#a75bdd5af33d59f5e26330b3b295e6457">m_runState</a>, <a class="el" href="classMeaMagnifier.html#a62fdf875bd22d7f177efebf339f4386a">m_showGrid</a>, <a class="el" href="classMeaMagnifier.html#a3a9ba6a09ad030652e10041e6722ec79">m_swatchField</a>, <a class="el" href="classMeaMagnifier.html#a30959407ab97de6fc072595b1d82446f">m_swatchLabel</a>, <a class="el" href="classMeaMagnifier.html#a7392265f21c6f6d8331972bec4d025f5">m_swatchWin</a>, <a class="el" href="classMeaMagnifier.html#aebe5c0d782cd36f03d51d002a5f8e4b9">m_zoomIndex</a>, <a class="el" href="namespaceMeaColors.html#a5ce2202149f45425fc8046695519ac40">MeaColors::MatchBasicColor()</a>, <a class="el" href="namespaceMeaColors.html#abfc7dc7ed0ef639685048f42c8ed3370">MeaColors::MatchExtendedColor()</a>, <a class="el" href="Messages_8h.html#a362999053001832642b2e0ec9233ea4ea8f6e3416f7f07ecf83cfaf47af301564">MeaGetPositionMsg</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a1d61068845f702501f93a7b11c5adf25">RGBFmt</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a16ce1ad4c7474c42c36b4da8eeb5c59a">RGBHexFmt</a>, <a class="el" href="namespaceMeaColors.html#a57187fb6dcbbf91f0ef72ed3f72c0592">MeaColors::RGBtoCMY()</a>, <a class="el" href="namespaceMeaColors.html#a234ef5a82a0acf637845682c545afb0b">MeaColors::RGBtoCMYK()</a>, <a class="el" href="namespaceMeaColors.html#ad39ef1f7f4747eb594193d5fb9d0f668">MeaColors::RGBtoHSL()</a>, <a class="el" href="namespaceMeaColors.html#a59f475bce6367f2bc2018a395f114318">MeaColors::RGBtoYCbCr()</a>, <a class="el" href="namespaceMeaColors.html#a2c52677ff34fc959ac3aee62725a535b">MeaColors::RGBtoYIQ()</a>, <a class="el" href="classMeaMagnifier.html#a83ade6f6f1e34c33d711737aebec74dcac5301693c4e792bcd5a479ef38fb8f8d">Run</a>, <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a485e1ea16cf1172f3b5640351aff6aa1">YCbCrFmt</a>, and <a class="el" href="classMeaMagnifier.html#a757df10e90dec67d272ba205ffa36da8a1ce00fe685158488ee3b7fa45f816eaa">YIQFmt</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaMagnifier.html#a37f5a651abbe3713e9709706ab83c527">OnPaint()</a>.</p>
 
@@ -633,8 +661,8 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kMinG
 
 </div>
 </div>
-<a id="a26a3bf8c575c271637f1663d8ed5110f" name="a26a3bf8c575c271637f1663d8ed5110f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26a3bf8c575c271637f1663d8ed5110f">&#9670;&nbsp;</a></span>GetFieldFocus()</h2>
+<a id="a10ed7f27e8876742f609637f11093f87" name="a10ed7f27e8876742f609637f11093f87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10ed7f27e8876742f609637f11093f87">&#9670;&nbsp;</a></span>GetFieldFocus()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -643,7 +671,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kMinG
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classMeaNumberField.html">MeaNumberField</a> * MeaMagnifier::GetFieldFocus </td>
+          <td class="memname"><a class="el" href="classMeaTextField.html">MeaTextField</a> * MeaMagnifier::GetFieldFocus </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -659,7 +687,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kMinG
 <p>Returns a pointer to the pixel color display text field if it has the keyboard focus, and nullptr if it does not. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the color display text field if it has the focus, and nullptr if it does not. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaMagnifier.html#a73ee1c8e94a6b1534df2dd8b925b7caa">m_swatchField</a>.</p>
+<p class="reference">References <a class="el" href="classMeaMagnifier.html#a3a9ba6a09ad030652e10041e6722ec79">m_swatchField</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classAppView.html#af293bfdbc053ebbbbfd880a39950b628">AppView::OnEditCopy()</a>, and <a class="el" href="classAppView.html#a533ef4b2d95c336c400848a990bf9154">AppView::OnUpdateEditCopy()</a>.</p>
 
@@ -848,7 +876,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kMinG
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaMagnifier.html#a0e5be0b1142fb176f261cd44d0e5d69f">m_colorFmt</a>, <a class="el" href="classMeaMagnifier.html#a62fdf875bd22d7f177efebf339f4386a">m_showGrid</a>, <a class="el" href="classMeaMagnifier.html#aebe5c0d782cd36f03d51d002a5f8e4b9">m_zoomIndex</a>, <a class="el" href="classMeaProfile.html#a651b5ed195ce204f09bce84ed74c3bbd">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#abd21e0a2e04aa91056d8e69b0d17c675">MeaProfile::ReadInt()</a>, <a class="el" href="classMeaMagnifier.html#aa83fb5055f3be236c382426120f99054">SetColorFmt()</a>, <a class="el" href="classMeaMagnifier.html#a2f97450655aeebaf91aa99aa0e516d25">SetShowGrid()</a>, <a class="el" href="classMeaMagnifier.html#a5c935b34d1ac1d53e08f39981744380c">SetZoomIndex()</a>, and <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaMagnifier.html#a0e5be0b1142fb176f261cd44d0e5d69f">m_colorFmt</a>, <a class="el" href="classMeaMagnifier.html#a62fdf875bd22d7f177efebf339f4386a">m_showGrid</a>, <a class="el" href="classMeaMagnifier.html#aebe5c0d782cd36f03d51d002a5f8e4b9">m_zoomIndex</a>, <a class="el" href="classMeaProfile.html#add59f43b6da88f189cd00b12146dbb90">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#a99f1fca911ca39a696e20003a376f2ac">MeaProfile::ReadInt()</a>, <a class="el" href="classMeaMagnifier.html#aa83fb5055f3be236c382426120f99054">SetColorFmt()</a>, <a class="el" href="classMeaMagnifier.html#a2f97450655aeebaf91aa99aa0e516d25">SetShowGrid()</a>, <a class="el" href="classMeaMagnifier.html#a5c935b34d1ac1d53e08f39981744380c">SetZoomIndex()</a>, and <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classAppView.html#ae8b42b18ab1e1a3c039ded1d66824995">AppView::LoadProfile()</a>.</p>
 
@@ -966,7 +994,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kMinG
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaMagnifier.html#a0e5be0b1142fb176f261cd44d0e5d69f">m_colorFmt</a>, <a class="el" href="classMeaMagnifier.html#a62fdf875bd22d7f177efebf339f4386a">m_showGrid</a>, <a class="el" href="classMeaMagnifier.html#aebe5c0d782cd36f03d51d002a5f8e4b9">m_zoomIndex</a>, <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#a1a961b0651b261c571e3d8c459465d93">MeaProfile::WriteBool()</a>, and <a class="el" href="classMeaProfile.html#a9cd4c2b9f6d30c205dde9b1c34ab0bb2">MeaProfile::WriteInt()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaMagnifier.html#a0e5be0b1142fb176f261cd44d0e5d69f">m_colorFmt</a>, <a class="el" href="classMeaMagnifier.html#a62fdf875bd22d7f177efebf339f4386a">m_showGrid</a>, <a class="el" href="classMeaMagnifier.html#aebe5c0d782cd36f03d51d002a5f8e4b9">m_zoomIndex</a>, <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#ad0b78029d64b12e3afe61d7be727aa03">MeaProfile::WriteBool()</a>, and <a class="el" href="classMeaProfile.html#a7538388d0c2f90bd69cee978d3c7db6b">MeaProfile::WriteInt()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classAppView.html#ae07af2f2dcfc2a66bc5c22755fe7ee18">AppView::SaveProfile()</a>.</p>
 

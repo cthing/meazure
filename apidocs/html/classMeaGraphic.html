@@ -76,9 +76,9 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaGraphic</b> ()</td></tr>
 <tr class="memdesc:a7a66a2336cb470b167dd3df1dcdd2124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class destructor. <br /></td></tr>
 <tr class="separator:a7a66a2336cb470b167dd3df1dcdd2124"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f50e7c7f7a00c95c987d53294b4b12f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f">Create</a> (LPCTSTR classname, const SIZE &amp;size, const CWnd *parent, UINT id=0xFFFF)</td></tr>
-<tr class="memdesc:a9f50e7c7f7a00c95c987d53294b4b12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the graphic.  <a href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f">More...</a><br /></td></tr>
-<tr class="separator:a9f50e7c7f7a00c95c987d53294b4b12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cb46d3c770b88a012e09cc45399927f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaGraphic.html#a4cb46d3c770b88a012e09cc45399927f">Create</a> (PCTSTR classname, const SIZE &amp;size, const CWnd *parent, UINT id=0xFFFF)</td></tr>
+<tr class="memdesc:a4cb46d3c770b88a012e09cc45399927f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the graphic.  <a href="classMeaGraphic.html#a4cb46d3c770b88a012e09cc45399927f">More...</a><br /></td></tr>
+<tr class="separator:a4cb46d3c770b88a012e09cc45399927f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6655aa04f5df0b1bd03418b77eb04951"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">Show</a> ()</td></tr>
 <tr class="memdesc:a6655aa04f5df0b1bd03418b77eb04951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the graphic.  <a href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951">More...</a><br /></td></tr>
 <tr class="separator:a6655aa04f5df0b1bd03418b77eb04951"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,13 +131,13 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </div><div class="memdoc">
 
 <p>Base class constructor. </p>
-<p >Prior to displaying the graphic with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f" title="Creates the window for the graphic.">Create()</a> method must be called to create the graphic's window. </p>
+<p >Prior to displaying the graphic with the <a class="el" href="classMeaGraphic.html#a6655aa04f5df0b1bd03418b77eb04951" title="Displays the graphic.">Show()</a> method, the <a class="el" href="classMeaGraphic.html#a4cb46d3c770b88a012e09cc45399927f" title="Creates the window for the graphic.">Create()</a> method must be called to create the graphic's window. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9f50e7c7f7a00c95c987d53294b4b12f" name="a9f50e7c7f7a00c95c987d53294b4b12f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f50e7c7f7a00c95c987d53294b4b12f">&#9670;&nbsp;</a></span>Create()</h2>
+<a id="a4cb46d3c770b88a012e09cc45399927f" name="a4cb46d3c770b88a012e09cc45399927f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cb46d3c770b88a012e09cc45399927f">&#9670;&nbsp;</a></span>Create()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -145,7 +145,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
         <tr>
           <td class="memname">bool MeaGraphic::Create </td>
           <td>(</td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>classname</em>, </td>
         </tr>
         <tr>
@@ -217,7 +217,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </div><div class="memdoc">
 
 <p>Hides the graphic. </p>
-<p >Call the <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f" title="Creates the window for the graphic.">Create()</a> method prior to calling this method for the first time. </p>
+<p >Call the <a class="el" href="classMeaGraphic.html#a4cb46d3c770b88a012e09cc45399927f" title="Creates the window for the graphic.">Create()</a> method prior to calling this method for the first time. </p>
 
 <p>Reimplemented in <a class="el" href="classMeaCircle.html#a7499eb78eec34e539e0d87eacfca3d83">MeaCircle</a>, <a class="el" href="classMeaLine.html#a03eb40b8356bf96ed84058194a4fdaf1">MeaLine</a>, and <a class="el" href="classMeaRectangle.html#a8c9d3f9aa5ed99e7e056fad821a9772c">MeaRectangle</a>.</p>
 
@@ -252,7 +252,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </div><div class="memdoc">
 
 <p>Changes the z-order of the graphic window so that it if above the specified window. </p>
-<p >Call the <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f" title="Creates the window for the graphic.">Create()</a> method prior to calling this method for the first time.</p>
+<p >Call the <a class="el" href="classMeaGraphic.html#a4cb46d3c770b88a012e09cc45399927f" title="Creates the window for the graphic.">Create()</a> method prior to calling this method for the first time.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">winBelow</td><td>[in] Window to place below this class's window </td></tr>
@@ -290,7 +290,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kInit
 </div><div class="memdoc">
 
 <p>Displays the graphic. </p>
-<p >Call the <a class="el" href="classMeaGraphic.html#a9f50e7c7f7a00c95c987d53294b4b12f" title="Creates the window for the graphic.">Create()</a> method prior to calling this method for the first time. </p>
+<p >Call the <a class="el" href="classMeaGraphic.html#a4cb46d3c770b88a012e09cc45399927f" title="Creates the window for the graphic.">Create()</a> method prior to calling this method for the first time. </p>
 
 <p class="reference">References <a class="el" href="classMeaGraphic.html#aa34ff08ab8981a04398f48df2fb7c95d">m_visible</a>.</p>
 

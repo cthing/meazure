@@ -60,7 +60,8 @@ Inheritance diagram for MeaNumberField:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMeaNumberField__inherit__graph.png" border="0" usemap="#aMeaNumberField_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMeaNumberField_inherit__map" id="aMeaNumberField_inherit__map">
-<area shape="rect" title="Provides a text field control that allows only numeric entries." alt="" coords="5,80,125,107"/>
+<area shape="rect" title="Provides a text field control that allows only numeric entries." alt="" coords="5,155,125,181"/>
+<area shape="rect" href="classMeaTextField.html" title="Provides a text field control with appropriate fonts and sizes configured." alt="" coords="15,80,115,107"/>
 <area shape="rect" title=" " alt="" coords="38,5,93,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
@@ -87,9 +88,6 @@ Public Member Functions</h2></td></tr>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaNumberField</b> ()</td></tr>
 <tr class="memdesc:a6eb3ad7d4f51a421e363723e0eecffe9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys a field object. <br /></td></tr>
 <tr class="separator:a6eb3ad7d4f51a421e363723e0eecffe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3bade5f69f4b78da3324a74f083b3cf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#ac3bade5f69f4b78da3324a74f083b3cf">Create</a> (DWORD style, const POINT &amp;topLeft, int numChars, CWnd *parentWnd, UINT id=0xFFFF)</td></tr>
-<tr class="memdesc:ac3bade5f69f4b78da3324a74f083b3cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the field.  <a href="classMeaNumberField.html#ac3bade5f69f4b78da3324a74f083b3cf">More...</a><br /></td></tr>
-<tr class="separator:ac3bade5f69f4b78da3324a74f083b3cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bbfb7f40dfb2d9002938299749d4195"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#a8bbfb7f40dfb2d9002938299749d4195">SetValueType</a> (DWORD valueType)</td></tr>
 <tr class="memdesc:a8bbfb7f40dfb2d9002938299749d4195"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configures the field with the type of value to accept.  <a href="classMeaNumberField.html#a8bbfb7f40dfb2d9002938299749d4195">More...</a><br /></td></tr>
 <tr class="separator:a8bbfb7f40dfb2d9002938299749d4195"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,12 +103,16 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaNumberField</b
 <tr class="memitem:a11009138b1765d5353de8aa6acd856a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#a11009138b1765d5353de8aa6acd856a0">GetValue</a> (double &amp;value) const</td></tr>
 <tr class="memdesc:a11009138b1765d5353de8aa6acd856a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the value contained in the text field as a double precision value.  <a href="classMeaNumberField.html#a11009138b1765d5353de8aa6acd856a0">More...</a><br /></td></tr>
 <tr class="separator:a11009138b1765d5353de8aa6acd856a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a31b9d4cdccd26b84d5a5db1b9b93f105"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#a31b9d4cdccd26b84d5a5db1b9b93f105">IsTextSelected</a> () const</td></tr>
-<tr class="memdesc:a31b9d4cdccd26b84d5a5db1b9b93f105"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the value in the field is selected.  <a href="classMeaNumberField.html#a31b9d4cdccd26b84d5a5db1b9b93f105">More...</a><br /></td></tr>
-<tr class="separator:a31b9d4cdccd26b84d5a5db1b9b93f105"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3e74de2857f73eb2d01c6e33dc13d85"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#ab3e74de2857f73eb2d01c6e33dc13d85">PreTranslateMessage</a> (MSG *msg) override</td></tr>
 <tr class="memdesc:ab3e74de2857f73eb2d01c6e33dc13d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the RETURN key, UP and DOWN arrow keys.  <a href="classMeaNumberField.html#ab3e74de2857f73eb2d01c6e33dc13d85">More...</a><br /></td></tr>
 <tr class="separator:ab3e74de2857f73eb2d01c6e33dc13d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_classMeaTextField"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classMeaTextField')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classMeaTextField.html">MeaTextField</a></td></tr>
+<tr class="memitem:a802342642a909e0e629d3acbdbe7e76c inherit pub_methods_classMeaTextField"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTextField.html#a802342642a909e0e629d3acbdbe7e76c">Create</a> (DWORD style, const POINT &amp;topLeft, int numChars, CWnd *parentWnd, UINT id=0xFFFF)</td></tr>
+<tr class="memdesc:a802342642a909e0e629d3acbdbe7e76c inherit pub_methods_classMeaTextField"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the window for the field.  <a href="classMeaTextField.html#a802342642a909e0e629d3acbdbe7e76c">More...</a><br /></td></tr>
+<tr class="separator:a802342642a909e0e629d3acbdbe7e76c inherit pub_methods_classMeaTextField"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf4a3a9dc474f967de4a7030aaeb2d4a inherit pub_methods_classMeaTextField"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTextField.html#acf4a3a9dc474f967de4a7030aaeb2d4a">IsTextSelected</a> () const</td></tr>
+<tr class="memdesc:acf4a3a9dc474f967de4a7030aaeb2d4a inherit pub_methods_classMeaTextField"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the value in the field is selected.  <a href="classMeaTextField.html#acf4a3a9dc474f967de4a7030aaeb2d4a">More...</a><br /></td></tr>
+<tr class="separator:acf4a3a9dc474f967de4a7030aaeb2d4a inherit pub_methods_classMeaTextField"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -120,21 +122,22 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:aa428e24964e21b88b11b546285ddbcd4"><td class="memItemLeft" align="right" valign="top">afx_msg LRESULT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#aa428e24964e21b88b11b546285ddbcd4">OnPaste</a> (WPARAM, LPARAM)</td></tr>
 <tr class="memdesc:aa428e24964e21b88b11b546285ddbcd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures only a valid number is pasted.  <a href="classMeaNumberField.html#aa428e24964e21b88b11b546285ddbcd4">More...</a><br /></td></tr>
 <tr class="separator:aa428e24964e21b88b11b546285ddbcd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20563179b74d3d39124e7c0154f4e79e"><td class="memItemLeft" align="right" valign="top">afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#a20563179b74d3d39124e7c0154f4e79e">OnKillFocus</a> (CWnd *win)</td></tr>
-<tr class="memdesc:a20563179b74d3d39124e7c0154f4e79e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the field loses keyboard focus.  <a href="classMeaNumberField.html#a20563179b74d3d39124e7c0154f4e79e">More...</a><br /></td></tr>
-<tr class="separator:a20563179b74d3d39124e7c0154f4e79e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5206951ea5a98114801fd1f15428a56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#af5206951ea5a98114801fd1f15428a56">IsSign</a> (TCHAR ch) const</td></tr>
 <tr class="memdesc:af5206951ea5a98114801fd1f15428a56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the specified character is an acceptable sign character.  <a href="classMeaNumberField.html#af5206951ea5a98114801fd1f15428a56">More...</a><br /></td></tr>
 <tr class="separator:af5206951ea5a98114801fd1f15428a56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82b384835e9ae4f01a35c8828fe78ff3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#a82b384835e9ae4f01a35c8828fe78ff3">IsPoint</a> (TCHAR ch) const</td></tr>
 <tr class="memdesc:a82b384835e9ae4f01a35c8828fe78ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the specified character is an acceptable decimal point.  <a href="classMeaNumberField.html#a82b384835e9ae4f01a35c8828fe78ff3">More...</a><br /></td></tr>
 <tr class="separator:a82b384835e9ae4f01a35c8828fe78ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_classMeaTextField"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classMeaTextField')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classMeaTextField.html">MeaTextField</a></td></tr>
+<tr class="memitem:ad4019194aeae79ead5c84e39c2f74f04 inherit pro_methods_classMeaTextField"><td class="memItemLeft" align="right" valign="top">afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTextField.html#ad4019194aeae79ead5c84e39c2f74f04">OnKillFocus</a> (CWnd *win)</td></tr>
+<tr class="memdesc:ad4019194aeae79ead5c84e39c2f74f04 inherit pro_methods_classMeaTextField"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when the field loses keyboard focus.  <a href="classMeaTextField.html#ad4019194aeae79ead5c84e39c2f74f04">More...</a><br /></td></tr>
+<tr class="separator:ad4019194aeae79ead5c84e39c2f74f04 inherit pro_methods_classMeaTextField"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a1a2e582ab4711eb7c3f21efc3160fdad"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#a1a2e582ab4711eb7c3f21efc3160fdad">IsValid</a> (LPCTSTR str, int len) const</td></tr>
-<tr class="memdesc:a1a2e582ab4711eb7c3f21efc3160fdad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests whether the specified string can be placed in the text field.  <a href="classMeaNumberField.html#a1a2e582ab4711eb7c3f21efc3160fdad">More...</a><br /></td></tr>
-<tr class="separator:a1a2e582ab4711eb7c3f21efc3160fdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a7de187841e02c1d922485a9cd1a6a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#a0a7de187841e02c1d922485a9cd1a6a0">IsValid</a> (PCTSTR str, int len) const</td></tr>
+<tr class="memdesc:a0a7de187841e02c1d922485a9cd1a6a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests whether the specified string can be placed in the text field.  <a href="classMeaNumberField.html#a0a7de187841e02c1d922485a9cd1a6a0">More...</a><br /></td></tr>
+<tr class="separator:a0a7de187841e02c1d922485a9cd1a6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a529235059c251b7721e294a4d2995a47"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaNumberField.html#a529235059c251b7721e294a4d2995a47">IntOnly</a> () const</td></tr>
 <tr class="memdesc:a529235059c251b7721e294a4d2995a47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the field has been configured to only accept integer values.  <a href="classMeaNumberField.html#a529235059c251b7721e294a4d2995a47">More...</a><br /></td></tr>
 <tr class="separator:a529235059c251b7721e294a4d2995a47"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -206,70 +209,6 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>m_edgeHeight</b
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac3bade5f69f4b78da3324a74f083b3cf" name="ac3bade5f69f4b78da3324a74f083b3cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3bade5f69f4b78da3324a74f083b3cf">&#9670;&nbsp;</a></span>Create()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MeaNumberField::Create </td>
-          <td>(</td>
-          <td class="paramtype">DWORD&#160;</td>
-          <td class="paramname"><em>style</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const POINT &amp;&#160;</td>
-          <td class="paramname"><em>topLeft</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>numChars</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">CWnd *&#160;</td>
-          <td class="paramname"><em>parentWnd</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">UINT&#160;</td>
-          <td class="paramname"><em>id</em> = <code>0xFFFF</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Creates the window for the field. </p>
-<p >To make the field visible, add the WS_VISIBLE style or call ShowWindow.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">style</td><td>[in] Field styles as defined for CEdit. </td></tr>
-    <tr><td class="paramname">topLeft</td><td>[in] Position of the top, left corner for the field, in pixels. </td></tr>
-    <tr><td class="paramname">numChars</td><td>[in] Number of visible characters. For proportional fonts the number of characters actually visible may vary from the specified value. </td></tr>
-    <tr><td class="paramname">parentWnd</td><td>[in] Parent window for the field. </td></tr>
-    <tr><td class="paramname">id</td><td>[in] ID for the field.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><b>true</b> if the field was created successfully. </dd></dl>
-
-<p class="reference">References <a class="el" href="classMeaNumberField.html#abeca017f865183c571ace19f82e7fe02">m_edgeHeight</a>, and <a class="el" href="namespaceMeaLayout.html#a9bab32271cf38973c6bc5bea4557aa74">MeaLayout::SetWindowSize()</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classMeaMagnifier.html#aa88b05e2e4f44e664e3d3dfcd82f8da5">MeaMagnifier::Create()</a>, and <a class="el" href="classMeaDataDisplay_1_1DataItem.html#a125547cd06e5fc4a28b64897054fbdc6">MeaDataDisplay::DataItem::CreateField()</a>.</p>
-
-</div>
-</div>
 <a id="a11009138b1765d5353de8aa6acd856a0" name="a11009138b1765d5353de8aa6acd856a0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a11009138b1765d5353de8aa6acd856a0">&#9670;&nbsp;</a></span>GetValue() <span class="overload">[1/2]</span></h2>
 
@@ -410,7 +349,7 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>m_edgeHeight</b
 
 <p class="reference">References <a class="el" href="classMeaNumberField.html#a529235059c251b7721e294a4d2995a47">IntOnly()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaNumberField.html#a1a2e582ab4711eb7c3f21efc3160fdad">IsValid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaNumberField.html#a0a7de187841e02c1d922485a9cd1a6a0">IsValid()</a>.</p>
 
 </div>
 </div>
@@ -450,42 +389,12 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>m_edgeHeight</b
 
 <p class="reference">References <a class="el" href="classMeaNumberField.html#a51cc023348f4a7ae9484b32b4dee6ae3">PosOnly()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaNumberField.html#a1a2e582ab4711eb7c3f21efc3160fdad">IsValid()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaNumberField.html#a0a7de187841e02c1d922485a9cd1a6a0">IsValid()</a>.</p>
 
 </div>
 </div>
-<a id="a31b9d4cdccd26b84d5a5db1b9b93f105" name="a31b9d4cdccd26b84d5a5db1b9b93f105"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31b9d4cdccd26b84d5a5db1b9b93f105">&#9670;&nbsp;</a></span>IsTextSelected()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool MeaNumberField::IsTextSelected </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Indicates if the value in the field is selected. </p>
-<dl class="section return"><dt>Returns</dt><dd><b>true</b> if the value in the field is selected. </dd></dl>
-
-<p class="reference">Referenced by <a class="el" href="classAppView.html#a2ffe7fd4458cdcf446c6be4eb15608df">AppView::OnUpdateEditClear()</a>, <a class="el" href="classAppView.html#a533ef4b2d95c336c400848a990bf9154">AppView::OnUpdateEditCopy()</a>, and <a class="el" href="classAppView.html#acfce9ec5f9b82d41cc4b2c97eb17cea4">AppView::OnUpdateEditCut()</a>.</p>
-
-</div>
-</div>
-<a id="a1a2e582ab4711eb7c3f21efc3160fdad" name="a1a2e582ab4711eb7c3f21efc3160fdad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a2e582ab4711eb7c3f21efc3160fdad">&#9670;&nbsp;</a></span>IsValid()</h2>
+<a id="a0a7de187841e02c1d922485a9cd1a6a0" name="a0a7de187841e02c1d922485a9cd1a6a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a7de187841e02c1d922485a9cd1a6a0">&#9670;&nbsp;</a></span>IsValid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -496,7 +405,7 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>m_edgeHeight</b
         <tr>
           <td class="memname">bool MeaNumberField::IsValid </td>
           <td>(</td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>str</em>, </td>
         </tr>
         <tr>
@@ -584,44 +493,7 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>m_edgeHeight</b
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaNumberField.html#a1a2e582ab4711eb7c3f21efc3160fdad">IsValid()</a>.</p>
-
-</div>
-</div>
-<a id="a20563179b74d3d39124e7c0154f4e79e" name="a20563179b74d3d39124e7c0154f4e79e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20563179b74d3d39124e7c0154f4e79e">&#9670;&nbsp;</a></span>OnKillFocus()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MeaNumberField::OnKillFocus </td>
-          <td>(</td>
-          <td class="paramtype">CWnd *&#160;</td>
-          <td class="paramname"><em>win</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Called when the field loses keyboard focus. </p>
-<p >The parent window is sent a MeaFieldFocusMsg message so that it can take actions such as reading the value in the field.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">win</td><td>[in] Next window to receive focus. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="reference">References <a class="el" href="Messages_8h.html#a362999053001832642b2e0ec9233ea4ea65311d31cd5d4df67b7727a2c9a3b671">MeaFieldFocusMsg</a>.</p>
+<p class="reference">References <a class="el" href="classMeaNumberField.html#a0a7de187841e02c1d922485a9cd1a6a0">IsValid()</a>.</p>
 
 </div>
 </div>
@@ -662,7 +534,7 @@ static int&#160;</td><td class="memItemRight" valign="bottom"><b>m_edgeHeight</b
 <p>Ensures only a valid number is pasted. </p>
 <dl class="section return"><dt>Returns</dt><dd>Always returns TRUE. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaNumberField.html#a1a2e582ab4711eb7c3f21efc3160fdad">IsValid()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaNumberField.html#a0a7de187841e02c1d922485a9cd1a6a0">IsValid()</a>.</p>
 
 </div>
 </div>

@@ -44,6 +44,7 @@ $(function() {
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="classMeaPositionSaveDlg-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">MeaPositionSaveDlg Class Reference</div></div>
 </div><!--header-->
@@ -71,9 +72,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afffef3402e53882037631bee7ad730d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionSaveDlg.html#afffef3402e53882037631bee7ad730d8">MeaPositionSaveDlg</a> (LPCTSTR lpszDefExt=nullptr, LPCTSTR lpszFileName=nullptr, LPCTSTR lpszFilter=nullptr, CWnd *pParentWnd=nullptr)</td></tr>
-<tr class="memdesc:afffef3402e53882037631bee7ad730d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a position log file dialog.  <a href="classMeaPositionSaveDlg.html#afffef3402e53882037631bee7ad730d8">More...</a><br /></td></tr>
-<tr class="separator:afffef3402e53882037631bee7ad730d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b00874894e3c5ef69180750f67d787a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionSaveDlg.html#a4b00874894e3c5ef69180750f67d787a">MeaPositionSaveDlg</a> (PCTSTR lpszDefExt=nullptr, PCTSTR lpszFileName=nullptr, PCTSTR lpszFilter=nullptr, CWnd *pParentWnd=nullptr)</td></tr>
+<tr class="memdesc:a4b00874894e3c5ef69180750f67d787a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a position log file dialog.  <a href="classMeaPositionSaveDlg.html#a4b00874894e3c5ef69180750f67d787a">More...</a><br /></td></tr>
+<tr class="separator:a4b00874894e3c5ef69180750f67d787a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cacecbe61c26b49c402731713cf8be3"><td class="memItemLeft" align="right" valign="top"><a id="a4cacecbe61c26b49c402731713cf8be3" name="a4cacecbe61c26b49c402731713cf8be3"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaPositionSaveDlg</b> ()</td></tr>
 <tr class="memdesc:a4cacecbe61c26b49c402731713cf8be3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys a position log file dialog. <br /></td></tr>
@@ -92,16 +93,33 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_title</b></td></
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:a360aaea6abeb3c53c1961dd32115755f"><td class="memItemLeft" align="right" valign="top">afx_msg void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionSaveDlg.html#a360aaea6abeb3c53c1961dd32115755f">OnSize</a> (UINT nType, int cx, int cy)</td></tr>
+<tr class="memdesc:a360aaea6abeb3c53c1961dd32115755f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to set the size and position of dialog items.  <a href="classMeaPositionSaveDlg.html#a360aaea6abeb3c53c1961dd32115755f">More...</a><br /></td></tr>
+<tr class="separator:a360aaea6abeb3c53c1961dd32115755f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09b8abdbb542caefbd813508dd686a9c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionSaveDlg.html#a09b8abdbb542caefbd813508dd686a9c">DoDataExchange</a> (CDataExchange *pDX) override</td></tr>
 <tr class="memdesc:a09b8abdbb542caefbd813508dd686a9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs dynamic data exchange (DDX) for the dialog.  <a href="classMeaPositionSaveDlg.html#a09b8abdbb542caefbd813508dd686a9c">More...</a><br /></td></tr>
 <tr class="separator:a09b8abdbb542caefbd813508dd686a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad727602707d9eeab4b691ef2b4765b76"><td class="memItemLeft" align="right" valign="top">virtual BOOL&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionSaveDlg.html#ad727602707d9eeab4b691ef2b4765b76">OnFileNameOK</a> () override</td></tr>
+<tr class="memdesc:ad727602707d9eeab4b691ef2b4765b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called to validate the filename when the Save button is pressed.  <a href="classMeaPositionSaveDlg.html#ad727602707d9eeab4b691ef2b4765b76">More...</a><br /></td></tr>
+<tr class="separator:ad727602707d9eeab4b691ef2b4765b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:aa66c731183adb7e66f2642001d66ac89"><td class="memItemLeft" align="right" valign="top"><a id="aa66c731183adb7e66f2642001d66ac89" name="aa66c731183adb7e66f2642001d66ac89"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kFilenameComboId</b> { 1148 }</td></tr>
+<tr class="memdesc:aa66c731183adb7e66f2642001d66ac89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifier of CFildDialog filename combo control. <br /></td></tr>
+<tr class="separator:aa66c731183adb7e66f2642001d66ac89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61f95f2a02998241a2e35bf842b489a9"><td class="memItemLeft" align="right" valign="top"><a id="a61f95f2a02998241a2e35bf842b489a9" name="a61f95f2a02998241a2e35bf842b489a9"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kFilenameLabelId</b> { 1090 }</td></tr>
+<tr class="memdesc:a61f95f2a02998241a2e35bf842b489a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifier of CFileDialog filename label control. <br /></td></tr>
+<tr class="separator:a61f95f2a02998241a2e35bf842b489a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The Save dialog for Position Log files. </p>
-<p >The dialog is a standard CFileDialog with the addition of a text field for specifying the Log file title and a text field for specifying the Log file description. </p>
+<p >The dialog is a standard CFileDialog with the addition of a text field for specifying the Log file title and a text field for specifying the Log file description. Unfortunately, the old style MFC file dialog must be used so that the text fields can be appropriately sized and placed. The CFileDialog.AddEditBox only creates short single line text fields. This is inappropriate for the position log description. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="afffef3402e53882037631bee7ad730d8" name="afffef3402e53882037631bee7ad730d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afffef3402e53882037631bee7ad730d8">&#9670;&nbsp;</a></span>MeaPositionSaveDlg()</h2>
+<a id="a4b00874894e3c5ef69180750f67d787a" name="a4b00874894e3c5ef69180750f67d787a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b00874894e3c5ef69180750f67d787a">&#9670;&nbsp;</a></span>MeaPositionSaveDlg()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,19 +130,19 @@ Protected Member Functions</h2></td></tr>
         <tr>
           <td class="memname">MeaPositionSaveDlg::MeaPositionSaveDlg </td>
           <td>(</td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>lpszDefExt</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>lpszFileName</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>lpszFilter</em> = <code>nullptr</code>, </td>
         </tr>
         <tr>
@@ -194,6 +212,82 @@ Protected Member Functions</h2></td></tr>
 </dl>
 
 <p class="reference">References <a class="el" href="classMeaPositionSaveDlg.html#ac9cfa8af43b87b60620fb80aa4f8b912">m_desc</a>, and <a class="el" href="classMeaPositionSaveDlg.html#a60a16c8ca44ed113712d5c57be590af0">m_title</a>.</p>
+
+</div>
+</div>
+<a id="ad727602707d9eeab4b691ef2b4765b76" name="ad727602707d9eeab4b691ef2b4765b76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad727602707d9eeab4b691ef2b4765b76">&#9670;&nbsp;</a></span>OnFileNameOK()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BOOL MeaPositionSaveDlg::OnFileNameOK </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called to validate the filename when the Save button is pressed. </p>
+<p >We are using this method to manually trigger DDX.</p>
+<dl class="section return"><dt>Returns</dt><dd>TRUE if the filename is valid. </dd></dl>
+
+</div>
+</div>
+<a id="a360aaea6abeb3c53c1961dd32115755f" name="a360aaea6abeb3c53c1961dd32115755f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a360aaea6abeb3c53c1961dd32115755f">&#9670;&nbsp;</a></span>OnSize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MeaPositionSaveDlg::OnSize </td>
+          <td>(</td>
+          <td class="paramtype">UINT&#160;</td>
+          <td class="paramname"><em>nType</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cy</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called to set the size and position of dialog items. </p>
+<p >We are using the method to properly position the items added in the dialog template (i.e. title and description controls). </p>
+
+<p class="reference">References <a class="el" href="classMeaPositionSaveDlg.html#aa66c731183adb7e66f2642001d66ac89">kFilenameComboId</a>, and <a class="el" href="classMeaPositionSaveDlg.html#a61f95f2a02998241a2e35bf842b489a9">kFilenameLabelId</a>.</p>
 
 </div>
 </div>

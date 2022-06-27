@@ -115,6 +115,7 @@ void MeaUnitsMgr::SaveProfile(MeaProfile& profile) {
     profile.WriteStr(_T("LinearUnits"), GetLinearUnitsStr());
     profile.WriteStr(_T("AngularUnits"), GetAngularUnitsStr());
     profile.WriteBool(_T("InvertY"), IsInvertY());
+    profile.WriteBool(_T("SupplementalAngle"), IsSupplementalAngle());
 
     MeaFPoint pt = ConvertPos(GetOrigin());
     profile.WriteStr(_T("OriginX"), MeaStringUtils::DblToStr(pt.x));
@@ -153,6 +154,7 @@ void MeaUnitsMgr::LoadProfile(MeaProfile& profile) {
     }
     SetAngularUnits(profile.ReadStr(_T("AngularUnits"), kDefAngularUnits));
     SetInvertY(profile.ReadBool(_T("InvertY"), kDefInvertY));
+    SetSupplementalAngle(profile.ReadBool(_T("SupplementalAngle"), kDefSupplmentalAngle));
 
     MeaFPoint pt;
     pt.x = profile.ReadDbl(_T("OriginX"), 0.0);
@@ -169,6 +171,7 @@ void MeaUnitsMgr::MasterReset() {
     CPoint origin;
 
     SetInvertY(kDefInvertY);
+    SetSupplementalAngle(kDefSupplmentalAngle);
     SetOrigin(origin);
 
     for (const auto& unitsEntry : m_linearUnitsMap) {

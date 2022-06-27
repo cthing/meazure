@@ -1,3 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classMeaScreenProvider_1_1Screen.html" title="Represents a single display screen." alt="" coords="5,5,148,47"/>
+<area shape="rect" id="node1" href="$structMeaPositionDesktopRefCounter.html" title="Interface for a class that implements reference counting of desktop information objects." alt="" coords="5,5,212,32"/>
+<area shape="rect" id="node2" href="$classMeaPositionLogMgr.html" title="Manages the recording, saving and loading of tool positions." alt="" coords="260,85,397,112"/>
+<area shape="rect" id="node3" href="$structMeaPositionProvider.html" title="Interface for providing position information." alt="" coords="39,56,179,83"/>
+<area shape="rect" id="node4" href="$classMeaProfile.html" title="Base class for the persisting the application state to either the Registry or a file." alt="" coords="67,224,150,251"/>
+<area shape="rect" id="node5" href="$classMeaFileProfile.html" title="Persists the application state to an XML file." alt="" coords="277,173,381,200"/>
+<area shape="rect" id="node6" href="$classMeaRegistryProfile.html" title="Persists the application state to the registry." alt="" coords="263,224,394,251"/>
+<area shape="rect" id="node7" href="$classMeaSingleton__T.html" title=" " alt="" coords="9,107,208,149"/>
+<area shape="rect" id="node8" href="$structMeaXMLParserHandler.html" title="Mix&#45;in class for XML parser callback methods." alt="" coords="31,173,186,200"/>
 </map>

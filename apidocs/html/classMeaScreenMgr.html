@@ -123,7 +123,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MasterReset</b> () co
 <tr class="memdesc:aea51e6af77ec80a2e53547249b764709"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the resolution for the screen pointed to by the specified iterator.  <a href="classMeaScreenMgr.html#aea51e6af77ec80a2e53547249b764709">More...</a><br /></td></tr>
 <tr class="separator:aea51e6af77ec80a2e53547249b764709"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacba63eb4b6564ca30d45d16b53a7625"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#aacba63eb4b6564ca30d45d16b53a7625">IsManualRes</a> (const <a class="el" href="structMeaScreenProvider.html#ae80fb1a4f7eec02d39eeb4f7e45b8706">ScreenIter</a> &amp;iter) const override</td></tr>
-<tr class="memdesc:aacba63eb4b6564ca30d45d16b53a7625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates it the resolution for the specified screen has been set manually.  <a href="classMeaScreenMgr.html#aacba63eb4b6564ca30d45d16b53a7625">More...</a><br /></td></tr>
+<tr class="memdesc:aacba63eb4b6564ca30d45d16b53a7625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates if the resolution for the specified screen has been set manually.  <a href="classMeaScreenMgr.html#aacba63eb4b6564ca30d45d16b53a7625">More...</a><br /></td></tr>
 <tr class="separator:aacba63eb4b6564ca30d45d16b53a7625"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b0df795ad7879d3af0b92d312773f68"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#a7b0df795ad7879d3af0b92d312773f68">AnyOSRes</a> () const override</td></tr>
 <tr class="memdesc:a7b0df795ad7879d3af0b92d312773f68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether any screen is using the operating system reported resolution.  <a href="classMeaScreenMgr.html#a7b0df795ad7879d3af0b92d312773f68">More...</a><br /></td></tr>
@@ -152,9 +152,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>MasterReset</b> () co
 <tr class="memitem:a4a55a67ed4bb487159d1f61b19bbe3d9"><td class="memItemLeft" align="right" valign="top">CPoint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#a4a55a67ed4bb487159d1f61b19bbe3d9">LimitPosition</a> (const CPoint &amp;pt) const override</td></tr>
 <tr class="memdesc:a4a55a67ed4bb487159d1f61b19bbe3d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the specified point is on a screen.  <a href="classMeaScreenMgr.html#a4a55a67ed4bb487159d1f61b19bbe3d9">More...</a><br /></td></tr>
 <tr class="separator:a4a55a67ed4bb487159d1f61b19bbe3d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6657003d397e76efe29d23a07029984"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMeaFSize.html">MeaFSize</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaScreenMgr.html#ad6657003d397e76efe29d23a07029984">GetOSScreenRes</a> () const</td></tr>
-<tr class="memdesc:ad6657003d397e76efe29d23a07029984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtains the screen resolution reported by the operating system.  <a href="classMeaScreenMgr.html#ad6657003d397e76efe29d23a07029984">More...</a><br /></td></tr>
-<tr class="separator:ad6657003d397e76efe29d23a07029984"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1259761f52ac8e349fe3abfc37fa4e1"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMeaScreenProvider.html#ab1259761f52ac8e349fe3abfc37fa4e1">GetNumScreens</a> () const =0</td></tr>
 <tr class="memdesc:ab1259761f52ac8e349fe3abfc37fa4e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of display screens attached to the system.  <a href="structMeaScreenProvider.html#ab1259761f52ac8e349fe3abfc37fa4e1">More...</a><br /></td></tr>
 <tr class="separator:ab1259761f52ac8e349fe3abfc37fa4e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -411,7 +408,7 @@ typedef Screens::const_iterator&#160;</td><td class="memItemRight" valign="botto
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>TRUE to continue enumeration of monitors. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaScreenMgr.html#a13b8f5daa6577a77f102e1d719483a02">GetNumScreens()</a>, <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>, <a class="el" href="classMeaScreenProvider_1_1Screen.html#a7ef5b7c633b666be12604a373b139f1c">MeaScreenProvider::Screen::SetName()</a>, and <a class="el" href="classMeaScreenProvider_1_1Screen.html#a789fcfefb104b2d0367465bf61ea1c2f">MeaScreenProvider::Screen::SetPrimary()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaScreenMgr.html#a13b8f5daa6577a77f102e1d719483a02">GetNumScreens()</a>, <a class="el" href="classMeaScreenMgr.html#a0fc3c1d8cd64db498848a5a5f72b8bba">m_screens</a>, <a class="el" href="classMeaScreenProvider_1_1Screen.html#aa732b3b853c5c62050a7ce45b4dd47bf">MeaScreenProvider::Screen::SetName()</a>, and <a class="el" href="classMeaScreenProvider_1_1Screen.html#a789fcfefb104b2d0367465bf61ea1c2f">MeaScreenProvider::Screen::SetPrimary()</a>.</p>
 
 </div>
 </div>
@@ -538,30 +535,6 @@ typedef Screens::const_iterator&#160;</td><td class="memItemRight" valign="botto
 <p>Implements <a class="el" href="structMeaScreenProvider.html#a3c40ab3b075e535f2d0410b421a59cfa">MeaScreenProvider</a>.</p>
 
 <p class="reference">References <a class="el" href="structMeaScreenProvider.html#a107a0e73724d4a862bb96fe036d1f1fd">MeaScreenProvider::GetVirtualRect()</a>.</p>
-
-</div>
-</div>
-<a id="ad6657003d397e76efe29d23a07029984" name="ad6657003d397e76efe29d23a07029984"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6657003d397e76efe29d23a07029984">&#9670;&nbsp;</a></span>GetOSScreenRes()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structMeaFSize.html">MeaFSize</a> MeaScreenMgr::GetOSScreenRes </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Obtains the screen resolution reported by the operating system. </p>
-<dl class="section return"><dt>Returns</dt><dd>Resolution in pixels per inch. </dd></dl>
-
-<p class="reference">References <a class="el" href="structMeaFSize.html#a638f5d9683b29587bae544a93aecbff7">MeaFSize::cx</a>, and <a class="el" href="structMeaFSize.html#ae08cae7baa6f2d78b89e554f25fada3c">MeaFSize::cy</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="classMeaScreenProvider_1_1Screen.html#a757f2aa628d200adda5733b10f0758d1">MeaScreenProvider::Screen::SetScreenRes()</a>.</p>
 
 </div>
 </div>
@@ -1002,7 +975,7 @@ typedef Screens::const_iterator&#160;</td><td class="memItemRight" valign="botto
 </table>
 </div><div class="memdoc">
 
-<p>Indicates it the resolution for the specified screen has been set manually. </p>
+<p>Indicates if the resolution for the specified screen has been set manually. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">iter</td><td>[in] Screen iterator pointed at the screen whose resolution setting is being queried.</td></tr>
@@ -1107,7 +1080,7 @@ typedef Screens::const_iterator&#160;</td><td class="memItemRight" valign="botto
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="structMeaFSize.html#a638f5d9683b29587bae544a93aecbff7">MeaFSize::cx</a>, <a class="el" href="structMeaFSize.html#ae08cae7baa6f2d78b89e554f25fada3c">MeaFSize::cy</a>, <a class="el" href="classMeaProfile.html#ad679c733d14b8e7fa135bd2cf89a42ce">MeaProfile::GetVersion()</a>, <a class="el" href="classMeaProfile.html#a651b5ed195ce204f09bce84ed74c3bbd">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#a1bce381a1a2e38719413f6fa3d1ac0a1">MeaProfile::ReadDbl()</a>, <a class="el" href="classMeaProfile.html#abd21e0a2e04aa91056d8e69b0d17c675">MeaProfile::ReadInt()</a>, <a class="el" href="classMeaScreenProvider_1_1Screen.html#af2a6fea97ebcfdbafecc687a787d1961">MeaScreenProvider::Screen::SetCalInInches()</a>, <a class="el" href="classMeaScreenProvider_1_1Screen.html#a757f2aa628d200adda5733b10f0758d1">MeaScreenProvider::Screen::SetScreenRes()</a>, and <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>.</p>
+<p class="reference">References <a class="el" href="structMeaFSize.html#a638f5d9683b29587bae544a93aecbff7">MeaFSize::cx</a>, <a class="el" href="structMeaFSize.html#ae08cae7baa6f2d78b89e554f25fada3c">MeaFSize::cy</a>, <a class="el" href="classMeaProfile.html#ad679c733d14b8e7fa135bd2cf89a42ce">MeaProfile::GetVersion()</a>, <a class="el" href="classMeaProfile.html#add59f43b6da88f189cd00b12146dbb90">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#ad4eecd276e62b759995907dbc95c7908">MeaProfile::ReadDbl()</a>, <a class="el" href="classMeaProfile.html#a99f1fca911ca39a696e20003a376f2ac">MeaProfile::ReadInt()</a>, <a class="el" href="classMeaScreenProvider_1_1Screen.html#af2a6fea97ebcfdbafecc687a787d1961">MeaScreenProvider::Screen::SetCalInInches()</a>, <a class="el" href="classMeaScreenProvider_1_1Screen.html#a757f2aa628d200adda5733b10f0758d1">MeaScreenProvider::Screen::SetScreenRes()</a>, and <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classAppView.html#ae8b42b18ab1e1a3c039ded1d66824995">AppView::LoadProfile()</a>.</p>
 
@@ -1137,7 +1110,7 @@ typedef Screens::const_iterator&#160;</td><td class="memItemRight" valign="botto
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="structMeaFSize.html#a638f5d9683b29587bae544a93aecbff7">MeaFSize::cx</a>, <a class="el" href="structMeaFSize.html#ae08cae7baa6f2d78b89e554f25fada3c">MeaFSize::cy</a>, <a class="el" href="structMeaScreenProvider.html#ab1259761f52ac8e349fe3abfc37fa4e1">MeaScreenProvider::GetNumScreens()</a>, <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#a1a961b0651b261c571e3d8c459465d93">MeaProfile::WriteBool()</a>, <a class="el" href="classMeaProfile.html#a9cd4c2b9f6d30c205dde9b1c34ab0bb2">MeaProfile::WriteInt()</a>, and <a class="el" href="classMeaProfile.html#a37fabc7b652f047d874f42c176371fe0">MeaProfile::WriteStr()</a>.</p>
+<p class="reference">References <a class="el" href="structMeaFSize.html#a638f5d9683b29587bae544a93aecbff7">MeaFSize::cx</a>, <a class="el" href="structMeaFSize.html#ae08cae7baa6f2d78b89e554f25fada3c">MeaFSize::cy</a>, <a class="el" href="structMeaScreenProvider.html#ab1259761f52ac8e349fe3abfc37fa4e1">MeaScreenProvider::GetNumScreens()</a>, <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#ad0b78029d64b12e3afe61d7be727aa03">MeaProfile::WriteBool()</a>, <a class="el" href="classMeaProfile.html#a7538388d0c2f90bd69cee978d3c7db6b">MeaProfile::WriteInt()</a>, and <a class="el" href="classMeaProfile.html#a42e67f8c2a6046331dfef8d6e22de5dc">MeaProfile::WriteStr()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classAppView.html#ae07af2f2dcfc2a66bc5c22755fe7ee18">AppView::SaveProfile()</a>.</p>
 

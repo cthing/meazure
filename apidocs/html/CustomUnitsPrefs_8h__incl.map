@@ -1,15 +1,15 @@
 <map id="CustomUnitsPrefs.h" name="CustomUnitsPrefs.h">
 <area shape="rect" id="node1" title="Custom measurement units property page header file." alt="" coords="185,5,323,32"/>
 <area shape="rect" id="node2" href="$resource_8h_source.html" title=" " alt="" coords="5,80,143,107"/>
-<area shape="rect" id="node3" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="167,80,341,107"/>
-<area shape="rect" id="node5" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="409,80,558,107"/>
-<area shape="rect" id="node4" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="138,155,285,181"/>
-<area shape="rect" id="node6" title=" " alt="" coords="309,155,365,181"/>
-<area shape="rect" id="node7" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="389,155,577,181"/>
-<area shape="rect" id="node9" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="521,229,710,256"/>
-<area shape="rect" id="node13" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="653,155,815,181"/>
-<area shape="rect" id="node8" title=" " alt="" coords="449,229,496,256"/>
-<area shape="rect" id="node10" title=" " alt="" coords="606,379,665,405"/>
-<area shape="rect" id="node11" title=" " alt="" coords="579,304,651,331"/>
-<area shape="rect" id="node12" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="675,304,782,331"/>
+<area shape="rect" id="node3" href="$NumberField_8h.html" title="Header file for the number field control." alt="" coords="167,80,341,107"/>
+<area shape="rect" id="node5" href="$Units_8h.html" title="Header file for the units classes." alt="" coords="394,80,543,107"/>
+<area shape="rect" id="node4" href="$TextField_8h.html" title="Header file for the text field control." alt="" coords="183,155,269,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="294,155,350,181"/>
+<area shape="rect" id="node7" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="375,155,563,181"/>
+<area shape="rect" id="node9" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="506,229,695,256"/>
+<area shape="rect" id="node13" href="$Profile_8h.html" title="Profile base class header file." alt="" coords="639,155,800,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="435,229,481,256"/>
+<area shape="rect" id="node10" title=" " alt="" coords="591,379,650,405"/>
+<area shape="rect" id="node11" title=" " alt="" coords="565,304,637,331"/>
+<area shape="rect" id="node12" href="$NumericUtils_8h.html" title="Constants and convenience methods for working with numbers." alt="" coords="661,304,767,331"/>
 </map>

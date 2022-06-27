@@ -33,8 +33,6 @@ class MeaScreenProvider::Screen {
 public:
     /// Constructs a display screen object.
     ///
-    /// @param mgr      [in] Parent manager.
-    /// @param monitor  [in] Monitor represented by this screen.
     /// @param rect     [in] Rectangle representing the screen, in pixels.
     ///                 In multiple monitor environments, the screen rectangle
     ///                 can have negative coordinates.

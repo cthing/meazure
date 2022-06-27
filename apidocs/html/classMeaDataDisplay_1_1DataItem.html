@@ -88,9 +88,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aece2d8e3adbaa560a90557669efe127d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaDataDisplay_1_1DataItem.html#aece2d8e3adbaa560a90557669efe127d">SetReadOnly</a> (bool readonly)</td></tr>
 <tr class="memdesc:aece2d8e3adbaa560a90557669efe127d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controls whether the data item text field is editable or read-only.  <a href="classMeaDataDisplay_1_1DataItem.html#aece2d8e3adbaa560a90557669efe127d">More...</a><br /></td></tr>
 <tr class="separator:aece2d8e3adbaa560a90557669efe127d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a478cac9cc1322a062ba59aa8818aeda8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaDataDisplay_1_1DataItem.html#a478cac9cc1322a062ba59aa8818aeda8">SetText</a> (LPCTSTR text)</td></tr>
-<tr class="memdesc:a478cac9cc1322a062ba59aa8818aeda8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified text in the data item's text field.  <a href="classMeaDataDisplay_1_1DataItem.html#a478cac9cc1322a062ba59aa8818aeda8">More...</a><br /></td></tr>
-<tr class="separator:a478cac9cc1322a062ba59aa8818aeda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6ef5efa4b8043e9ef22cfe752ab561c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaDataDisplay_1_1DataItem.html#ab6ef5efa4b8043e9ef22cfe752ab561c">SetText</a> (PCTSTR text)</td></tr>
+<tr class="memdesc:ab6ef5efa4b8043e9ef22cfe752ab561c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Displays the specified text in the data item's text field.  <a href="classMeaDataDisplay_1_1DataItem.html#ab6ef5efa4b8043e9ef22cfe752ab561c">More...</a><br /></td></tr>
+<tr class="separator:ab6ef5efa4b8043e9ef22cfe752ab561c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a400b99153dea751e48eb2a643f7cbff3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaDataDisplay_1_1DataItem.html#a400b99153dea751e48eb2a643f7cbff3">GetValue</a> () const</td></tr>
 <tr class="memdesc:a400b99153dea751e48eb2a643f7cbff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the contents of the data item's text field converted to a double precision floating point value.  <a href="classMeaDataDisplay_1_1DataItem.html#a400b99153dea751e48eb2a643f7cbff3">More...</a><br /></td></tr>
 <tr class="separator:a400b99153dea751e48eb2a643f7cbff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,10 +137,10 @@ CSpinButtonCtrl *&#160;</td><td class="memItemRight" valign="bottom"><b>m_spin</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-attribs" name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a5ae262732f605edc6c9f6936cadf073f"><td class="memItemLeft" align="right" valign="top"><a id="a5ae262732f605edc6c9f6936cadf073f" name="a5ae262732f605edc6c9f6936cadf073f"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kSpinWidth</b> { 17 }</td></tr>
-<tr class="memdesc:a5ae262732f605edc6c9f6936cadf073f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Width for the spin control, in pixels. <br /></td></tr>
-<tr class="separator:a5ae262732f605edc6c9f6936cadf073f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a257d6d7252c1a1515a3845f8924bd981"><td class="memItemLeft" align="right" valign="top"><a id="a257d6d7252c1a1515a3845f8924bd981" name="a257d6d7252c1a1515a3845f8924bd981"></a>
+static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kBaseSpinWidth</b> { 17 }</td></tr>
+<tr class="memdesc:a257d6d7252c1a1515a3845f8924bd981"><td class="mdescLeft">&#160;</td><td class="mdescRight">Width for the spin control, in pixels. <br /></td></tr>
+<tr class="separator:a257d6d7252c1a1515a3845f8924bd981"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Each data display field is actually composed of a label, a text field, possibly a spin control, and usually a units label. </p>
@@ -332,7 +332,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kSpin
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if creation succeeds. </dd></dl>
 
-<p class="reference">References <a class="el" href="classMeaNumberField.html#ac3bade5f69f4b78da3324a74f083b3cf">MeaNumberField::Create()</a>, <a class="el" href="classMeaLabel.html#adadea599605655defb9e3fbeede63a13">MeaLabel::Create()</a>, <a class="el" href="classMeaDataDisplay_1_1DataItem.html#ad36d79d4eb2d9a29e76f9c91a5600fa8">CreateSpinButton()</a>, <a class="el" href="classMeaDataDisplay_1_1DataItem.html#a74105b89cf164256301a1706a2c4df91">m_field</a>, and <a class="el" href="classMeaDataDisplay_1_1DataItem.html#a16c8aa6af488cf16cc3eaafe70817c75">m_titleLabel</a>.</p>
+<p class="reference">References <a class="el" href="classMeaTextField.html#a802342642a909e0e629d3acbdbe7e76c">MeaTextField::Create()</a>, <a class="el" href="classMeaLabel.html#a77112300d3c164cade66cb6061476720">MeaLabel::Create()</a>, <a class="el" href="classMeaDataDisplay_1_1DataItem.html#ad36d79d4eb2d9a29e76f9c91a5600fa8">CreateSpinButton()</a>, <a class="el" href="classMeaDataDisplay_1_1DataItem.html#a74105b89cf164256301a1706a2c4df91">m_field</a>, and <a class="el" href="classMeaDataDisplay_1_1DataItem.html#a16c8aa6af488cf16cc3eaafe70817c75">m_titleLabel</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>, and <a class="el" href="classMeaDataDisplay.html#ab69cb4e3f11379eda72564de94ee217c">MeaDataDisplay::CreateScreenSection()</a>.</p>
 
@@ -474,7 +474,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kSpin
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><b>true</b> if creation succeeded. </dd></dl>
 
-<p class="reference">References <a class="el" href="namespaceMeaLayout.html#a9bab32271cf38973c6bc5bea4557aa74">MeaLayout::SetWindowSize()</a>.</p>
+<p class="reference">References <a class="el" href="namespaceMeaLayout.html#a200b6c260a28b1dc7a8f16f533363562">MeaLayout::GetDPIScaleFactor()</a>, <a class="el" href="namespaceMeaGeometry.html#a6bb9750e4fb41fff8e1a8b39be40faa1">MeaGeometry::Scale()</a>, and <a class="el" href="namespaceMeaLayout.html#a9bab32271cf38973c6bc5bea4557aa74">MeaLayout::SetWindowSize()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaDataDisplay_1_1DataItem.html#a125547cd06e5fc4a28b64897054fbdc6">CreateField()</a>.</p>
 
@@ -817,8 +817,8 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kSpin
 
 </div>
 </div>
-<a id="a478cac9cc1322a062ba59aa8818aeda8" name="a478cac9cc1322a062ba59aa8818aeda8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a478cac9cc1322a062ba59aa8818aeda8">&#9670;&nbsp;</a></span>SetText()</h2>
+<a id="ab6ef5efa4b8043e9ef22cfe752ab561c" name="ab6ef5efa4b8043e9ef22cfe752ab561c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6ef5efa4b8043e9ef22cfe752ab561c">&#9670;&nbsp;</a></span>SetText()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -829,7 +829,7 @@ static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>kSpin
         <tr>
           <td class="memname">void MeaDataDisplay::DataItem::SetText </td>
           <td>(</td>
-          <td class="paramtype">LPCTSTR&#160;</td>
+          <td class="paramtype">PCTSTR&#160;</td>
           <td class="paramname"><em>text</em></td><td>)</td>
           <td></td>
         </tr>

@@ -42,6 +42,7 @@ public:
     static constexpr PCTSTR kDefLinearUnits { _T("px") };       ///< Default units for linear measurements.
     static constexpr PCTSTR kDefAngularUnits { _T("deg") };     ///< Default units for angular measurements.
     static constexpr bool kDefInvertY { false };                ///< Default orientation of the y-axis.
+    static constexpr bool kDefSupplmentalAngle { false };       ///< Default angle to show
 
 
     MeaUnitsMgr(token);
@@ -267,6 +268,26 @@ public:
     ///         method.
     ///
     bool IsInvertY() const override { return MeaLinearUnits::IsInvertY(); }
+
+    /// Sets whether to show the included angle (default) or the supplemental angle. The supplemental angle is
+    /// defined as:
+    /// \f[
+    ///     \theta_{s} =
+    ///         \begin{cases}
+    ///             180^\circ - \theta_{i}  & \theta_{i} \ge 0\\ 
+    ///             -180^\circ - \theta_{i} & \theta_{i} < 0
+    ///         \end{cases}
+    /// \f]
+    /// 
+    /// @param showSupplemental     [in] true to show supplemental angle instead of included angle
+    /// 
+    void SetSupplementalAngle(boolean showSupplemental) { MeaAngularUnits::SetSupplementalAngle(showSupplemental); }
+
+    /// Indicates whether the included angle is shown (default) or the supplemental angle.
+    /// 
+    /// @return true if the supplemental angle is shown.
+    ///  
+    bool IsSupplementalAngle() { return MeaAngularUnits::IsSupplementalAngle(); }
 
     /// Moves the origin of the coordinate system to the specified point. The
     /// orientation of the axes is not effected by this method. To change the

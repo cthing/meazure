@@ -106,9 +106,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaTool</b> ()=de
 <tr class="memitem:af01c4bce5c0b74fc0ad47275c4a2f82b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTool.html#af01c4bce5c0b74fc0ad47275c4a2f82b">DecPosition</a> (<a class="el" href="DataFieldId_8h.html#acf0ac5cd6a3556b3018e8c06fdd5bda6">MeaDataFieldId</a> which)</td></tr>
 <tr class="memdesc:af01c4bce5c0b74fc0ad47275c4a2f82b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrements the specified position field.  <a href="classMeaTool.html#af01c4bce5c0b74fc0ad47275c4a2f82b">More...</a><br /></td></tr>
 <tr class="separator:af01c4bce5c0b74fc0ad47275c4a2f82b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae9e4d5acbb84910c8681b5d831dea9b"><td class="memItemLeft" align="right" valign="top">virtual CString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">GetToolName</a> () const =0</td></tr>
-<tr class="memdesc:aae9e4d5acbb84910c8681b5d831dea9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the tool.  <a href="classMeaTool.html#aae9e4d5acbb84910c8681b5d831dea9b">More...</a><br /></td></tr>
-<tr class="separator:aae9e4d5acbb84910c8681b5d831dea9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c5915ca3d0314cdd079eaf26b629596"><td class="memItemLeft" align="right" valign="top">virtual PCTSTR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTool.html#a3c5915ca3d0314cdd079eaf26b629596">GetToolName</a> () const =0</td></tr>
+<tr class="memdesc:a3c5915ca3d0314cdd079eaf26b629596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the tool.  <a href="classMeaTool.html#a3c5915ca3d0314cdd079eaf26b629596">More...</a><br /></td></tr>
+<tr class="separator:a3c5915ca3d0314cdd079eaf26b629596"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a024dae509ef0d13756a2aa665a40ff31"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaTool.html#a024dae509ef0d13756a2aa665a40ff31">SaveProfile</a> (<a class="el" href="classMeaProfile.html">MeaProfile</a> &amp;profile)</td></tr>
 <tr class="memdesc:a024dae509ef0d13756a2aa665a40ff31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Persists the state of the tool to the specified profile object.  <a href="classMeaTool.html#a024dae509ef0d13756a2aa665a40ff31">More...</a><br /></td></tr>
 <tr class="separator:a024dae509ef0d13756a2aa665a40ff31"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -374,8 +374,8 @@ Static Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aae9e4d5acbb84910c8681b5d831dea9b" name="aae9e4d5acbb84910c8681b5d831dea9b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae9e4d5acbb84910c8681b5d831dea9b">&#9670;&nbsp;</a></span>GetToolName()</h2>
+<a id="a3c5915ca3d0314cdd079eaf26b629596" name="a3c5915ca3d0314cdd079eaf26b629596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c5915ca3d0314cdd079eaf26b629596">&#9670;&nbsp;</a></span>GetToolName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -384,7 +384,7 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual CString MeaTool::GetToolName </td>
+          <td class="memname">virtual PCTSTR MeaTool::GetToolName </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -399,9 +399,9 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Returns the name of the tool. </p>
 <p >Each tool has a unique name which is used to identify the tool in profiles and position logs.</p>
-<dl class="section return"><dt>Returns</dt><dd>Name of the tool </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Name of the tool. Will never be nullptr and the memory for the string is owned by the tool. </dd></dl>
 
-<p>Implemented in <a class="el" href="classMeaAngleTool.html#a357d60cc9a0786b5e8c63184b9535d1b">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#afac88be5ed1b01dfe2b04bb4a19e0c45">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#a75b739eb6450008e54938f4bd9dd9b87">MeaCursorTool</a>, <a class="el" href="classMeaGridTool.html#a0f4aee0b76d182e9b640f7ddc8b24e35">MeaGridTool</a>, <a class="el" href="classMeaLineTool.html#acc34bd3f365f253c6e600de310b5c592">MeaLineTool</a>, <a class="el" href="classMeaOriginTool.html#ae6658ba6763240f2f483039533a1b0b0">MeaOriginTool</a>, <a class="el" href="classMeaPointTool.html#aa718de008fbaca5dd1a1dd4c16195f34">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#a35c5abaf8c0331ff7c2a54114a8f6808">MeaRectTool</a>, <a class="el" href="classMeaRulerTool.html#adbc9145c88bc19e6438e92165128aab9">MeaRulerTool</a>, <a class="el" href="classMeaScreenTool.html#a8df47b519fc63376b27c28d7cde8c090">MeaScreenTool</a>, and <a class="el" href="classMeaWindowTool.html#ab627db15004e2cb1f7f0f96c929c1ee3">MeaWindowTool</a>.</p>
+<p>Implemented in <a class="el" href="classMeaAngleTool.html#ada7b8eef9f5703d4559165ec4e91ef1f">MeaAngleTool</a>, <a class="el" href="classMeaCircleTool.html#ad72dac70ab9f9195f4d450991f65e720">MeaCircleTool</a>, <a class="el" href="classMeaCursorTool.html#a85979417e7fa05ff6c51b72a61427d63">MeaCursorTool</a>, <a class="el" href="classMeaGridTool.html#a3b3f0c559099d99ab766169802743a83">MeaGridTool</a>, <a class="el" href="classMeaLineTool.html#a83f7defb1c46bc4629996874a41df2a8">MeaLineTool</a>, <a class="el" href="classMeaOriginTool.html#ac2b8480d0f43b916ce19735203e3aec5">MeaOriginTool</a>, <a class="el" href="classMeaPointTool.html#a9ba06b11dcd3c6b7c0b51402781b0af9">MeaPointTool</a>, <a class="el" href="classMeaRectTool.html#acd94a2be7319ee5c348922d3f3f066ce">MeaRectTool</a>, <a class="el" href="classMeaRulerTool.html#aca7dde14ff5b1463308c34a5d9374b98">MeaRulerTool</a>, <a class="el" href="classMeaScreenTool.html#ae036d1c65bcf5b4b2b7149f822ccf645">MeaScreenTool</a>, and <a class="el" href="classMeaWindowTool.html#a438c91741662b03e9ce45e0b87146266">MeaWindowTool</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaToolMgr.html#ae18810d768eb7e205d0e625bc215b9fe">MeaToolMgr::GetToolName()</a>, <a class="el" href="classMeaToolMgr.html#a5937ebf229ec33616acd6589037087c0">MeaToolMgr::LoadProfile()</a>, and <a class="el" href="classMeaToolMgr.html#ab2ac8ea5e457379f500a8dcdce769cd6">MeaToolMgr::SaveProfile()</a>.</p>
 

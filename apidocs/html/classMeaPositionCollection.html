@@ -71,9 +71,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2076fffdf894400f026e2fda516dc52a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionCollection.html#a2076fffdf894400f026e2fda516dc52a">Set</a> (int posIndex, <a class="el" href="classMeaPosition.html">MeaPosition</a> *position)</td></tr>
 <tr class="memdesc:a2076fffdf894400f026e2fda516dc52a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replaces the specified position at the specified location in the collection.  <a href="classMeaPositionCollection.html#a2076fffdf894400f026e2fda516dc52a">More...</a><br /></td></tr>
 <tr class="separator:a2076fffdf894400f026e2fda516dc52a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a55aa8b8f95fde59b5e69393fe3581735"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaPosition.html">MeaPosition</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionCollection.html#a55aa8b8f95fde59b5e69393fe3581735">Get</a> (int posIndex)</td></tr>
-<tr class="memdesc:a55aa8b8f95fde59b5e69393fe3581735"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the position object at the specified location in the collection.  <a href="classMeaPositionCollection.html#a55aa8b8f95fde59b5e69393fe3581735">More...</a><br /></td></tr>
-<tr class="separator:a55aa8b8f95fde59b5e69393fe3581735"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a502bd35df7677913deff3ed393ede424"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaPosition.html">MeaPosition</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionCollection.html#a502bd35df7677913deff3ed393ede424">Get</a> (int posIndex) const</td></tr>
+<tr class="memdesc:a502bd35df7677913deff3ed393ede424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the position object at the specified location in the collection.  <a href="classMeaPositionCollection.html#a502bd35df7677913deff3ed393ede424">More...</a><br /></td></tr>
+<tr class="separator:a502bd35df7677913deff3ed393ede424"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe7cae2657cd078d27e3965e7ddfd689"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaPositionCollection.html#abe7cae2657cd078d27e3965e7ddfd689">Delete</a> (int posIndex)</td></tr>
 <tr class="memdesc:abe7cae2657cd078d27e3965e7ddfd689"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the position object from the specified location in the collection and destroys the object.  <a href="classMeaPositionCollection.html#abe7cae2657cd078d27e3965e7ddfd689">More...</a><br /></td></tr>
 <tr class="separator:abe7cae2657cd078d27e3965e7ddfd689"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,8 +201,8 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a55aa8b8f95fde59b5e69393fe3581735" name="a55aa8b8f95fde59b5e69393fe3581735"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55aa8b8f95fde59b5e69393fe3581735">&#9670;&nbsp;</a></span>Get()</h2>
+<a id="a502bd35df7677913deff3ed393ede424" name="a502bd35df7677913deff3ed393ede424"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a502bd35df7677913deff3ed393ede424">&#9670;&nbsp;</a></span>Get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -212,7 +212,7 @@ Private Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>posIndex</em></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -234,7 +234,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaPositionCollection.html#a62e2c9773b852664526ac4bf6c93e824">m_posMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a34c7b9818724177b24e4c3b9e56d1875">MeaPositionLogMgr::GetPosition()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a09529cb84971aca8c22dfbca80fbb222">MeaPositionLogMgr::GetPosition()</a>, and <a class="el" href="classMeaPositionLogMgr.html#a2b74978ba5bee13afa814f154e2c8469">MeaPositionLogMgr::ShowPosition()</a>.</p>
 
 </div>
 </div>
@@ -264,7 +264,7 @@ Private Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="classMeaPositionCollection.html#a62e2c9773b852664526ac4bf6c93e824">m_posMap</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaPositionLogMgr.html#a74d8bece18dcdc8f0789f4e00524bdf5">MeaPositionLogMgr::WritePositionsSection()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaPositionLogWriter.html#abc008b45b12b983ce65a54b51f627203">MeaPositionLogWriter::WritePositionsSection()</a>.</p>
 
 </div>
 </div>

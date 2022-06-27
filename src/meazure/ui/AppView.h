@@ -115,27 +115,32 @@ public:
 
 protected:
     /// Called when new units are selected from the Units menu.
+    /// 
     /// @param nID      [in] ID of the Units menu item that was selected.
     /// 
     afx_msg void OnUnits(UINT nID);
 
     /// Called when the degrees or radians units are selected.
+    /// 
     /// @param nID      [in] ID of the Units menu angle item that was selected.
     /// 
     afx_msg void OnAngles(UINT nID);
 
     /// Called when a radio tool is selected.
+    /// 
     /// @param nID      [in] ID of the tool menu item.
     /// 
     afx_msg void OnRadioTool(UINT nID);
 
     /// Called when a new color display format is requested.
+    /// 
     /// @param nID      [in] ID of the color format menu item.
     /// 
     afx_msg void OnColorFmt(UINT nID);
 
     /// Called when data is entered into a field in the data display or
     /// a spin button is used. Tells the current tool to set a new position.
+    /// 
     /// @param wParam   [in] New data value in pixels.
     /// @param lParam   [in] Data field that we modified.
     /// @return Always returns 0.
@@ -143,6 +148,7 @@ protected:
     afx_msg LRESULT OnDataChange(WPARAM wParam, LPARAM lParam);
 
     /// Called when the Apply button is pressed on the preferences dialog.
+    /// 
     /// @param wParam   [in] Not used.
     /// @param lParam   [in] Not used.
     /// @return Always returns 0.
@@ -152,6 +158,7 @@ protected:
     /// Called when the show calibration preferences message is received.
     /// This message is issued by the resolution calibration warning
     /// dialogs and the calibration warning button.
+    /// 
     /// @param wParam   [in] Not used.
     /// @param lParam   [in] Not used.
     /// @return Always returns 0.
@@ -159,6 +166,7 @@ protected:
     afx_msg LRESULT OnShowCalPrefs(WPARAM wParam, LPARAM lParam);
 
     /// Called when the magnifier wants the current position.
+    /// 
     /// @param wParam   [in] Not used.
     /// @param lParam   [in] POINT structure to fill with current position.
     /// @return Always returns TRUE.
@@ -166,6 +174,7 @@ protected:
     afx_msg LRESULT OnGetPosition(WPARAM wParam, LPARAM lParam);
 
     /// Called when the region snapshot timer expires.
+    /// 
     /// @param wParam   [in] Not used
     /// @param lParam   [in] Not used.
     /// @return Always returns 0.
@@ -174,6 +183,7 @@ protected:
 
     /// Creates the view and the data display. Also enables the
     /// appropriate tools.
+    /// 
     /// @param lpCreateStruct   [in] Window creation structure.
     /// @return 0 if the creation was successful.
     /// 
@@ -181,18 +191,21 @@ protected:
 
     /// Updates the radio button state on the Units menu right
     /// before the menu is displayed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateUnits(CCmdUI* pCmdUI);
 
     /// Updates the radio button state on the Units menu right
     /// before the menu is displayed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateAngles(CCmdUI* pCmdUI);
 
     /// Called right before the Tool menu is displayed to update
     /// its radio state.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateRadioTool(CCmdUI* pCmdUI);
@@ -226,24 +239,28 @@ protected:
 
     /// Updates the application Edit menu Copy item so that its state reflects
     /// the Copy state of the data display text field that has the keyboard focus.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateEditCopy(CCmdUI* pCmdUI);
 
     /// Updates the application Edit menu Cut item so that its state reflects
     /// the Cut state of the data display text field that has the keyboard focus.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateEditCut(CCmdUI* pCmdUI);
 
     /// Updates the application Edit menu Paste item so that its state reflects
-    /// the Paste state of the data display text field that has the keyboard focus.
+    /// the Paste state of the data display text field that has the keyboard focus.\
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateEditPaste(CCmdUI* pCmdUI);
 
     /// Updates the application Edit menu Delete item so that its state reflects
     /// the Delete state of the data display text field that has the keyboard focus.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateEditClear(CCmdUI* pCmdUI);
@@ -254,9 +271,21 @@ protected:
     afx_msg void OnInvertY();
 
     /// Updates the state of the Invert Y menu item before it is displayed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateInvertY(CCmdUI* pCmdUI);
+
+    /// Called when the Supplemental Angle menu item is selected. The supplemental angle
+    /// display is toggled.
+    /// 
+    afx_msg void OnSupplementalAngle();
+
+    /// Updates the state of the Supplemental Angle menu item before it is displayed.
+    ///
+    /// @param pCmdUI   [in] UI command object for updating the menu item.
+    /// 
+    afx_msg void OnUpdateSupplementalAngle(CCmdUI* pCmdUI);
 
     /// Called when the Set Origin menu item is selected. The origin is repositioned
     /// to the current point.
@@ -291,6 +320,7 @@ protected:
     afx_msg void OnMagnifier();
 
     /// Updates the state of the magnifier item on the view menu before it is displayed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateMagnifier(CCmdUI* pCmdUI);
@@ -301,6 +331,7 @@ protected:
     afx_msg void OnShowMagGrid();
 
     /// Updates the state of the magnifier grid menu item before it is displayed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateShowMagGrid(CCmdUI* pCmdUI);
@@ -311,11 +342,13 @@ protected:
     afx_msg void OnScreenInfo();
 
     /// Updates the state of the Screen Info view menu item before it is displayed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateScreenInfo(CCmdUI* pCmdUI);
 
     /// Updates the state of the pixel color format menu item before it is displayed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateColorFmt(CCmdUI* pCmdUI);
@@ -324,8 +357,8 @@ protected:
     /// 
     afx_msg void OnRunState();
 
-    /// Updates the state of the pause button on the magnifier window and on the
-    /// menu.
+    /// Updates the state of the pause button on the magnifier window and on the menu.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateRunState(CCmdUI* pCmdUI);
@@ -335,6 +368,7 @@ protected:
     afx_msg void OnScreenGrid();
 
     /// Updates the state of the screen grid menu item before it is displayed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateScreenGrid(CCmdUI* pCmdUI);
@@ -359,6 +393,7 @@ protected:
 
     /// If a tool reports that it has a region that can be copied, the Copy Region menu
     /// item is enabled. Otherwise the menu item is disabled.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateCopyRegion(CCmdUI* pCmdUI);
@@ -369,6 +404,7 @@ protected:
     afx_msg void OnToolInfo();
 
     /// Updates the state of the Tool Info menu item before it is displayed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateToolInfo(CCmdUI* pCmdUI);
@@ -382,6 +418,7 @@ protected:
 
     /// Updates the state of the collapse menu item to reflect whether the application is
     /// currently in a collapsed presentation.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateCollapse(CCmdUI* pCmdUI);
@@ -392,6 +429,7 @@ protected:
 
     /// Updates the flash menu item to reflect whether the tool has crosshairs that
     /// can be flashed.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateFindCrosshair(CCmdUI* pCmdUI);
@@ -405,6 +443,7 @@ protected:
 
     /// Updates the state of the delete positions menu item to reflect whether there
     /// are any positions that can be deleted.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateDeletePositions(CCmdUI* pCmdUI);
@@ -423,6 +462,7 @@ protected:
 
     /// Called to update the state of the position save menu items. If there are
     /// no positions currently in memory, the menu items are disabled.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateSavePositions(CCmdUI* pCmdUI);
@@ -437,6 +477,7 @@ protected:
 
     /// Updates the state of the Zoom In menu item before it is displayed.
     /// If the magnifier is at maximum zoom, the Zoom In menu item is disabled.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateZoomIn(CCmdUI* pCmdUI);
@@ -447,6 +488,7 @@ protected:
 
     /// Updates the state of the Zoom Out menu item before it is displayed.
     /// If the magnifier is at minimum zoom, the Zoom Out menu item is disabled.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateZoomOut(CCmdUI* pCmdUI);
@@ -457,6 +499,7 @@ protected:
 
     /// Updates the state of the Hide Crosshairs menu item to reflect whether
     /// the tool crosshair(s) are shown or hidden.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateHideCrosshairs(CCmdUI* pCmdUI);
@@ -469,6 +512,7 @@ protected:
 
     /// Updates the custom units menu item to show the name of the custom
     /// units, if custom units have been defined.
+    /// 
     /// @param pCmdUI   [in] UI command object for updating the menu item.
     /// 
     afx_msg void OnUpdateCustomUnits(CCmdUI* pCmdUI);

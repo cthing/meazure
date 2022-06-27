@@ -261,6 +261,7 @@
 #define ID_MEA_BASICHEXFMT              32869
 #define ID_MEA_EXTNAMEFMT               32870
 #define ID_MEA_EXTHEXFMT                32871
+#define ID_MEA_SUPPLEMENTAL             32874
 #define IDS_MEA_PIXELS                  61204
 #define IDS_MEA_CM                      61205
 #define IDS_MEA_MM                      61206
@@ -432,7 +433,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        169
-#define _APS_NEXT_COMMAND_VALUE         32872
+#define _APS_NEXT_COMMAND_VALUE         32875
 #define _APS_NEXT_CONTROL_VALUE         1185
 #define _APS_NEXT_SYMED_VALUE           129
 #endif

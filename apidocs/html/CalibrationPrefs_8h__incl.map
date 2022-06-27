@@ -1,11 +1,11 @@
 <map id="CalibrationPrefs.h" name="CalibrationPrefs.h">
 <area shape="rect" id="node1" title="Calibration preferences property page header file." alt="" coords="344,5,468,32"/>
-<area shape="rect" id="node2" href="$NumberField_8h.html" title="Header file for the text field control." alt="" coords="5,80,180,107"/>
+<area shape="rect" id="node2" href="$NumberField_8h.html" title="Header file for the number field control." alt="" coords="5,80,180,107"/>
 <area shape="rect" id="node4" href="$RulerSlider_8h.html" title="Header file for a slider control on a ruler background." alt="" coords="204,80,368,107"/>
 <area shape="rect" id="node5" href="$ScreenProvider_8h.html" title="Interface for classes providing information about display screens." alt="" coords="444,80,632,107"/>
 <area shape="rect" id="node6" title=" " alt="" coords="383,155,429,181"/>
 <area shape="rect" id="node11" title=" " alt="" coords="656,80,721,107"/>
-<area shape="rect" id="node3" href="$Messages_8h.html" title="Application&#45;specific event messages." alt="" coords="19,155,166,181"/>
+<area shape="rect" id="node3" href="$TextField_8h.html" title="Header file for the text field control." alt="" coords="49,155,136,181"/>
 <area shape="rect" id="node7" href="$Geometry_8h.html" title="Classes and convenience methods for working with geometry." alt="" coords="454,155,643,181"/>
 <area shape="rect" id="node8" title=" " alt="" coords="539,304,598,331"/>
 <area shape="rect" id="node9" title=" " alt="" coords="513,229,585,256"/>

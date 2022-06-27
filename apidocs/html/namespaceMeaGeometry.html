@@ -50,6 +50,15 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a6bb9750e4fb41fff8e1a8b39be40faa1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMeaGeometry.html#a6bb9750e4fb41fff8e1a8b39be40faa1">Scale</a> (int value, double scaleFactor)</td></tr>
+<tr class="memdesc:a6bb9750e4fb41fff8e1a8b39be40faa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies the specified value by the specified scale factor.  <a href="namespaceMeaGeometry.html#a6bb9750e4fb41fff8e1a8b39be40faa1">More...</a><br /></td></tr>
+<tr class="separator:a6bb9750e4fb41fff8e1a8b39be40faa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac48be4437f922cdf6dea06314cc6b46"><td class="memItemLeft" align="right" valign="top">RECT&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMeaGeometry.html#aac48be4437f922cdf6dea06314cc6b46">Scale</a> (const RECT &amp;rect, double scaleFactor)</td></tr>
+<tr class="memdesc:aac48be4437f922cdf6dea06314cc6b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies the top, bottom, left and right coordinates of the specified rectangle by the specified scale factor.  <a href="namespaceMeaGeometry.html#aac48be4437f922cdf6dea06314cc6b46">More...</a><br /></td></tr>
+<tr class="separator:aac48be4437f922cdf6dea06314cc6b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74752ca878778e5f9adb7e9725e3d59f"><td class="memItemLeft" align="right" valign="top">SIZE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMeaGeometry.html#a74752ca878778e5f9adb7e9725e3d59f">Scale</a> (const SIZE &amp;size, double scaleFactor)</td></tr>
+<tr class="memdesc:a74752ca878778e5f9adb7e9725e3d59f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Multiplies both dimensions of the specified size object by the specified scale factor.  <a href="namespaceMeaGeometry.html#a74752ca878778e5f9adb7e9725e3d59f">More...</a><br /></td></tr>
+<tr class="separator:a74752ca878778e5f9adb7e9725e3d59f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca6be724522cb7d02bc79fe2cc2659dd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMeaGeometry.html#aca6be724522cb7d02bc79fe2cc2659dd">CalcLength</a> (double dx, double dy)</td></tr>
 <tr class="memdesc:aca6be724522cb7d02bc79fe2cc2659dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the length corresponding to the specified x and y distances using the formula:  <a href="namespaceMeaGeometry.html#aca6be724522cb7d02bc79fe2cc2659dd">More...</a><br /></td></tr>
 <tr class="separator:aca6be724522cb7d02bc79fe2cc2659dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,7 +124,7 @@ Functions</h2></td></tr>
 
 <p>Returns the angle of the vector from the specified start point to the specified end point relative to the horizontal (x-axis), measured in radians. </p>
 <p >Using the default coordinate system (i.e. positive y-axis pointed down from the origin), positive angles are measured clockwise from the horizontal to the vector. The following formula is used: </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[ angle=atan2(end_y-start_y, end_x-start_x) \]" src="form_19.png" width="315" height="18"/>
+<img class="formulaDsp" alt="\[ angle=atan2(end_y-start_y, end_x-start_x) \]" src="form_23.png" width="315" height="18"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -214,7 +223,7 @@ Functions</h2></td></tr>
 
 <p>Calculates the circumference of the circle with the specified radius using the formula: </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ circumference=2*\pi*radius \]" src="form_18.png" width="226" height="16"/>
+<img class="formulaDsp" alt="\[ circumference=2*\pi*radius \]" src="form_22.png" width="226" height="16"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -264,7 +273,7 @@ Functions</h2></td></tr>
 
 <p>Calculates the length between the two specified points using the formula: </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ length=\sqrt{(p2_x-p1_x)^2+(p2_y-p1_y)^2} \]" src="form_17.png" width="281" height="31"/>
+<img class="formulaDsp" alt="\[ length=\sqrt{(p2_x-p1_x)^2+(p2_y-p1_y)^2} \]" src="form_21.png" width="281" height="31"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -315,7 +324,7 @@ Functions</h2></td></tr>
 
 <p>Calculates the length corresponding to the specified x and y distances using the formula: </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ length=\sqrt{dx^2+dy^2} \]" src="form_16.png" width="153" height="21"/>
+<img class="formulaDsp" alt="\[ length=\sqrt{dx^2+dy^2} \]" src="form_20.png" width="153" height="21"/>
 </p>
  <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -498,6 +507,150 @@ Functions</h2></td></tr>
 <p class="reference">References <a class="el" href="namespaceMeaGeometry.html#a7e318ca5dd5ff551f0d0e53226228696">CalcSector()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaAngleTool.html#a2778a74c9833bcef47ebc83ef185c2ca">MeaAngleTool::OnCHMove()</a>, <a class="el" href="classMeaCircleTool.html#af6d7096c9296781c42fb78d6e1c573dc">MeaCircleTool::OnCHMove()</a>, <a class="el" href="classMeaLineTool.html#a64b086d37f13f8268a997b314dd03091">MeaLineTool::OnCHMove()</a>, <a class="el" href="classMeaPointTool.html#a97867a90ee6cd9cecb339d45253e9110">MeaPointTool::OnCHMove()</a>, and <a class="el" href="classMeaRectTool.html#a06738f2925591381df7b043ba2f9517f">MeaRectTool::OnCHMove()</a>.</p>
+
+</div>
+</div>
+<a id="aac48be4437f922cdf6dea06314cc6b46" name="aac48be4437f922cdf6dea06314cc6b46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac48be4437f922cdf6dea06314cc6b46">&#9670;&nbsp;</a></span>Scale() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">RECT MeaGeometry::Scale </td>
+          <td>(</td>
+          <td class="paramtype">const RECT &amp;&#160;</td>
+          <td class="paramname"><em>rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>scaleFactor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiplies the top, bottom, left and right coordinates of the specified rectangle by the specified scale factor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rect</td><td>[in] Rectangle to scale </td></tr>
+    <tr><td class="paramname">scaleFactor</td><td>[in] Multiplier for each coordinate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Scaled rectangle with each coordinate rounded to the nearest whole number. </dd></dl>
+
+<p class="reference">References <a class="el" href="namespaceMeaGeometry.html#a6bb9750e4fb41fff8e1a8b39be40faa1">Scale()</a>.</p>
+
+</div>
+</div>
+<a id="a74752ca878778e5f9adb7e9725e3d59f" name="a74752ca878778e5f9adb7e9725e3d59f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74752ca878778e5f9adb7e9725e3d59f">&#9670;&nbsp;</a></span>Scale() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SIZE MeaGeometry::Scale </td>
+          <td>(</td>
+          <td class="paramtype">const SIZE &amp;&#160;</td>
+          <td class="paramname"><em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>scaleFactor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiplies both dimensions of the specified size object by the specified scale factor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>[in] Size object to scale </td></tr>
+    <tr><td class="paramname">scaleFactor</td><td>[in] Multiplier for both dimensions </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Scaled size object with each dimension rounded to the nearest whole number. </dd></dl>
+
+<p class="reference">References <a class="el" href="namespaceMeaGeometry.html#a6bb9750e4fb41fff8e1a8b39be40faa1">Scale()</a>.</p>
+
+</div>
+</div>
+<a id="a6bb9750e4fb41fff8e1a8b39be40faa1" name="a6bb9750e4fb41fff8e1a8b39be40faa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bb9750e4fb41fff8e1a8b39be40faa1">&#9670;&nbsp;</a></span>Scale() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MeaGeometry::Scale </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>scaleFactor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Multiplies the specified value by the specified scale factor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>[in] Value to scale </td></tr>
+    <tr><td class="paramname">scaleFactor</td><td>[in] Multiplier for the value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Scaled value rounded to the nearest whole number. </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#a023d1cb5d8b82e953eb76f0e5aed9ddb">MeaDataDisplay::Create()</a>, <a class="el" href="classMeaMagnifier.html#aa88b05e2e4f44e664e3d3dfcd82f8da5">MeaMagnifier::Create()</a>, <a class="el" href="classMeaDataDisplay_1_1DataItem.html#ad36d79d4eb2d9a29e76f9c91a5600fa8">MeaDataDisplay::DataItem::CreateSpinButton()</a>, <a class="el" href="classAppView.html#a970d1743e6a5651a6bb601ec8e2f4d6f">AppView::OnCreate()</a>, and <a class="el" href="namespaceMeaGeometry.html#aac48be4437f922cdf6dea06314cc6b46">Scale()</a>.</p>
 
 </div>
 </div>

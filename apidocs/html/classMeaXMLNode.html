@@ -71,6 +71,10 @@ Public Types</h2></td></tr>
 typedef std::list&lt; <a class="el" href="classMeaXMLNode.html">MeaXMLNode</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>NodeList</b></td></tr>
 <tr class="memdesc:a4e91b02bbcdc9817fe5c36cb363a36f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a list of DOM nodes. <br /></td></tr>
 <tr class="separator:a4e91b02bbcdc9817fe5c36cb363a36f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0601f593bd2838bd0eeda9d7d50f80d6"><td class="memItemLeft" align="right" valign="top"><a id="a0601f593bd2838bd0eeda9d7d50f80d6" name="a0601f593bd2838bd0eeda9d7d50f80d6"></a>
+typedef std::list&lt; const <a class="el" href="classMeaXMLNode.html">MeaXMLNode</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>NodeList_c</b></td></tr>
+<tr class="memdesc:a0601f593bd2838bd0eeda9d7d50f80d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a list of DOM nodes. <br /></td></tr>
+<tr class="separator:a0601f593bd2838bd0eeda9d7d50f80d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc2d24810ccf64001d0c3b7981173060"><td class="memItemLeft" align="right" valign="top"><a id="acc2d24810ccf64001d0c3b7981173060" name="acc2d24810ccf64001d0c3b7981173060"></a>
 typedef NodeList::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><b>NodeIter_c</b></td></tr>
 <tr class="memdesc:acc2d24810ccf64001d0c3b7981173060"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constant iterator over the DOM nodes. <br /></td></tr>
@@ -125,6 +129,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~MeaXMLNode</b> ()
 <tr class="memitem:a77d610cc8a78a8cd2af055f9b5e89aec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLNode.html#a77d610cc8a78a8cd2af055f9b5e89aec">AtEnd</a> (const <a class="el" href="classMeaXMLNode.html#acc2d24810ccf64001d0c3b7981173060">NodeIter_c</a> &amp;iter) const</td></tr>
 <tr class="memdesc:a77d610cc8a78a8cd2af055f9b5e89aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicates whether the specified iterator has reached the end of the list of children nodes.  <a href="classMeaXMLNode.html#a77d610cc8a78a8cd2af055f9b5e89aec">More...</a><br /></td></tr>
 <tr class="separator:a77d610cc8a78a8cd2af055f9b5e89aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace451f45ce17c9a048a7dab579fdcee7"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classMeaXMLNode.html">MeaXMLNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLNode.html#ace451f45ce17c9a048a7dab579fdcee7">FindChildElement</a> (PCTSTR elementName) const</td></tr>
+<tr class="memdesc:ace451f45ce17c9a048a7dab579fdcee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to find the specified child element.  <a href="classMeaXMLNode.html#ace451f45ce17c9a048a7dab579fdcee7">More...</a><br /></td></tr>
+<tr class="separator:ace451f45ce17c9a048a7dab579fdcee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcc42dde3e18cd243d413ead48515eaf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMeaXMLNode.html#a0601f593bd2838bd0eeda9d7d50f80d6">NodeList_c</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMeaXMLNode.html#adcc42dde3e18cd243d413ead48515eaf">FindChildElements</a> (PCTSTR elementName) const</td></tr>
+<tr class="memdesc:adcc42dde3e18cd243d413ead48515eaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Attempts to find the specified child elements.  <a href="classMeaXMLNode.html#adcc42dde3e18cd243d413ead48515eaf">More...</a><br /></td></tr>
+<tr class="separator:adcc42dde3e18cd243d413ead48515eaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -409,6 +419,80 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 <p class="reference">References <a class="el" href="classMeaXMLNode.html#a3c9ef23f6671dbb9e4f219454c013b64">m_children</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classMeaPositionDesktop.html#a6aeeffa306c8de3299130caae3af666b">MeaPositionDesktop::Load()</a>, <a class="el" href="classMeaPosition.html#acc386c51babae9dcdf088c40be491e30">MeaPosition::Load()</a>, <a class="el" href="classMeaPositionScreen.html#aabae302a9f5680b831f38d97b2a05702">MeaPositionScreen::Load()</a>, <a class="el" href="classMeaPositionDesktop.html#a5d7cc70853d0a992382ce36044d7122e">MeaPositionDesktop::LoadCustomPrecisions()</a>, <a class="el" href="classMeaPositionLogMgr.html#abc4dfa263d70e3671fe9c62cfccfb1a4">MeaPositionLogMgr::ProcessDOM()</a>, and <a class="el" href="classMeaPositionLogMgr.html#af36b4c600700780187f41d2b04988ecb">MeaPositionLogMgr::ProcessInfoNode()</a>.</p>
+
+</div>
+</div>
+<a id="ace451f45ce17c9a048a7dab579fdcee7" name="ace451f45ce17c9a048a7dab579fdcee7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace451f45ce17c9a048a7dab579fdcee7">&#9670;&nbsp;</a></span>FindChildElement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classMeaXMLNode.html">MeaXMLNode</a> * MeaXMLNode::FindChildElement </td>
+          <td>(</td>
+          <td class="paramtype">PCTSTR&#160;</td>
+          <td class="paramname"><em>elementName</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Attempts to find the specified child element. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elementName</td><td>[in] Name of the element to find </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The first child element with the specified name or nullptr if not found. </dd></dl>
+
+<p class="reference">References <a class="el" href="classMeaXMLNode.html#a5c946d37dc271fffd129686f040f4462a231afe47f3f37d3808096b36c28b4ded">Element</a>, and <a class="el" href="classMeaXMLNode.html#a3c9ef23f6671dbb9e4f219454c013b64">m_children</a>.</p>
+
+</div>
+</div>
+<a id="adcc42dde3e18cd243d413ead48515eaf" name="adcc42dde3e18cd243d413ead48515eaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcc42dde3e18cd243d413ead48515eaf">&#9670;&nbsp;</a></span>FindChildElements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMeaXMLNode.html#a0601f593bd2838bd0eeda9d7d50f80d6">NodeList_c</a> MeaXMLNode::FindChildElements </td>
+          <td>(</td>
+          <td class="paramtype">PCTSTR&#160;</td>
+          <td class="paramname"><em>elementName</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Attempts to find the specified child elements. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elementName</td><td>[in] Name of the elements to find </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>All child elements with the specified name or an empty list if not found. </dd></dl>
+
+<p class="reference">References <a class="el" href="classMeaXMLNode.html#a5c946d37dc271fffd129686f040f4462a231afe47f3f37d3808096b36c28b4ded">Element</a>, and <a class="el" href="classMeaXMLNode.html#a3c9ef23f6671dbb9e4f219454c013b64">m_children</a>.</p>
 
 </div>
 </div>

@@ -95,6 +95,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a2279ccdf091ff5a5150ec64fab8854fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMeaLayout.html#a2279ccdf091ff5a5150ec64fab8854fa">DrawOpacityBackground</a> (const CWnd &amp;wnd, CDC &amp;dc, const <a class="el" href="structMeaScreenProvider.html">MeaScreenProvider</a> &amp;screenProvider, const <a class="el" href="structMeaUnitsProvider.html">MeaUnitsProvider</a> &amp;unitsProvider)</td></tr>
 <tr class="memdesc:a2279ccdf091ff5a5150ec64fab8854fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws an image to use as a background for use in setting the a control's opacity.  <a href="namespaceMeaLayout.html#a2279ccdf091ff5a5150ec64fab8854fa">More...</a><br /></td></tr>
 <tr class="separator:a2279ccdf091ff5a5150ec64fab8854fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05cc15e1226d3a301b64361fef96ce49"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMeaLayout.html#a05cc15e1226d3a301b64361fef96ce49">GetEffectiveDPI</a> (const CWnd &amp;wnd)</td></tr>
+<tr class="memdesc:a05cc15e1226d3a301b64361fef96ce49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the effective screen DPI.  <a href="namespaceMeaLayout.html#a05cc15e1226d3a301b64361fef96ce49">More...</a><br /></td></tr>
+<tr class="separator:a05cc15e1226d3a301b64361fef96ce49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105d1ba9160f51ab3e3eebefb5772c75"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMeaLayout.html#a105d1ba9160f51ab3e3eebefb5772c75">GetDPIScalePercent</a> (const CWnd &amp;wnd)</td></tr>
+<tr class="memdesc:a105d1ba9160f51ab3e3eebefb5772c75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the screen DPI scale factor as a percentage.  <a href="namespaceMeaLayout.html#a105d1ba9160f51ab3e3eebefb5772c75">More...</a><br /></td></tr>
+<tr class="separator:a105d1ba9160f51ab3e3eebefb5772c75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a200b6c260a28b1dc7a8f16f533363562"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMeaLayout.html#a200b6c260a28b1dc7a8f16f533363562">GetDPIScaleFactor</a> (const CWnd &amp;wnd)</td></tr>
+<tr class="memdesc:a200b6c260a28b1dc7a8f16f533363562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the screen DPI scale factor.  <a href="namespaceMeaLayout.html#a200b6c260a28b1dc7a8f16f533363562">More...</a><br /></td></tr>
+<tr class="separator:a200b6c260a28b1dc7a8f16f533363562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >Utility methods for performing various window layout tasks. </p>
@@ -415,6 +424,99 @@ Functions</h2></td></tr>
 </dl>
 
 <p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#a023d1cb5d8b82e953eb76f0e5aed9ddb">MeaDataDisplay::Create()</a>, <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>, and <a class="el" href="classMeaDataDisplay.html#ab69cb4e3f11379eda72564de94ee217c">MeaDataDisplay::CreateScreenSection()</a>.</p>
+
+</div>
+</div>
+<a id="a200b6c260a28b1dc7a8f16f533363562" name="a200b6c260a28b1dc7a8f16f533363562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a200b6c260a28b1dc7a8f16f533363562">&#9670;&nbsp;</a></span>GetDPIScaleFactor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double MeaLayout::GetDPIScaleFactor </td>
+          <td>(</td>
+          <td class="paramtype">const CWnd &amp;&#160;</td>
+          <td class="paramname"><em>wnd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the screen DPI scale factor. </p>
+<p >The scale factor is calculated as: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[ scale=\frac{\mathit{DPI}_{effective}}{96} \]" src="form_6.png" width="148" height="36"/>
+</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wnd</td><td>[in] Window whose DPI scale factor is to be obtained </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Screen DPI scale factor. </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="classMeaCrossHair.html#afbf2612329d66a1dd448a9afd9b08c8c">MeaCrossHair::Create()</a>, <a class="el" href="classMeaDataDisplay.html#a023d1cb5d8b82e953eb76f0e5aed9ddb">MeaDataDisplay::Create()</a>, <a class="el" href="classMeaMagnifier.html#aa88b05e2e4f44e664e3d3dfcd82f8da5">MeaMagnifier::Create()</a>, <a class="el" href="classMeaDataDisplay_1_1DataItem.html#ad36d79d4eb2d9a29e76f9c91a5600fa8">MeaDataDisplay::DataItem::CreateSpinButton()</a>, and <a class="el" href="classAppView.html#a970d1743e6a5651a6bb601ec8e2f4d6f">AppView::OnCreate()</a>.</p>
+
+</div>
+</div>
+<a id="a105d1ba9160f51ab3e3eebefb5772c75" name="a105d1ba9160f51ab3e3eebefb5772c75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105d1ba9160f51ab3e3eebefb5772c75">&#9670;&nbsp;</a></span>GetDPIScalePercent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MeaLayout::GetDPIScalePercent </td>
+          <td>(</td>
+          <td class="paramtype">const CWnd &amp;&#160;</td>
+          <td class="paramname"><em>wnd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the screen DPI scale factor as a percentage. </p>
+<p >The scale factor is calculated as: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[ scale=100 \frac{\mathit{DPI}_{effective}}{96} \]" src="form_5.png" width="174" height="36"/>
+</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wnd</td><td>[in] Window whose DPI scale factor is to be obtained </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Screen DPI scale factor percentage. </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="classMeaMagnifier.html#aa88b05e2e4f44e664e3d3dfcd82f8da5">MeaMagnifier::Create()</a>, <a class="el" href="classMeaDataDisplay.html#ab69cb4e3f11379eda72564de94ee217c">MeaDataDisplay::CreateScreenSection()</a>, and <a class="el" href="classAppFrame.html#ae1c926c781722c73815a3ca9ad580345">AppFrame::CreateToolbar()</a>.</p>
+
+</div>
+</div>
+<a id="a05cc15e1226d3a301b64361fef96ce49" name="a05cc15e1226d3a301b64361fef96ce49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05cc15e1226d3a301b64361fef96ce49">&#9670;&nbsp;</a></span>GetEffectiveDPI()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MeaLayout::GetEffectiveDPI </td>
+          <td>(</td>
+          <td class="paramtype">const CWnd &amp;&#160;</td>
+          <td class="paramname"><em>wnd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the effective screen DPI. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wnd</td><td>[in] Window whose DPI is to be obtained </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Effective DPI. </dd></dl>
+
+<p class="reference">Referenced by <a class="el" href="classMeaImageButton.html#a98cb1af6161df20ea7314e85aa45540f">MeaImageButton::Create()</a>.</p>
 
 </div>
 </div>
@@ -809,7 +911,7 @@ Functions</h2></td></tr>
 
 <p class="reference">References <a class="el" href="namespaceMeaLayout.html#a845c5084125d5d1d420b322ec26a342d">SetWindowPos()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#a023d1cb5d8b82e953eb76f0e5aed9ddb">MeaDataDisplay::Create()</a>, <a class="el" href="classMeaMagnifier.html#aa88b05e2e4f44e664e3d3dfcd82f8da5">MeaMagnifier::Create()</a>, <a class="el" href="classMeaNumberField.html#ac3bade5f69f4b78da3324a74f083b3cf">MeaNumberField::Create()</a>, <a class="el" href="classMeaLabel.html#adadea599605655defb9e3fbeede63a13">MeaLabel::Create()</a>, <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>, <a class="el" href="classMeaDataDisplay.html#ab69cb4e3f11379eda72564de94ee217c">MeaDataDisplay::CreateScreenSection()</a>, <a class="el" href="classMeaDataDisplay_1_1DataItem.html#ad36d79d4eb2d9a29e76f9c91a5600fa8">MeaDataDisplay::DataItem::CreateSpinButton()</a>, <a class="el" href="classAppFrame.html#a940c5806b8795cfb0a768eda0e86b5c9">AppFrame::OnCreate()</a>, <a class="el" href="classMeaUnitsLabel.html#aa05f7078476e7c9ba40d9afefd9c42ac">MeaUnitsLabel::SetSize()</a>, <a class="el" href="classAppFrame.html#a58c5964ee6802117fe2eeb0b3a669943">AppFrame::ViewStatusbar()</a>, and <a class="el" href="classAppFrame.html#aa065f0971c15cc530887396434ceda22">AppFrame::ViewToolbar()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="classMeaDataDisplay.html#a023d1cb5d8b82e953eb76f0e5aed9ddb">MeaDataDisplay::Create()</a>, <a class="el" href="classMeaMagnifier.html#aa88b05e2e4f44e664e3d3dfcd82f8da5">MeaMagnifier::Create()</a>, <a class="el" href="classMeaTextField.html#a802342642a909e0e629d3acbdbe7e76c">MeaTextField::Create()</a>, <a class="el" href="classMeaLabel.html#a77112300d3c164cade66cb6061476720">MeaLabel::Create()</a>, <a class="el" href="classMeaDataDisplay.html#a6d5b2626184bacca15fc57ee5ff1282a">MeaDataDisplay::CreateRegionSection()</a>, <a class="el" href="classMeaDataDisplay.html#ab69cb4e3f11379eda72564de94ee217c">MeaDataDisplay::CreateScreenSection()</a>, <a class="el" href="classMeaDataDisplay_1_1DataItem.html#ad36d79d4eb2d9a29e76f9c91a5600fa8">MeaDataDisplay::DataItem::CreateSpinButton()</a>, <a class="el" href="classAppFrame.html#a940c5806b8795cfb0a768eda0e86b5c9">AppFrame::OnCreate()</a>, <a class="el" href="classMeaUnitsLabel.html#aa05f7078476e7c9ba40d9afefd9c42ac">MeaUnitsLabel::SetSize()</a>, <a class="el" href="classAppFrame.html#a58c5964ee6802117fe2eeb0b3a669943">AppFrame::ViewStatusbar()</a>, and <a class="el" href="classAppFrame.html#aa065f0971c15cc530887396434ceda22">AppFrame::ViewToolbar()</a>.</p>
 
 </div>
 </div>

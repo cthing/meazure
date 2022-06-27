@@ -70,6 +70,8 @@ BEGIN_MESSAGE_MAP(AppView, CWnd)
     ON_UPDATE_COMMAND_UI(ID_EDIT_CLEAR, OnUpdateEditClear)
     ON_COMMAND(ID_MEA_INVERTY, OnInvertY)
     ON_UPDATE_COMMAND_UI(ID_MEA_INVERTY, OnUpdateInvertY)
+    ON_COMMAND(ID_MEA_SUPPLEMENTAL, OnSupplementalAngle)
+    ON_UPDATE_COMMAND_UI(ID_MEA_SUPPLEMENTAL, OnUpdateSupplementalAngle)
     ON_COMMAND(ID_MEA_ORIGIN, OnOrigin)
     ON_COMMAND(ID_MEA_RESET_ORIGIN, OnResetOrigin)
     ON_COMMAND(ID_MEA_RULER, OnRuler)
@@ -725,6 +727,15 @@ void AppView::OnInvertY() {
 
 void AppView::OnUpdateInvertY(CCmdUI* pCmdUI) {
     pCmdUI->SetCheck(MeaUnitsMgr::Instance().IsInvertY());
+}
+
+void AppView::OnSupplementalAngle() {
+    MeaUnitsMgr::Instance().SetSupplementalAngle(!MeaUnitsMgr::Instance().IsSupplementalAngle());
+    MeaToolMgr::Instance().UpdateTools();
+}
+
+void AppView::OnUpdateSupplementalAngle(CCmdUI* pCmdUI) {
+    pCmdUI->SetCheck(MeaUnitsMgr::Instance().IsSupplementalAngle());
 }
 
 void AppView::OnOrigin() {

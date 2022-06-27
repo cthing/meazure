@@ -282,6 +282,7 @@ BEGIN
         END
         MENUITEM SEPARATOR
         MENUITEM "Invert &Y",                   ID_MEA_INVERTY
+        MENUITEM "Supplemntal &Angle",          ID_MEA_SUPPLEMENTAL
         MENUITEM "Set &Origin\tCtrl+A",         ID_MEA_ORIGIN
         MENUITEM "&Reset Origin",               ID_MEA_RESET_ORIGIN
         MENUITEM SEPARATOR
@@ -1065,6 +1066,7 @@ BEGIN
     ID_MEA_BASICHEXFMT      "Match to basic web colors\nMatch to basic web colors"
     ID_MEA_EXTNAMEFMT       "Match to extended web colors\nMatch to extended web colors"
     ID_MEA_EXTHEXFMT        "Match to extended web colors\nMatch to extended web colors"
+    ID_MEA_SUPPLEMENTAL     "Show supplemental angle\nShow supplemental angle"
 END
 
 STRINGTABLE

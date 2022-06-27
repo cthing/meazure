@@ -216,6 +216,9 @@ static UINT&#160;</td><td class="memItemRight" valign="bottom"><b>m_indicators</
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:ae1c926c781722c73815a3ca9ad580345"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAppFrame.html#ae1c926c781722c73815a3ca9ad580345">CreateToolbar</a> ()</td></tr>
+<tr class="memdesc:ae1c926c781722c73815a3ca9ad580345"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the application toolbar.  <a href="classAppFrame.html#ae1c926c781722c73815a3ca9ad580345">More...</a><br /></td></tr>
+<tr class="separator:ae1c926c781722c73815a3ca9ad580345"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa065f0971c15cc530887396434ceda22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAppFrame.html#aa065f0971c15cc530887396434ceda22">ViewToolbar</a> (bool enable)</td></tr>
 <tr class="memdesc:aa065f0971c15cc530887396434ceda22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Selects whether to show the toolbar.  <a href="classAppFrame.html#aa065f0971c15cc530887396434ceda22">More...</a><br /></td></tr>
 <tr class="separator:aa065f0971c15cc530887396434ceda22"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -253,6 +256,38 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_cmdLineFile</b><
 <div class="textblock"><p >The frame class for the application. </p>
 <p >The application frame is the root window for the application's window hierarchy. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae1c926c781722c73815a3ca9ad580345" name="ae1c926c781722c73815a3ca9ad580345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1c926c781722c73815a3ca9ad580345">&#9670;&nbsp;</a></span>CreateToolbar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AppFrame::CreateToolbar </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates the application toolbar. </p>
+<dl class="section return"><dt>Returns</dt><dd><b>true</b> if toolbar successfully created. </dd></dl>
+
+<p class="reference">References <a class="el" href="namespaceMeaLayout.html#a105d1ba9160f51ab3e3eebefb5772c75">MeaLayout::GetDPIScalePercent()</a>, and <a class="el" href="classAppFrame.html#a593bf5bb61778a1bba0ca8bf9be64d15">m_wndToolBar</a>.</p>
+
+<p class="reference">Referenced by <a class="el" href="classAppFrame.html#a940c5806b8795cfb0a768eda0e86b5c9">OnCreate()</a>.</p>
+
+</div>
+</div>
 <a id="a8a8536fca8aa0c076951e6f154f30bb7" name="a8a8536fca8aa0c076951e6f154f30bb7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8a8536fca8aa0c076951e6f154f30bb7">&#9670;&nbsp;</a></span>GetAccelTable()</h2>
 
@@ -393,7 +428,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_cmdLineFile</b><
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classMeaScreenMgr.html#a397ab3e548a6d7af0cad2be4a6183cac">MeaScreenMgr::EnsureVisible()</a>, <a class="el" href="classAppFrame.html#a699fa8e8e232cfbeab47778f81ecead7">GetView()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classAppView.html#ae8b42b18ab1e1a3c039ded1d66824995">AppView::LoadProfile()</a>, <a class="el" href="classAppFrame.html#a88b9b794a96703e8a4be371278f9715b">m_alwaysVisible</a>, <a class="el" href="classAppFrame.html#ac5f2a7f39d2888a31ea7ded5e43585e2">m_newInstall</a>, <a class="el" href="classAppFrame.html#a48bd5670579de22eeaaf812ae8bbc38b">m_profileStatusbarVisible</a>, <a class="el" href="classAppFrame.html#a334a67b59beadac35f4ee54a82af22b3">m_profileToolbarVisible</a>, <a class="el" href="classAppFrame.html#ae9af7d5c4fe4c1210a5dec736714917a">m_statusbarVisible</a>, <a class="el" href="classAppFrame.html#a8f88bf42026569b6bbcd50515a2f6a03">m_toolbarVisible</a>, <a class="el" href="classMeaProfile.html#a651b5ed195ce204f09bce84ed74c3bbd">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#abd21e0a2e04aa91056d8e69b0d17c675">MeaProfile::ReadInt()</a>, and <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>.</p>
+<p class="reference">References <a class="el" href="classMeaScreenMgr.html#a397ab3e548a6d7af0cad2be4a6183cac">MeaScreenMgr::EnsureVisible()</a>, <a class="el" href="classAppFrame.html#a699fa8e8e232cfbeab47778f81ecead7">GetView()</a>, <a class="el" href="classMeaSingleton__T.html#a99867d7e6fbd4e6a7f3cacf12648bab2">MeaSingleton_T&lt; MeaScreenMgr &gt;::Instance()</a>, <a class="el" href="classAppView.html#ae8b42b18ab1e1a3c039ded1d66824995">AppView::LoadProfile()</a>, <a class="el" href="classAppFrame.html#a88b9b794a96703e8a4be371278f9715b">m_alwaysVisible</a>, <a class="el" href="classAppFrame.html#ac5f2a7f39d2888a31ea7ded5e43585e2">m_newInstall</a>, <a class="el" href="classAppFrame.html#a48bd5670579de22eeaaf812ae8bbc38b">m_profileStatusbarVisible</a>, <a class="el" href="classAppFrame.html#a334a67b59beadac35f4ee54a82af22b3">m_profileToolbarVisible</a>, <a class="el" href="classAppFrame.html#ae9af7d5c4fe4c1210a5dec736714917a">m_statusbarVisible</a>, <a class="el" href="classAppFrame.html#a8f88bf42026569b6bbcd50515a2f6a03">m_toolbarVisible</a>, <a class="el" href="classMeaProfile.html#add59f43b6da88f189cd00b12146dbb90">MeaProfile::ReadBool()</a>, <a class="el" href="classMeaProfile.html#a99f1fca911ca39a696e20003a376f2ac">MeaProfile::ReadInt()</a>, and <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classAppFrame.html#a940c5806b8795cfb0a768eda0e86b5c9">OnCreate()</a>.</p>
 
@@ -571,7 +606,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_cmdLineFile</b><
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if creation successful. </dd></dl>
 
-<p class="reference">References <a class="el" href="classAppFrame.html#af4c1adceaa7418b1d2cf2783958b94fb">InitView()</a>, <a class="el" href="classAppView.html#a2d3267efc764547d7bce260ee72b21b4">AppView::InitView()</a>, <a class="el" href="classAppFrame.html#a8c821311106aec9a3fd2ccb23e2aa20f">LoadProfile()</a>, <a class="el" href="classAppView.html#a492073ec613c0218b57935ba3d91270b">AppView::LoadStartupFile()</a>, <a class="el" href="classAppFrame.html#a6a73bd0a06c28f9679661c6046af3558">m_appWidth</a>, <a class="el" href="classAppFrame.html#af37e1edfe5c4d9ac54688717ada190d9">m_cmdLineFile</a>, <a class="el" href="classAppFrame.html#a34b7e1ec778f90de991572141816d67d">m_indicators</a>, <a class="el" href="classAppFrame.html#a8ff5876cbf618ce511a877a165efafdc">m_statusbarHeight</a>, <a class="el" href="classAppFrame.html#a537a42c2af9daea911abf9d42e6ed7c0">m_toolbarHeight</a>, <a class="el" href="classAppFrame.html#a677637c1a2120954dad950baf22991c6">m_wndStatusBar</a>, <a class="el" href="classAppFrame.html#a593bf5bb61778a1bba0ca8bf9be64d15">m_wndToolBar</a>, <a class="el" href="classAppFrame.html#a5f0c52b4431a03770218092890f36a55">m_wndView</a>, <a class="el" href="namespaceMeaLayout.html#a9bab32271cf38973c6bc5bea4557aa74">MeaLayout::SetWindowSize()</a>, and <a class="el" href="classAppFrame.html#ab6a17295ba0673a4b4ef8333e2192a7c">UpdateVisibility()</a>.</p>
+<p class="reference">References <a class="el" href="classAppFrame.html#ae1c926c781722c73815a3ca9ad580345">CreateToolbar()</a>, <a class="el" href="classAppFrame.html#af4c1adceaa7418b1d2cf2783958b94fb">InitView()</a>, <a class="el" href="classAppView.html#a2d3267efc764547d7bce260ee72b21b4">AppView::InitView()</a>, <a class="el" href="classAppFrame.html#a8c821311106aec9a3fd2ccb23e2aa20f">LoadProfile()</a>, <a class="el" href="classAppView.html#a492073ec613c0218b57935ba3d91270b">AppView::LoadStartupFile()</a>, <a class="el" href="classAppFrame.html#a6a73bd0a06c28f9679661c6046af3558">m_appWidth</a>, <a class="el" href="classAppFrame.html#af37e1edfe5c4d9ac54688717ada190d9">m_cmdLineFile</a>, <a class="el" href="classAppFrame.html#a34b7e1ec778f90de991572141816d67d">m_indicators</a>, <a class="el" href="classAppFrame.html#a8ff5876cbf618ce511a877a165efafdc">m_statusbarHeight</a>, <a class="el" href="classAppFrame.html#a537a42c2af9daea911abf9d42e6ed7c0">m_toolbarHeight</a>, <a class="el" href="classAppFrame.html#a677637c1a2120954dad950baf22991c6">m_wndStatusBar</a>, <a class="el" href="classAppFrame.html#a593bf5bb61778a1bba0ca8bf9be64d15">m_wndToolBar</a>, <a class="el" href="classAppFrame.html#a5f0c52b4431a03770218092890f36a55">m_wndView</a>, <a class="el" href="namespaceMeaLayout.html#a9bab32271cf38973c6bc5bea4557aa74">MeaLayout::SetWindowSize()</a>, and <a class="el" href="classAppFrame.html#ab6a17295ba0673a4b4ef8333e2192a7c">UpdateVisibility()</a>.</p>
 
 </div>
 </div>
@@ -1061,7 +1096,7 @@ CString&#160;</td><td class="memItemRight" valign="bottom"><b>m_cmdLineFile</b><
   </dd>
 </dl>
 
-<p class="reference">References <a class="el" href="classAppFrame.html#a699fa8e8e232cfbeab47778f81ecead7">GetView()</a>, <a class="el" href="classAppFrame.html#a88b9b794a96703e8a4be371278f9715b">m_alwaysVisible</a>, <a class="el" href="classAppFrame.html#ae9af7d5c4fe4c1210a5dec736714917a">m_statusbarVisible</a>, <a class="el" href="classAppFrame.html#a8f88bf42026569b6bbcd50515a2f6a03">m_toolbarVisible</a>, <a class="el" href="classAppView.html#ae07af2f2dcfc2a66bc5c22755fe7ee18">AppView::SaveProfile()</a>, <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#a1a961b0651b261c571e3d8c459465d93">MeaProfile::WriteBool()</a>, and <a class="el" href="classMeaProfile.html#a9cd4c2b9f6d30c205dde9b1c34ab0bb2">MeaProfile::WriteInt()</a>.</p>
+<p class="reference">References <a class="el" href="classAppFrame.html#a699fa8e8e232cfbeab47778f81ecead7">GetView()</a>, <a class="el" href="classAppFrame.html#a88b9b794a96703e8a4be371278f9715b">m_alwaysVisible</a>, <a class="el" href="classAppFrame.html#ae9af7d5c4fe4c1210a5dec736714917a">m_statusbarVisible</a>, <a class="el" href="classAppFrame.html#a8f88bf42026569b6bbcd50515a2f6a03">m_toolbarVisible</a>, <a class="el" href="classAppView.html#ae07af2f2dcfc2a66bc5c22755fe7ee18">AppView::SaveProfile()</a>, <a class="el" href="classMeaProfile.html#a5f50e1f46fd64ce52fcf476a8e1abb11">MeaProfile::UserInitiated()</a>, <a class="el" href="classMeaProfile.html#ad0b78029d64b12e3afe61d7be727aa03">MeaProfile::WriteBool()</a>, and <a class="el" href="classMeaProfile.html#a7538388d0c2f90bd69cee978d3c7db6b">MeaProfile::WriteInt()</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="classAppFrame.html#a12b7150c8741af2ebe1b270b8432319b">OnClose()</a>, and <a class="el" href="classAppFrame.html#a29bb65cb86b68ba9c37a8d6b046cd663">OnEndSession()</a>.</p>
 

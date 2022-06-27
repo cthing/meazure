@@ -1,0 +1,4 @@
+<map id="MeaPositionProvider" name="MeaPositionProvider">
+<area shape="rect" id="node1" title="Interface for providing position information." alt="" coords="5,5,145,32"/>
+<area shape="rect" id="node2" href="$classMeaPositionLogMgr.html" title="Manages the recording, saving and loading of tool positions." alt="" coords="7,80,144,107"/>
+</map>

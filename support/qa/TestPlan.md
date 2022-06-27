@@ -469,6 +469,7 @@
 1. Move the cursor to the upper left corner and verify X1/Y1 are both 0
 1. Verify that the origin marker is displayed at the 0, 0 point and that its Y axis points down 
    from the origin.
+1. Verify the ***View*** menu ***Invert Y*** item is not checked
 1. On the ***View*** menu select ***Invert Y***
 1. Verify that the origin marker moves to the bottom left corner of the screen and the marker’s 
    Y axis points up from the origin.
@@ -482,6 +483,18 @@
 1. Move the cursor to the upper left corner of the screen and verify that ***X1*** is –(W – 1) and ***Y1*** is –(H – 1)
 1. On the ***View*** menu select ***Reset Origin***
 1. Move the cursor to the upper left corner of the screen and verify that ***X1*** and ***Y1*** are both 0
+
+## Angle Display
+
+1. Verify that the ***View*** menu ***Supplemental Angle*** item is not checked
+1. Select the Line Tool
+1. Move the point 2 crosshair and verify the included angle is displayed
+1. On the ***View*** menu select ***Supplemental Angle***
+1. Verify the angle display shows the supplement of the included angle
+1. Move the point 2 crosshair and verify the supplemental angle is displayed
+1. Verify that the ***View*** menu ***Supplemental Angle*** item is checked
+1. On the ***View*** menu select ***Supplemental Angle***
+1. Verify the angle display shows the included angle
 
 ## Screen Info
 
@@ -653,6 +666,8 @@
 ## Master Reset
 
 1. Select the Rectangle Tool
+1. on the ***View*** menu select ***Invert Y***
+1. on the ***View*** menu select ***Supplemental Angle***
 1. Select the rulers and screen grid
 1. Change the screen grid spacing
 1. Using the preferences dialog panels change the line color, the crosshair colors, the 

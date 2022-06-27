@@ -20,6 +20,7 @@
 #include <meazure/pch.h>
 #include "Units.h"
 #include <meazure/utilities/NumericUtils.h>
+#include <cmath>
 
 
 //*************************************************************************
@@ -78,6 +79,8 @@ void MeaUnits::MasterReset() {
 // MeaAngularUnits
 //*************************************************************************
 
+bool MeaAngularUnits::m_supplementalAngle = false;
+
 
 MeaAngularUnits::MeaAngularUnits(MeaAngularUnitsId unitsId, PCTSTR unitsStr) :
     MeaUnits(unitsStr), m_unitsId(unitsId) {
@@ -104,7 +107,8 @@ MeaDegreeUnits::MeaDegreeUnits() : MeaAngularUnits(MeaDegreesId, _T("deg")) {
 MeaDegreeUnits::~MeaDegreeUnits() {}
 
 double MeaDegreeUnits::ConvertAngle(double angle) const {
-    return 360.0 * angle / (2.0 * MeaNumericUtils::PI);
+    double theta = IsSupplementalAngle() ? std::copysign(MeaNumericUtils::PI, angle) - angle : angle;
+    return 360.0 * theta / (2.0 * MeaNumericUtils::PI);
 }
 
 
@@ -119,7 +123,7 @@ MeaRadianUnits::MeaRadianUnits() : MeaAngularUnits(MeaRadiansId, _T("rad")) {
 MeaRadianUnits::~MeaRadianUnits() {}
 
 double MeaRadianUnits::ConvertAngle(double angle) const {
-    return angle;
+    return IsSupplementalAngle() ? std::copysign(MeaNumericUtils::PI, angle) - angle : angle;
 }
 
 

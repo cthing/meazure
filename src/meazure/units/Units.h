@@ -230,6 +230,26 @@ public:
     ///
     MeaAngularUnitsId GetUnitsId() const { return m_unitsId; }
 
+    /// Sets whether to show the included angle (default) or the supplemental angle. The supplemental angle is
+    /// defined as:
+    /// \f[
+    ///     \theta_{s} =
+    ///         \begin{cases}
+    ///             180^\circ - \theta_{i}  & \theta_{i} \ge 0\\ 
+    ///             -180^\circ - \theta_{i} & \theta_{i} < 0
+    ///         \end{cases}
+    /// \f]
+    /// 
+    /// @param showSupplemental     [in] true to show supplemental angle instead of included angle
+    /// 
+    static void SetSupplementalAngle(boolean showSupplemental) { m_supplementalAngle = showSupplemental; }
+
+    /// Indicates whether the included angle is shown (default) or the supplemental angle.
+    /// 
+    /// @return true if the supplemental angle is shown.
+    ///  
+    static bool IsSupplementalAngle() { return m_supplementalAngle; }
+
     /// Formats the specified angular measurement value using the
     /// precision for the specified measurement ID.
     ///
@@ -260,7 +280,8 @@ protected:
     MeaAngularUnits(MeaAngularUnitsId unitsId, PCTSTR unitsStr);
 
 private:
-    MeaAngularUnitsId m_unitsId;  ///< Identifier for the units.
+    static bool m_supplementalAngle;    ///< Indicates if the supplemental rather than included angle should be shown.
+    MeaAngularUnitsId m_unitsId;        ///< Identifier for the units.
 };
 
 

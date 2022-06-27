@@ -83,6 +83,13 @@ void VerifyInvertY(MeaLinearUnits& units) {
     units.SetInvertY(false);
 }
 
+void VerifySupplementalAngle(MeaAngularUnits& units) {
+    BOOST_TEST(!units.IsSupplementalAngle());
+    units.SetSupplementalAngle(true);
+    BOOST_TEST(units.IsSupplementalAngle());
+    units.SetSupplementalAngle(false);
+}
+
 void VerifyOrigin(MeaLinearUnits& units) {
     POINT origin = { 0, 0 };
     BOOST_TEST(units.GetOrigin() == origin);
@@ -159,6 +166,7 @@ BOOST_AUTO_TEST_CASE(TestDegreeUnits) {
     MeaDegreeUnits units;
         
     VerifyUnitsId(units, MeaDegreesId, "deg");
+    VerifySupplementalAngle(units);
 
     MeaUnits::DisplayPrecisions defaultPrecisions { 1 };
     MeaUnits::DisplayPrecisionNames names { "angle" };
@@ -168,13 +176,24 @@ BOOST_AUTO_TEST_CASE(TestDegreeUnits) {
 
     VerifyConvertAngle(units, 1.0, 57.2958);
     VerifyConvertAngle(units, 0.0, 0.0);
-    VerifyConvertAngle(units, 3.14159265359, 180.0);
+    VerifyConvertAngle(units, 3.141592653589793, 180.0);
+}
+
+BOOST_AUTO_TEST_CASE(TestDegreeUnitsSupplemental) {
+    MeaDegreeUnits units;
+        
+    units.SetSupplementalAngle(true);
+    VerifyConvertAngle(units, 1.0, 122.7042);
+    VerifyConvertAngle(units, 0.0, 180.0);
+    VerifyConvertAngle(units, 3.141592653589793, 0.0);
+    units.SetSupplementalAngle(false);
 }
 
 BOOST_AUTO_TEST_CASE(TestRadianUnits) {
     MeaRadianUnits units;
         
     VerifyUnitsId(units, MeaRadiansId, "rad");
+    VerifySupplementalAngle(units);
 
     MeaUnits::DisplayPrecisions defaultPrecisions { 3 };
     MeaUnits::DisplayPrecisionNames names { "angle" };
@@ -184,7 +203,17 @@ BOOST_AUTO_TEST_CASE(TestRadianUnits) {
 
     VerifyConvertAngle(units, 1.0, 1.0);
     VerifyConvertAngle(units, 0.0, 0.0);
-    VerifyConvertAngle(units, 3.14159265359, 3.141593);
+    VerifyConvertAngle(units, 3.141592653589793, 3.141592653589793);
+}
+
+BOOST_AUTO_TEST_CASE(TestRadianUnitsSupplemental) {
+    MeaRadianUnits units;
+        
+    units.SetSupplementalAngle(true);
+    VerifyConvertAngle(units, 1.0, 2.141592653589793);
+    VerifyConvertAngle(units, 0.0, 3.141592653589793);
+    VerifyConvertAngle(units, 3.1415926535897939, 0.0);
+    units.SetSupplementalAngle(false);
 }
 
 BOOST_AUTO_TEST_CASE(TestPixelUnits) {

@@ -60,10 +60,12 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 ### Changes 3.0.2 to 4.0 (unreleased)
 
-- A more readable font is used for all dialogs
+- Enhancement: A more readable font is used for all dialogs
 
-- Color value fixes and enhancements
-    - Fix: The YIQ color display now shows negative in-phase and quadrature values.
+- Enhancement: A menu item is provided to switch the angle display to show the supplemental angle instead of the
+  included angle. The sum of the included angle and the supplemental angle is 180 degrees.
+
+- Color display enhancements and fixes
     - Enhancement: New color spaces that match the actual color to the
       [web basic and extended colors](https://www.w3.org/wiki/CSS/Properties/color/keywords).
     - Enhancement: A button is now provided to copy the contents of the color field to the clipboard. The button
@@ -75,6 +77,7 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
       between 0 and 240, which is unconventional and potentially confusing. In this release, the HSL values are
       displayed conventionally with the hue value in degrees in the range [0, 360), and the saturation and lightness
       values as percentages in the range [0, 100].
+    - Fix: The YIQ color display now shows negative in-phase and quadrature values.
     - Leading zeros in all formats except hexadecimal have been removed. For example, the RGB value previously
       displayed as "010 020 255" is now displayed as "10 20 255".
 
@@ -94,14 +97,15 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 - Internal improvements
     - Migrated codesbase to C++17
     - Reorganized source code into subfolders
+    - Extensive refactoring, renaming, and reorganizing of class functionality for testability and clarity
     - Increased unit test coverage
     - Use precompiled headers to greatly reduce build time
     - Use namespaces for static utility classes
-    - Extensive refactoring, renaming, and reorganizing of class functionality for testability and clarity
     - Use the [Conan C/C++ Package Manager](https://conan.io/) for library dependencies (e.g. Boost)
-    - Migrate to [Xerces C++ XML parser and validator](https://xerces.apache.org/xerces-c/) from old expat and
+    - Migrated to [Xerces C++ XML parser and validator](https://xerces.apache.org/xerces-c/) from expat and
       homegrown validator
-    - Migrate to a central XML writer class for writing the profile and position log files
+    - Use an XML writer class for writing the profile and position log files. This centralizes all formatting
+      and escaping of the XML.
  
 ### Changes 3.0.1 to 3.0.2
 

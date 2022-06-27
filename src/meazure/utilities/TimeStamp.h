@@ -37,7 +37,9 @@ namespace MeaTimeStamp {
     /// @return String containing the timestamp in 8601 format corresponding
     ///         to the specified time.
     ///
-    CString Make(time_t t);
+    inline CString Make(time_t t) {
+        return CTime(t).FormatGmt(_T("%Y-%m-%dT%H:%M:%SZ"));
+    }
 
     /// Parses an ISO 8601 compliant time stamp and returns the
     /// corresponding time value. The format of the timestamp must be:

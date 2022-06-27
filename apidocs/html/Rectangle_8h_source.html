@@ -115,7 +115,7 @@ $(function() {
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">    ///</span></div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">    /// @return &lt;b&gt;true&lt;/b&gt; if the window is created successfully.</span></div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"></span>    <span class="keywordtype">bool</span>    <a class="code hl_function" href="classMeaRectangle.html#a7dbd4016364f0a59a90002cd430817ea">Create</a>(<span class="keywordtype">int</span> thk, <span class="keywordtype">int</span> shrink, <span class="keyword">const</span> CWnd* parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="comment"></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classMeaRectangle.html#a7dbd4016364f0a59a90002cd430817ea">Create</a>(<span class="keywordtype">int</span> thk, <span class="keywordtype">int</span> shrink, <span class="keyword">const</span> CWnd* parent = <span class="keyword">nullptr</span>);</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="comment"></span> </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="comment">    /// Hides the graphic. Call the Create() method prior</span></div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="comment">    /// to calling this method for the first time.</span></div>
@@ -127,13 +127,13 @@ $(function() {
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="comment">    /// @param point1   [in] Location of the top left corner of the rectangle, in pixels</span></div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">    /// @param point2   [in] Location of the bottom right corner of the rectangle, in pixels</span></div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code hl_function" href="classMeaRectangle.html#a5d6356fbf023796cf8fd18747bfaf003">SetPosition</a>(<span class="keyword">const</span> POINT&amp; point1, <span class="keyword">const</span> POINT&amp; point2);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaRectangle.html#a5d6356fbf023796cf8fd18747bfaf003">SetPosition</a>(<span class="keyword">const</span> POINT&amp; point1, <span class="keyword">const</span> POINT&amp; point2);</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="comment"></span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="comment">    /// Sets the color of the rectangle&#39;s line.</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="comment">    ///</span></div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="comment">    /// @param color    [in] Color value defined by the Windows GDI RGB macro.</span></div>
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code hl_function" href="classMeaRectangle.html#a1ad55b7288a0c6acfe8d02836d3c1300">SetColor</a>(COLORREF color);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaRectangle.html#a1ad55b7288a0c6acfe8d02836d3c1300">SetColor</a>(COLORREF color);</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    DECLARE_MESSAGE_MAP()</div>
@@ -173,7 +173,7 @@ $(function() {
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">    /// if any, is done by using small rectangles the size of the shrink</span></div>
 <div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">    /// to punch out the corners of the window.</span></div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment"></span>    <span class="keywordtype">void</span>    <a class="code hl_function" href="classMeaRectangle.html#a44983c73ad11380f9b3c1668dea885cd">SetRegion</a>();</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMeaRectangle.html#a44983c73ad11380f9b3c1668dea885cd">SetRegion</a>();</div>
 <div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
 <div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
 <div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classMeaRectangle.html#ad37861421a3c598bed4eb319f998d5f2">  131</a></span>    CPoint <a class="code hl_variable" href="classMeaRectangle.html#ad37861421a3c598bed4eb319f998d5f2">m_point1</a>;        <span class="comment">///&lt; Location of the top left corner of the rectangle, in pixels.</span></div>

@@ -67,7 +67,7 @@ public:
     ///
     /// @return <b>true</b> if the window is created successfully.
     ///
-    bool    Create(int thk, int shrink, const CWnd* parent = nullptr);
+    bool Create(int thk, int shrink, const CWnd* parent = nullptr);
 
     /// Hides the graphic. Call the Create() method prior
     /// to calling this method for the first time.
@@ -79,13 +79,13 @@ public:
     /// @param point1   [in] Location of the top left corner of the rectangle, in pixels
     /// @param point2   [in] Location of the bottom right corner of the rectangle, in pixels
     ///
-    void    SetPosition(const POINT& point1, const POINT& point2);
+    void SetPosition(const POINT& point1, const POINT& point2);
 
     /// Sets the color of the rectangle's line.
     ///
     /// @param color    [in] Color value defined by the Windows GDI RGB macro.
     ///
-    void    SetColor(COLORREF color);
+    void SetColor(COLORREF color);
 
 protected:
     DECLARE_MESSAGE_MAP()
@@ -125,7 +125,7 @@ private:
     /// if any, is done by using small rectangles the size of the shrink
     /// to punch out the corners of the window.
     ///
-    void    SetRegion();
+    void SetRegion();
 
 
     CPoint m_point1;        ///< Location of the top left corner of the rectangle, in pixels.

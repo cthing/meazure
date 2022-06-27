@@ -104,7 +104,7 @@ BOOST_AUTO_TEST_CASE(TestStringCtor) {
     }
 
     try {
-        MeaGUID guid3(_T("6B29FC40-CA47-1067-B31D-00DD010662D"));
+        MeaGUID guid3(_T("6B29fC40-CA47-1067-b31D-00DD010662d"));
         BOOST_FAIL("MeaGUID did not throw");
     } catch (COleException* e) {
         delete e;
@@ -130,7 +130,7 @@ BOOST_AUTO_TEST_CASE(TestAssignOperatorMeaGUID) {
 }
 
 BOOST_AUTO_TEST_CASE(TestAssignOperatorString) {
-    PCTSTR guid1Str = _T("6B29FC40-CA47-1067-B31D-00DD010662DA");
+    PCTSTR guid1Str = _T("6B29fC40-Ca47-1067-B31d-00DD010662Da");
     GUID guid1;
     guid1.Data1 = 0x6B29FC40;
     guid1.Data2 = 0xCA47;

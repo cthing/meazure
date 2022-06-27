@@ -155,6 +155,8 @@ public:
     CString ToString() const;
 
 private:
+    static constexpr PCTSTR kGuidFormat = _T("%08lX-%04hX-%04hX-%02hhX%02hhX-%02hhX%02hhX%02hhX%02hhX%02hhX%02hhX");
+
     GUID m_guid;                ///< Underlying GUID for the object.
 };
 

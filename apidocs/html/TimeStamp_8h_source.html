@@ -85,22 +85,23 @@ $(function() {
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">    /// @return String containing the timestamp in 8601 format corresponding</span></div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">    ///         to the specified time.</span></div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="comment"></span>    CString <a class="code hl_function" href="TimeStamp_8h.html#ab61b64b811b48c763233b3077bc6bd12">Make</a>(time_t t);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="comment"></span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">    /// Parses an ISO 8601 compliant time stamp and returns the</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment">    /// corresponding time value. The format of the timestamp must be:</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">    /// yyy-mm-ddThh:mm:ssZ</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="TimeStamp_8h.html#ab61b64b811b48c763233b3077bc6bd12">   40</a></span><span class="comment"></span>    <span class="keyword">inline</span> CString <a class="code hl_function" href="TimeStamp_8h.html#ab61b64b811b48c763233b3077bc6bd12">Make</a>(time_t t) {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">return</span> CTime(t).FormatGmt(_T(<span class="stringliteral">&quot;%Y-%m-%dT%H:%M:%SZ&quot;</span>));</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="comment"></span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="comment">    /// Parses an ISO 8601 compliant time stamp and returns the</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">    /// corresponding time value. The format of the timestamp must be:</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">    /// @param timeStr  [in] Time stamp string to parse.</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="comment">    /// yyy-mm-ddThh:mm:ssZ</span></div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">    /// @return Number of seconds since the Epoch as defined by the</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">    ///         system time() function.</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    ///</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment"></span>    time_t <a class="code hl_function" href="TimeStamp_8h.html#aca07d408e0064d73e08b722a196db002">Parse</a>(<span class="keyword">const</span> CString&amp; timeStr);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
-<div class="ttc" id="aTimeStamp_8h_html_ab61b64b811b48c763233b3077bc6bd12"><div class="ttname"><a href="TimeStamp_8h.html#ab61b64b811b48c763233b3077bc6bd12">MeaTimeStamp::Make</a></div><div class="ttdeci">CString Make(time_t t)</div><div class="ttdoc">Creates an ISO 8601 compliant time stamp based on the specified time value.</div><div class="ttdef"><b>Definition:</b> TimeStamp.cpp:31</div></div>
-<div class="ttc" id="aTimeStamp_8h_html_aca07d408e0064d73e08b722a196db002"><div class="ttname"><a href="TimeStamp_8h.html#aca07d408e0064d73e08b722a196db002">MeaTimeStamp::Parse</a></div><div class="ttdeci">time_t Parse(const CString &amp;timeStr)</div><div class="ttdoc">Parses an ISO 8601 compliant time stamp and returns the corresponding time value.</div><div class="ttdef"><b>Definition:</b> TimeStamp.cpp:37</div></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="comment">    /// @param timeStr  [in] Time stamp string to parse.</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">    /// @return Number of seconds since the Epoch as defined by the</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="comment">    ///         system time() function.</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="comment">    ///</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="comment"></span>    time_t Parse(<span class="keyword">const</span> CString&amp; timeStr);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>};</div>
+<div class="ttc" id="aTimeStamp_8h_html_ab61b64b811b48c763233b3077bc6bd12"><div class="ttname"><a href="TimeStamp_8h.html#ab61b64b811b48c763233b3077bc6bd12">MeaTimeStamp::Make</a></div><div class="ttdeci">CString Make(time_t t)</div><div class="ttdoc">Creates an ISO 8601 compliant time stamp based on the specified time value.</div><div class="ttdef"><b>Definition:</b> TimeStamp.h:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <hr size="1">
 <address style="align: right;"><small>Copyright 2011 C Thing Software</small></address>

@@ -43,8 +43,8 @@ namespace MeaColors {
         int magenta;
         int yellow;
 
-        CMY() : cyan(0), magenta(0), yellow(0) {}
-        CMY(int c, int m, int y) : cyan(c), magenta(m), yellow(y) {}
+        constexpr CMY() : cyan(0), magenta(0), yellow(0) {}
+        constexpr CMY(int c, int m, int y) : cyan(c), magenta(m), yellow(y) {}
     };
 
     /// Represents a color in the Cyan-Magenta-Yellow-Black color space. By convention, the letter "K" represents
@@ -56,8 +56,8 @@ namespace MeaColors {
         int yellow;
         int black;
 
-        CMYK() : cyan(0), magenta(0), yellow(0), black(0) {}
-        CMYK(int c, int m, int y, int k) : cyan(c), magenta(m), yellow(y), black(k) {}
+        constexpr CMYK() : cyan(0), magenta(0), yellow(0), black(0) {}
+        constexpr CMYK(int c, int m, int y, int k) : cyan(c), magenta(m), yellow(y), black(k) {}
     };
 
     /// Represents a color in the Hue (H), Saturation (S), and Lightness (L) color space.
@@ -67,8 +67,8 @@ namespace MeaColors {
         int saturation;
         int lightness;
 
-        HSL() : hue(0), saturation(0), lightness(0) {}
-        HSL(int h, int s, int l) : hue(h), saturation(s), lightness(l) {}
+        constexpr HSL() : hue(0), saturation(0), lightness(0) {}
+        constexpr HSL(int h, int s, int l) : hue(h), saturation(s), lightness(l) {}
     };
 
     /// Represents a color in the Luminance (Y), Blue-Difference (Cb) and Red-Difference (Cr) chrominance color
@@ -79,8 +79,8 @@ namespace MeaColors {
         int cb;
         int cr;
 
-        YCbCr() : y(0), cb(0), cr(0) {}
-        YCbCr(int luma, int blueChroma, int redChroma) : y(luma), cb(blueChroma), cr(redChroma) {}
+        constexpr YCbCr() : y(0), cb(0), cr(0) {}
+        constexpr YCbCr(int luma, int blueChroma, int redChroma) : y(luma), cb(blueChroma), cr(redChroma) {}
     };
 
     /// Represents a color in the Luminance (Y), In-phase (I) and Quadrature (Q) chrominance color space.
@@ -90,8 +90,8 @@ namespace MeaColors {
         int i;
         int q;
 
-        YIQ() : y(0), i(0), q(0) {}
-        YIQ(int luma, int inphase, int quadrature) : y(luma), i(inphase), q(quadrature) {}
+        constexpr YIQ() : y(0), i(0), q(0) {}
+        constexpr YIQ(int luma, int inphase, int quadrature) : y(luma), i(inphase), q(quadrature) {}
     };
 
     /// Represents a color in the CIE 1931 XYZ color space. The tristimulus values are the luminance (Y),
@@ -102,8 +102,8 @@ namespace MeaColors {
         double y;
         double z;
 
-        XYZ() : x(0.0), y(0.0), z(0.0) {}
-        XYZ(double xin, double yin, double zin) : x(xin), y(yin), z(zin) {}
+        constexpr XYZ() : x(0.0), y(0.0), z(0.0) {}
+        constexpr XYZ(double xin, double yin, double zin) : x(xin), y(yin), z(zin) {}
     };
 
     /// Represents a color in the CIE L*a*b* color space. The values are the lightness (L*), the green-red axis
@@ -114,8 +114,8 @@ namespace MeaColors {
         double a;
         double b;
 
-        Lab() : l(0.0), a(0.0), b(0.0) {}
-        Lab(double lstar, double astar, double bstar) : l(lstar), a(astar), b(bstar) {}
+        constexpr Lab() : l(0.0), a(0.0), b(0.0) {}
+        constexpr Lab(double lstar, double astar, double bstar) : l(lstar), a(astar), b(bstar) {}
     };
 
 
@@ -275,7 +275,9 @@ namespace MeaColors {
     /// @param rgb      [in] RGB color
     /// @return CMY color
     /// 
-    CMY RGBtoCMY(COLORREF rgb);
+    constexpr CMY RGBtoCMY(COLORREF rgb) {
+        return CMY(255 - GetRValue(rgb), 255 - GetGValue(rgb), 255 - GetBValue(rgb));
+    }
 
     /// Converts from the RGB color space to the Cyan (C), Magenta (M), Yellow (Y) and Black (K) color space. The
     /// conversion is done using the algorithm presented at http://www.easyrgb.com/en/math.php. The input and output

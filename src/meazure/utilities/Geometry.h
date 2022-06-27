@@ -37,14 +37,14 @@ struct MeaFSize {
 
     /// Constructs a size object initialized to 0.0 width and height.
     ///
-    MeaFSize() : MeaFSize(0.0, 0.0) {}
+    constexpr MeaFSize() : MeaFSize(0.0, 0.0) {}
 
     /// Constructs a size object initialized to the specified dimensions.
     /// 
     /// @param x  [in] Length in the x dimension
     /// @param y  [in] Length in the y dimension
     ///
-    MeaFSize(double x, double y) : cx(x), cy(y) {}
+    constexpr MeaFSize(double x, double y) : cx(x), cy(y) {}
 
     /// Tests equality between this with the specified size.
     /// 
@@ -84,7 +84,7 @@ struct MeaFSize {
     /// @param fsize    [in] Size object to add.
     /// @return New object that is the sum of this and the specified object.
     /// 
-    MeaFSize operator+(const MeaFSize& fsize) const {
+    constexpr MeaFSize operator+(const MeaFSize& fsize) const {
         return MeaFSize(cx + fsize.cx, cy + fsize.cy);
     }
 
@@ -108,7 +108,7 @@ struct MeaFSize {
     /// @param val      [in] Length to add to both dimensions.
     /// @return New object that is the sum of this and the specified value.
     /// 
-    MeaFSize operator+(double val) const {
+    constexpr MeaFSize operator+(double val) const {
         return MeaFSize(cx + val, cy + val);
     }
 
@@ -131,7 +131,7 @@ struct MeaFSize {
     /// @param fsize    [in] Size object to multiply.
     /// @return New object that is the product of this and the specified object.
     /// 
-    MeaFSize operator*(const MeaFSize& fsize) const {
+    constexpr MeaFSize operator*(const MeaFSize& fsize) const {
         return MeaFSize(cx * fsize.cx, cy * fsize.cy);
     }
 
@@ -154,7 +154,7 @@ struct MeaFSize {
     /// @param size     [in] Size object to multiply.
     /// @return New object that is the product of this and the specified object.
     /// 
-    MeaFSize operator*(const SIZE& size) const {
+    constexpr MeaFSize operator*(const SIZE& size) const {
         return MeaFSize(cx * size.cx, cy * size.cy);
     }
 
@@ -173,11 +173,11 @@ struct MeaFSize {
     /// @param mult     [in] Value to multiply both dimensions.
     /// @return New object that is the product of this and the specified value.
     /// 
-    MeaFSize operator*(double mult) const {
+    constexpr MeaFSize operator*(double mult) const {
         return MeaFSize(cx * mult, cy * mult);
     }
 
-    /// Dividies this and the specified value and returns a new size object.
+    /// Divides this and the specified value and returns a new size object.
     /// \f[
     ///     \left[ \begin{array}{c}
     ///     f_x \\
@@ -192,7 +192,7 @@ struct MeaFSize {
     /// @param div     [in] Value to divide both dimensions.
     /// @return New object that is the division of this by the specified value.
     /// 
-    MeaFSize operator/(double div) const {
+    constexpr MeaFSize operator/(double div) const {
         return MeaFSize(cx / div, cy / div);
     }
 
@@ -216,7 +216,7 @@ struct MeaFSize {
     /// @param fsize        [in] Size object to add to this.
     /// @return this object.
     /// 
-    MeaFSize& operator+=(const MeaFSize& fsize) {
+    constexpr MeaFSize& operator+=(const MeaFSize& fsize) {
         cx += fsize.cx;
         cy += fsize.cy;
         return *this;
@@ -241,7 +241,7 @@ struct MeaFSize {
     /// \f]
     /// @param fsize        [in] Size object to subtract from this.
     /// @return this object.
-    MeaFSize& operator-=(const MeaFSize& fsize) {
+    constexpr MeaFSize& operator-=(const MeaFSize& fsize) {
         cx -= fsize.cx;
         cy -= fsize.cy;
         return *this;
@@ -265,7 +265,7 @@ struct MeaFSize {
     /// \f]
     /// @param fsize        [in] Size object to multiply with this.
     /// @return this object.
-    MeaFSize& operator*=(const MeaFSize& fsize) {
+    constexpr MeaFSize& operator*=(const MeaFSize& fsize) {
         cx *= fsize.cx;
         cy *= fsize.cy;
         return *this;
@@ -371,7 +371,7 @@ struct MeaFRect {
 
     /// Constructs a rectangle object initialized to 0.0 in all coordinates.
     ///
-    MeaFRect() : MeaFRect(0.0, 0.0, 0.0, 0.0) {}
+    constexpr MeaFRect() : MeaFRect(0.0, 0.0, 0.0, 0.0) {}
 
     /// Constructs a rectangle object initialized to the specified coordinates.
     /// 
@@ -380,7 +380,7 @@ struct MeaFRect {
     /// @param l  [in] Initial left coordinate
     /// @param r  [in] Initial right coordinate
     /// 
-    MeaFRect(double t, double b, double l, double r) : top(t), bottom(b), left(l), right(r) {}
+    constexpr MeaFRect(double t, double b, double l, double r) : top(t), bottom(b), left(l), right(r) {}
 
     /// Tests equality between this with the specified rectangle.
     /// 
@@ -426,14 +426,14 @@ struct MeaFPoint {
 
     /// Constructs a point object initialized to (0.0, 0.0).
     ///
-    MeaFPoint() : MeaFPoint(0.0, 0.0) {}
+    constexpr MeaFPoint() : MeaFPoint(0.0, 0.0) {}
 
     /// Constructs a point object initialized to the specified coordinates.
     /// 
     /// @param xi  [in] Initial x coordinate 
     /// @param yi  [in] Initial y coordinate
     /// 
-    MeaFPoint(double xi, double yi) : x(xi), y(yi) {}
+    constexpr MeaFPoint(double xi, double yi) : x(xi), y(yi) {}
 
     /// Tests equality between this with the specified point.
     /// 
@@ -543,7 +543,7 @@ namespace MeaGeometry {
     ///
     /// @return Circumference of the circle.
     ///
-    inline double CalcCircumference(double radius) {
+    constexpr double CalcCircumference(double radius) {
         return 2.0 * radius * MeaNumericUtils::PI;
     }
 

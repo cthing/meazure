@@ -63,11 +63,11 @@ public:
 
     /// Returns the version number of the profile file format.
     /// @return Version number of the profile file format.
-    int GetProfileFileMajor() const { return 2; }
+    constexpr int GetProfileFileMajor() const { return 2; }
 
     /// Returns the version number of the position log file format.
     /// @return Version number of the position log file format.
-    int GetLogFileMajor() const { return 1; }
+    constexpr int GetLogFileMajor() const { return 1; }
 
 private:
     /// The class does not have copy semantics so this method is

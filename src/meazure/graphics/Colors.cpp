@@ -253,23 +253,23 @@ void MeaColors::SetA(Item item, std::uint8_t opacity) {
 }
 
 COLORREF MeaColors::Get(Item item) {
-    return colors[item];
+    return colors.at(item);
 }
 
 std::uint8_t MeaColors::GetR(Item item) {
-    return GetRValue(colors[item]);
+    return GetRValue(colors.at(item));
 }
 
 std::uint8_t MeaColors::GetG(Item item) {
-    return GetGValue(colors[item]);
+    return GetGValue(colors.at(item));
 }
 
 std::uint8_t MeaColors::GetB(Item item) {
-    return GetBValue(colors[item]);
+    return GetBValue(colors.at(item));
 }
 
 std::uint8_t MeaColors::GetA(Item item) {
-    return GetRValue(colors[item]);
+    return GetRValue(colors.at(item));
 }
 
 COLORREF MeaColors::GetDefault(Item item) {
@@ -495,10 +495,6 @@ const MeaColors::ColorTableEntry* MeaColors::MatchColor(const ColorTableEntry* t
     }
 
     return bestEntry;
-}
-
-MeaColors::CMY MeaColors::RGBtoCMY(COLORREF rgb) {
-    return CMY(255 - GetRValue(rgb), 255 - GetGValue(rgb), 255 - GetBValue(rgb));
 }
 
 MeaColors::CMYK MeaColors::RGBtoCMYK(COLORREF rgb) {

@@ -6,11 +6,11 @@
 1. Using the ***Registry Editor***, delete the ***HKCU/SOFTWARE/C Thing Software*** key, if it exists
 1. Install Meazure accepting all default settings
 1. After installation is complete, verify the following:
-   a. Meazure entry appears on Programs menu
-   a. Verify a desktop icon appears
-   a. In the program folder, verify that the Profiles subfolder exists and is populated with sample profiles
-   a. Verify that .mea profile files are displayed with the Meazure program icon
-   a. Start Meazure and verify that the help menu is enabled and help can be displayed
+   1. Meazure entry appears on Programs menu
+   1. Verify a desktop icon appears
+   1. In the program folder, verify that the Profiles subfolder exists and is populated with sample profiles
+   1. Verify that .mea profile files are displayed with the Meazure program icon
+   1. Start Meazure and verify that the help menu is enabled and help can be displayed
 1. Exit Meazure
 1. Start Meazure
 1. Minimize the program
@@ -19,9 +19,9 @@
 1. Exit Meazure
 1. Uninstall the program
 1. After uninstall, verify the following:
-   a. Meazure entry has been removed from the Programs menu
-   a. Desktop icon has been removed
-   a. Program folder and all subfolders have been removed
+   1. Meazure entry has been removed from the Programs menu
+   1. Desktop icon has been removed
+   1. Program folder and all subfolders have been removed
 1. Using the ***Registry Editor***, delete the ***HKCU/Software/C Thing Software*** key
 1. Install the previous version of Meazure
 1. Start the old version
@@ -29,9 +29,9 @@
 1. Install the latest version of Meazure without the desktop icon, help or profiles
 1. Verify the old version has been uninstalled
 1. After installation is complete verify the following:
-   a. Meazure entry appears on Programs menu
-   a. No desktop or icon tray icons are present
-   a. In the program folder, verify that an empty Profiles subfolder exists
+   1. Meazure entry appears on Programs menu
+   1. No desktop or icon tray icons are present
+   1. In the program folder, verify that an empty Profiles subfolder exists
 1. Start Meazure and verify that the help menu is disabled. Exit Meazure
 1. Uninstall Meazure
 1. Install Meazure accepting all defaults
@@ -513,10 +513,10 @@
 ## High DPI Screen Scaling
 
 1. On a 4K display (i.e. 3840 x 2160 pixels) set the screen scaling to 150%
-    a. Bring up the ***Settings > System > Display*** dialog
-    a. Set the display resolution to 3840 x 2160
-    a. Set the ***Change the size of text, apps, and other items*** to 150%
-    a. Close the dialog
+    1. Bring up the ***Settings > System > Display*** dialog
+    1. Set the display resolution to 3840 x 2160
+    1. Set the ***Change the size of text, apps, and other items*** to 150%
+    1. Close the dialog
 1. Start the Meazure program
 1. Verify that the user interface is properly arranged with correct margins, spacing and size of elements
 1. Verify that the crosshairs are properly sized

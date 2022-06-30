@@ -40,12 +40,8 @@ Refer to [Building.md](Building.md) for information on how to build Meazure from
   URL on line 2 from `https:` to `http:`. Position log files saved by Meazure 2.0 can be opened by Meazure 3.0 without
   modification.
 
-- Meazure may report incorrect measurements if Windows Display "Make everything bigger" greater than 100% is used
-  (see [issue #9](https://github.com/cthing/meazure/issues/9)). To work around this issue, right-click on Meazure.exe
-  and select Properties. In the properties dialog, select the Compatibility tab. Press the "Change high DPI settings"
-  button. Check the box next to "Override high DPI scaling behavior Scaling performed by: Application".
-
-- Meazure reports incorrect screen size for 4K monitors (#34)
+- Meazure now accommodates high DPI displays (e.g. 4K) and the DPI scaling often used with them. However, you must
+  restart Meazure if you change the DPI scaling while it is running.
   
 ## Feedback
 
@@ -58,7 +54,7 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 
 ## Changelog
 
-### Changes 3.0.2 to 4.0 (unreleased)
+### Changes 3.0.2 to 4.0
 
 - Enhancement: A more readable font is used for all dialogs
 
@@ -84,7 +80,10 @@ making a [financial contribution](https://github.com/sponsors/baron1405). Thank 
 - Fix: Meazure now reports the correct screen dimensions and measurements on high DPI displays (e.g. 4K display).
   
 - Fix: Meazure accommodates screen scaling. Note that you must restart Meazure if you change the screen scaling
-  (e.g. going from 100% to 150% scaling).
+  (e.g. going from 100% to 150% scaling). To accommodate this, Meazure now reports the Windows default screen
+  resolution (96 DPI) as the default uncalibrated resolution. In previous releases, Meazure would query the operating
+  system at runtime for the logical resolution. However, that value is now the effective (i.e. scaled)
+  resolution, which is not appropriate for calculating measurements in resolution-dependent units (e.g. inches).
 
 - Fix: The Position log save dialog once again displays a text fields for specifying a title and description for
   the log file.

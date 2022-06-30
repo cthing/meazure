@@ -156,28 +156,7 @@ public:
     CString GetName() const { return m_name; }
 
 private:
-    /// Obtains the screen resolution reported by the operating system.
-    ///
-    /// @return Resolution in pixels per inch.
-    ///
-    static MeaFSize GetOSScreenRes() {
-        MeaFSize res;
-
-        HDC dc = ::GetDC(nullptr);
-        if (dc != nullptr) {
-            res.cx = static_cast<double>(::GetDeviceCaps(dc, LOGPIXELSX));
-            res.cy = static_cast<double>(::GetDeviceCaps(dc, LOGPIXELSY));
-            ::ReleaseDC(nullptr, dc);
-        } else {
-            res.cx = static_cast<double>(USER_DEFAULT_SCREEN_DPI);
-            res.cy = static_cast<double>(USER_DEFAULT_SCREEN_DPI);
-        }
-
-        return res;
-    }
-
-
-    static inline const MeaFSize m_osRes = GetOSScreenRes();    ///< DPI reported by the operating system.
+    static constexpr MeaFSize m_osRes = MeaFSize(USER_DEFAULT_SCREEN_DPI, USER_DEFAULT_SCREEN_DPI);
 
     CRect m_rect;           ///< Screen rectangle.
     CPoint m_center;        ///< Center point of the screen.

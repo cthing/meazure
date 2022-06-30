@@ -6,9 +6,18 @@
 1. Using the ***Registry Editor***, delete the ***HKCU/SOFTWARE/C Thing Software*** key, if it exists
 1. Install Meazure accepting all default settings
 1. After installation is complete, verify the following:
-   1. Meazure entry appears on Programs menu
+   1. Meazure entry appears on Start menu
+   1. Verify that the Meazure Start menu folder contains the following items:
+      1. Meazure
+      1. Meazure Help
+      1. Meazure License
+      1. Meazure Readme
+   1. Select each Meazure Start menu item and verify that the appropriate action is performed
    1. Verify a desktop icon appears
-   1. In the program folder, verify that the Profiles subfolder exists and is populated with sample profiles
+   1. In the folder ***C:\Program Files\Meazure***, verify that the ***Profiles*** subfolder exists and is populated
+      with sample profiles
+   1. In the folder ***C:\Program Files\Meazure***, verify that the ***dtd*** subfolder exists and contains the
+      ***PositionLog1.dtd*** file
    1. Verify that .mea profile files are displayed with the Meazure program icon
    1. Start Meazure and verify that the help menu is enabled and help can be displayed
 1. Exit Meazure
@@ -19,22 +28,21 @@
 1. Exit Meazure
 1. Uninstall the program
 1. After uninstall, verify the following:
-   1. Meazure entry has been removed from the Programs menu
+   1. Meazure entry has been removed from the Start menu
    1. Desktop icon has been removed
    1. Program folder and all subfolders have been removed
 1. Using the ***Registry Editor***, delete the ***HKCU/Software/C Thing Software*** key
 1. Install the previous version of Meazure
 1. Start the old version
 1. Exit Meazure
-1. Install the latest version of Meazure without the desktop icon, help or profiles
+1. Install the latest version of Meazure accepting all defaults
 1. Verify the old version has been uninstalled
 1. After installation is complete verify the following:
    1. Meazure entry appears on Programs menu
-   1. No desktop or icon tray icons are present
-   1. In the program folder, verify that an empty Profiles subfolder exists
+   1. Desktop is present
+   1. In the folder ***C:\Program Files\Meazure***, verify that the ***Profiles*** subfolder exists and is populated
+      with sample profiles
 1. Start Meazure and verify that the help menu is disabled. Exit Meazure
-1. Uninstall Meazure
-1. Install Meazure accepting all defaults
 
 ## Cursor Tool
 
@@ -72,8 +80,11 @@
    with size of screen.
 1. Verify the Data window position changes to avoid being hidden
 1. Verify crosshair is centered in Magnifier and the view tracks the crosshair position
-1. Enter new ***X1*** and ***Y1*** values in the text fields and verify crosshair moves to the specified position
-1. Paste new numerical values into the ***X1*** and ***Y1*** fields and verify the crosshair moves to the specified position
+1. Enter new ***X1*** and ***Y1*** values in the text fields, press Return and verify crosshair moves to the specified
+   position
+1. Paste new numerical values into the ***X1*** and ***Y1*** fields, press Return and verify the crosshair moves to the
+   specified position
+1. Verify that non-numeric text cannot be pastes into the ***X1*** and ***Y1*** fields
 1. Use the ***X1*** and ***Y1*** up/down buttons to verify crosshair moves in the correct direction
 1. Drag the crosshair while holding down ***Shift*** key and verify that only horizontal and vertical motions are allowed
 1. Ensure Meazure has the keyboard focus by clicking on the Meazure window frame
@@ -193,6 +204,7 @@
 1. Set the magnifier to 6X magnification
 1. Drag the Point 1 crosshair so that the entire circle can be see in the magnifier.
 1. Verify the Tool Information and Data window values agree with size of circle as displayed in the magnifier grid.
+1. Set the magnifier to 2X magnification
 1. Verify the radius and circle lines track the crosshairs with minimal lag
 1. Verify the correctness of the ***W***, ***H***, ***D***, ***A*** and ***Ar*** values
 1. Verify that the crosshair being dragged is centered in the Magnifier and the view tracks crosshair position
@@ -305,7 +317,9 @@
 1. Verify the new spacing using the Point Tool
 1. On the ***Tools*** menu select ***Screen Grid Spacing***
 1. Use the up and down arrows next to each text field to adjust the grid spacing.
+1. Press OK
 1. Verify the grid dimensions using the Point Tool
+1. On the ***Tools*** menu select ***Screen Grid Spacing***
 1. Check the ***Link horizontal and vertical*** check box.
 1. Verify that the Vertical text field value changes to match the Horizontal text field value and that the grid becomes square
 1. Enter the minimum grid spacing and verify the grid is properly drawn
@@ -318,7 +332,6 @@
 1. Verify the grid is removed from the screen
 1. On the ***Tools*** menu select ***Screen Grid Spacing***.
 1. Verify the dialog and screen grid appear
-1. Close the Screen Grid Spacing dialog
 1. Press ***Cancel***
 1. Verify the screen grid is removed from the screen
 
@@ -368,6 +381,7 @@
 1. Select ***Use operating system value*** for both screens.
 1. Press ***OK***.
 1. Verify the screen size and resolution return to the values previously recorded
+1. Verify the resolution warning button is displayed
 
 ## Standard Units
 
@@ -471,16 +485,16 @@
    from the origin.
 1. Verify the ***View*** menu ***Invert Y*** item is not checked
 1. On the ***View*** menu select ***Invert Y***
-1. Verify that the origin marker moves to the bottom left corner of the screen and the marker’s 
+1. Verify that the origin marker moves to the bottom left corner of the screen and the marker's 
    Y axis points up from the origin.
 1. Move the cursor to the upper left corner and verify ***X1*** is 0 and ***Y1*** is H - 1
 1. Move the cursor to the lower left corner and verify ***X1*** and ***Y1*** are both 0
 1. Move the cursor to the lower right corner of the screen and press ***Ctrl+A***.
 1. Verify ***X1*** and ***Y1*** are both 0
 1. Verify the origin marker moves to the new 0, 0 position.
-1. Move the cursor to the upper left corner and verify that ***X1*** is –(W – 1) and ***Y1*** is (H – 1)
+1. Move the cursor to the upper left corner and verify that ***X1*** is -(W - 1) and ***Y1*** is (H - 1)
 1. On the ***View*** menu deselect ***Invert Y***,
-1. Move the cursor to the upper left corner of the screen and verify that ***X1*** is –(W – 1) and ***Y1*** is –(H – 1)
+1. Move the cursor to the upper left corner of the screen and verify that ***X1*** is -(W - 1) and ***Y1*** is -(H - 1)
 1. On the ***View*** menu select ***Reset Origin***
 1. Move the cursor to the upper left corner of the screen and verify that ***X1*** and ***Y1*** are both 0
 
@@ -523,6 +537,8 @@
 1. Verify that the screen dimensions and resolution are correct
 1. Select various measurement tools and verify that they are properly displayed and dragable
 1. Close the Meazure program
+1. Bring up the ***Settings > System > Display*** dialog
+1. Set the ***Change the size of text, apps, and other items*** to 100%
 
 ## Tool Preferences
 
@@ -633,16 +649,14 @@
 1. Verify that the magnifier window image does not change
 1. Press the ***Pause*** button again
 1. Verify that the image in the magnifier window changes as the cursor is moved
+1. On the toolbar select the Point Tool
+1. On the ***View*** menu select ***Color Format*** and ensure that ***RGB*** is selected
+1. Verify that the color values and swatch reflect the color of the pixel in the red square at the 
+   center of the magnifier window
 1. Select all text in the color field
 1. Copy the text using the ***Edit*** menu ***Copy*** item
 1. Paste the contents of the clipboard into a text editor
 1. Verify the pasted text is the same as what was copied
-1. On the ***View*** menu select ***Color Format*** and ensure that ***RGB*** is selected
-1. Verify that the color values and swatch reflect the color of the pixel in the red square at the 
-   center of the magnifier window
-1. Press the clipboard button next to the color swatch
-1. Paste the contents of the clipboard into a text editor
-1. Verify the pasted text is the same as that shown in the color field
 1. On the ***View*** menu select ***Color Format*** and ***#RRGGBB***
 1. Verify that the color values are now reported in ***#RRGGBB*** format
 1. Press the clipboard button next to the color swatch
@@ -762,6 +776,7 @@
 1. Start Meazure
 1. Select the Cursor Tool
 1. On the ***Units*** menu, select ***Pixels***
+1. Make sure that the Meazure program has the focus
 1. Move to a number of positions and at each one write down or remember the position and 
    at each position press Ctrl+P to record the position
 1. Verify that each time ***Ctrl+P*** is pressed the Data window should flash
@@ -815,7 +830,7 @@
 1. Start the program
 1. On the ***Help*** menu select the ***Contents*** item
 1. Verify that the online help window appears with the ***Contents*** tab selected
-1. On the ***Help*** menu select the ***What’s This*** item.
+1. On the ***Help*** menu select the ***What's This*** item.
 1. Click on the Tool Information section
 1. Verify that the help for the Tool Information section is displayed
 1. Display the ***Tools*** menu. Position the cursor over the ***Point*** item and press ***F1***. Verify that 

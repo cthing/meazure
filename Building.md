@@ -6,11 +6,10 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
 
 1. Download and install Visual Studio Community 2022 from <https://visualstudio.microsoft.com/>.
    Select the following components:
-
-   a. Workload - Python development
-   b. Workload - Desktop development with C++
-   c. C++ CMake tools for Windows
-   d. C++ MFC for latest v143 build tools (x86 & x64)
+   * Workload - Python development
+   * Workload - Desktop development with C++
+   * C++ CMake tools for Windows
+   * C++ MFC for latest v143 build tools (x86 & x64)
 
 2. Install the Markdown Editor extension in Visual Studio
    <https://marketplace.visualstudio.com/items?itemName=MadsKristensen.MarkdownEditor2>
@@ -18,20 +17,20 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
 3. Meazure uses the [Conan C/C++ Package Manager](https://conan.io/) to install its library dependencies. Install
    Conan by performing the following steps:
 
-   a. In a browser go to <https://conan.io/downloads.html>
-   b. Download the Windows x86_64 package
-   c. Install the download package accepting all defaults
+   * In a browser go to <https://conan.io/downloads.html>
+   * Download the Windows x86_64 package
+   * Install the download package accepting all defaults
 
 4. Download and install Python from <http://www.python.org/download/>. Include the following additional packages:
 
-   a. pip
-   b. Python launcher
-   c. Documentation
+   * pip
+   * Python launcher
+   * Documentation
 
    Check the box to add Python to the environment variables.
 
 5. Install the cmakelang package, which provide the cmake-format, cmake-lint and other CMake related tools:
-   ```
+   ```CMake
    pip install cmakelang
    ```
 
@@ -57,14 +56,14 @@ instructions describe how to build Meazure for 64-bits on Microsoft Windows
     CMake can generate Makefiles and Visual Studio project files. To generate
     a command line build using Microsoft's NMake tool run the following commands at the
     root of the source tree:
-    ```
+    ```batchfile
     mkdir build-nmake
     cd build-nmake
     cmake -G "NMake Makefiles" ..
     ```
     To generate the solution and project files for Visual Studio, run the following commands
     at the root of the source tree:
-    ```
+    ```batchfile
     mkdir build-vs
     cd build-vs
     cmake -G "Visual Studio 17 2022" -A x64 ..

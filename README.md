@@ -40,6 +40,8 @@ Refer to [Building.md](Building.md) for information on how to build Meazure from
   URL on line 2 from `https:` to `http:`. Position log files saved by Meazure 2.0 can be opened by Meazure 3.0 without
   modification.
 
+- The position log file does not indicate if an angle is the supplemental angle.
+
 - Meazure now accommodates high DPI displays (e.g. 4K) and the DPI scaling often used with them. However, you must
   restart Meazure if you change the DPI scaling while it is running.
   

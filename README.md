@@ -1,8 +1,10 @@
-# Meazure<sup>TM</sup>
+# Meazure<sup>TM</sup> for Windows
 
 Meazure is a tool for easily measuring and capturing portions of the screen. Tasks such as measuring the size of a window,
 capturing an image, determining the color of a pixel, and determining the screen size and resolution can all be
 easily accomplished using Meazure.
+
+This is the **Windows** version of Meazure. For the Linux version, go to [github.com/cthing/meazure-linux](https://github.com/cthing/meazure-linux).
 
 ![Meazure screenshot](src/help/Graphics/Sections.png)
 
